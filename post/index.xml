@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Mar 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity 使用 TexturePacker 优化渲染</title>
+      <link>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</link>
+      <pubDate>Thu, 30 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</guid>
+      <description>&lt;p&gt;TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity 四叉树</title>
       <link>https://www.chenqiaoqian.com/2023/03/26/unity-quad-tree/</link>

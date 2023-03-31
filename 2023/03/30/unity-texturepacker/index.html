@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.chenqiaoqian.com/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/light.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/dark.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/syntax.css' />
+    <title>Unity 使用 TexturePacker 优化渲染 - 陈巧倩</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.chenqiaoqian.com/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Unity 使用 TexturePacker 优化渲染 - 陈巧倩" />
+<meta name="twitter:description"
+  content="TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。
+" />
+<meta name="twitter:site" content="https://www.chenqiaoqian.com/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.chenqiaoqian.com/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Unity 使用 TexturePacker 优化渲染 - 陈巧倩">
+<meta property="og:description"
+  content="TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。
+" />
+<meta property="og:url" content="https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/" />
+<meta property="og:site_name" content="Unity 使用 TexturePacker 优化渲染" />
+<meta property="og:image"
+  content="https://www.chenqiaoqian.com/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-03-30 11:13:34 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.chenqiaoqian.com/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.chenqiaoqian.com/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.chenqiaoqian.com/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.chenqiaoqian.com/">
+                  <img class=" avatar-user"
+                    src="https://www.chenqiaoqian.com/images/avatar.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.chenqiaoqian.com/"></a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/">Unity 使用 TexturePacker 优化渲染</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Thu, 30 Mar 2023 11:13:34 &#43;0800"
+                    class="no-wrap">
+                    Thu, 30 Mar 2023 11:13:34 &#43;0800</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2331 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。</p>
+<h2 id="texturepacker优势">TexturePacker优势</h2>
+<h3 id="性能方面">性能方面:</h3>
+<p>通过优化Sprite网格提高性能，打包算法Polygon中使用Tracer Tolerance影响网格的质量，从而降低顶点数量和面数，降低CPU和GPU的计算渲染压力。</p>
+<p><img src="/2023-03-30-unity-texturepacker/SpriteMeshes.jpg" alt="SpriteMeshes"></p>
+<h3 id="内存方面">内存方面：</h3>
+<p>Sprite打包通过Polygon Packing算法，是不规则的图片打包成紧凑的图集，从而降低纹理内存大小。</p>
+<p><img src="/2023-03-30-unity-texturepacker/PolygonAtlas.jpg" alt="PolygonAtlas"></p>
+<h3 id="png优化">PNG优化：</h3>
+<p>PNG优化的意义在于在不影响图形品质的情况下实现降低文件大小，从而改善游戏的下载和启动时间。</p>
+<p>常用的PNG文件优化方法：</p>
+<ul>
+<li>无损压缩：此方法使用高级压缩算法并从文件中删除不必要的元数据以减小其大小而不降低图像质量。</li>
+<li>有损压缩：此方法涉及减少图像中的颜色数量。如果图像具有大量相似的颜色，这会特别有效。通过减少颜色数量，PNG 文件可以作为索引文件写入，占用的空间明显减少。</li>
+</ul>
+<p>TexturePacker 中对PNG的优化：</p>
+<ul>
+<li>TextureFormat：PNG-32 和 PNG-8(索引)。PNG-32 (无损模式)提供更高的质量，但尺寸也更大，而 PNG-8(降低颜色数量)提供更小的文件尺寸，但可能会牺牲一些图像质量。</li>
+<li>Dithering (PNG-8 only)：此设置确定在减少图像中的颜色数量时如何近似颜色。选项有PngQuantLow、PngQuantMedium和PngQuantHigh，它们代表不同级别的颜色准确度。PngQuantLow 生成最小的文件大小，但可能会导致可见的颜色伪影，而 PngQuantHigh 提供最佳的颜色精度，但可能会导致较大的文件大小。</li>
+<li>PngOptLevel：此设置控制应用于 PNG 文件的优化级别。选项范围从 0（无优化）到 7（最大优化），级别越高，压缩效果越好。</li>
+</ul>
+<p>TexturePacker和TinyPNG 的比较：</p>
+<ul>
+<li>使用PngQuantHigh和PngOptLevel4时，TexturePacker 和 TinyPNG 都提供相似的图像质量和大小。</li>
+<li>使用PngQuantLow和PngQuantMedium时，TexturePacker 通常会生成质量稍差的较小图像。</li>
+</ul>
+<h2 id="texturepacker在unity中使用">TexturePacker在Unity中使用</h2>
+<h3 id="插件导入">插件导入</h3>
+<ul>
+<li>Unity 资产商店下载 TexturePacker Importer。</li>
+<li>Unity 2021以后版本需要从PackageManger中导入。</li>
+</ul>
+<h3 id="资源导入">资源导入</h3>
+<p>需要将导出后的 .tpsheet 文件与 .png 文件同时放入工程中使用。</p>
+<h3 id="程序调用">程序调用</h3>
+<p>在Resource中的调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Sprite[] sprites = Resources.LoadAll&lt;Sprite&gt;(<span style="color:#e6db74">&#34;spritesheet&#34;</span>);
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>在AssetBundle中的调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>AssetBundle bundle = AssetBundle.LoadFromFile(<span style="color:#e6db74">&#34;Assets/AssetBundles/MyBundle&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (bundle != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Sprite[] sprites = bundle.LoadAssetWithSubAssets&lt;Sprite&gt;(<span style="color:#e6db74">&#34;spritesheet&#34;</span>);
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="texturepacker参数详解">TexturePacker参数详解</h2>
+<h3 id="output">OutPut</h3>
+<ul>
+<li>Png Opt Level(Png优化选项)：减少png文件大小，所有优化都是无损的。
+<ul>
+<li>0	总是写 32 位 png 文件</li>
+<li>1	如果可能，写入索引（8 位）png 文件（默认）</li>
+<li>2……7	激活额外的文件大小优化步骤</li>
+</ul>
+</li>
+<li>Premultiplied Alpha:带透明度图片纹理可以正常的进行线性插值</li>
+<li>DPI(Dots Per Inch):每英寸打印的像素点，值越大图片越清晰，默认27</li>
+<li>Dithering:抖动算法，用于对减色格式提高画质指令(RGBA8888之外)
+<ul>
+<li>NearestNeighbour	颜色误差最小，但颜色分布导致的对比度低于线性。</li>
+<li>Linear	创建具有一些颜色误差但比 NearestNeighbour 更好的对比度的线性颜色分布。</li>
+<li>FloydSteinberg	使用 Floyd-Steinberg 抖动算法。</li>
+<li>FloydSteinbergAlpha	使用具有 alpha 值的 Floyd-Steinberg 抖动算法。</li>
+<li>Atkinson	使用阿特金森抖动算法。</li>
+<li>AtkinsonAlpha	使用具有 alpha 值的阿特金森抖动算法。</li>
+<li>PngQuantLow	仅限 PNG-8：最小抖动。</li>
+<li>PngQuantMedium	仅限 PNG-8：中等抖动。</li>
+<li>PngQuantHigh	仅限 PNG-8：强烈抖动。</li>
+</ul>
+</li>
+</ul>
+<h3 id="geometry">Geometry</h3>
+<ul>
+<li>Size constraints:纹理强制限制
+<ul>
+<li>POT	强制纹理具有 2 的幂大小（2、4、8、16、32、64、128、256 &hellip;）。</li>
+<li>WordAligned	字对齐纹理确保纹理中的每一行都使用完整的内存字。</li>
+<li>AnySize	允许纹理具有任何大小。TexturePacker 尝试找到最小尺寸。</li>
+<li>Force squared:强制纹理平方大小</li>
+</ul>
+</li>
+<li>Scale:纹理缩放比</li>
+<li>ScaleMode:缩放模式
+<ul>
+<li>Smooth	通过混合像素进行缩放 - 最适合缩小。放大时留下模糊的结果。</li>
+<li>Fast	最近邻缩放 - 可以缩小。放大时提供像素化图像。</li>
+<li>Scale2x	固定尺寸放大 2 倍。尝试优化像素边缘。</li>
+<li>Scale3x	固定尺寸放大 3 倍。尝试优化像素边缘。</li>
+<li>Scale4x	固定尺寸放大 4 倍。尝试优化像素边缘。</li>
+<li>Eagle	固定尺寸放大 2 倍。尝试优化像素边缘。</li>
+<li>Hq2x	固定尺寸放大 2 倍。尝试优化像素边缘。</li>
+</ul>
+</li>
+</ul>
+<h3 id="layout">Layout</h3>
+<ul>
+<li>Algorithm:打包算法
+<ul>
+<li>Polygon	非矩形精灵的最佳打包算法。尝试为多边形精灵轮廓找到紧凑的包装。由于 sprite 边界框可能会重叠，因此只能在您的框架支持导入网格顶点时使用此打包算法。</li>
+<li>MaxRects	目前最好的矩形打包算法。尝试通过在放置精灵时应用不同的启发式方法来使用最少的纹理空间。</li>
+<li>Basic	通过从左到右填充精灵直到达到纹理的最大宽度来进行简单布局。适用于固定大小的精灵。</li>
+</ul>
+</li>
+<li>Sort By:图片在列表中排序</li>
+<li>Order:排序规则
+<ul>
+<li>Ascending	将值从小到大排序</li>
+<li>Descending	将值从大到小排序</li>
+</ul>
+</li>
+<li>Multipack:创建多个导出文件</li>
+<li>Trim mode:透明像素处理
+<ul>
+<li>没有任何	None	保持精灵原样。不要删除透明像素。</li>
+<li>修剪	Trim	移除精灵周围的透明度。精灵在使用时似乎具有其原始大小。此选项可能并非在所有框架中都可用。</li>
+<li>裁剪，保持位置	CropKeepPos	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。存储原始精灵中的位置。此选项可能并非在所有框架中都可用。</li>
+<li>裁剪，丢失位置	Crop	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。原始精灵中的位置设置为 0/0。精灵出现在工作表中，就好像它从来没有任何透明度一样。</li>
+<li>多边形	Polygon	使用多边形路径近似精灵的轮廓。使用这种修剪模式，多边形打包器可以比任何基于矩形的打包算法更紧密地打包精灵。基于多边形轮廓可以导出三角形网格，您的框架可以使用它来显着减少需要处理的透明像素的数量。</li>
+</ul>
+</li>
+<li>Tracer Tolerance：仅Polygon可用，确定多边形Sprite轮廓的精确度，值越小多边形密度越高。</li>
+<li>Enable Rotation:是否允许纹理旋转</li>
+<li>Border padding:纹理之间空间</li>
+</ul>
+<h3 id="官方推荐设置">官方推荐设置</h3>
+<ul>
+<li>无损压缩
+<ul>
+<li>TextureFormat	PNG-32</li>
+<li>PngOptLevel	2</li>
+</ul>
+</li>
+<li>有损压缩
+<ul>
+<li>TextureFormat	PNG-8</li>
+<li>Dithering	PngQuantHigh</li>
+<li>PngOptLevel	1 or 4</li>
+</ul>
+</li>
+</ul></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.chenqiaoqian.com/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.chenqiaoqian.com/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.chenqiaoqian.com/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.chenqiaoqian.com/js/github-style.js"></script>
+
+
+
+
+</html>
