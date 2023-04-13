@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.chenqiaoqian.com/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/light.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/dark.css' />
+    <link rel="stylesheet" href='https://www.chenqiaoqian.com/css/syntax.css' />
+    <title>Unity 本地推送 安卓篇 - 陈巧倩</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.chenqiaoqian.com/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="Unity Mobile Notifications 在Android和IOS平台上进行本地推送通知支持一次性和可重复的通知。安卓篇
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Unity 本地推送 安卓篇 - 陈巧倩" />
+<meta name="twitter:description"
+  content="Unity Mobile Notifications 在Android和IOS平台上进行本地推送通知支持一次性和可重复的通知。安卓篇
+" />
+<meta name="twitter:site" content="https://www.chenqiaoqian.com/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.chenqiaoqian.com/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Unity 本地推送 安卓篇 - 陈巧倩">
+<meta property="og:description"
+  content="Unity Mobile Notifications 在Android和IOS平台上进行本地推送通知支持一次性和可重复的通知。安卓篇
+" />
+<meta property="og:url" content="https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/" />
+<meta property="og:site_name" content="Unity 本地推送 安卓篇" />
+<meta property="og:image"
+  content="https://www.chenqiaoqian.com/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-04-06 11:13:34 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.chenqiaoqian.com/">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.chenqiaoqian.com/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.chenqiaoqian.com/">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.chenqiaoqian.com/">
+                  <img class=" avatar-user"
+                    src="/images/avatar2.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.chenqiaoqian.com/"></a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/">Unity 本地推送 安卓篇</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Thu, 06 Apr 2023 11:13:34 &#43;0800"
+                    class="no-wrap">
+                    Thu, 06 Apr 2023 11:13:34 &#43;0800</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      2067 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>Unity Mobile Notifications 在Android和IOS平台上进行<strong>本地推送通知</strong>支持一次性和可重复的通知。<strong>安卓篇</strong></p>
+<h2 id="mobile-notifications">Mobile Notifications</h2>
+<h3 id="要求">要求</h3>
+<p>兼容 Unity 2019.4 或以上版本。
+兼容 Android 4.4+ (API 19) 和 iOS 10.0+。</p>
+<h3 id="支持的功能">支持的功能</h3>
+<p>发布本地一次性或可重复的通知。
+取消已经显示和即将到来的（预定的）通知。</p>
+<h3 id="安装">安装</h3>
+<p>在Unity中打开PackageManager(Window &gt; Package Manager)，找到Mobile Notifications，然后Install。</p>
+<h3 id="安卓">安卓</h3>
+<h4 id="权限">权限</h4>
+<p>android.permission.SCHEDULE_EXACT_ALARM (Android 12.0起精确时间调度)
+android.permission.USE_EXACT_ALARM (Android 13.0起精确时间调度)
+从Android13.0开始，需要征得用户许可才能显示通知。当应用程序API小于33时，操作系统会在应用程序启动时自动请求权限。当API33或更高版本为目标时，请求权限取决于应用程序本身，否则通知将不会显示在托盘中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (!Permission.HasUserAuthorizedPermission(<span style="color:#e6db74">&#34;android.permission.POST_NOTIFICATIONS&#34;</span>))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Permission.RequestUserPermission(<span style="color:#e6db74">&#34;android.permission.POST_NOTIFICATIONS&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="关键类">关键类</h4>
+<p>AndroidNotificationChannel对通知分配一个频道，可以设置设备收到通知后设备的表现，例如：是否闪光、是否开启震动、锁定屏幕显示位置、通知样式等等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> channel = <span style="color:#66d9ef">new</span> AndroidNotificationChannel()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Id = <span style="color:#e6db74">&#34;Local_Notice&#34;</span>,
+</span></span><span style="display:flex;"><span>    Name = <span style="color:#e6db74">&#34;Local Channel&#34;</span>,
+</span></span><span style="display:flex;"><span>    Importance = Importance.Default,
+</span></span><span style="display:flex;"><span>    Description = <span style="color:#e6db74">&#34;Local Notifications&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>AndroidNotificationCenter.RegisterNotificationChannel(channel);
+</span></span></code></pre></div><p>AndroidNotificationCenter执行发送、更新和删除通知等操作。</p>
+<ol>
+<li>发送通知
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**发送通知，同时返回通知Id，对该通知进行追踪。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> SendNotification(AndroidNotification notification, <span style="color:#66d9ef">string</span> channelId)
+</span></span></code></pre></div></li>
+<li>删除通知
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消所有之前显示的通知。该应用程序显示的所有通知将从状态栏中删除。所有预定的通知仍将按预定时间显示。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelAllDisplayedNotifications()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消应用程序安排或之前显示的所有通知。所有预定的通知将被取消。该应用程序显示的所有通知将从状态栏中删除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelAllNotifications()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消应用程序安排的所有通知。所有预定的通知将被取消。如果通知已经显示，它们将不会从状态栏中删除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelAllScheduledNotifications()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消之前显示的通知。通知将从状态栏中删除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelDisplayedNotification(<span style="color:#66d9ef">int</span> id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消预定的或之前显示的通知。通知将不再在预定时间显示。如果它已经交付，它将从状态栏中删除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelNotification(<span style="color:#66d9ef">int</span> id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消预定的通知。通知将不再在预定时间显示。如果它已经交付，它不会从状态栏中删除。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelScheduledNotification(<span style="color:#66d9ef">int</span> id)
+</span></span></code></pre></div></li>
+<li>消息频道注册
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**将创建的消息通道注册到消息中心。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> RegisterNotificationChannel(AndroidNotificationChannel channel)
+</span></span></code></pre></div>频道重要性级别
+对于您定义的每个频道，您将为其分配一个重要性级别，用来控制每个通道的行为（取代优先级）。
+重要性级别具有以下限制：
+您分配的重要性级别将是频道的默认值。用户可以在 Android 设置中更改频道的重要性级别。一旦你选择了一个重要性级别，你就可以限制你如何改变它：你只能降低重要性，并且只有在用户没有明确改变它的情况下。
+频道重要性的选择应考虑到用户的时间和注意力。当一个不重要的通知被伪装成紧急通知时，它会产生不必要的警报。
+<table>
+<thead>
+<tr>
+<th style="text-align:left">重要性</th>
+<th style="text-align:left">行为</th>
+<th style="text-align:left">用法</th>
+<th style="text-align:left">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">高的</td>
+<td style="text-align:left">发出 声音并 出现在 屏幕上</td>
+<td style="text-align:left">用户 必须立即了解或采取行动的时间关键信息</td>
+<td style="text-align:left">短信、闹钟、 电话</td>
+</tr>
+<tr>
+<td style="text-align:left">默认</td>
+<td style="text-align:left">发出 声音</td>
+<td style="text-align:left">应该在用户方便的时候尽早看到的信息 ，但不会 打断他们正在做的事情</td>
+<td style="text-align:left">路况提醒、任务 提醒</td>
+</tr>
+<tr>
+<td style="text-align:left">低的</td>
+<td style="text-align:left">没有声音</td>
+<td style="text-align:left">不满足 其他重要性级别要求的通知渠道</td>
+<td style="text-align:left">用户 订阅的新内容、 社交网络 邀请</td>
+</tr>
+<tr>
+<td style="text-align:left">最小值</td>
+<td style="text-align:left">没有声音或 视觉 干扰</td>
+<td style="text-align:left">可以等待或与用户不特别相关的非必要信息</td>
+<td style="text-align:left">附近名胜 、天气、 宣传内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>检测打开应用的通知
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**允许检索用于打开应用程序的通知。当返回值!=Null时，意味着通过点击该通知打开的应用程序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> AndroidNotificationIntentData GetLastNotificationIntent()
+</span></span></code></pre></div></li>
+<li>收到事件
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**收到通知事件。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">event</span> AndroidNotificationCenter.NotificationReceivedCallback OnNotificationReceived
+</span></span></code></pre></div>AndroidNotification用于安排本地通知，其中包括通知的内容等等。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apl" data-lang="apl"><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">创建一个通知，</span>title<span style="color:#960050;background-color:#1e0010">通知标题，</span>text<span style="color:#960050;background-color:#1e0010">通知内容，</span>fireTime<span style="color:#960050;background-color:#1e0010">显示时间</span>(DateTime<span style="color:#a6e22e">.</span>Now <span style="color:#960050;background-color:#1e0010">立即显示</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
+</span></span><span style="display:flex;"><span>public AndroidNotification(string title<span style="color:#f92672">,</span> string text<span style="color:#f92672">,</span> DateTime fireTime)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">创建一个可重复的通知结构，</span>title<span style="color:#960050;background-color:#1e0010">通知标题，</span>text<span style="color:#960050;background-color:#1e0010">通知内容，</span>fireTime<span style="color:#960050;background-color:#1e0010">显示时间</span>(DateTime<span style="color:#a6e22e">.</span>Now <span style="color:#960050;background-color:#1e0010">立即显示</span>)<span style="color:#f92672">,</span>repeatInterval<span style="color:#960050;background-color:#1e0010">重复间隔</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
+</span></span><span style="display:flex;"><span>public AndroidNotification(string title<span style="color:#f92672">,</span> string text<span style="color:#f92672">,</span> DateTime fireTime<span style="color:#f92672">,</span> TimeSpan repeatInterval)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">存储数据字段，发送通知的时候设置了改值，则收到通知后同样可以取到该值，用于收发通知的数据传递</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
+</span></span><span style="display:flex;"><span>public string IntentData <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
+</span></span><span style="display:flex;"><span>public string LargeIcon <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
+</span></span><span style="display:flex;"><span>public string SmallIcon <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
+</span></span></code></pre></div><p>​	通知Icon设置在Unity中的设置:Editor-&gt;Project Settings-&gt;Mobile Notigficationd，Small小图标、Large大图标。
+<img src="/2023-04-12-unity-mobilenotifications/MobileNotigficationd_ProjectSetting.jpg" alt=""></p>
+<h4 id="通知展示">通知展示</h4>
+<p><img src="/2023-04-12-unity-mobilenotifications/Notice.jpg" alt=""></p>
+<ol>
+<li>SmallIcon小图标</li>
+<li>应用名称(系统提供)</li>
+<li>收到时间(系统提供)</li>
+<li>LargeIcon大图标</li>
+<li>通知标题</li>
+<li>通知内容</li>
+</ol>
+<h3 id="常见问题">常见问题</h3>
+<ol>
+<li>为什么 Android 小图标在编辑器通知设置预览中是白色的？
+因为小通知图标是单色的，Android 会忽略图标图像中的所有非 alpha 通道，Unity 会自动去除所有 RGB 通道。
+解决方法:将它们放在\Assets\Plugins\Android\res\drawable-{scaleFactor}不会自动处理的文件夹中。但是，包含非 alpha 通道的图标将无法在 Android 5.0 及更高版本上正确显示。</li>
+<li>为什么当我的应用程序关闭且不在后台运行时，某些华为和小米手机上没有发送通知？
+华为（包括荣耀）和小米似乎使用了激进的节电技术来限制应用程序后台活动，除非该应用程序已被用户在设备设置中列入白名单。这意味着如果应用程序关闭或未在后台运行，则不会发送预定的通知。目前，除了鼓励用户将您的应用列入白名单外，没有可用的解决方法。</li>
+</ol></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.chenqiaoqian.com/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.chenqiaoqian.com/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.chenqiaoqian.com/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.chenqiaoqian.com/js/github-style.js"></script>
+
+
+
+
+</html>
