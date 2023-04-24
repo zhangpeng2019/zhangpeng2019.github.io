@@ -180,7 +180,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2331 Words
+                      2338 Words
                     
 
                   </div>
@@ -195,26 +195,22 @@
                 <article class="markdown-body entry-content container-lg"><p>TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。</p>
 <h2 id="texturepacker优势">TexturePacker优势</h2>
 <h3 id="性能方面">性能方面:</h3>
-<p>通过优化Sprite网格提高性能，打包算法Polygon中使用Tracer Tolerance影响网格的质量，从而降低顶点数量和面数，降低CPU和GPU的计算渲染压力。</p>
-<p><img src="/2023-03-30-unity-texturepacker/SpriteMeshes.jpg" alt="SpriteMeshes"></p>
+<p>通过优化Sprite网格提高性能，打包算法Polygon中使用Tracer Tolerance影响网格的质量，从而降低顶点数量和面数，降低CPU和GPU的计算渲染压力。
+<img src="/2023-03-30-unity-texturepacker/SpriteMeshes.jpg" alt="SpriteMeshes"></p>
 <h3 id="内存方面">内存方面：</h3>
-<p>Sprite打包通过Polygon Packing算法，是不规则的图片打包成紧凑的图集，从而降低纹理内存大小。</p>
-<p><img src="/2023-03-30-unity-texturepacker/PolygonAtlas.jpg" alt="PolygonAtlas"></p>
+<p>Sprite打包通过Polygon Packing算法，是不规则的图片打包成紧凑的图集，从而降低纹理内存大小。
+<img src="/2023-03-30-unity-texturepacker/PolygonAtlas.jpg" alt="PolygonAtlas"></p>
 <h3 id="png优化">PNG优化：</h3>
-<p>PNG优化的意义在于在不影响图形品质的情况下实现降低文件大小，从而改善游戏的下载和启动时间。</p>
-<p>常用的PNG文件优化方法：</p>
+<p>PNG优化的意义在于在不影响图形品质的情况下实现降低文件大小，从而改善游戏的下载和启动时间。
+常用的PNG文件优化方法：</p>
 <ul>
 <li>无损压缩：此方法使用高级压缩算法并从文件中删除不必要的元数据以减小其大小而不降低图像质量。</li>
-<li>有损压缩：此方法涉及减少图像中的颜色数量。如果图像具有大量相似的颜色，这会特别有效。通过减少颜色数量，PNG 文件可以作为索引文件写入，占用的空间明显减少。</li>
-</ul>
-<p>TexturePacker 中对PNG的优化：</p>
-<ul>
+<li>有损压缩：此方法涉及减少图像中的颜色数量。如果图像具有大量相似的颜色，这会特别有效。通过减少颜色数量，PNG 文件可以作为索引文件写入，占用的空间明显减少。
+TexturePacker 中对PNG的优化：</li>
 <li>TextureFormat：PNG-32 和 PNG-8(索引)。PNG-32 (无损模式)提供更高的质量，但尺寸也更大，而 PNG-8(降低颜色数量)提供更小的文件尺寸，但可能会牺牲一些图像质量。</li>
 <li>Dithering (PNG-8 only)：此设置确定在减少图像中的颜色数量时如何近似颜色。选项有PngQuantLow、PngQuantMedium和PngQuantHigh，它们代表不同级别的颜色准确度。PngQuantLow 生成最小的文件大小，但可能会导致可见的颜色伪影，而 PngQuantHigh 提供最佳的颜色精度，但可能会导致较大的文件大小。</li>
-<li>PngOptLevel：此设置控制应用于 PNG 文件的优化级别。选项范围从 0（无优化）到 7（最大优化），级别越高，压缩效果越好。</li>
-</ul>
-<p>TexturePacker和TinyPNG 的比较：</p>
-<ul>
+<li>PngOptLevel：此设置控制应用于 PNG 文件的优化级别。选项范围从 0（无优化）到 7（最大优化），级别越高，压缩效果越好。
+TexturePacker和TinyPNG 的比较：</li>
 <li>使用PngQuantHigh和PngOptLevel4时，TexturePacker 和 TinyPNG 都提供相似的图像质量和大小。</li>
 <li>使用PngQuantLow和PngQuantMedium时，TexturePacker 通常会生成质量稍差的较小图像。</li>
 </ul>
@@ -331,7 +327,9 @@
 <li>PngOptLevel	1 or 4</li>
 </ul>
 </li>
-</ul></article>
+</ul>
+<h2 id="结论">结论</h2>
+<p>搬砖愉快！</p></article>
               </div>
             </div>
           </div>
