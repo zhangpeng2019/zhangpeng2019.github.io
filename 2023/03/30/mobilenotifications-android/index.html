@@ -180,7 +180,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      2074 Words
+                      2081 Words
                     
 
                   </div>
@@ -223,13 +223,15 @@ android.permission.USE_EXACT_ALARM (Android 13.0起精确时间调度)
 </span></span><span style="display:flex;"><span>AndroidNotificationCenter.RegisterNotificationChannel(channel);
 </span></span></code></pre></div><p>AndroidNotificationCenter执行发送、更新和删除通知等操作。</p>
 <ol>
-<li>发送通知
+<li>
+<p>发送通知</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">**发送通知，同时返回通知Id，对该通知进行追踪。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> SendNotification(AndroidNotification notification, <span style="color:#66d9ef">string</span> channelId)
 </span></span></code></pre></div></li>
-<li>删除通知
+<li>
+<p>删除通知</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">**取消所有之前显示的通知。该应用程序显示的所有通知将从状态栏中删除。所有预定的通知仍将按预定时间显示。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
@@ -260,16 +262,17 @@ android.permission.USE_EXACT_ALARM (Android 13.0起精确时间调度)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> CancelScheduledNotification(<span style="color:#66d9ef">int</span> id)
 </span></span></code></pre></div></li>
-<li>消息频道注册
+<li>
+<p>消息频道注册</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">**将创建的消息通道注册到消息中心。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> RegisterNotificationChannel(AndroidNotificationChannel channel)
-</span></span></code></pre></div>频道重要性级别
+</span></span></code></pre></div><p>频道重要性级别
 对于您定义的每个频道，您将为其分配一个重要性级别，用来控制每个通道的行为（取代优先级）。
 重要性级别具有以下限制：
 您分配的重要性级别将是频道的默认值。用户可以在 Android 设置中更改频道的重要性级别。一旦你选择了一个重要性级别，你就可以限制你如何改变它：你只能降低重要性，并且只有在用户没有明确改变它的情况下。
-频道重要性的选择应考虑到用户的时间和注意力。当一个不重要的通知被伪装成紧急通知时，它会产生不必要的警报。
+频道重要性的选择应考虑到用户的时间和注意力。当一个不重要的通知被伪装成紧急通知时，它会产生不必要的警报。</p>
 <table>
 <thead>
 <tr>
@@ -307,34 +310,39 @@ android.permission.USE_EXACT_ALARM (Android 13.0起精确时间调度)
 </tbody>
 </table>
 </li>
-<li>检测打开应用的通知
+<li>
+<p>检测打开应用的通知</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">**允许检索用于打开应用程序的通知。当返回值!=Null时，意味着通过点击该通知打开的应用程序
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> AndroidNotificationIntentData GetLastNotificationIntent()
 </span></span></code></pre></div></li>
-<li>收到事件
+<li>
+<p>收到事件</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">**收到通知事件。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">event</span> AndroidNotificationCenter.NotificationReceivedCallback OnNotificationReceived
-</span></span></code></pre></div>AndroidNotification用于安排本地通知，其中包括通知的内容等等。</li>
+</span></span></code></pre></div></li>
+<li>
+<p>其他关键类型，AndroidNotification用于安排本地通知，其中包括通知的内容等等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**创建一个通知，title通知标题，text通知内容，fireTime显示时间(DateTime.Now 立即显示)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> AndroidNotification(<span style="color:#66d9ef">string</span> title, <span style="color:#66d9ef">string</span> text, DateTime fireTime)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**创建一个可重复的通知结构，title通知标题，text通知内容，fireTime显示时间(DateTime.Now 立即显示),repeatInterval重复间隔
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> AndroidNotification(<span style="color:#66d9ef">string</span> title, <span style="color:#66d9ef">string</span> text, DateTime fireTime, TimeSpan repeatInterval)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">**存储数据字段，发送通知的时候设置了改值，则收到通知后同样可以取到该值，用于收发通知的数据传递
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> IntentData { <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> LargeIcon { <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> SmallIcon { <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span></code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apl" data-lang="apl"><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">创建一个通知，</span>title<span style="color:#960050;background-color:#1e0010">通知标题，</span>text<span style="color:#960050;background-color:#1e0010">通知内容，</span>fireTime<span style="color:#960050;background-color:#1e0010">显示时间</span>(DateTime<span style="color:#a6e22e">.</span>Now <span style="color:#960050;background-color:#1e0010">立即显示</span>)
-</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
-</span></span><span style="display:flex;"><span>public AndroidNotification(string title<span style="color:#f92672">,</span> string text<span style="color:#f92672">,</span> DateTime fireTime)
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">创建一个可重复的通知结构，</span>title<span style="color:#960050;background-color:#1e0010">通知标题，</span>text<span style="color:#960050;background-color:#1e0010">通知内容，</span>fireTime<span style="color:#960050;background-color:#1e0010">显示时间</span>(DateTime<span style="color:#a6e22e">.</span>Now <span style="color:#960050;background-color:#1e0010">立即显示</span>)<span style="color:#f92672">,</span>repeatInterval<span style="color:#960050;background-color:#1e0010">重复间隔</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
-</span></span><span style="display:flex;"><span>public AndroidNotification(string title<span style="color:#f92672">,</span> string text<span style="color:#f92672">,</span> DateTime fireTime<span style="color:#f92672">,</span> TimeSpan repeatInterval)
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">/</span><span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">存储数据字段，发送通知的时候设置了改值，则收到通知后同样可以取到该值，用于收发通知的数据传递</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span><span style="color:#a6e22e">/</span>
-</span></span><span style="display:flex;"><span>public string IntentData <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
-</span></span><span style="display:flex;"><span>public string LargeIcon <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
-</span></span><span style="display:flex;"><span>public string SmallIcon <span style="color:#66d9ef">{</span> readonly get<span style="color:#e6db74">;</span> set<span style="color:#e6db74">;</span> <span style="color:#66d9ef">}</span>
-</span></span></code></pre></div><p>​	通知Icon设置在Unity中的设置:Editor-&gt;Project Settings-&gt;Mobile Notigficationd，Small小图标、Large大图标。
+<p>​	通知Icon设置在Unity中的设置:Editor-&gt;Project Settings-&gt;Mobile Notigficationd，Small小图标、Large大图标。
 <img src="/2023-04-12-unity-mobilenotifications/MobileNotigficationd_ProjectSetting.jpg" alt=""></p>
 <h4 id="通知展示">通知展示</h4>
 <p><img src="/2023-04-12-unity-mobilenotifications/Notice.jpg" alt=""></p>
