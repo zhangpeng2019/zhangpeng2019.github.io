@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.chenqiaoqian.com/categories/</loc>
+    <lastmod>2023-04-24T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/categories/csharp/</loc>
+    <lastmod>2023-04-24T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/design-pattern/</loc>
+    <lastmod>2023-04-24T11:13:34+08:00</lastmod>
+  </url><url>
     <loc>https://www.chenqiaoqian.com/post/</loc>
+    <lastmod>2023-04-24T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/</loc>
     <lastmod>2023-04-24T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/2023/04/24/designpattern-builderpattern/</loc>
@@ -17,20 +29,28 @@
     <loc>https://www.chenqiaoqian.com/2023/04/19/designpattern-singleton/</loc>
     <lastmod>2023-04-19T11:13:34+08:00</lastmod>
   </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/notifications/</loc>
+    <lastmod>2023-04-06T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/categories/unity/</loc>
+    <lastmod>2023-04-06T11:13:34+08:00</lastmod>
+  </url><url>
     <loc>https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/</loc>
     <lastmod>2023-04-06T11:13:34+08:00</lastmod>
   </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/texturepacker/</loc>
+    <lastmod>2023-03-30T11:13:34+08:00</lastmod>
+  </url><url>
     <loc>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</loc>
     <lastmod>2023-03-30T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/quadtree/</loc>
+    <lastmod>2023-03-26T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/2023/03/26/unity-quad-tree/</loc>
     <lastmod>2023-03-26T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/2023/03/14/hello-world/</loc>
     <lastmod>2023-03-14T13:13:34+08:00</lastmod>
-  </url><url>
-    <loc>https://www.chenqiaoqian.com/categories/</loc>
-  </url><url>
-    <loc>https://www.chenqiaoqian.com/tags/</loc>
   </url>
 </urlset>

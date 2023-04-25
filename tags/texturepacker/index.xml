@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TexturePacker on 陈巧倩</title>
+    <link>https://www.chenqiaoqian.com/tags/texturepacker/</link>
+    <description>Recent content in TexturePacker on 陈巧倩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Mar 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/texturepacker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity 使用 TexturePacker 优化渲染</title>
+      <link>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</link>
+      <pubDate>Thu, 30 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</guid>
+      <description>&lt;p&gt;TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。&lt;/p&gt;
+&lt;h2 id=&#34;texturepacker优势&#34;&gt;TexturePacker优势 &lt;a href=&#34;#texturepacker%e4%bc%98%e5%8a%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;性能方面&#34;&gt;性能方面: &lt;a href=&#34;#%e6%80%a7%e8%83%bd%e6%96%b9%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;通过优化Sprite网格提高性能，打包算法Polygon中使用Tracer Tolerance影响网格的质量，从而降低顶点数量和面数，降低CPU和GPU的计算渲染压力。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-03-30-unity-texturepacker/SpriteMeshes.jpg&#34; alt=&#34;SpriteMeshes&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;内存方面&#34;&gt;内存方面： &lt;a href=&#34;#%e5%86%85%e5%ad%98%e6%96%b9%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Sprite打包通过Polygon Packing算法，是不规则的图片打包成紧凑的图集，从而降低纹理内存大小。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-03-30-unity-texturepacker/PolygonAtlas.jpg&#34; alt=&#34;PolygonAtlas&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;png优化&#34;&gt;PNG优化： &lt;a href=&#34;#png%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;PNG优化的意义在于在不影响图形品质的情况下实现降低文件大小，从而改善游戏的下载和启动时间。
+常用的PNG文件优化方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无损压缩：此方法使用高级压缩算法并从文件中删除不必要的元数据以减小其大小而不降低图像质量。&lt;/li&gt;
+&lt;li&gt;有损压缩：此方法涉及减少图像中的颜色数量。如果图像具有大量相似的颜色，这会特别有效。通过减少颜色数量，PNG 文件可以作为索引文件写入，占用的空间明显减少。
+TexturePacker 中对PNG的优化：&lt;/li&gt;
+&lt;li&gt;TextureFormat：PNG-32 和 PNG-8(索引)。PNG-32 (无损模式)提供更高的质量，但尺寸也更大，而 PNG-8(降低颜色数量)提供更小的文件尺寸，但可能会牺牲一些图像质量。&lt;/li&gt;
+&lt;li&gt;Dithering (PNG-8 only)：此设置确定在减少图像中的颜色数量时如何近似颜色。选项有PngQuantLow、PngQuantMedium和PngQuantHigh，它们代表不同级别的颜色准确度。PngQuantLow 生成最小的文件大小，但可能会导致可见的颜色伪影，而 PngQuantHigh 提供最佳的颜色精度，但可能会导致较大的文件大小。&lt;/li&gt;
+&lt;li&gt;PngOptLevel：此设置控制应用于 PNG 文件的优化级别。选项范围从 0（无优化）到 7（最大优化），级别越高，压缩效果越好。
+TexturePacker和TinyPNG 的比较：&lt;/li&gt;
+&lt;li&gt;使用PngQuantHigh和PngOptLevel4时，TexturePacker 和 TinyPNG 都提供相似的图像质量和大小。&lt;/li&gt;
+&lt;li&gt;使用PngQuantLow和PngQuantMedium时，TexturePacker 通常会生成质量稍差的较小图像。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;texturepacker在unity中使用&#34;&gt;TexturePacker在Unity中使用 &lt;a href=&#34;#texturepacker%e5%9c%a8unity%e4%b8%ad%e4%bd%bf%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;插件导入&#34;&gt;插件导入 &lt;a href=&#34;#%e6%8f%92%e4%bb%b6%e5%af%bc%e5%85%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Unity 资产商店下载 TexturePacker Importer。&lt;/li&gt;
+&lt;li&gt;Unity 2021以后版本需要从PackageManger中导入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;资源导入&#34;&gt;资源导入 &lt;a href=&#34;#%e8%b5%84%e6%ba%90%e5%af%bc%e5%85%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;需要将导出后的 .tpsheet 文件与 .png 文件同时放入工程中使用。&lt;/p&gt;
+&lt;h3 id=&#34;程序调用&#34;&gt;程序调用 &lt;a href=&#34;#%e7%a8%8b%e5%ba%8f%e8%b0%83%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在Resource中的调用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Sprite[] sprites = Resources.LoadAll&amp;lt;Sprite&amp;gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spritesheet&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在AssetBundle中的调用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AssetBundle bundle = AssetBundle.LoadFromFile(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Assets/AssetBundles/MyBundle&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (bundle != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Sprite[] sprites = bundle.LoadAssetWithSubAssets&amp;lt;Sprite&amp;gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spritesheet&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;texturepacker参数详解&#34;&gt;TexturePacker参数详解 &lt;a href=&#34;#texturepacker%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;output&#34;&gt;OutPut &lt;a href=&#34;#output&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Png Opt Level(Png优化选项)：减少png文件大小，所有优化都是无损的。
+&lt;ul&gt;
+&lt;li&gt;0	总是写 32 位 png 文件&lt;/li&gt;
+&lt;li&gt;1	如果可能，写入索引（8 位）png 文件（默认）&lt;/li&gt;
+&lt;li&gt;2……7	激活额外的文件大小优化步骤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Premultiplied Alpha:带透明度图片纹理可以正常的进行线性插值&lt;/li&gt;
+&lt;li&gt;DPI(Dots Per Inch):每英寸打印的像素点，值越大图片越清晰，默认27&lt;/li&gt;
+&lt;li&gt;Dithering:抖动算法，用于对减色格式提高画质指令(RGBA8888之外)
+&lt;ul&gt;
+&lt;li&gt;NearestNeighbour	颜色误差最小，但颜色分布导致的对比度低于线性。&lt;/li&gt;
+&lt;li&gt;Linear	创建具有一些颜色误差但比 NearestNeighbour 更好的对比度的线性颜色分布。&lt;/li&gt;
+&lt;li&gt;FloydSteinberg	使用 Floyd-Steinberg 抖动算法。&lt;/li&gt;
+&lt;li&gt;FloydSteinbergAlpha	使用具有 alpha 值的 Floyd-Steinberg 抖动算法。&lt;/li&gt;
+&lt;li&gt;Atkinson	使用阿特金森抖动算法。&lt;/li&gt;
+&lt;li&gt;AtkinsonAlpha	使用具有 alpha 值的阿特金森抖动算法。&lt;/li&gt;
+&lt;li&gt;PngQuantLow	仅限 PNG-8：最小抖动。&lt;/li&gt;
+&lt;li&gt;PngQuantMedium	仅限 PNG-8：中等抖动。&lt;/li&gt;
+&lt;li&gt;PngQuantHigh	仅限 PNG-8：强烈抖动。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;geometry&#34;&gt;Geometry &lt;a href=&#34;#geometry&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Size constraints:纹理强制限制
+&lt;ul&gt;
+&lt;li&gt;POT	强制纹理具有 2 的幂大小（2、4、8、16、32、64、128、256 &amp;hellip;）。&lt;/li&gt;
+&lt;li&gt;WordAligned	字对齐纹理确保纹理中的每一行都使用完整的内存字。&lt;/li&gt;
+&lt;li&gt;AnySize	允许纹理具有任何大小。TexturePacker 尝试找到最小尺寸。&lt;/li&gt;
+&lt;li&gt;Force squared:强制纹理平方大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Scale:纹理缩放比&lt;/li&gt;
+&lt;li&gt;ScaleMode:缩放模式
+&lt;ul&gt;
+&lt;li&gt;Smooth	通过混合像素进行缩放 - 最适合缩小。放大时留下模糊的结果。&lt;/li&gt;
+&lt;li&gt;Fast	最近邻缩放 - 可以缩小。放大时提供像素化图像。&lt;/li&gt;
+&lt;li&gt;Scale2x	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Scale3x	固定尺寸放大 3 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Scale4x	固定尺寸放大 4 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Eagle	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Hq2x	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;layout&#34;&gt;Layout &lt;a href=&#34;#layout&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Algorithm:打包算法
+&lt;ul&gt;
+&lt;li&gt;Polygon	非矩形精灵的最佳打包算法。尝试为多边形精灵轮廓找到紧凑的包装。由于 sprite 边界框可能会重叠，因此只能在您的框架支持导入网格顶点时使用此打包算法。&lt;/li&gt;
+&lt;li&gt;MaxRects	目前最好的矩形打包算法。尝试通过在放置精灵时应用不同的启发式方法来使用最少的纹理空间。&lt;/li&gt;
+&lt;li&gt;Basic	通过从左到右填充精灵直到达到纹理的最大宽度来进行简单布局。适用于固定大小的精灵。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sort By:图片在列表中排序&lt;/li&gt;
+&lt;li&gt;Order:排序规则
+&lt;ul&gt;
+&lt;li&gt;Ascending	将值从小到大排序&lt;/li&gt;
+&lt;li&gt;Descending	将值从大到小排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Multipack:创建多个导出文件&lt;/li&gt;
+&lt;li&gt;Trim mode:透明像素处理
+&lt;ul&gt;
+&lt;li&gt;没有任何	None	保持精灵原样。不要删除透明像素。&lt;/li&gt;
+&lt;li&gt;修剪	Trim	移除精灵周围的透明度。精灵在使用时似乎具有其原始大小。此选项可能并非在所有框架中都可用。&lt;/li&gt;
+&lt;li&gt;裁剪，保持位置	CropKeepPos	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。存储原始精灵中的位置。此选项可能并非在所有框架中都可用。&lt;/li&gt;
+&lt;li&gt;裁剪，丢失位置	Crop	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。原始精灵中的位置设置为 0/0。精灵出现在工作表中，就好像它从来没有任何透明度一样。&lt;/li&gt;
+&lt;li&gt;多边形	Polygon	使用多边形路径近似精灵的轮廓。使用这种修剪模式，多边形打包器可以比任何基于矩形的打包算法更紧密地打包精灵。基于多边形轮廓可以导出三角形网格，您的框架可以使用它来显着减少需要处理的透明像素的数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tracer Tolerance：仅Polygon可用，确定多边形Sprite轮廓的精确度，值越小多边形密度越高。&lt;/li&gt;
+&lt;li&gt;Enable Rotation:是否允许纹理旋转&lt;/li&gt;
+&lt;li&gt;Border padding:纹理之间空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;官方推荐设置&#34;&gt;官方推荐设置 &lt;a href=&#34;#%e5%ae%98%e6%96%b9%e6%8e%a8%e8%8d%90%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;无损压缩
+&lt;ul&gt;
+&lt;li&gt;TextureFormat	PNG-32&lt;/li&gt;
+&lt;li&gt;PngOptLevel	2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;有损压缩
+&lt;ul&gt;
+&lt;li&gt;TextureFormat	PNG-8&lt;/li&gt;
+&lt;li&gt;Dithering	PngQuantHigh&lt;/li&gt;
+&lt;li&gt;PngOptLevel	1 or 4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

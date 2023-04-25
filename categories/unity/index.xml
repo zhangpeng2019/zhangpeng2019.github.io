@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on 陈巧倩</title>
+    <link>https://www.chenqiaoqian.com/categories/unity/</link>
+    <description>Recent content in Unity on 陈巧倩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Apr 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/categories/unity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity 本地推送 安卓篇</title>
+      <link>https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/</link>
+      <pubDate>Thu, 06 Apr 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/</guid>
+      <description>&lt;p&gt;Unity Mobile Notifications 在Android和IOS平台上进行&lt;strong&gt;本地推送通知&lt;/strong&gt;支持一次性和可重复的通知。&lt;strong&gt;安卓篇&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mobile-notifications&#34;&gt;Mobile Notifications &lt;a href=&#34;#mobile-notifications&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;要求&#34;&gt;要求 &lt;a href=&#34;#%e8%a6%81%e6%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;兼容 Unity 2019.4 或以上版本。
+兼容 Android 4.4+ (API 19) 和 iOS 10.0+。&lt;/p&gt;
+&lt;h3 id=&#34;支持的功能&#34;&gt;支持的功能 &lt;a href=&#34;#%e6%94%af%e6%8c%81%e7%9a%84%e5%8a%9f%e8%83%bd&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;发布本地一次性或可重复的通知。
+取消已经显示和即将到来的（预定的）通知。&lt;/p&gt;
+&lt;h3 id=&#34;安装&#34;&gt;安装 &lt;a href=&#34;#%e5%ae%89%e8%a3%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在Unity中打开PackageManager(Window &amp;gt; Package Manager)，找到Mobile Notifications，然后Install。&lt;/p&gt;
+&lt;h3 id=&#34;安卓&#34;&gt;安卓 &lt;a href=&#34;#%e5%ae%89%e5%8d%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;权限&#34;&gt;权限 &lt;a href=&#34;#%e6%9d%83%e9%99%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;android.permission.SCHEDULE_EXACT_ALARM (Android 12.0起精确时间调度)
+android.permission.USE_EXACT_ALARM (Android 13.0起精确时间调度)
+从Android13.0开始，需要征得用户许可才能显示通知。当应用程序API小于33时，操作系统会在应用程序启动时自动请求权限。当API33或更高版本为目标时，请求权限取决于应用程序本身，否则通知将不会显示在托盘中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (!Permission.HasUserAuthorizedPermission(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;android.permission.POST_NOTIFICATIONS&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Permission.RequestUserPermission(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;android.permission.POST_NOTIFICATIONS&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;关键类&#34;&gt;关键类 &lt;a href=&#34;#%e5%85%b3%e9%94%ae%e7%b1%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;AndroidNotificationChannel对通知分配一个频道，可以设置设备收到通知后设备的表现，例如：是否闪光、是否开启震动、锁定屏幕显示位置、通知样式等等。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; channel = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; AndroidNotificationChannel()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Id = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Local_Notice&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Name = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Local Channel&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Importance = Importance.Default,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Description = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Local Notifications&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AndroidNotificationCenter.RegisterNotificationChannel(channel);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AndroidNotificationCenter执行发送、更新和删除通知等操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;发送通知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**发送通知，同时返回通知Id，对该通知进行追踪。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; SendNotification(AndroidNotification notification, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; channelId)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除通知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消所有之前显示的通知。该应用程序显示的所有通知将从状态栏中删除。所有预定的通知仍将按预定时间显示。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelAllDisplayedNotifications()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消应用程序安排或之前显示的所有通知。所有预定的通知将被取消。该应用程序显示的所有通知将从状态栏中删除。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelAllNotifications()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消应用程序安排的所有通知。所有预定的通知将被取消。如果通知已经显示，它们将不会从状态栏中删除。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelAllScheduledNotifications()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消之前显示的通知。通知将从状态栏中删除。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelDisplayedNotification(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消预定的或之前显示的通知。通知将不再在预定时间显示。如果它已经交付，它将从状态栏中删除。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelNotification(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**取消预定的通知。通知将不再在预定时间显示。如果它已经交付，它不会从状态栏中删除。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; CancelScheduledNotification(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;消息频道注册&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**将创建的消息通道注册到消息中心。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; RegisterNotificationChannel(AndroidNotificationChannel channel)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;频道重要性级别
+对于您定义的每个频道，您将为其分配一个重要性级别，用来控制每个通道的行为（取代优先级）。
+重要性级别具有以下限制：
+您分配的重要性级别将是频道的默认值。用户可以在 Android 设置中更改频道的重要性级别。一旦你选择了一个重要性级别，你就可以限制你如何改变它：你只能降低重要性，并且只有在用户没有明确改变它的情况下。
+频道重要性的选择应考虑到用户的时间和注意力。当一个不重要的通知被伪装成紧急通知时，它会产生不必要的警报。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;重要性&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;行为&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;用法&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;例子&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;高的&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;发出 声音并 出现在 屏幕上&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户 必须立即了解或采取行动的时间关键信息&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;短信、闹钟、 电话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;默认&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;发出 声音&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;应该在用户方便的时候尽早看到的信息 ，但不会 打断他们正在做的事情&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;路况提醒、任务 提醒&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;低的&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;没有声音&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;不满足 其他重要性级别要求的通知渠道&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户 订阅的新内容、 社交网络 邀请&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;最小值&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;没有声音或 视觉 干扰&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;可以等待或与用户不特别相关的非必要信息&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;附近名胜 、天气、 宣传内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检测打开应用的通知&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**允许检索用于打开应用程序的通知。当返回值!=Null时，意味着通过点击该通知打开的应用程序
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; AndroidNotificationIntentData GetLastNotificationIntent()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;收到事件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**收到通知事件。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;event&lt;/span&gt; AndroidNotificationCenter.NotificationReceivedCallback OnNotificationReceived
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他关键类型，AndroidNotification用于安排本地通知，其中包括通知的内容等等。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**创建一个通知，title通知标题，text通知内容，fireTime显示时间(DateTime.Now 立即显示)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; AndroidNotification(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; title, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; text, DateTime fireTime)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**创建一个可重复的通知结构，title通知标题，text通知内容，fireTime显示时间(DateTime.Now 立即显示),repeatInterval重复间隔
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; AndroidNotification(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; title, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; text, DateTime fireTime, TimeSpan repeatInterval)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**存储数据字段，发送通知的时候设置了改值，则收到通知后同样可以取到该值，用于收发通知的数据传递
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; IntentData { &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; LargeIcon { &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; SmallIcon { &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	通知Icon设置在Unity中的设置:Editor-&amp;gt;Project Settings-&amp;gt;Mobile Notigficationd，Small小图标、Large大图标。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-04-12-unity-mobilenotifications/MobileNotigficationd_ProjectSetting.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;通知展示&#34;&gt;通知展示 &lt;a href=&#34;#%e9%80%9a%e7%9f%a5%e5%b1%95%e7%a4%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-04-12-unity-mobilenotifications/Notice.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;SmallIcon小图标&lt;/li&gt;
+&lt;li&gt;应用名称(系统提供)&lt;/li&gt;
+&lt;li&gt;收到时间(系统提供)&lt;/li&gt;
+&lt;li&gt;LargeIcon大图标&lt;/li&gt;
+&lt;li&gt;通知标题&lt;/li&gt;
+&lt;li&gt;通知内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;常见问题&#34;&gt;常见问题 &lt;a href=&#34;#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;为什么 Android 小图标在编辑器通知设置预览中是白色的？
+因为小通知图标是单色的，Android 会忽略图标图像中的所有非 alpha 通道，Unity 会自动去除所有 RGB 通道。
+解决方法:将它们放在\Assets\Plugins\Android\res\drawable-{scaleFactor}不会自动处理的文件夹中。但是，包含非 alpha 通道的图标将无法在 Android 5.0 及更高版本上正确显示。&lt;/li&gt;
+&lt;li&gt;为什么当我的应用程序关闭且不在后台运行时，某些华为和小米手机上没有发送通知？
+华为（包括荣耀）和小米似乎使用了激进的节电技术来限制应用程序后台活动，除非该应用程序已被用户在设备设置中列入白名单。这意味着如果应用程序关闭或未在后台运行，则不会发送预定的通知。目前，除了鼓励用户将您的应用列入白名单外，没有可用的解决方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity 使用 TexturePacker 优化渲染</title>
+      <link>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</link>
+      <pubDate>Thu, 30 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/03/30/unity-texturepacker/</guid>
+      <description>&lt;p&gt;TexturePacker 是一款用于游戏和应用程序开发的软件工具，用于创建和管理图片精灵表。精灵表是包含多个较小图形或精灵的单个图像文件。&lt;/p&gt;
+&lt;h2 id=&#34;texturepacker优势&#34;&gt;TexturePacker优势 &lt;a href=&#34;#texturepacker%e4%bc%98%e5%8a%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;性能方面&#34;&gt;性能方面: &lt;a href=&#34;#%e6%80%a7%e8%83%bd%e6%96%b9%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;通过优化Sprite网格提高性能，打包算法Polygon中使用Tracer Tolerance影响网格的质量，从而降低顶点数量和面数，降低CPU和GPU的计算渲染压力。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-03-30-unity-texturepacker/SpriteMeshes.jpg&#34; alt=&#34;SpriteMeshes&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;内存方面&#34;&gt;内存方面： &lt;a href=&#34;#%e5%86%85%e5%ad%98%e6%96%b9%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Sprite打包通过Polygon Packing算法，是不规则的图片打包成紧凑的图集，从而降低纹理内存大小。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-03-30-unity-texturepacker/PolygonAtlas.jpg&#34; alt=&#34;PolygonAtlas&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;png优化&#34;&gt;PNG优化： &lt;a href=&#34;#png%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;PNG优化的意义在于在不影响图形品质的情况下实现降低文件大小，从而改善游戏的下载和启动时间。
+常用的PNG文件优化方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无损压缩：此方法使用高级压缩算法并从文件中删除不必要的元数据以减小其大小而不降低图像质量。&lt;/li&gt;
+&lt;li&gt;有损压缩：此方法涉及减少图像中的颜色数量。如果图像具有大量相似的颜色，这会特别有效。通过减少颜色数量，PNG 文件可以作为索引文件写入，占用的空间明显减少。
+TexturePacker 中对PNG的优化：&lt;/li&gt;
+&lt;li&gt;TextureFormat：PNG-32 和 PNG-8(索引)。PNG-32 (无损模式)提供更高的质量，但尺寸也更大，而 PNG-8(降低颜色数量)提供更小的文件尺寸，但可能会牺牲一些图像质量。&lt;/li&gt;
+&lt;li&gt;Dithering (PNG-8 only)：此设置确定在减少图像中的颜色数量时如何近似颜色。选项有PngQuantLow、PngQuantMedium和PngQuantHigh，它们代表不同级别的颜色准确度。PngQuantLow 生成最小的文件大小，但可能会导致可见的颜色伪影，而 PngQuantHigh 提供最佳的颜色精度，但可能会导致较大的文件大小。&lt;/li&gt;
+&lt;li&gt;PngOptLevel：此设置控制应用于 PNG 文件的优化级别。选项范围从 0（无优化）到 7（最大优化），级别越高，压缩效果越好。
+TexturePacker和TinyPNG 的比较：&lt;/li&gt;
+&lt;li&gt;使用PngQuantHigh和PngOptLevel4时，TexturePacker 和 TinyPNG 都提供相似的图像质量和大小。&lt;/li&gt;
+&lt;li&gt;使用PngQuantLow和PngQuantMedium时，TexturePacker 通常会生成质量稍差的较小图像。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;texturepacker在unity中使用&#34;&gt;TexturePacker在Unity中使用 &lt;a href=&#34;#texturepacker%e5%9c%a8unity%e4%b8%ad%e4%bd%bf%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;插件导入&#34;&gt;插件导入 &lt;a href=&#34;#%e6%8f%92%e4%bb%b6%e5%af%bc%e5%85%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Unity 资产商店下载 TexturePacker Importer。&lt;/li&gt;
+&lt;li&gt;Unity 2021以后版本需要从PackageManger中导入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;资源导入&#34;&gt;资源导入 &lt;a href=&#34;#%e8%b5%84%e6%ba%90%e5%af%bc%e5%85%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;需要将导出后的 .tpsheet 文件与 .png 文件同时放入工程中使用。&lt;/p&gt;
+&lt;h3 id=&#34;程序调用&#34;&gt;程序调用 &lt;a href=&#34;#%e7%a8%8b%e5%ba%8f%e8%b0%83%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在Resource中的调用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Sprite[] sprites = Resources.LoadAll&amp;lt;Sprite&amp;gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spritesheet&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在AssetBundle中的调用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AssetBundle bundle = AssetBundle.LoadFromFile(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Assets/AssetBundles/MyBundle&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (bundle != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Sprite[] sprites = bundle.LoadAssetWithSubAssets&amp;lt;Sprite&amp;gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spritesheet&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;texturepacker参数详解&#34;&gt;TexturePacker参数详解 &lt;a href=&#34;#texturepacker%e5%8f%82%e6%95%b0%e8%af%a6%e8%a7%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;output&#34;&gt;OutPut &lt;a href=&#34;#output&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Png Opt Level(Png优化选项)：减少png文件大小，所有优化都是无损的。
+&lt;ul&gt;
+&lt;li&gt;0	总是写 32 位 png 文件&lt;/li&gt;
+&lt;li&gt;1	如果可能，写入索引（8 位）png 文件（默认）&lt;/li&gt;
+&lt;li&gt;2……7	激活额外的文件大小优化步骤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Premultiplied Alpha:带透明度图片纹理可以正常的进行线性插值&lt;/li&gt;
+&lt;li&gt;DPI(Dots Per Inch):每英寸打印的像素点，值越大图片越清晰，默认27&lt;/li&gt;
+&lt;li&gt;Dithering:抖动算法，用于对减色格式提高画质指令(RGBA8888之外)
+&lt;ul&gt;
+&lt;li&gt;NearestNeighbour	颜色误差最小，但颜色分布导致的对比度低于线性。&lt;/li&gt;
+&lt;li&gt;Linear	创建具有一些颜色误差但比 NearestNeighbour 更好的对比度的线性颜色分布。&lt;/li&gt;
+&lt;li&gt;FloydSteinberg	使用 Floyd-Steinberg 抖动算法。&lt;/li&gt;
+&lt;li&gt;FloydSteinbergAlpha	使用具有 alpha 值的 Floyd-Steinberg 抖动算法。&lt;/li&gt;
+&lt;li&gt;Atkinson	使用阿特金森抖动算法。&lt;/li&gt;
+&lt;li&gt;AtkinsonAlpha	使用具有 alpha 值的阿特金森抖动算法。&lt;/li&gt;
+&lt;li&gt;PngQuantLow	仅限 PNG-8：最小抖动。&lt;/li&gt;
+&lt;li&gt;PngQuantMedium	仅限 PNG-8：中等抖动。&lt;/li&gt;
+&lt;li&gt;PngQuantHigh	仅限 PNG-8：强烈抖动。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;geometry&#34;&gt;Geometry &lt;a href=&#34;#geometry&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Size constraints:纹理强制限制
+&lt;ul&gt;
+&lt;li&gt;POT	强制纹理具有 2 的幂大小（2、4、8、16、32、64、128、256 &amp;hellip;）。&lt;/li&gt;
+&lt;li&gt;WordAligned	字对齐纹理确保纹理中的每一行都使用完整的内存字。&lt;/li&gt;
+&lt;li&gt;AnySize	允许纹理具有任何大小。TexturePacker 尝试找到最小尺寸。&lt;/li&gt;
+&lt;li&gt;Force squared:强制纹理平方大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Scale:纹理缩放比&lt;/li&gt;
+&lt;li&gt;ScaleMode:缩放模式
+&lt;ul&gt;
+&lt;li&gt;Smooth	通过混合像素进行缩放 - 最适合缩小。放大时留下模糊的结果。&lt;/li&gt;
+&lt;li&gt;Fast	最近邻缩放 - 可以缩小。放大时提供像素化图像。&lt;/li&gt;
+&lt;li&gt;Scale2x	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Scale3x	固定尺寸放大 3 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Scale4x	固定尺寸放大 4 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Eagle	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;li&gt;Hq2x	固定尺寸放大 2 倍。尝试优化像素边缘。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;layout&#34;&gt;Layout &lt;a href=&#34;#layout&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Algorithm:打包算法
+&lt;ul&gt;
+&lt;li&gt;Polygon	非矩形精灵的最佳打包算法。尝试为多边形精灵轮廓找到紧凑的包装。由于 sprite 边界框可能会重叠，因此只能在您的框架支持导入网格顶点时使用此打包算法。&lt;/li&gt;
+&lt;li&gt;MaxRects	目前最好的矩形打包算法。尝试通过在放置精灵时应用不同的启发式方法来使用最少的纹理空间。&lt;/li&gt;
+&lt;li&gt;Basic	通过从左到右填充精灵直到达到纹理的最大宽度来进行简单布局。适用于固定大小的精灵。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sort By:图片在列表中排序&lt;/li&gt;
+&lt;li&gt;Order:排序规则
+&lt;ul&gt;
+&lt;li&gt;Ascending	将值从小到大排序&lt;/li&gt;
+&lt;li&gt;Descending	将值从大到小排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Multipack:创建多个导出文件&lt;/li&gt;
+&lt;li&gt;Trim mode:透明像素处理
+&lt;ul&gt;
+&lt;li&gt;没有任何	None	保持精灵原样。不要删除透明像素。&lt;/li&gt;
+&lt;li&gt;修剪	Trim	移除精灵周围的透明度。精灵在使用时似乎具有其原始大小。此选项可能并非在所有框架中都可用。&lt;/li&gt;
+&lt;li&gt;裁剪，保持位置	CropKeepPos	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。存储原始精灵中的位置。此选项可能并非在所有框架中都可用。&lt;/li&gt;
+&lt;li&gt;裁剪，丢失位置	Crop	移除精灵周围的透明度。精灵在使用时看起来尺寸较小。原始精灵中的位置设置为 0/0。精灵出现在工作表中，就好像它从来没有任何透明度一样。&lt;/li&gt;
+&lt;li&gt;多边形	Polygon	使用多边形路径近似精灵的轮廓。使用这种修剪模式，多边形打包器可以比任何基于矩形的打包算法更紧密地打包精灵。基于多边形轮廓可以导出三角形网格，您的框架可以使用它来显着减少需要处理的透明像素的数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tracer Tolerance：仅Polygon可用，确定多边形Sprite轮廓的精确度，值越小多边形密度越高。&lt;/li&gt;
+&lt;li&gt;Enable Rotation:是否允许纹理旋转&lt;/li&gt;
+&lt;li&gt;Border padding:纹理之间空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;官方推荐设置&#34;&gt;官方推荐设置 &lt;a href=&#34;#%e5%ae%98%e6%96%b9%e6%8e%a8%e8%8d%90%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;无损压缩
+&lt;ul&gt;
+&lt;li&gt;TextureFormat	PNG-32&lt;/li&gt;
+&lt;li&gt;PngOptLevel	2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;有损压缩
+&lt;ul&gt;
+&lt;li&gt;TextureFormat	PNG-8&lt;/li&gt;
+&lt;li&gt;Dithering	PngQuantHigh&lt;/li&gt;
+&lt;li&gt;PngOptLevel	1 or 4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity 四叉树</title>
+      <link>https://www.chenqiaoqian.com/2023/03/26/unity-quad-tree/</link>
+      <pubDate>Sun, 26 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/03/26/unity-quad-tree/</guid>
+      <description>&lt;p&gt;四叉树是一种树状数据结构，每个节点上都有四个子区块，也可以理解成每个子节点分为四个象限，可以是矩形或者任意图形。常用来表示空间索引或者二位空间碰撞检测等等。&lt;/p&gt;
+&lt;h2 id=&#34;四叉树特点&#34;&gt;四叉树特点 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e7%89%b9%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;可以分解成各自的区块。&lt;/li&gt;
+&lt;li&gt;每个区块都有自己存储的数量上限，当节点达到上限则会节点分裂。&lt;/li&gt;
+&lt;li&gt;每个区块的子树相当于独立的四叉树。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;需求：将摄像机范围的场景物体进行隐藏裁剪，只显示摄像机范围的场景物体。
+开发环境:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;引擎：Unity&lt;/li&gt;
+&lt;li&gt;语言：C#&lt;/li&gt;
+&lt;li&gt;摄像机：正交摄像机
+实现：基于上述理解，我构建了一个四叉树，只是现实了5个方法，上述功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//当前树的位置和大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; Rect _treeRect;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//子四叉树最大数量为4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; List&amp;lt;QuadTree&amp;gt; _childTrees;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//当前四叉树插入的Object的数量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; List&amp;lt;ObjRect&amp;gt; _objects;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//当前四叉树深度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; _depth;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//最大深度(常量)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; _maxDepth;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//四叉树当前节点允许存储的最大Object数量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; _maxRectObjectCount;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四叉树构建&#34;&gt;四叉树构建 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e6%9e%84%e5%bb%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** Rect为根Rect可以理解为整个四叉树的最大矩形(x、y、width、heigh)，需要注意rect锚点位置，需要实现Overlaps、Contains方法
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** depth为当前四叉树深度，默认为0，每每分裂一次++。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 注意:需要默认设置最大depth和当前节点区域最大数量上限
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; QuadTree(Rect rect,&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; depth)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四叉树分裂&#34;&gt;四叉树分裂 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e5%88%86%e8%a3%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 将当前区块节点分裂成4个子树，分别为当前Rect的右上、右下、左上和左下四个区域。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 同时深度++
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Split()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四叉树获取象限&#34;&gt;四叉树获取象限 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e8%8e%b7%e5%8f%96%e8%b1%a1%e9%99%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 根据传入ObjRect的Rect获取在当前四叉树的那些象限
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 使用数组是因为一个足够大的ObjRect可能会同时存在多个象限，所以对每个象限都要进入插入。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 返回值为象限索引数组，提前规划好右上、右下、左上和左下四个子节点区域的索引。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; List&amp;lt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&amp;gt; GetSpaceIndex(ObjRect rect)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四叉树插入&#34;&gt;四叉树插入 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e6%8f%92%e5%85%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 插入规则:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 1、该区域节点已经分裂(存在子四叉树数组)，直接调用GetSpaceIndex返回对应象限索引，直接插入即可。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 2、该区域节点未分裂，直接插入到区域对象数组里，当数组达到上限后，执行Split分裂，分裂后，讲数组的对象，依次调用**GetSpaceIndex获取象限索引，直接插入即可。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 注意:插入为一个递归的过程，根据depth依次插入。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Insert(ObjRect rect)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四叉树遍历检测重叠的对象&#34;&gt;四叉树遍历检测重叠的对象 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e9%81%8d%e5%8e%86%e6%a3%80%e6%b5%8b%e9%87%8d%e5%8f%a0%e7%9a%84%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 1、通过GetSpaceIndex获取象限索引数组
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 2、遍历象限索引数组，分别调用象限子树的Retrieve进行递归
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;** 3、遍历象限子树Retrieve返回的List&amp;lt;ObjRect&amp;gt;，进行Overlaps判断是否重叠，对重叠的对象进行保存并且返回。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; List&amp;lt;ObjRect&amp;gt; Retrieve(ObjRect rect)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;四叉树最终实现效果&#34;&gt;四叉树最终实现效果 &lt;a href=&#34;#%e5%9b%9b%e5%8f%89%e6%a0%91%e6%9c%80%e7%bb%88%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-03-26-unity-quad-tree/unity-quad-tree-animation.gif&#34; alt=&#34;unity-quad-tree-animation&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

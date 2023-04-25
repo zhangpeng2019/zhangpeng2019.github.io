@@ -5,6 +5,43 @@
     <link>https://www.chenqiaoqian.com/tags/</link>
     <description>Recent content in Tags on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.chenqiaoqian.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Apr 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design Pattern</title>
+      <link>https://www.chenqiaoqian.com/tags/design-pattern/</link>
+      <pubDate>Mon, 24 Apr 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/tags/design-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notifications</title>
+      <link>https://www.chenqiaoqian.com/tags/notifications/</link>
+      <pubDate>Thu, 06 Apr 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/tags/notifications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TexturePacker</title>
+      <link>https://www.chenqiaoqian.com/tags/texturepacker/</link>
+      <pubDate>Thu, 30 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/tags/texturepacker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>QuadTree</title>
+      <link>https://www.chenqiaoqian.com/tags/quadtree/</link>
+      <pubDate>Sun, 26 Mar 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/tags/quadtree/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
