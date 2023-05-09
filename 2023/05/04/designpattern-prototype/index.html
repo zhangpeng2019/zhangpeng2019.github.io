@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设计模式-原型模式 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">设计模式-原型模式</h1>
+
+    <div class="tip">
+        <time datetime="2023-05-04 11:13:34 &#43;0800 CST">2023/05/04</time>
+        <span class="split">·</span>
+        <span> 163 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Factory Method Pototype原型模式属于创建型设计模式，用于通过拷贝模型来创建新的对象。</p>
+<h2 id="design-patternpototype">Design Pattern:Pototype <a href="#design-patternpototype" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="共性">共性 <a href="#%e5%85%b1%e6%80%a7" class="anchor">🔗</a></h4><ul>
+<li>Prototype：原型类，声明一个用于克隆自身的接口。</li>
+<li>ConcretePrototype：实际原型类，实现用于克隆自身的原型接口的类。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>避免了创建新实例的复杂性。</li>
+<li>可以动态增加或删除产品类。</li>
+<li>通过改变值或结构指定新对象。</li>
+<li>减少子类化，允许克隆现有对象而不是要求工厂创建新实例。原型模式消除了为创建产品引入子类化的需要。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>每个类必须配备一个克隆方法。</li>
+<li>对于值类型和引用类型，深拷贝和浅拷贝必须理解到位。</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中原型模式的实例，下面我们又来到了富士康的手机模具车间。</p>
+<ul>
+<li>Prototype</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 手机壳模型</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShouJiKePrototype</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> ShouJiKePrototype Clone();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>ConcretePrototype</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 华为手机壳</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HuaWeiShouJiKePrototype</span> : ShouJiKePrototype
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> ShouJiKePrototype Clone()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (HuaWeiShouJiKePrototype)<span style="color:#66d9ef">this</span>.MemberwiseClone();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<pre tabindex="0"><code>ShouJiKePrototype prototype = new HuaWeiShouJiKePrototype();
+ShouJiKePrototype prototype1 = prototype.Clone();
+ShouJiKePrototype prototype2 = prototype.Clone();
+ShouJiKePrototype prototype3 = prototype.Clone();
+</code></pre><h3 id="额外拓展">额外拓展 <a href="#%e9%a2%9d%e5%a4%96%e6%8b%93%e5%b1%95" class="anchor">🔗</a></h3><ul>
+<li>MemberwiseClone介绍
+<ul>
+<li>MemberwiseClone 方法是System.Object类的一部分，它创建给定对象的浅表副本。</li>
+<li>MemberwiseClone 方法只是将对象的非静态字段复制到新对象中。</li>
+<li>复制过程中，如果某个字段是值类型，则对该字段进行逐位复制。如果字段是引用类型，则复制引用但不复制引用的对象。</li>
+</ul>
+</li>
+<li>深拷贝和浅拷贝
+<ul>
+<li>浅拷贝:从现有对象创建克隆对象，然后将现有对象的值类型字段复制到新对象。但是对于引用类型属性，它只会复制引用，而不是实际对象本身。因此，在引用类型的情况下，现有对象和克隆对象引用相同的内存位置。</li>
+<li>深拷贝:从现有对象创建克隆对象，然后将现有对象的字段复制到新创建的克隆对象。如果该字段是值类型，则将执行该字段的逐位复制。如果字段是引用类型，则将创建引用对象的新副本。这意味着，与浅拷贝不同，在深拷贝的情况下，现有对象和克隆对象的引用类型属性都具有不同的内存位置。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AgeInfo</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Number;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AgeInfo(<span style="color:#66d9ef">int</span> age)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Number = age;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AgeInfo Age;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 浅拷贝</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Person ShallowCopy()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (Person) <span style="color:#66d9ef">this</span>.MemberwiseClone();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 深拷贝</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Person DeepCopy()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Person otherPerson = (Person) <span style="color:#66d9ef">this</span>.MemberwiseClone();
+</span></span><span style="display:flex;"><span>        otherPerson.Age = <span style="color:#66d9ef">new</span> AgeInfo(Age.Number);
+</span></span><span style="display:flex;"><span>        otherPerson.Name = String.Copy(Name);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> otherPerson;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/05/04/designpattern-prototype/">设计模式-原型模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/04/25/designpattern-factorymethod/">设计模式-工厂方法模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/04/24/designpattern-builderpattern/">设计模式-建造者模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/04/23/designpattern-abstractfactory/">设计模式-抽象工厂模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/04/19/designpattern-singleton/">设计模式-单例模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(5)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(3)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (5)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
