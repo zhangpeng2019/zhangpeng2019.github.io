@@ -457,7 +457,7 @@ body {
 .content code {
   font-family: var(--fonts-mono);
 
-  background-color: var(--color-bg-page);
+  background-color: var(--color-bg-block);
 
   padding: 0 2px;
   border: 1px solid var(--color-fg-tiny-line);
@@ -475,7 +475,7 @@ body {
   padding: var(--len-3);
 
   border: none;
-  background-color: var(--color-bg-page);
+  background-color: var(--color-bg-block);
   border-radius: 3px;
 
   overflow: auto;
@@ -729,6 +729,3 @@ body {
   padding: 0;
   margin: 0;
 }
-
-{{- if .Site.Params.customCSS -}}
-<link rel="stylesheet" href="{{- .Site.Params.customCSS -}}" type="text/css"> {{- else -}} <link rel="stylesheet" href="/css/custom.css" type="text/css"> {{- end -}}
