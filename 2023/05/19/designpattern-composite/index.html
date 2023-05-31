@@ -41,7 +41,7 @@
     <div class="tip">
         <time datetime="2023-05-19 11:13:34 &#43;0800 CST">2023/05/19</time>
         <span class="split">·</span>
-        <span> 23 words </span>
+        <span> 201 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -86,8 +86,98 @@
 <li>由于其统一性，复合模式有时会变得过于笼统，有时很难为具有许多不同功能的类定义标准接口。</li>
 </ul>
 <h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中组合模式的实例，下面我们来到电子城，根据自己的需求组装一台电脑。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"></code></pre></div><p>实际运行：</p>
-<pre tabindex="0"><code></code></pre><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IComponent</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 显示价格</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> DisplayPrice();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 树叶类</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Leaf</span> : IComponent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 组件名字</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> _componentName;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 组件价格</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> _componentPrice;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Leaf(<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">int</span> price)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _componentName = name;
+</span></span><span style="display:flex;"><span>        _componentPrice = price;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> DisplayPrice()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">$&#34;\tComponent Name: {_componentName} and Price: {_componentPrice}&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 树枝类</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Composite</span> : IComponent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 组件名字</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> _componentName;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 子组件</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> List&lt;IComponent&gt; _components = <span style="color:#66d9ef">new</span> List&lt;IComponent&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Composite(<span style="color:#66d9ef">string</span> name)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _componentName = name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 添加组件</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;param name=&#34;component&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddComposite(IComponent component)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _components.Add(component);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> DisplayPrice()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> component <span style="color:#66d9ef">in</span> _components)
+</span></span><span style="display:flex;"><span>            component.DisplayPrice();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<pre tabindex="0"><code>//CPU
+IComponent cpu = new Leaf(&#34;CPU&#34;, 2000);
+
+//鼠标
+IComponent mouse = new Leaf(&#34;Mouse&#34;, 2000);
+//键盘
+IComponent keyboard = new Leaf(&#34;Keyboard&#34;, 2000);
+
+//输入设备
+Composite inputEquipment = new Composite(&#34;InputEquipment&#34;);
+inputEquipment.AddComposite(mouse);
+inputEquipment.AddComposite(keyboard);
+
+//电脑
+Composite computer = new Composite(&#34;Computer&#34;);
+computer.AddComposite(cpu);
+computer.AddComposite(inputEquipment);
+
+//显示设备价格
+computer.DisplayPrice();
+</code></pre><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
     
