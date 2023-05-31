@@ -157,27 +157,27 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>实际运行：</p>
-<pre tabindex="0"><code>//CPU
-IComponent cpu = new Leaf(&#34;CPU&#34;, 2000);
-
-//鼠标
-IComponent mouse = new Leaf(&#34;Mouse&#34;, 2000);
-//键盘
-IComponent keyboard = new Leaf(&#34;Keyboard&#34;, 2000);
-
-//输入设备
-Composite inputEquipment = new Composite(&#34;InputEquipment&#34;);
-inputEquipment.AddComposite(mouse);
-inputEquipment.AddComposite(keyboard);
-
-//电脑
-Composite computer = new Composite(&#34;Computer&#34;);
-computer.AddComposite(cpu);
-computer.AddComposite(inputEquipment);
-
-//显示设备价格
-computer.DisplayPrice();
-</code></pre><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">//CPU</span>
+</span></span><span style="display:flex;"><span>IComponent cpu = <span style="color:#66d9ef">new</span> Leaf(<span style="color:#e6db74">&#34;CPU&#34;</span>, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//鼠标</span>
+</span></span><span style="display:flex;"><span>IComponent mouse = <span style="color:#66d9ef">new</span> Leaf(<span style="color:#e6db74">&#34;Mouse&#34;</span>, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//键盘</span>
+</span></span><span style="display:flex;"><span>IComponent keyboard = <span style="color:#66d9ef">new</span> Leaf(<span style="color:#e6db74">&#34;Keyboard&#34;</span>, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//输入设备</span>
+</span></span><span style="display:flex;"><span>Composite inputEquipment = <span style="color:#66d9ef">new</span> Composite(<span style="color:#e6db74">&#34;InputEquipment&#34;</span>);
+</span></span><span style="display:flex;"><span>inputEquipment.AddComposite(mouse);
+</span></span><span style="display:flex;"><span>inputEquipment.AddComposite(keyboard);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//电脑</span>
+</span></span><span style="display:flex;"><span>Composite computer = <span style="color:#66d9ef">new</span> Composite(<span style="color:#e6db74">&#34;Computer&#34;</span>);
+</span></span><span style="display:flex;"><span>computer.AddComposite(cpu);
+</span></span><span style="display:flex;"><span>computer.AddComposite(inputEquipment);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//显示设备价格</span>
+</span></span><span style="display:flex;"><span>computer.DisplayPrice();
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
     
