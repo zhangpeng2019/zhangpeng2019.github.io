@@ -6,7 +6,32 @@
     <description>Recent content in CSharp on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 May 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 May 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-复合模式</title>
+      <link>https://www.chenqiaoqian.com/2023/05/19/designpattern-composite/</link>
+      <pubDate>Fri, 19 May 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/05/19/designpattern-composite/</guid>
+      <description>&lt;p&gt;Composite组合模式属于结构型设计模式，将对象组合成树结构以表示部分-整体层次结构，Composite 让客户可以统一地对待单个对象和对象的组合。&lt;/p&gt;
+&lt;h2 id=&#34;design-patterncomposite&#34;&gt;Design Pattern:Composite &lt;a href=&#34;#design-patterncomposite&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;基本介绍&#34;&gt;基本介绍 &lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;构成&#34;&gt;构成 &lt;a href=&#34;#%e6%9e%84%e6%88%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Component：抽象组件类，为层次结构中的所有对象定义公共的接口及默认行为。&lt;/li&gt;
+&lt;li&gt;Leaf：树叶类，树叶类是没有下级子对象的对象，定义了组合中原始对象的行为。&lt;/li&gt;
+&lt;li&gt;Composite：树枝类，树枝类是拥有下级子对象组合的对象，定义了可以对子对象组合执行的必要操作。&lt;/li&gt;
+&lt;li&gt;Client：客户使用类，通过Component接口操作组合中对象的类。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;优点&#34;&gt;优点 &lt;a href=&#34;#%e4%bc%98%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;有助于在包含原始对象类型和复合对象类型的对象层次结构中实现统一性。&lt;/li&gt;
+&lt;li&gt;遵循开放/封闭原则，可以在不更改现有代码的情况下添加更多组件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;缺点&#34;&gt;缺点 &lt;a href=&#34;#%e7%bc%ba%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;由于其统一性，复合模式有时会变得过于笼统，有时很难为具有许多不同功能的类定义标准接口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中组合模式的实例，下面我们来到电子城，根据自己的需求组装一台电脑。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实际运行：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>设计模式-装饰器模式</title>
       <link>https://www.chenqiaoqian.com/2023/05/17/designpattern-decorator/</link>

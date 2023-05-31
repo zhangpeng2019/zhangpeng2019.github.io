@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello World | 陈巧倩</title>
+        <title>设计模式-复合模式 | 陈巧倩</title>
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,minimum-scale=1">
 
@@ -36,12 +36,12 @@
                 
 
 <section class="single">
-    <h1 class="title">Hello World</h1>
+    <h1 class="title">设计模式-复合模式</h1>
 
     <div class="tip">
-        <time datetime="2023-03-14 13:13:34 &#43;0800 CST">2023/03/14</time>
+        <time datetime="2023-05-19 11:13:34 &#43;0800 CST">2023/05/19</time>
         <span class="split">·</span>
-        <span> 2 words </span>
+        <span> 23 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -50,15 +50,44 @@
 
     <div class="taxonomies">
         
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
 
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
         
     </div>
 
     <hr />
 
     <div class="content">
-        <p>Hello World!</p>
-
+        <p>Composite组合模式属于结构型设计模式，将对象组合成树结构以表示部分-整体层次结构，Composite 让客户可以统一地对待单个对象和对象的组合。</p>
+<h2 id="design-patterncomposite">Design Pattern:Composite <a href="#design-patterncomposite" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Component：抽象组件类，为层次结构中的所有对象定义公共的接口及默认行为。</li>
+<li>Leaf：树叶类，树叶类是没有下级子对象的对象，定义了组合中原始对象的行为。</li>
+<li>Composite：树枝类，树枝类是拥有下级子对象组合的对象，定义了可以对子对象组合执行的必要操作。</li>
+<li>Client：客户使用类，通过Component接口操作组合中对象的类。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>有助于在包含原始对象类型和复合对象类型的对象层次结构中实现统一性。</li>
+<li>遵循开放/封闭原则，可以在不更改现有代码的情况下添加更多组件。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>由于其统一性，复合模式有时会变得过于笼统，有时很难为具有许多不同功能的类定义标准接口。</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中组合模式的实例，下面我们来到电子城，根据自己的需求组装一台电脑。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"></code></pre></div><p>实际运行：</p>
+<pre tabindex="0"><code></code></pre><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
     
