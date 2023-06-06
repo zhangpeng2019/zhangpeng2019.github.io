@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设计模式-享元模式 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">设计模式-享元模式</h1>
+
+    <div class="tip">
+        <time datetime="2023-05-23 11:13:34 &#43;0800 CST">2023/05/23</time>
+        <span class="split">·</span>
+        <span> 160 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Flyweight享元模式属于结构型设计模式，旨在通过在相似对象之间共享数据来减少内存使用，以提高性能。</p>
+<h2 id="design-patternflyweight">Design Pattern:Flyweight <a href="#design-patternflyweight" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Flyweight：抽象享元类，规定出需要实现的公共接口，可以通过该接口接收外部状态并对其进行操作。</li>
+<li>ConcreteFlyweight：具体享元类，实现抽象享元类所规定的接口，如果有内部状态的话，为内在状态添加存储。</li>
+<li>FlyweightFactory：享元工厂类，创建和管理享元对象，当客户端请求享元时，享元工厂对象将现有实例赋值或创建一个实例。</li>
+<li>Client：客户类，维护对享元的引用，计算或存储享元的外部状态。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>通过创建共享对象（享元）来减少对象的数量，从而减少了内存，提高了性能。</li>
+<li>由于使用了外部状态，外部状态相对独立，不会影响到内部状态，所以享元对象能够在不同的环境被共享。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>需要区分外部状态和内部状态，使得代码在某种程度上来说更加复杂化了。</li>
+<li>为了使对象可以共享，享元模式需要将享元对象的状态外部化。</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中享元模式的实例，比方说我们开发一款画图工具，里面需要画各种颜色的圆形，我们不可能每种颜色的圆形做一个实例，这个时候我们可以享元模型，共享形状，然后添加不同的颜色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Shape</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 设置颜色值</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;param name=&#34;color&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> SetColor(<span style="color:#66d9ef">string</span> color);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 绘制</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> Draw();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 圆形</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> : Shape
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">string</span> _strColor;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> SetColor(<span style="color:#66d9ef">string</span> color)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _strColor = color;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Draw()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Circle color &#34;</span> + _strColor);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 形状工程</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShapeFactory</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, Shape&gt; _shapes = <span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, Shape&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Shape GetShape(<span style="color:#66d9ef">string</span> shapetype)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (!_shapes.ContainsKey(shapetype))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//switch缩略写法</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">switch</span> (shapetype)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Circle&#34;</span>:
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">var</span> shape = <span style="color:#66d9ef">new</span> Circle();
+</span></span><span style="display:flex;"><span>                        _shapes.Add(shapetype, shape);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _shapes[shapetype];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>Circle redCircle = (Circle)ShapeFactory.GetShape(<span style="color:#e6db74">&#34;Circle&#34;</span>);
+</span></span><span style="display:flex;"><span>redCircle.SetColor(<span style="color:#e6db74">&#34;Red&#34;</span>);
+</span></span><span style="display:flex;"><span>redCircle.Draw();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Circle greenCircle = (Circle)ShapeFactory.GetShape(<span style="color:#e6db74">&#34;Circle&#34;</span>);
+</span></span><span style="display:flex;"><span>greenCircle.SetColor(<span style="color:#e6db74">&#34;Green&#34;</span>);
+</span></span><span style="display:flex;"><span>greenCircle.Draw();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Circle orangeCircle = (Circle)ShapeFactory.GetShape(<span style="color:#e6db74">&#34;Circle&#34;</span>);
+</span></span><span style="display:flex;"><span>orangeCircle.SetColor(<span style="color:#e6db74">&#34;Orange&#34;</span>);
+</span></span><span style="display:flex;"><span>orangeCircle.Draw();
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/05/23/designpattern-flyweight/">设计模式-享元模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/21/designpattern-facade/">设计模式-外观模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/19/designpattern-composite/">设计模式-复合模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/17/designpattern-decorator/">设计模式-装饰器模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/15/designpattern-bridge/">设计模式-桥接模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(11)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(3)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (11)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
