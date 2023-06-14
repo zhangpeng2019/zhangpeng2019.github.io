@@ -6,7 +6,155 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 May 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 May 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-迭代器模式</title>
+      <link>https://www.chenqiaoqian.com/2023/05/31/designpattern-iterator/</link>
+      <pubDate>Wed, 31 May 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/05/31/designpattern-iterator/</guid>
+      <description>&lt;p&gt;Command命令模式属于行为型设计模式，为了解决遍历集合使用统一的接口问题，提供了一种在不暴露其内部表示的情况下顺序访问聚合对象元素的方法。&lt;/p&gt;
+&lt;h2 id=&#34;design-patterncommand&#34;&gt;Design Pattern:Command &lt;a href=&#34;#design-patterncommand&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;基本介绍&#34;&gt;基本介绍 &lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;构成&#34;&gt;构成 &lt;a href=&#34;#%e6%9e%84%e6%88%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Iterator：抽象迭代器类，用来定义访问和遍历序列中元素的操作的接口。&lt;/li&gt;
+&lt;li&gt;ConcreteIterator：具体迭代器类，实现了Iterator接口，完成对序列对象的遍历，同时在对聚合进行遍历时跟踪其当前位置。&lt;/li&gt;
+&lt;li&gt;Aggregate：抽象聚合类，用于定义创建迭代器对象的操作。&lt;/li&gt;
+&lt;li&gt;ConcreteAggregate：具体聚合类，实现了Aggregate相应迭代器的接口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;优点&#34;&gt;优点 &lt;a href=&#34;#%e4%bc%98%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;迭代器模式访问或者遍历聚合对象的内容时无需暴露聚合对象的内部表示。&lt;/li&gt;
+&lt;li&gt;迭代器模式为遍历不同的集合结构提供了一个统一的接口，不关心集合结构的算法是什么。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;缺点&#34;&gt;缺点 &lt;a href=&#34;#%e7%bc%ba%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;迭代器模式不是直接访问集合结构，会带来一些性能上的消耗&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中迭代器模式的实例，通过这段时间的创业，我决定去家族旗下的某个集团当个董事长，上任第一件事就是认识一下所有员工。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Employee&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 员工名字&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; Name;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 员工Id&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; Id;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Employee(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; name, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; id)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Name = name;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Id = id;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 抽象迭代器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Iterator&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 首个item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Employee FirstItem();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 下一个item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Employee NextItem();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 是否存在下一个item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; HasNext();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 当前item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Employee CurrentItem();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 具体迭代器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ConcreteIterator&lt;/span&gt; : Iterator
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; ConcreteAggregate _aggregate;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; _currentItemIndex = &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ConcreteIterator(ConcreteAggregate cAggregate)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _aggregate = cAggregate;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Employee FirstItem()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; _aggregate[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Employee NextItem()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Employee returnObj = &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (_currentItemIndex &amp;lt; _aggregate.Count - &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            returnObj = _aggregate[++_currentItemIndex];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; returnObj;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Employee CurrentItem()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; _aggregate[_currentItemIndex];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; HasNext()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; _currentItemIndex &amp;gt;= _aggregate.Count;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 抽象聚合&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Aggregate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// 创建迭代器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Iterator Create();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 具体聚合&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ConcreteAggregate&lt;/span&gt; : Aggregate
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;readonly&lt;/span&gt; List&amp;lt;Employee&amp;gt; _employees = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; List&amp;lt;Employee&amp;gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Iterator Create()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ConcreteIterator(&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; Count =&amp;gt; _employees.Count;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Employee &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt; =&amp;gt; _employees[index];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; =&amp;gt; _employees.Insert(index, &lt;span style=&#34;color:#66d9ef&#34;&gt;value&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实际运行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ConcreteAggregate aggregate = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ConcreteAggregate();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aggregate[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Employee(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dongweiyi&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aggregate[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Employee(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sunchangpeng&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Iterator iterator = aggregate.Create();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Employee currentItem = iterator.FirstItem();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (currentItem != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    currentItem = iterator.NextItem();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>设计模式-命令模式</title>
       <link>https://www.chenqiaoqian.com/2023/05/29/designpattern-command/</link>
@@ -30,7 +178,7 @@
 &lt;h4 id=&#34;缺点&#34;&gt;缺点 &lt;a href=&#34;#%e7%bc%ba%e7%82%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;代码变得负责，同时增加出不少具体命令类。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中代码模式的实例，我干了两天厨师觉得不太累了，于是决定改行房地产，于是我来到了家族旗下的房地产公司当起了建筑师，主要任务是盖房。&lt;/p&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中命令模式的实例，我干了两天厨师觉得不太累了，于是决定改行房地产，于是我来到了家族旗下的房地产公司当起了建筑师，主要任务是盖房。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// Receiver 接受者类&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
@@ -155,7 +303,7 @@
 &lt;li&gt;如果抽象操作过多，子类必须覆盖的操作太多，整个程序就会变得复杂。&lt;/li&gt;
 &lt;li&gt;具体角色类不能改变算法结构的运行步骤。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中代码模式的实例，我下定决心改行当厨师，于是我来到了家族旗下的酒店的厨房当起了学徒。&lt;/p&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中模版方法模式的实例，我下定决心改行当厨师，于是我来到了家族旗下的酒店的厨房当起了学徒。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 抽象角色类&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
@@ -281,7 +429,7 @@
 &lt;li&gt;保护代理：通过为客户端代码添加某种身份验证来创建资源的安全代理，资源受代理保护并且客户端代码必须通过身份验证过程。&lt;/li&gt;
 &lt;li&gt;智能代理：用于添加某种功能以有效地管理资源。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中代码模式的实例，比方说我们开发一个计算器模块。&lt;/p&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;C#中代理模式的实例，比方说我们开发一个计算器模块。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// Subject：抽象主题类&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;

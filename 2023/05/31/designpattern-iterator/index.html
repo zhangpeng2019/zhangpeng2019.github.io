@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设计模式-迭代器模式 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">设计模式-迭代器模式</h1>
+
+    <div class="tip">
+        <time datetime="2023-05-31 11:13:34 &#43;0800 CST">2023/05/31</time>
+        <span class="split">·</span>
+        <span> 280 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Command命令模式属于行为型设计模式，为了解决遍历集合使用统一的接口问题，提供了一种在不暴露其内部表示的情况下顺序访问聚合对象元素的方法。</p>
+<h2 id="design-patterncommand">Design Pattern:Command <a href="#design-patterncommand" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Iterator：抽象迭代器类，用来定义访问和遍历序列中元素的操作的接口。</li>
+<li>ConcreteIterator：具体迭代器类，实现了Iterator接口，完成对序列对象的遍历，同时在对聚合进行遍历时跟踪其当前位置。</li>
+<li>Aggregate：抽象聚合类，用于定义创建迭代器对象的操作。</li>
+<li>ConcreteAggregate：具体聚合类，实现了Aggregate相应迭代器的接口。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>迭代器模式访问或者遍历聚合对象的内容时无需暴露聚合对象的内部表示。</li>
+<li>迭代器模式为遍历不同的集合结构提供了一个统一的接口，不关心集合结构的算法是什么。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>迭代器模式不是直接访问集合结构，会带来一些性能上的消耗</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中迭代器模式的实例，通过这段时间的创业，我决定去家族旗下的某个集团当个董事长，上任第一件事就是认识一下所有员工。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 员工名字</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 员工Id</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee(<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">int</span> id)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Name = name;
+</span></span><span style="display:flex;"><span>        Id = id;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象迭代器</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Iterator</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 首个item</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    Employee FirstItem();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 下一个item</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    Employee NextItem();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 是否存在下一个item</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> HasNext();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 当前item</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    Employee CurrentItem();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体迭代器</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteIterator</span> : Iterator
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> ConcreteAggregate _aggregate;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> _currentItemIndex = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ConcreteIterator(ConcreteAggregate cAggregate)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _aggregate = cAggregate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee FirstItem()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _aggregate[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee NextItem()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Employee returnObj = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_currentItemIndex &lt; _aggregate.Count - <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            returnObj = _aggregate[++_currentItemIndex];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> returnObj;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee CurrentItem()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _aggregate[_currentItemIndex];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> HasNext()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _currentItemIndex &gt;= _aggregate.Count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象聚合</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Aggregate</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 创建迭代器</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    Iterator Create();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体聚合</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConcreteAggregate</span> : Aggregate
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">readonly</span> List&lt;Employee&gt; _employees = <span style="color:#66d9ef">new</span> List&lt;Employee&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Iterator Create()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ConcreteIterator(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Count =&gt; _employees.Count;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Employee <span style="color:#66d9ef">this</span>[<span style="color:#66d9ef">int</span> index]
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">get</span> =&gt; _employees[index];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">set</span> =&gt; _employees.Insert(index, <span style="color:#66d9ef">value</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>ConcreteAggregate aggregate = <span style="color:#66d9ef">new</span> ConcreteAggregate();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>aggregate[<span style="color:#ae81ff">0</span>] = <span style="color:#66d9ef">new</span> Employee(<span style="color:#e6db74">&#34;dongweiyi&#34;</span>,<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>aggregate[<span style="color:#ae81ff">1</span>] = <span style="color:#66d9ef">new</span> Employee(<span style="color:#e6db74">&#34;sunchangpeng&#34;</span>,<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Iterator iterator = aggregate.Create();
+</span></span><span style="display:flex;"><span>Employee currentItem = iterator.FirstItem();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (currentItem != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    currentItem = iterator.NextItem();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/05/31/designpattern-iterator/">设计模式-迭代器模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/29/designpattern-command/">设计模式-命令模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/27/designpattern-templatemethod/">设计模式-模版方法模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/25/designpattern-proxy/">设计模式-代理模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/23/designpattern-flyweight/">设计模式-享元模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(15)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(3)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (15)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
