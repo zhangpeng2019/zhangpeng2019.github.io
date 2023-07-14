@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设计模式-状态模式 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">设计模式-状态模式</h1>
+
+    <div class="tip">
+        <time datetime="2023-06-07 11:13:34 &#43;0800 CST">2023/06/07</time>
+        <span class="split">·</span>
+        <span> 189 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>State状态模式属于行为型设计模式，该模式允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。</p>
+<h2 id="design-patternstate">Design Pattern:State <a href="#design-patternstate" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Context：上下文类，定义客户交互的接口，持有具体状态对象的引用，并用来更改当前的状态。</li>
+<li>State：抽象状态类，定义一个接口，用于封装与上下文的特定状态相关的行为。</li>
+<li>ConcreteState：具体状态类，实现了Context的一个状态所对应的行为。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>该模式使封装了转换规则，使状态转换变得明确。</li>
+<li>状态对象可以共享，不同的Context可以使用同一个State。</li>
+<li>代码结构更加清晰，不同行为分不到不同State里。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>增加上下文类和状态类对象的个数。</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中状态模式的实例，游戏工作室开张喽了，开始第一个功能开发，策划案子-&gt;程序开发-&gt;QA验收。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 上下文类</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> FunctionState _functionState;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Context(FunctionState state)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _functionState = state;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 状态切换</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;param name=&#34;state&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ChangeState(FunctionState state)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _functionState = state;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 执行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Execute()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _functionState.Action();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象状态类 - 功能开发</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FunctionState</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 执行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> Action();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 策划状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PlanningState</span> : FunctionState
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是策划，策划文档已经审核完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 程序状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EngineerState</span> : FunctionState
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是程序，功能开发完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 测试状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestingState</span> : FunctionState
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是测试，功能验收完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>PlanningState planningState = <span style="color:#66d9ef">new</span> PlanningState();
+</span></span><span style="display:flex;"><span>EngineerState engineerState = <span style="color:#66d9ef">new</span> EngineerState();
+</span></span><span style="display:flex;"><span>TestingState testingState = <span style="color:#66d9ef">new</span> TestingState();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Context context = <span style="color:#66d9ef">new</span> Context(planningState);
+</span></span><span style="display:flex;"><span>context.Execute();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context.ChangeState(engineerState);
+</span></span><span style="display:flex;"><span>context.Execute();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context.ChangeState(testingState);
+</span></span><span style="display:flex;"><span>context.Execute();
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/06/07/designpattern-state/">设计模式-状态模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/05/designpattern-chainofresponsibility/">设计模式-职责链模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/03/designpattern-mediator/">设计模式-中介者模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/01/designpattern-observer/">设计模式-观察者模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/05/31/designpattern-iterator/">设计模式-迭代器模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(19)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(3)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (19)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
