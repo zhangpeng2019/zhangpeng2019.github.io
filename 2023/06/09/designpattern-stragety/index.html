@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>设计模式-状态模式 | 陈巧倩</title>
+        <title>设计模式-策略模式 | 陈巧倩</title>
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,minimum-scale=1">
 
@@ -36,12 +36,12 @@
                 
 
 <section class="single">
-    <h1 class="title">设计模式-状态模式</h1>
+    <h1 class="title">设计模式-策略模式</h1>
 
     <div class="tip">
-        <time datetime="2023-06-07 11:13:34 &#43;0800 CST">2023/06/07</time>
+        <time datetime="2023-06-09 11:13:34 &#43;0800 CST">2023/06/09</time>
         <span class="split">·</span>
-        <span> 189 words </span>
+        <span> 201 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -71,100 +71,104 @@
     <hr />
 
     <div class="content">
-        <p>State状态模式属于行为型设计模式，该模式允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。</p>
-<h2 id="design-patternstate">Design Pattern:State <a href="#design-patternstate" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
-<li>Context：上下文类，定义客户交互的接口，持有具体状态对象的引用，并用来更改当前的状态。</li>
-<li>State：抽象状态类，定义一个接口，用于封装与上下文的特定状态相关的行为。</li>
-<li>ConcreteState：具体状态类，实现了Context的一个状态所对应的行为。</li>
+        <p>Stragety策略模式属于行为型设计模式，该定义了一系列算法，封装了每个算法，并使它们可以互换。这种模式使算法能够独立于使用它的客户而变化。</p>
+<h2 id="design-patternstragety">Design Pattern:Stragety <a href="#design-patternstragety" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Context：上下文类，持有并维护一个Strategy类的引用，并定义访问Strategy类的接口。</li>
+<li>Strategy：抽象策略类，定义公共算法接口，各种不同的算法以不同的方式实现这个接口。</li>
+<li>ConcreteStrategy：具体策略类，实现Strategy类定义的算法接口。</li>
 </ul>
 <h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
-<li>该模式使封装了转换规则，使状态转换变得明确。</li>
-<li>状态对象可以共享，不同的Context可以使用同一个State。</li>
-<li>代码结构更加清晰，不同行为分不到不同State里。</li>
+<li>允许客户端选择在运行时使用的算法。</li>
+<li>将每个算法封装在一个类中，使其易于修改和扩展而不影响其他算法。</li>
+<li>避免使用多重条件选择语句。</li>
 </ul>
 <h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
-<li>增加上下文类和状态类对象的个数。</li>
+<li>客户必须了解所有的具体策略类。</li>
+<li>定了许多策略类，增加了对象数量。</li>
 </ul>
-<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中状态模式的实例，游戏工作室开张喽了，开始第一个功能开发，策划案子-&gt;程序开发-&gt;QA验收。</p>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中策略模式的实例，马上到10号了，又要给员工开发发工资了，我们计算一下每个员工的工资。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// 上下文类</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> FunctionState _functionState;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Context(FunctionState state)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> SalaryCalculator _calculator;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Context(SalaryCalculator state)
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        _functionState = state;
+</span></span><span style="display:flex;"><span>        _calculator = state;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 状态切换</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 设置工资计算器</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;param name=&#34;state&#34;&gt;&lt;/param&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ChangeState(FunctionState state)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetSalaryCalculator(SalaryCalculator state)
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        _functionState = state;
+</span></span><span style="display:flex;"><span>        _calculator = state;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 执行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 获取工资</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Execute()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> GetSalary()
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        _functionState.Action();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _calculator.GetSalary();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象状态类 - 功能开发</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象策略类 - 工资计算器</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FunctionState</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SalaryCalculator</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 执行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// 获得工资</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> Action();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">int</span> GetSalary();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 策划状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 策划计算器</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PlanningState</span> : FunctionState
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PlanningSalaryCalculator</span> : SalaryCalculator
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> GetSalary()
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是策划，策划文档已经审核完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是策划，工资 = 基本工资 + 流水提成&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">20000</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 程序状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 程序工资计算器</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EngineerState</span> : FunctionState
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EngineerSalaryCalculator</span> : SalaryCalculator
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> GetSalary()
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是程序，功能开发完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是程序，工资 = 基本工资&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">12000</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 具体状态类 - 测试状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 测试工资计算器</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestingState</span> : FunctionState
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestingSalaryCalculator</span> : SalaryCalculator
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Action()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> GetSalary()
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是测试，功能验收完毕。&#34;</span>);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;我是测试，工资 = 基本工资&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10000</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>实际运行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>PlanningState planningState = <span style="color:#66d9ef">new</span> PlanningState();
-</span></span><span style="display:flex;"><span>EngineerState engineerState = <span style="color:#66d9ef">new</span> EngineerState();
-</span></span><span style="display:flex;"><span>TestingState testingState = <span style="color:#66d9ef">new</span> TestingState();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>PlanningSalaryCalculator planningSalaryCalculator = <span style="color:#66d9ef">new</span> PlanningSalaryCalculator();
+</span></span><span style="display:flex;"><span>EngineerSalaryCalculator engineerSalaryCalculator = <span style="color:#66d9ef">new</span> EngineerSalaryCalculator();
+</span></span><span style="display:flex;"><span>TestingSalaryCalculator testingSalaryCalculator = <span style="color:#66d9ef">new</span> TestingSalaryCalculator();
+</span></span><span style="display:flex;"><span>Context context = <span style="color:#66d9ef">new</span> Context(planningSalaryCalculator);
+</span></span><span style="display:flex;"><span>context.GetSalary();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Context context = <span style="color:#66d9ef">new</span> Context(planningState);
-</span></span><span style="display:flex;"><span>context.Execute();
+</span></span><span style="display:flex;"><span>context.SetSalaryCalculator(engineerSalaryCalculator);
+</span></span><span style="display:flex;"><span>context.GetSalary();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>context.ChangeState(engineerState);
-</span></span><span style="display:flex;"><span>context.Execute();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>context.ChangeState(testingState);
-</span></span><span style="display:flex;"><span>context.Execute();
+</span></span><span style="display:flex;"><span>context.SetSalaryCalculator(testingSalaryCalculator);
+</span></span><span style="display:flex;"><span>context.GetSalary();
 </span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
