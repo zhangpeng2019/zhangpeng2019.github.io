@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设计模式-解释器模式 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">设计模式-解释器模式</h1>
+
+    <div class="tip">
+        <time datetime="2023-06-15 11:13:34 &#43;0800 CST">2023/06/15</time>
+        <span class="split">·</span>
+        <span> 362 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/csharp">CSharp</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/design-pattern">Design Pattern</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Interpreter解释器模式属于行为型设计模式，该模式定义其语法的表示以及使用该表示来解释该语言中的句子的解释器。</p>
+<h2 id="design-patterninterpreter">Design Pattern:Interpreter <a href="#design-patterninterpreter" class="anchor">🔗</a></h2><h3 id="基本介绍">基本介绍 <a href="#%e5%9f%ba%e6%9c%ac%e4%bb%8b%e7%bb%8d" class="anchor">🔗</a></h3><h4 id="构成">构成 <a href="#%e6%9e%84%e6%88%90" class="anchor">🔗</a></h4><ul>
+<li>Abstract Expression：抽象表达式类，定义解释器的接口，约定解释器的解释操作，其中定义Interpret接口，专门用来解释该解释器所要实现的功能。</li>
+<li>Terminal Expression：终端表达式类，实现了抽象表达式类所要求的接口，每一个终端符都有一个具体终端表达式与之相对应。例如：A = A1+A2，A1和A2为终端运算符。</li>
+<li>Nonterminal Expression：非终端表达式类，一般是语法中的运算符或者其他关键字，比如公式A=A1+A2中，“+”就是非终端符，解析“+”的解释器就是一个非终端符表达式。</li>
+<li>Context：上下文类，用来存放语法中各个终端符所对应的具体值，提供给解释器进行解析和解释的输入以及从中获得的输出，例如：A=A1+A2，A1赋值10，给A2赋值20。</li>
+<li>Client：解释器客户端类，构建一个抽象语法树，表示语法定义的语言中的特定句子。抽象语法树由 Nonterminal Expression 和 Terminal Expression 类的实例组装而成。</li>
+</ul>
+<h4 id="优点">优点 <a href="#%e4%bc%98%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>较高的可扩展性和可修改性，每个语法规则都会自动继承父类的属性和方法。通过这种方式，可以向子类添加更改和扩展，以增量方式修改、扩展和更改语法规则。</li>
+<li>语法规则易于实现： 此模式将语法类表示为语法树，其中每个节点表示一个语法规则。</li>
+</ul>
+<h4 id="缺点">缺点 <a href="#%e7%bc%ba%e7%82%b9" class="anchor">🔗</a></h4><ul>
+<li>对于复杂语法难以实现。</li>
+<li>执行效率较低。</li>
+</ul>
+<h3 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h3><p>C#中解释器模式的实例，我准备使用解释器模式实现一套加减乘除运算。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 抽象表达式类</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Expression</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">int</span> Interpret(Context context);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 终端表达式类 数字常量</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberExpression</span> : Expression
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">int</span> _number;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> NumberExpression(<span style="color:#66d9ef">int</span> number)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _number = number;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> Interpret(Context context)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _number;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 非终端表达式类 加</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddExpression</span> : Expression
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression2;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> AddExpression(Expression number1, Expression number2)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numberExpression1 = number1;
+</span></span><span style="display:flex;"><span>        _numberExpression2 = number2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> Interpret(Context context)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _numberExpression1.Interpret(context) + _numberExpression2.Interpret(context);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 非终端表达式类 减</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubtractExpression</span> : Expression
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression2;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> SubtractExpression(Expression number1, Expression number2)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numberExpression1 = number1;
+</span></span><span style="display:flex;"><span>        _numberExpression2 = number2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> Interpret(Context context)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _numberExpression1.Interpret(context) - _numberExpression2.Interpret(context);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 非终端表达式类 乘</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MultiplyExpression</span> : Expression
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression2;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> MultiplyExpression(Expression number1, Expression number2)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numberExpression1 = number1;
+</span></span><span style="display:flex;"><span>        _numberExpression2 = number2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> Interpret(Context context)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _numberExpression1.Interpret(context) * _numberExpression2.Interpret(context);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 非终端表达式类 除</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DivideExpression</span> : Expression
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression1;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Expression _numberExpression2;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> DivideExpression(Expression number1, Expression number2)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numberExpression1 = number1;
+</span></span><span style="display:flex;"><span>        _numberExpression2 = number2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">int</span> Interpret(Context context)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _numberExpression1.Interpret(context) / _numberExpression2.Interpret(context);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 上下文类</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">int</span>&gt; _numbers;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Context()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numbers = <span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">int</span>&gt;();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetNumber(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">int</span> number)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _numbers.Add(key, number);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> GetNumber(<span style="color:#66d9ef">string</span> key)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_numbers.ContainsKey(key))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> _numbers[key];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Main()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> context = <span style="color:#66d9ef">new</span> Context();
+</span></span><span style="display:flex;"><span>        context.SetNumber(<span style="color:#e6db74">&#34;Number1&#34;</span>, <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>        context.SetNumber(<span style="color:#e6db74">&#34;Number2&#34;</span>, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> expression = <span style="color:#66d9ef">new</span> AddExpression
+</span></span><span style="display:flex;"><span>            (
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> NumberExpression(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> MultiplyExpression
+</span></span><span style="display:flex;"><span>            (
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> NumberExpression(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> AddExpression
+</span></span><span style="display:flex;"><span>                (
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">new</span> NumberExpression(context.GetNumber(<span style="color:#e6db74">&#34;Number1&#34;</span>)),
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">new</span> NumberExpression(context.GetNumber(<span style="color:#e6db74">&#34;Number2&#34;</span>))
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>        expression.Interpret(context);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/06/15/designpattern-interpreter/">设计模式-解释器模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/13/designpattern-memento/">设计模式-备忘录模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/11/designpattern-visitor/">设计模式-访问者模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/09/designpattern-stragety/">设计模式-策略模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/07/designpattern-state/">设计模式-状态模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(23)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(3)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (23)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
