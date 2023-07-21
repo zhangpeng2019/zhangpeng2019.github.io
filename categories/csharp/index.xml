@@ -6,7 +6,58 @@
     <description>Recent content in CSharp on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Jun 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jun 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/categories/csharp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式-总结</title>
+      <link>https://www.chenqiaoqian.com/2023/06/17/designpattern-summary/</link>
+      <pubDate>Sat, 17 Jun 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/06/17/designpattern-summary/</guid>
+      <description>&lt;p&gt;设计模式的目的是为了提高代码重用性、可读性、可扩展性、可靠性以及使程序呈现高内聚、低耦合的特性。&lt;/p&gt;
+&lt;h2 id=&#34;设计模式总结&#34;&gt;设计模式总结 &lt;a href=&#34;#%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e6%80%bb%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;分类&#34;&gt;分类 &lt;a href=&#34;#%e5%88%86%e7%b1%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;创建型模式&#34;&gt;创建型模式 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e5%9e%8b%e6%a8%a1%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;创建型模式是处理对象创建的设计模式，试图根据实际情况来使用合适的方式创建对象。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单例模式(Singleton)&lt;/li&gt;
+&lt;li&gt;抽象工厂模式(Abstract Factory)&lt;/li&gt;
+&lt;li&gt;建造者模式(Builder)&lt;/li&gt;
+&lt;li&gt;工厂方法模式(Factory Method)&lt;/li&gt;
+&lt;li&gt;原型模式(Pototype)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;结构型模式&#34;&gt;结构型模式 &lt;a href=&#34;#%e7%bb%93%e6%9e%84%e5%9e%8b%e6%a8%a1%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;结构型模式是主要研究的是类和对象的组合的问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适配器模式(Adapter)&lt;/li&gt;
+&lt;li&gt;桥接模式(Bridge)&lt;/li&gt;
+&lt;li&gt;装饰器模式(Decorator)&lt;/li&gt;
+&lt;li&gt;组合模式(Composite)&lt;/li&gt;
+&lt;li&gt;外观模式(Facade)&lt;/li&gt;
+&lt;li&gt;享元模式(Flyweight)&lt;/li&gt;
+&lt;li&gt;代理模式(Proxy)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;行为型模式&#34;&gt;行为型模式 &lt;a href=&#34;#%e8%a1%8c%e4%b8%ba%e5%9e%8b%e6%a8%a1%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;行为型模式是用来识别对象之间的常用交流模式并加以实现。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模版方法模式(Template Method)&lt;/li&gt;
+&lt;li&gt;解释器模式(Interpreter)&lt;/li&gt;
+&lt;li&gt;备忘录模式(Memento)&lt;/li&gt;
+&lt;li&gt;访问者模式(Visitor)&lt;/li&gt;
+&lt;li&gt;策略模式(Stragety)&lt;/li&gt;
+&lt;li&gt;状态模式(State)&lt;/li&gt;
+&lt;li&gt;职责链模式(Chain of Responsibility)&lt;/li&gt;
+&lt;li&gt;中介者模式(Mediator)&lt;/li&gt;
+&lt;li&gt;观察者模式(Observer)&lt;/li&gt;
+&lt;li&gt;迭代器模式(Iterator)&lt;/li&gt;
+&lt;li&gt;命令模式(Command)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;设计模式七大原则&#34;&gt;设计模式七大原则 &lt;a href=&#34;#%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e4%b8%83%e5%a4%a7%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;单一职责原则&#34;&gt;单一职责原则 &lt;a href=&#34;#%e5%8d%95%e4%b8%80%e8%81%8c%e8%b4%a3%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;单一职责原则 (SRP：Single Responsibility Principle))： 它规定一个类应该只负责一项职责，以低耦合、高内聚为面向对象原则。相反职责过多，引起变化的原因就越多，这样就会导致职责依赖，大大损伤其内聚性和耦合度。&lt;/p&gt;
+&lt;h4 id=&#34;开闭原则&#34;&gt;开闭原则 &lt;a href=&#34;#%e5%bc%80%e9%97%ad%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;开闭原则(OCP：Open Closed Principle)：一个软件实体如类、模块和函数应该对扩展开放，对修改关闭。模块应尽量在不修改原代码的情况下进行扩展。&lt;/p&gt;
+&lt;h4 id=&#34;里氏替换原则&#34;&gt;里氏替换原则 &lt;a href=&#34;#%e9%87%8c%e6%b0%8f%e6%9b%bf%e6%8d%a2%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;里氏替换原则(LSP：Liskov Substitution Principle)：所有引用基类的地方必须能透明地使用其子类的对象，子类可以扩展父类的功能，但不能改变父类原有的功能。&lt;/p&gt;
+&lt;h4 id=&#34;依赖倒置原则&#34;&gt;依赖倒置原则 &lt;a href=&#34;#%e4%be%9d%e8%b5%96%e5%80%92%e7%bd%ae%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;依赖倒转原则(DIP：Dependency Inversion Principle)：程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程，这样就降低了客户与实现模块间的耦合。&lt;/p&gt;
+&lt;h4 id=&#34;接口隔离原则&#34;&gt;接口隔离原则 &lt;a href=&#34;#%e6%8e%a5%e5%8f%a3%e9%9a%94%e7%a6%bb%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;接口隔离原则(ISP：Interface Segregation Principle)：客户端不应该依赖它不需要的接口，即一个类对另一个类的依赖应该建立在最小的接口上，将接口拆分成几个独立的接口。&lt;/p&gt;
+&lt;h4 id=&#34;迪米特法则&#34;&gt;迪米特法则 &lt;a href=&#34;#%e8%bf%aa%e7%b1%b3%e7%89%b9%e6%b3%95%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;迪米特法则(LOD：Law of Demeter)，又称最少知道原则：一个实体应尽可能少地与其他实体发生相互作用。&lt;/p&gt;
+&lt;h4 id=&#34;合成复用原则&#34;&gt;合成复用原则 &lt;a href=&#34;#%e5%90%88%e6%88%90%e5%a4%8d%e7%94%a8%e5%8e%9f%e5%88%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;合成复用原则(CRP：Composite Reuse Principle)：尽量使用合成/聚合的方式，而不是使用继承。&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！
+感谢Erich Gamma、Richard Helm、Ralph Johnson 和 John Vlissides。
+感谢狂飙，&amp;ldquo;感谢&amp;quot;Piggyi。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>设计模式-解释器模式</title>
       <link>https://www.chenqiaoqian.com/2023/06/15/designpattern-interpreter/</link>
