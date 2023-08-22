@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity Dots概念与原理 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity Dots概念与原理</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-02 11:13:34 &#43;0800 CST">2023/07/02</time>
+        <span class="split">·</span>
+        <span> 673 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/dots">Dots</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>DOTS是指可以利用多核处理器来实现数据的并行处理并提高Unity项目的性能。</p>
+<h2 id="dots相关概念与原理">Dots相关概念与原理 <a href="#dots%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5%e4%b8%8e%e5%8e%9f%e7%90%86" class="anchor">🔗</a></h2><h3 id="dots">Dots <a href="#dots" class="anchor">🔗</a></h3><p>DOTS（Data-Oriented Technology Stack）是一种数据驱动的技术堆栈，旨在提高Unity游戏引擎的性能和可伸缩性。主要包含以下三个部分：</p>
+<ul>
+<li><strong>Brust</strong>：Brust是一种高性能编译器，专门用于将C#代码编译成本机代码，从而提高游戏性能。它能够分析C#代码并生成最佳的本机代码，减少了虚拟机的开销。</li>
+<li><strong>Job System</strong>：JobSystem是一种可以极大提高游戏性能的工具，可以让开发人员使用并行运算来处理数据。它允许在多个线程上同时执行代码，从而使游戏更加流畅和轻松处理计算密集型任务。</li>
+<li><strong>Entity Component System</strong>：ECS（实体组件系统）是一种有别于传统OOP（面向对象思想）的编程模式，其编程模式对CPU Catch友好，因此可提升CPU效率。</li>
+</ul>
+<p>注意事项(理解误区)：</p>
+<ul>
+<li>DOTS分为三个组件：ECS、JobSystem、Burst 三个组件可相互独立使用，并非必须捆绑使用。(区别在于单个组件的扩展项可能在其他的组件中，故而有可能会加入进来)</li>
+<li>JobSystem无需配合ECS使用，各种需要大量或并行计算的地方都可以使用。</li>
+<li>Burst无需配合ECS使用，各种计算密集的同步方法也可以使用。</li>
+<li>使用ECS不代表整个项目必须全用ECS来编写，可根据项目需求将ECS和传统面对对象方式组合使用。</li>
+</ul>
+<h3 id="brust">Brust <a href="#brust" class="anchor">🔗</a></h3><h4 id="概念">概念 <a href="#%e6%a6%82%e5%bf%b5" class="anchor">🔗</a></h4><ul>
+<li>
+<p><strong>Burst Compiler</strong>：是Unity的一种编译器，它可以将C#代码编译为高效的本地代码，从而提高Unity应用程序的性能。Burst Compiler的优势在于它可以自动将C#代码转换为本地代码，并且可以使用SIMD指令和多线程技术来优化代码的性能。Burst在UnityEditor模式下采用JIT即时编译，在构建完成后运行的应用中使用AOT静态编译。</p>
+<p><img src="/2023-07-02-unity-dots-concepts-and-principles/burst.jpg" alt=""></p>
+</li>
+<li>
+<p><strong>SIMD</strong>：Single Instruction Multiple Data，单指令多数据流，可以使用一条指令同时完成多个数据的运算操作。传统的指令架构是SISD就是单指令单数据流，每条指令只能对一个数据执行操作。
+<img src="/2023-07-02-unity-dots-concepts-and-principles/simd.jpg" alt=""></p>
+</li>
+<li>
+<p><strong>JIT</strong>：(即时编译Just In Time)，程序在运行过程中，讲CIL的byte code转译为目标平台的原生指令。
+Unity的Scripting Backend的Mono模式就是采用JIT编译。
+<img src="/2023-07-02-unity-dots-concepts-and-principles/jit.jpg" alt=""></p>
+</li>
+<li>
+<p><strong>AOT</strong>：(提前编译Ahead Of Time)，程序运行前，将exe或dll文件中的CIL的byte code转译为目标平台的原生指令并存储。
+Unity的Scripting Backend的IL2CPP模式就是采用AOT编译。
+<img src="/2023-07-02-unity-dots-concepts-and-principles/aot.jpg" alt=""></p>
+</li>
+</ul>
+<h4 id="安装">安装 <a href="#%e5%ae%89%e8%a3%85" class="anchor">🔗</a></h4><p>在Unity编辑器中，可以在Package Manager中搜索Burst，然后点击安装即可。</p>
+<h4 id="设置">设置 <a href="#%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h4><p>在Unity编辑器中，Edit &gt; Player Settings &gt; Burst AOT Settings。
+<img src="/2023-07-02-unity-dots-concepts-and-principles/burst_setting.png" alt=""></p>
+<h4 id="实例">实例 <a href="#%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h4><p>在C#代码中使用Burst Attribute来标记要使用Burst编译的方法或类。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#a6e22e">[BurstCompile]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Add(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a + b;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#a6e22e">[BurstCompile]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BurstCompileJob</span> : IJob
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Execute()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="jobsystem">JobSystem <a href="#jobsystem" class="anchor">🔗</a></h3><h4 id="概念-1">概念 <a href="#%e6%a6%82%e5%bf%b5-1" class="anchor">🔗</a></h4><ul>
+<li>
+<p><strong>JobSystem</strong>：管理一组多核中的工作线程(Work Thread)，为避免上下文切换通常一个逻辑配一个工作线程，JobSystem 持有一个 Job 队列，工作线程从该队列中获取 Job 执行，JobSystem 执行时复制而非引用数据，避免了数据竞争，但 JobSystem 只能使用memcpy复制 blittable数据。。</p>
+</li>
+<li>
+<p><strong>Job</strong>：一个job就是一个任务单位，一般在Worker Thread上执行(也有情况在Main Thread上执行)，类似于可以在不同的thread上执行function一样，但是Job是一个struct。Job会接收参数并对数据进行操作，其行为方式类似于方法调用。Job可以是独立的，也可依赖其他Job完成之后才能运行。</p>
+</li>
+<li>
+<p><strong>SafetySystem</strong>：多线程编程中，为了避免出现竞争条件(不同线程同时访问一份数据)，在给Job输送数据的时候，一律都是值类型，来避免不同thread使用值类型去修改同一份数据，减少出现竞争条件的可能性。</p>
+</li>
+<li>
+<p><strong>Native Container</strong>：NativeContainer是一种托管的值类型，为原生内存提供一种相对安全的C#封装。它包括一个指向非托管分配内存的指针。当和Unity C# Job System一起使用时，一个NativeContainer使得一个Job可以访问和主线程共享的数据，而不是在一份拷贝数据上工作。
+Job内部只能访问blittable类型的数据和NativeContainer容器，并且不应访问静态数据。
+Unity 自带 NativeContainer类型为 NativeArray，ECS 包又扩展了NativeList、NativeHashMap、NativeMultiHashMap和NativeQueue。</p>
+</li>
+<li>
+<p><strong>NativeContainer Allocator</strong>：每个Native Container都需要一个Allocator，Allocator代表NativeContainer的生命周期。
+Allocator.Temp：分配速度最快，适用于在一帧内的主线程执行逻辑，不能将此类容器传递给Job使用。
+Allocator.TempJob：分配速度稍慢，适用于生命周期最长四帧的逻辑，并具有线程安全性，大多数Job使用的容器是此类型的。
+Allocator.Persistent：分配速度最慢，并且可以在整个游戏生命周期一直存在，适用于持续时间长的Job。
+所有的NativeContainer容器作为托管类型都需要被手动释放，使用NativeContainer.Dispose()函数进行释放。</p>
+</li>
+</ul>
+<h4 id="实例-1">实例 <a href="#%e5%ae%9e%e4%be%8b-1" class="anchor">🔗</a></h4><ul>
+<li>IJob：简单的任务单位，返回一个JobHandle，可以实现依赖运行。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunJob</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt; _originalData;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt; _outputData;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> JobHandle _jobHandle;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Run()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _originalData = <span style="color:#66d9ef">new</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt;(<span style="color:#ae81ff">2</span>, Allocator.TempJob);
+</span></span><span style="display:flex;"><span>        _originalData[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        _originalData[<span style="color:#ae81ff">1</span>] = <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        _outputData = <span style="color:#66d9ef">new</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt;(<span style="color:#ae81ff">1</span>, Allocator.TempJob);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        BurstCompileJob job = <span style="color:#66d9ef">new</span> BurstCompileJob
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            OriginalData = _originalData,
+</span></span><span style="display:flex;"><span>            OutPutData = _outputData
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        _jobHandle = job.Schedule();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Ensure the job has completed	确保任务已经完成</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// It is not recommended to Complete a job immediately, 不建议立即完成任务</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// since that gives you no actual parallelism. 因为没有实际的并行性</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// You optimally want to schedule a job early in a frame and then wait for it later in the frame.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 你最好在一个帧的早期调度一个作业，然后在该帧的后期等待它。</span>
+</span></span><span style="display:flex;"><span>        _jobHandle.Complete();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Debug.Log(_outputData[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Tick()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_jobHandle.IsCompleted)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _jobHandle.Complete();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Debug.Log(_outputData[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//依赖执行</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> DependenciesRun()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        BurstCompileJob job1 = <span style="color:#66d9ef">new</span> BurstCompileJob();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> jobHandle1 = job1.Schedule();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        BurstCompileJob job2 = <span style="color:#66d9ef">new</span> BurstCompileJob();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> jobHandle2 = job2.Schedule(jobHandle1);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        jobHandle2.Complete();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[BurstCompile]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BurstCompileJob</span> : IJob
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [ReadOnly]</span> <span style="color:#66d9ef">public</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt; OriginalData;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [WriteOnly]</span> <span style="color:#66d9ef">public</span> NativeArray&lt;<span style="color:#66d9ef">int</span>&gt; OutPutData;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Execute()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        OutPutData[<span style="color:#ae81ff">0</span>] = OriginalData[<span style="color:#ae81ff">0</span>] + OriginalData[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>IJobParallelFor：并行任务，当一个Job中同时存在大量重复计算的时候使用。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> _worldEdgeSize = <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> NativeArray&lt;Vector3&gt; _outputs;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> NativeArray&lt;Vector3&gt; _originals;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> JobHandle _parallelJobHandle;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Initial()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    _outputs = <span style="color:#66d9ef">new</span> NativeArray&lt;Vector3&gt;(_worldEdgeSize * _worldEdgeSize * _worldEdgeSize, Allocator.TempJob);
+</span></span><span style="display:flex;"><span>    _originals = <span style="color:#66d9ef">new</span> NativeArray&lt;Vector3&gt;(_worldEdgeSize * _worldEdgeSize * _worldEdgeSize, Allocator.TempJob);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> index = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> x = <span style="color:#ae81ff">0</span>; x &lt; _worldEdgeSize; x++)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> y = <span style="color:#ae81ff">0</span>; y &lt; _worldEdgeSize; y++)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> z = <span style="color:#ae81ff">0</span>; z &lt; _worldEdgeSize; z++)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                _originals[index] = <span style="color:#66d9ef">new</span> Vector3(x, y, z) * <span style="color:#ae81ff">5f</span> - <span style="color:#66d9ef">new</span> Vector3(_worldEdgeSize * <span style="color:#ae81ff">5f</span> * <span style="color:#ae81ff">0.5f</span>, _worldEdgeSize * <span style="color:#ae81ff">5f</span> * <span style="color:#ae81ff">0.5f</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                index++;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//直接运行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Run()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; _originals.Length; i++)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> sinx = Mathf.Sin(<span style="color:#ae81ff">1f</span> * Time.time + Mathf.PerlinNoise(<span style="color:#ae81ff">0.3f</span> * _originals[i].x + Time.time, <span style="color:#ae81ff">0.3f</span> * _originals[i].x + Time.time));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> siny = Mathf.Cos(<span style="color:#ae81ff">1f</span> * Time.time + Mathf.PerlinNoise(<span style="color:#ae81ff">0.3f</span> * _originals[i].y + Time.time, <span style="color:#ae81ff">0.3f</span> * _originals[i].y + Time.time));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> sinz = Mathf.Sin(<span style="color:#ae81ff">1f</span> * Time.time + Mathf.PerlinNoise(<span style="color:#ae81ff">0.3f</span> * _originals[i].z + Time.time, <span style="color:#ae81ff">0.3f</span> * _originals[i].z + Time.time));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//job并行运行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ParallelJobRun()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> paralleJob = <span style="color:#66d9ef">new</span> BurstCompileJobParallelFor
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        ElapsedTime = Time.time,
+</span></span><span style="display:flex;"><span>        OriginalData = _originals,
+</span></span><span style="display:flex;"><span>        OutPutData = _outputs
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    _parallelJobHandle = paralleJob.Schedule(_originals.Length, <span style="color:#ae81ff">1</span>, _parallelJobHandle);
+</span></span><span style="display:flex;"><span>    _parallelJobHandle.Complete();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>运行结果：
+<img src="/2023-07-02-unity-dots-concepts-and-principles/jobsystem.png" alt=""></li>
+</ul>
+<h3 id="ecs">ECS <a href="#ecs" class="anchor">🔗</a></h3><h4 id="概念-2">概念 <a href="#%e6%a6%82%e5%bf%b5-2" class="anchor">🔗</a></h4><ul>
+<li>Entity：不代表任何意义的实体，仅包含一个 ID(代表包含哪些component，没有任何数据和行为)。</li>
+<li>Component：只包含数据的组件。</li>
+<li>System：处理数据的系统，负责处理 Entity 和Component 之间的交互。</li>
+</ul>
+<h4 id="原理">原理 <a href="#%e5%8e%9f%e7%90%86" class="anchor">🔗</a></h4><p>传统的面向对象设计对CPU从Catch读取数据，往往并不需要一个对象的全部数据，比如想操控一个GameObject的Position数据却要读取整个GameObject和其继承的MonoBehaviour的数据，大量的不需要的数据被写入CPU Catch，就会造成频繁的Catch Miss；此外托管类型的存储空间排列分散，寻址到所需的数据也需要一定时间，相比ECS在System处理数据时只会读取需要的数据。</p>
+<p><img src="/2023-07-02-unity-dots-concepts-and-principles/ecs_read.png" alt=""></p>
+<h4 id="entities">Entities <a href="#entities" class="anchor">🔗</a></h4><p>Entitas是一个运行效率高的轻量级C# Entity-Component-System(ECS)框架，专门为unity订制。提供内部缓存和快速的组件访问。它经过精心设计，可以在垃圾收集环境中发挥最佳作用。
+在Unity编辑器中，可以在Package Manager中搜索Entities，然后点击安装即可。
+<strong>具体自己去实践。</strong></p>
+<h4 id="实例-2">实例 <a href="#%e5%ae%9e%e4%be%8b-2" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 单独实体</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 建立关联component的ID</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Entity</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddComponent&lt;T&gt;() <span style="color:#66d9ef">where</span> T : IComponent
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> T GetComponent&lt;T&gt;() <span style="color:#66d9ef">where</span> T : IComponent
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">default</span>(T);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IComponent</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// UI组件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UI</span> : IComponent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 三消组件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Match</span> : IComponent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 城建组件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Town</span> : IComponent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// 三消项目system</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Match3System</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Work(List&lt;IComponent&gt; components)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MatchGame</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//entity创建只做演示</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Entity _uiEntity;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Entity _matchEntity;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> Entity _townEntity;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> MatchGame()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _uiEntity = <span style="color:#66d9ef">new</span> Entity();
+</span></span><span style="display:flex;"><span>        _uiEntity.AddComponent&lt;UI&gt;();
+</span></span><span style="display:flex;"><span>        _matchEntity = <span style="color:#66d9ef">new</span> Entity();
+</span></span><span style="display:flex;"><span>        _matchEntity.AddComponent&lt;Match&gt;();
+</span></span><span style="display:flex;"><span>        _townEntity = <span style="color:#66d9ef">new</span> Entity();
+</span></span><span style="display:flex;"><span>        _townEntity.AddComponent&lt;Town&gt;();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//只做演示</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Main()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//开发hs版本三消 ui+三消+城建</span>
+</span></span><span style="display:flex;"><span>        List&lt;IComponent&gt; hsMatch = <span style="color:#66d9ef">new</span> List&lt;IComponent&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _uiEntity.GetComponent&lt;UI&gt;(),
+</span></span><span style="display:flex;"><span>            _matchEntity.GetComponent&lt;Match&gt;(),
+</span></span><span style="display:flex;"><span>            _townEntity.GetComponent&lt;Town&gt;()
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> matchSystem1 = <span style="color:#66d9ef">new</span> Match3System();
+</span></span><span style="display:flex;"><span>        matchSystem1.Work(hsMatch);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//开发rm版本三消 ui+三消</span>
+</span></span><span style="display:flex;"><span>        List&lt;IComponent&gt; rmMatch = <span style="color:#66d9ef">new</span> List&lt;IComponent&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _uiEntity.GetComponent&lt;UI&gt;(),
+</span></span><span style="display:flex;"><span>            _matchEntity.GetComponent&lt;Match&gt;()
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> matchSystem2 = <span style="color:#66d9ef">new</span> Match3System();
+</span></span><span style="display:flex;"><span>        matchSystem2.Work(rmMatch);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/02/dots-concepts-and-principles/">Unity Dots概念与原理</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/01/buildin-renderpipeline-overview/">Unity内置渲染管线-概述</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/17/designpattern-summary/">设计模式-总结</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/15/designpattern-interpreter/">设计模式-解释器模式</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/13/designpattern-memento/">设计模式-备忘录模式</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(5)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

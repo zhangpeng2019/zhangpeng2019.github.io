@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.chenqiaoqian.com/categories/</loc>
-    <lastmod>2023-06-17T11:13:34+08:00</lastmod>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/dots/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/post/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/categories/unity/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/2023/07/02/dots-concepts-and-principles/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/</loc>
+    <lastmod>2023-07-02T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/tags/buildin-render-pipeline/</loc>
+    <lastmod>2023-07-01T11:13:34+08:00</lastmod>
+  </url><url>
+    <loc>https://www.chenqiaoqian.com/2023/07/01/buildin-renderpipeline-overview/</loc>
+    <lastmod>2023-07-01T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/categories/csharp/</loc>
     <lastmod>2023-06-17T11:13:34+08:00</lastmod>
@@ -11,16 +35,7 @@
     <loc>https://www.chenqiaoqian.com/tags/design-pattern/</loc>
     <lastmod>2023-06-17T11:13:34+08:00</lastmod>
   </url><url>
-    <loc>https://www.chenqiaoqian.com/post/</loc>
-    <lastmod>2023-06-17T11:13:34+08:00</lastmod>
-  </url><url>
-    <loc>https://www.chenqiaoqian.com/tags/</loc>
-    <lastmod>2023-06-17T11:13:34+08:00</lastmod>
-  </url><url>
     <loc>https://www.chenqiaoqian.com/2023/06/17/designpattern-summary/</loc>
-    <lastmod>2023-06-17T11:13:34+08:00</lastmod>
-  </url><url>
-    <loc>https://www.chenqiaoqian.com/</loc>
     <lastmod>2023-06-17T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/2023/06/15/designpattern-interpreter/</loc>
@@ -93,9 +108,6 @@
     <lastmod>2023-04-19T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/tags/notifications/</loc>
-    <lastmod>2023-04-06T11:13:34+08:00</lastmod>
-  </url><url>
-    <loc>https://www.chenqiaoqian.com/categories/unity/</loc>
     <lastmod>2023-04-06T11:13:34+08:00</lastmod>
   </url><url>
     <loc>https://www.chenqiaoqian.com/2023/03/30/mobilenotifications-android/</loc>
