@@ -74,7 +74,7 @@
         <p>DOTS是指可以利用多核处理器来实现数据的并行处理并提高Unity项目的性能。</p>
 <h2 id="dots相关概念与原理">Dots相关概念与原理 <a href="#dots%e7%9b%b8%e5%85%b3%e6%a6%82%e5%bf%b5%e4%b8%8e%e5%8e%9f%e7%90%86" class="anchor">🔗</a></h2><h3 id="dots">Dots <a href="#dots" class="anchor">🔗</a></h3><p>DOTS（Data-Oriented Technology Stack）是一种数据驱动的技术堆栈，旨在提高Unity游戏引擎的性能和可伸缩性。主要包含以下三个部分：</p>
 <ul>
-<li><strong>Brust</strong>：Brust是一种高性能编译器，专门用于将C#代码编译成本机代码，从而提高游戏性能。它能够分析C#代码并生成最佳的本机代码，减少了虚拟机的开销。</li>
+<li><strong>Burst</strong>：Burst是一种高性能编译器，专门用于将C#代码编译成本机代码，从而提高游戏性能。它能够分析C#代码并生成最佳的本机代码，减少了虚拟机的开销。</li>
 <li><strong>Job System</strong>：JobSystem是一种可以极大提高游戏性能的工具，可以让开发人员使用并行运算来处理数据。它允许在多个线程上同时执行代码，从而使游戏更加流畅和轻松处理计算密集型任务。</li>
 <li><strong>Entity Component System</strong>：ECS（实体组件系统）是一种有别于传统OOP（面向对象思想）的编程模式，其编程模式对CPU Catch友好，因此可提升CPU效率。</li>
 </ul>
@@ -85,7 +85,7 @@
 <li>Burst无需配合ECS使用，各种计算密集的同步方法也可以使用。</li>
 <li>使用ECS不代表整个项目必须全用ECS来编写，可根据项目需求将ECS和传统面对对象方式组合使用。</li>
 </ul>
-<h3 id="brust">Brust <a href="#brust" class="anchor">🔗</a></h3><h4 id="概念">概念 <a href="#%e6%a6%82%e5%bf%b5" class="anchor">🔗</a></h4><ul>
+<h3 id="burst">Burst <a href="#burst" class="anchor">🔗</a></h3><h4 id="概念">概念 <a href="#%e6%a6%82%e5%bf%b5" class="anchor">🔗</a></h4><ul>
 <li>
 <p><strong>Burst Compiler</strong>：是Unity的一种编译器，它可以将C#代码编译为高效的本地代码，从而提高Unity应用程序的性能。Burst Compiler的优势在于它可以自动将C#代码转换为本地代码，并且可以使用SIMD指令和多线程技术来优化代码的性能。Burst在UnityEditor模式下采用JIT即时编译，在构建完成后运行的应用中使用AOT静态编译。</p>
 <p><img src="/2023-07-02-unity-dots-concepts-and-principles/burst.jpg" alt=""></p>
@@ -263,7 +263,7 @@ Allocator.Persistent：分配速度最慢，并且可以在整个游戏生命周
 <li>Component：只包含数据的组件。</li>
 <li>System：处理数据的系统，负责处理 Entity 和Component 之间的交互。</li>
 </ul>
-<h4 id="原理">原理 <a href="#%e5%8e%9f%e7%90%86" class="anchor">🔗</a></h4><p>传统的面向对象设计对CPU从Catch读取数据，往往并不需要一个对象的全部数据，比如想操控一个GameObject的Position数据却要读取整个GameObject和其继承的MonoBehaviour的数据，大量的不需要的数据被写入CPU Catch，就会造成频繁的Catch Miss；此外托管类型的存储空间排列分散，寻址到所需的数据也需要一定时间，相比ECS在System处理数据时只会读取需要的数据。</p>
+<h4 id="原理">原理 <a href="#%e5%8e%9f%e7%90%86" class="anchor">🔗</a></h4><p>传统的面向对象设计对CPU从Cache读取数据，往往并不需要一个对象的全部数据，比如想操控一个GameObject的Position数据却要读取整个GameObject和其继承的MonoBehaviour的数据，大量的不需要的数据被写入CPU Catch，就会造成频繁的Catch Miss；此外托管类型的存储空间排列分散，寻址到所需的数据也需要一定时间，相比ECS在System处理数据时只会读取需要的数据。</p>
 <p><img src="/2023-07-02-unity-dots-concepts-and-principles/ecs_read.png" alt=""></p>
 <h4 id="entities">Entities <a href="#entities" class="anchor">🔗</a></h4><p>Entitas是一个运行效率高的轻量级C# Entity-Component-System(ECS)框架，专门为unity订制。提供内部缓存和快速的组件访问。它经过精心设计，可以在垃圾收集环境中发挥最佳作用。
 在Unity编辑器中，可以在Package Manager中搜索Entities，然后点击安装即可。
