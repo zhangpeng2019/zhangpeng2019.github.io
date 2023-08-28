@@ -197,7 +197,7 @@ Allocator.Persistent：分配速度最慢，并且可以在整个游戏生命周
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    _parallelJobHandle = paralleJob.Schedule(_originals.Length, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, _parallelJobHandle);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    _parallelJobHandle.Complete();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;运行结果：
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;运行结果：上图为主线程直接运行，执行时间565ms；下图为并行到Job线程里执行，执行时间161ms。
 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-02-unity-dots-concepts-and-principles/jobsystem.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;ecs&#34;&gt;ECS &lt;a href=&#34;#ecs&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;概念-2&#34;&gt;概念 &lt;a href=&#34;#%e6%a6%82%e5%bf%b5-2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
@@ -342,7 +342,8 @@ Allocator.Persistent：分配速度最慢，并且可以在整个游戏生命周
 &lt;li&gt;灯光、材质参数：shader、材质信息和灯光信息。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-batch-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

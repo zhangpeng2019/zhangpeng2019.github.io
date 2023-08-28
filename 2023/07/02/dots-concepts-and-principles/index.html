@@ -255,7 +255,7 @@ Allocator.Persistent：分配速度最慢，并且可以在整个游戏生命周
 </span></span><span style="display:flex;"><span>    _parallelJobHandle = paralleJob.Schedule(_originals.Length, <span style="color:#ae81ff">1</span>, _parallelJobHandle);
 </span></span><span style="display:flex;"><span>    _parallelJobHandle.Complete();
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>运行结果：
+</span></span></code></pre></div>运行结果：上图为主线程直接运行，执行时间565ms；下图为并行到Job线程里执行，执行时间161ms。
 <img src="/2023-07-02-unity-dots-concepts-and-principles/jobsystem.png" alt=""></li>
 </ul>
 <h3 id="ecs">ECS <a href="#ecs" class="anchor">🔗</a></h3><h4 id="概念-2">概念 <a href="#%e6%a6%82%e5%bf%b5-2" class="anchor">🔗</a></h4><ul>
