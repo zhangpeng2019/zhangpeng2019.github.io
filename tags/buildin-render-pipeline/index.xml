@@ -14,40 +14,98 @@
       
       <guid>https://www.chenqiaoqian.com/2023/07/01/buildin-renderpipeline-overview/</guid>
       <description>&lt;p&gt;渲染是指以软件由模型生成图像的过程。模型是用语言或者数据结构进行严格定义的三维物体或虚拟场景的描述，它包括几何、视点、纹理、照明和阴影等信息。图像是数字图像或者位图图像。彩现用于描述：计算视频编辑软件中的效果，以生成最终视频的输出过程。&lt;/p&gt;
-&lt;h2 id=&#34;内置渲染管线概述&#34;&gt;内置渲染管线概述 &lt;a href=&#34;#%e5%86%85%e7%bd%ae%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf%e6%a6%82%e8%bf%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;渲染管线是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线接受一组3D坐标，然后把它们转变为屏幕上的有色2D像素输出。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-overview-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;内置渲染管线由两部分组成CPU应用程序端渲染逻辑和GPU渲染管线。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-struction-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;内置管线渲染流程图，如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-detail-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;cpu应用程序阶段&#34;&gt;CPU应用程序阶段 &lt;a href=&#34;#cpu%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e9%98%b6%e6%ae%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;剔除Culling
-&lt;ul&gt;
+&lt;h2 id=&#34;内置渲染管线概述&#34;&gt;内置渲染管线概述 &lt;a href=&#34;#%e5%86%85%e7%bd%ae%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf%e6%a6%82%e8%bf%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;渲染管线是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线接受一组3D坐标，然后把它们转变为屏幕上的有色2D像素输出。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-overview-1.png&#34; alt=&#34;&#34;&gt;
+内置渲染管线由两部分组成CPU应用程序端渲染逻辑和GPU渲染管线。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-struction-2.png&#34; alt=&#34;&#34;&gt;
+内置管线渲染流程图，如下：
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-detail-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cpu应用程序阶段&#34;&gt;CPU应用程序阶段 &lt;a href=&#34;#cpu%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e9%98%b6%e6%ae%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;剔除culling&#34;&gt;剔除Culling &lt;a href=&#34;#%e5%89%94%e9%99%a4culling&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;视锥体剔除(Frustum Culling)，视锥体是指由摄像机的FOV、Near和Far组成的金字塔形状的立方体，场景里的物体和视锥体进行碰撞检测，如有相交则说明物体在视锥体范围内，需要进行绘制，反之剔除，不进行绘制。(碰撞检测可以通过给场景里的物体叫Box来进行优化)。&lt;/li&gt;
 &lt;li&gt;层级剔除(Layer Culling Mask)，对物体进行层级设置，然后在摄像机处进行层级筛选。&lt;/li&gt;
 &lt;li&gt;遮挡剔除(Occlusion Culling)，剔除场景中完全被遮挡住的物体，防止此类物体进行渲染计算。&lt;/li&gt;
 &lt;li&gt;其他&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;排序Sort
-&lt;ul&gt;
+&lt;h4 id=&#34;排序sort&#34;&gt;排序Sort &lt;a href=&#34;#%e6%8e%92%e5%ba%8fsort&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;渲染队列排序RenderQueue，数值越小则越靠前渲染。&lt;/li&gt;
 &lt;li&gt;不透明队列(RenderQueue &amp;lt; 2500)，按摄像机距离&lt;strong&gt;从前到后&lt;/strong&gt;排序。&lt;/li&gt;
-&lt;li&gt;半透明队列(RenderQueue &amp;gt; 2500)，按摄像机距离&lt;strong&gt;从后往前&lt;/strong&gt;排序。&lt;/li&gt;
+&lt;li&gt;半透明队列(RenderQueue &amp;gt; 2500)，按摄像机距离&lt;strong&gt;从后往前&lt;/strong&gt;排序。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-sort-4.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-sort-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;打包数据发给CPU
-&lt;ul&gt;
+&lt;h4 id=&#34;打包数据发给cpu&#34;&gt;打包数据发给CPU &lt;a href=&#34;#%e6%89%93%e5%8c%85%e6%95%b0%e6%8d%ae%e5%8f%91%e7%bb%99cpu&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;模型信息：顶点坐标、法线、UV、切线、顶点色和索引列表。&lt;/li&gt;
 &lt;li&gt;变换矩阵：世界变换矩阵、摄像机位置以及fov等参数。&lt;/li&gt;
 &lt;li&gt;灯光、材质参数：shader、材质信息和灯光信息。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
+&lt;p&gt;模型文件数据：
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-batch-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gpu渲染阶段&#34;&gt;GPU渲染阶段 &lt;a href=&#34;#gpu%e6%b8%b2%e6%9f%93%e9%98%b6%e6%ae%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;GPU渲染流程如下：
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-gpu-process-1.png&#34; alt=&#34;&#34;&gt;
+注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型空间顶点：3D建模软件里面的模型坐标；&lt;/li&gt;
+&lt;li&gt;图元转配置：对顶点进行连线，组成三角形。&lt;/li&gt;
+&lt;li&gt;光栅化：对每个图元插值生成片段，可以理解成没有上色的像素。&lt;/li&gt;
+&lt;li&gt;片元着色：对片元进行上色。&lt;/li&gt;
+&lt;li&gt;输出合并：处理前后遮挡关系，以及混合合并。
+Shader与GPU渲染管线对应关系：
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-gpu-process-3.png&#34; alt=&#34;&#34;&gt;
+对应关系：&lt;/li&gt;
+&lt;li&gt;第一阶段，告诉CPU端，需要顶点坐标和UV。&lt;/li&gt;
+&lt;li&gt;第二阶段，进行顶点shader，所有的顶点都会调用，来完成投影成像的操作(模型空间-&amp;gt;裁剪空间)。&lt;/li&gt;
+&lt;li&gt;第三阶段，顶点shader输出，裁剪空间下的顶点坐标和UV等等，提供给片元shader使用。&lt;/li&gt;
+&lt;li&gt;第四阶段，所有片元都会调用，进行着色。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-batch-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+&lt;h4 id=&#34;顶点shader&#34;&gt;顶点Shader &lt;a href=&#34;#%e9%a1%b6%e7%82%b9shader&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;将顶点坐标从模型空间变换为裁剪空间。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-gpu-process-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型空间：建模软件坐标系。&lt;/li&gt;
+&lt;li&gt;世界空间：游戏引擎坐标系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;硬件操作阶段&#34;&gt;硬件操作阶段 &lt;a href=&#34;#%e7%a1%ac%e4%bb%b6%e6%93%8d%e4%bd%9c%e9%98%b6%e6%ae%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;硬件操作阶段有叫光栅化阶段，发生在平台的硬件层面，其行为不可操作。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-gpu-process-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;裁剪操作：物体转换到裁剪空间后，根据裁剪空间大小，对范围外的进行裁剪。&lt;/li&gt;
+&lt;li&gt;NDC：将物体坐标坐标归一化，(0,0) -&amp;gt;(1,1)。&lt;/li&gt;
+&lt;li&gt;背面剔除：对背对摄像机的三角面剔除。&lt;/li&gt;
+&lt;li&gt;屏幕坐标：将NDC坐标转换为屏幕坐标的像素坐标。&lt;/li&gt;
+&lt;li&gt;图元装配：根据顶点生成三角形片元。&lt;/li&gt;
+&lt;li&gt;光栅化：忽略Z坐标，根据X、Y坐标对片元进行颜色插值，光栅化会产生锯齿。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-hard-process-1.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;片元shader&#34;&gt;片元Shader &lt;a href=&#34;#%e7%89%87%e5%85%83shader&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;重要任务是上色，主要通过纹理技术(Texturing)和光照计算(Lighting)。&lt;/p&gt;
+&lt;h5 id=&#34;纹理技术&#34;&gt;纹理技术 &lt;a href=&#34;#%e7%ba%b9%e7%90%86%e6%8a%80%e6%9c%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;纹理采样：根据纹理坐标，在纹素地址中查找对应的颜色值。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-1.png&#34; alt=&#34;&#34;&gt;
+纹理过滤机制：用来解决纹理失真所采用的手段。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-2.png&#34; alt=&#34;&#34;&gt;
+Point：最容易理解的一个。由于每个像素的纹理坐标，刚好对应贴图上的一个采样点纹素，所以最近点采样就是直接取最接近的纹素进行采样。如果纹理大小和被贴合的三维模型大小差不多时，这种方法会比较有效和快捷，但是如果大小不同，纹理就会变得矮胖、变形或者模糊，容易出现块状的像素，使得处理出的效果很差。
+Bilinear：双线性过滤以像素对应的纹理坐标为中心，采集这个坐标周围的4个纹素的像素，再取平均，最后以这个平均值作为采样值。这样过滤后的像素则会更加平滑，至少不会出现块状像素了。
+但双线性过滤只作用于一个MipMap Level，它选取纹素和像素之间大小最接近的那一层MipMap进行采样。这意味着如果和像素匹配大小的纹素大小在两层	MipMap Level之间的话，双线性过滤的效果就有限了，因此有了三线性过滤。
+Trilinear：三线性过滤以双线性过滤为基础。会对像素大小于纹素大小最接近的两层MipMap Level分别进行双线性过滤，然后再对两层得到的结果生成线性插值。在各向同性的情况下，三线性过滤能获得很不错的效果。
+Minmap：为了解决纹理大小和图像大小不匹配，所产生的问题。&lt;/p&gt;
+&lt;p&gt;纹理寻址模式：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;光照计算&#34;&gt;光照计算 &lt;a href=&#34;#%e5%85%89%e7%85%a7%e8%ae%a1%e7%ae%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;光照组成：直接光照和间接光照。&lt;/p&gt;
+&lt;p&gt;光照模型：Phong光照模型。基本组成：直接光漫反射+直接光镜面反射+间接光漫反射+间接光镜面反射。&lt;/p&gt;
+&lt;h4 id=&#34;输出合并&#34;&gt;输出合并 &lt;a href=&#34;#%e8%be%93%e5%87%ba%e5%90%88%e5%b9%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;处理遮挡关系、处理半透明混合。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;帧缓冲区：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;颜色缓冲区&lt;/li&gt;
+&lt;li&gt;深度缓冲区&lt;/li&gt;
+&lt;li&gt;模版缓冲区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;深度测试：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。&lt;/li&gt;
+&lt;li&gt;ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从前到后&lt;/li&gt;
+&lt;li&gt;关闭ZWrite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
   </channel>
