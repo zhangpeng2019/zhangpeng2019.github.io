@@ -41,7 +41,7 @@
     <div class="tip">
         <time datetime="2023-07-01 11:13:34 &#43;0800 CST">2023/07/01</time>
         <span class="split">·</span>
-        <span> 97 words </span>
+        <span> 99 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -135,31 +135,28 @@ Shader与GPU渲染管线对应关系：
 <h5 id="纹理技术">纹理技术 <a href="#%e7%ba%b9%e7%90%86%e6%8a%80%e6%9c%af" class="anchor">🔗</a></h5><p>纹理采样：根据纹理坐标，在纹素地址中查找对应的颜色值。
 <img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-1.png" alt="">
 纹理过滤机制：用来解决纹理失真所采用的手段。
-<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-2.png" alt="">
-Point：最容易理解的一个。由于每个像素的纹理坐标，刚好对应贴图上的一个采样点纹素，所以最近点采样就是直接取最接近的纹素进行采样。如果纹理大小和被贴合的三维模型大小差不多时，这种方法会比较有效和快捷，但是如果大小不同，纹理就会变得矮胖、变形或者模糊，容易出现块状的像素，使得处理出的效果很差。
-Bilinear：双线性过滤以像素对应的纹理坐标为中心，采集这个坐标周围的4个纹素的像素，再取平均，最后以这个平均值作为采样值。这样过滤后的像素则会更加平滑，至少不会出现块状像素了。
-但双线性过滤只作用于一个MipMap Level，它选取纹素和像素之间大小最接近的那一层MipMap进行采样。这意味着如果和像素匹配大小的纹素大小在两层	MipMap Level之间的话，双线性过滤的效果就有限了，因此有了三线性过滤。
-Trilinear：三线性过滤以双线性过滤为基础。会对像素大小于纹素大小最接近的两层MipMap Level分别进行双线性过滤，然后再对两层得到的结果生成线性插值。在各向同性的情况下，三线性过滤能获得很不错的效果。
-Minmap：为了解决纹理大小和图像大小不匹配，所产生的问题。</p>
-<p>纹理寻址模式：</p>
-<p><img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-3.png" alt=""></p>
-<h5 id="光照计算">光照计算 <a href="#%e5%85%89%e7%85%a7%e8%ae%a1%e7%ae%97" class="anchor">🔗</a></h5><p>光照组成：直接光照和间接光照。</p>
-<p>光照模型：Phong光照模型。基本组成：直接光漫反射+直接光镜面反射+间接光漫反射+间接光镜面反射。</p>
-<h4 id="输出合并">输出合并 <a href="#%e8%be%93%e5%87%ba%e5%90%88%e5%b9%b6" class="anchor">🔗</a></h4><p>处理遮挡关系、处理半透明混合。</p>
-<p><img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-1.png" alt=""></p>
-<p>帧缓冲区：</p>
+<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-2.png" alt=""></p>
+<ul>
+<li>​	Point：最容易理解的一个。由于每个像素的纹理坐标，刚好对应贴图上的一个采样点纹素，所以最近点采样就是直接取最接近的纹素进行采样。如果纹理大小和被贴合的三维模型大小差不多时，这种方法会比较有效和快捷，但是如果大小不同，纹理就会变得矮胖、变形或者模糊，容易出现块状的像素，使得处理出的效果很差。</li>
+<li>​	Bilinear：双线性过滤以像素对应的纹理坐标为中心，采集这个坐标周围的4个纹素的像素，再取平均，最后以这个平均值作为采样值。这样过滤后的像素则会更加平滑，至少不会出现块状像素了。但双线性过滤只作用于一个MipMap Level，它选取纹素和像素之间大小最接近的那一层MipMap进行采样。这意味着如果和像素匹配大小的纹素大小在两层	MipMap Level之间的话，双线性过滤的效果就有限了，因此有了三线性过滤。</li>
+<li>​	Trilinear：三线性过滤以双线性过滤为基础。会对像素大小于纹素大小最接近的两层MipMap Level分别进行双线性过滤，然后再对两层得到的结果生成线性插值。在各向同性的情况下，三线性过滤能获得很不错的效果。</li>
+</ul>
+<p>Minmap：为了解决纹理大小和图像大小不匹配，所产生的问题。
+纹理寻址模式：
+<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-frame-process-3.png" alt=""></p>
+<h5 id="光照计算">光照计算 <a href="#%e5%85%89%e7%85%a7%e8%ae%a1%e7%ae%97" class="anchor">🔗</a></h5><p>光照组成：直接光照和间接光照。
+光照模型：Phong光照模型。基本组成：直接光漫反射+直接光镜面反射+间接光漫反射+间接光镜面反射。</p>
+<h4 id="输出合并">输出合并 <a href="#%e8%be%93%e5%87%ba%e5%90%88%e5%b9%b6" class="anchor">🔗</a></h4><p>处理遮挡关系、处理半透明混合。
+<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-1.png" alt="">
+帧缓冲区：</p>
 <ul>
 <li>颜色缓冲区</li>
 <li>深度缓冲区</li>
-<li>模版缓冲区</li>
-</ul>
-<p>深度测试：</p>
-<ul>
+<li>模版缓冲区
+深度测试：</li>
 <li>ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。</li>
-<li>ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&hellip;</li>
-</ul>
-<p>混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&hellip;</p>
-<ul>
+<li>ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&hellip;
+混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&hellip;</li>
 <li>从前到后</li>
 <li>关闭ZWrite</li>
 </ul>
