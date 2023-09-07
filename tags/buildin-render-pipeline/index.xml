@@ -6,7 +6,19 @@
     <description>Recent content in BuildIn Render Pipeline on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/buildin-render-pipeline/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/buildin-render-pipeline/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity内置渲染管线-基础语法</title>
+      <link>https://www.chenqiaoqian.com/2023/07/03/buildin-renderpipeline-base/</link>
+      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/03/buildin-renderpipeline-base/</guid>
+      <description>&lt;p&gt;Shader(着色器)是用来实现图像渲染的，用来替代固定渲染管线的可编辑程序。&lt;/p&gt;
+&lt;h2 id=&#34;unity-shader基础&#34;&gt;Unity Shader基础 &lt;a href=&#34;#unity-shader%e5%9f%ba%e7%a1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;开发工具&#34;&gt;开发工具 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Shader代码编写推荐使用VSCode + ShaderlabVSCode(Free)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;开发语言&#34;&gt;开发语言 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e8%af%ad%e8%a8%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;</description>
+    </item>
+    
     <item>
       <title>Unity内置渲染管线-概述</title>
       <link>https://www.chenqiaoqian.com/2023/07/01/buildin-renderpipeline-overview/</link>
@@ -90,17 +102,24 @@ Shader与GPU渲染管线对应关系：
 光照模型：Phong光照模型。基本组成：直接光漫反射+直接光镜面反射+间接光漫反射+间接光镜面反射。&lt;/p&gt;
 &lt;h4 id=&#34;输出合并&#34;&gt;输出合并 &lt;a href=&#34;#%e8%be%93%e5%87%ba%e5%90%88%e5%b9%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;处理遮挡关系、处理半透明混合。
 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-1.png&#34; alt=&#34;&#34;&gt;
-帧缓冲区：&lt;/p&gt;
+Alpha测试：低于某个数值则直接丢弃。&lt;/p&gt;
+&lt;p&gt;深度测试：同一个点上，重叠的两个片元，进行选择，比较Depth，Depth值越小，越靠近摄像机。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。&lt;/li&gt;
+&lt;li&gt;ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&amp;hellip;
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-2.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;帧缓冲区：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;颜色缓冲区&lt;/li&gt;
 &lt;li&gt;深度缓冲区&lt;/li&gt;
-&lt;li&gt;模版缓冲区
-深度测试：&lt;/li&gt;
-&lt;li&gt;ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。&lt;/li&gt;
-&lt;li&gt;ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&amp;hellip;
-混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&amp;hellip;&lt;/li&gt;
-&lt;li&gt;从前到后&lt;/li&gt;
-&lt;li&gt;关闭ZWrite&lt;/li&gt;
+&lt;li&gt;模版缓冲区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;半透明混合从前到后&lt;/li&gt;
+&lt;li&gt;半透明混合关闭ZWrite
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-3.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>

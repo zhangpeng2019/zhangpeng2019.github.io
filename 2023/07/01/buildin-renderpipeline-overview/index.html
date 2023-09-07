@@ -41,7 +41,7 @@
     <div class="tip">
         <time datetime="2023-07-01 11:13:34 &#43;0800 CST">2023/07/01</time>
         <span class="split">·</span>
-        <span> 99 words </span>
+        <span> 100 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -148,17 +148,24 @@ Shader与GPU渲染管线对应关系：
 光照模型：Phong光照模型。基本组成：直接光漫反射+直接光镜面反射+间接光漫反射+间接光镜面反射。</p>
 <h4 id="输出合并">输出合并 <a href="#%e8%be%93%e5%87%ba%e5%90%88%e5%b9%b6" class="anchor">🔗</a></h4><p>处理遮挡关系、处理半透明混合。
 <img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-1.png" alt="">
-帧缓冲区：</p>
+Alpha测试：低于某个数值则直接丢弃。</p>
+<p>深度测试：同一个点上，重叠的两个片元，进行选择，比较Depth，Depth值越小，越靠近摄像机。</p>
+<ul>
+<li>ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。</li>
+<li>ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&hellip;
+<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-2.png" alt=""></li>
+</ul>
+<p>帧缓冲区：</p>
 <ul>
 <li>颜色缓冲区</li>
 <li>深度缓冲区</li>
-<li>模版缓冲区
-深度测试：</li>
-<li>ZWrite深度写入：ZWrite如果被关闭也不会被写入深度缓冲区，但是不影响颜色缓冲区的写入。</li>
-<li>ZTest深度测试：设置通关深度测试的规则。ZTest Less（深度小于当前缓存则通过）， ZTest Greater（深度大于当前缓存则通过）&hellip;
-混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&hellip;</li>
-<li>从前到后</li>
-<li>关闭ZWrite</li>
+<li>模版缓冲区</li>
+</ul>
+<p>混合Blending：对缓冲区重叠的部分进行混合，Blend SrcAlpha OneMinusSrcAlpha、Blend One OneMinusSrcAlpha&hellip;</p>
+<ul>
+<li>半透明混合从前到后</li>
+<li>半透明混合关闭ZWrite
+<img src="/2023-07-01-unity-buildin-renderpipeline-overview/2023-07-01-unity-buildin-renderpipeline-input-process-3.png" alt=""></li>
 </ul>
 <h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
@@ -179,6 +186,10 @@ Shader与GPU渲染管线对应关系：
     <ul>
         
             <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+            <li>
                 <a href="/2023/07/02/dots-concepts-and-principles/">Unity Dots概念与原理</a>
             </li>
         
@@ -192,10 +203,6 @@ Shader与GPU渲染管线对应关系：
         
             <li>
                 <a href="/2023/06/15/designpattern-interpreter/">设计模式-解释器模式</a>
-            </li>
-        
-            <li>
-                <a href="/2023/06/13/designpattern-memento/">设计模式-备忘录模式</a>
             </li>
         
     </ul>
@@ -213,7 +220,7 @@ Shader与GPU渲染管线对应关系：
             </li>
         
             <li>
-                <a href="/categories/unity">unity(5)</a>
+                <a href="/categories/unity">unity(6)</a>
             </li>
         
     </ul>
@@ -226,7 +233,7 @@ Shader与GPU渲染管线对应关系：
     <ul>
         
             <li>
-                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (1)</a>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (2)</a>
             </li>
         
             <li>
