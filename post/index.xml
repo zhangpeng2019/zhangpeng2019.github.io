@@ -14,9 +14,152 @@
       
       <guid>https://www.chenqiaoqian.com/2023/07/03/buildin-renderpipeline-base/</guid>
       <description>&lt;p&gt;Shader(着色器)是用来实现图像渲染的，用来替代固定渲染管线的可编辑程序。&lt;/p&gt;
-&lt;h2 id=&#34;unity-shader基础&#34;&gt;Unity Shader基础 &lt;a href=&#34;#unity-shader%e5%9f%ba%e7%a1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;开发工具&#34;&gt;开发工具 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Shader代码编写推荐使用VSCode + ShaderlabVSCode(Free)&lt;/p&gt;
+&lt;h2 id=&#34;unity-shader基础&#34;&gt;Unity Shader基础 &lt;a href=&#34;#unity-shader%e5%9f%ba%e7%a1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;开发语言&#34;&gt;开发语言 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e8%af%ad%e8%a8%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在Unity中，所有的Unity Shader都通过ShaderLab来编写。ShaderLab是Unity提供编写Unity Shader的一种说明性语言。在Unity中通常使用着色器语言CG和HLSL嵌入进ShaderLab中。&lt;/p&gt;
+&lt;h3 id=&#34;开发工具&#34;&gt;开发工具 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Shader代码编写推荐使用VSCode + ShaderlabVSCode(Free)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;开发语言&#34;&gt;开发语言 &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e8%af%ad%e8%a8%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;</description>
+&lt;h3 id=&#34;下载build-in-shaders&#34;&gt;下载Build In Shaders &lt;a href=&#34;#%e4%b8%8b%e8%bd%bdbuild-in-shaders&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在Unity官网下载Build In Shaders合集，以便参考。&lt;/p&gt;
+&lt;h3 id=&#34;实例&#34;&gt;实例 &lt;a href=&#34;#%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Shader &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Study/Hello&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//Shader的真正名字  可以是路径式的格式&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/*材质球参数及UI面板
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	https://docs.unity3d.com/cn/current/Manual/SL-Properties.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	https://docs.unity3d.com/cn/current/ScriptReference/MaterialPropertyDrawer.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	https://zhuanlan.zhihu.com/p/93194054
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Properties
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        _MainTex (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Texture&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2D&lt;/span&gt;) = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;white&amp;#34;&lt;/span&gt; {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	这是为了让你可以在一个Shader文件中写多种版本的Shader，但只有一个会被使用。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	提供多个版本的SubShader，Unity可以根据对应平台选择最合适的Shader。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;	*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SubShader
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		标签属性，有两种：一种是SubShader层级，一种在Pass层级
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		https://docs.unity3d.com/cn/current/Manual/SL-SubShaderTags.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		https://docs.unity3d.com/cn/current/Manual/SL-PassTags.html
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Tags { &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;RenderType&amp;#34;&lt;/span&gt;=&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Opaque&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		Pass里面的内容Shader代码真正起作用的地方，
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		一个Pass对应一个真正意义上运行在GPU上的完整着色器(Vertex-Fragment Shader)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		一个SubShader里面可以包含多个Pass，每个Pass会被按顺序执行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;		*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Pass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CGPROGRAM&lt;span style=&#34;color:#75715e&#34;&gt;//Shader代码从这里开始，以下为CG着色语言&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;#pragma vertex vert&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;#pragma fragment frag&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;include &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UnityCG.cginc&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#75715e&#34;&gt;//https://docs.unity3d.com/Manual/SL-VertexProgramInputs.html&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;appdata&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;//CPU向顶点Shader提供的模型数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				&lt;span style=&#34;color:#75715e&#34;&gt;//冒号后面的是特定语义词，告诉CPU需要哪些类似的数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				float4 vertex : POSITION; &lt;span style=&#34;color:#75715e&#34;&gt;//模型空间顶点坐标&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half2 texcoord0 : TEXCOORD0; &lt;span style=&#34;color:#75715e&#34;&gt;//第一套UV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half2 texcoord1 : TEXCOORD1; &lt;span style=&#34;color:#75715e&#34;&gt;//第二套UV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half2 texcoord2 : TEXCOORD2; &lt;span style=&#34;color:#75715e&#34;&gt;//第二套UV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half2 texcoord4 : TEXCOORD3;  &lt;span style=&#34;color:#75715e&#34;&gt;//模型最多只能有4套UV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half4 color : COLOR; &lt;span style=&#34;color:#75715e&#34;&gt;//顶点颜色&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half3 normal : NORMAL; &lt;span style=&#34;color:#75715e&#34;&gt;//顶点法线&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				half4 tangent : TANGENT; &lt;span style=&#34;color:#75715e&#34;&gt;//顶点切线(模型导入Unity后自动计算得到)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v2f&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;//自定义数据结构体，顶点着色器输出的数据，也是片元着色器输入数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                float4 vertex : SV_POSITION;&lt;span style=&#34;color:#75715e&#34;&gt;//输出裁剪空间下的顶点坐标数据，给光栅化使用，必须要写的数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;//注意跟上方的TEXCOORD的意义是不一样的，上方代表的是UV，这里可以是任意数据。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				&lt;span style=&#34;color:#75715e&#34;&gt;//插值器：输出后会被光栅化进行插值，而后作为输入数据，进入片元Shader&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				&lt;span style=&#34;color:#75715e&#34;&gt;//最多可以写16个：TEXCOORD0 ~ TEXCOORD15。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                float2 uv : TEXCOORD0;&lt;span style=&#34;color:#75715e&#34;&gt;//自定义数据体&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;			Shader内的变量声明，如果跟上面Properties模块内的参数同名，就可以产生链接
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;			*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sampler2D _MainTex;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            float4 _MainTex_ST;&lt;span style=&#34;color:#75715e&#34;&gt;//纹理坐标_ST固定写法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            v2f vert (appdata v)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                v2f o;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                o.vertex = UnityObjectToClipPos(v.vertex);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                o.uv = TRANSFORM_TEX(v.texcoord0, _MainTex);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                UNITY_TRANSFER_FOG(o,o.vertex);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; o;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            fixed4 frag (v2f i) : SV_Target
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                fixed4 col = tex2D(_MainTex, i.uv);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; col;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ENDCG
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏数学基础</title>
+      <link>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-mathematics-1/</link>
+      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-mathematics-1/</guid>
+      <description>&lt;p&gt;3D数学是一门和计算几何相关的学科，计算几何则是研究用数值方法解决几何问题的学科。&lt;/p&gt;
+&lt;h2 id=&#34;游戏数学&#34;&gt;游戏数学 &lt;a href=&#34;#%e6%b8%b8%e6%88%8f%e6%95%b0%e5%ad%a6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;向量vector&#34;&gt;向量(Vector) &lt;a href=&#34;#%e5%90%91%e9%87%8fvector&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在物理、工程中又称矢量，指一个同时具有大小和方向，且满足平行四边形法则的几何对象。向量不关心绝对的开始位置，将向量平移到任何地方，向量始终一致。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_A_to_B.svg.png&#34; alt=&#34;2023-07-05-unity-mathematics-1_A_to_B.svg&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;verctor-normalization&#34;&gt;Verctor Normalization &lt;a href=&#34;#verctor-normalization&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;单位向量，长度为一个单位（即模为1）的向量，叫做单位向量。一般用来表示方向向量，不关心其长度。&lt;/p&gt;
+&lt;h4 id=&#34;verctor-addition&#34;&gt;Verctor Addition &lt;a href=&#34;#verctor-addition&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;向量加法，满足平行四边形法则和三角形法则。具体地讲两个向量A和B相加，得到另一个向量，这个向量可以表示为向量A和B的起点重合后，以它们邻边构成的平行四边形对角线，或者表示为向量A的起点执行向量B的终点的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_addition.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;vector-subtraction&#34;&gt;Vector Subtraction &lt;a href=&#34;#vector-subtraction&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;向量减法，两个向量A和B相减，向量A加上一个向量B大小想等，方向相反的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_subtraction.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;dot-product&#34;&gt;Dot Product &lt;a href=&#34;#dot-product&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点乘的数学定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点乘的几何意义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;向量的点乘可以用来计算两个向量之间的夹角，进一步判断这两个向量是否正交（垂直）等方向关系。同时，还可以用来计算一个向量在另一个向量方向上的投影长度。&lt;/p&gt;
+&lt;h4 id=&#34;cross-product&#34;&gt;Cross Product &lt;a href=&#34;#cross-product&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;叉乘的数学定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;叉乘的几何定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;运算结果是一个向量而不是一个标量。并且两个向量的叉积与这两个向量组成的坐标平面垂直。叉乘根据右手定则确定其方向。&lt;/p&gt;
+&lt;p&gt;叉乘的几何意义：&lt;/p&gt;
+&lt;p&gt;1、构建指教坐标系&lt;/p&gt;
+&lt;p&gt;2、构建向量a和向量b的平行四边&lt;/p&gt;
+&lt;p&gt;3、判断向量左右，判断向量的内外&lt;/p&gt;
+&lt;h3 id=&#34;矩阵matrix&#34;&gt;矩阵(Matrix) &lt;a href=&#34;#%e7%9f%a9%e9%98%b5matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;矩阵是一种描述线性变换的数学工具。&lt;/p&gt;
+&lt;p&gt;矩阵的基本运算&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Metrix-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;矩阵不符合交换律，符合结合律。&lt;/p&gt;
+&lt;h4 id=&#34;matrix-vector-multiplication&#34;&gt;Matrix-Vector Multiplication &lt;a href=&#34;#matrix-vector-multiplication&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;矩阵和向量相乘&lt;/p&gt;
+&lt;p&gt;将向量写成M * 1的列向量&lt;/p&gt;
+&lt;p&gt;确保矩阵能和M*1矩阵相乘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d---scale-matrix&#34;&gt;2D - Scale Matrix &lt;a href=&#34;#2d---scale-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d---rotation-matrix&#34;&gt;2D - Rotation Matrix &lt;a href=&#34;#2d---rotation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d-transiation-matrix&#34;&gt;2D-Transiation Matrix &lt;a href=&#34;#2d-transiation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;齐次坐标&#34;&gt;齐次坐标 &lt;a href=&#34;#%e9%bd%90%e6%ac%a1%e5%9d%90%e6%a0%87&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;齐次坐标就是将一个原本是n维的向量用一个n+1维向量来表示，是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。其主要用在一是区分向量和点；二是易于进行仿射变化(Affine Transformation) 。&lt;/p&gt;
+&lt;p&gt;齐次坐标中Ponit的(n+1)为1，Vector的(n+1)为0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vector + Vector  = Vector&lt;/li&gt;
+&lt;li&gt;Point - Point = Vector&lt;/li&gt;
+&lt;li&gt;Point + Vector  = Point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个2D点在齐次坐标系中的表示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;齐次坐标系中的2D矩阵&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

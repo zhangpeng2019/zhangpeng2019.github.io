@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>游戏数学基础 | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">游戏数学基础</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-03 11:13:34 &#43;0800 CST">2023/07/03</time>
+        <span class="split">·</span>
+        <span> 75 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/mathematics">Mathematics</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>3D数学是一门和计算几何相关的学科，计算几何则是研究用数值方法解决几何问题的学科。</p>
+<h2 id="游戏数学">游戏数学 <a href="#%e6%b8%b8%e6%88%8f%e6%95%b0%e5%ad%a6" class="anchor">🔗</a></h2><h3 id="向量vector">向量(Vector) <a href="#%e5%90%91%e9%87%8fvector" class="anchor">🔗</a></h3><p>在物理、工程中又称矢量，指一个同时具有大小和方向，且满足平行四边形法则的几何对象。向量不关心绝对的开始位置，将向量平移到任何地方，向量始终一致。</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_A_to_B.svg.png" alt="2023-07-05-unity-mathematics-1_A_to_B.svg"></p>
+<h4 id="verctor-normalization">Verctor Normalization <a href="#verctor-normalization" class="anchor">🔗</a></h4><p>单位向量，长度为一个单位（即模为1）的向量，叫做单位向量。一般用来表示方向向量，不关心其长度。</p>
+<h4 id="verctor-addition">Verctor Addition <a href="#verctor-addition" class="anchor">🔗</a></h4><p>向量加法，满足平行四边形法则和三角形法则。具体地讲两个向量A和B相加，得到另一个向量，这个向量可以表示为向量A和B的起点重合后，以它们邻边构成的平行四边形对角线，或者表示为向量A的起点执行向量B的终点的向量。</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_addition.png" alt=""></p>
+<h4 id="vector-subtraction">Vector Subtraction <a href="#vector-subtraction" class="anchor">🔗</a></h4><p>向量减法，两个向量A和B相减，向量A加上一个向量B大小想等，方向相反的向量。</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_subtraction.png" alt=""></p>
+<h4 id="dot-product">Dot Product <a href="#dot-product" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot.png" alt=""></p>
+<p>点乘的数学定义：</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-2.png" alt=""></p>
+<p>点乘的几何意义：</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-3.png" alt=""></p>
+<p>向量的点乘可以用来计算两个向量之间的夹角，进一步判断这两个向量是否正交（垂直）等方向关系。同时，还可以用来计算一个向量在另一个向量方向上的投影长度。</p>
+<h4 id="cross-product">Cross Product <a href="#cross-product" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-1.png" alt=""></p>
+<p>叉乘的数学定义：</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-2.png" alt=""></p>
+<p>叉乘的几何定义：</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-3.png" alt=""></p>
+<p>运算结果是一个向量而不是一个标量。并且两个向量的叉积与这两个向量组成的坐标平面垂直。叉乘根据右手定则确定其方向。</p>
+<p>叉乘的几何意义：</p>
+<p>1、构建指教坐标系</p>
+<p>2、构建向量a和向量b的平行四边</p>
+<p>3、判断向量左右，判断向量的内外</p>
+<h3 id="矩阵matrix">矩阵(Matrix) <a href="#%e7%9f%a9%e9%98%b5matrix" class="anchor">🔗</a></h3><p>矩阵是一种描述线性变换的数学工具。</p>
+<p>矩阵的基本运算</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Metrix-1.png" alt=""></p>
+<p>矩阵不符合交换律，符合结合律。</p>
+<h4 id="matrix-vector-multiplication">Matrix-Vector Multiplication <a href="#matrix-vector-multiplication" class="anchor">🔗</a></h4><p>矩阵和向量相乘</p>
+<p>将向量写成M * 1的列向量</p>
+<p>确保矩阵能和M*1矩阵相乘</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-1.png" alt=""></p>
+<h4 id="2d---scale-matrix">2D - Scale Matrix <a href="#2d---scale-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-2.png" alt=""></p>
+<h4 id="2d---rotation-matrix">2D - Rotation Matrix <a href="#2d---rotation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-3.png" alt=""></p>
+<h4 id="2d-transiation-matrix">2D-Transiation Matrix <a href="#2d-transiation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-4.png" alt=""></p>
+<h4 id="齐次坐标">齐次坐标 <a href="#%e9%bd%90%e6%ac%a1%e5%9d%90%e6%a0%87" class="anchor">🔗</a></h4><p>齐次坐标就是将一个原本是n维的向量用一个n+1维向量来表示，是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。其主要用在一是区分向量和点；二是易于进行仿射变化(Affine Transformation) 。</p>
+<p>齐次坐标中Ponit的(n+1)为1，Vector的(n+1)为0.</p>
+<ul>
+<li>Vector + Vector  = Vector</li>
+<li>Point - Point = Vector</li>
+<li>Point + Vector  = Point</li>
+</ul>
+<p>一个2D点在齐次坐标系中的表示</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png" alt=""></p>
+<p>齐次坐标系中的2D矩阵</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png" alt=""></p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/02/dots-concepts-and-principles/">Unity Dots概念与原理</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/01/buildin-renderpipeline-overview/">Unity内置渲染管线-概述</a>
+            </li>
+        
+            <li>
+                <a href="/2023/06/17/designpattern-summary/">设计模式-总结</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(7)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

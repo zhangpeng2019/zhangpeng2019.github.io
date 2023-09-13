@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on 陈巧倩</title>
+    <link>https://www.chenqiaoqian.com/tags/mathematics/</link>
+    <description>Recent content in Mathematics on 陈巧倩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>游戏数学基础</title>
+      <link>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-mathematics-1/</link>
+      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-mathematics-1/</guid>
+      <description>&lt;p&gt;3D数学是一门和计算几何相关的学科，计算几何则是研究用数值方法解决几何问题的学科。&lt;/p&gt;
+&lt;h2 id=&#34;游戏数学&#34;&gt;游戏数学 &lt;a href=&#34;#%e6%b8%b8%e6%88%8f%e6%95%b0%e5%ad%a6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;向量vector&#34;&gt;向量(Vector) &lt;a href=&#34;#%e5%90%91%e9%87%8fvector&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在物理、工程中又称矢量，指一个同时具有大小和方向，且满足平行四边形法则的几何对象。向量不关心绝对的开始位置，将向量平移到任何地方，向量始终一致。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_A_to_B.svg.png&#34; alt=&#34;2023-07-05-unity-mathematics-1_A_to_B.svg&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;verctor-normalization&#34;&gt;Verctor Normalization &lt;a href=&#34;#verctor-normalization&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;单位向量，长度为一个单位（即模为1）的向量，叫做单位向量。一般用来表示方向向量，不关心其长度。&lt;/p&gt;
+&lt;h4 id=&#34;verctor-addition&#34;&gt;Verctor Addition &lt;a href=&#34;#verctor-addition&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;向量加法，满足平行四边形法则和三角形法则。具体地讲两个向量A和B相加，得到另一个向量，这个向量可以表示为向量A和B的起点重合后，以它们邻边构成的平行四边形对角线，或者表示为向量A的起点执行向量B的终点的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_addition.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;vector-subtraction&#34;&gt;Vector Subtraction &lt;a href=&#34;#vector-subtraction&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;向量减法，两个向量A和B相减，向量A加上一个向量B大小想等，方向相反的向量。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_subtraction.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;dot-product&#34;&gt;Dot Product &lt;a href=&#34;#dot-product&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点乘的数学定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点乘的几何意义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_dot-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;向量的点乘可以用来计算两个向量之间的夹角，进一步判断这两个向量是否正交（垂直）等方向关系。同时，还可以用来计算一个向量在另一个向量方向上的投影长度。&lt;/p&gt;
+&lt;h4 id=&#34;cross-product&#34;&gt;Cross Product &lt;a href=&#34;#cross-product&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;叉乘的数学定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;叉乘的几何定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Vector_cross-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;运算结果是一个向量而不是一个标量。并且两个向量的叉积与这两个向量组成的坐标平面垂直。叉乘根据右手定则确定其方向。&lt;/p&gt;
+&lt;p&gt;叉乘的几何意义：&lt;/p&gt;
+&lt;p&gt;1、构建指教坐标系&lt;/p&gt;
+&lt;p&gt;2、构建向量a和向量b的平行四边&lt;/p&gt;
+&lt;p&gt;3、判断向量左右，判断向量的内外&lt;/p&gt;
+&lt;h3 id=&#34;矩阵matrix&#34;&gt;矩阵(Matrix) &lt;a href=&#34;#%e7%9f%a9%e9%98%b5matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;矩阵是一种描述线性变换的数学工具。&lt;/p&gt;
+&lt;p&gt;矩阵的基本运算&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-1_Metrix-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;矩阵不符合交换律，符合结合律。&lt;/p&gt;
+&lt;h4 id=&#34;matrix-vector-multiplication&#34;&gt;Matrix-Vector Multiplication &lt;a href=&#34;#matrix-vector-multiplication&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;矩阵和向量相乘&lt;/p&gt;
+&lt;p&gt;将向量写成M * 1的列向量&lt;/p&gt;
+&lt;p&gt;确保矩阵能和M*1矩阵相乘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d---scale-matrix&#34;&gt;2D - Scale Matrix &lt;a href=&#34;#2d---scale-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d---rotation-matrix&#34;&gt;2D - Rotation Matrix &lt;a href=&#34;#2d---rotation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2d-transiation-matrix&#34;&gt;2D-Transiation Matrix &lt;a href=&#34;#2d-transiation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;齐次坐标&#34;&gt;齐次坐标 &lt;a href=&#34;#%e9%bd%90%e6%ac%a1%e5%9d%90%e6%a0%87&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;齐次坐标就是将一个原本是n维的向量用一个n+1维向量来表示，是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。其主要用在一是区分向量和点；二是易于进行仿射变化(Affine Transformation) 。&lt;/p&gt;
+&lt;p&gt;齐次坐标中Ponit的(n+1)为1，Vector的(n+1)为0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vector + Vector  = Vector&lt;/li&gt;
+&lt;li&gt;Point - Point = Vector&lt;/li&gt;
+&lt;li&gt;Point + Vector  = Point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个2D点在齐次坐标系中的表示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;齐次坐标系中的2D矩阵&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
