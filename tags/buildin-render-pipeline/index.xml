@@ -105,7 +105,19 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;properties&#34;&gt;Properties &lt;a href=&#34;#properties&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Properties语义块包含了一系列属性，这些属性会显式的出现在材质面板中。便于开发者在材质面板中能够方便地调整各种材质属性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;subshader&#34;&gt;SubShader &lt;a href=&#34;#subshader&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;一个Unity Shader文件至少包含一个SubShader语义块。加载时，unity会扫描所有的SubShader语义块，并选择第一个能在目标平台上运行的SubShader。如果都不支持，会使用Fallback指定的Unity Shader。&lt;/p&gt;
+&lt;p&gt;仅在SubShader中使用的Tag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;渲染状态设置&#34;&gt;渲染状态设置 &lt;a href=&#34;#%e6%b8%b2%e6%9f%93%e7%8a%b6%e6%80%81%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果在SubShader块中设置了状态，就会应用到全部的Pass。可以在Pass中单独设置状态。&lt;/p&gt;
+&lt;h4 id=&#34;pass&#34;&gt;Pass &lt;a href=&#34;#pass&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Shader代码真正起作用的地方，一个Pass对应一个真正意义上运行在GPU上的完整着色流程。&lt;/p&gt;
+&lt;p&gt;仅在SubShader中使用的Tag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一个SubShader里面可以包含多个Pass，每个Pass会被按顺序执行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
     <item>
