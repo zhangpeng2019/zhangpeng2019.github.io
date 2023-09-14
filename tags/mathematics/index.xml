@@ -58,7 +58,14 @@
 &lt;p&gt;一个2D点在齐次坐标系中的表示&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;齐次坐标系中的2D矩阵&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;单位矩阵&#34;&gt;单位矩阵 &lt;a href=&#34;#%e5%8d%95%e4%bd%8d%e7%9f%a9%e9%98%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;单位矩阵从左上角到右下角的对角线（称为主对角线）上的元素均为1。除此以外全都为0，任何矩阵与单位矩阵相乘都等于本身。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;逆矩阵&#34;&gt;逆矩阵 &lt;a href=&#34;#%e9%80%86%e7%9f%a9%e9%98%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-8.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;逆矩阵的意义在于变化之后的回退。当一个值通过一个矩阵运算后，如果想回退会原来的值，则使用逆矩阵进行计算即可。&lt;/p&gt;
+&lt;p&gt;你矩阵的推导：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-9.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
   </channel>
