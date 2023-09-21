@@ -41,7 +41,7 @@
     <div class="tip">
         <time datetime="2023-07-03 11:13:34 &#43;0800 CST">2023/07/03</time>
         <span class="split">·</span>
-        <span> 83 words </span>
+        <span> 109 words </span>
         <span class="split">·</span>
         <span>
             1 minutes to read
@@ -105,6 +105,8 @@
 <p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-1.png" alt=""></p>
 <h4 id="2d---scale-matrix">2D - Scale Matrix <a href="#2d---scale-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-2.png" alt=""></p>
 <h4 id="2d---rotation-matrix">2D - Rotation Matrix <a href="#2d---rotation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-3.png" alt=""></p>
+<p>缩放矩阵推导</p>
+<p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-10.png" alt=""></p>
 <h4 id="2d-transiation-matrix">2D-Transiation Matrix <a href="#2d-transiation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-4.png" alt=""></p>
 <h4 id="齐次坐标">齐次坐标 <a href="#%e9%bd%90%e6%ac%a1%e5%9d%90%e6%a0%87" class="anchor">🔗</a></h4><p>齐次坐标就是将一个原本是n维的向量用一个n+1维向量来表示，是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。其主要用在一是区分向量和点；二是易于进行仿射变化(Affine Transformation) 。</p>
 <p>齐次坐标中Ponit的(n+1)为1，Vector的(n+1)为0.</p>
@@ -117,6 +119,18 @@
 <p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png" alt=""></p>
 <p>齐次坐标系中的2D矩阵</p>
 <p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png" alt=""></p>
+<h4 id="3d-transformations">3D Transformations <a href="#3d-transformations" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-11.png" alt=""></p>
+<h4 id="3d---scale-matrix">3D - Scale Matrix <a href="#3d---scale-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-12.png" alt=""></p>
+<h4 id="3d---transiation-matrix">3D - Transiation Matrix <a href="#3d---transiation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-13.png" alt=""></p>
+<h4 id="3d---rotation-matrix">3D - Rotation Matrix <a href="#3d---rotation-matrix" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-14.png" alt=""></p>
+<p>上面分别对应按照X，Y，Z轴进行旋转。</p>
+<p>注意事项：</p>
+<ul>
+<li>按照那个轴旋转，则该轴不动，旋转对应两个轴即可。</li>
+<li>旋转矩阵的推导，遵循右手定责，进行叉乘计算得出。</li>
+</ul>
+<h4 id="欧拉角">欧拉角 <a href="#%e6%ac%a7%e6%8b%89%e8%a7%92" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-15.png" alt=""></p>
+<p>欧拉角计算公式分别按照α、β、γ进行旋转。</p>
 <h4 id="单位矩阵">单位矩阵 <a href="#%e5%8d%95%e4%bd%8d%e7%9f%a9%e9%98%b5" class="anchor">🔗</a></h4><p>单位矩阵从左上角到右下角的对角线（称为主对角线）上的元素均为1。除此以外全都为0，任何矩阵与单位矩阵相乘都等于本身。</p>
 <p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-7.png" alt=""></p>
 <h4 id="逆矩阵">逆矩阵 <a href="#%e9%80%86%e7%9f%a9%e9%98%b5" class="anchor">🔗</a></h4><p><img src="/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-8.png" alt=""></p>

@@ -160,6 +160,8 @@
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;2d---scale-matrix&#34;&gt;2D - Scale Matrix &lt;a href=&#34;#2d---scale-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;2d---rotation-matrix&#34;&gt;2D - Rotation Matrix &lt;a href=&#34;#2d---rotation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;缩放矩阵推导&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-10.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;2d-transiation-matrix&#34;&gt;2D-Transiation Matrix &lt;a href=&#34;#2d-transiation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;齐次坐标&#34;&gt;齐次坐标 &lt;a href=&#34;#%e9%bd%90%e6%ac%a1%e5%9d%90%e6%a0%87&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;齐次坐标就是将一个原本是n维的向量用一个n+1维向量来表示，是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射（线性）几何变换。其主要用在一是区分向量和点；二是易于进行仿射变化(Affine Transformation) 。&lt;/p&gt;
 &lt;p&gt;齐次坐标中Ponit的(n+1)为1，Vector的(n+1)为0.&lt;/p&gt;
@@ -172,6 +174,18 @@
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;齐次坐标系中的2D矩阵&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3d-transformations&#34;&gt;3D Transformations &lt;a href=&#34;#3d-transformations&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-11.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3d---scale-matrix&#34;&gt;3D - Scale Matrix &lt;a href=&#34;#3d---scale-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-12.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3d---transiation-matrix&#34;&gt;3D - Transiation Matrix &lt;a href=&#34;#3d---transiation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-13.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3d---rotation-matrix&#34;&gt;3D - Rotation Matrix &lt;a href=&#34;#3d---rotation-matrix&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-14.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上面分别对应按照X，Y，Z轴进行旋转。&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按照那个轴旋转，则该轴不动，旋转对应两个轴即可。&lt;/li&gt;
+&lt;li&gt;旋转矩阵的推导，遵循右手定责，进行叉乘计算得出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;欧拉角&#34;&gt;欧拉角 &lt;a href=&#34;#%e6%ac%a7%e6%8b%89%e8%a7%92&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-15.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;欧拉角计算公式分别按照α、β、γ进行旋转。&lt;/p&gt;
 &lt;h4 id=&#34;单位矩阵&#34;&gt;单位矩阵 &lt;a href=&#34;#%e5%8d%95%e4%bd%8d%e7%9f%a9%e9%98%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;单位矩阵从左上角到右下角的对角线（称为主对角线）上的元素均为1。除此以外全都为0，任何矩阵与单位矩阵相乘都等于本身。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;逆矩阵&#34;&gt;逆矩阵 &lt;a href=&#34;#%e9%80%86%e7%9f%a9%e9%98%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-05-unity-mathematics-1/2023-07-05-unity-mathematics-2_Metrix-8.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
