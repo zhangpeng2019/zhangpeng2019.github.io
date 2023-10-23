@@ -41,10 +41,10 @@
     <div class="tip">
         <time datetime="2023-07-03 11:13:34 &#43;0800 CST">2023/07/03</time>
         <span class="split">·</span>
-        <span> 194 words </span>
+        <span> 1089 words </span>
         <span class="split">·</span>
         <span>
-            1 minutes to read
+            6 minutes to read
         </span>
     </div>
 
@@ -175,6 +175,842 @@
 <p><img src="/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-7.png" alt=""></p>
 <p>一个SubShader里面可以包含多个Pass，每个Pass会被按顺序执行。</p>
 <p><img src="/2023-07-03-unity-buildin-renderpipeline-base/2023-07-03-unity-buildin-renderpipeline-base-3.png" alt=""></p>
+<h3 id="cg和glsl常用函数">CG和GLSL常用函数 <a href="#cg%e5%92%8cglsl%e5%b8%b8%e7%94%a8%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h3><h4 id="数学函数">数学函数 <a href="#%e6%95%b0%e5%ad%a6%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">CG语言</th>
+<th style="text-align:left">GLSL语言</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>ceil(x)</strong></td>
+<td style="text-align:left"><strong>ceil(x)</strong></td>
+<td style="text-align:left"><strong>对输入参数向上取整。例如： ceil(float(1.3)) ，其返回值为2.0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>floor(x)</strong></td>
+<td style="text-align:left"><strong>floor(x)</strong></td>
+<td style="text-align:left"><strong>对输入参数向下取整。例如floor(float(1.3))返回的值为1.0；但是floor(float(-1.3))返回的值为-2.0。该函数与ceil(x)函数相对应。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*fmod(x,y)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*mod(x, y)**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*返回x/y的余数。如果y为0，结果不可预料。*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*frac(x)*</strong></em></td>
+<td style="text-align:left"><em><strong>*fract(x)*</strong></em></td>
+<td style="text-align:left"><em><strong>*返回标量或矢量的小数*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>frexp(x, out i)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>将浮点数 x 分解为尾数和指数，即 x = m* 2^exp，返回 m，并将指数存入 exp 中；如果 x 为 0，则尾数和指数都返回 0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>modf(x, out ip)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>把x分解成整数和分数两部分，每部分都和x有着相同的符号，整数部分被保存在ip中，分数部分由函数返回</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>round(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>返回四舍五入值。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>exp(x)</strong></td>
+<td style="text-align:left"><strong>exp(x)</strong></td>
+<td style="text-align:left"><strong>计算ex的值，e=2.71828182845904523536</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>exp2(x)</strong></td>
+<td style="text-align:left"><strong>exp2(x)</strong></td>
+<td style="text-align:left"><strong>exp2(x)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>log(x)</strong></td>
+<td style="text-align:left"><strong>log(x)</strong></td>
+<td style="text-align:left"><strong>计算2x的值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>log2(x)</strong></td>
+<td style="text-align:left"><strong>log2(x)</strong></td>
+<td style="text-align:left"><strong>计算log2(x)的值，x必须大于0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>log10(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>计算lg(x)的值，x必须大于0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>max(a, b)</strong></td>
+<td style="text-align:left"><strong>max(a, b)</strong></td>
+<td style="text-align:left"><strong>比较两个标量或等长向量元素，返回最大值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>min(a,b)</strong></td>
+<td style="text-align:left"><strong>min(a,b)</strong></td>
+<td style="text-align:left"><strong>比较两个标量或等长向量元素，返回最小值。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pow(x, y)</strong></td>
+<td style="text-align:left"><strong>pow(x, y)</strong></td>
+<td style="text-align:left"><strong>计算xy的值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sqrt(x)</strong></td>
+<td style="text-align:left"><strong>sqrt(x)</strong></td>
+<td style="text-align:left"><strong>求x的平方根，，x必须大于0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*rsqrt(x)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*inversesqrt(x)**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*x的平方根的倒数，x必须大于0*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>abs(x)</strong></td>
+<td style="text-align:left"><strong>abs(x)</strong></td>
+<td style="text-align:left"><strong>返回输入参数的绝对值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ldexp(x, n)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>计算x∗2n的值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*mul(M, N)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*M*N**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*矩阵M和矩阵N的积*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*mul(M, v)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*M*v**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*矩阵M和列向量v的积*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*mul(v, M)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*v* M**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*行向量v和矩阵M的积*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>determinant(m)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>计算矩阵的行列式因子。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>transpose(M)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>如果M是一个AxB矩阵，M的转置是一个BxA矩阵，它的第一列是M的第一行，第二列是M的第二行，第三列是M的第三行，等等</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>asin(x)</strong></td>
+<td style="text-align:left"><strong>asin(x)</strong></td>
+<td style="text-align:left"><strong>反正弦函数,输入参数取值区间为，返回角度值范围为[−π/2,π/2]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>acos(x)</strong></td>
+<td style="text-align:left"><strong>acos(x)</strong></td>
+<td style="text-align:left"><strong>反余切函数，输入参数范围为[-1,1]， 返回[0,π]区间的角度值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>atan(x)</strong></td>
+<td style="text-align:left"><strong>atan(x)</strong></td>
+<td style="text-align:left"><strong>反正切函数，返回角度值范围为[−π/2,π/2]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>atan2(y,x)</strong></td>
+<td style="text-align:left"><strong>atan2(y,x)</strong></td>
+<td style="text-align:left"><strong>计算y/x的反正切值。实际上和atan(x)函数功能完全一样，至少输入参数不同。atan(x) = atan2(x, float(1))。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sin(x)</strong></td>
+<td style="text-align:left"><strong>sin(x)</strong></td>
+<td style="text-align:left"><strong>输入参数为弧度，计算正弦值，返回值范围 为[-1,1]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cos(x)</strong></td>
+<td style="text-align:left"><strong>cos(x)</strong></td>
+<td style="text-align:left"><strong>返回弧度x的余弦值。返回值范围为</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>tan(x)</strong></td>
+<td style="text-align:left"><strong>tan(x)</strong></td>
+<td style="text-align:left"><strong>计算x正切值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sincos(float x, out s, out c)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>该函数是同时计算x的sin值和cos值，其中s=sin(x)，c=cos(x)。该函数用于“同时需要计算sin值和cos值的情况”，比分别运算要快很多!</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sinh(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>计算x的双曲正弦</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cosh(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>双曲余弦（hyperbolic cosine）函数，计算x的双曲余弦值。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>tanh(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>计算x的双曲线切线</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>radians(x)</strong></td>
+<td style="text-align:left"><strong>radians(x)</strong></td>
+<td style="text-align:left"><strong>函数将角度值转换为弧度值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>degrees(x)</strong></td>
+<td style="text-align:left"><strong>degrees(x)</strong></td>
+<td style="text-align:left"><strong>输入参数为弧度值(radians)，函数将其转换为角度值(degrees)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cross(A,B)</strong></td>
+<td style="text-align:left"><strong>cross(A,B)</strong></td>
+<td style="text-align:left"><strong>返回两个三元向量的叉积(cross product)。注意，输入参数必须是三元向量！</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>lit(NdotL, NdotH, m)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>函数计算环境光、散射光、镜面光的贡献，返回的4元向量。 N表示法向量； L表示入射光向量； H表示半角向量； m表示高光系数。 X位表示环境光的贡献，总是1.0; Y位代表散射光的贡献，如果 N∙L&lt;0，则为0；否则为N∙L Z位代表镜面光的贡献，如果N∙L&lt;0 或者N∙H&lt;0，则位0；否则为(N∙L)m; W位始终位1.0</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>all(x)</strong></td>
+<td style="text-align:left"><strong>all(x)</strong></td>
+<td style="text-align:left"><strong>如果输入参数均不为0，则返回ture； 否则返回flase。&amp;&amp;运算</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>any(x)</strong></td>
+<td style="text-align:left"><strong>any(x)</strong></td>
+<td style="text-align:left"><strong>输入参数只要有其中一个不为0，则返回true。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>isfinite(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>判断标量或者向量中的每个数据是否是有限数，如果是返回true；否则返回false;</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>isinf(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>判断标量或者向量中的每个数据是否是无限，如果是返回true；否则返回false;</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>isnan(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>判断标量或者向量中的每个数据是否是非数据(not-a-number NaN)，如果是返回true；否则返回false;</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>step(a, x)</strong></td>
+<td style="text-align:left"><strong>step(a, x)</strong></td>
+<td style="text-align:left"><strong>如果x&lt;a, 返回0；否则返回1</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sign(x)</strong></td>
+<td style="text-align:left"><strong>sign(x)</strong></td>
+<td style="text-align:left"><strong>如果x&gt;0则返回1；如果x=0返回0；如果x&lt;0则返回-1</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>dot(A,B)</strong></td>
+<td style="text-align:left"><strong>dot(A,B)</strong></td>
+<td style="text-align:left"><strong>返回A和B的点积(dot product)。参数A和B可以是标量，也可以是向量（输入参数方面，点积和叉积函数有很大不同）。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>noise(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>根据它的参数类型，这个函数可以是一元、二元或三元噪音函数。返回的值在0和1之间，并且通常与给定的输入值一样</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>clamp(x,a,b)</strong></td>
+<td style="text-align:left"><strong>clamp(x,a,b)</strong></td>
+<td style="text-align:left"><strong>如果x值小于a，则返回a； 如果x值大于b，返回b； 否则，返回x。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><em><strong>*lerp(a, b, f)*</strong></em></td>
+<td style="text-align:left"><em><em><em>*</em>*mix(a, b, f)**</em>*</em>*</td>
+<td style="text-align:left"><em><strong>*计算或者的值。即在下限a和上限b之间进行插值，f表示权值。注意，如果a和b是向量，则权值f必须是标量或者等长的向量。*</strong></em></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>saturate(x)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>把x限制到[0,1]之间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>smoothstep(min, max, x)</strong></td>
+<td style="text-align:left"><strong>smoothstep(min, max, x)</strong></td>
+<td style="text-align:left"><strong>值x位于min、max区间中。 如果x=min，返回0；如果x=max，返回1； 如果x在两者之间，按照下列公式返回数据： –2∗((x–min)/(max–min))3+3∗((x–min)/(max–min))2<strong><strong>float smoothstep(float a, float b, float x)</strong></strong>{</strong>    <strong>float t = saturate((x - a)/(b - a)); return t*t*(3.0 - (2.0*t));****}</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="几何函数">几何函数 <a href="#%e5%87%a0%e4%bd%95%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">CG语言</th>
+<th style="text-align:left">GLSL语言</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>distance(pt1, pt2)</strong></td>
+<td style="text-align:left"><strong>distance(pt1, pt2)</strong></td>
+<td style="text-align:left"><strong>两点之间的欧几里德距离（Euclidean distance）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>faceforward(N,I,Ng)</strong></td>
+<td style="text-align:left"><strong>faceforward(N,I,Ng)</strong></td>
+<td style="text-align:left"><strong>根据 矢量 N 与Nref 调整法向量,如果Ng•I &lt; 0 ，返回 N；否则返回-N。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>length(v)</strong></td>
+<td style="text-align:left"><strong>length(v)</strong></td>
+<td style="text-align:left"><strong>返回一个向量的模，即sqrt(dot(v,v))</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>normalize(v)</strong></td>
+<td style="text-align:left"><strong>normalize(v)</strong></td>
+<td style="text-align:left"><strong>返回v向量的单位向量</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>reflect(I, N)</strong></td>
+<td style="text-align:left"><strong>reflect(I, N)</strong></td>
+<td style="text-align:left"><strong>根据入射光方向向量 I，和顶点法向量 N，计算反射光方向向量。 其中 I 和 N 必须被归一化，需要非常注意的是，这个 I 是指向顶点的； 函数只对三元向量有效</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>refract(I,N,eta)</strong></td>
+<td style="text-align:left"><strong>refract(I,N,eta)</strong></td>
+<td style="text-align:left"><strong>计算折射向量，I 为入射光线，N 为法向量，eta 为折射系数； 其中 I 和 N 必须被归一化，如果 I 和 N 之间的夹角太大，则返回（0，0，0），也就是没有折射光线；I 是指向顶点的； 函数只对三元向量有效</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="纹理映射函数">纹理映射函数 <a href="#%e7%ba%b9%e7%90%86%e6%98%a0%e5%b0%84%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">CG语言</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>tex1D(sampler1D tex, float s)</strong></td>
+<td style="text-align:left"><strong>一维纹理查询</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>tex1D(sampler1D tex, float s, float dsdx, float dsdy)</strong></td>
+<td style="text-align:left"><strong>使用导数值（derivatives）查询一维纹理</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex1D(sampler1D tex, float2 sz)</strong></td>
+<td style="text-align:left"><strong>一维纹理查询，并进行深度值比较</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex1D(sampler1D tex, float2 sz, float dsdx,float dsdy)</strong></td>
+<td style="text-align:left"><strong>使用导数值（derivatives）查询一维纹理， 并进行深度</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex1Dproj(sampler1D tex, float2 sq)</strong></td>
+<td style="text-align:left"><strong>一维投影纹理查询</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex1Dproj(sampler1D tex, float3 szq)</strong></td>
+<td style="text-align:left"><strong>一维投影纹理查询，并比较深度值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2D(sampler2D tex, float2 s)</strong></td>
+<td style="text-align:left"><strong>二维纹理查询</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2D(sampler2D tex, float2 s, float2 dsdx, float2 dsdy)</strong></td>
+<td style="text-align:left"><strong>使用导数值（derivatives）查询二维纹理</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2D(sampler2D tex, float3 sz)</strong></td>
+<td style="text-align:left"><strong>二维纹理查询，并进行深度值比较</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2D(sampler2D tex, float3 sz, float2 dsdx,float2 dsdy)</strong></td>
+<td style="text-align:left"><strong>使用导数值（derivatives）查询二维纹理，并进行深度值比较</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2Dproj(sampler2D tex, float3 sq)</strong></td>
+<td style="text-align:left"><strong>二维投影纹理查询</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex2Dproj(sampler2D tex, float4 szq)</strong></td>
+<td style="text-align:left"><strong>二维投影纹理查询，并进行深度值比较</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texRECT(samplerRECT tex, float2 s)</strong></td>
+<td style="text-align:left"><strong>二维非投影矩形纹理查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>exRECT (samplerRECT tex, float3 sz, float2 dsdx,float2 dsdy)</strong></td>
+<td style="text-align:left"><strong>二维非投影使用导数的矩形纹理查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texRECT (samplerRECT tex, float3 sz)</strong></td>
+<td style="text-align:left"><strong>二维非投影深度比较矩形纹理查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texRECT (samplerRECT tex, float3 sz, float2 dsdx,float2 dsdy)</strong></td>
+<td style="text-align:left"><strong>二维非投影深度比较并使用导数的矩形纹理查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texRECT proj(samplerRECT tex, float3 sq)</strong></td>
+<td style="text-align:left"><strong>二维投影矩形纹理查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texRECT proj(samplerRECT tex, float3 szq)</strong></td>
+<td style="text-align:left"><strong>二维投影矩形纹理深度比较查询（OpenGL独有）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex3D(sampler3D tex, float s)</strong></td>
+<td style="text-align:left"><strong>三维纹理查询</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex3D(sampler3D tex, float3 s, float3 dsdx, float3 dsdy)</strong></td>
+<td style="text-align:left"><strong>结合导数值（derivatives）查询三维纹理</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tex3Dproj(sampler3D tex, float4 szq)</strong></td>
+<td style="text-align:left"><strong>查询三维投影纹理，并进行深度值比较</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texCUBE(samplerCUBE tex, float3 s)</strong></td>
+<td style="text-align:left"><strong>查询立方体纹理</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texCUBE (samplerCUBE tex, float3 s, float3 dsdx, float3 dsdy)</strong></td>
+<td style="text-align:left"><strong>结合导数值（derivatives）查询立方体纹理</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>texCUBEproj (samplerCUBE tex, float4 sq)</strong></td>
+<td style="text-align:left"><strong>查询投影立方体纹理</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="偏导函数">偏导函数 <a href="#%e5%81%8f%e5%af%bc%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>ddx(a)</strong></td>
+<td style="text-align:left"><strong>近似a关于屏幕空间x轴的偏导数</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ddy(a)</strong></td>
+<td style="text-align:left"><strong>近似a关于屏幕空间y轴的偏导数</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="unity常用内置函数和变量">Unity常用内置函数和变量 <a href="#unity%e5%b8%b8%e7%94%a8%e5%86%85%e7%bd%ae%e5%87%bd%e6%95%b0%e5%92%8c%e5%8f%98%e9%87%8f" class="anchor">🔗</a></h3><h4 id="顶点着色器输入结构体">顶点着色器输入结构体 <a href="#%e9%a1%b6%e7%82%b9%e7%9d%80%e8%89%b2%e5%99%a8%e8%be%93%e5%85%a5%e7%bb%93%e6%9e%84%e4%bd%93" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">包含的变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>appdata_base</strong></td>
+<td style="text-align:left"><strong>用于顶点着色器输入</strong></td>
+<td style="text-align:left"><strong>顶点位置、顶点法线、第一组纹理坐标</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>appdata_tan</strong></td>
+<td style="text-align:left"><strong>用于顶点着色器输入</strong></td>
+<td style="text-align:left"><strong>顶点位置、顶点切线、顶点法线、第一组纹理坐标</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>appdata_full</strong></td>
+<td style="text-align:left"><strong>用于顶点着色器输入</strong></td>
+<td style="text-align:left"><strong>顶点位置、顶点切线、顶点法线、四组（或更多）纹理坐标</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>appdata_img</strong></td>
+<td style="text-align:left"><strong>用于顶点着色器输入</strong></td>
+<td style="text-align:left"><strong>顶点位置、第一组纹理坐标</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">appdata_base</span> {
+</span></span><span style="display:flex;"><span>    float4 vertex : POSITION;
+</span></span><span style="display:flex;"><span>    float3 normal : NORMAL;
+</span></span><span style="display:flex;"><span>    float4 texcoord : TEXCOORD0;
+</span></span><span style="display:flex;"><span>    UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">appdata_tan</span> {
+</span></span><span style="display:flex;"><span>    float4 vertex : POSITION;
+</span></span><span style="display:flex;"><span>    float4 tangent : TANGENT;
+</span></span><span style="display:flex;"><span>    float3 normal : NORMAL;
+</span></span><span style="display:flex;"><span>    float4 texcoord : TEXCOORD0;
+</span></span><span style="display:flex;"><span>    UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">appdata_full</span> {
+</span></span><span style="display:flex;"><span>    float4 vertex : POSITION;
+</span></span><span style="display:flex;"><span>    float4 tangent : TANGENT;
+</span></span><span style="display:flex;"><span>    float3 normal : NORMAL;
+</span></span><span style="display:flex;"><span>    float4 texcoord : TEXCOORD0;
+</span></span><span style="display:flex;"><span>    float4 texcoord1 : TEXCOORD1;
+</span></span><span style="display:flex;"><span>    float4 texcoord2 : TEXCOORD2;
+</span></span><span style="display:flex;"><span>    float4 texcoord3 : TEXCOORD3;
+</span></span><span style="display:flex;"><span>    fixed4 color : COLOR;
+</span></span><span style="display:flex;"><span>    UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">appdata_img</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    float4 vertex : POSITION;
+</span></span><span style="display:flex;"><span>    half2 texcoord : TEXCOORD0;
+</span></span><span style="display:flex;"><span>    UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="顶点着色器输出">顶点着色器输出 <a href="#%e9%a1%b6%e7%82%b9%e7%9d%80%e8%89%b2%e5%99%a8%e8%be%93%e5%87%ba" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">包含的变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>v2f_img</strong></td>
+<td style="text-align:left"><strong>用于顶点着色器输出</strong></td>
+<td style="text-align:left"><strong>裁剪空间中的位置、纹理坐标</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">v2f_img</span> {
+</span></span><span style="display:flex;"><span>        float4 pos : SV_POSITION;
+</span></span><span style="display:flex;"><span>        half2 uv : TEXCOORD0;
+</span></span><span style="display:flex;"><span>        UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style="display:flex;"><span>        UNITY_VERTEX_OUTPUT_STEREO
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="空间变换函数">空间变换函数 <a href="#%e7%a9%ba%e9%97%b4%e5%8f%98%e6%8d%a2%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>float4 UnityWorldToClipPos(float3 pos )</strong></td>
+<td style="text-align:left"><strong>把世界坐标空间中某一点pos变换到齐次裁剪空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 UnityViewToClipPos(float3 pos )</strong></td>
+<td style="text-align:left"><strong>把观察坐标空间中某一点pos变换到齐次裁剪空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityObjectToViewPos(float3 pos或float4 pos)</strong></td>
+<td style="text-align:left"><strong>模型局部空间坐标系中某一个点pos变换到观察空间坐标系</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityWorldToViewPos(float3 pos )</strong></td>
+<td style="text-align:left"><strong>把世界坐标系下的一个点pos变换到观察空间坐标系</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityObjectToWorldDir(float3 dir )</strong></td>
+<td style="text-align:left"><strong>把方向矢量从模型空间转换到世界空间（方向已单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityWorldToObjectDir(float3 dir )</strong></td>
+<td style="text-align:left"><strong>把方向矢量从世界空间转换到模型空间（方向已单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityObjectToWorldNormal(float3 norm )</strong></td>
+<td style="text-align:left"><strong>将法线从模型空间转换到世界空间（方向已单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityWorldSpaceLightDir(float3 worldPos )</strong></td>
+<td style="text-align:left"><strong>输入参数worldPos是一个世界坐标系下的坐标，得到世界空间中从该点到光源（_WorldSpaceLightPos0）的光照方向。（方向没单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 WorldSpaceLightDir(float4 localPos )</strong></td>
+<td style="text-align:left"><strong>输入一个模型顶点坐标，得到世界空间中从该点到光源（_WorldSpaceLightPos0）的光照方向。（方向没单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 ObjSpaceLightDir(float4 v )</strong></td>
+<td style="text-align:left"><strong>输入一个模型顶点坐标，得到模型空间中从该点到光源（_WorldSpaceLightPos0）的光照方向。（方向没单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 UnityWorldSpaceViewDir(float3 worldPos )</strong></td>
+<td style="text-align:left"><strong>输入参数worldPos是一个世界坐标系下的坐标，得到世界空间中从该点到摄像机的观察方向。（方向没单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 WorldSpaceViewDir(float4 localPos )</strong></td>
+<td style="text-align:left"><strong>输入一个模型顶点坐标，得到世界空间中从该点到摄像机的观察方向。（方向没单位化）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float3 ObjSpaceViewDir(float4 v )</strong></td>
+<td style="text-align:left"><strong>输入一个模型顶点坐标，得到模型空间中从该点到摄像机的观察方向。（方向没单位化）</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="屏幕空间函数">屏幕空间函数 <a href="#%e5%b1%8f%e5%b9%95%e7%a9%ba%e9%97%b4%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>float4 ComputeScreenPos (float4 clipPos)</strong></td>
+<td style="text-align:left"><strong>计算用于执行屏幕空间贴图纹理采样的纹理坐标。输入是裁剪空间位置。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 ComputeGrabScreenPos (float4 clipPos)</strong></td>
+<td style="text-align:left"><strong>计算用于 GrabPass 纹理采样的纹理坐标。输入是裁剪空间位置。</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="内置变量矩阵">内置变量矩阵 <a href="#%e5%86%85%e7%bd%ae%e5%8f%98%e9%87%8f%e7%9f%a9%e9%98%b5" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">变量名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_MVP</strong></td>
+<td style="text-align:left"><strong>当前的模型*观察*投影矩阵，用于将顶点/方向矢量从模型空间转换到裁剪空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_MV</strong></td>
+<td style="text-align:left"><strong>当前的模型*观察矩阵，用于将顶点/方向矢量从模型空间转换到观察空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_V</strong></td>
+<td style="text-align:left"><strong>当前的观察矩阵，用于将顶点/方向矢量从世界空间转换到观察空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_P</strong></td>
+<td style="text-align:left"><strong>当前的投影矩阵，用于将顶点/方向矢量从观察空间转换到裁剪空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_VP</strong></td>
+<td style="text-align:left"><strong>当前的观察*投影矩阵，用于将顶点/方向矢量从世界空间转换到裁剪空间</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_T_MV</strong></td>
+<td style="text-align:left"><strong>UNITY_MATRIX_MV的转置矩阵</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UNITY_MATRIX_IT_MV</strong></td>
+<td style="text-align:left"><strong>UNITY_MATRIX_MV的逆转置矩阵，用于将法线从模型空间转换到观察空间，也可以用于得到UNITY_MATRIX_MV的逆矩阵</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>unity_ObjectToWorld</strong></td>
+<td style="text-align:left"><strong>当前模型矩阵</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>unity_WorldToObject</strong></td>
+<td style="text-align:left"><strong>当前世界矩阵的逆矩阵。</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="摄像机和屏幕参数">摄像机和屏幕参数 <a href="#%e6%91%84%e5%83%8f%e6%9c%ba%e5%92%8c%e5%b1%8f%e5%b9%95%e5%8f%82%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>float3 _WorldSpaceCameraPos</strong></td>
+<td style="text-align:left"><strong>该摄像机在世界空间中的位置</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _ProjectionParams</strong></td>
+<td style="text-align:left"><strong>x=1.0(或-1.0，如果正在使用一个翻转的投影矩阵进行渲染)，y=Near,z=Far,w=1.0+1.0/Far,其中Near和Far分别是近裁剪平面和远裁剪平面到摄像机的距离</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _ScreenParams</strong></td>
+<td style="text-align:left"><strong>x=width,y=height,z=1.0+1.0/width,w=1.0+1.0/height,其中width和height分别是该摄像机的渲染目标（render target）的像素宽度和高度</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _ZBufferParams</strong></td>
+<td style="text-align:left"><strong>x=1-Far/Near,y=Far/Near,z=x/Far,w=y/Far,该变量用于线性化Z缓存中的深度值</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_OrthoParams</strong></td>
+<td style="text-align:left"><strong>x=width,y=height,z没有定义,w=1.0(该摄像机是正交摄像机)或w=0.0（该摄像机是透视摄像机），其中width和height是正交投影摄像机的宽度和高度</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4x4 unity_CameraProjection</strong></td>
+<td style="text-align:left"><strong>该摄像机的投影矩阵</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4x4 unity_CameraInvProjection</strong></td>
+<td style="text-align:left"><strong>该摄像机的投影矩阵的逆矩阵</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_CameraWorldClipPlanes[6]</strong></td>
+<td style="text-align:left"><strong>该摄像机的6个裁剪平面在世界空间下的等式，按左、右、下、上、近、远裁剪平面</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="时间参数">时间参数 <a href="#%e6%97%b6%e9%97%b4%e5%8f%82%e6%95%b0" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>float4 _Time</strong></td>
+<td style="text-align:left"><strong>自关卡加载以来的时间 (t/20, t, t*2, t*3)，用于将着色器中的内容动画化</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _SinTime</strong></td>
+<td style="text-align:left"><strong>时间正弦：(t/8, t/4, t/2, t)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _CosTime</strong></td>
+<td style="text-align:left"><strong>时间余弦：(t/8, t/4, t/2, t)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_DeltaTime</strong></td>
+<td style="text-align:left"><strong>增量时间：(dt, 1/dt, smoothDt, 1/smoothDt)</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="光照相关参数前向渲染">光照相关参数(前向渲染) <a href="#%e5%85%89%e7%85%a7%e7%9b%b8%e5%85%b3%e5%8f%82%e6%95%b0%e5%89%8d%e5%90%91%e6%b8%b2%e6%9f%93" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>fixed4 _LightColor0</strong></td>
+<td style="text-align:left"><strong>（在 Lighting.cginc 中声明）光源颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 _WorldSpaceLightPos0</strong></td>
+<td style="text-align:left"><strong>方向光：（世界空间方向，0）。其他光源：（世界空间位置，1）。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4x4 _LightMatrix0</strong></td>
+<td style="text-align:left"><strong>（在 AutoLight.cginc 中声明） 世界/光源矩阵。用于对剪影和衰减纹理进行采样。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_4LightPosX0、unity_4LightPosY0、unity_4LightPosZ0</strong></td>
+<td style="text-align:left"><strong>（仅限 ForwardBase 通道）前四个非重要点光源的世界空间位置。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_4LightAtten0</strong></td>
+<td style="text-align:left"><strong>（仅限 ForwardBase 通道）前四个非重要点光源的衰减因子。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>half4[4] unity_LightColor</strong></td>
+<td style="text-align:left"><strong>（仅限 ForwardBase 通道）前四个非重要点光源的颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4x4[4] unity_WorldToShadow</strong></td>
+<td style="text-align:left"><strong>世界/阴影矩阵。聚光灯的一个矩阵，方向光级联最多有四个矩阵。</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="光照相关参数延迟渲染">光照相关参数(延迟渲染) <a href="#%e5%85%89%e7%85%a7%e7%9b%b8%e5%85%b3%e5%8f%82%e6%95%b0%e5%bb%b6%e8%bf%9f%e6%b8%b2%e6%9f%93" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>fixed4 unity_AmbientSky</strong></td>
+<td style="text-align:left"><strong>梯度环境光照情况下的天空环境光照颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fixed4 unity_AmbientEquato</strong></td>
+<td style="text-align:left"><strong>梯度环境光照情况下的赤道环境光照颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fixed4 unity_AmbientGround</strong></td>
+<td style="text-align:left"><strong>梯度环境光照情况下的地面环境光照颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fixed4 UNITY_LIGHTMODEL_AMBIENT</strong></td>
+<td style="text-align:left"><strong>环境光照颜色（梯度环境情况下的天空颜色）。旧版变量。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fixed4 unity_FogColor</strong></td>
+<td style="text-align:left"><strong>雾效颜色。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float4 unity_FogParams</strong></td>
+<td style="text-align:left"><strong>用于雾效计算的参数：(density / sqrt(ln(2))、density / ln(2)、–1/(end-start) 和 end/(end-start))。x 对于 Exp2 雾模式很有用；*y* 对于 Exp 模式很有用，*z* 和 w 对于 Linear 模式很有用。</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="数学常量">数学常量 <a href="#%e6%95%b0%e5%ad%a6%e5%b8%b8%e9%87%8f" class="anchor">🔗</a></h4><pre tabindex="0"><code>#ifndef UNITY_CG_INCLUDED
+#define UNITY_CG_INCLUDED
+#define UNITY_PI 3.14159265359f //圆周率
+#define UNITY_TWO_PI 6.28318530718f //2倍圆周率
+#define UNITY_FOUR_PI 12.56637061436f //4倍圆周率
+#define UNITY_INV_PI 0.31830988618f //圆周率的倒数
+#define UNITY_INV_TWO_PI 0.15915494309f //2倍圆周率的倒数
+#define UNITY_INV_FOUR_PI 0.07957747155f //4倍圆周率的倒数
+#define UNITY_HALF_PI 1.57079632679f //半圆周率
+#define UNITY_INV_HALF_PI 0.636619772367f //半圆周率的倒数
+</code></pre><h4 id="颜色空间">颜色空间 <a href="#%e9%a2%9c%e8%89%b2%e7%a9%ba%e9%97%b4" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>bool IsGammaSpace()</strong></td>
+<td style="text-align:left"><strong>根据宏UNITY_COLORSPACE_GAMMA是否被启用了，判断当前是否启用了伽马颜色空间。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float GammaToLinearSpaceExact (float value)</strong></td>
+<td style="text-align:left"><strong>把一个颜色值精确地从伽马颜色空间(sRGB颜色空间)变化到线性空间(CIE-XYZ颜色空间)。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>half3 GammaToLinearSpace (half3 sRGB)</strong></td>
+<td style="text-align:left"><strong>用一个近似模拟的函数把颜色值近似地从伽马空间变换到线性空间。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>float LinearToGammaSpaceExact (float value)</strong></td>
+<td style="text-align:left"><strong>把一个颜色值精确地从线性空间变换到伽马颜色空间。</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>half3 LinearToGammaSpace (half3 linRGB)</strong></td>
+<td style="text-align:left"><strong>用一个近似模拟的函数把颜色值近似地从线性空间变换到伽马颜色空间。</strong></td>
+</tr>
+</tbody>
+</table>
 <h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
@@ -194,6 +1030,10 @@
     <ul>
         
             <li>
+                <a href="/2023/07/07/buildin-renderpipeline-light-1/">Unity内置渲染管线-光照技术-1</a>
+            </li>
+        
+            <li>
                 <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
             </li>
         
@@ -207,10 +1047,6 @@
         
             <li>
                 <a href="/2023/07/01/buildin-renderpipeline-overview/">Unity内置渲染管线-概述</a>
-            </li>
-        
-            <li>
-                <a href="/2023/06/17/designpattern-summary/">设计模式-总结</a>
             </li>
         
     </ul>
@@ -228,7 +1064,7 @@
             </li>
         
             <li>
-                <a href="/categories/unity">unity(7)</a>
+                <a href="/categories/unity">unity(8)</a>
             </li>
         
     </ul>
@@ -241,7 +1077,7 @@
     <ul>
         
             <li>
-                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (2)</a>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
             </li>
         
             <li>
