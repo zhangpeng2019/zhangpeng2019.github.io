@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity-shader-ase | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity-shader-ase</h1>
+
+    <div class="tip">
+        <time datetime="2023-06-20 11:13:34 &#43;0800 CST">2023/06/20</time>
+        <span class="split">·</span>
+        <span> 191 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/buildin-render-pipeline">BuildIn Render Pipeline</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Amplify Shader Editor是行业领先开放且紧密集成的解决方案，它提供了一个Unity开发者易于上手的开发环境，可以与Unity编辑器和着色器使用无缝融合。通过这款工具，开发者能轻松实现AAA级质量的作品，并能灵活地应用在任何Unity项目开发之中，进而大大缩短了制作团队在美术效果上的迭代时间。</p>
+<h2 id="amplify-shader-editorase">Amplify Shader Editor(ASE) <a href="#amplify-shader-editorase" class="anchor">🔗</a></h2><h3 id="安装">安装 <a href="#%e5%ae%89%e8%a3%85" class="anchor">🔗</a></h3><p>Unity资源商店中搜索Amplify Shader Editor进行安装。
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-1.png" alt="">
+导入后展开Amplify Shader Editor目录结构：
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-2.png" alt=""></p>
+<h3 id="编辑器界面简介">编辑器界面简介 <a href="#%e7%bc%96%e8%be%91%e5%99%a8%e7%95%8c%e9%9d%a2%e7%ae%80%e4%bb%8b" class="anchor">🔗</a></h3><h4 id="打开amplify-shader-editor编辑器界面">打开Amplify Shader Editor编辑器界面 <a href="#%e6%89%93%e5%bc%80amplify-shader-editor%e7%bc%96%e8%be%91%e5%99%a8%e7%95%8c%e9%9d%a2" class="anchor">🔗</a></h4><p><img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-3.png" alt="">
+依次点击Window → Amplify Shader Editor → Open Canvas打开编辑器画布（Canvas）界面；或者可以双击Amplify Shader Editor（下文简称ASE）材质或着色器自动打开画布界面。</p>
+<h4 id="创建amplify表面着色器surface-shader">创建Amplify表面着色器（Surface Shader） <a href="#%e5%88%9b%e5%bb%baamplify%e8%a1%a8%e9%9d%a2%e7%9d%80%e8%89%b2%e5%99%a8surface-shader" class="anchor">🔗</a></h4><p><img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-4.png" alt="">
+在项目（Project）界面选中资源文件夹的情况下，依次点击 Assets → Create → Shader → Amplify Surface Shader创建；或者依次点击右键 → Create → Shader → Amplify Surface Shader进行创建。</p>
+<h4 id="画布ui交互">画布UI交互 <a href="#%e7%94%bb%e5%b8%83ui%e4%ba%a4%e4%ba%92" class="anchor">🔗</a></h4><p><img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-5.png" alt="">
+1.节点属性界面
+​	<strong>主属性（Main Properties）</strong>
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-6.png" alt=""></p>
+<ul>
+<li>着色器类型（Shader Type）：此区域显示所使用的当前着色器类型。</li>
+<li>着色器名称（Shader Name）：可编辑文本框，定义着色器的名称和路径。使用正斜杠“/”定义其类别和名称，例如UserSamples / EnvironmentGradient。请注意，此框中显示的名称与文件名不同，必须单独设置。</li>
+<li>光照模型（Light Model）：定义表面如何反射光，通常称为所使用的着色器类型。 ASE目前提供标准（金属 Standard（Metallic））、标准镜面（Standard Specular）、Lambert和Blinn Phong。</li>
+<li>着色器模型（Shader Model）：当编写表面着色器或常规着色器程序时，HLSL源可以编译成不同的“着色器模型”。更高的着色器编译目标允许使用更多的现代GPU功能，但可能使得着色器不能在较旧的GPU或平台上工作。</li>
+<li>精度（Precision）：定义内部计算的精度，使用较低类型提供了额外的性能提升以换取一些精度。默认设置为Float。</li>
+<li>剔除模式（Cull Mode）：Front – 剔除前向几何体，Back – 剔除后向几何体，关闭 - 禁用剔除（双面材料）。默认情况下设置为Back。</li>
+<li>渲染路径（Render Path）：允许您定义着色器支持哪种模式（提前Forward / 延时Deferred）。默认设置为全部。</li>
+<li>投射阴影（Cast Shadows）：定义使用着色器的对象是否投射阴影。</li>
+<li>接收阴影（Receive Shadows）：定义使用着色器的对象是否接收阴影，这包括自阴影（只有使用正向渲染）。</li>
+<li>队列索引（Queue Index）：渲染队列偏移值，接受正（较晚）和负（较早）整数。</li>
+<li>自定义编辑器（Custom Editor）：自定义检查器允许您自定义ASE材料检查器。
+​	<strong>混合模式（Blend Mode）</strong>
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-7.png" alt=""></li>
+<li>混合模式（Blend Mode）：所选模式自动调整可用参数;不透明（Opaque），遮罩（Masked），透明（Transparent），Alpha预乘（Alpha Transparent）或自定义（Custom）。</li>
+<li>渲染类型（Render Type）：该标记将着色器分为几个预定义组。可用标签：不透明（Opaque），透明（Transparent），透明抠出（Transparent Cutout），背景（Background），覆盖（Overlay），不透明树（Tree Opaque），透明树剪出（Tree Transparent Cutout），布告板树（Tree Billboard），草和布告板草皮（Grass and Grass Billboard）。</li>
+<li>渲染队列（Render Queue）：为了获得最佳性能，通过几何体渲染队列排布，从而优化对象的绘制顺序。所有其他渲染队列按距离对对象进行排序，从最远的那些开始渲染，并以最接近的结束。可用选项有背景、几何、Alpha测试、透明和覆盖。</li>
+<li>掩码片段值（Mask Clip Value）：要与不透明度alpha比较的默认值。 0完全不透明，1完全掩蔽。默认设置为0，常用于透明抠出（Transparent Cutout）材质。</li>
+<li>混合RGB和混合Alpha（Blend RGB and Blend Alpha）：当渲染图形时，在所有着色器执行并且所有纹理都应用后，像素被写入屏幕。它们如何与已经存在的内容组合由Blend命令控制。 ASE目前提供定制、Alpha混合（Alpha Blend）、预乘（Premultiplied）、加法（Additive）、软加法（Soft Additive）、乘法（Multiplicative）和2x乘法（2x Multiplicative）模式。</li>
+<li>混合因子（Blend Factor）（SrcFactor ＆ DstFactor）：以下所有属性都适用于混合命令中的SrcFactor＆DstFactor。源指的是计算的颜色，目标是已经在屏幕上的颜色。如果BlendOp使用逻辑运算，则忽略混合因子。</li>
+<li>混合操作RGB和混合操作Alpha（Blend Op RGB &amp; Blend Op Alpha）：添加（Add）、子（Sub）、修改子（Rev Sub）、最小（Min）和最大（Max）。</li>
+<li>颜色蒙版（Color Mask）：设置颜色通道写入蒙版，将其全部关闭使其不可见。
+​	<strong>模版缓冲（Stencil Buffer）</strong>
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-8.png" alt="">
+模板缓冲器可以用作每像素掩模的通用目的，用于保存或丢弃像素。它通常是每个像素8位整数。该值可以写入、递增或递减。 后续绘制调用可以根据该值进行测试，以决定是否应该在运行像素着色器之前丢弃该像素。</li>
+<li>参考（Reference）：要比较的值和/或要写入缓冲区的值（如果Pass，Fail或ZFail设置为替换）。范围是0-255整数。</li>
+<li>读取掩码（Read Mask）：作为0-255整数的8位掩码，用于将参考值与缓冲区（referenceValue＆readMask），比较方法comparisonFunction（stencilBufferValue＆readMask）的内容进行比较。默认值是255。</li>
+<li>写掩码（Write Mask）：8位掩码，作为0-255整数，写入缓冲区时使用。默认值是255。</li>
+<li>比较（Comparison）：用于将参考值与缓冲区的当前内容进行比较的函数。默认值是always。</li>
+<li>通过（Pass）：如果模板测试（和深度测试）通过，对缓冲区的内容做什么。默认值是keep。</li>
+<li>失败（Fail）：如果模板测试失败，对缓冲区的内容做什么。默认值是keep。</li>
+<li>ZFail（ZFail）：如果模板测试通过，则缓冲区的内容如何处理，但深度测试失败。默认值是keep。
+​	<strong>曲面细分（Tessellation）</strong>
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-9.png" alt=""></li>
+<li>冯氏曲面细分（Phong）：修改细分面的位置，使得生成的面稍微跟随网格法线，默认设置为OFF。</li>
+<li>类型（Type）：定义所使用的技术，基于距离、固定、边长和边长Cull。</li>
+<li>曲面细分因子（Tess）：范围是1-32。</li>
+<li>最小值（Min）：最小细分距离。</li>
+<li>最大值（Max）：最大细分距离。
+​	<strong>深度（Depth）</strong>
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-10.png" alt=""></li>
+<li>ZWrite模式（ZWrite Mode）：控制来自此对象的像素是否写入深度缓冲区（默认为开）。如果你画的是实体对象，请保持此状态。如果您绘制半透明效果，请切换到ZWrite Off。</li>
+<li>ZTest模式（ZTest Mode）：如何进行深度测试。默认值为LEqual（将对象从现有对象或远距离绘制为现有对象;隐藏其后面的对象）。 ASE提供ZTest 小于（Less）、大于（Greater）、小于等于（LEqual）、大于等于（GEqual）、等于（Equal）、不等于（NotEqual）和通常（Always）。</li>
+<li>偏移（Offset）：允许您使用两个参数指定深度偏移 — 因子和单位。因子相对于多边形的X或Y缩放最大Z斜率，单位缩放最小可分辨深度缓冲区值。这允许您强制一个多边形绘制在另一个顶部，虽然它们实际上在相同的位置。例如，偏移（0，-1）拉动多边形更接近相机忽略多边形的斜率，而偏移（-1，-1）将拉近多边形，看看掠角。</li>
+<li>因子（Factor）：相对于多边形的X或Y，缩放最大Z斜率。</li>
+<li>单位（Units）：单位缩放最小可分辨深度缓冲区值。
+​	<strong>渲染平台（Rendering Platforms）</strong>
+​	定义支持哪些平台， 默认设置为全部。
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-11.png" alt="">
+​	<strong>可用属性（Available Properties）</strong>
+​	设置为属性（Property）的变量将在此部分中列出，您可以通过拖动它们来调整它们的位置。
+<img src="/2023-06-20-unity-shader-ase-1/2023-06-20-unity-shader-ase-1-12.png" alt="">
+2.保存按钮：手动保存/更新着色器数据。修改着色器名称只有在点击这个按钮之后才会正式生效。
+3.自动切换按钮：切换自动保存/更新着色器数据。
+4.文本编辑按钮：将着色器文件在文本编辑器中打开。
+5.选择回归按钮：屏幕视角回归到选择的节点。
+6.主节点回归按钮：屏幕视角回归到主节点。
+7.清除按钮：删除已经断开连接的节点。
+8.节点选项板界面</li>
+</ul>
+<h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/07/buildin-renderpipeline-light-1/">Unity内置渲染管线-光照技术-1</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/02/dots-concepts-and-principles/">Unity Dots概念与原理</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/01/buildin-renderpipeline-overview/">Unity内置渲染管线-概述</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(9)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (4)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
