@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frame Debugger | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Frame Debugger</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-03 11:13:34 &#43;0800 CST">2023/07/03</time>
+        <span class="split">·</span>
+        <span> 58 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/debugger">Debugger</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>帧调试器 (Frame Debugger) 可将正在运行的游戏的状态冻结到特定帧来自由回放，并查看用于渲染该帧的各个DrawCall。除了列出DrawCall调用，调试器还可逐个单步执行这些DrawCall，以便详细查看游戏视图是如何从场景的图形元素构建的。</p>
+<h2 id="frame-debugger">Frame Debugger <a href="#frame-debugger" class="anchor">🔗</a></h2><h3 id="使用帧调试器">使用帧调试器 <a href="#%e4%bd%bf%e7%94%a8%e5%b8%a7%e8%b0%83%e8%af%95%e5%99%a8" class="anchor">🔗</a></h3><p>Frame Debugger 窗口（菜单：Window &gt; Analysis &gt; Frame Debugger）,打开后点击Enable，会显示DrawCall调用信息。
+<img src="/../public/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-2.png" alt="">
+以上图为例，显示该帧有7次DrawCall，结合Profiler可以进一步确认
+<img src="/../public/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png" alt="">
+单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
+<img src="/../public/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif" alt=""></p>
+<h3 id="rendertarget面板">RenderTarget面板 <a href="#rendertarget%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h3><p><img src="/../public/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png" alt="">
+Channels：分别提供了仅仅显示对应颜色Channle。
+Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。
+Blend：着色到目标的颜色混合规则。
+ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。
+ZTest：深度测试的规则，根据通过深度测试的才会被渲染。
+ZWrite：是否将当前片元的深度信息写入深度缓存。
+Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。
+Why Drawcall cannot be batched?：不能合批的原因描述。
+ShaderProperties：CPU传递给GPU的数据的详细信息。</p>
+<h3 id="注意事项">注意事项： <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="anchor">🔗</a></h3><p>当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。
+原因：当点击Frame Debugger不同DrawCall时，Unity会传递一<strong>帧</strong>，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。
+总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在<strong>帧</strong>通过时进行更改。
+解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">#if UNITY_EDITOR</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(UnityEditor.EditorApplication.isPaused)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>endif
+</span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-framedebugger/">Frame Debugger</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/02/dots-concepts-and-principles/">Unity Dots概念与原理</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/01/buildin-renderpipeline-overview/">Unity内置渲染管线-概述</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(9)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
