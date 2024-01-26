@@ -19,7 +19,7 @@
 以上图为例，显示该帧有7次DrawCall，结合Profiler可以进一步确认
 &lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
 单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
-&lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;
 Channels：分别提供了仅仅显示对应颜色Channle。
 Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。
