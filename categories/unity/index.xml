@@ -15,12 +15,12 @@
       <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-framedebugger/</guid>
       <description>&lt;p&gt;帧调试器 (Frame Debugger) 可将正在运行的游戏的状态冻结到特定帧来自由回放，并查看用于渲染该帧的各个DrawCall。除了列出DrawCall调用，调试器还可逐个单步执行这些DrawCall，以便详细查看游戏视图是如何从场景的图形元素构建的。&lt;/p&gt;
 &lt;h2 id=&#34;frame-debugger&#34;&gt;Frame Debugger &lt;a href=&#34;#frame-debugger&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;使用帧调试器&#34;&gt;使用帧调试器 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%b8%a7%e8%b0%83%e8%af%95%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Frame Debugger 窗口（菜单：Window &amp;gt; Analysis &amp;gt; Frame Debugger）,打开后点击Enable，会显示DrawCall调用信息。
-&lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-2.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-2.png&#34; alt=&#34;&#34;&gt;
 以上图为例，显示该帧有7次DrawCall，结合Profiler可以进一步确认
-&lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
 单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/../static/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;
+&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;
 Channels：分别提供了仅仅显示对应颜色Channle。
 Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。
 Blend：着色到目标的颜色混合规则。
