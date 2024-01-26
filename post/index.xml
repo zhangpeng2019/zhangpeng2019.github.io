@@ -20,23 +20,23 @@
 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
 单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;
-Channels：分别提供了仅仅显示对应颜色Channle。
-Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。
-Blend：着色到目标的颜色混合规则。
-ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。
-ZTest：深度测试的规则，根据通过深度测试的才会被渲染。
-ZWrite：是否将当前片元的深度信息写入深度缓存。
-Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。
-Why Drawcall cannot be batched?：不能合批的原因描述。
-ShaderProperties：CPU传递给GPU的数据的详细信息。&lt;/p&gt;
-&lt;h3 id=&#34;注意事项&#34;&gt;注意事项： &lt;a href=&#34;#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。
-原因：当点击Frame Debugger不同DrawCall时，Unity会传递一&lt;strong&gt;帧&lt;/strong&gt;，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。
-总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在&lt;strong&gt;帧&lt;/strong&gt;通过时进行更改。
-解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。&lt;/p&gt;
+&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Channels：分别提供了仅仅显示对应颜色Channle。&lt;/p&gt;
+&lt;p&gt;Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。&lt;/p&gt;
+&lt;p&gt;Blend：着色到目标的颜色混合规则。&lt;/p&gt;
+&lt;p&gt;ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。&lt;/p&gt;
+&lt;p&gt;ZTest：深度测试的规则，根据通过深度测试的才会被渲染。&lt;/p&gt;
+&lt;p&gt;ZWrite：是否将当前片元的深度信息写入深度缓存。&lt;/p&gt;
+&lt;p&gt;Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。&lt;/p&gt;
+&lt;p&gt;Why Drawcall cannot be batched?：不能合批的原因描述。&lt;/p&gt;
+&lt;p&gt;ShaderProperties：CPU传递给GPU的数据的详细信息。&lt;/p&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项： &lt;a href=&#34;#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。&lt;/p&gt;
+&lt;p&gt;原因：当点击Frame Debugger不同DrawCall时，Unity会传递一&lt;strong&gt;帧&lt;/strong&gt;，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。&lt;/p&gt;
+&lt;p&gt;总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在&lt;strong&gt;帧&lt;/strong&gt;通过时进行更改。&lt;/p&gt;
+&lt;p&gt;解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#if UNITY_EDITOR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(UnityEditor.EditorApplication.isPaused)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(UnityEditor.EditorApplication.isPaused)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;endif
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>

@@ -78,23 +78,23 @@
 <img src="/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png" alt="">
 单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
 <img src="/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif" alt=""></p>
-<h3 id="rendertarget面板">RenderTarget面板 <a href="#rendertarget%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h3><p><img src="/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png" alt="">
-Channels：分别提供了仅仅显示对应颜色Channle。
-Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。
-Blend：着色到目标的颜色混合规则。
-ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。
-ZTest：深度测试的规则，根据通过深度测试的才会被渲染。
-ZWrite：是否将当前片元的深度信息写入深度缓存。
-Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。
-Why Drawcall cannot be batched?：不能合批的原因描述。
-ShaderProperties：CPU传递给GPU的数据的详细信息。</p>
-<h3 id="注意事项">注意事项： <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="anchor">🔗</a></h3><p>当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。
-原因：当点击Frame Debugger不同DrawCall时，Unity会传递一<strong>帧</strong>，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。
-总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在<strong>帧</strong>通过时进行更改。
-解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。</p>
+<h3 id="rendertarget面板">RenderTarget面板 <a href="#rendertarget%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h3><p><img src="/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png" alt=""></p>
+<p>Channels：分别提供了仅仅显示对应颜色Channle。</p>
+<p>Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。</p>
+<p>Blend：着色到目标的颜色混合规则。</p>
+<p>ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。</p>
+<p>ZTest：深度测试的规则，根据通过深度测试的才会被渲染。</p>
+<p>ZWrite：是否将当前片元的深度信息写入深度缓存。</p>
+<p>Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。</p>
+<p>Why Drawcall cannot be batched?：不能合批的原因描述。</p>
+<p>ShaderProperties：CPU传递给GPU的数据的详细信息。</p>
+<h3 id="注意事项">注意事项： <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="anchor">🔗</a></h3><p>当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。</p>
+<p>原因：当点击Frame Debugger不同DrawCall时，Unity会传递一<strong>帧</strong>，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。</p>
+<p>总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在<strong>帧</strong>通过时进行更改。</p>
+<p>解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">#if UNITY_EDITOR</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(UnityEditor.EditorApplication.isPaused)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(UnityEditor.EditorApplication.isPaused)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>endif
 </span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
