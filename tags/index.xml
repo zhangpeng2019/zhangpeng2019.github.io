@@ -6,7 +6,16 @@
     <description>Recent content in Tags on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plugin</title>
+      <link>https://www.chenqiaoqian.com/tags/plugin/</link>
+      <pubDate>Tue, 11 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/tags/plugin/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>BuildIn Render Pipeline</title>
       <link>https://www.chenqiaoqian.com/tags/buildin-render-pipeline/</link>

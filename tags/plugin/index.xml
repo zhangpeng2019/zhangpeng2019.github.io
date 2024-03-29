@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plugin on 陈巧倩</title>
+    <link>https://www.chenqiaoqian.com/tags/plugin/</link>
+    <description>Recent content in Plugin on 陈巧倩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/plugin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UI Particle System</title>
+      <link>https://www.chenqiaoqian.com/2023/07/11/2023-07-11-unity-ugui/</link>
+      <pubDate>Tue, 11 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/11/2023-07-11-unity-ugui/</guid>
+      <description>&lt;p&gt;UI Particle System是用于Unity GUI的3D粒子的高级解决方案。&lt;/p&gt;
+&lt;h2 id=&#34;ui-particle-system&#34;&gt;UI Particle System &lt;a href=&#34;#ui-particle-system&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;关于ui-particle-system&#34;&gt;关于UI Particle System &lt;a href=&#34;#%e5%85%b3%e4%ba%8eui-particle-system&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System是用于Unity GUI的3D粒子的高级解决方案。可能每个尝试在GUI中添加粒子的开发者都遇到过制作相同类型的粒子绕过按钮或在滚动视图内消隐的问题，但有了这个插件，你就不需要担心改变排序顺序，添加多个画布等问题了。使用它，你只需要进行几个快速的步骤，就可以在GUI中添加下一个粒子。&lt;/p&gt;
+&lt;h3 id=&#34;使用场景&#34;&gt;使用场景 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System可以在Unity 2017.2+版本中使用（它也可能在之前的版本上运行，但这没有经过测试）。着色器和深度缓冲区已准备好在PC以及移动设备上运行。&lt;/p&gt;
+&lt;h3 id=&#34;如何使用&#34;&gt;如何使用 &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;首先你应该在GUI画布（将包含粒子，GUI按钮等）中添加UIParticleCanvas组件。 GUI画布需要将渲染模式设置为Screen Space - Camera，并设置渲染摄像头参数。&lt;/p&gt;
+&lt;p&gt;在UIParticleCanvas组件中设置将用于生成深度缓冲区的Mask layer参数（最好为这种情况创建一个新的图层）。 如果你在一个地方有多个渲染画布，你需要创建更多的图层。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;设置UIParticleCanvas参数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mask resolution scale - 它定义了mask的分辨率。1表示屏幕大小的100%，0.5表示50%。通常在大多数情况下1都可以，但如果你觉得它占用的内存太多，你可以将它降低，直到masking看起来很糟糕&lt;/li&gt;
+&lt;li&gt;Mask layer - 它定义了在哪一层上渲染深度/mask缓冲器&lt;/li&gt;
+&lt;li&gt;Show depth mask - 允许检查你的深度蒙版是什么样的&lt;/li&gt;
+&lt;li&gt;Show culling mask - 允许你查看你的剔除蒙版是什么样的。当你设置剔除蒙版的图层值时，最好将它们从255设定为1，因为他们在这个视图上容易被看到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下一步是向每个Button/Image/Rect添加UIParticleDepthObject，这将使该对象在我们的深度（或剔除mask）缓冲区中对我们的粒子可见&lt;/p&gt;
+&lt;p&gt;请记住，Z位置现在是重要的，对象必须在画布的前面（所以，如果画布的Z位置为0，那么对象的深度应该小于0）。还建议不要在深度对象之间的Z位置上做出太大的差异，因为深度缓冲区的大小有限。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;设置UIParticleDepthObject参数：
+Graphic source - 允许选择将用于渲染到缓冲区的源。你可以选择：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Image （gui组件）。在这种情况下，mask的工作方式就像你会选择Image类型&amp;quot;Simple&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RawImage （gui组件）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Texture&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Render mode在这里，你可以选择是否只想渲染到深度缓冲区，或者将此对象作为粒子的剔除mask
+Alpha mode定义了纹理中的alpha将如何处理：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AlphaTested（所以只在某个阈值下切割）&lt;/li&gt;
+&lt;li&gt;Dithering（所以根据alpha值，有些像素会可见，有些不会，这可能是半透明mask的好解决方案）&lt;/li&gt;
+&lt;li&gt;NoAlpha（它忽略了纹理中的alpha，但在紧凑的来自Image组件的Sprites的情况下，它可能有mesh依赖的形状）&lt;/li&gt;
+&lt;li&gt;Translucent（半透明）注意，Translucent模式需要选择在粒子的材质中也使用Translucency模式（它比其他alpha模式更消耗资源，所以只在你需要它的地方使用它）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Alpha test treshold 仅在Alpha Test模式下可用。定义缓冲区中将在何值下切割像素
+Alpha dithering steps 仅在Alpha Dithering模式下可用。定义应该进行多少dithering密度步骤。更高的值并不总是意味着更好的视图
+Culling mask value (layer) 仅在Culling Mask模式下可用。允许选择它将获得的层值
+Will Rect resize in runtime 如果你打算在运行时调整RectTransform的大小，就选择这个。默认情况下它并未启用，因为它需要在每一帧中检查矩形的顶点是否已经发生变化&lt;/p&gt;
+&lt;p&gt;最后一步是将粒子材质中的shader更改为UIParticle（MODev/UIParticle/Particle）&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;UIParticle着色器中，你可以更改像以下的参数：
+MainTex：选择粒子的纹理
+Colorize?：启用/禁用通过材质参数进行颜色修改。 Vertex（ParticleSystem）的颜色修改总是启用的
+Color：当Colorize启用时，乘以纹理颜色的值
+Disable culling?：启用/禁用深度/mask剔除。如果你选择这个，粒子会像没有UI粒子系统一样行为
+Blend mode (subset)：你可以设置你的自定义alpha混合模式。如果你想设置基本的alpha混合模式之一，你可以使用&amp;quot;Set Blending mode&amp;quot;预览中的底部按钮之一
+UseClippingMask?：启用/禁用通过剪辑mask进行剔除（UIParticleDepthObject的Culling Mask模式）
+ClippingMaskVal：允许选择剔除mask层。请注意，如果你从代码中更改这个值，你需要通过255f来划分层mask值
+Set Blending mode buttons：允许选择基本的alpha混合模式之一
+Enable Soft particle：启用Soft Particles，它将更好地与碰撞的UI元素混合。请注意，这种技术稍微有点贵，所以只有在需要的时候才使用它
+Soft particle factor - 定义软粒子混合的平滑度&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Enable UI Mask Translucency use? ：启用/禁用半透明剔除mask或深度对象的半透明性的使用。 请注意，这种模式会增加性能消耗，因为着色器有更多的计算（虽然还不太昂贵，但要明智地使用）。&lt;/p&gt;
+&lt;h3 id=&#34;半透明剔除&#34;&gt;半透明剔除 &lt;a href=&#34;#%e5%8d%8a%e9%80%8f%e6%98%8e%e5%89%94%e9%99%a4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System的半透明剔除工作方式接近于3D中的Z-test，因此它是二进制的（通过测试的元素：它是可见的，否则：它被剔除）。但是，有一种在延迟着色中经常使用的解决方案：抖动alpha混合。你可以通过设置UIParticleDepthObject和alpha模式设置为Dithering + 合适的alpha抖动步骤计数来达到这个。
+还有一个名为半透明alpha模式的新特性，这个更昂贵，但适用于非重叠剔除遮罩或用非二进制方式的深度对象（是的，深度对象可以是半透明的，所以粒子会在它们后面可见）。&lt;/p&gt;
+&lt;h3 id=&#34;失真效果&#34;&gt;失真效果 &lt;a href=&#34;#%e5%a4%b1%e7%9c%9f%e6%95%88%e6%9e%9c&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自1.06版本的插件以来，您可以使用MODev/UIParticle/ParticleWithDistortion着色器替代仅使用Particle着色器，将失真效果添加到GUI上。请注意，它使用GrabPass，所以对于移动设备（尤其是低端设备），可能效率不高。失真效果是由材质和粒子透明度的参数控制的。推荐使用alpha混合模式来进行透明度混合模式。&lt;/p&gt;
+&lt;h3 id=&#34;使粒子对象遵循ui-recttransform大小&#34;&gt;使粒子对象遵循UI RectTransform大小 &lt;a href=&#34;#%e4%bd%bf%e7%b2%92%e5%ad%90%e5%af%b9%e8%b1%a1%e9%81%b5%e5%be%aaui-recttransform%e5%a4%a7%e5%b0%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要让粒子对象遵循RectTransform的大小，你应该在GameObject上添加UIParticleRectTransSizeFollower组件。在场景中正确设置对象后，使用“制作矩形快照”按钮来保存参照的设定。请注意，如果你想让你的对象遵循RectTransform的中心，GameObject的中心也应该在它的中心（至少在XY轴上）。&lt;/p&gt;
+&lt;h3 id=&#34;联系方式&#34;&gt;联系方式 &lt;a href=&#34;#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;如果你需要任何支持，或者你愿意和我分享你对这个工具的看法，请随时写邮件到support@modev.com.pl。另外，如果你需要一些可能会被许多人使用的额外参数，也可以写邮件给我 - 也许我会做出这些并将其放入下一个UI粒子系统的更新中。
+如果你能在资产商店（Asset Store）上为我的资产评分（如果你喜欢的话）那就太好了。这将是一个对我非常好的信号，说明这个工具是有需求的，并且应该继续扩展。&lt;/p&gt;
+&lt;h3 id=&#34;有用的链接&#34;&gt;有用的链接 &lt;a href=&#34;#%e6%9c%89%e7%94%a8%e7%9a%84%e9%93%be%e6%8e%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;你可以在资产商店（Asset Store）中找到所有有用链接。
+如何设置的例子：https://www.youtube.com/watch?v=8uuxMpxJqUw&lt;/p&gt;
+&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
