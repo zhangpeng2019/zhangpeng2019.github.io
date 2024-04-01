@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UGUI中文教程(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">UGUI中文教程(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-09 11:13:34 &#43;0800 CST">2023/07/09</time>
+        <span class="split">·</span>
+        <span> 3303 words </span>
+        <span class="split">·</span>
+        <span>
+            16 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>Unity UI 是一组用于开发游戏和应用程序用户界面的工具。它是一个基于 GameObject 的 UI 系统，使用组件和游戏视图来排列、定位和设置用户界面的样式。 您无法使用Unity UI在Unity编辑器中创建或更改用户界面。</p>
+<h3 id="unity-ui-unity-user-interface">Unity UI: Unity User Interface <a href="#unity-ui-unity-user-interface" class="anchor">🔗</a></h3><p>Unity UI 是一个用于开发游戏和应用程序用户界面的 UI 工具包。它是一个基于 GameObject 的 UI 系统，使用组件和游戏视图来排列、定位和设置用户界面的样式。 您无法使用Unity UI在Unity编辑器中创建或更改用户界面。</p>
+<p>本文档介绍了 Unity UI 功能，例如创建 Canvas、定位和动画元素、定义用户交互以及自动调整布局大小。</p>
+<h3 id="canvas">Canvas <a href="#canvas" class="anchor">🔗</a></h3><h4 id="canvas画布">Canvas(画布) <a href="#canvas%e7%94%bb%e5%b8%83" class="anchor">🔗</a></h4><p>画布是所有UI元素应该所在的区域。画布是一个带有Canvas组件的游戏对象，所有的UI元素都必须是这种画布的子对象。
+使用菜单 GameObject &gt; UI &gt; Image 创建新的UI元素，比如一个Image，如果场景中尚未存在画布，将自动创建一个Canvas。UI元素被创建为此Canvas的子对象。
+画布区域在场景视图中显示为矩形。这样可以轻松定位 UI 元素，而无需始终保持游戏视图可见。
+Canvas使用EventSystem对象来帮助消息系统。</p>
+<h4 id="draw-order-of-elements元素绘制顺序">Draw order of elements(元素绘制顺序) <a href="#draw-order-of-elements%e5%85%83%e7%b4%a0%e7%bb%98%e5%88%b6%e9%a1%ba%e5%ba%8f" class="anchor">🔗</a></h4><p>在Canvas中，UI元素按照它们在Hierarchy中出现的顺序进行绘制。首先绘制第一个子元素，然后是第二个子元素，依此类推。如果两个UI元素重叠，后出现的元素将会覆盖在先出现的元素之上。</p>
+<p>要改变元素覆盖的顺序，只需通过拖动它们在Hierarchy中的位置即可。也可以通过在Transform组件上使用以下方法来控制顺序：SetAsFirstSibling，SetAsLastSibling，和SetSiblingIndex。</p>
+<h4 id="render-modes渲染模式">Render Modes(渲染模式) <a href="#render-modes%e6%b8%b2%e6%9f%93%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h4><p>Canvas具有渲染模式设置，可以用来将其设置为在屏幕空间或世界空间中渲染。</p>
+<h5 id="screen-space---overlay屏幕空间---叠加模式">Screen Space - Overlay(屏幕空间 - 叠加模式) <a href="#screen-space---overlay%e5%b1%8f%e5%b9%95%e7%a9%ba%e9%97%b4---%e5%8f%a0%e5%8a%a0%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h5><p>此渲染模式将UI元素放置在场景顶部的屏幕上进行渲染。如果屏幕尺寸调整或分辨率变化，Canvas将自动改变大小以匹配这些变化。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_Canvas_Screenspace_Overlay.png" alt=""></p>
+<h5 id="screen-space---camera屏幕空间-相机模式">Screen Space - Camera(屏幕空间-相机模式) <a href="#screen-space---camera%e5%b1%8f%e5%b9%95%e7%a9%ba%e9%97%b4-%e7%9b%b8%e6%9c%ba%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h5><p>这与屏幕空间 - 叠加相似，但在这种渲染模式下，Canvas被放置在指定相机前面的一定距离处。UI元素由这台相机渲染，这意味着相机设置会影响UI的外观。如果相机设置为透视图，UI元素将呈现透视效果，透视变形的程度可以通过相机视野调整。如果屏幕尺寸调整，分辨率变化，或相机视锥体变化，Canvas将自动改变大小以匹配这些变化。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_Canvas_Screenspace_Camera.png" alt=""></p>
+<h5 id="world-space世界空间">World Space(世界空间) <a href="#world-space%e4%b8%96%e7%95%8c%e7%a9%ba%e9%97%b4" class="anchor">🔗</a></h5><p>在这种渲染模式下，Canvas将像场景中的任何其他对象一样运作。Canvas的大小可以通过其Rect Transform手动设置，UI元素将根据3D位置在场景中的其他对象前面或者后面进行渲染。这对于应该成为世界一部分的UI非常有用。这也被称为&quot;diegetic interface&quot;。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_Canvas_Worldspace.png" alt=""></p>
+<h3 id="basic-layout">Basic Layout <a href="#basic-layout" class="anchor">🔗</a></h3><h4 id="basic-layout基础布局">Basic Layout(基础布局) <a href="#basic-layout%e5%9f%ba%e7%a1%80%e5%b8%83%e5%b1%80" class="anchor">🔗</a></h4><p>在本节中，我们将介绍如何相对于Canvas和其他UI元素定位UI元素。如果你想在阅读的时候进行自我测试，你可以通过菜单GameObject -&gt; UI -&gt; Image来创建一个图像。</p>
+<h4 id="the-rect-tool矩形工具">The Rect Tool(矩形工具) <a href="#the-rect-tool%e7%9f%a9%e5%bd%a2%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h4><p>每个UI元素在布局时都被表示为一个矩形。这个矩形可以在场景视图中使用工具栏的矩形工具进行操作。矩形工具既可以用于Unity的2D特性，也可以用于UI，事实上，甚至可以用于3D对象。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_Rect_Tool_Button.png" alt=""></p>
+<p>矩形工具可以用来移动、调整大小并旋转UI元素。一旦你选中了一个UI元素，你可以通过在矩形内任何地方点击并拖动来移动它。你可以点击边缘或角落并拖动来调整其大小。可以通过将光标悬停在角落稍远的地方，直到鼠标光标看起来像一个旋转符号，然后在任一方向上点击并拖动来旋转元素。</p>
+<p>就像其他工具一样，矩形工具使用工具栏中设置的当前的轴心模式和空间。在使用UI时，通常最好将它们设定为Pivot和Local。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_Pivot_Local_Buttons.png" alt=""></p>
+<h4 id="rect-transform矩形变换">Rect Transform(矩形变换) <a href="#rect-transform%e7%9f%a9%e5%bd%a2%e5%8f%98%e6%8d%a2" class="anchor">🔗</a></h4><p>形变换是一种新的变换组件，用于所有的UI元素，而不是使用常规的变换组件。、</p>
+<p><img src="/2023-07-09-unity-ugui/UI_RectTransform.png" alt=""></p>
+<p>矩形变换拥有常规变换的位置、旋转和缩放，但它也有宽度和高度，用于指定矩形的尺寸。</p>
+<h5 id="resizing-versus-scaling调整大小与缩放">Resizing Versus Scaling(调整大小与缩放) <a href="#resizing-versus-scaling%e8%b0%83%e6%95%b4%e5%a4%a7%e5%b0%8f%e4%b8%8e%e7%bc%a9%e6%94%be" class="anchor">🔗</a></h5><p>当矩形工具用于改变物体的大小时，通常是针对2D系统中的Sprites和3D Objects，它将改变物体的局部尺度。然而，当它被用于带有矩形变换的物体时，它将会改变宽度和高度，而保持本地缩放不变。这种调整大小不会影响字体大小、切片图像的边框等。</p>
+<h5 id="pivot中心点">Pivot(中心点) <a href="#pivot%e4%b8%ad%e5%bf%83%e7%82%b9" class="anchor">🔗</a></h5><p>旋转，大小和比例修改都是围绕中心点进行的，因此中心点的位置影响旋转，大小调整或缩放的结果。当工具栏的&quot;Pivot&quot;按钮设置为&quot;Pivot&quot;模式时，可以在&quot;Scene View&quot;中移动&quot;Rect Transform&quot;的中心点。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_PivotRotate.png" alt=""></p>
+<h5 id="anchors锚点">Anchors(锚点) <a href="#anchors%e9%94%9a%e7%82%b9" class="anchor">🔗</a></h5><p>矩形变换包括一个名为锚点的布局概念。在场景视图中，锚点显示为四个小三角形手柄，并且在检查器中也显示锚点信息。</p>
+<p>如果矩形变换的父对象也是矩形变换，那么子矩形变换可以以各种方式锚定到父矩形变换。例如，子对象可以锚定到父对象的中心，或者锚定到四个角中的一个。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_Anchored1.gif" alt=""></p>
+<p>锚点还允许子对象随着父对象的宽度或高度一起拉伸。矩形的每个角都有一个固定的偏移量到其对应的锚点，即矩形的左上角有一个固定的偏移量到左上角的锚点等。这样，矩形的不同角落可以锚定到父矩形中的不同点。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_Anchored2.gif" alt=""></p>
+<p>锚点的位置是以父矩形的宽度和高度的分数（或百分比）来定义的。0.0（0%）对应于左侧或底侧，0.5（50%）对应于中间，1.0（100%）对应于右侧或顶侧。但是锚点不仅限于边缘和中间，它们可以锚定到父矩形内的任何点。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_Anchored3.gif" alt=""></p>
+<p>你可以单独拖动每一个锚点，或者如果它们在一起，你可以通过点击它们中间的位置并拖动来一起拖动它们。如果你在拖动锚点的同时按住Shift键，矩形的对应角将会和锚点一起移动。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_Anchored4.gif" alt=""></p>
+<p>锚点手柄的一个有用特性是，它们会自动吸附到兄弟矩形的锚点，以便进行精确定位。</p>
+<h5 id="anchor-presets锚点预设按钮">Anchor presets(锚点预设按钮) <a href="#anchor-presets%e9%94%9a%e7%82%b9%e9%a2%84%e8%ae%be%e6%8c%89%e9%92%ae" class="anchor">🔗</a></h5><p>在Inspector中，可以在 Rect Transform 组件的左上角找到锚点预设按钮。点击该按钮会打开锚点预设下拉菜单。在这里，你可以快速选择一些最常用的锚定选项。你可以将UI元素锚定到父元素的侧边或中间，或者随着父元素的大小一起拉伸。水平和垂直的锚定是独立的。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_AnchorPreset.png" alt=""></p>
+<p>锚点预设按钮如果有选中的预设选项，会显示当前选中的预设选项。如果水平或垂直轴上的锚点设置的位置与预设中的任何位置不同，将显示自定义选项。</p>
+<h5 id="anchor-and-position-fields-in-the-inspector检查器中的锚点和位置字段">Anchor and position fields in the Inspector(检查器中的锚点和位置字段) <a href="#anchor-and-position-fields-in-the-inspector%e6%a3%80%e6%9f%a5%e5%99%a8%e4%b8%ad%e7%9a%84%e9%94%9a%e7%82%b9%e5%92%8c%e4%bd%8d%e7%bd%ae%e5%ad%97%e6%ae%b5" class="anchor">🔗</a></h5><p>如果锚点数字字段还未显示，你可以点击锚点展开箭头来显示。Anchor Min 对应场景视图中的左下锚点手柄，而 Anchor Max 则对应右上手柄。</p>
+<p>根据锚点是一起（产生固定的宽度和高度）还是分开（使矩形随父矩形一起拉伸），矩形的位置字段显示方式会有所不同。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_RectTransform_2.png" alt=""></p>
+<p>当所有的锚点手柄在一起时，显示的字段有Pos X、Pos Y、Width和Height。Pos X和Pos Y的值表示相对于锚点的枢轴位置。</p>
+<p>当锚点分开时，字段部分或全部变为Left、Right、Top和Bottom。这些字段定义了由锚点定义的矩形内的填充。如果锚点在水平方向上分开，则使用Left和Right字段，如果在垂直方向上分开，则使用Top和Bottom字段。</p>
+<p>注意，通常情况下，更改锚点或枢轴字段中的值会对定位值进行反向调整，以使矩形保持原位。在不需要这种情况时，可以通过在检查器中点击R键开启Raw edit模式。这将导致Anchor和Pivot的值可以更改，而其他值不会因此变化。由于矩形的位置和大小取决于锚点和枢轴的值，所以这可能会导致矩形在视觉上移动或重新调整大小。</p>
+<h3 id="visual-components">Visual Components <a href="#visual-components" class="anchor">🔗</a></h3><h4 id="visual-components视觉组件">Visual Components(视觉组件) <a href="#visual-components%e8%a7%86%e8%a7%89%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h4><p>随着UI系统的引入，已经添加了新的组件，这些组件将帮助你创建特定于GUI的功能。此部分将介绍可以创建的新组件的基础知识。</p>
+<h4 id="text">Text <a href="#text" class="anchor">🔗</a></h4><p><img src="/2023-07-09-unity-ugui/UI_TextInspector.png" alt=""></p>
+<p>Text组件，也被称为Label，具有一个用于输入要显示的文本的文本区域。可以设置字体、字体样式、字体大小，以及文本是否具有富文本功能。</p>
+<p>有选项可以设置文本的对齐方式，以及横向和纵向溢出的设置，这些设置可以控制如果文本的尺寸大于矩形的宽度或高度时会发生什么，还有一个Best Fit选项，使文本重新调整大小以适应可用空间。</p>
+<h4 id="image">Image <a href="#image" class="anchor">🔗</a></h4><p><img src="/2023-07-09-unity-ugui/UI_ImageInspector.png" alt=""></p>
+<p>Image拥有一个Rect Transform组件和一个Image组件。可以将精灵应用到Image组件上，在Target Graphic字段下，并可以在Color字段中设置其颜色。也可以将材质应用到Image组件。Image Type字段定义了应用的精灵将如何显示，选项包括：</p>
+<ul>
+<li>
+<p>Simple - 等比例缩放整个精灵。</p>
+</li>
+<li>
+<p>Sliced - 利用3x3的精灵分割，所以调整大小不会扭曲角落，只有中心部分会被拉伸。</p>
+</li>
+<li>
+<p>Tiled - 类似于Sliced，但是将中心部分平铺（重复）而不是拉伸。对于完全无边框的精灵，整个精灵都会被平铺。</p>
+</li>
+<li>
+<p>Filled - 以与Simple相同的方式显示精灵，除了它会从一个定义的方向、方式和量填充精灵。</p>
+</li>
+</ul>
+<p>选择Set Native Size选项，当选择了Simple或Filled时显示，会将图像重置为原始精灵大小。</p>
+<p>可以通过从&rsquo;Texture Type&rsquo;设置中选择Sprite(2D / UI)来导入图片作为UI精灵。精灵具有附加的导入设置，与旧的GUI精灵相比，最大的不同是增加了精灵编辑器。精灵编辑器提供了9切分图像的选项，这可以将图像分成9个区域，这样如果精灵调整大小，角落不会拉伸或扭曲。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_SpriteEditor.png" alt=""></p>
+<h4 id="raw-image">Raw Image <a href="#raw-image" class="anchor">🔗</a></h4><p>Image组件需要一个精灵，而Raw Image则需要一个纹理（没有边界等）。只有在必要的情况下才应使用Raw Image，否则在大多数情况下Image将是适合的。</p>
+<h4 id="mask">Mask <a href="#mask" class="anchor">🔗</a></h4><p>Mask并不是一个可见的UI控件，而是一种修改控件子元素外观的方式。掩码将子元素限制在父元素的形状内（也就是说，&ldquo;掩蔽&rdquo;）。所以，如果子元素大于父元素，那么只有适应父元素的子元素部分才会可见。</p>
+<h4 id="effects">Effects <a href="#effects" class="anchor">🔗</a></h4><p>视觉组件也可以应用各种简单的效果，如简单的阴影或轮廓。</p>
+<h3 id="interaction-components">Interaction Components <a href="#interaction-components" class="anchor">🔗</a></h3><h4 id="interaction-components交互组件">Interaction Components(交互组件) <a href="#interaction-components%e4%ba%a4%e4%ba%92%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h4><p>这部分涵盖了UI系统中处理交互的组件，如鼠标或触摸事件以及使用键盘或控制器的交互。</p>
+<p>交互组件本身不可见，必须与一个或多个视觉组件组合起来才能正确工作。</p>
+<h4 id="common-functionality公用功能">Common Functionality(公用功能) <a href="#common-functionality%e5%85%ac%e7%94%a8%e5%8a%9f%e8%83%bd" class="anchor">🔗</a></h4><p>大部分交互组件都有一些共同点。它们都是可选择的，这意味着它们有共享的内置功能，可以用于可视化状态之间的过渡（正常、高亮、按下、禁用），并且可以使用键盘或控制器导航到其他可选择的项目。</p>
+<p>交互组件至少有一个UnityEvent，在用户以特定方式与组件交互时被触发。UI系统捕捉并记录了从附加到UnityEvent的代码传出的任何异常。</p>
+<h4 id="button">Button <a href="#button" class="anchor">🔗</a></h4><p>Button有一个OnClick UnityEvent，用于定义当点击时它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ButtonExample.png" alt=""></p>
+<h4 id="toggle">Toggle <a href="#toggle" class="anchor">🔗</a></h4><p>Toggle有一个IsOn复选框，用于确定Toggle当前是打开还是关闭状态。当用户点击Toggle时，这个值会翻转，相应地，视觉上的勾选标记也可以打开或关闭。它还有一个OnValueChanged UnityEvent，用于定义当值发生变化时它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleExample.png" alt=""></p>
+<h4 id="toggle-group">Toggle Group <a href="#toggle-group" class="anchor">🔗</a></h4><p>Toggle Group可以用来组合一组彼此独立的Toggle。属于同一组的Toggle被约束在一起，一次只能选择其中一个 - 选择其中一个会自动取消选择所有其他Toggle。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleGroupExample.png" alt="img"></p>
+<h4 id="slider">Slider <a href="#slider" class="anchor">🔗</a></h4><p>Slider具有一个十进制数值Value，用户可以在最小值和最大值之间拖动它。它可以是水平的也可以是垂直的。它还有一个OnValueChanged UnityEvent，用于定义当值发生变化时它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_SliderExample.png" alt="img"></p>
+<h4 id="scrollbar">Scrollbar <a href="#scrollbar" class="anchor">🔗</a></h4><p>Scrollbar有一个十进制数值Value，范围在0和1之间。当用户拖动滚动条时，该值相应地进行变化。</p>
+<p>滚动条常与Scroll Rect和Mask一起使用，以创建滚动视图。Scrollbar有一个范围在0和1之间的Size值，用来确定手柄占整个滚动条长度的比例是多少。这通常是由另一个组件控制的，用来指示在滚动视图中可见的内容占总内容的比例有多大。Scroll Rect组件可以自动完成这个工作。</p>
+<p>滚动条可以是水平的，也可以是垂直的。它还有一个OnValueChanged UnityEvent，用于定义当值变化时，它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollbarExample.png" alt=""></p>
+<h4 id="dropdown">Dropdown <a href="#dropdown" class="anchor">🔗</a></h4><p>Dropdown有一个可供选择的选项列表。每个选项可以指定一个文本字符串和可选的图像，可以在检查器中设置，也可以从代码动态设置。它有一个OnValueChanged UnityEvent，用于定义当当前选择的选项发生改变时它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownExample.png" alt="img"></p>
+<h4 id="input-field">Input Field <a href="#input-field" class="anchor">🔗</a></h4><p>Input Field用于使用户可以编辑Text Element的文本。它有一个UnityEvent，用于定义当文本内容发生变化时它将执行什么操作，还有另一个UnityEvent，用于定义当用户完成编辑时它将执行什么操作。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_InputFieldExample.png" alt="img"></p>
+<h4 id="scroll-rect-scroll-view">Scroll Rect (Scroll View) <a href="#scroll-rect-scroll-view" class="anchor">🔗</a></h4><p>当需要在小区域内显示占用大量空间的内容时，可以使用Scroll Rect。Scroll Rect提供了滚动内容的功能。</p>
+<p>通常，Scroll Rect与Mask组合使用，以创建滚动视图，其中只有Scroll Rect内部的可滚动内容是可见的。它还可以额外地与一或两个Scrollbar组合使用，可以拖动它们进行水平或垂直滚动。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollRectExample.png" alt="img"></p>
+<h3 id="animation-integration">Animation Integration <a href="#animation-integration" class="anchor">🔗</a></h3><p>Animation允许使用Unity的动画系统对控制状态间的每个过渡进行完全动画化。由于可以同时动画化的属性数量，这是过渡模式中最强大的一种。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_ButtonInspectorAnimation.png" alt=""></p>
+<p>要使用Animation过渡模式，需要将Animator组件附加到控制元素上。可以通过点击&quot;Auto Generate Animation&quot;自动完成。这也会生成一个已经设置了状态的Animator控制器，需要保存。</p>
+<p>新的Animator控制器可以立即使用。与大多数Animator控制器不同，此控制器还存储控制器过渡的动画，如果需要，可以进行定制。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_ButtonAnimator.png" alt=""></p>
+<p>例如，如果选择了一个附有Animator控制器的Button元素，则可以通过打开Animation窗口（Window&gt;Animation）编辑按钮每个状态的动画。</p>
+<p>有一个Animation Clip弹出菜单可以选择所需的剪辑。可从&quot;Normal&quot;、&ldquo;Highlighted&rdquo;、&ldquo;Pressed&quot;和&quot;Disabled&quot;中选择。</p>
+<p><img src="/2023-07-09-unity-ugui/GUI_ButtonAnimationWindow.png" alt=""></p>
+<p>Normal状态由按钮元素本身的值设置，可以为空。在所有其他状态中，最常见的配置是时间线开始时的单个关键帧。状态之间的过渡动画将由Animator处理。</p>
+<p>例如，可以通过从Animation Clip弹出菜单中选择Highlighted状态，并将播放头放在时间线开始处，来更改Highlighted状态下按钮的宽度：</p>
+<ul>
+<li>
+<p>选择录制按钮</p>
+</li>
+<li>
+<p>在检查器中更改按钮的宽度</p>
+</li>
+<li>
+<p>退出录制模式。</p>
+</li>
+</ul>
+<p>切换到播放模式，看看在突出显示时按钮如何变大。</p>
+<p>任何数量的属性都可以在此关键帧中设置其参数。</p>
+<p>多个按钮可以通过共享Animator控制器来共享相同的行为。</p>
+<p>UI动画过渡模式与Unity的旧版动画系统不兼容。你应该仅使用Animator组件。</p>
+<h3 id="auto-layout">Auto Layout <a href="#auto-layout" class="anchor">🔗</a></h3><h4 id="auto-layout自动布局">Auto Layout(自动布局) <a href="#auto-layout%e8%87%aa%e5%8a%a8%e5%b8%83%e5%b1%80" class="anchor">🔗</a></h4><p>Rect Transform布局系统具有足够的灵活性，可以处理许多不同类型的布局，并且它还允许以完全自由形式放置元素。但是，有时可能需要更加结构化的布局。</p>
+<p>自动布局系统提供了将元素放置在嵌套布局组中的方法，例如水平组，垂直组或网格。它还允许元素根据所包含的内容自动调整大小。例如，一个按钮可以动态地调整大小以精确地适应其文本内容加上一些填充。</p>
+<p>自动布局系统是基于基本的Rect Transform布局系统构建的系统。可以选择在部分或所有元素上使用。</p>
+<h4 id="understanding-layout-elements理解布局元素">Understanding Layout Elements(理解布局元素) <a href="#understanding-layout-elements%e7%90%86%e8%a7%a3%e5%b8%83%e5%b1%80%e5%85%83%e7%b4%a0" class="anchor">🔗</a></h4><p>自动布局系统基于layout elements(布局元素)和layout controllers(布局控制器)的概念。layout elements(布局元素)是具有Rect Transform和其他可选组件的游戏对象。layout elements(布局元素)不直接设置自己的大小，但作为layout controllers(布局控制器)的其他组件可以使用它们提供的信息来计算它们应使用的大小。</p>
+<p>布局元素有定义其自身的属性：</p>
+<ul>
+<li>Minimum width(最小宽度)</li>
+<li>Minimum height(最小高度)</li>
+<li>Preferred width(首选宽度)</li>
+<li>Preferred height(首选高度)</li>
+<li>Flexible width(灵活的宽度)</li>
+<li>Flexible height(灵活的高度)</li>
+</ul>
+<p>使用布局元素提供的信息的布局控制器组件示例包括Content Size Fitter和各种Layout Group组件。布局组中的布局元素大小的基本原则如下：</p>
+<ul>
+<li>首先分配最小尺寸</li>
+<li>如果有足够的可用空间，则会分配首选大小</li>
+<li>如果有额外的可用空间，则分配灵活的大小</li>
+</ul>
+<p>任何带有矩形变换的游戏对象都可以用作布局元素。默认情况下，它们的最小尺寸、首选尺寸和灵活尺寸均为 0。某些组件在添加到游戏对象时将更改这些布局属性。</p>
+<p>图像和文本组件是提供布局元素属性的组件的两个示例。他们更改首选宽度和高度以匹配精灵或文本内容。</p>
+<h4 id="layout-element-component布局元素组件">Layout Element Component(布局元素组件) <a href="#layout-element-component%e5%b8%83%e5%b1%80%e5%85%83%e7%b4%a0%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h4><p>如果你想要覆盖最小，首选，或者灵活的尺寸，你可以通过在游戏对象上添加一个布局元素组件来达到目的。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_LayoutElementInspector.png" alt="img"></p>
+<p>布局元素组件允许你覆盖一个或多个布局属性的值。启用你想要覆盖的属性的复选框，然后指定你想要覆盖的值。</p>
+<h4 id="understanding-layout-controllers-理解布局控制器">Understanding Layout Controllers (理解布局控制器) <a href="#understanding-layout-controllers-%e7%90%86%e8%a7%a3%e5%b8%83%e5%b1%80%e6%8e%a7%e5%88%b6%e5%99%a8" class="anchor">🔗</a></h4><p>布局控制器是一类组件，它们负责控制一个或多个布局元素的大小，可能还包括位置，这里的布局元素指带有矩形变换(Rect Transforms)的游戏对象。布局控制器可能会控制其自身的布局元素（即它本身所在的游戏对象），或者控制子布局元素。</p>
+<p>充当布局控制器的组件本身也可以同时充当布局元素。</p>
+<h4 id="content-size-fitter内容尺寸适配器">Content Size Fitter(内容尺寸适配器) <a href="#content-size-fitter%e5%86%85%e5%ae%b9%e5%b0%ba%e5%af%b8%e9%80%82%e9%85%8d%e5%99%a8" class="anchor">🔗</a></h4><p>Content Size Fitter 充当布局控制器，控制其自身布局元素的大小。查看自动布局系统实际运行的最简单方法是将 Content Size Fitter 组件添加到带有 Text 组件的游戏对象。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ContentSizeFitterInspector.png" alt="img"></p>
+<p>如果将“Horizontal Fit”或“Vertical Fit”设置为“Preferred”，则矩形变换将调整其宽度和/或高度以适合文本内容。</p>
+<h4 id="aspect-ratio-fitter宽高比适配器">Aspect Ratio Fitter(宽高比适配器) <a href="#aspect-ratio-fitter%e5%ae%bd%e9%ab%98%e6%af%94%e9%80%82%e9%85%8d%e5%99%a8" class="anchor">🔗</a></h4><p>Aspect Ratio Fitter 用作布局控制器，控制其自身布局元素的大小。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_AspectRatioFitterInspector.png" alt="img"></p>
+<p>它可以调整高度以适应宽度，反之亦然，也可以使元素适合其父级或包围其父级。 Aspect Ratio Fitter 不考虑布局信息，例如最小尺寸和首选尺寸。</p>
+<h4 id="layout-groups布局组">Layout Groups(布局组) <a href="#layout-groups%e5%b8%83%e5%b1%80%e7%bb%84" class="anchor">🔗</a></h4><p>布局组作为一个布局控制器，它控制其子布局元素的大小和位置。例如，水平将其子元素并排排列，网格布局组则将其子元素放置在网格中。
+布局组并不控制它自己的大小。相反，它自身作为一个布局元素，可能会被其他布局控制器控制或者手动设置。
+无论布局组被分配了什么大小，它在大多数情况下都会尝试为每一个子布局元素分配适当的空间，这基于他们报告的最小，首选和灵活的尺寸。而且，布局组还可以通过这种方式任意嵌套。</p>
+<h4 id="driven-rect-transform-properties驱动的矩形变换属性">Driven Rect Transform properties(驱动的矩形变换属性) <a href="#driven-rect-transform-properties%e9%a9%b1%e5%8a%a8%e7%9a%84%e7%9f%a9%e5%bd%a2%e5%8f%98%e6%8d%a2%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h4><p>由于自动布局系统中的布局控制器可以自动控制某些UI元素的尺寸和位置，因此，那些尺寸和位置不应同时通过检视器或场景视图手动编辑。因为这些更改的值在下一次布局计算时将被布局控制器重置。
+矩形变换有一个驱动属性的概念来解决这个问题。例如，将 Horizontal Fit 属性设置为“Minimum”或“Preferred”的 Content Size Fitter 将驱动同一游戏对象上矩形变换的宽度。宽度将显示为只读，并且矩形变换顶部的一个小信息框将通知一个或多个属性由 Conten Size Fitter 驱动。
+除了防止手动编辑之外，驱动的矩形变换属性还有其他原因。只需更改游戏视图的分辨率或大小即可更改布局。这反过来又可以改变布局元素的大小或位置，从而改变驱动属性的值。但仅仅因为调整了游戏视图的大小而将场景标记为具有未保存的更改是不可取的。为了防止这种情况，驱动属性的值不会保存为场景的一部分，并且对它们的更改不会将场景标记为已更改。</p>
+<h4 id="technical-details技术细节">Technical Details(技术细节) <a href="#technical-details%e6%8a%80%e6%9c%af%e7%bb%86%e8%8a%82" class="anchor">🔗</a></h4><p>自动布局系统带有一些内置的组件，但也可以创建新的组件并以自定义的方式控制布局。这是通过让一个组件实现特定的接口实现的，这些接口会被自动布局系统识别。</p>
+<h4 id="layout-interfaces布局接口">Layout Interfaces(布局接口) <a href="#layout-interfaces%e5%b8%83%e5%b1%80%e6%8e%a5%e5%8f%a3" class="anchor">🔗</a></h4><p>如果一个组件实现了ILayoutElement接口，那么它就会被自动布局系统视为布局元素。</p>
+<p>如果一个组件实现了ILayoutGroup接口，那么它就应该驱动其子元素的Rect Transforms。</p>
+<p>如果一个组件实现了ILayoutSelfController接口，那么它就应该驱动自己的RectTransform。</p>
+<h4 id="layout-calculations布局算法">Layout Calculations(布局算法) <a href="#layout-calculations%e5%b8%83%e5%b1%80%e7%ae%97%e6%b3%95" class="anchor">🔗</a></h4><p>自动布局系统按照以下顺序评估和执行布局：</p>
+<ol>
+<li>
+<p>通过在ILayoutElement组件上调用CalculateLayoutInputHorizontal，计算布局元素的最小值、首选值和灵活宽度。这按照从下到上的顺序执行，即先计算子元素，父元素在自身计算中可以考虑子元素的信息。</p>
+</li>
+<li>
+<p>通过在ILayoutController组件上调用SetLayoutHorizontal，计算并设置布局元素的实际宽度。这按照从上到下的顺序进行，也就是说，在父元素之后计算子元素，因为子元素的宽度分配需要基于父元素中的全部宽度。此步骤之后，布局元素的Rect Transforms有了新的宽度。</p>
+</li>
+<li>
+<p>通过在ILayoutElement组件上调用CalculateLayoutInputVertical，计算布局元素的最小值、首选值和灵活高度。这同样按照从下到上的顺序执行，即先计算子元素，然后父元素在自身的计算中可以考虑到子元素的信息。</p>
+</li>
+<li>
+<p>通过在ILayoutController组件上调用SetLayoutVertical，计算和设置布局元素的实际高度。这按照从上到下的顺序进行，也就是说，在父元素之后计算子元素，因为子元素的高度分配需要基于父元素中可用的全部高度。此步骤之后，布局元素的Rect Transforms有了新的高度。</p>
+</li>
+</ol>
+<p>如上所述，自动布局系统先评估宽度，然后评估高度。因此，计算出的高度可能会依赖于宽度，但计算出的宽度绝不会依赖于高度。</p>
+<h4 id="triggering-layout-rebuild触发布局重建">Triggering Layout Rebuild(触发布局重建) <a href="#triggering-layout-rebuild%e8%a7%a6%e5%8f%91%e5%b8%83%e5%b1%80%e9%87%8d%e5%bb%ba" class="anchor">🔗</a></h4><p>当一个组件上的属性改变可能导致当前布局不再有效时，需要进行布局重新计算。可以使用以下调用来触发：</p>
+<p>LayoutRebuilder.MarkLayoutForRebuild (transform as RectTransform);</p>
+<p>重建不会立即发生，而是在当前帧的结束时，也就是在绘制之前。之所以不立即重建，是因为这可能会导致在同一帧中多次重建布局，这对性能来说是不好的。</p>
+<p>触发重建的指导原则：</p>
+<ul>
+<li>
+<p>在可以更改布局的属性的setter中。</p>
+</li>
+<li>
+<p>在这些回调中：</p>
+<p>OnEnable</p>
+<p>OnDisable</p>
+<p>OnRectTransformDimensionsChange</p>
+<p>OnValidate（仅在编辑器中需要，运行时不需要）</p>
+<p>OnDidApplyAnimationProperties</p>
+</li>
+</ul>
+<h3 id="rich-text">Rich Text <a href="#rich-text" class="anchor">🔗</a></h3><h4 id="rich-text富文本">Rich Text(富文本) <a href="#rich-text%e5%af%8c%e6%96%87%e6%9c%ac" class="anchor">🔗</a></h4><p>UI 元素和文本网格的文本可以包含多种字体样式和大小。 UI 系统和旧版 GUI 系统都支持富文本。 Text、GUIStyle、GUIText 和 TextMesh 类具有富文本设置，指示 Unity 在文本中查找标记标签。 Debug.Log函数还可以使用这些标记来增强代码中的错误报告。标签不会显示，但指示要应用于文本的样式更改。</p>
+<h4 id="markup-format标记格式">Markup format(标记格式) <a href="#markup-format%e6%a0%87%e8%ae%b0%e6%a0%bc%e5%bc%8f" class="anchor">🔗</a></h4><p>标记系统的设计来自于HTML，但并不意味着严格符合标准的HTML。基本思想是文本的一部分可以被包含在一对匹配的标签之间。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>We are &lt;<span style="color:#f92672">b</span>&gt;not&lt;/<span style="color:#f92672">b</span>&gt; amused.
+</span></span></code></pre></div><p>如示例所示，标签只是“尖括号”字符&lt;和内的文本片段&gt;。</p>
+<p>您将开始标记放在该部分的开头。标签内的文本表示其名称（在本例中为b）。</p>
+<p>您可以在该部分的末尾放置另一个标签。这是结束标签。它与开始标记具有相同的名称，但名称前面带有斜杠/字符。每个开始标签必须有一个相应的结束标签。如果不关闭开始标记，它将呈现为常规文本。</p>
+<p>这些标签不会直接显示给用户，而是被解释为对其所包含的文本进行样式设置的说明。上例中使用的标签b将粗体应用于单词“not”，因此文本在屏幕上显示为:</p>
+<!-- raw HTML omitted -->
+<p>标记的文本部分（包括包围它的标签）称为元素。</p>
+<h4 id="nested-elements嵌套元素">Nested elements(嵌套元素) <a href="#nested-elements%e5%b5%8c%e5%a5%97%e5%85%83%e7%b4%a0" class="anchor">🔗</a></h4><p>通过将一个元素&quot;嵌套&quot;在另一个元素内，可以将多种样式应用于文本的一部分。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>We are &lt;<span style="color:#f92672">b</span>&gt;&lt;<span style="color:#f92672">i</span>&gt;definitely not&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">b</span>&gt; amused
+</span></span></code></pre></div><p><!-- raw HTML omitted -->标签应用斜体样式，所以这将在屏幕上呈现为:</p>
+<!-- raw HTML omitted -->
+<p>注意关闭标签的顺序，它与打开标签的顺序相反。当你考虑到内部标签并不需要覆盖最外层元素的所有文本时，这个原因可能会更清晰。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>We are &lt;<span style="color:#f92672">b</span>&gt;absolutely &lt;<span style="color:#f92672">i</span>&gt;definitely&lt;/<span style="color:#f92672">i</span>&gt; not&lt;/<span style="color:#f92672">b</span>&gt; amused
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="tag-parameters标签参数">Tag parameters(标签参数) <a href="#tag-parameters%e6%a0%87%e7%ad%be%e5%8f%82%e6%95%b0" class="anchor">🔗</a></h4><p>一些标签对文本有简单的全有或全无效果，但其他一些标签可能允许变化。例如，颜色标签需要知道应用哪种颜色。通过参数在标签中添加这样的信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>We are &lt;<span style="color:#f92672">color</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#a6e22e">green</span>&gt;green&lt;/<span style="color:#f92672">color</span>&gt; with envy
+</span></span></code></pre></div><p>产生的结果是：</p>
+<!-- raw HTML omitted -->
+<p>请注意，结束标记不包含参数值。或者，该值可以用引号引起来，但这不是必需的。</p>
+<p>标记参数不能包含空格。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>We are &lt;<span style="color:#f92672">color</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#a6e22e">green</span>&gt;green&lt;/<span style="color:#f92672">color</span>&gt; with envy
+</span></span></code></pre></div><p>由于字符两侧都有空格，因此不起作用<code>=</code>。</p>
+<h4 id="supported-tags支持的标签">Supported tags(支持的标签) <a href="#supported-tags%e6%94%af%e6%8c%81%e7%9a%84%e6%a0%87%e7%ad%be" class="anchor">🔗</a></h4><p>以下列表描述了Unity支持的所有样式标签。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">例子</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>b</strong></td>
+<td style="text-align:left">将文本呈现为粗体。</td>
+<td style="text-align:left"><code>We are &lt;b&gt;not&lt;/b&gt; amused.</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>i</strong></td>
+<td style="text-align:left">将文本呈现为斜体。</td>
+<td style="text-align:left"><code>We are &lt;i&gt;usually&lt;/i&gt; not amused.</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>size</strong></td>
+<td style="text-align:left">根据给定的像素值参数设置文本的大小。</td>
+<td style="text-align:left"><code>We are &lt;size=50&gt;largely&lt;/size&gt; unaffected.</code></td>
+<td style="text-align:left">虽然这个标签可以用于Debug.Log，但你会发现，如果设置的大小过大，窗口栏和控制台的行间距看起来会很奇怪。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>color</strong></td>
+<td style="text-align:left">根据参数值设置文本的颜色。颜色可以采用传统的HTML格式指定，即<code>#rrggbbaa</code>&hellip;其中字母对应表示颜色的红色，绿色，蓝色和alpha（透明度）值的十六进制数字对。例如，全不透明的青色将通过<code>color=#00ffffff</code>进行指定&hellip; 你可以用大写或小写指定十六进制值；<code>#FF0000</code>等同于<code>#ff0000</code>。</td>
+<td style="text-align:left"><code>We are &lt;color=#ff0000ff&gt;colorfully&lt;/color&gt; amused</code></td>
+<td style="text-align:left">另一个选择是使用颜色的名称。这样理解起来比较容易，但自然地，颜色的范围被限制了，而且总是假设颜色是完全不透明的。 &lt;color=cyan&gt;一些文本<!-- raw HTML omitted --> 可用的颜色名称在下面的表格中给出。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>material</strong></td>
+<td style="text-align:left">这只对文本网格有用，并使用参数指定的材质渲染文本的一个部分。该值是关联到检查器显示的文本网格的材质数组的索引。</td>
+<td style="text-align:left"><code>We are &lt;material=2&gt;texturally&lt;/material&gt; amused</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>quad</strong></td>
+<td style="text-align:left">这只对文本网格有用，并能在文本中内联渲染一个图像。它接受参数来指定用于图像的材质，图像的像素高度，以及进一步的四个参数，表示要显示的图像的矩形区域。不同于其他标签，quad标签并未环绕某段文本，因此没有结束标签 - 斜杠字符被放在初始标签的末尾，以表示它是&quot;自关闭&quot;的。</td>
+<td style="text-align:left">`<!-- raw HTML omitted --></td>
+<td style="text-align:left">这将选择渲染器材质数组中位置的材质，并将图像的高度设置为20像素。图像的矩形区域从由x，y，宽度和高度值给出的位置开始，这些值都是以纹理未缩放的宽度和高度的分数形式给出的。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-colors支持的颜色">Supported colors(支持的颜色) <a href="#supported-colors%e6%94%af%e6%8c%81%e7%9a%84%e9%a2%9c%e8%89%b2" class="anchor">🔗</a></h4><p>下面列出了你可以在<!-- raw HTML omitted -->富文本标签中使用名称替代十六进制标签的颜色。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">*<strong>Color name*</strong></th>
+<th style="text-align:left">*<strong>Hex value*</strong></th>
+<th style="text-align:left">*<strong>Swatch*</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">aqua (same as cyan)</td>
+<td style="text-align:left"><code>#00ffffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/CyanSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">black</td>
+<td style="text-align:left"><code>#000000ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/BlackSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">blue</td>
+<td style="text-align:left"><code>#0000ffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/BlueSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">brown</td>
+<td style="text-align:left"><code>#a52a2aff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/BrownSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">cyan (same as aqua)</td>
+<td style="text-align:left"><code>#00ffffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/CyanSwatch2.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">darkblue</td>
+<td style="text-align:left"><code>#0000a0ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/DarkblueSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">fuchsia (same as magenta)</td>
+<td style="text-align:left"><code>#ff00ffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/MagentaSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">green</td>
+<td style="text-align:left"><code>#008000ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/GreenSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">grey</td>
+<td style="text-align:left"><code>#808080ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/GreySwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">lightblue</td>
+<td style="text-align:left"><code>#add8e6ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/LightblueSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">lime</td>
+<td style="text-align:left"><code>#00ff00ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/LimeSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">magenta (same as fuchsia)</td>
+<td style="text-align:left"><code>#ff00ffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/MagentaSwatch2.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">maroon</td>
+<td style="text-align:left"><code>#800000ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/MaroonSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">navy</td>
+<td style="text-align:left"><code>#000080ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/NavySwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">olive</td>
+<td style="text-align:left"><code>#808000ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/OliveSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">orange</td>
+<td style="text-align:left"><code>#ffa500ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/OrangeSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">purple</td>
+<td style="text-align:left"><code>#800080ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/PurpleSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">red</td>
+<td style="text-align:left"><code>#ff0000ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/RedSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">silver</td>
+<td style="text-align:left"><code>#c0c0c0ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/SilverSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">teal</td>
+<td style="text-align:left"><code>#008080ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/TealSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">white</td>
+<td style="text-align:left"><code>#ffffffff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/WhiteSwatch.png" alt="img"></td>
+</tr>
+<tr>
+<td style="text-align:left">yellow</td>
+<td style="text-align:left"><code>#ffff00ff</code></td>
+<td style="text-align:left"><img src="/2023-07-09-unity-ugui/YellowSwatch.png" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>Editor GUI(编辑器 GUI)</p>
+<p>默认情况下，编辑器 GUI 系统禁用了富文本，但可以通过自定义 GUIStyle 明确启用。应设定 richText 属性为 true，并将样式传递给对应的 GUI 函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>GUIStyle style = new GUIStyle ();
+</span></span><span style="display:flex;"><span>style.richText = true;
+</span></span><span style="display:flex;"><span>GUILayout.Label(&#34;&lt;<span style="color:#f92672">size</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#a6e22e">30</span>&gt;Some &lt;<span style="color:#f92672">color</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#a6e22e">yellow</span>&gt;RICH&lt;/<span style="color:#f92672">color</span>&gt; text&lt;/<span style="color:#f92672">size</span>&gt;&#34;,style);
+</span></span></code></pre></div><h3 id="event">Event <a href="#event" class="anchor">🔗</a></h3><p>Event System(事件系统)</p>
+<p>事件系统是一种基于输入（包括键盘、鼠标、触摸或自定义输入）向应用程序中的对象发送事件的方式。事件系统由几个协同工作以发送事件的组件组成。</p>
+<p>当你向GameObject添加一个事件系统组件时，你会注意到它暴露的功能不多，这是因为事件系统本身被设计为事件系统模块之间的管理器和通信协调者。</p>
+<p>事件系统的主要角色如下：</p>
+<ul>
+<li>管理被选中的GameObject</li>
+<li>管理正在使用的输入模块</li>
+<li>管理射线投射（如果需要的话）</li>
+<li>根据需要更新所有的输入模块</li>
+</ul>
+<p>Input Modules(输入模块)
+输入模块是你如何希望事件系统行为的主要逻辑存在的地方，它们用于：</p>
+<ul>
+<li>处理输入</li>
+<li>管理事件状态</li>
+<li>向场景对象发送事件</li>
+</ul>
+<p>在事件系统中，一次只能有一个输入模块处于活动状态，而且它们必须是事件系统组件同一GameObject上的组件。</p>
+<p>Raycasters(射线投射器)
+射线投射器用于确定指针所在的位置。输入模块通常使用在场景中配置的射线投射器来计算指向设备所在的位置。默认存在3个提供的射线投射器：</p>
+<ul>
+<li>图形射线投射器 - 用于UI元素</li>
+<li>2D物理射线投射器 - 用于2D物理元素</li>
+<li>物理射线投射器 - 用于3D物理元素</li>
+</ul>
+<p>如果你在你的场景中配置了2d/3d射线投射器，让非UI元素从输入模块接收消息就很简单了。只需附加一个实现了事件接口之一的脚本。关于这方面的例子，可以参见IPointerEnterHandler和IPointerClickHandler脚本参考页面。</p>
+<h4 id="messaging-system消息系统">Messaging System(消息系统) <a href="#messaging-system%e6%b6%88%e6%81%af%e7%b3%bb%e7%bb%9f" class="anchor">🔗</a></h4><p>新的UI系统使用了一个旨在取代SendMessage的消息系统。该系统完全基于C#，旨在解决SendMessage系统中存在的一些问题。该系统使用自定义接口，可以在MonoBehaviour上实现，以表明该组件能够从消息系统接收回调。当调用次数被指定为目标GameObject时，将在所有实现了指定接口的GameObject的组件上发出调用，这些指定的接口就是调用要针对的。消息系统允许传递自定义用户数据，以及事件应传播的GameObject层次结构的深度；也就是说，它应该仅针对指定的GameObject执行，还是也应在子对象和父对象上执行。此外，消息框架提供了辅助函数，用于搜索并找到实现给定消息接口的GameObject。</p>
+<p>消息系统是通用的，不仅设计用于UI系统，还设计用于一般的游戏代码。添加自定义消息事件相对简单，它们将使用与UI系统用于所有事件处理的相同框架。</p>
+<h5 id="defining-a-custom-message定义自定义消息">Defining A Custom Message(定义自定义消息) <a href="#defining-a-custom-message%e5%ae%9a%e4%b9%89%e8%87%aa%e5%ae%9a%e4%b9%89%e6%b6%88%e6%81%af" class="anchor">🔗</a></h5><p>如果你希望定义一个自定义消息，这相对来说很简单。在UnityEngine.EventSystems命名空间中，有一个基础接口叫做&rsquo;IEventSystemHandler&rsquo;。任何从此接口派生的东西都可以被视为通过消息系统接收事件的目标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ICustomMessageTarget</span> : IEventSystemHandler
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// functions that can be called via the messaging system</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Message1();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> Message2();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>一旦定义了这个接口，那么它就可以由MonoBehaviour实现。当实现它时，它定义了如果针对这个MonoBehaviours的GameObject发出了给定的消息，将会执行的功能。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomMessageTarget</span> : MonoBehaviour, ICustomMessageTarget
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Message1()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Debug.Log (<span style="color:#e6db74">&#34;Message 1 received&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Message2()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Debug.Log (<span style="color:#e6db74">&#34;Message 2 received&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在，我们有了一个可以接收消息的脚本，我们需要发出消息。通常，这会是对某些松散耦合的事件的响应。例如，在UI系统中，我们会发出PointerEnter和PointerExit等事件，以及用户输入应用程序时可能发生的其他各种事件。</p>
+<p>要发送消息，存在一个静态助手类来完成这件事。它需要一个消息的目标对象、一些用户特定数据、以及一个映射到你想要定位的消息接口中具体功能的算子作为参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>ExecuteEvents.Execute&lt;ICustomMessageTarget&gt;(target, <span style="color:#66d9ef">null</span>, (x,y)=&gt;x.Message1());
+</span></span></code></pre></div><p>此代码将在实现ICustomMessageTarget接口的GameObject目标上的任何组件上执行Message1函数。ExecuteEvents类的脚本文档覆盖了Execute函数的其他形式，比如在子元素或者父元素中执行。</p>
+<h4 id="input-modules输入模块">Input Modules(输入模块) <a href="#input-modules%e8%be%93%e5%85%a5%e6%a8%a1%e5%9d%97" class="anchor">🔗</a></h4><p>输入模块是可以配置和自定义事件系统主要逻辑的地方。打开即用的有两个输入模块，一个设计用于独立设备，一个设计用于触摸输入。每个模块都会按照你在所给配置上所预期的那样接收和派发事件。</p>
+<p>输入模块是事件系统的&rsquo;业务逻辑&rsquo;发生的地方。当启用事件系统时，它会查看附加了哪些输入模块，并把更新处理传递给特定模块。</p>
+<p>输入模块设计为基于你希望支持的输入系统来进行扩展或修改。它们的目的是将硬件特定输入（如触摸、摇杆、鼠标、运动控制器）映射成通过消息系统发送的事件。</p>
+<p>内置的输入模块被设计为支持常见的游戏配置，例如触摸输入、控制器输入、键盘输入和鼠标输入。如果你在你的MonoBehaviours上实现了特定的接口，它们会向应用程序中的控件发送各种各样的事件。所有的UI组件都实现了对于给定组件来说有意义的接口。</p>
+<h4 id="supported-events支持事件">Supported Events(支持事件) <a href="#supported-events%e6%94%af%e6%8c%81%e4%ba%8b%e4%bb%b6" class="anchor">🔗</a></h4><p>事件系统支持多个事件，用户还可以在自定义的输入模块中进一步定制这些事件。</p>
+<p>由独立输入模块和触摸输入模块支持的事件是通过接口提供的，可以通过实现接口在MonoBehaviour上实现。如果你配置了有效的事件系统，那么这些事件将在正确的时间被调用。</p>
+<ul>
+<li>IPointerEnterHandler - OnPointerEnter - 当指针进入对象时被调用</li>
+<li>IPointerExitHandler - OnPointerExit - 当指针退出对象时被调用</li>
+<li>IPointerDownHandler - OnPointerDown - 当在对象上按下指针时被调用</li>
+<li>IPointerUpHandler - OnPointerUp - 当指针释放时被调用(在点击指针的游戏物体上调用)</li>
+<li>IPointerClickHandler - OnPointerClick - 当在同一对象上按下并释放指针时被调用</li>
+<li>IInitializePotentialDragHandler - OnInitializePotentialDrag - 当找到拖动目标时被调用，可以用来初始化值</li>
+<li>IBeginDragHandler - OnBeginDrag - 在拖动即将开始时在拖动对象上调用</li>
+<li>IDragHandler - OnDrag - 在拖动发生时在拖动对象上被调用</li>
+<li>IEndDragHandler - OnEndDrag - 拖动结束时在拖动对象上被调用</li>
+<li>IDropHandler - OnDrop - 在拖动结束的对象上被调用</li>
+<li>IScrollHandler - OnScroll - 当鼠标滚轮滚动时被调用</li>
+<li>IUpdateSelectedHandler - OnUpdateSelected - 在每个时钟周期内选定的对象上被调用</li>
+<li>ISelectHandler - OnSelect - 当对象成为选定的对象时被调用</li>
+<li>IDeselectHandler - OnDeselect - 当选中的对象变为非选中状态时被调用</li>
+<li>IMoveHandler - OnMove - 当移动事件发生时被调用（左，右，上，下）</li>
+<li>ISubmitHandler - OnSubmit - 当提交按钮被按下时被调用</li>
+<li>ICancelHandler - OnCancel - 当取消按钮被按下时被调用</li>
+</ul>
+<h4 id="raycasters射线投射器">Raycasters(射线投射器) <a href="#raycasters%e5%b0%84%e7%ba%bf%e6%8a%95%e5%b0%84%e5%99%a8" class="anchor">🔗</a></h4><p>事件系统需要一种方法来检测当前的输入事件需要发送到哪里，这就是射线投射器提供的功能。给定一个屏幕空间位置，它们将收集所有潜在的目标，判断它们是否在给定位置下方，然后返回离屏幕最近的对象。有几种类型的射线投射器提供：</p>
+<p>图形射线投射器 - 用于UI元素，存在于画布上并在画布中进行搜索</p>
+<ul>
+<li>2D物理射线投射器 - 用于2D物理元素</li>
+<li>物理射线投射器 - 用于3D物理元素</li>
+<li>当场景中存在并启用了射线投射器时，事件系统在从输入模块发出查询时将使用它</li>
+</ul>
+<p>如果使用了多个射线投射器，则他们所有人都将被投射，结果将根据元素到距离进行排序</p>
+<h3 id="reference参考">Reference(参考) <a href="#reference%e5%8f%82%e8%80%83" class="anchor">🔗</a></h3><h4 id="rect-transform">Rect Transform <a href="#rect-transform" class="anchor">🔗</a></h4><p>Rect Transform组件是Transform组件的2D布局对应物。其中Transform代表单个点，Rect Transform代表UI元素可以放置其中的矩形。如果Rect Transform的父级也是一个Rect Transform，子Rect Transform也可以指定它相对于父矩形的位置和大小应如何设置。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_RectTransform_3.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Pos (X, Y, Z)</strong></td>
+<td style="text-align:left">矩形的旋转中心点相对于锚点的位置。旋转中心点是矩形旋转的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Width/Height</strong></td>
+<td style="text-align:left">矩形的宽度和高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Left, Top, Right, Bottom</strong></td>
+<td style="text-align:left">矩形边缘相对于其锚点的位置。这可以被认为是在由锚点定义的矩形内部的填充。当锚点分开时（如下所示），此项将代替“位置（Pos）”和“宽度/高度（Width/Height）”。要访问这些选项，请点击RectTransform组件左上角的方形锚点预设（Anchor Presets）框。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Anchors</strong></td>
+<td style="text-align:left">矩形左下角和右上角的锚点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min</strong></td>
+<td style="text-align:left">定义为父矩形大小的一部分的矩形左下角的锚点。0,0 对应于锚定到父矩形的左下角，而 1,1 对应于锚定到父矩形的右上角。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max</strong></td>
+<td style="text-align:left">定义为父矩形大小的一部分的矩形右上角的锚点。0,0 对应于锚定到父矩形的左下角，而 1,1 对应于锚定到父矩形的右上角。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pivot</strong></td>
+<td style="text-align:left">矩形旋转的围绕点位置，定义为矩形本身大小的一部分。0,0 对应于左下角，而 1,1 对应于右上角。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Rotation</strong></td>
+<td style="text-align:left">对象围绕其枢轴点沿X、Y和Z轴旋转的角度（以度为单位）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scale</strong></td>
+<td style="text-align:left">在X、Y和Z维度上应用于对象的缩放因子。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Blueprint Mode</strong></td>
+<td style="text-align:left">就像它们没有被旋转和缩放一样编辑RectTransforms。这也启用了吸附功能。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Raw Edit Mode</strong></td>
+<td style="text-align:left">当启用时，编辑轴心和锚点值将不会对矩形的位置和大小进行反向调整，以使其保持在一个地方。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>请注意，某些RectTransform的计算是在帧的结束时进行的，就在计算UI顶点之前，以确保它们与整个帧期间进行的所有最新变化保持同步。这意味着它们在执行Start和第一次执行Update还未首次计算。</p>
+<p>您可以通过创建一个Start()其中添加Canvas.ForceUpdateCanvases()方法来解决这个问题。这将迫使Canvas不是在帧的结束时更新，而是在调用该方法时更新。</p>
+<h4 id="canvas-components">Canvas Components <a href="#canvas-components" class="anchor">🔗</a></h4><h5 id="canvas-1">Canvas <a href="#canvas-1" class="anchor">🔗</a></h5><p>Canvas组件代表了UI布局和渲染的抽象空间。所有的UI元素都必须是具有附加了Canvas组件的游戏对象的子对象。当你从菜单中创建一个UI元素对象(GameObject &gt; Create UI)时，如果场景中还没有Canvas对象，将自动创建一个Canvas对象。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasInspector.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasScreenSpaceCameraInspector.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasWorldSpaceInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Render Mode</strong></td>
+<td style="text-align:left">UI呈现到屏幕上或者作为3D空间中的对象的方式。 <em>Screen Space - Overlay</em>、<em>Screen Space - Camera</em> 和<em>World Space</em>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pixel Perfect (Screen Space modes only)</strong></td>
+<td style="text-align:left">是否应该为了精确而无抗锯齿地渲染UI？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Render Camera (Screen Space - Camera mode only)</strong></td>
+<td style="text-align:left">UI应该渲染到哪个相机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Plane Distance (Screen Space - Camera mode only)</strong></td>
+<td style="text-align:left">UI平面应该放置在相机前方的距离。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Event Camera (World Space mode only)</strong></td>
+<td style="text-align:left">将用于处理UI事件的相机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Receives Events</strong></td>
+<td style="text-align:left">Canvas处理UI事件。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>对所有UI元素来说，一个Canvas就足够了，但是场景中有多个Canvas也是可能的。也可以使用嵌套Canvas，也就是将一个Canvas作为另一个Canvas的子对象用于优化。嵌套的Canvas使用与其父对象相同的渲染模式。</p>
+<p>传统上，UI被渲染得就像是直接绘制在屏幕上的简单图形设计一样。也就是说，它们没有被摄像机观察的3D空间的概念。Unity支持这种屏幕空间渲染，但也允许UI作为场景中的对象进行渲染，这取决于渲染模式属性的值。可用的模式有Screen Space - Overlay、Screen Space - Camera 和World Space。</p>
+<p><strong>Screen Space - Overlay</strong></p>
+<p>在这种模式下，Canvas将会调整大小以适应屏幕，然后直接渲染，无需参考场景或摄像机(即使场景中完全没有摄像机，UI也会被渲染)。如果屏幕的大小或分辨率发生变化，UI将自动重新调整大小以适应。UI将会绘制在其他任何图形（如相机视图）之上。</p>
+<p><img src="/2023-07-09-unity-ugui/CanvasOverlay.png" alt=""></p>
+<p>注意：Screen Space - Overlay模式下的Canvas需要被存储在层级结构的顶部。如果不这样做，UI可能会从视图中消失。这是一个内置的限制。请将Screen Space - Overlay的Canvas保持在层级结构的顶层，以得到预期的结果。</p>
+<p><strong>Screen Space - Camera</strong></p>
+<p>在这种模式下，Canvas被渲染得就像它是在距离给定摄像机一定距离的平面上绘制的。UI在屏幕上的大小并不会随着距离的变化而变化，因为它总是重新调整大小以完全适应摄像机的视锥体。如果屏幕的大小、分辨率或摄像机的视锥体发生了变化，那么UI将自动重新调整大小以适应。场景中距离摄像机比UI平面更近的3D对象将会渲染在UI的前面，而平面后面的对象会被遮挡。</p>
+<p><img src="/2023-07-09-unity-ugui/CanvasCamera.png" alt=""></p>
+<p><strong>World Space</strong></p>
+<p>这种模式将UI渲染得就像它是场景中的一个平面对象。然而，与Screen Space - Camera模式不同，这个平面并不需要面向摄像机，可以按照你喜欢的方式进行定向。Canvas的大小可以通过它的矩形变换进行设置，但它在屏幕上的大小将取决于摄像机的观察角度和距离。其它的场景对象可以经过Canvas的后面，穿过或者在Canvas的前面。</p>
+<p><img src="/2023-07-09-unity-ugui/CanvasWorldSpace.png" alt=""></p>
+<h5 id="canvas-scaler">Canvas Scaler <a href="#canvas-scaler" class="anchor">🔗</a></h5><p>Canvas Scaler组件用于控制Canvas中UI元素的整体比例和像素密度。这个缩放影响Canvas下的所有内容，包括字体大小和图片边框。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasScalerInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>UI Scale Mode</strong></td>
+<td style="text-align:left">决定Canvas中的UI元素如何进行缩放。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constant Pixel Size</strong></td>
+<td style="text-align:left">让UI元素保持相同的像素大小，不论屏幕大小如何。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scale With Screen Size</strong></td>
+<td style="text-align:left">屏幕越大，UI元素就会越大。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constant Physical Size</strong></td>
+<td style="text-align:left">让UI元素保持相同的物理大小，不论屏幕大小和分辨率如何。</td>
+</tr>
+</tbody>
+</table>
+<p>Constant Pixel Size设置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Scale Factor</strong></td>
+<td style="text-align:left">通过这个因子来缩放画布中的所有UI元素。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reference Pixels Per Unit</strong></td>
+<td style="text-align:left">如果一个精灵设置了这个“Pixels Per Unit”，那么精灵中的一个像素将会覆盖UI中的一个单位。</td>
+</tr>
+</tbody>
+</table>
+<p>Scale With Screen Size设置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Reference Resolution</strong></td>
+<td style="text-align:left">这是UI布局设计的分辨率。如果屏幕分辨率更大，UI将被放大，如果分辨率更小，UI将被缩小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Screen Match Mode</strong></td>
+<td style="text-align:left">如果当前分辨率的宽高比不符合参考分辨率，则使用此模式来缩放画布区域。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Match Width or Height</strong></td>
+<td style="text-align:left">根据宽度、高度或其间的某种值来缩放画布区域。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Expand</strong></td>
+<td style="text-align:left">横向或纵向扩展画布区域，因此画布的大小永远不会小于参考值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shrink</strong></td>
+<td style="text-align:left">横向或纵向裁剪画布区域，因此画布的大小永远不会大于参考值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Match</strong></td>
+<td style="text-align:left">确定缩放是否以宽度或高度为参考，或者是两者之间的混合。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reference Pixels Per Unit</strong></td>
+<td style="text-align:left">如果一个精灵有这个“Pixels Per Unit”设置，那么精灵中的一个像素将覆盖UI中的一个单位。</td>
+</tr>
+</tbody>
+</table>
+<p>Constant Physical Size设置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Physical Unit</strong></td>
+<td style="text-align:left">用来指定位置和大小的物理单位。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fallback Screen DPI</strong></td>
+<td style="text-align:left">如果屏幕DPI未知，应假定的DPI值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Sprite DPI</strong></td>
+<td style="text-align:left">用于具有“Pixels Per Unit”设置的精灵，该设置与“Reference Pixels Per Unit”设置匹配的每英寸像素数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reference Pixels Per Unit</strong></td>
+<td style="text-align:left">如果一个精灵有这个“Pixels Per Unit”设置，那么它的DPI将匹配“Default Sprite DPI”设置。</td>
+</tr>
+</tbody>
+</table>
+<p>World Space Canvas设置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Dynamic Pixels Per Unit</strong></td>
+<td style="text-align:left">用于UI中动态创建的位图，如文本的单位像素数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reference Pixels Per Unit</strong></td>
+<td style="text-align:left">如果一个精灵有这个&rsquo;Pixels Per Unit&rsquo;设置，那么在精灵中的一个像素将覆盖世界中的一个单位。如果&rsquo;Pixels Per Unit&rsquo;设置为1，那么在精灵中的&rsquo;单位像素&rsquo;设置将完全按照原样使用。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>对于设置为“Screen Space - Overlay”或“Screen Space - Camera”的Canvas，Canvas Scaler UI缩放模式可以设置为Constant Pixel Size，Scale With Screen Size或Constant Physical Size。</p>
+<p><strong>Constant Pixel Size</strong>
+使用Constant Pixel Size模式，UI元素的位置和大小以屏幕上的像素为单位。当Canvas Scaler未附加时，这也是Canvas的默认功能。然而，可以通过Canvas Scaler的缩放因子设置为Canvas中的所有UI元素提供一种恒定的缩放。</p>
+<p><strong>Scale With Screen Size</strong>
+使用Scale With Screen Size模式，可以根据指定的参考分辨率的像素来指定位置和大小。如果当前屏幕分辨率大于参考分辨率，Canvas将保留参考分辨率的分辨率，但将放大以适应屏幕。如果当前屏幕分辨率小于参考分辨率，Canvas将同样缩小以适应。</p>
+<p>如果当前屏幕分辨率的宽高比与参考分辨率不同，将分别缩放每个轴以适应屏幕将导致非均匀的缩放，这通常是不期望的。因此，ReferenceResolution组件会让Canvas分辨率偏离参考分辨率，以保持屏幕的宽高比。Screen Match Mode设置可以控制这种偏差的行为。</p>
+<p><strong>Constant Physical Size</strong>
+使用Constant Physical Size模式，UI元素的位置和大小以物理单位（如毫米、点或点刻）指定。这种模式依赖于设备正确报告其屏幕DPI。您可以为不报告DPI的设备指定一种备选的DPI。</p>
+<p><strong>World Space</strong>
+对于设置为&rsquo;World Space&rsquo;的Canvas，Canvas Scaler可以用来控制Canvas中UI元素的像素密度。</p>
+<h5 id="canvas-group">Canvas Group <a href="#canvas-group" class="anchor">🔗</a></h5><p>Canvas Group可以用来从一个地方控制一整组UI元素的某些方面，无需单独处理每一个元素。Canvas Group的属性会影响它所在的GameObject以及所有的子元素。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasGroupInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Alpha</strong></td>
+<td style="text-align:left">此组中UI元素的透明度。值在0和1之间，其中0表示完全透明，1表示完全不透明。注意，元素本身也保持其透明度，因此Canvas Group的alpha值和单个UI元素的alpha值会相互乘以。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">确定此组件是否接受输入。当设置为false时，交互功能将被禁用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Block Raycasts</strong></td>
+<td style="text-align:left">此组件是否将充当Raycasts的碰撞器？你需要在附加到Canvas的图形射线投射器上调用RayCast函数。这不适用于Physics.Raycast。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Ignore Parent Groups</strong></td>
+<td style="text-align:left">这个组是否会受到游戏对象层次结构中更上层Canvas Group组件设置的影响，或者它会忽略这些设置，从而覆盖它们？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>Canvas Group的典型用途包括：</p>
+<ul>
+<li>通过在窗口的GameObject上添加Canvas Group，控制其Alpha属性，实现整个窗口的淡入或淡出。</li>
+<li>通过在父GameObject上添加Canvas Group，并将其Interactable属性设置为false，使一整套控件无法交互（变灰）。</li>
+<li>通过在元素或其父元素上放置Canvas Group组件，并将其Block Raycasts属性设置为false，使一个或多个UI元素不阻止鼠标事件。</li>
+</ul>
+<h5 id="canvas-renderer">Canvas Renderer <a href="#canvas-renderer" class="anchor">🔗</a></h5><p>Canvas Renderer组件渲染包含在Canvas内的图形UI对象。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_CanvasRendererInspector.png" alt=""></p>
+<p><strong>Details(详情)</strong></p>
+<p>菜单中可用的标准UI对象（GameObject &gt; Create UI）在需要的地方都已附加Canvas Renderer，但您可能需要为自定义UI对象手动添加此组件。虽然检查器中没有公开的属性，但可以从脚本中访问一些属性和函数。</p>
+<h4 id="visual-components-1">Visual Components <a href="#visual-components-1" class="anchor">🔗</a></h4><h5 id="text-1">Text <a href="#text-1" class="anchor">🔗</a></h5><p>Text控件向用户显示非交互式的文本。这可以用于为其他GUI控件提供标题或标签，或者展示指令或其他文本。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_TextInspector2_1.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Text</strong></td>
+<td style="text-align:left">控件显示的文本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Character</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Font</strong></td>
+<td style="text-align:left">用于显示文本的字体。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Font Style</strong></td>
+<td style="text-align:left">应用于文本的样式。选项有<em>Normal</em>（正常）、<em>Bold</em>（粗体）、<em>Italic</em>（斜体）和<em>Bold And Italic</em>（粗斜体）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Font Size</strong></td>
+<td style="text-align:left">显示文本的大小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Line Spacing</strong></td>
+<td style="text-align:left">文本行之间的垂直间隔。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Rich Text</strong></td>
+<td style="text-align:left">文本中的标记元素是否应被解释为富文本样式？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Paragraph</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Alignment</strong></td>
+<td style="text-align:left">文本的水平和垂直对齐。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Align by Geometry</strong></td>
+<td style="text-align:left">使用字形几何的范围来执行水平对齐，而不是字形度量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Horizontal Overflow</strong></td>
+<td style="text-align:left">处理文本过宽无法适应矩形的情况的方法。选项有 <em>Wrap</em> 和 <em>Overflow</em>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical Overflow</strong></td>
+<td style="text-align:left">处理折行文本过高无法适应矩形的情况的方法。选项有 <em>Truncate</em> 和 <em>Overflow</em>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Best Fit</strong></td>
+<td style="text-align:left">Unity是否应忽略大小属性，而只是试图使文本适应控件的矩形？</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Color</strong></td>
+<td style="text-align:left">用于渲染文本的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Material</strong></td>
+<td style="text-align:left">用于渲染文本的材质。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>一些控件（如Buttons和Toggles）具有内置的文本描述。对于没有隐式文本的控件（如Sliders），你可以使用文本控件创建的标签来指示其用途。文本也适用于指令列表、故事文本、对话和法律免责声明。</p>
+<p>文本控件提供了常见的字体大小、样式等参数，以及文本对齐方式。当启用富文本选项时，文本内的标记元素将被视为样式信息，因此你可以让单个词汇或短小的部分以粗体或不同的颜色显示。</p>
+<h5 id="image-1">Image <a href="#image-1" class="anchor">🔗</a></h5><p>Image控件向用户展示一个非交互式的图片。你可以用它来作为装饰或图标，而且你可以通过脚本改变图片以反映其他控件的变化。该控件类似于原始图像控件，但是提供了更多的选项来动态渲染图像和精确填充控件矩形。然而，图像控件需要其贴图为精灵，而原始图像可以接受任何贴图。</p>
+<p><img src="/2023-07-09-unity-ugui/ImageCtrlExample.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ImageInspector_1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Source Image</strong></td>
+<td style="text-align:left">表示要显示的图像的贴图（必须导入为精灵）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Color</strong></td>
+<td style="text-align:left">应用于图像的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Material</strong></td>
+<td style="text-align:left">用于渲染图像的材质。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Raycast Target</strong></td>
+<td style="text-align:left">如果您希望Unity将图像视为射线投射的目标，请启用“Raycast Target”。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preserve Aspect</strong></td>
+<td style="text-align:left">确保图像保持其现有尺寸。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Set Native Size</strong></td>
+<td style="text-align:left">将图像框的尺寸设置为纹理的原始像素大小。</td>
+</tr>
+</tbody>
+</table>
+<p>您必须将要显示的图像导入为Sprite，才能与Image控件一起使用。</p>
+<h5 id="raw-image-1">Raw Image <a href="#raw-image-1" class="anchor">🔗</a></h5><p>Raw Image控件向用户显示一个非互动的图像。您可以用它做装饰或图标等用途，而且可以通过脚本改变图像以反映其他控件的变化。该控件与Image控件相似，但为图像的动画提供了更多的选项，并能准确地填充控件矩形。然而，Image控件要求其Texture为Sprite，而Raw Image可以接受任何Texture。</p>
+<p><img src="/2023-07-09-unity-ugui/RawImageCtrlExample.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_RawImageInspector184.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Texture</strong></td>
+<td style="text-align:left">表示要显示的图像的纹理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Color</strong></td>
+<td style="text-align:left">应用于图像的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Material</strong></td>
+<td style="text-align:left">用于渲染图像的材质。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Raycast Target</strong></td>
+<td style="text-align:left">如果您希望Unity将图像视为射线投射的目标，请启用“Raycast Target”。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UV Rectangle</strong></td>
+<td style="text-align:left">图像在控件矩形内的偏移和大小，以标准化坐标（范围0.0到1.0）给出。图像的边缘被拉伸以填充UV矩形周围的空间。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>由于Raw Image不需要精灵纹理，您可以使用它来显示Unity播放器可以获取到的任何纹理。例如，您可能会显示使用WWW类从URL下载的图像，或者显示游戏中对象的纹理。</p>
+<p>UV矩形属性允许您显示较大图像的一小部分。X和Y坐标指定图像的哪个部分与控件的左下角对齐。例如，X坐标0.25 会截掉图像最左边的四分之一。W和H（也就是，宽度和高度）属性指示将要缩放以适应控件矩形的图像部分的宽度和高度。例如，宽度和高度为0.5将会将图像区域的四分之一放大到控件矩形。通过更改这些属性，您可以根据需要进行图像的缩放和调整大小（参见Scrollbar控件）。</p>
+<h5 id="mask-1">Mask <a href="#mask-1" class="anchor">🔗</a></h5><p>Mask并不是一个可见的UI控件，而是一种修改控件子元素外观的方法。遮罩（即:“mask”）将子元素限制在父元素的形状内。因此，如果子元素大于父元素，那么只有符合父元素的子元素部分才会可见。</p>
+<p><img src="/2023-07-09-unity-ugui/MaskCtrlExample.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_MaskInspector.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Show Graphic</strong></td>
+<td style="text-align:left">遮罩（父对象）的图形是否应该以透明度的形式覆盖在子对象之上？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description (描述)</strong></p>
+<p>遮罩的一个常见用途是使用例如面板对象（menu: GameObject &gt; Create UI &gt; Panel）作为“框架”，来显示大图像的小部分。您可以首先将图像指定为面板对象的子对象来实现这一点。您应该将图像定位到面板区域后面应该可见的区域。</p>
+<p><img src="/2023-07-09-unity-ugui/MaskDisabled.svg" alt=""></p>
+<p>然后，向面板添加Mask组件。由于被面板的形状遮挡，子图像在面板外的区域将变得不可见。</p>
+<p><img src="/2023-07-09-unity-ugui/MaskEnabled.svg" alt=""></p>
+<p>如果随后移动图像，则只有面板揭示的部分将会可见。这种移动可以通过滚动条来控制，例如创建一个可滚动的地图查看器。</p>
+<p><strong>Implementation(实现原理)</strong></p>
+<p>遮罩是使用GPU的模板缓冲器来实现的。</p>
+<p>*第一个遮罩元素将1写入模板缓冲器 *所有遮罩下面的元素在渲染时进行检查，仅在模板缓冲器中有1的区域呈现 *嵌套的遮罩会将递增的位掩码写入缓冲器，这意味着可渲染的子项需要具有模板值的逻辑与才能被渲染。</p>
+<h5 id="rectmask2d">RectMask2D <a href="#rectmask2d" class="anchor">🔗</a></h5><p>RectMask2D是一个与Mask控件类似的遮罩控制器。该遮罩将子元素限制在父元素的矩形内。与标准的遮罩控件不同，它有一些限制，但是它也有许多性能优势。</p>
+<p><strong>Description(描述)</strong>
+RectMask2D的一个常见用途是显示较大区域的小部分。使用RectMask2D来框定这个区域。</p>
+<p>RectMask2D控件的限制包括：</p>
+<ul>
+<li>它只在2D空间内工作</li>
+<li>它不能正确地遮盖不在同一平面上的元素</li>
+</ul>
+<p>RectMask2D的优点包括：</p>
+<ul>
+<li>它不使用模板缓冲器</li>
+<li>没有额外的绘制调用</li>
+<li>无需改变材质</li>
+<li>性能快速</li>
+</ul>
+<h4 id="ui-effect-components">UI Effect Components <a href="#ui-effect-components" class="anchor">🔗</a></h4><h5 id="shadow">Shadow <a href="#shadow" class="anchor">🔗</a></h5><p>阴影组件对图形组件（如文字或图片）添加了简单的轮廓效果。它必须与图形组件位于同一GameObject上。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_TextExample.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ShadowExample.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ShadowInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Effect Color</strong></td>
+<td style="text-align:left">阴影的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Effect Distance</strong></td>
+<td style="text-align:left">阴影的偏移量，表示为一个向量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Graphic Alpha</strong></td>
+<td style="text-align:left">将图形的颜色乘以效果的颜色。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="outline">Outline <a href="#outline" class="anchor">🔗</a></h5><p>轮廓组件为诸如Text或Image的图形组件添加了一个简单的轮廓效果。它必须和图形组件在同一个游戏对象上。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_TextExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_OutlineExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_OutlineInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Effect Color</strong></td>
+<td style="text-align:left">轮廓的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Effect Distance</strong></td>
+<td style="text-align:left">轮廓效果在水平和垂直方向上的距离。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Graphic Alpha</strong></td>
+<td style="text-align:left">将图形的颜色与效果的颜色进行乘法运算。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="position-as-uv1">Position as UV1 <a href="#position-as-uv1" class="anchor">🔗</a></h5><p>这为文本和图像图形添加了一个简单的位置作为UV1的效果。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_PositionAsUV1Inspector.png" alt=""></p>
+<h4 id="interaction-components-1">Interaction Components <a href="#interaction-components-1" class="anchor">🔗</a></h4><h5 id="selectable-base-class">Selectable Base Class <a href="#selectable-base-class" class="anchor">🔗</a></h5><p>Selectable类是所有交互组件的基类，它处理的是那些公共的项。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">这决定了这个组件是否会接受输入。当它被设定为false时，交互会被禁用，并且转换状态会被设定为禁用状态。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">在一个可选组件内，有几个过渡选项，具体取决于可选组件当前处于什么状态。不同的状态有：正常，高亮，按压和禁用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">还有一些导航选项，用来控制如何实现控件的键盘导航。</td>
+</tr>
+</tbody>
+</table>
+<h6 id="transition-options">Transition Options <a href="#transition-options" class="anchor">🔗</a></h6><p>在一个可选择的组件中，根据可选择组件当前所处的状态，有几个不同的过渡选项。不同的状态有：正常，高亮，按压和禁用。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_SelectableTransition.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>过度选项:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>None</strong></td>
+<td style="text-align:left">这个选项是让按钮完全没有状态效果。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Color Tint</strong></td>
+<td style="text-align:left">根据按钮所处的状态更改按钮的颜色。可以为每个独立的状态选择颜色。也可以设置不同状态之间的淡入淡出时间。数字越高，颜色间的淡入淡出变化就越慢。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sprite Swap</strong></td>
+<td style="text-align:left">允许根据按钮当前所处的状态显示不同的精灵图像，这些精灵图像可以自定义。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Animation</strong></td>
+<td style="text-align:left">允许根据按钮的状态进行动画展示，为了使用动画过渡，必须存在一个动画器组件。确保禁用根运动是很重要的。要创建一个动画控制器，点击生成动画（或者创建你自己的），并确保一个动画控制器已经被添加到按钮的动画器组件中。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Color Tint</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_SelectableColorTint.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Target Graphic</strong></td>
+<td style="text-align:left">交互组件所使用的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Normal Color</strong></td>
+<td style="text-align:left">控件的正常颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highlighted Color</strong></td>
+<td style="text-align:left">当控件被高亮时的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pressed Color</strong></td>
+<td style="text-align:left">当控件被按下时的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Disabled Color</strong></td>
+<td style="text-align:left">当控件被禁用时的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Color Multiplier</strong></td>
+<td style="text-align:left">这会将每次过渡的色彩和它的值相乘。通过这种方式，你可以创建大于1的颜色，以增亮那些基础颜色小于白色（或者透明度小于满透明度）的图形元素上的颜色（或者透明度）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fade Duration</strong></td>
+<td style="text-align:left">以秒为单位，从一个状态过渡到另一个状态所需的时间。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sprite Swap</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_SelectableSpriteSwap.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Target Graphic</strong></td>
+<td style="text-align:left">要使用的普通精灵。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highlighted Sprite</strong></td>
+<td style="text-align:left">当控件被高亮时使用的精灵。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pressed Sprite</strong></td>
+<td style="text-align:left">当控件被按下时使用的精灵。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Disabled Sprite</strong></td>
+<td style="text-align:left">当控件被禁用时使用的精灵。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Animation</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_SelectableAnimation.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Normal Trigger</strong></td>
+<td style="text-align:left">使用的正常动画触发器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highlighted Trigger</strong></td>
+<td style="text-align:left">当控件被高亮时使用的触发器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pressed Trigger</strong></td>
+<td style="text-align:left">当控件被按下时使用的触发器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Disabled Trigger</strong></td>
+<td style="text-align:left">当控件被禁用时使用的触发器。</td>
+</tr>
+</tbody>
+</table>
+<h6 id="navigation-options">Navigation Options <a href="#navigation-options" class="anchor">🔗</a></h6><p><img src="/2023-07-09-unity-ugui/UI_SelectableNavigation.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">导航选项指的是如何控制游戏模式下UI元素的导航。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>None</strong></td>
+<td style="text-align:left">没有键盘导航。同时确保它不会因点击/轻触而接收焦点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Horizontal</strong></td>
+<td style="text-align:left">实现水平导航。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical</strong></td>
+<td style="text-align:left">实现垂直导航。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Automatic</strong></td>
+<td style="text-align:left">自动导航。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Explicit</strong></td>
+<td style="text-align:left">在此模式下，你可以明确指定控件在按下不同方向键时的导航路径。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Visualize</strong></td>
+<td style="text-align:left">选择&quot;可视化&quot;会在场景窗口中给你展示你已经设置的导航的可视化表示。请看下图。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2023-07-09-unity-ugui/UI_SelectableNavigationExplicit.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/GUIVisualizeNavigation.png" alt=""></p>
+<p>在上述的可视化模式中，箭头指示了一组控件的焦点变化方式。也就是说，对于每一个独立的UI控件，你可以看到当某个控件被选中时，用户按下一个方向键后，哪个UI控件将会接下来获得焦点。所以在上面的例子中，如果&quot;按钮&quot;获得了焦点，用户按下了右箭头键，那么第一个（左边的）竖直滑动器将会接下来获得焦点。需要注意的是，因为竖直滑动器控制着滑动器的值，所以竖直滑动器不能通过上或下的键跳转焦点。同样，水平滑动器也不能通过左/右箭头键跳转焦点。</p>
+<h5 id="button-1">Button <a href="#button-1" class="anchor">🔗</a></h5><p>按钮控件响应用户的点击，用于开始或确认一个动作。熟悉的例子包括网页表单上使用的提交和取消按钮。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ButtonExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ButtonInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">如果你希望这个按钮能接受输入，就启用&quot;可交互&rdquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">决定控件如何在视觉上响应用户操作的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">确定控件序列的属性。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Click</strong></td>
+<td style="text-align:left">Unity在用户点击按钮并释放时调用的UnityEvent。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>按钮被设计为在用户点击并释放时触发一个动作。如果在释放点击之前鼠标被移出按钮控件，动作就不会发生。</p>
+<p>按钮有一个叫做点击事件(On Click)的事件，当用户完成点击时会响应。典型的用途包括：</p>
+<ul>
+<li>确认一个决定（例如，开始游戏或者保存游戏）</li>
+<li>在GUI中移动到子菜单</li>
+<li>取消正在进行的动作（例如，下载一个新的场景）</li>
+</ul>
+<h5 id="toggle-1">Toggle <a href="#toggle-1" class="anchor">🔗</a></h5><p>Toggle控件是一个复选框，允许用户开启或关闭一个选项。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">这个组件会接受输入吗？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">决定控件如何视觉上响应用户操作的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">决定控件序列的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Is On</strong></td>
+<td style="text-align:left">切换按钮是否从一开始就处于开启状态？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Toggle Transition</strong></td>
+<td style="text-align:left">切换按钮在其值改变时的图形反应方式。选项包括无（即，勾选标记简单地出现或消失）和淡出（即，勾选标记会淡入或淡出）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphic</strong></td>
+<td style="text-align:left">用于勾选标记的图像。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Group</strong></td>
+<td style="text-align:left">这个切换按钮所属的切换按钮组（如果有的话）。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property:</strong></th>
+<th style="text-align:left"><strong>Function:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Changed</strong></td>
+<td style="text-align:left">当切换按钮被点击时调用的Unity事件。该事件可以将当前状态作为bool类型的动态参数发送。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>切换控制允许用户开启或关闭选项。你也可以将多个切换按钮组合到一个切换按钮组中，当一组选项中只应有一个被开启时。</p>
+<p>切换按钮有一个单一事件叫做&quot;值变更时&quot;，当用户改变当前值时该事件会作出响应。新的值会作为一个布尔参数传递给事件函数。切换开关的典型用途包括：</p>
+<ul>
+<li>开启或关闭选项（例如，游戏时播放音乐）。</li>
+<li>让用户确认他们已阅读法律免责声明。</li>
+<li>在切换按钮组中选择一组选项中的一个（例如，一周中的某一天）。</li>
+<li>注意，切换按钮是一个为子元素提供可点击区域的父元素。如果切换按钮没有子元素（或者它们被禁用），则它不可点击。</li>
+</ul>
+<h5 id="toggle-group-1">Toggle Group <a href="#toggle-group-1" class="anchor">🔗</a></h5><p>Toggle Group并不是一个可见的UI控件，而是一种修改一组切换按钮行为的方式。属于同一组的切换按钮被约束在同一时间只能有一个被开启 - 按下其中一个以开启它会自动关闭其他的切换按钮。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleGroupExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ToggleGroupInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Allow Switch Off</strong></td>
+<td style="text-align:left">是否允许没有任何切换按钮被开启？如果启用此设置，按下当前开启的切换按钮将关闭它，使得没有切换按钮被开启。如果禁用此设置，按下当前开启的切换按钮将不会改变其状态。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>通过将Toggle Group对象拖拽到组内每个切换按钮的Group属性中来建立切换按钮组。</p>
+<p>Toggle Group在用户必须从互斥的选项集中做出选择的任何地方都很有用。常见的例子包括选择玩家角色类型，速度设置（慢，中，快等），预设颜色和一周中的某一天。你可以在场景中一次拥有多个切换按钮组对象，所以如果必要，你可以创建多个独立的组。</p>
+<p>与其他UI元素不同，带有Toggle Group组件的对象不需要是一个画布对象的子对象，尽管切换按钮自身仍然需要这样。</p>
+<p>请注意，如果场景加载或实例化组时组内多个切换按钮被开启，Toggle Group不会立刻执行约束。只有当一个新的切换按钮被开启时，其他的才会被关闭。这意味着你需要确保只有一个切换按钮从一开始就被开启。</p>
+<h5 id="slider-1">Slider <a href="#slider-1" class="anchor">🔗</a></h5><p>Slider控件允许用户通过拖动鼠标从预设范围内选择一个数值。请注意，类似的ScrollBar控件被用于滚动，而不是选择数值。熟悉的例子包括游戏中的难度设置和图片编辑器中的亮度设置。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_SliderExample_2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_SliderInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">这个组件会接受输入吗？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">决定控件对用户操作在视觉上响应方式的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">决定控件序列的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fill Rect</strong></td>
+<td style="text-align:left">控件填充区域使用的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Handle Rect</strong></td>
+<td style="text-align:left">滑块控件的&quot;handle&quot;部分所使用的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Direction</strong></td>
+<td style="text-align:left">当把手被拖动时，滑块值增加的方向。选项有从左到右，从右到左，从下到上和从上到下。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min Value</strong></td>
+<td style="text-align:left">当滑块把手位于最低端（由方向属性决定）时，Slider的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Value</strong></td>
+<td style="text-align:left">当滑块把手位于最高端（由方向属性决定）时，Slider的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Whole Numbers</strong></td>
+<td style="text-align:left">Slider的值是否应限制为整数值？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Value</strong></td>
+<td style="text-align:left">Slider的当前数值。如果在检查器中设定了值，它将被用作初始值，但是当数值变动时，该值将在运行时改变。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Changed</strong></td>
+<td style="text-align:left">当Slider的当前值发生变化时，将会触发一个UnityEvent。这个事件可以将当前值作为浮点型的动态参数发送。无论是否启用了“Whole Numbers”（整数值）属性，该值都会以浮点型传递。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>Slider的值是由其手柄沿其长度的位置决定的。随着手柄被拖动的距离增加，值会从最小值增加到最大值。默认的行为是让Slider从左到右增加，但也可以使用“Direction”（方向）属性来反转这种行为。你还可以通过为“Direction”属性选择“Bottom To Top”（从底部到顶部）或“Top To Bottom”（从顶部到底部）以设置滑块垂直增加。</p>
+<p>Slider有一个名为“On Value Changed”（数值改变时）的单一事件，当用户拖动手柄时会触发。滑块的当前数值会作为浮点型参数传递给这个函数。典型的使用案例包括：</p>
+<ul>
+<li>选择游戏的难度级别，灯光的亮度等。</li>
+<li>设置距离、大小、时间或角度。</li>
+</ul>
+<h5 id="scrollbar-1">Scrollbar <a href="#scrollbar-1" class="anchor">🔗</a></h5><p>Scrollbar控件允许用户滚动过大以至于无法完全看见的图像或其他视图。请注意，类似的Slider控件被用于选择数值，而不是滚动。熟悉的例子包括文本编辑器侧边的垂直滚动条，以及用于查看大图像或地图的一部分的垂直和水平对的滚动条。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollbarExample_3.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollBarInspector_2.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">这个组件会接受输入吗？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">决定控件对用户操作在视觉上反馈方式的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">决定控件序列的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fill Rect</strong></td>
+<td style="text-align:left">用于控件的背景区域的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Handle Rect</strong></td>
+<td style="text-align:left">用于控件滑动&quot;handle&quot;部分的图形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Direction</strong></td>
+<td style="text-align:left">当操作句柄被拖动时，滚动条值将以哪种方向增加。选项有从左到右，从右到左，从下到上和从上到下。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Value</strong></td>
+<td style="text-align:left">滚动条的初始位置值，范围在0.0到1.0之间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Size</strong></td>
+<td style="text-align:left">滚动条中手柄的部分大小，范围在0.0到1.0之间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Number Of Steps</strong></td>
+<td style="text-align:left">滚动条允许的不同滚动位置的数量。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property:</strong></th>
+<th style="text-align:left"><strong>Function:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Changed</strong></td>
+<td style="text-align:left">当滚动条的当前值发生变化时调用的UnityEvent。该事件可以将值发送为float类型的动态参数。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>滚动条的值由手柄沿其长度的位置确定，该值被报告为极端末端之间的一部分。例如，默认的从左到右的条有一个0.0在左端，1.0在右端，0.5表示中点。可以通过为方向属性选择从上到下或从下到上来使滚动条垂直定向。</p>
+<p>滚动条与类似的滑块控件之间的一个重要区别是滚动条的手柄可以改变尺寸以表示可滚动的距离；当视图只能滚动很短的距离时，手柄会占满大部分条形，只允许稍微向任一方向移动。</p>
+<p>滚动条有一个称为“值改变时”的单一事件，该事件在用户拖动手柄时响应。当前值作为浮点参数传递给事件函数。滚动条的典型用途包括：</p>
+<ul>
+<li>垂直滚动一段文本。</li>
+<li>水平滚动时间线。</li>
+<li>成对使用时，可以水平和垂直滚动大图像，以查看放大的部分。手柄的大小改变以指示缩放的程度，从而指示可滚动的距离。</li>
+</ul>
+<h5 id="dropdown-1">Dropdown <a href="#dropdown-1" class="anchor">🔗</a></h5><p>下拉菜单可以用来让用户从选项列表中选择一个单一的选项。</p>
+<p>该控件显示当前选择的选项。一旦点击，它会打开选项列表，以便可以选择新的选项。选择新选项后，选项列表再次关闭，控件显示新选择的选项。如果用户点击控件本身，或者画布内的任何其他地方，列表也会关闭。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownExample_1.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownExampleOpen.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Interactable</strong></td>
+<td style="text-align:left">这个组件会接受输入吗？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">确定控件对用户操作的视觉反应方式的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation</strong></td>
+<td style="text-align:left">确定控件序列的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Template</strong></td>
+<td style="text-align:left">下拉列表的模板的Rect Transform。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Caption Text</strong></td>
+<td style="text-align:left">用于保存当前选定选项文本的Text组件。（可选）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Caption Image</strong></td>
+<td style="text-align:left">用于保存当前选定选项图片的Image组件。（可选）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Item Text</strong></td>
+<td style="text-align:left">用于保存项目文本的Text组件。（可选）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Item Image</strong></td>
+<td style="text-align:left">用于保存项目图片的Image组件。（可选）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Value</strong></td>
+<td style="text-align:left">当前选择选项的索引。0代表第一个选项，1代表第二个，以此类推。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Options</strong></td>
+<td style="text-align:left">可能的选项列表。每个选项都可以指定一个文本字符串和一个图片。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property:</strong></th>
+<th style="text-align:left"><strong>Function:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Changed</strong></td>
+<td style="text-align:left">当用户点击下拉列表中的一个选项时，会触发的UnityEvent事件。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>选项列表可以在Inspector中指定，或者可以通过代码进行赋值。每个选项都可以指定一个文本字符串，如果Dropdown支持的话，还可以选择性地指定一个图片。</p>
+<p>按钮有一个名为“On Value Changed”的事件，当用户完成对列表中某个选项的点击时触发。它支持发送一个整数值，这个值是所选选项的索引。0代表第一个选项，1代表第二个，以此类推。</p>
+<p><strong>The template system</strong></p>
+<p>Dropdown控件被设计为拥有一个子GameObject，该GameObject作为点击Dropdown控件时显示的下拉列表的模板。模板GameObject默认是不活跃的，但在编辑模板时可以让它活跃，以便更好地看到正在发生的事情。必须在Dropdown组件的Template属性中指定对模板对象的引用。</p>
+<p>模板必须有一个带有Toggle组件的项。当实际的下拉列表在点击Dropdown控件时被创建，这个项会被复制多次，列表中的每个选项都使用一个副本。项的父对象会自动调整大小，以便能够装下所有的项。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownHierarchySimple.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_DropdownHierarchyScrolling.png" alt=""></p>
+<p>模板可以通过许多不同的方式进行设置。由GameObject &gt; UI &gt; Dropdown菜单项使用的设置包括一个滚动视图，这样如果一次显示的选项太多，滚动条会出现，用户可以通过滚动条浏览选项。然而，这并不是模板设置的必要部分。</p>
+<p><strong>Setup of text and image support</strong></p>
+<p>下拉菜单支持每个选项有一个文本内容和一个图片内容。文本和图片都是可选的。只有当Dropdown设置支持时，才能使用它们。</p>
+<p>当Caption Text和Item Text属性都设置时，下拉菜单支持每个选项的文本。当使用GameObject &gt; UI &gt; Dropdown菜单项时，默认会设置这些属性。</p>
+<ul>
+<li>Caption Text是用来放置当前选定选项文本的Text组件。它通常是Dropdown GameObject的子对象。</li>
+<li>Item Text是用来放置每个选项文本的Text组件。它通常是Item GameObject的子对象。</li>
+</ul>
+<p>当Caption Image和Item Image属性都设置时，下拉菜单支持每个选项的图片。这些属性默认情况下不设置。</p>
+<ul>
+<li>Caption Image是用来放置当前选定选项图片的Image组件。它通常是Dropdown GameObject的子对象。</li>
+<li>Item Image是用来放置每个选项图片的Image组件。它通常是Item GameObject的子对象。</li>
+</ul>
+<p>实际用于下拉菜单的文本和图片在Dropdown组件的Options属性中指定，或者可以从代码中设置。</p>
+<p><strong>Placement of the dropdown list</strong></p>
+<p>下拉列表相对于下拉控件的位置由模板的Rect Transform的锚点和枢轴决定。</p>
+<p>默认情况下，列表会显示在控件下方。通过将模板锚定在控件的底部来实现这一点。模板的枢轴也需要在顶部，这样当模板扩展以适应可变数量的选项项时，它只会向下扩展。</p>
+<p>Dropdown控件有简单的逻辑来防止下拉菜单显示在Canvas的边界外，因为这会使得选择某些选项变得不可能。如果默认位置的下拉菜单在Canvas的矩形内部完全看不见，它相对于控件的位置会翻转。例如，默认情况下显示在控件下方的列表会显示在它的上方。</p>
+<p>这种逻辑非常简单，有一定的限制。下拉菜单的模板不得大于Canvas大小的一半减去下拉控件的大小，否则如果下拉控件位于Canvas的中间，两个位置可能都没有足够的空间放置列表。</p>
+<h5 id="input-field-1">Input Field <a href="#input-field-1" class="anchor">🔗</a></h5><p>输入字段是一种使Text控件的文本可编辑的方法。像其他交互控件一样，它本身并非可见的UI元素，必须与一个或多个可视UI元素结合使用才能看见。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_InputFieldExample_4.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_InputFieldExample2.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_InputFieldInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Transition</strong></td>
+<td style="text-align:left">确定控件对用户操作的视觉反应方式的属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TextComponent</strong></td>
+<td style="text-align:left">作为Input Field内容的Text元素的引用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Text</strong></td>
+<td style="text-align:left">编辑开始前放置在字段中的初始文本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Character Limit</strong></td>
+<td style="text-align:left">输入字段中可以输入的最大字符数的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Content Type</strong></td>
+<td style="text-align:left">定义您的输入字段接受的字符类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Line Type</strong></td>
+<td style="text-align:left">定义在文本字段内文本的格式化方式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Placeholder</strong></td>
+<td style="text-align:left">这是一个可选的“空”图形，用于显示输入字段中没有文本。请注意，即使输入字段被选中（也就是，当其被聚焦），这个“空”图形仍然会显示。例如：“Enter text&hellip;”。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Caret Blink Rate</strong></td>
+<td style="text-align:left">定义用于指示建议插入文本的标记在行上的闪烁频率。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Selection Color</strong></td>
+<td style="text-align:left">选中文本部分的背景色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hide Mobile Input (iOS only)</strong></td>
+<td style="text-align:left">在移动设备上隐藏与屏幕键盘关联的原生输入字段。请注意，这只在iOS设备上有效。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Change</strong></td>
+<td style="text-align:left">当输入字段的文本内容发生变化时，会调用一个UnityEvent。该事件可以将当前的文本内容作为字符串类型的动态参数发送。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>End Edit</strong></td>
+<td style="text-align:left">当用户通过提交或点击某处从输入字段移除焦点以完成文本内容编辑时，会调用一个UnityEvent。该事件可以将当前的文本内容作为字符串类型的动态参数发送。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>通过菜单（Component &gt; UI &gt; Input Field），可以将输入字段脚本添加到任何已有的文本控件对象中。完成这项操作后，你还应将对象拖放到输入字段的文本属性上，以启用编辑功能。</p>
+<p>用户在输入过程中，文本控件自身的文本属性将会发生改变，编辑后可以从脚本中获取该值。请注意，富文本特意不支持可编辑的文本控件；字段在输入时会立即应用任何富文本标记，但标记基本上会“消失”，并且无法再改变或移除样式。</p>
+<p><strong>Hints(提示)</strong></p>
+<ul>
+<li>若要获取输入字段的文本，请使用InputField组件本身的text属性，而不是显示文本的Text组件的text属性。Text组件的text属性可能会被裁剪，或者对于密码，可能由星号组成。</li>
+</ul>
+<h5 id="scroll-rect">Scroll Rect <a href="#scroll-rect" class="anchor">🔗</a></h5><p>当需要在一个小区域里显示占据大量空间的内容时，可以使用滚动矩形。滚动矩形提供了滚动此类内容的功能。</p>
+<p>通常滚动矩形会与遮罩组合使用，以创建一个只有滚动矩形内可滚动内容可见的滚动视图。它还可以额外地与一个或两个滚动条结合使用，这些滚动条可以拖动以水平或垂直滚动。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollRectExample_5.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollRectInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Content</strong></td>
+<td style="text-align:left">这是对需要滚动的UI元素的矩形变换的引用，例如一个大图像。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Horizontal</strong></td>
+<td style="text-align:left">启用水平滚动。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical</strong></td>
+<td style="text-align:left">启用垂直滚动。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Movement Type</strong></td>
+<td style="text-align:left">无限制，弹性或者夹紧。使用弹性或夹紧可以强制内容保持在滚动矩形的边界内。当内容到达滚动矩形的边缘时，弹性模式会使内容反弹。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Elasticity</strong></td>
+<td style="text-align:left">这是弹性模式中使用的反弹量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Inertia</strong></td>
+<td style="text-align:left">当设置了惯性时，拖动后释放指针，内容会继续移动。当未设置惯性时，内容只有在拖动时才会移动。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Deceleration Rate</strong></td>
+<td style="text-align:left">当设置了惯性，减速率决定了内容停止移动的速度。减速率为0将立即停止移动。减速率为1表示移动将永不减速。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scroll Sensitivity</strong></td>
+<td style="text-align:left">对滚轮和触控板滚动事件的敏感度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Viewport</strong></td>
+<td style="text-align:left">指向作为内容矩形变换父级的视口矩形变换的引用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Horizontal Scrollbar</strong></td>
+<td style="text-align:left">可选的引用到一个水平滚动条元素。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Visibility</strong></td>
+<td style="text-align:left">当不需要滚动条时，是否应自动隐藏滚动条，并可选地扩展视口。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spacing</strong></td>
+<td style="text-align:left">滚动条和视口之间的空间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical Scrollbar</strong></td>
+<td style="text-align:left">可选的引用到一个垂直滚动条元素。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Visibility</strong></td>
+<td style="text-align:left">当不需要滚动条时，是否应自动隐藏滚动条，并可选地扩大视口。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spacing</strong></td>
+<td style="text-align:left">滚动条和视口之间的空间。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Event事件</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property:</strong></th>
+<th style="text-align:left"><strong>Function:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>On Value Changed</strong></td>
+<td style="text-align:left">当Scroll Rect的滚动位置发生变化时，会调用的UnityEvent。该事件可以将当前滚动位置作为Vector2类型的动态参数发送。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>滚动视图中的重要元素包括视口，滚动内容，以及可选的一个或两个滚动条。</p>
+<ul>
+<li>根GameObject有Scroll Rect组件。</li>
+<li>视口具有Mask组件。视口可以是根GameObject，也可以是根的子GameObject。如果使用自动隐藏的滚动条，它必须是一个子元素。视口的Rect Transform需要在Scroll Rect的Viewport属性中引用。</li>
+<li>所有滚动内容必须是视口的子对象的单一内容GameObject的子对象。内容的Rect Transform需要在Scroll Rect的Content属性中引用。</li>
+<li>滚动条（如果使用）是根GameObject的子对象。请参阅滚动条页面以获取有关滚动条设置的更多详细信息，并参阅下面的滚动条设置部分以获取有关带有滚动视图的滚动条设置的信息。</li>
+</ul>
+<p>这个图片显示了一个设置，其中视口是滚动视图根的子对象。这是使用GameObject &gt; UI &gt; Scroll View菜单选项时的默认设置。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScrollRectHierarchy.png" alt=""></p>
+<p>要滚动内容，输入必须从ScrollRect的边界内部接收，而不是在内容本身上。</p>
+<p>在使用Unrestricted滚动移动时要小心，因为可能会以无法检索的方式失去对内容的控制。当使用Elastic或Constrained移动时，最好将内容定位到开始在ScrollRect的边界内，否则当RectTransform试图将内容带回其边界时，可能会出现不良行为。</p>
+<p><strong>Scrollbar setup</strong></p>
+<p>可选地，Scroll Rect可以链接到水平和/或垂直滚动条。这些通常被放置在视口的兄弟层级中，存在时，应分别拖入到Scroll Rect的Horizontal Scrollbar和Vertical Scrollbar属性中。请注意，这样的水平滚动条上的Direction属性应设置为Left To Right，垂直滚动条设置为Bottom To Top。</p>
+<p>滚动条可以选择具有自动隐藏行为，如果内容不需要滚动，因为它没有大于视口，那么它会隐藏滚动条。请注意，自动隐藏只在Play Mode中发生。在Edit Mode中，滚动条始终显示。这可以防止在不应标记场景为dirty的情况下标记它，并且也有助于创建内容，即使显示滚动条，也有足够的空间。</p>
+<p>如果一个或两个滚动条的可见性行为设置为Auto Hide And Expand View，那么当滚动条隐藏时，视口会自动扩大以占据滚动条原本所在的多余空间。在这种设置中，视图的位置和大小由Scroll Rect驱动，水平滚动条的宽度以及垂直滚动条的高度也被驱动。在此设置中，视口以及滚动条必须是Scroll Rect根GameObject的子对象。</p>
+<p><strong>Hints(提示)</strong></p>
+<p>内容的RectTransform的轴心和锚点可以用来决定如果内容增长或收缩时，内容如何在滚动视图内对齐。如果内容应该保持与顶部对齐，将锚点设置在父对象的顶部，并将轴心设置到顶部位置。</p>
+<h4 id="auto-layout-1">Auto Layout <a href="#auto-layout-1" class="anchor">🔗</a></h4><p>自动布局系统提供了将元素放置在嵌套布局组（如水平组、垂直组或网格）中的方式。它还允许元素根据包含的内容自动调整大小。</p>
+<h5 id="layout-element">Layout Element <a href="#layout-element" class="anchor">🔗</a></h5><p>如果你想覆盖布局元素的最小、首选或弹性大小，你可以通过在GameObject中添加一个Layout Element组件来实现。</p>
+<p>布局控制器按以下顺序分配宽度或高度给布局元素：</p>
+<ul>
+<li>首先，布局控制器分配最小尺寸属性（Min Width, Min Height）。</li>
+<li>如果有足够的可用空间，布局控制器分配首选尺寸属性（Preferred Width, Preferred Height）。</li>
+<li>如果还有额外的可用空间，布局控制器分配弹性尺寸属性（Flexible Width, Flexible Height）。</li>
+</ul>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_LayoutElementInspector_3.png" alt=""></p>
+<p>当你启用宽度或高度属性时，旁边会出现一个值字段。使用这个值字段输入宽度或高度的确切值。最小和首选尺寸是以常规单位表示，而弹性尺寸则是以相对单位表示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Ignore Layout</strong></td>
+<td style="text-align:left">当启用时，布局系统会忽略这个布局元素。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min Width</strong></td>
+<td style="text-align:left">这个布局元素应该具有的最小宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min Height</strong></td>
+<td style="text-align:left">这个布局元素应该具有的最小高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preferred Width</strong></td>
+<td style="text-align:left">在分配额外可用宽度之前，这个布局元素应该具有的首选宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preferred Height</strong></td>
+<td style="text-align:left">在分配额外可用高度之前，这个布局元素应该具有的首选高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Flexible Width</strong></td>
+<td style="text-align:left">此布局元素应相对于其同级元素填充的可用额外宽度的相对数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Flexible Height</strong></td>
+<td style="text-align:left">这个布局元素相对于它的同级元素应填充的额外可用高度的相对数值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Layout Priority</strong></td>
+<td style="text-align:left">这个组件的布局优先级。如果一个游戏对象有多个具有布局属性的组件（例如，一个Image组件和一个LayoutElement组件），布局系统会使用具有最高布局优先级的组件的属性值。如果组件有相同的布局优先级，布局系统使用每个属性的最高值，无论它来自哪个组件。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description(描述)</strong></p>
+<p>Layout Element组件允许你覆盖一个或多个布局属性的值。如果你想要覆盖一个属性的值，启用该属性的复选框，然后指定你想要覆盖的值。</p>
+<p>最小和优先大小以常规单位定义，而灵活的大小以相对单位定义。如果任何布局元素有大于零的灵活大小，意味着所有可用的空间将被填充满。兄弟元素的相对灵活大小值确定了每个兄弟元素填充可用空间的大小比例。最常见的是，灵活的宽度和高度设置为0或1。</p>
+<p>在某些情况下，同时指定优先大小和灵活大小是有意义的。灵活的大小只有在所有的优先大小都已完全分配后才被分配。因此，一个布局元素如果指定了灵活大小，但没有指定优先大小，将会保持其最小大小，直到其他布局元素已经增长到它们的全优先大小，然后基于额外的可用空间开始增长。通过也指定一个灵活的大小，这可以被避免，并且该元素可以与其他具有优先大小的布局元素一起增长到其优选大小，然后在所有的灵活大小都已分配后进一步增长。</p>
+<h5 id="content-size-fitter">Content Size Fitter <a href="#content-size-fitter" class="anchor">🔗</a></h5><p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ContentSizeFitterInspector22.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Horizontal Fit</strong></td>
+<td style="text-align:left">如何控制宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Unconstrained</td>
+<td style="text-align:left">不要基于布局元素来驱动宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Min Size</td>
+<td style="text-align:left">根据布局元素的最小宽度来驱动宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Preferred Size</td>
+<td style="text-align:left">根据布局元素的首选宽度来驱动宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical Fit</strong></td>
+<td style="text-align:left">高度是如何被控制的。</td>
+</tr>
+<tr>
+<td style="text-align:left">Unconstrained</td>
+<td style="text-align:left">不要根据布局元素来驱动高度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Min Size</td>
+<td style="text-align:left">根据布局元素的最小高度来驱动高度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Preferred Size</td>
+<td style="text-align:left">根据布局元素的优选高度来驱动高度。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description(描述)</strong></p>
+<p>Content Size Fitter充当一个布局控制器，控制其自身布局元素的大小。大小由Game Object上的布局元素组件提供的最小或优选大小决定。这类布局元素可以是Image或Text组件，布局组，或者是一个Layout Element组件。</p>
+<p>值得记住的是，当一个Rect Transform被调整大小 - 无论是由Content Size Fitter还是其他东西 - 调整大小是围绕枢轴进行的。这意味着可以使用枢轴来控制调整大小的方向。</p>
+<p>例如，当枢轴在中心时，Content Size Fitter将等同于所有方向来扩展Rect Transform。而当枢轴在左上角时，Content Size Fitter将向下和向右扩展Rect Transform。</p>
+<h5 id="aspect-ratio-fitter">Aspect Ratio Fitter <a href="#aspect-ratio-fitter" class="anchor">🔗</a></h5><p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_AspectRatioFitterInspector_3.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Aspect Mode</strong></td>
+<td style="text-align:left">如何调整矩形的大小以强制执行宽高比。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>None</strong></td>
+<td style="text-align:left">不要使矩形适应宽高比。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Width Controls Height</strong></td>
+<td style="text-align:left">根据宽度自动调整高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Height Controls Width</strong></td>
+<td style="text-align:left">根据高度自动调整宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fit In Parent</strong></td>
+<td style="text-align:left">宽度、高度、位置和锚点都会自动调整，使矩形在保持宽高比的同时适应其父级矩形。可能会有一些空间在父级矩形内部，但未被此矩形覆盖。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Envelope Parent</strong></td>
+<td style="text-align:left">宽度、高度、位置和锚点会自动调整，使得矩形在保持宽高比的情况下覆盖父级矩形的全部区域。此矩形可能会超出父级矩形的范围。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Aspect Ratio</strong></td>
+<td style="text-align:left">要强制执行的宽高比。这是宽度除以高度的值。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description(描述)</strong></p>
+<p>宽高比适配器作为一个布局控制器，控制其自身布局元素的大小。它可以调整高度以适应宽度，反之亦然，或者它可以使元素适应其父元素的大小或者包裹其父元素。宽高比适配器并不会考虑像最小尺寸和首选尺寸这样的布局信息。</p>
+<p>值得记住的是，当一个矩形变换被调整大小 - 无论是由宽高比适配器还是别的什么调整的 - 调整是围绕枢轴进行的。这意味着，可以用枢轴来控制矩形的对齐方式。例如，一个放在顶部中心的枢轴会使矩形等量向两侧增长，仅向下增长，而顶边则保持在原位。</p>
+<h5 id="horizontal-layout-group">Horizontal Layout Group <a href="#horizontal-layout-group" class="anchor">🔗</a></h5><p>Horizontal Layout Group组件将其子布局元素并排放置。这些元素的宽度由各自的最小、优选和灵活宽度按照下述模型确定：</p>
+<ul>
+<li>所有子布局元素的最小宽度相加，以及它们之间的间距也被加入。得出的结果就是Horizontal Layout Group的最小宽度。</li>
+<li>所有子布局元素的优选宽度相加，和它们之间的间距也被加入。得出的结果就是Horizontal Layout Group的优选宽度。</li>
+<li>如果Horizontal Layout Group的宽度等于其最小宽度或者更小，那么所有子布局元素的宽度也将是它们各自的最小宽度。</li>
+<li>越接近Horizontal Layout Group的优选宽度，每个子布局元素的宽度也将越接近它们的优选宽度。</li>
+<li>如果Horizontal Layout Group的宽度超过其优选宽度，它将按照各自的灵活宽度比例向子布局元素分配额外的空间。</li>
+</ul>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_HorizontalLayoutGroupInspector.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Padding</strong></td>
+<td style="text-align:left">在布局组的边缘之间的填充。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spacing</strong></td>
+<td style="text-align:left">布局元素之间的间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Child Alignment</strong></td>
+<td style="text-align:left">如果子布局元素没有填满所有可用空间，使用何种对齐方式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Control Child Size</strong></td>
+<td style="text-align:left">布局组是否控制其子布局元素的宽度和高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Child Scale</strong></td>
+<td style="text-align:left">布局组在计算元素的大小和布局时，是否考虑其子布局元素的比例。<!-- raw HTML omitted -->宽度和高度分别对应每个子布局元素的Rect Transform组件中的Scale &gt; X和Scale &gt; Y值。<!-- raw HTML omitted -->你无法使用Animator Controller来动画化Scale值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Child Force Expand</strong></td>
+<td style="text-align:left">是否强制子布局元素扩展以填充额外的可用空间。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="vertical-layout-group">Vertical Layout Group <a href="#vertical-layout-group" class="anchor">🔗</a></h5><p>Vertical Layout Group组件将其子布局元素置于彼此顶部。他们的高度由相应的最小，首选和灵活高度决定，根据以下模型：</p>
+<ul>
+<li>所有子布局元素的最小高度被相加，之间的空间也被添加。结果就是Vertical Layout Group的最小高度。</li>
+<li>所有子布局元素的首选高度被相加，之间的空间也被添加。结果就是Vertical Layout Group的首选高度。</li>
+<li>如果Vertical Layout Group处于其最小高度或更小的状态，所有子布局元素也将具有它们的最小高度。</li>
+<li>Vertical Layout Group越接近其首选高度，每个子布局元素也越接近他们的首选高度。</li>
+<li>如果Vertical Layout Group高于其首选高度，它会将额外的空间按照各自的灵活高度的比例分配给子布局元素。</li>
+</ul>
+<p><strong>Properties(属性)</strong></p>
+<p><img src="/2023-07-09-unity-ugui/UI_VerticalLayoutGroupInspector23.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Padding</strong></td>
+<td style="text-align:left">布局组边缘内部的填充。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spacing</strong></td>
+<td style="text-align:left">布局元素之间的间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Child Alignment</strong></td>
+<td style="text-align:left">如果子布局元素没有填充所有可用空间，将使用的对齐方式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Control Child Size</strong></td>
+<td style="text-align:left">布局组是否控制其子布局元素的宽度和高度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Child Scale</strong></td>
+<td style="text-align:left">布局组在尺寸和布局元素时，是否考虑其子布局元素的缩放。<!-- raw HTML omitted -->宽度和高度对应于每个子布局元素的Rect Transform组件中的Scale &gt; X和Scale &gt; Y值。<!-- raw HTML omitted -->你无法使用Animator Controller来动画这些Scale值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Child Force Expand</strong></td>
+<td style="text-align:left">是否强制子布局元素扩展以填充额外可用的空间。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="grid-layout-group">Grid Layout Group <a href="#grid-layout-group" class="anchor">🔗</a></h5><p>Grid Layout Group组件将其子布局元素置于一个格子中。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_GridLayoutGroupInspector.png" alt=""></p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Padding</strong></td>
+<td style="text-align:left">布局组边缘内部的填充。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cell Size</strong></td>
+<td style="text-align:left">每个组中布局元素的大小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spacing</strong></td>
+<td style="text-align:left">布局元素之间的间距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Start Corner</strong></td>
+<td style="text-align:left">首个元素所在的角落。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Start Axis</strong></td>
+<td style="text-align:left">沿哪个主轴放置元素。横向会填满整行后才开始新的行。纵向会填满整列后才开始新的列。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Child Alignment</strong></td>
+<td style="text-align:left">如果布局元素没有填满所有可用空间，应使用的对齐方式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constraint</strong></td>
+<td style="text-align:left">将网格约束为固定数目的行或列，以帮助自动布局系统。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description(描述)</strong></p>
+<p>与其他布局组不同，Grid Layout Group忽视其包含的布局元素的最小、优选和灵活尺寸属性，而是为所有元素分配固定尺寸，该尺寸由Grid Layout Group自身的Cell Size属性定义。</p>
+<p><strong>Grid Layout Group and auto layout</strong></p>
+<p>在使用Grid Layout Group作为自动布局设置的一部分时，需要注意一些特殊考虑，例如与Content Size Fitter一起使用。</p>
+<p>自动布局系统独立计算水平和垂直大小。这可能与Grid Layout Group存在冲突，因为行数取决于列数，反之亦然。</p>
+<p>对于任何给定数量的单元格，都有不同组合的行数和列数可以使网格适应其内容。为了帮助布局系统，你可以指定你希望表格具有固定数量的列或行，通过使用Constraint属性。</p>
+<p>以下是一些使用Content Size Fitter搭配布局系统的建议方法：</p>
+<p><strong>Flexible width and fixed height</strong></p>
+<p>如果您想设置一个具有灵活宽度和固定高度的网格，当添加更多元素时，网格会水平扩展，您可以按如下方式设置这些属性：</p>
+<ul>
+<li>Grid Layout Group Constraint：Fixed Row Count</li>
+<li>Content Size Fitter Horizontal Fit：Preferred Size</li>
+<li>Content Size Fitter Vertical Fit：Preferred Size 或 Unconstrained</li>
+</ul>
+<p>如果使用不受约束的Vertical Fit，那么您需要给网格设定一个足够大的高度，以适应指定的单元格行数。</p>
+<p><strong>Fixed width and flexible height</strong></p>
+<p>如果您想设置一个具有固定宽度和灵活高度的网格，当添加更多元素时，网格会垂直扩展，您可以按如下方式设置这些属性：</p>
+<ul>
+<li>Grid Layout Group Constraint：Fixed Column Count</li>
+<li>Content Size Fitter Horizontal Fit：Preferred Size 或 Unconstrained</li>
+<li>Content Size Fitter Vertical Fit：Preferred Size</li>
+</ul>
+<p>如果使用不受约束的Horizontal Fit，那么您需要给网格设定一个足够大的宽度，以适应指定的单元格列数。</p>
+<p><strong>Both flexible width and height</strong></p>
+<p>如果您想设置一个宽度和高度都灵活的网格，您可以实现，但是您将无法控制行和列的具体数量。网格将尝试使行和列的数量大致相同。您可以按如下方式设置这些属性：</p>
+<ul>
+<li>Grid Layout Group Constraint：Flexible</li>
+<li>Content Size Fitter Horizontal Fit：Preferred Size</li>
+<li>Content Size Fitter Vertical Fit：Preferred Size</li>
+</ul>
+<h4 id="event-1">Event <a href="#event-1" class="anchor">🔗</a></h4><h5 id="script---event-system-manager">Script - Event System Manager <a href="#script---event-system-manager" class="anchor">🔗</a></h5><p>这个子系统负责控制构成事件的所有其他元素。它协调哪个输入模块当前处于活动状态，哪个GameObject当前被视为&quot;selected&quot;，以及其他一系列高级事件系统概念。</p>
+<p>每次&rsquo;Update&rsquo;，事件系统都会接收到调用，查看其输入模块，并找出应当用于此次更新的输入模块。然后，它将处理工作委派给这些模块。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>First Selected</strong></td>
+<td style="text-align:left">被首先选定的GameObject。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Send Navigation Events</strong></td>
+<td style="text-align:left">事件系统是否应允许导航事件（移动/提交/取消）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Drag Threshold</strong></td>
+<td style="text-align:left">以像素为单位的拖拽软区域。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script---graphic-raycaster">Script - Graphic Raycaster <a href="#script---graphic-raycaster" class="anchor">🔗</a></h5><p>Graphic Raycaster 用于对 Canvas 进行射线检测。Raycaster 查看 Canvas 上的所有图像，并确定是否有任何图像被击中。</p>
+<p>Graphic Raycaster 可以配置为忽略背面的图形，也可以被存在于其前面的2D或3D对象阻挡。如果您希望强制将此元素的处理置于射线检测的前端或后端，也可以应用手动优先级。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Ignore Reversed Graphics</strong></td>
+<td style="text-align:left">是否应考虑面向远离Graphic Raycaster的图形？</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Blocked Objects</strong></td>
+<td style="text-align:left">将阻挡图形射线检测的对象类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Blocking Mask</strong></td>
+<td style="text-align:left">阻挡Graphic Raycast的对象类型。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script---physics-raycaster">Script - Physics Raycaster <a href="#script---physics-raycaster" class="anchor">🔗</a></h5><p>Physics Raycaster在场景中对3D对象执行射线投射。这允许将消息发送给实现了事件接口的3D物理对象。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Depth</strong></td>
+<td style="text-align:left">获取配置相机的深度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Event Camera</strong></td>
+<td style="text-align:left">获取此模块使用的相机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Event Mask</strong></td>
+<td style="text-align:left">相机遮罩和事件遮罩的逻辑与运算。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Final Event Mask</strong></td>
+<td style="text-align:left">相机遮罩和事件遮罩的逻辑与运算。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script---physics-2d-raycaster">Script - Physics 2D Raycaster <a href="#script---physics-2d-raycaster" class="anchor">🔗</a></h5><p>Physics 2D Raycaster是针对场景中的2D对象进行射线投射的。这允许向实现事件接口的2D物理对象发送消息。需要使用相机游戏对象，并且如果Physics 3D Raycaster没有添加到相机游戏对象中，它将会被添加到游戏对象中。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Event Camera</strong></td>
+<td style="text-align:left">将为这个射线投射器生成射线的相机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Priority</strong></td>
+<td style="text-align:left">相对于其他投射器的优先级。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sort Order Priority</strong></td>
+<td style="text-align:left">基于排序顺序的射线投射器的优先级。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Render Order Priority</strong></td>
+<td style="text-align:left">基于渲染顺序的射线投射器的优先级。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script---standalone-input-module">Script - Standalone Input Module <a href="#script---standalone-input-module" class="anchor">🔗</a></h5><p>这个模块旨在使控制器/鼠标输入按预期工作。按钮按压、拖拽等类似的事件会对输入作出响应。</p>
+<p>随着鼠标/输入设备的移动，模块会向组件发送指针事件，并使用Graphics Raycaster和Physics Raycaster来计算当前指针设备指向的元素。你可以根据你的需求配置这些射线投射器以检测或忽略你的场景的某些部分。</p>
+<p>该模块会对通过Input窗口跟踪的输入做出动作事件以及提交/取消事件的响应。该方法适用于键盘和控制器输入。可以在模块的检查器中配置被跟踪的轴和键。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Horizontal Axis</strong></td>
+<td style="text-align:left">为水平轴按钮输入所需的管理器名称。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Vertical Axis</strong></td>
+<td style="text-align:left">为垂直轴输入所需的管理器名称。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Submit Button</strong></td>
+<td style="text-align:left">为Submit按钮输入所需的管理器名称。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cancel Button</strong></td>
+<td style="text-align:left">为Cancel按钮输入所需的管理器名称。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Input Actions Per Second</strong></td>
+<td style="text-align:left">每秒允许的键盘/控制器输入数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Repeat Delay</strong></td>
+<td style="text-align:left">在每秒输入动作重复率生效前的延迟秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Force Module Active</strong></td>
+<td style="text-align:left">启用此属性以强制使此Standalone Input Module处于活动状态。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>模块使用：</p>
+<ul>
+<li>垂直/水平轴进行键盘和控制器导航</li>
+<li>提交/取消按钮用于发送提交和取消事件</li>
+<li>存在事件间的超时限制，只允许每秒钟达到最大事件数量</li>
+</ul>
+<p>模块的流程如下：</p>
+<ul>
+<li>如果从输入窗口输入了有效的轴，则向选定的对象发送移动事件</li>
+<li>如果按下提交或取消按钮，则向选定的对象发送提交或取消事件</li>
+<li>处理鼠标输入</li>
+</ul>
+<p>​			如果是新的按压操作：
+​					发送PointerEnter事件（发送给沿层次结构向上可以处理的所有对象）
+​					发送PointerPress事件
+​					缓存拖动处理器（层次结构中可以处理它的第一个元素）
+​					向拖动处理器发送BeginDrag事件
+​					在事件系统中设定&rsquo;Pressed&rsquo;对象为选定
+​			如果这是一个持续的按压：
+​					处理移动
+​					向缓存的拖动处理器发送DragEvent
+​					如果触摸在对象之间移动，处理PointerEnter和PointerExit事件
+​			如果这是一个释放：
+​					向接收到PointerPress的对象发送PointerUp事件
+​					如果当前的悬停对象与PointerPress对象相同，则发送PointerClick事件
+​					如果缓存了拖动处理器，则发送一个Drop事件
+​					向缓存的拖动处理器发送EndDrag事件
+​			处理滚轮事件</p>
+<h5 id="script---touch-input-module">Script - Touch Input Module <a href="#script---touch-input-module" class="anchor">🔗</a></h5><p>注意：TouchInputModule已过时。现在，触摸输入在StandaloneInputModule中处理。</p>
+<p>此模块设计用于处理触摸设备。它会根据用户输入发送触摸和拖动的指针事件。此模块支持多点触控。</p>
+<p>该模块使用场景配置的Raycasters来计算当前正在触摸哪个元素。每一个当前的触摸都会发出一个射线。</p>
+<p><strong>Properties(属性)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Force Module Active</strong></td>
+<td style="text-align:left">强制使此模块处于活动状态。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Details(详情)</strong></p>
+<p>模块的流程如下：</p>
+<p>对于每一个触摸事件</p>
+<ul>
+<li>如果这是一个新的按压
+<ul>
+<li>发送PointerEnter事件（发送给层次结构中每一个能处理它的对象）</li>
+<li>发送PointerPress事件</li>
+<li>缓存拖动处理器（在层次结构中能处理它的第一个元素）</li>
+<li>向拖动处理器发送BeginDrag事件</li>
+<li>在事件系统中设置&rsquo;Pressed&rsquo;对象为Selected</li>
+</ul>
+</li>
+<li>如果这是一个持续的按压
+<ul>
+<li>处理移动</li>
+<li>向缓存的拖动处理器发送DragEvent事件</li>
+<li>如果触摸在对象之间移动，处理PointerEnter和PointerExit事件</li>
+</ul>
+</li>
+<li>如果这是一个释放
+<ul>
+<li>向接收到PointerPress的对象发送PointerUp事件</li>
+<li>如果当前悬停对象与PointerPress对象相同，则发送一个PointerClick事件</li>
+<li>如果有拖动处理器缓存，发送一个Drop事件</li>
+<li>向缓存的拖动处理器发送EndDrag事件</li>
+</ul>
+</li>
+</ul>
+<h5 id="script---event-trigger">Script - Event Trigger <a href="#script---event-trigger" class="anchor">🔗</a></h5><p>Event Trigger从事件系统接收事件，并为每个事件调用已注册的函数。</p>
+<p>你可以使用Event Trigger为每个事件系统事件指定希望调用的函数。你可以将多个函数分配给单个事件，每当Event Trigger接收到该事件，它就会调用这些函数。</p>
+<p>请注意，将Event Trigger组件附加到GameObject上会使该对象拦截所有事件，且此对象不会发生事件冒泡！</p>
+<p><strong>Event</strong></p>
+<p>你可以通过点击添加新事件类型按钮，选择性地将每个受支持的事件包含在Event Trigger中。</p>
+<h3 id="ui-how-tosui操作指南">UI How Tos(UI操作指南) <a href="#ui-how-tosui%e6%93%8d%e4%bd%9c%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h3><p>在这一部分，你可以学习到常见UI任务的解决方案。</p>
+<h4 id="designing-ui-for-multiple-resolutions为多种分辨率设计ui">Designing UI for Multiple Resolutions(为多种分辨率设计UI) <a href="#designing-ui-for-multiple-resolutions%e4%b8%ba%e5%a4%9a%e7%a7%8d%e5%88%86%e8%be%a8%e7%8e%87%e8%ae%be%e8%ae%a1ui" class="anchor">🔗</a></h4><p>现代游戏和应用程序通常需要支持各种不同的屏幕分辨率，特别是UI布局需要能够适应这一点。Unity的UI系统包括了许多用于此目的的工具，可以以各种方式结合使用。</p>
+<p>在这个操作指南中，我们将使用一个简单的案例研究，并在这个背景下查看并比较不同的工具。在我们的案例研究中，我们在屏幕角落有三个按钮，如下图所示，目标是将这种布局适应到各种分辨率。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResBase.png" alt=""></p>
+<p>在本操作指南中，我们将考虑四种屏幕分辨率：手机HD的纵向（640 x 960）和横向（960 x 640），以及手机SD的纵向（320 x 480）和横向（480 x 320）。该布局最初是在手机HD纵向分辨率下设置的。</p>
+<p><strong>Using anchors to adapt to different aspect ratios(使用锚点适应不同的纵横比)</strong></p>
+<p>默认情况下，UI元素被锚定在父矩形的中心。这意味着它们与中心保持固定的偏移。</p>
+<p>如果将分辨率更改为横向纵横比，那么这种设置下的按钮可能不再位于屏幕的矩形内。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResCenter.png" alt=""></p>
+<p>让按钮保持在屏幕内的一种方法是改变布局，使得按钮的位置与屏幕的各自角落相对应。左上角按钮的锚点可以通过检查器中的锚点预设下拉菜单设置为左上角，或者通过在场景视图中拖动三角形的锚点句柄来设置。最好在游戏视图中设置的当前屏幕分辨率是布局最初设计的那个，其中按钮的放置看起来是正确的。同样，左下角和右下角按钮的锚点可以分别设置为左下角和右下角。</p>
+<p>一旦按钮被锚定到各自的角落，当将分辨率改变为不同的纵横比时，它们会坚持在那里。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResCorners.png" alt=""></p>
+<p>当屏幕大小改变为更大或更小的分辨率时，按钮也会保持在它们各自的角落。但是，由于它们保持以像素指定的原始大小，它们可能占据屏幕的更大或更小的比例。这可能是你想要的，也可能不是，这取决于你希望你的布局在不同分辨率的屏幕上表现如何。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResSizeChange.png" alt=""></p>
+<p>在这个指南中，我们知道，手机SD竖屏和横屏的较小分辨率并不对应于物理上较小的屏幕，而是对应于像素密度较低的屏幕。在这些低密度的屏幕上，按钮不应该比在高密度屏幕上看起来更大 - 它们应该以相同的大小出现。</p>
+<p>这意味着按钮应该以与屏幕缩小的百分比相同的百分比变小。换句话说，按钮的缩放应该跟随屏幕大小。这就是Canvas Scaler组件能够帮助的地方。</p>
+<p><strong>Scaling with Screen Size(随屏幕大小缩放)</strong></p>
+<p>Canvas Scaler组件可以添加到根Canvas - 一个带有Canvas组件的游戏对象，所有的UI元素都是它的子对象。当通过GameObject菜单创建一个新的Canvas时，它也会默认被添加。</p>
+<p>在Canvas Scaler组件中，你可以将其UI Scale Mode设置为Scale With Screen Size。使用这种缩放模式，你可以指定一个分辨率作为参考。如果当前屏幕分辨率小于或大于这个参考分辨率，Canvas的缩放因子就会相应地设置，所以所有的UI元素都会随着屏幕分辨率一起放大或缩小。</p>
+<p>在我们的案例中，我们将Canvas Scaler设置为Phone HD竖屏分辨率640 x 960。现在，当将屏幕分辨率设置为Phone SD竖屏分辨率320 x 480时，整个布局缩小了，所以它看起来比例相同，就像在全分辨率下一样。所有的东西都缩小了：按钮的大小，它们到屏幕边缘的距离，按钮的图形，和文本元素。这就意味着布局在Phone SD竖屏分辨率下看起来与Phone HD竖屏分辨率下一样，只是像素密度更低。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResReferenceResolution.png" alt=""></p>
+<p>需要注意的一点是：添加了Canvas Scaler组件后，也很重要的是要检查布局在其它纵横比下的样子。通过将分辨率回调到Phone HD横屏，我们可以看到按钮现在看起来比它们应该的（和曾经的）更大。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResLandscapeWrongScaling.png" alt=""></p>
+<p>造成横屏纵横比下按钮更大的原因归结于Canvas Scaler设置的工作方式。默认情况下，它比较当前分辨率的宽度与Canvas Scaler的宽度，结果用作缩放所有内容的缩放因子。由于当前的横屏分辨率960 x 640的宽度比竖屏Canvas Scaler的640 x 960大1.5倍，因此布局放大了1.5倍。</p>
+<p>该组件有一个名为Match的属性，可以是0（宽度），1（高度）或者介于两者之间的值。默认设置为0，如前所述，它比较当前屏幕宽度与Canvas Scaler宽度。</p>
+<p>如果Match属性设置为0.5，那么它将同时比较当前宽度与参考宽度以及当前高度与参考高度，并选择一个介于两者之间的缩放因子。由于在这种情况下，横屏分辨率宽度大1.5倍，但也短1.5倍，这两个因素相互抵消，产生最终的缩放因子1，这意味着按钮保持原大小。</p>
+<p>至此，布局使用适当的锚定组合和Canvas上的Canvas Scaler组件，支持了所有四种屏幕分辨率。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_MultiResAllResolutions.png" alt=""></p>
+<h4 id="making-ui-elements-fit-the-size-of-their-content让ui元素适应其内容的大小">Making UI elements fit the size of their content(让UI元素适应其内容的大小) <a href="#making-ui-elements-fit-the-size-of-their-content%e8%ae%a9ui%e5%85%83%e7%b4%a0%e9%80%82%e5%ba%94%e5%85%b6%e5%86%85%e5%ae%b9%e7%9a%84%e5%a4%a7%e5%b0%8f" class="anchor">🔗</a></h4><p>通常在用Rect Transform定位一个UI元素时，它的位置和大小是手动指定的（可选的，包括与父Rect Transform一同拉伸的行为）。</p>
+<p>然而，有时你可能希望这个矩形能自动调整大小以适应UI元素的内容。这可以通过添加一个名为Content Size Fitter的组件来实现。</p>
+<p><strong>Fit to size of Text(调整以适应文本大小)</strong></p>
+<p>为了让带有Text组件的Rect Transform适应文本内容，将Content Size Fitter组件添加到同一个拥有Text组件的游戏对象上。然后将Horizontal Fit和Vertical Fit下拉框都设置为Preferred。</p>
+<p><strong>How does it work? (它是如何工作的?)</strong></p>
+<p>这里发生的是，Text组件作为一个Layout Element，可以提供有关其最小和最佳大小的信息。在手动布局中，这些信息不会被使用。Content Size Fitter是一种Layout Controller，它会监听由Layout Elements提供的布局信息，并根据这些信息控制Rect Transform的大小。</p>
+<p><strong>Remember the pivot(轴心点的重要)</strong></p>
+<p>当UI元素自动调整大小以适应其内容时，你应该特别注意Rect Transform的轴心点。当元素大小改变时，轴心点位置会保持不变，因此通过设置轴心点位置，你可以控制元素是向哪个方向扩大或缩小。例如，如果轴心点在中心，那么元素将会均等地向所有方向扩展；如果轴心点在左上角，那么元素会向右边和下方扩展。</p>
+<p><strong>Fit to size of UI element with child Text(适应带有子Text的UI元素尺寸)</strong></p>
+<p>如果你有一个UI元素，如Button，它有一个背景图像和一个带有Text组件的子游戏对象，你可能希望整个UI元素适应文本的大小 - 可能还有一些填充。</p>
+<p>要做到这一点，首先在UI元素上添加一个Horizontal Layout Group，然后添加一个Content Size Fitter。将Horizontal Fit、Vertical Fit或两者设置为Preferred。你可以使用Horizontal Layout Group中的padding属性添加和调整填充。</p>
+<p>为什么要使用Horizontal Layout Group呢？其实也可以是Vertical Layout Group - 只要只有一个子元素，它们产生的效果是一样的。</p>
+<p><strong>How does it work? (它是如何工作的？)</strong></p>
+<p>Horizontal（或Vertical）Layout Group既充当Layout Controller也充当Layout Element。首先，它会监听组中子元素提供的布局信息 - 在这种情况下监听的是子Text。然后，它会确定组必须要有多大（最小值和优选大小），才能包含所有子元素，并作为提供这些有关最小值和优选大小信息的Layout Element。</p>
+<p>Content Size Fitter会侦听同一个Game Object上任何Layout Element（在这种情况下由Horizontal或Vertical Layout Group提供）的布局信息。根据它的设置，它会基于这些信息控制Rect Transform的大小。</p>
+<p>一旦设置了Rect Transform的大小，Horizontal（或Vertical）Layout Group就会确保根据可用的空间对其子元素进行定位和大小设置。</p>
+<p><strong>Make children of a Layout Group fit their respective sizes(使Layout Group的子元素适应其各自的尺寸)</strong></p>
+<p>如果你有一个Layout Group（水平或垂直）并希望组中的每一个UI元素适应其各自的内容，你该怎么做呢？</p>
+<p>你不能在每个子元素上都放一个Content Size Fitter。原因是Content Size Fitter想要控制其自身的Rect Transform，但父Layout Group也想要控制子Rect Transform。这会造成冲突，结果是不确定的行为。</p>
+<p>然而，这也并非必要。父Layout Group已经可以使每个子元素适应内容的大小。你需要做的是在Layout Group中禁用Child Force Expand选项。如果子元素本身也是Layout Group，你可能需要在这些子Layout Group中也禁用Child Force Expand选项。</p>
+<p>一旦子元素不再以灵活的宽度扩展，它们的对齐方式可以在Layout Group中通过Child Alignment设置来指定。</p>
+<p>如果你希望一些子元素扩展以填充额外的可用空间，但不是其他子元素呢？你可以通过在你想要扩展的子元素中添加一个Layout Element组件并启用这些Layout Element上的Flexible Width或Flexible Height属性来轻松控制这一点。父Layout Group应该仍然禁用Child Force Expand选项，否则所有的子元素都将灵活地扩展。</p>
+<p><strong>How does it work? (它是如何工作的？)</strong></p>
+<p>一个游戏对象可以有多个组件，每个组件都提供关于最小、优选和灵活大小的布局信息。一个优先级系统决定哪些值优先于其他值生效。Layout Element组件的优先级高于Text、Image和Layout Group组件，因此可以用来覆盖它们提供的任何布局信息值。</p>
+<p>当Layout Group监听子元素提供的布局信息时，它会考虑到被重新定义的灵活大小。然后，当控制子元素的大小时，它不会让它们大于其优选大小。然而，如果Layout Group启用了Child Force Expand选项，它将始终使所有子元素的灵活大小至少为1。</p>
+<h4 id="creating-a-world-space-ui创建一个世界空间ui">Creating a World Space UI(创建一个世界空间UI) <a href="#creating-a-world-space-ui%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e4%b8%96%e7%95%8c%e7%a9%ba%e9%97%b4ui" class="anchor">🔗</a></h4><p>UI系统使得在场景中的其他2D或3D对象之间创建位于世界中的UI变得非常容易。</p>
+<p>开始时，通过使用GameObject &gt; UI &gt; Image创建一个UI元素（例如一个Image），如果你的场景中还没有的话。这同时也会为你创建一个Canvas。</p>
+<p><strong>Set the Canvas to World Space(设置Canvas为世界空间)</strong></p>
+<p>选中你的Canvas并将渲染模式更改为World Space。</p>
+<p>现在你的Canvas已经位于世界中，只要相机对准它，所有的相机都可以看到它，但是它可能与你场景中的其他对象相比很大。我们稍后再处理这个问题。</p>
+<p><strong>Decide on a resolution(确定一个分辨率)</strong></p>
+<p>首先，你需要决定Canvas的分辨率应该是多少。如果它是一张图片，那么这张图片的像素分辨率应该是多少呢？像800x600这样的分辨率可能是一个好的起点。你可以在Canvas的Rect Transform的宽度和高度值中输入分辨率。同时设置位置为0,0可能是一个好主意。</p>
+<p><strong>Specify the size of the Canvas in the world(指定Canvas在世界中的大小)</strong></p>
+<p>现在，你应该考虑Canvas在世界中应该有多大。你可以使用缩放工具简单地缩小它，直到它有一个看起来不错的大小，或者你可以决定它应该有多少米。</p>
+<p>如果你希望它有特定的宽度（以米为单位），你可以通过使用 meter_size / canvas_width 来计算需要的缩放。例如，如果你希望它宽2米，Canvas的宽度是800，你就会得到2 / 800 = 0.0025。然后，你将Canvas的Rect Transform的Scale属性设置为0.0025，对X、Y和Z都进行设置，以确保它均匀地缩放。</p>
+<p>另一种思考的方式是，你正在控制Canvas中每个像素的大小。如果Canvas的缩放为0.0025，那么这也是Canvas中每个像素在世界中的大小。</p>
+<p><strong>Position the Canvas(定位Canvas)</strong></p>
+<p>与设为屏幕空间的Canvas不同，世界空间的Canvas可以在场景中自由定位和旋转。你可以将Canvas放置在任何墙壁、地板、天花板或倾斜的表面（当然，也可以自由地悬挂在空气中）。只需在工具栏中使用常规的翻译和旋转工具即可。</p>
+<p><strong>Creating UI elements from scripting(通过脚本创建UI元素)</strong></p>
+<p>如果你正在创建一个动态的UI，其中的UI元素基于用户操作或游戏中的其他操作出现、消失或改变，你可能需要编写一个根据自定义逻辑实例化新UI元素的脚本。</p>
+<p><strong>Creating a prefab of the UI element(创建UI元素的预制体)</strong></p>
+<p>为了能够轻松地动态实例化UI元素，第一步是为你想要实例化的UI元素类型创建一个预制体。在场景中设置UI元素的外观，然后将元素拖入项目视图以将其转换为预制体。</p>
+<p>例如，一个按钮的预制体可以是一个带有Image组件和Button组件的游戏对象，和一个带有Text组件的子游戏对象。你的设置可能会根据你的需要而有所不同。</p>
+<p>你可能会想知道为什么我们没有API方法来创建各种类型的控制，包括视觉效果和所有其他元素。原因是有无数种方式可以设置一个按钮。它是使用图像、文本还是同时使用两者？甚至可能是多个图像？文本的字体、颜色、字体大小和对齐是什么样的？图像应该使用什么精灵或精灵？通过让你制作一个预制体并实例化它，你可以按照你想要的方式设置它。如果你以后想要改变UI的外观和感觉，你只需要改变预制体，然后它就会体现在你的UI中，包括动态创建的UI。</p>
+<p><strong>Instantiating the UI element(实例化UI元素)</strong></p>
+<p>像通常一样使用Instantiate方法实例化UI元素的预制体。在设置实例化UI元素的父级时，建议使用Transform.SetParent方法，并将worldPositionStays参数设置为false。</p>
+<p><strong>Positioning the UI element(定位UI元素)</strong></p>
+<p>UI元素通常使用其Rect Transform进行定位。如果UI元素是Layout Group的子元素，那么它将被自动定位，可以跳过定位步骤。</p>
+<p>在定位Rect Transform时，首先确定它是否具有或应具有任何拉伸行为。当anchorMin和anchorMax属性不相同时，会发生拉伸行为。</p>
+<p>对于非拉伸的Rect Transform，通过设置anchoredPosition和sizeDelta属性最容易设置位置。anchoredPosition指定了枢轴相对于锚点的位置。sizeDelta在没有拉伸时就和大小一样。</p>
+<p>对于拉伸的Rect Transform，使用offsetMin和offsetMax属性设置位置可能更简单。offsetMin属性指定了rect的左下角相对于左下锚点的角。offsetMax属性指定了rect的右上角相对于右上锚点的角。</p>
+<p><strong>Customizing the UI Element(自定义UI元素)</strong></p>
+<p>如果你要动态实例化多个UI元素，那么你可能不希望它们看起来和做的事情都一样。无论是在菜单中的按钮，库存中的物品，还是其他东西，你可能希望各个项目有不同的文本或图像，当与之交互时，做不同的事情。</p>
+<p>这是通过获取各种组件并更改其属性来完成的。参见Image和Text组件的脚本引用，以及如何从脚本中使用UnityEvents。</p>
+<h4 id="creating-screen-transitions创建屏幕过渡">Creating Screen Transitions(创建屏幕过渡) <a href="#creating-screen-transitions%e5%88%9b%e5%bb%ba%e5%b1%8f%e5%b9%95%e8%bf%87%e6%b8%a1" class="anchor">🔗</a></h4><p>需要在多个UI屏幕之间进行转换是相当常见的。在这个页面中，我们将探讨一种使用动画和状态机来驱动和控制每个屏幕的简单方式来创建和管理这些过渡。</p>
+<p><strong>Overview(概述)</strong></p>
+<p>高级思想是我们的每个屏幕都将有一个动画控制器，包含两个状态（打开和关闭）和一个布尔参数（打开）。要在屏幕之间进行转换，你只需要关闭当前打开的屏幕并打开所需的屏幕。为了简化这个过程，我们将创建一个小型的类ScreenManager，它将跟踪并处理关闭任何已经打开的屏幕。触发转换的按钮只需请求ScreenManager打开所需的屏幕。</p>
+<p><strong>Thinking about Navigation(关于导航)</strong></p>
+<p>如果你计划支持控制器/键盘导航的UI元素，那么有几件事情是需要注意的。避免在屏幕外部有Selectable元素是很重要的，因为那会让玩家能够选择到屏幕外的元素，我们可以通过停用任何屏幕外的层次结构来做到这一点。我们还需要确保当显示新屏幕时，我们设置其作为选定的元素，否则玩家将无法导航到新的屏幕。我们将在下面的ScreenManager类中处理所有这些。</p>
+<p><strong>Setting up the Animator Controller(设置动画控制器)</strong></p>
+<p>让我们来看看为动画控制器做屏幕过渡的最常见和最小的设置。控制器将需要一个布尔参数（打开）和两个状态（打开和关闭），每个状态都应该有只有一个关键帧的动画，这样我们就让状态机为我们做过渡混合。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScreenTransitionAnimatorOpen.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScreenTransitionAnimatorClosed.png" alt=""></p>
+<p>现在我们需要创建两种状态之间的转换，让我们从Open到Closed的转换开始，并正确设置条件，我们希望当参数Open设置为false时，从Open转换到Closed。现在我们创建从Closed到Open的转换，并设置条件为当参数Open为true时，从Closed转换到Open。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScreenTransitionAnimatorTransitionToOpen.png" alt=""></p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScreenTransitionAnimatorTransitionToClosed.png" alt=""></p>
+<p><strong>Managing the screens(管理屏幕)</strong></p>
+<p>有了上述所有设置，我们唯一缺少的就是在我们想要过渡的屏幕的Animator上把参数Open设置为true，并在当前打开的屏幕的Animator上把Open设置为false。为了做到这一点，我们将创建一个小脚本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.UI;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.EventSystems;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ScreenManager</span> : MonoBehaviour {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Screen to open automatically at the start of the Scene</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Animator initiallyOpen;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Currently Open Screen</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Animator m_Open;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Hash of the parameter we use to control the transitions.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> m_OpenParameterId;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//The GameObject Selected before we opened the current Screen.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Used when closing a Screen, so we can go back to the button that opened it.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> GameObject m_PreviouslySelected;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Animator State and Transition names we need to check against.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> k_OpenTransitionName = <span style="color:#e6db74">&#34;Open&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> k_ClosedStateName = <span style="color:#e6db74">&#34;Closed&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> OnEnable()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//We cache the Hash to the &#34;Open&#34; Parameter, so we can feed to Animator.SetBool.</span>
+</span></span><span style="display:flex;"><span>        m_OpenParameterId = Animator.StringToHash (k_OpenTransitionName);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//If set, open the initial Screen now.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (initiallyOpen == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        OpenPanel(initiallyOpen);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Closes the currently open panel and opens the provided one.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//It also takes care of handling the navigation, setting the new Selected element.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> OpenPanel (Animator anim)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (m_Open == anim)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Activate the new Screen hierarchy so we can animate it.</span>
+</span></span><span style="display:flex;"><span>        anim.gameObject.SetActive(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Save the currently selected button that was used to open this Screen. (CloseCurrent will modify it)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> newPreviouslySelected = EventSystem.current.currentSelectedGameObject;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Move the Screen to front.</span>
+</span></span><span style="display:flex;"><span>        anim.transform.SetAsLastSibling();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        CloseCurrent();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        m_PreviouslySelected = newPreviouslySelected;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Set the new Screen as then open one.</span>
+</span></span><span style="display:flex;"><span>        m_Open = anim;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Start the open animation</span>
+</span></span><span style="display:flex;"><span>        m_Open.SetBool(m_OpenParameterId, <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Set an element in the new screen as the new Selected one.</span>
+</span></span><span style="display:flex;"><span>        GameObject go = FindFirstEnabledSelectable(anim.gameObject);
+</span></span><span style="display:flex;"><span>        SetSelected(go);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Finds the first Selectable element in the providade hierarchy.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> GameObject FindFirstEnabledSelectable (GameObject gameObject)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        GameObject go = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> selectables = gameObject.GetComponentsInChildren&lt;Selectable&gt; (<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> selectable <span style="color:#66d9ef">in</span> selectables) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (selectable.IsActive () &amp;&amp; selectable.IsInteractable ()) {
+</span></span><span style="display:flex;"><span>                go = selectable.gameObject;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> go;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Closes the currently open Screen</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//It also takes care of navigation.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Reverting selection to the Selectable used before opening the current screen.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> CloseCurrent()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (m_Open == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Start the close animation.</span>
+</span></span><span style="display:flex;"><span>        m_Open.SetBool(m_OpenParameterId, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Reverting selection to the Selectable used before opening the current screen.</span>
+</span></span><span style="display:flex;"><span>        SetSelected(m_PreviouslySelected);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Start Coroutine to disable the hierarchy when closing animation finishes.</span>
+</span></span><span style="display:flex;"><span>        StartCoroutine(DisablePanelDeleyed(m_Open));
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//No screen open.</span>
+</span></span><span style="display:flex;"><span>        m_Open = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Coroutine that will detect when the Closing animation is finished and it will deactivate the</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//hierarchy.</span>
+</span></span><span style="display:flex;"><span>    IEnumerator DisablePanelDeleyed(Animator anim)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> closedStateReached = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> wantToClose = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (!closedStateReached &amp;&amp; wantToClose)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (!anim.IsInTransition(<span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span>                closedStateReached = anim.GetCurrentAnimatorStateInfo(<span style="color:#ae81ff">0</span>).IsName(k_ClosedStateName);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            wantToClose = !anim.GetBool(m_OpenParameterId);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> WaitForEndOfFrame();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (wantToClose)
+</span></span><span style="display:flex;"><span>            anim.gameObject.SetActive(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Make the provided GameObject selected</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//When using the mouse/touch we actually want to set it as the previously selected and</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//set nothing as selected for now.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> SetSelected(GameObject go)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Select the GameObject.</span>
+</span></span><span style="display:flex;"><span>        EventSystem.current.SetSelectedGameObject(go);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//If we are using the keyboard right now, that&#39;s all we need to do.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> standaloneInputModule = EventSystem.current.currentInputModule <span style="color:#66d9ef">as</span> StandaloneInputModule;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (standaloneInputModule != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Since we are using a pointer device, we don&#39;t want anything selected.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//But if the user switches to the keyboard, we want to start the navigation from the provided game object.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//So here we set the current Selected to null, so the provided gameObject becomes the Last Selected in the EventSystem.</span>
+</span></span><span style="display:flex;"><span>        EventSystem.current.SetSelectedGameObject(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>让我们把这个脚本挂起来，我们通过创建一个新的GameObject来实现这一点，我们可以把它重命名为&quot;ScreenManager&quot;，并添加上面的组件到它上面。你可以给它分配一个初始屏幕，这个屏幕在你的场景开始时会被打开。</p>
+<p>现在，让我们来做最后的部分，让UI按钮工作起来。选择应该触发屏幕过渡的按钮，并在检视器中的On Click()列表下添加一个新的动作。把我们刚创建的ScreenManager GameObject拖到ObjectField上，在下拉菜单中选择ScreenManager-&gt;OpenPanel (Animator)，并把你希望用户点击按钮时打开的面板拖拽到最后的ObjectField上。</p>
+<p><img src="/2023-07-09-unity-ugui/UI_ScreenTransitionButtonInspector.png" alt=""></p>
+<p><strong>Notes(备注)</strong></p>
+<p>这种技术只需要每个屏幕都有一个带有Open参数和Closed状态的AnimatorController就可以工作&ndash;你的屏幕或状态机器是如何构造的并不重要。这种技术也非常适用于嵌套屏幕，这意味着你只需要每个嵌套层级一个ScreenManager。</p>
+<p>我们在上面设置的状态机器的默认状态是Closed，所以所有使用这个控制器的屏幕都开始为关闭状态。ScreenManager提供了一个initiallyOpen属性，所以你可以指定哪个屏幕首先显示。</p>
+<h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/09/2023-07-09-unity-ugui/">UGUI中文教程(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-framedebugger/">Frame Debugger</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(11)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -6,122 +6,224 @@
     <description>Recent content on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>UI Particle System</title>
-      <link>https://www.chenqiaoqian.com/2023/07/11/2023-07-11-unity-ugui/</link>
-      <pubDate>Tue, 11 Jul 2023 11:13:34 +0800</pubDate>
+      <title>Unity中文版-Unity2023.2更新日志(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/07/13/2023-07-13-unity-Documents-1/</link>
+      <pubDate>Thu, 13 Jul 2023 11:13:34 +0800</pubDate>
       
-      <guid>https://www.chenqiaoqian.com/2023/07/11/2023-07-11-unity-ugui/</guid>
-      <description>&lt;p&gt;UI Particle System是用于Unity GUI的3D粒子的高级解决方案。&lt;/p&gt;
-&lt;h2 id=&#34;ui-particle-system&#34;&gt;UI Particle System &lt;a href=&#34;#ui-particle-system&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;关于ui-particle-system&#34;&gt;关于UI Particle System &lt;a href=&#34;#%e5%85%b3%e4%ba%8eui-particle-system&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System是用于Unity GUI的3D粒子的高级解决方案。可能每个尝试在GUI中添加粒子的开发者都遇到过制作相同类型的粒子绕过按钮或在滚动视图内消隐的问题，但有了这个插件，你就不需要担心改变排序顺序，添加多个画布等问题了。使用它，你只需要进行几个快速的步骤，就可以在GUI中添加下一个粒子。&lt;/p&gt;
-&lt;h3 id=&#34;使用场景&#34;&gt;使用场景 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System可以在Unity 2017.2+版本中使用（它也可能在之前的版本上运行，但这没有经过测试）。着色器和深度缓冲区已准备好在PC以及移动设备上运行。&lt;/p&gt;
-&lt;h3 id=&#34;如何使用&#34;&gt;如何使用 &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;首先你应该在GUI画布（将包含粒子，GUI按钮等）中添加UIParticleCanvas组件。 GUI画布需要将渲染模式设置为Screen Space - Camera，并设置渲染摄像头参数。&lt;/p&gt;
-&lt;p&gt;在UIParticleCanvas组件中设置将用于生成深度缓冲区的Mask layer参数（最好为这种情况创建一个新的图层）。 如果你在一个地方有多个渲染画布，你需要创建更多的图层。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;设置UIParticleCanvas参数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Mask resolution scale - 它定义了mask的分辨率。1表示屏幕大小的100%，0.5表示50%。通常在大多数情况下1都可以，但如果你觉得它占用的内存太多，你可以将它降低，直到masking看起来很糟糕&lt;/li&gt;
-&lt;li&gt;Mask layer - 它定义了在哪一层上渲染深度/mask缓冲器&lt;/li&gt;
-&lt;li&gt;Show depth mask - 允许检查你的深度蒙版是什么样的&lt;/li&gt;
-&lt;li&gt;Show culling mask - 允许你查看你的剔除蒙版是什么样的。当你设置剔除蒙版的图层值时，最好将它们从255设定为1，因为他们在这个视图上容易被看到&lt;/li&gt;
+      <guid>https://www.chenqiaoqian.com/2023/07/13/2023-07-13-unity-Documents-1/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;new-in-unity-20232&#34;&gt;New in Unity 2023.2 &lt;a href=&#34;#new-in-unity-20232&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&#34;release-notes&#34;&gt;Release Notes &lt;a href=&#34;#release-notes&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要了解更多关于这个Unity版本的新功能、变更和改进，可以参考2023.2版本的发布说明。&lt;/p&gt;
+&lt;h2 id=&#34;upgrade-guide&#34;&gt;Upgrade Guide &lt;a href=&#34;#upgrade-guide&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果你正在将现有的项目从2023.1版本升级，可以阅读升级到2023.2的指南，了解你的项目可能会受到哪些影响。&lt;/p&gt;
+&lt;h1 id=&#34;whats-new&#34;&gt;What’s new &lt;a href=&#34;#whats-new&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;了解自2023.1以来在Unity 2023.2中有哪些变化，并查阅受影响区域的文档。&lt;/p&gt;
+&lt;h2 id=&#34;accessibility&#34;&gt;Accessibility &lt;a href=&#34;#accessibility&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;我们新增了一个编辑器窗口，即Accessibility Hierarchy Viewer，它可以展示当前活跃的可访问性结构及其节点。如需访问Accessibility Hierarchy Viewer，你可以去主菜单的 &lt;strong&gt;Window &amp;gt; Accessibility &amp;gt; Accessibility Hierarchy viewer&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;audio&#34;&gt;Audio &lt;a href=&#34;#audio&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;我们新增了Audio Random Container，可以随机化音频并确保音量、音调、时间和触发器可以设置为非重复间隔，以确保你的游戏永远不会有两次相同的声音。&lt;/li&gt;
+&lt;li&gt;在Audio Random Container中我们加入了一个VU表。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;下一步是向每个Button/Image/Rect添加UIParticleDepthObject，这将使该对象在我们的深度（或剔除mask）缓冲区中对我们的粒子可见&lt;/p&gt;
-&lt;p&gt;请记住，Z位置现在是重要的，对象必须在画布的前面（所以，如果画布的Z位置为0，那么对象的深度应该小于0）。还建议不要在深度对象之间的Z位置上做出太大的差异，因为深度缓冲区的大小有限。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;设置UIParticleDepthObject参数：
-Graphic source - 允许选择将用于渲染到缓冲区的源。你可以选择：&lt;/p&gt;
+&lt;h2 id=&#34;authoring-tools&#34;&gt;Authoring Tools &lt;a href=&#34;#authoring-tools&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;2d&#34;&gt;2D &lt;a href=&#34;#2d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们在&lt;strong&gt;Tile Palette&lt;/strong&gt;编辑器窗口中增加了覆盖层支持。&lt;/p&gt;
+&lt;h3 id=&#34;2d-physics&#34;&gt;2D Physics &lt;a href=&#34;#2d-physics&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们在 &lt;strong&gt;Joint Angular Limits&lt;/strong&gt; gizmo中增加了&lt;code&gt;ArticulationBody.jointPosition&lt;/code&gt;指针线，以便在Scene视图中显示关节的准确位置。&lt;/p&gt;
+&lt;h3 id=&#34;editor-and-workflow&#34;&gt;Editor and Workflow &lt;a href=&#34;#editor-and-workflow&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;新增了Scene视图的上下文菜单。您现在可以通过右键点击或使用自定义的键盘快捷方式在Scene视图中访问新的上下文菜单。这些菜单由UI Toolkit创建并可以在C#中扩展，提供了轻松访问常用命令的方式。&lt;/li&gt;
+&lt;li&gt;在Scene视图的偏好设置中添加了&lt;strong&gt;仅在编辑器处于焦点状态时刷新Scene视图&lt;/strong&gt;的选项。启用此选项可使Scene视图仅在编辑器处于焦点状态时刷新。&lt;/li&gt;
+&lt;li&gt;新增了可以用键盘快捷方式进行Animator状态之间切换的功能。&lt;/li&gt;
+&lt;li&gt;增加了基本OpenType字体功能的支持。目前，只有字距调整功能是启用的。&lt;/li&gt;
+&lt;li&gt;增加了一个新的Cameras覆盖层来替换Camera预览。您可以使用Cameras覆盖层进行相机的第一人称控制，并在Scene视图中管理相机。&lt;/li&gt;
+&lt;li&gt;用UI Toolkit版本替换了大部分OS上下文菜单。&lt;/li&gt;
+&lt;li&gt;增加了颜色检查器，这是一个用于校准光照和后处理的工具。用户可以通过&lt;strong&gt;GameObject&lt;/strong&gt; &amp;gt; &lt;strong&gt;Rendering&lt;/strong&gt; &amp;gt; &lt;strong&gt;Color Checker Tool&lt;/strong&gt;添加颜色检查器。该工具仅作为光照艺术家的生产工具，并不会在构建中保存。&lt;/li&gt;
+&lt;li&gt;启用了编辑器显示不同许可证通知模态框的功能。&lt;/li&gt;
+&lt;li&gt;增加了一个&lt;code&gt;PropertyCollectionAttribute&lt;/code&gt;，可以用来实现自定义抽屉的集合。&lt;/li&gt;
+&lt;li&gt;使用Camera的平移、缩放和轨迹控制，添加了一个新的灯光放置工具。获取更多信息，请参阅从它的视角查看和控制灯光。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ui-toolkit&#34;&gt;UI Toolkit &lt;a href=&#34;#ui-toolkit&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;现在你可以用一个新的，灵活的运行时绑定系统在创建编辑器或运行时UI时轻松地将数据值连接到UI元素属性。您可以在UI Builder或C#代码中配置数据绑定。&lt;/li&gt;
+&lt;li&gt;增加了新的控制元素，例如ToggleButtonGroup、Tab和TabViews，同时对现有的控制元素做出了改进。&lt;/li&gt;
+&lt;li&gt;对Button、ListView和TreeView控件增加了图标支持。&lt;/li&gt;
+&lt;li&gt;增加了新的UxmlElement和UxmlAttribute属性。在创建自定义控件时，这些属性替换了原有的UxmlFactory和UxmlTraits。这简化了自定义控件的创建，提供了通过C#属性的高效替代方案，无需编写大量的代码。此外，您现在可以像在Inspector中那样为字段创建自定义属性抽屉。&lt;/li&gt;
+&lt;li&gt;对UI Builder进行了改进，改进了显示样式属性的驱动情况，优化了画布操作，并进行了其他的增强。更新的UI Builder现在也支持UXML Objects的编写，使其能够编辑MultiColumnTreeView和MultiColumnListView。&lt;/li&gt;
+&lt;li&gt;在TextElement和TextField中，增加了Emojis Fallback Support字段，以控制在emoji范围内搜索字符的顺序（主字体vs全局回退）。另外，增加了对OpenType字体功能的基本支持，目前的焦点是启用字距调整功能。&lt;/li&gt;
+&lt;li&gt;在UI Builder的Inspector中，为盒模型小部件增加了一个新的Spacing字段。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;textmeshpro&#34;&gt;TextMeshPro &lt;a href=&#34;#textmeshpro&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;增加了基本的Emoji支持。&lt;/li&gt;
+&lt;li&gt;添加了基本的OpenType字体功能支持，目前只启用了字距调整功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;graphics&#34;&gt;Graphics &lt;a href=&#34;#graphics&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;批处理计算Skinning：Unity的Skinned Mesh Renderer组件使用计算调度在GPU上并行化顶点变换。Unity 2023.2在所有支持的平台上引入了对Skinned Mesh Renderers的优化。这些优化旨在批处理计算skin和blendshape调度。这可以增加并行变形的顶点数量，并提高角色和 skinned mesh 渲染的GPU性能。&lt;/li&gt;
+&lt;li&gt;Progressive GPU Lightmapper现已退出预览，完全得到支持。&lt;/li&gt;
+&lt;li&gt;添加了在运行时移动Light Probe位置的API。&lt;/li&gt;
+&lt;li&gt;移除了Lighting窗口中的&lt;strong&gt;Auto Generate&lt;/strong&gt;设置。相关API现已废弃。为了在编辑时检查光照贴图，你现在可以选择Scene View Draw Mode，并将&lt;strong&gt;Lighting Data&lt;/strong&gt;设置为&lt;strong&gt;Preview&lt;/strong&gt;。这将展示一个烘焙光照的预览。预览光照贴图是非破坏性的，你可以在烘焙场景之后使用它们。&lt;/li&gt;
+&lt;li&gt;添加了&lt;code&gt;BatchCullingContext.cullingFlags&lt;/code&gt;，用于指定是否应裁剪 lightmapped shadow casters。&lt;/li&gt;
+&lt;li&gt;为&lt;code&gt;BatchRendererGroup&lt;/code&gt;添加了&lt;code&gt;rendererPriority&lt;/code&gt;支持。&lt;/li&gt;
+&lt;li&gt;对构建计算队列上的异步光线追踪加速结构提供了支持。AsyncCompute CommandBuffers现在可以运行&lt;code&gt;CommandBuffer.BuildRayTracingAccelerationStructure&lt;/code&gt;命令。为RenderGraph和Render Graph Viewer添加了&lt;code&gt;RayTracingAccelerationStructure&lt;/code&gt;的支持。&lt;/li&gt;
+&lt;li&gt;为Texture2DArrays添加了mipmap限制支持。&lt;/li&gt;
+&lt;li&gt;为Texture2DArrays添加了mipmap剥离支持。&lt;/li&gt;
+&lt;li&gt;为LoadImage添加了提供tiled EXR图像的支持。&lt;/li&gt;
+&lt;li&gt;允许暴露光线追踪加速结构的构建标志，以平衡构建时间与GPU上的光线追踪速度和内存消耗。在创建和构建&lt;code&gt;RayTracingAccelerationStructure&lt;/code&gt;以及在Renderer设置的UI中，都可以从C#中自定义标志。&lt;/li&gt;
+&lt;li&gt;为DX12添加了Native Render Pass支持。&lt;/li&gt;
+&lt;li&gt;为D3D12（Windows和XBox平台）添加了批处理GPU skinning的支持。&lt;/li&gt;
+&lt;li&gt;为粒子尾迹添加了Custom Vertex Streams功能。&lt;/li&gt;
+&lt;li&gt;添加了&lt;code&gt;BakeTexture&lt;/code&gt;和&lt;code&gt;BakeTrailsTexture&lt;/code&gt;脚本方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;universal-render-pipeline-urp&#34;&gt;Universal Render Pipeline (URP) &lt;a href=&#34;#universal-render-pipeline-urp&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要获得URP新功能和改进的完整描述，请参考URP的新功能。&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;添加了跨平台HDR显示支持。HDR显示器能够在更高的亮度差异范围内复制图像，接近自然光照条件。在这些设备上显示的HDR输出可以保留线性光照渲染和HDR图像的对比度和质量。编辑器和Standalone Players现在在所有的渲染管线和能力平台上，包括移动和XR，提供全面的HDR色调映射和显示支持。&lt;/li&gt;
+&lt;li&gt;为Probe Volumes的间接照明添加了每个顶点质量级别，使得URP更高效地呈现照明环境。你可能需要在移动设备上进行进一步的优化，因为URP不支持Reflection Probes的Lighting Scenario混合或Lighting Normalization。&lt;/li&gt;
+&lt;li&gt;在Motion Blur容量组件中添加了一个名为&lt;strong&gt;Camera And Objects&lt;/strong&gt;的新选项，该选项使用运动向量来模糊比摄像机的曝光时间移动更快的物体。&lt;/li&gt;
+&lt;li&gt;添加了对额外定向光源cookies的支持。&lt;/li&gt;
+&lt;li&gt;在URP Global Settings中添加了Default Volume Profile字段。&lt;/li&gt;
+&lt;li&gt;在Universal Render Pipeline Asset中添加了Volume Profile字段。&lt;/li&gt;
+&lt;li&gt;为URP材质添加了Alembic速度运动向量支持。&lt;/li&gt;
+&lt;li&gt;为基于只有&lt;strong&gt;Time&lt;/strong&gt;节点的顶点动画的ShaderGraphs添加了自动&lt;strong&gt;TimeBased&lt;/strong&gt;运动向量生成。影响位置的所有其他数据在帧之间必须是常数。&lt;/li&gt;
+&lt;li&gt;为使用正交投影的XR渲染和相机添加了对Forward+渲染路径的支持。&lt;/li&gt;
+&lt;li&gt;在Forward+渲染路径中添加了对集中渲染的支持。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;high-definition-render-pipeline-hdrp&#34;&gt;High Definition Render Pipeline (HDRP) &lt;a href=&#34;#high-definition-render-pipeline-hdrp&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要获得HDRP新功能和改进的完整描述，请参考HDRP的新功能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为Decals投影器添加了HDRP路径跟踪器支持。路径跟踪器不支持来自decals的发光。&lt;/li&gt;
+&lt;li&gt;增加了在运行时从磁盘流式加载Probe Volume数据的功能。你可以为不同的质量级别启用或禁用磁盘流式加载。&lt;/li&gt;
+&lt;li&gt;使HDRP Shader Graph decals兼容透明对象。这意味着你可以使用Shader Graph创建的decals影响透明对象，以构建像雨滴、涟漪、自定义雕刻、玻璃上的污垢效果等程序效果。&lt;/li&gt;
+&lt;li&gt;在HDRP物理天空中添加了一个带有星星和天体的夜空。&lt;/li&gt;
+&lt;li&gt;为基于物理的天空添加了Shader Graph输出，并添加了控件来创建月亮。&lt;/li&gt;
+&lt;li&gt;在Render Graph Viewer中添加了对异步计算pass和同步点的可视化。&lt;/li&gt;
+&lt;li&gt;为体积云添加了beer阴影图。&lt;/li&gt;
+&lt;li&gt;在HD Render Pipeline Asset中添加了Volume Profile字段。&lt;/li&gt;
+&lt;li&gt;为带有彩色透射的薄对象添加了材料类型。&lt;/li&gt;
+&lt;li&gt;为Lit ShaderGraphs的材料添加了禁用清漆的选项。&lt;/li&gt;
+&lt;li&gt;添加了Global Pass API，你可以使用它在没有任何游戏对象的场景中向渲染管线注入自定义pass。&lt;/li&gt;
+&lt;li&gt;为Arbitrary Output Variables (AOV)添加了体积雾全屏调试模式输出。&lt;/li&gt;
+&lt;li&gt;添加了Adaptive Probe Volumes (APV)直接从磁盘流式加载数据的能力。这个功能只在具有计算阴影兼容性的设备上可用。&lt;/li&gt;
+&lt;li&gt;添加了使用烘焙API独立于光照贴图或反射探针来烘焙Adaptive Probe Volumes (APV)的能力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;multiplayer&#34;&gt;Multiplayer &lt;a href=&#34;#multiplayer&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;netcode-for-gameobjects&#34;&gt;Netcode for GameObjects &lt;a href=&#34;#netcode-for-gameobjects&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在网络对象组件的上下文菜单中添加了&lt;strong&gt;刷新场景中的预设实例&lt;/strong&gt;选项。使用此属性更新场景中存在的预设实例的&lt;code&gt;GlobalObjectIdHash&lt;/code&gt;值，这些预设实例在具有&lt;code&gt;NetworkObject&lt;/code&gt;组件之前就已存在。这个属性影响包含在构建列表中的所有场景。&lt;/li&gt;
+&lt;li&gt;添加了&lt;code&gt;NetworkManager&lt;/code&gt;的&lt;code&gt;SetPeerMTU&lt;/code&gt;和&lt;code&gt;GetPeerMTU&lt;/code&gt;方法，以全面控制最大传输单元（MTU）大小。使用它为游戏对象的Netcode中的自定义协议。&lt;/li&gt;
+&lt;li&gt;改进了网络预设标识生成（例如，&lt;code&gt;GlobalObjectIdHash&lt;/code&gt;）以修复Unity分配无效值的问题。&lt;/li&gt;
+&lt;li&gt;以下方式改进了序列化API和codegen管道:
+&lt;ul&gt;
+&lt;li&gt;添加了&lt;code&gt;GenerateSerializationForTypeAttribute&lt;/code&gt;方法，你可以将此应用到任何类或方法，以确保特定类型包含在codegen序列化过程中。&lt;/li&gt;
+&lt;li&gt;添加了&lt;code&gt;GenerateSerializationForGenericParameterAttribute&lt;/code&gt;方法，你可以使用它来将被&lt;code&gt;NetworkVariable&lt;/code&gt;类型包装的泛型类型包含在codegen过程中。&lt;/li&gt;
+&lt;li&gt;暴露了额外的&lt;code&gt;NetworkVariableSerialization&lt;/code&gt;方法，以改进自定义&lt;code&gt;NetworkVariable&lt;/code&gt;的创建，没有任何装箱成本。你可以使用&lt;code&gt;NetworkVariableBase.MarkNetworkBehaviourDirty&lt;/code&gt;方法来将NetworkVariables标记为脏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;泛型&lt;code&gt;NetworkBehaviour&lt;/code&gt;类型中的RPC现在可以序列化类的泛型类型的参数。&lt;/li&gt;
+&lt;li&gt;改进了Netcode对32位ARMv7的支持。&lt;/li&gt;
+&lt;li&gt;添加了额外的&lt;code&gt;NetworkManager&lt;/code&gt;事件&lt;code&gt;OnServerStarted&lt;/code&gt;、&lt;code&gt;OnServerStopped&lt;/code&gt;、&lt;code&gt;OnClientStarted&lt;/code&gt;和&lt;code&gt;OnClientStopped&lt;/code&gt;，以更好地通知&lt;code&gt;NetworkManager&lt;/code&gt;初始化过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dedicated-server-platform&#34;&gt;Dedicated server platform &lt;a href=&#34;#dedicated-server-platform&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在玩家设置中添加了&lt;strong&gt;专用服务器优化&lt;/strong&gt;选项，启用后，会从服务器构建中剥离所有着色器。启用此选项可以大大减少构建时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;unity-transport&#34;&gt;Unity Transport &lt;a href=&#34;#unity-transport&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Unity传输2.X现在是Unity传输的默认和推荐版本。&lt;/li&gt;
+&lt;li&gt;现在可以通过在&lt;code&gt;NetworkSettings.WithNetworkConfigParameters&lt;/code&gt;中新的&lt;code&gt;maxMessageSize&lt;/code&gt;参数配置传输将发送的最大消息大小。这在网络设备处理较大数据包时出错的环境中非常有用（比如某些移动网络或VPN）。该值不包括IP和UDP头，但包括传输本身添加的头（例如，可靠性头）。默认值是1400。注意，建议客户端和服务器配置使用相同的值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;package-manager&#34;&gt;Package Manager &lt;a href=&#34;#package-manager&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;changes-to-package-cache-management&#34;&gt;Changes to package cache management &lt;a href=&#34;#changes-to-package-cache-management&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;更改了全局缓存的默认位置和结构。&lt;/li&gt;
+&lt;li&gt;注册数据缓存现在默认最大限制为10GB。你可以通过自定义全局缓存来覆盖默认值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;changes-to-the-package-manager-window&#34;&gt;Changes to the Package Manager window &lt;a href=&#34;#changes-to-the-package-manager-window&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Image （gui组件）。在这种情况下，mask的工作方式就像你会选择Image类型&amp;quot;Simple&amp;quot;&lt;/p&gt;
+&lt;p&gt;添加了一个导航面板:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加了一个面板，以改进在包子集视图之间的导航。在早期版本中，这些上下文存储在&lt;strong&gt;Packages&lt;/strong&gt;下拉菜单中。&lt;/li&gt;
+&lt;li&gt;在包管理器导航面板中添加了&lt;strong&gt;Services&lt;/strong&gt;作为专用条目。&lt;/li&gt;
+&lt;li&gt;在导航面板中的&lt;strong&gt;In Project&lt;/strong&gt;下添加了&lt;strong&gt;Updates&lt;/strong&gt;作为嵌套条目。此嵌套视图列出了项目中所有有更新的包。&lt;/li&gt;
+&lt;li&gt;在导航面板的My Registries下添加了单独的定位注册表作为嵌套条目。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;RawImage （gui组件）&lt;/p&gt;
+&lt;p&gt;对列表面板的增强:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在&lt;strong&gt;In Project&lt;/strong&gt;上下文的列表面板中添加了一个&lt;strong&gt;Packages - Asset Store&lt;/strong&gt;扩展器，以便你可以在&lt;strong&gt;In Project&lt;/strong&gt;视图中查看和管理Asset Store的包。&lt;/li&gt;
+&lt;li&gt;搜索框的位置进行了重新调整，改变了其行为，以便在每个上下文基础上回撷你的搜索词。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Texture&lt;/p&gt;
+&lt;p&gt;对详情面板的增强:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;改进了在&lt;strong&gt;My Assets&lt;/strong&gt;上下文中管理包的流程，通过优化详情面板中的操作按钮。最常见的操作作为菜单按钮中的默认操作，其他操作列在菜单中。还添加了&lt;strong&gt;In Project&lt;/strong&gt;标签，明确表示Asset Store包已经导入到你的项目并且是最新的。&lt;/li&gt;
+&lt;li&gt;更新了查看Asset Store包时&lt;strong&gt;Import&lt;/strong&gt;按钮的标签。下载更新的Asset Store包后，主操作按钮的标签是&lt;strong&gt;Import update #.# to project&lt;/strong&gt;，所以你需要明确需要将更新导入到你的项目。&lt;/li&gt;
+&lt;li&gt;更新了从注册表中安装的包的文档链接的行为。你现在可以右击链接并选择&lt;strong&gt;Open in browser&lt;/strong&gt;或&lt;strong&gt;Open locally&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;当你登出并试图查看Asset Store包的详细信息时，添加了一个用你的Unity ID登录的按钮。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他增强:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在查看My Assets上下文时更新了Filters菜单中的值。&lt;/li&gt;
+&lt;li&gt;更新了Filters控制的标签，以便显示选定的值而不是上一级别的类别。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Render mode在这里，你可以选择是否只想渲染到深度缓冲区，或者将此对象作为粒子的剔除mask
-Alpha mode定义了纹理中的alpha将如何处理：&lt;/p&gt;
+&lt;h2 id=&#34;android&#34;&gt;Android &lt;a href=&#34;#android&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;添加了针对Android的Addressables包（&lt;code&gt;com.unity.addressables.android&lt;/code&gt;），为Addressables提供Play Asset Delivery支持。&lt;/li&gt;
+&lt;li&gt;通过针对Android的Addressables包添加了纹理压缩格式定向支持，以将多种纹理压缩格式打包到Android资产包中。在安装时，只根据设备的移动GPU构建APK，使得加载和渲染纹理更快，且内存占用更少。&lt;/li&gt;
+&lt;li&gt;添加了&lt;code&gt;ApplicationExitInfo&lt;/code&gt; API，提供关于应用程序崩溃和应用程序无响应（ANR）错误的信息。&lt;/li&gt;
+&lt;li&gt;进行了以下改进:
 &lt;ul&gt;
-&lt;li&gt;AlphaTested（所以只在某个阈值下切割）&lt;/li&gt;
-&lt;li&gt;Dithering（所以根据alpha值，有些像素会可见，有些不会，这可能是半透明mask的好解决方案）&lt;/li&gt;
-&lt;li&gt;NoAlpha（它忽略了纹理中的alpha，但在紧凑的来自Image组件的Sprites的情况下，它可能有mesh依赖的形状）&lt;/li&gt;
-&lt;li&gt;Translucent（半透明）注意，Translucent模式需要选择在粒子的材质中也使用Translucency模式（它比其他alpha模式更消耗资源，所以只在你需要它的地方使用它）。&lt;/li&gt;
+&lt;li&gt;设置&lt;code&gt;GameActivity&lt;/code&gt;为默认应用程序入口点，以提供对Android和你的应用程序之间交互的更多控制。&lt;/li&gt;
+&lt;li&gt;将最低支持的Android版本提高到6.0（API级别23）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Alpha test treshold 仅在Alpha Test模式下可用。定义缓冲区中将在何值下切割像素
-Alpha dithering steps 仅在Alpha Dithering模式下可用。定义应该进行多少dithering密度步骤。更高的值并不总是意味着更好的视图
-Culling mask value (layer) 仅在Culling Mask模式下可用。允许选择它将获得的层值
-Will Rect resize in runtime 如果你打算在运行时调整RectTransform的大小，就选择这个。默认情况下它并未启用，因为它需要在每一帧中检查矩形的顶点是否已经发生变化&lt;/p&gt;
-&lt;p&gt;最后一步是将粒子材质中的shader更改为UIParticle（MODev/UIParticle/Particle）&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;UIParticle着色器中，你可以更改像以下的参数：
-MainTex：选择粒子的纹理
-Colorize?：启用/禁用通过材质参数进行颜色修改。 Vertex（ParticleSystem）的颜色修改总是启用的
-Color：当Colorize启用时，乘以纹理颜色的值
-Disable culling?：启用/禁用深度/mask剔除。如果你选择这个，粒子会像没有UI粒子系统一样行为
-Blend mode (subset)：你可以设置你的自定义alpha混合模式。如果你想设置基本的alpha混合模式之一，你可以使用&amp;quot;Set Blending mode&amp;quot;预览中的底部按钮之一
-UseClippingMask?：启用/禁用通过剪辑mask进行剔除（UIParticleDepthObject的Culling Mask模式）
-ClippingMaskVal：允许选择剔除mask层。请注意，如果你从代码中更改这个值，你需要通过255f来划分层mask值
-Set Blending mode buttons：允许选择基本的alpha混合模式之一
-Enable Soft particle：启用Soft Particles，它将更好地与碰撞的UI元素混合。请注意，这种技术稍微有点贵，所以只有在需要的时候才使用它
-Soft particle factor - 定义软粒子混合的平滑度&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;Enable UI Mask Translucency use? ：启用/禁用半透明剔除mask或深度对象的半透明性的使用。 请注意，这种模式会增加性能消耗，因为着色器有更多的计算（虽然还不太昂贵，但要明智地使用）。&lt;/p&gt;
-&lt;h3 id=&#34;半透明剔除&#34;&gt;半透明剔除 &lt;a href=&#34;#%e5%8d%8a%e9%80%8f%e6%98%8e%e5%89%94%e9%99%a4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;UI Particle System的半透明剔除工作方式接近于3D中的Z-test，因此它是二进制的（通过测试的元素：它是可见的，否则：它被剔除）。但是，有一种在延迟着色中经常使用的解决方案：抖动alpha混合。你可以通过设置UIParticleDepthObject和alpha模式设置为Dithering + 合适的alpha抖动步骤计数来达到这个。
-还有一个名为半透明alpha模式的新特性，这个更昂贵，但适用于非重叠剔除遮罩或用非二进制方式的深度对象（是的，深度对象可以是半透明的，所以粒子会在它们后面可见）。&lt;/p&gt;
-&lt;h3 id=&#34;失真效果&#34;&gt;失真效果 &lt;a href=&#34;#%e5%a4%b1%e7%9c%9f%e6%95%88%e6%9e%9c&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自1.06版本的插件以来，您可以使用MODev/UIParticle/ParticleWithDistortion着色器替代仅使用Particle着色器，将失真效果添加到GUI上。请注意，它使用GrabPass，所以对于移动设备（尤其是低端设备），可能效率不高。失真效果是由材质和粒子透明度的参数控制的。推荐使用alpha混合模式来进行透明度混合模式。&lt;/p&gt;
-&lt;h3 id=&#34;使粒子对象遵循ui-recttransform大小&#34;&gt;使粒子对象遵循UI RectTransform大小 &lt;a href=&#34;#%e4%bd%bf%e7%b2%92%e5%ad%90%e5%af%b9%e8%b1%a1%e9%81%b5%e5%be%aaui-recttransform%e5%a4%a7%e5%b0%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要让粒子对象遵循RectTransform的大小，你应该在GameObject上添加UIParticleRectTransSizeFollower组件。在场景中正确设置对象后，使用“制作矩形快照”按钮来保存参照的设定。请注意，如果你想让你的对象遵循RectTransform的中心，GameObject的中心也应该在它的中心（至少在XY轴上）。&lt;/p&gt;
-&lt;h3 id=&#34;联系方式&#34;&gt;联系方式 &lt;a href=&#34;#%e8%81%94%e7%b3%bb%e6%96%b9%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;如果你需要任何支持，或者你愿意和我分享你对这个工具的看法，请随时写邮件到support@modev.com.pl。另外，如果你需要一些可能会被许多人使用的额外参数，也可以写邮件给我 - 也许我会做出这些并将其放入下一个UI粒子系统的更新中。
-如果你能在资产商店（Asset Store）上为我的资产评分（如果你喜欢的话）那就太好了。这将是一个对我非常好的信号，说明这个工具是有需求的，并且应该继续扩展。&lt;/p&gt;
-&lt;h3 id=&#34;有用的链接&#34;&gt;有用的链接 &lt;a href=&#34;#%e6%9c%89%e7%94%a8%e7%9a%84%e9%93%be%e6%8e%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;你可以在资产商店（Asset Store）中找到所有有用链接。
-如何设置的例子：https://www.youtube.com/watch?v=8uuxMpxJqUw&lt;/p&gt;
-&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;profiler&#34;&gt;Profiler &lt;a href=&#34;#profiler&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在Memory Profiler中添加了对AudioClip和Shader的元数据支持。&lt;/li&gt;
+&lt;li&gt;在Profiler窗口中添加了一个Highlights模块。&lt;/li&gt;
+&lt;li&gt;为CPU Profiler添加了一个新的Inverted Hierarchy视图。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;raytracing-api&#34;&gt;Raytracing API &lt;a href=&#34;#raytracing-api&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;射线追踪加速结构构建标志：新的射线追踪加速结构构建标志被引入到Unity的渲染器和RTAS API中。这些标志让你可以控制射线追踪内存使用、RTAS构建时间和射线追踪性能之间的权衡。开发者和艺术家可以使用新的标志来优化他们的场景和渲染器中的射线追踪性能。&lt;/li&gt;
+&lt;li&gt;Shader中的内联射线追踪：现在可以在光栅化和计算着色器中使用内联射线追踪，只要是面向具有DXR1.1能力的Windows平台、Xbox Series X/S和Playstation 5。开发者可以从着色器内部发送射线查询，遍历束定的射线追踪加速结构并进行交叉测试。这使他们可以实现各种硬件加速的射线追踪效果和模拟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;shader-graph&#34;&gt;Shader Graph &lt;a href=&#34;#shader-graph&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;添加了UGUI对Shader Graph的支持。Shader Graph现在在URP和HDRP中都为Canvas提供了子目标。UI艺术家可以使用Shader Graph为他们的UI元素创建自定义shader。定义UI元素的整体外观和风格，创建动画UI效果，并定义自定义按钮状态，同时使用更少的纹理内存。&lt;/li&gt;
+&lt;li&gt;启用了Shader Graph Canvas主节点，以允许用户在HDRP，URP和Built-in中为Canvas创建UI shader。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;speedtree&#34;&gt;SpeedTree &lt;a href=&#34;#speedtree&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;使用传输遮罩在HDRP中提高SpeedTree的视觉质量，只在叶子上应用次表面散射。HDRP/Nature/SpeedTree8.shadergraph使用其次表面贴图作为传输遮罩节点，以消除树皮和小枝的非预期光传输。这也修复了过亮的广告牌照明与3D几何图形照明不匹配的问题。&lt;/p&gt;
+&lt;h2 id=&#34;splines&#34;&gt;Splines &lt;a href=&#34;#splines&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您现在可以在Spline对象上存储个性化数据。此外，编辑Inspector中点的界面已得到增强，某些API已向公众开放。当你在处理splines时，现在可以使用新的Scene视图上下文菜单。&lt;/p&gt;
+&lt;h2 id=&#34;test-framework&#34;&gt;Test Framework &lt;a href=&#34;#test-framework&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;根据测试级别启用了重新尝试和重复测试。一旦测试完成了第一次迭代，Editor就会重新尝试或重复测试。将命令行参数传递给Editor以:
+&lt;ul&gt;
+&lt;li&gt;重复x次运行测试x次数或直到失败。这对测试不稳定的测试很有用。&lt;/li&gt;
+&lt;li&gt;重试x，如果测试失败。这将运行测试x次数或直到成功。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;通过使用Editor命令行新参数&lt;code&gt;-randomOrderSeed x&lt;/code&gt;，你可以按随机顺序运行测试，其中&lt;code&gt;x&lt;/code&gt;是不同于0的整数。如果在项目中添加了新的测试，通过相同的种子将会保持随机顺序，新的测试将根据随机列表相应地放置。&lt;/li&gt;
+&lt;li&gt;新增&lt;code&gt;TestFileReferences.json&lt;/code&gt;在播放器的构建步骤上生成，以便稍后由Test runners使用以丰富运行部分的数据。&lt;/li&gt;
+&lt;li&gt;UTF版本现在会自动为SRP测试更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;version-control&#34;&gt;Version control &lt;a href=&#34;#version-control&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;添加了一个项目选项，用于支持追踪存在于项目根文件夹之外的磁盘上的包。&lt;/p&gt;
+&lt;h2 id=&#34;vfx-graph&#34;&gt;VFX Graph &lt;a href=&#34;#vfx-graph&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在模板窗口中添加了具有预定义效果的VFX Graph资产。你可以将这些模板作为自己效果的起点。&lt;/li&gt;
+&lt;li&gt;新增了自定义HLSL块和操作员。自定义HLSL节点让您在粒子模拟期间执行自己的代码。在VFX Graph上下文中，您可以使用操作员进行横向流动，或者使用块进行纵向流动。&lt;/li&gt;
+&lt;li&gt;添加了URP Decals与VFX Graph。现在在VFX Graph中支持URP Lit decal输出，使得在URP上创建符合场景照明和材料的惊艳decal效果成为可能。&lt;/li&gt;
+&lt;li&gt;在HDRP和URP中为Shader Graph烟雾效果添加照明。这意味着您可以创建使用六方向照明的lit shader的自定义烟雾shader。&lt;/li&gt;
+&lt;li&gt;扩展了URP中的Camera Depth和Color buffer行为。这意味着您可以使用深度缓冲区进行基于深度的碰撞，或者采样色彩缓冲区以创建自定义效果。&lt;/li&gt;
+&lt;li&gt;在URP中添加了对运动向量的支持。&lt;/li&gt;
+&lt;li&gt;对Shader Graph添加了对运动向量的支持。&lt;/li&gt;
+&lt;li&gt;新增了使用VFX Graph的Shade Graph集成来使用材料变体工作流覆盖VFX Output中设置的能力。&lt;/li&gt;
+&lt;li&gt;启用了VFX instancing，可以公开纹理，网格或图形缓冲区。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;web-platform-previously-webgl&#34;&gt;Web platform (previously WebGL) &lt;a href=&#34;#web-platform-previously-webgl&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Unity网页构建现在可以利用Emscripten工具链中最新的大小和性能优化。&lt;/li&gt;
+&lt;li&gt;增加了支持指定您希望应用程序在运行时启动的浏览器类型及其可执行路径。您可以通过命令行或在&amp;quot;构建设置&amp;quot;窗口中的GUI设置来指定这个。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;xr&#34;&gt;XR &lt;a href=&#34;#xr&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;新增了对Hololens自动化的支持。&lt;/li&gt;
+&lt;li&gt;扩展了Unity在URP，HDRP和内建渲染管线中对色调映射和输出到HDR显示器的集成支持，以支持具有HDR显示器的XR设备。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Frame Debugger</title>
-      <link>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-framedebugger/</link>
-      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
+      <title>UGUI中文教程(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/07/09/2023-07-09-unity-ugui/</link>
+      <pubDate>Sun, 09 Jul 2023 11:13:34 +0800</pubDate>
       
-      <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-framedebugger/</guid>
-      <description>&lt;p&gt;帧调试器 (Frame Debugger) 可将正在运行的游戏的状态冻结到特定帧来自由回放，并查看用于渲染该帧的各个DrawCall。除了列出DrawCall调用，调试器还可逐个单步执行这些DrawCall，以便详细查看游戏视图是如何从场景的图形元素构建的。&lt;/p&gt;
-&lt;h2 id=&#34;frame-debugger&#34;&gt;Frame Debugger &lt;a href=&#34;#frame-debugger&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;使用帧调试器&#34;&gt;使用帧调试器 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%b8%a7%e8%b0%83%e8%af%95%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Frame Debugger 窗口（菜单：Window &amp;gt; Analysis &amp;gt; Frame Debugger）,打开后点击Enable，会显示DrawCall调用信息。
-&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-2.png&#34; alt=&#34;&#34;&gt;
-以上图为例，显示该帧有7次DrawCall，结合Profiler可以进一步确认
-&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
-单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
-&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Channels：分别提供了仅仅显示对应颜色Channle。&lt;/p&gt;
-&lt;p&gt;Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。&lt;/p&gt;
-&lt;p&gt;Blend：着色到目标的颜色混合规则。&lt;/p&gt;
-&lt;p&gt;ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。&lt;/p&gt;
-&lt;p&gt;ZTest：深度测试的规则，根据通过深度测试的才会被渲染。&lt;/p&gt;
-&lt;p&gt;ZWrite：是否将当前片元的深度信息写入深度缓存。&lt;/p&gt;
-&lt;p&gt;Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。&lt;/p&gt;
-&lt;p&gt;Why Drawcall cannot be batched?：不能合批的原因描述。&lt;/p&gt;
-&lt;p&gt;ShaderProperties：CPU传递给GPU的数据的详细信息。&lt;/p&gt;
-&lt;h3 id=&#34;注意事项&#34;&gt;注意事项： &lt;a href=&#34;#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。&lt;/p&gt;
-&lt;p&gt;原因：当点击Frame Debugger不同DrawCall时，Unity会传递一&lt;strong&gt;帧&lt;/strong&gt;，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。&lt;/p&gt;
-&lt;p&gt;总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在&lt;strong&gt;帧&lt;/strong&gt;通过时进行更改。&lt;/p&gt;
-&lt;p&gt;解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#if UNITY_EDITOR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(UnityEditor.EditorApplication.isPaused)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;endif
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>UGUI</title>
-      <link>https://www.chenqiaoqian.com/2023/07/03/2023-07-07-unity-ugui/</link>
-      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
-      
-      <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-07-unity-ugui/</guid>
+      <guid>https://www.chenqiaoqian.com/2023/07/09/2023-07-09-unity-ugui/</guid>
       <description>&lt;p&gt;Unity UI 是一组用于开发游戏和应用程序用户界面的工具。它是一个基于 GameObject 的 UI 系统，使用组件和游戏视图来排列、定位和设置用户界面的样式。 您无法使用Unity UI在Unity编辑器中创建或更改用户界面。&lt;/p&gt;
-&lt;h2 id=&#34;ugui&#34;&gt;UGUI &lt;a href=&#34;#ugui&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;unity-ui-unity-user-interface&#34;&gt;Unity UI: Unity User Interface &lt;a href=&#34;#unity-ui-unity-user-interface&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Unity UI 是一个用于开发游戏和应用程序用户界面的 UI 工具包。它是一个基于 GameObject 的 UI 系统，使用组件和游戏视图来排列、定位和设置用户界面的样式。 您无法使用Unity UI在Unity编辑器中创建或更改用户界面。&lt;/p&gt;
+&lt;h3 id=&#34;unity-ui-unity-user-interface&#34;&gt;Unity UI: Unity User Interface &lt;a href=&#34;#unity-ui-unity-user-interface&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Unity UI 是一个用于开发游戏和应用程序用户界面的 UI 工具包。它是一个基于 GameObject 的 UI 系统，使用组件和游戏视图来排列、定位和设置用户界面的样式。 您无法使用Unity UI在Unity编辑器中创建或更改用户界面。&lt;/p&gt;
 &lt;p&gt;本文档介绍了 Unity UI 功能，例如创建 Canvas、定位和动画元素、定义用户交互以及自动调整布局大小。&lt;/p&gt;
 &lt;h3 id=&#34;canvas&#34;&gt;Canvas &lt;a href=&#34;#canvas&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&#34;canvas画布&#34;&gt;Canvas(画布) &lt;a href=&#34;#canvas%e7%94%bb%e5%b8%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;画布是所有UI元素应该所在的区域。画布是一个带有Canvas组件的游戏对象，所有的UI元素都必须是这种画布的子对象。
 使用菜单 GameObject &amp;gt; UI &amp;gt; Image 创建新的UI元素，比如一个Image，如果场景中尚未存在画布，将自动创建一个Canvas。UI元素被创建为此Canvas的子对象。
@@ -2690,6 +2792,40 @@ RectMask2D的一个常见用途是显示较大区域的小部分。使用RectMas
 &lt;p&gt;这种技术只需要每个屏幕都有一个带有Open参数和Closed状态的AnimatorController就可以工作&amp;ndash;你的屏幕或状态机器是如何构造的并不重要。这种技术也非常适用于嵌套屏幕，这意味着你只需要每个嵌套层级一个ScreenManager。&lt;/p&gt;
 &lt;p&gt;我们在上面设置的状态机器的默认状态是Closed，所以所有使用这个控制器的屏幕都开始为关闭状态。ScreenManager提供了一个initiallyOpen属性，所以你可以指定哪个屏幕首先显示。&lt;/p&gt;
 &lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Frame Debugger</title>
+      <link>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-framedebugger/</link>
+      <pubDate>Mon, 03 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/03/2023-07-05-unity-framedebugger/</guid>
+      <description>&lt;p&gt;帧调试器 (Frame Debugger) 可将正在运行的游戏的状态冻结到特定帧来自由回放，并查看用于渲染该帧的各个DrawCall。除了列出DrawCall调用，调试器还可逐个单步执行这些DrawCall，以便详细查看游戏视图是如何从场景的图形元素构建的。&lt;/p&gt;
+&lt;h2 id=&#34;frame-debugger&#34;&gt;Frame Debugger &lt;a href=&#34;#frame-debugger&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;使用帧调试器&#34;&gt;使用帧调试器 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%b8%a7%e8%b0%83%e8%af%95%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Frame Debugger 窗口（菜单：Window &amp;gt; Analysis &amp;gt; Frame Debugger）,打开后点击Enable，会显示DrawCall调用信息。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-2.png&#34; alt=&#34;&#34;&gt;
+以上图为例，显示该帧有7次DrawCall，结合Profiler可以进一步确认
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-3.png&#34; alt=&#34;&#34;&gt;
+单独点击Frame Debugger左侧，可以查看DrawCall渲染顺序
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-1.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rendertarget面板&#34;&gt;RenderTarget面板 &lt;a href=&#34;#rendertarget%e9%9d%a2%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-07-07-unity-framedebugger/2023-07-07-unity-framedebugger-4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Channels：分别提供了仅仅显示对应颜色Channle。&lt;/p&gt;
+&lt;p&gt;Shader：渲染这个物体采用的是哪个Shader的哪个SubShader。&lt;/p&gt;
+&lt;p&gt;Blend：着色到目标的颜色混合规则。&lt;/p&gt;
+&lt;p&gt;ZClip：开启片元深度检测模式，如果一个片元在near与far的外面就会被丢弃。&lt;/p&gt;
+&lt;p&gt;ZTest：深度测试的规则，根据通过深度测试的才会被渲染。&lt;/p&gt;
+&lt;p&gt;ZWrite：是否将当前片元的深度信息写入深度缓存。&lt;/p&gt;
+&lt;p&gt;Cull：裁剪剔除的模式，有back, front, none三种模式，分别是裁剪剔除掉背对摄像机的面，裁剪提出掉真对摄像机的面和不裁剪剔除。&lt;/p&gt;
+&lt;p&gt;Why Drawcall cannot be batched?：不能合批的原因描述。&lt;/p&gt;
+&lt;p&gt;ShaderProperties：CPU传递给GPU的数据的详细信息。&lt;/p&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项： &lt;a href=&#34;#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当Frame Debugger点击Enable后，编辑器处于暂停状态，点击DrawCall渲染次序，可以发现某些时候，DrawCall次序会不同发生变化。&lt;/p&gt;
+&lt;p&gt;原因：当点击Frame Debugger不同DrawCall时，Unity会传递一&lt;strong&gt;帧&lt;/strong&gt;，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。&lt;/p&gt;
+&lt;p&gt;总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在&lt;strong&gt;帧&lt;/strong&gt;通过时进行更改。&lt;/p&gt;
+&lt;p&gt;解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#if UNITY_EDITOR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(UnityEditor.EditorApplication.isPaused)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;endif
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
     <item>
