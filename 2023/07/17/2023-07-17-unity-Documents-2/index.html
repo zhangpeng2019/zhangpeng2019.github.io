@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity&#39;s Package Manager(一)(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity&#39;s Package Manager(一)(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-17 11:13:34 &#43;0800 CST">2023/07/17</time>
+        <span class="split">·</span>
+        <span> 294 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unitys-package-manager一">Unity’s Package Manager(一) <a href="#unitys-package-manager%e4%b8%80" class="anchor">🔗</a></h1><p>包是一个容器，存储各种类型的特征或资产，例如：</p>
+<ul>
+<li>编辑器工具和库，如文本编辑器，动画查看器或测试框架。</li>
+<li>运行时工具和库，如Physics API或图形管道。</li>
+<li>资产集合，如纹理或动画。</li>
+<li>项目模板，以与他人共享常见的项目类型。</li>
+</ul>
+<p>通过Package Manager，packages为Unity提供了广泛的增强功能。为了帮助查找和使用这些包，Package Manager的窗口提供了可以一起使用的包集合，称为<em>特性集</em>。</p>
+<p>在Editor中，你可以通过此菜单访问Package Manager窗口：<strong>Window</strong> &gt; <strong>Package Manager</strong>。</p>
+<p>Package Manager还支持管理你从Unity <strong>Asset Store</strong> 下载或导入的包。</p>
+<p>Unity提供了三个Package Manager接口：Package Manager窗口，Scripting API，和manifest文件。下表包含了对每个接口的介绍，以及更多信息。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Topic</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>How Unity works with packages(Unity如何与包进行协作)</strong></td>
+<td style="text-align:left">了解一下Unity的Package Manager的概览。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Concepts(概念)</strong></td>
+<td style="text-align:left">学习Package Manager的原理和特性，包括版本，manifests，注册表，状态，源，包生命周期，依赖和解析等概念。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Package Manager window(包管理器窗口)</strong></td>
+<td style="text-align:left">在你的项目中查找和管理包，并解决包依赖性的冲突。Package Manager提供了一个用户界面，可以直接修改项目的manifest。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scripting API for packages(包的脚本编程接口)</strong></td>
+<td style="text-align:left">使用脚本API与Package Manager进行交互，使用C# <strong>脚本</strong>。查看样本，了解如何查询包注册表，安装，嵌入和移除包，以及使用各种标准列出包。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Project manifest(项目清单)</strong></td>
+<td style="text-align:left">了解Unity Package Manager所读取的文件，以便它能够计算要检索和加载的包的列表。参见Package manifest。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Inspecting packages(查看包内容)</strong></td>
+<td style="text-align:left">使用专用的<strong>Inspector</strong>窗口查看任何包manifest。使用此窗口直接编辑嵌入或本地包的包manifest。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scoped Registries(作用域注册表)</strong></td>
+<td style="text-align:left">学习如何设置或访问自定义的注册服务器。使用此注册服务器来托管和分发（或使用）自定义包，除了Unity提供的注册表。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Configuration(配置)</strong></td>
+<td style="text-align:left">学习如何配置范围注册认证，解决网络问题，自定义缓存位置等等。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Resolution and conflict(解析和冲突)</strong></td>
+<td style="text-align:left">学习包管理器如何确定项目的直接和<strong>间接依赖性</strong>，并在从注册表获取最佳版本之前评估所有请求的包版本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Troubleshooting(故障排查)</strong></td>
+<td style="text-align:left">如果你的项目的任何包，包括包管理器窗口本身，都无法加载，匹配一个可能的解决方案来解决问题。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="how-unity-works-with-packages">How Unity works with packages <a href="#how-unity-works-with-packages" class="anchor">🔗</a></h1><p>当Unity打开一个项目时，Unity包管理器会读取项目清单</p>
+<ul>
+<li>
+<p>来确定在项目中需要加载哪些包。然后它发送请求</p>
+</li>
+<li>
+<p>到包注册服务器</p>
+</li>
+<li>
+<p>对于在清单中出现作为依赖项的每个包。然后，包注册器将请求的信息和数据发送回包管理器</p>
+</li>
+<li>
+<p>进而在项目中安装这些包</p>
+</li>
+<li>
+<p>每个项目都有自己的清单，列出了需要作为项目“依赖项”来加载的包。</p>
+</li>
+</ul>
+<p><img src="/2023-07-15-unity-document-2/upm-overview.png" alt=""></p>
+<p>Unity包管理器如何安装包</p>
+<p>向项目添加一个包需要更新项目清单，确保包管理器在依赖项列表中包含该包。尽管你可以直接修改项目清单，但使用包管理器窗口，它可以为你管理项目清单的修改，这会更安全，也更容易。</p>
+<h1 id="concepts">Concepts <a href="#concepts" class="anchor">🔗</a></h1><p>这一部分解释了许多有关Unity包管理器功能的概念：</p>
+<ul>
+<li>Versions(版本)</li>
+<li>Manifests(清单)</li>
+<li>Registry(注册表)</li>
+<li>Package Management(包管理)</li>
+<li>Package sources(包资源)</li>
+<li>Package states and lifecycle(包状态和生命周期)</li>
+<li>Dependency and resolution(依赖和解析)</li>
+<li>Global cache(全局缓存)</li>
+</ul>
+<h2 id="versions">Versions <a href="#versions" class="anchor">🔗</a></h2><p>每个包都有多个版本供选择，标记着该包在其生命周期中的变化。每次开发者更新包，他们都会给它一个新的版本号。包版本的变化告诉你它是否包含一种破坏性改变(主版本)，新的向后兼容功能(次版本)，或者仅有的修复错误(补丁版)，遵循语义版本控制。</p>
+<p>要查看特定包的可用版本列表，请查看查找特定版本。</p>
+<h2 id="manifests">Manifests <a href="#manifests" class="anchor">🔗</a></h2><p>有两种类型的清单文件：</p>
+<ul>
+<li>Project manifests(项目清单)
+(<code>manifest.json</code>)储存包管理器需要找到并加载正确包的信息，包括声明为依赖项的包和版本列表。</li>
+<li>Package manifests(包清单)
+(<code>package.json</code>)储存关于特定包的信息，以及包所需的包和版本的列表。</li>
+</ul>
+<p>两种文件都使用JSON（JavaScript 对象表示法）语法。</p>
+<h2 id="registry">Registry <a href="#registry" class="anchor">🔗</a></h2><p>在Unity的包管理器领域，包注册表是一个服务器，它存储包内容以及每个包版本的信息（元数据）。Unity维护一个可供分发的官方包的中心注册表。默认情况下，所有项目都使用官方的Unity包注册表，但您可以添加额外的注册表以存储和分发私人包，或者在开发自定义包时对其进行暂存。</p>
+<h2 id="package-management">Package Management <a href="#package-management" class="anchor">🔗</a></h2><p>Unity包管理器是一个管理整个包系统的工具。它的主要任务包括以下几点：</p>
+<ul>
+<li>它与Unity包注册表服务器以及您指定的任何其他注册表进行通信。</li>
+<li>它读取您的项目清单和获取包内容及元数据。</li>
+<li>它安装、升级及卸载包，无论它们是项目的依赖关系还是已安装包中的一种。</li>
+<li>它导入您以前下载或购买的Asset Store包。</li>
+<li>它启用和禁用Unity的内置包。</li>
+<li>它显示每个包的每个版本的信息。</li>
+<li>在项目及其包需要多个包版本时，它解决冲突。</li>
+</ul>
+<p>Unity包管理器按项目安装样本、工具和资产，而不是在特定机器或设备的所有项目间安装。它使用全局缓存存储下载的包元数据和内容。一旦在项目中安装，Unity将包资产视为项目中的其他任何资产，只是这些资产存储在包文件夹内并且是<strong>不可变</strong>的。您只能从Local和Embedded包源永久性改变内容。</p>
+<h2 id="package-sources">Package sources <a href="#package-sources" class="anchor">🔗</a></h2><p>源描述了包的来源：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Source</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Registry</strong></td>
+<td style="text-align:left">Unity包管理器在您请求时，会将大多数包从包注册表服务器下载到您计算机上的全局缓存中。这些包是不可变的，所以您可以在项目中使用它们，但您不能修改它们或改变它们的包清单。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Built-in</strong></td>
+<td style="text-align:left">这些包允许您启用或禁用Unity的功能（例如，Terrain Physics、Animation等）。它们是不可变的。更多信息，请参见Built-in packages。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Embedded</strong></td>
+<td style="text-align:left">存储在您的项目文件夹内的任何包都是嵌入式的。这个源对应于自定义状态，因为当您开始开发一个自定义包时，您通常会将所有需要的脚本、库、样本和其他资源放在项目文件夹下的一个文件夹中。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Local</strong></td>
+<td style="text-align:left">您可以从您的计算机上的任何文件夹中安装一个包（例如，如果您本地克隆了一个开发仓库）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tarball (local)</strong></td>
+<td style="text-align:left">您可以从计算机上的tarball文件中安装一个包。包管理器从tarball中提取包并将其存储在缓存中。然而，这些包是不可变的，与从本地文件夹安装的方式不同。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Git</strong></td>
+<td style="text-align:left">包管理器直接从Git仓库中而不是从包注册服务器安装基于<strong>Git</strong>的包。</td>
+</tr>
+</tbody>
+</table>
+<p>要编辑包的包清单，请查看检查包。</p>
+<p>包管理器窗口会显示对应于这些源中的一些的标签。有关更多信息，请查看标签。</p>
+<p><strong>注意</strong>：包管理器将您从<strong>Asset Store</strong>下载的包存储在一个与全局缓存分开的缓存中。请查看Asset Store包以获取更多信息。</p>
+<h1 id="package-states-and-lifecycle">Package states and lifecycle <a href="#package-states-and-lifecycle" class="anchor">🔗</a></h1><p>从Unity编辑器2021.1版本开始，包在其生命周期中可能会经历以下状态：</p>
+<p><img src="/2023-07-15-unity-document-2/upm-lifecycle_v2.png" alt=""></p>
+<p>[][]</p>
+<p>使用Unity包管理器的包生命周期</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Birth</strong> <strong>(A)</strong></td>
+<td>当包的开发者正在创建包时，它处于&quot;自定义&quot;状态。当它准备好让Unity用户进行测试并提供反馈时，包进入&quot;实验&quot;状态。Unity并不支持实验性的包，并且不保证实验性的包会被完全发布并经过验证，可在生产中安全使用，直到它们进入了发布轨道。实验性的包要么在它们版本的主要部分使用<code>0</code>，要么在它们版本的修订部分使用<code>-exp.#</code>后缀。例如，<code>mypackage@0.1.2</code> 或 <code>mypackage@1.2.3-exp.1</code>。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Release track</strong></td>
+<td>一旦包通过了质量测试并且不包含任何实验性特性或功能（包括对实验性包的依赖），它就进入了“预发布”状态，该状态位于发布轨道上。这意味着Unity完全支持它，并承诺在当前的LTS周期结束时（例如2021.3）将它们正式发布。要查看此版本可用的预发布包列表，可以参阅预发布包列表。Unity的发布管理只有在包通过了几个测试阶段和验证过程后，才会给予包“已发布”状态，这也包括适当的文档，更改日志和许可文件的检查。这种状态的包在Unity编辑器中以发布标签出现，并且永远不会使用非数字后缀作为版本的一部分。要查看此版本可用的已发布包列表，可以参阅已发布包。如果包开发者更新或改变一个已发布的包，那个包可能会根据严重性返回到另一个状态。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td></td>
+<td><strong>Type of change:</strong></td>
+<td><strong>New state:</strong></td>
+<td><strong>Version bump:</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td><strong>(B)</strong></td>
+<td>对API的重大改变导致API的失效</td>
+<td>Experimental</td>
+<td><code>1.2.3</code> =&gt; <code>2.0.0-exp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td><strong>(C)</strong></td>
+<td>对API的小改动，没有导致API失效，但影响了使用</td>
+<td>Pre-release</td>
+<td><code>1.2.3</code> =&gt; <code>1.3.0-pre</code></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td><strong>(D)</strong></td>
+<td>修复错误，微小变更以及典型的补丁更新中的文档更新</td>
+<td>Released (same state)</td>
+<td><code>1.2.3</code> =&gt; <code>1.2.4</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Death</strong> <strong>(E)</strong></td>
+<td>到达生命周期末期的包在标记为“已弃用”的编辑器中不再受支持。处于该状态的包不应继续使用，因为它们可能失效或不安全。更多信息请参阅弃用包。有些实验性包无需经过发布周期轨道，直接进入已弃用状态。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>包管理器窗口显示与这些状态中的一些相对应的标签。</p>
+<p><strong>注意</strong>：这些包状态仅适用于Unity内部开发的包。要了解他们特定的流程，请联系第三方包开发者。</p>
+<h1 id="dependency-and-resolution">Dependency and resolution <a href="#dependency-and-resolution" class="anchor">🔗</a></h1><p>当你在包管理器窗口工作时，你可以从几个来源安装包（库、本地文件夹或压缩包、Git URL以及名称）。然而，当包管理器从这些来源无缝安装包时，它首先要进行一系列的计算来决定安装哪个版本。它还需要决定安装哪些其他包和版本以支持你选择的包。</p>
+<p><strong>Direct dependencies直接依赖</strong></p>
+<p>当你通过包管理器窗口选择一个包版本进行安装时，你正在向你的项目manifest添加一个“依赖”。这是一个声明，即你需要一个特定版本的某个包才能使项目正常工作。要向项目添加依赖，你需要以<code>包名称@包版本</code>的形式在<code>&lt;项目根目录&gt;/Packages/manifest.json</code>文件的依赖属性中添加对包和版本的引用。这些被称为“直接”依赖，因为你的项目直接依赖它们。</p>
+<p><strong>Indirect dependencies间接依赖</strong></p>
+<p>包也可以需要其他包才能工作。这些被称为“间接”（或转移）依赖。包开发者在开发过程中将这些添加到包manifest文件的依赖属性（<code>&lt;包根目录&gt;/package.json</code>）。例如，在下面的图表中，<code>alembic@1.0.7</code>包依赖于<code>timeline@1.0.0</code>包，所以timeline包是一个“间接”依赖。反过来，项目依赖于<code>cinemachine@2.6.0</code>和<code>alembic@1.0.7</code>包，所以它们都是“直接”依赖。</p>
+<p><img src="/2023-07-15-unity-document-2/upm-dependencies.png" alt=""></p>
+<p>该图展示了直接依赖和间接依赖</p>
+<p><strong>Version overrides版本覆盖</strong></p>
+<p>当你添加一个包版本作为依赖时，该版本并不一定是包管理器安装的版本。原因是包管理器必须考虑你项目中的所有依赖，无论是直接还是间接的。在以下示例中，请求的XR插件管理<strong>包版本是<code>4.0.3</code>。然而，包管理器安装的版本是<code>4.0.6</code>，因为另一个包依赖于更高的版本，如信息消息</strong>(B)所示：</p>
+<p><img src="/2023-07-15-unity-document-2/upm-solver-visual-cues.png" alt=""></p>
+<p>当你在详情面板中点击信息按钮（A）时，会出现一个文本框（B）解释为何安装了这个版本而不是你请求的版本</p>
+<p><strong>Dependency graph依赖图</strong></p>
+<p>包管理器一次只能安装一个包的版本，所以它必须构建一个依赖图。这个图是项目的每个直接依赖和间接依赖的列表。依赖图决定安装每个包的哪个版本。</p>
+<p><strong>Lock file锁定文件</strong></p>
+<p>当包管理器解决所有版本冲突后，它会将解决方案保存在一个锁定文件中，原因有两个：</p>
+<ul>
+<li>确定性，确保每次都可靠地安装相同的包。</li>
+<li>效率，减少重新计算依赖图所需的时间和资源。</li>
+</ul>
+<h1 id="global-cache">Global cache <a href="#global-cache" class="anchor">🔗</a></h1><p>当Unity包管理器从注册表下载包内容和元数据时，它会将它们存储在全局缓存中。这使得重用和共享包更加高效，并且允许你在离线时安装和更新存储的包。</p>
+<p><strong>注意</strong>：全局缓存不包含来自<strong>资产商店</strong>的<code>.unitypackage</code>格式的包。包管理器将这些类型的包存储在一个单独的缓存中。更多信息，请参考资产商店包。</p>
+<h2 id="location">Location <a href="#location" class="anchor">🔗</a></h2><p>默认情况下，Unity将全局缓存存储在一个根目录中，这个目录取决于操作系统（以及Windows上的用户账户类型）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Operating system</strong></th>
+<th style="text-align:left"><strong>Default root directory</strong></th>
+<th style="text-align:left"><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows (user account)</td>
+<td style="text-align:left"><code>%LOCALAPPDATA%\Unity\cache\upm</code></td>
+<td style="text-align:left"><code>C:\Users\yourname\AppData\Local\Unity\cache\upm</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Windows (system user account)</td>
+<td style="text-align:left"><code>%ALLUSERSPROFILE%\Unity\cache\upm</code></td>
+<td style="text-align:left"><code>C:\ProgramData\Unity\cache\upm</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS</td>
+<td style="text-align:left"><code>$HOME/Library/Caches/Unity/upm</code></td>
+<td style="text-align:left"><code>/Users/yourname/Library/Caches/Unity/upm</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Linux</td>
+<td style="text-align:left"><code>$HOME/.cache/Unity/upm</code></td>
+<td style="text-align:left"><code>/home/yourname/.cache/Unity/upm</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tip</strong>: You can override the location of this root directory. Refer to Customize the global cache for more information.</p>
+<h2 id="structure">Structure <a href="#structure" class="anchor">🔗</a></h2><p>包管理器的全局缓存使用多个子缓存，每个子缓存都有不同的用途。包管理器将这些子缓存存储在全局缓存的文件夹下的子文件夹中：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Subfolder</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>db</code></td>
+<td style="text-align:left">用于存储包内容和元数据的注册表数据缓存。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>packages</code></td>
+<td style="text-align:left">包含从注册表获取的包tarballs的未压缩内容。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>git-lfs</code></td>
+<td style="text-align:left">如果你启用了Git大文件存储（LFS），则包含下载的Git大文件存储（LFS）文件。</td>
+</tr>
+</tbody>
+</table>
+<p>在这些子文件夹中，每个注册表都有自己的路径，以便不同注册表上托管的包不会混淆。</p>
+<p><strong>提示</strong>：您可以重写这些文件夹的位置。有关更多信息，请参阅定制全局缓存。</p>
+<h2 id="size">Size <a href="#size" class="anchor">🔗</a></h2><p>从Unity编辑器的2023.2.0f1版本开始，注册表数据缓存（<code>db</code>子文件夹）的大小限制为10 gigabytes (GB)。当达到该限制时，PackageManager会通过剔除最近最少使用的内容（基于最旧的一个程序包安装到项目的日期）来修剪注册表数据缓存。换句话说，PackageManager首先剔除的是您在最早时间内添加到项目中的程序包。然而，尽管PackageManager将这些程序包从缓存中剔除，但它们仍然存在于安装了它们的任何项目中。下次您将这些包添加到其他项目时，PackageManager将从适当的注册表中获取它们，而不是从您的缓存中获取。</p>
+<p>您可以重写注册表数据缓存限制的大小。有关信息，请参考定制全局缓存。</p>
+<h2 id="requirements">Requirements <a href="#requirements" class="anchor">🔗</a></h2><p>运行Unity编辑器进程的用户账户必须对根目录及其内容拥有完全的写入权限。没有这些权限，PackageManager无法在缓存中下载和保存程序包的元数据和内容。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/17/2023-07-17-unity-Documents-2/">Unity中文版-Unity&#39;s Package Manager(一)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/09/2023-07-09-unity-ugui/">UGUI中文教程(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/buildin-renderpipeline-base/">Unity内置渲染管线-基础语法</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(12)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
