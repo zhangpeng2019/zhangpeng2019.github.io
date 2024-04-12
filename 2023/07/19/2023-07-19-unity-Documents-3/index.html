@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity&#39;s Package Manager(二)(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity&#39;s Package Manager(二)(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-19 11:13:34 &#43;0800 CST">2023/07/19</time>
+        <span class="split">·</span>
+        <span> 749 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unitys-package-manager二">Unity’s Package Manager(二) <a href="#unitys-package-manager%e4%ba%8c" class="anchor">🔗</a></h1><h1 id="configuration配置">Configuration(配置) <a href="#configuration%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>本节将向您展示如何针对PackageManager进行以下配置:</p>
+<ul>
+<li>网络配置：绕过防火墙并设置代理服务器</li>
+<li>有范围的注册表身份验证：为需要此项的任何范围内的程序包注册表服务器创建并提供身份验证令牌</li>
+<li>定制全局缓存：更改全局缓存文件夹的位置以及注册表数据缓存的最大大小</li>
+<li>定制资产商店缓存位置：更改<strong>Asset Store</strong>程序包缓存文件夹的位置</li>
+<li>使用HTTPS Git URLs的私有仓库：使用Git凭证助手访问通过HTTPS进行的私有仓库</li>
+<li>使用SSH Git URLs的有密码保护的SSH密钥：使用认证代理访问通过SSH进行的私有仓库</li>
+</ul>
+<p>此外，您可以在配置文件下找到PackageManager配置文件的位置。</p>
+<h2 id="configuration-files配置文件">Configuration files(配置文件) <a href="#configuration-files%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>PackageManager支持两种配置文件：全局配置文件和用户配置文件。这两种文件都使用TOML格式，并且它们出现在不同的位置：</p>
+<ul>
+<li><strong>全局</strong>配置文件适用于机器上的所有用户。例如，当为整个机器设置代理服务器时，您可以定义额外的SSL证书机构。</li>
+<li><strong>用户</strong>配置文件适用于单个用户。例如，您可以设置用于使用有范围的注册表访问的自定义包注册服务器的认证令牌。这些令牌验证了特定的用户账户。</li>
+</ul>
+<h3 id="global-configuration-file-location全局配置文件位置">Global configuration file location(全局配置文件位置) <a href="#global-configuration-file-location%e5%85%a8%e5%b1%80%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h3><p>PackageManager使用名为<code>upmconfig.toml</code>的全局配置文件。安装Unity Hub或Editor时，此文件不会被创建，但如果你需要自定义你的配置，你可以在以下位置创建它：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Environment:</strong></th>
+<th style="text-align:left"><strong>Location:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left"><code>%ALLUSERSPROFILE%\Unity\config\upmconfig.toml</code> (for example, <code>C:\ProgramData\Unity\config\upmconfig.toml</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">macOS and Linux</td>
+<td style="text-align:left"><code>/etc/upmconfig.toml</code></td>
+</tr>
+</tbody>
+</table>
+<p>你可以定义一个自定义位置来覆盖你的配置文件的默认位置。要做到这一点，创建一个<code>UPM_GLOBAL_CONFIG_FILE</code>环境变量，并将其值设置为你的配置文件的绝对路径，包括文件名。</p>
+<h3 id="user-configuration-file-location用户配置文件位置">User configuration file location(用户配置文件位置) <a href="#user-configuration-file-location%e7%94%a8%e6%88%b7%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h3><p>PackageManager使用名为<code>.upmconfig.toml</code>的用户配置文件。当你安装Unity Hub或Editor时，该文件并不被创建，但如果你需要自定义你的配置，你可以在下列位置创建它：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Environment:</strong></th>
+<th style="text-align:left"><strong>Location:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows (user account)</td>
+<td style="text-align:left"><code>%USERPROFILE%\.upmconfig.toml</code> (for example, <code>C:\Users\myusername\.upmconfig.toml</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows (system user account)</td>
+<td style="text-align:left"><code>%ALLUSERSPROFILE%\Unity\config\ServiceAccounts\.upmconfig.toml</code> (for example, <code>C:\Users\Public\Unity\config\ServiceAccounts\.upmconfig.toml</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">macOS and Linux</td>
+<td style="text-align:left"><code>~/.upmconfig.toml</code> (for example, <code>/Users/myusername/.upmconfig.toml</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>你可以定义一个自定义位置来覆盖你的配置文件的默认位置。要做到这一点，创建一个<code>UPM_USER_CONFIG_FILE</code>环境变量，并将其值设置为你的配置文件的绝对路径，包括文件名。</p>
+<h1 id="solving-network-issues解决网络问题">Solving network issues(解决网络问题) <a href="#solving-network-issues%e8%a7%a3%e5%86%b3%e7%bd%91%e7%bb%9c%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h1><p>使用以下步骤来：</p>
+<ul>
+<li>配置你的防火墙设置，使Unity可以访问PackageManager注册服务器。</li>
+<li>配置代理服务器，可以通过设置环境变量或添加自定义证书颁发机构(CA)证书来实现。</li>
+</ul>
+<h2 id="configuring-your-firewall配置你的防火墙">Configuring your firewall(配置你的防火墙) <a href="#configuring-your-firewall%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84%e9%98%b2%e7%81%ab%e5%a2%99" class="anchor">🔗</a></h2><p>为确保Unity的PackageManager可以访问其使用的域名，你必须将这些域名添加到防火墙的安全列表。</p>
+<p>关于这些域名的完整列表，以及Unity编辑器所需的所有域名，请参考Unity应用程序可以访问的终端点。你可以使用列表添加整个域名，或使用表格选择性地添加子域名。</p>
+<p>请参考你的操作系统的帮助，了解如何将域名添加到防火墙的安全列表。</p>
+<h2 id="configuring-your-proxy-server配置你的代理服务器">Configuring your proxy server(配置你的代理服务器) <a href="#configuring-your-proxy-server%e9%85%8d%e7%bd%ae%e4%bd%a0%e7%9a%84%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1%e5%99%a8" class="anchor">🔗</a></h2><p>当使用代理服务器时，配置<code>HTTP_PROXY</code>和<code>HTTPS_PROXY</code>环境变量，供Unity的PackageManager在对Unity包注册表执行请求时使用。更多信息，请参考使用环境变量来识别你的代理服务器。</p>
+<p>你可以根据你的操作系统，全局设置这些变量（系统变量或用户变量）。或者，你也可以创建一个命令文件来设置这些环境变量并启动Hub。</p>
+<p>对于你在一个使用PackageManager不识别的证书的代理服务器后面的环境，你可以配置一个自定义证书颁发机构。</p>
+<h3 id="custom-certificate-authority自定义证书颁发机构">Custom certificate authority(自定义证书颁发机构) <a href="#custom-certificate-authority%e8%87%aa%e5%ae%9a%e4%b9%89%e8%af%81%e4%b9%a6%e9%a2%81%e5%8f%91%e6%9c%ba%e6%9e%84" class="anchor">🔗</a></h3><p>在一些组织中，用户只能通过代理服务器访问互联网。一些代理会解开HTTPS内容，然后用他们自己的SSL证书重新打包。Unity包管理器的底层HTTPS层有时会拒绝这些证书，因为它不认可发出这些证书的证书颁发机构。当这种情况发生时，PackageManager会将连接视为可能的中间人攻击(MITM)。这意味着，除非你配置额外的SSL证书颁发机构来允许这些证书，否则你无法使用Unity中的许多功能，包括PackageManager。</p>
+<p>要配置额外的SSL证书颁发机构：</p>
+<ol>
+<li>
+<p>定位<code>upmconfig.toml</code>全局配置文件。如果文件不存在，创建一个空的文本文件。</p>
+</li>
+<li>
+<p>创建一个包含一个或多个自定义证书颁发机构的证书的文本文件。文件必须由一个或多个受信任的证书组成，证书格式为Privacy-Enhanced Mail (PEM)。例如：</p>
+<pre tabindex="0"><code class="language-pem" data-lang="pem">-----BEGIN CERTIFICATE-----
+MIIC+zCCAeOgAwIBAgIJAO0U6hVJnbvjMA0GCSqGSIb3DQEBBQUAMBQxEjAQBgNV
+BAMMCWxvY2FsaG9zdDAeFw0xOTAzMTIwMTIxMzRaFw0yOTAzMDkwMTIxMzRaMBQx
+(additional lines omitted for conciseness)
+LFwHSUdqk0lJK4b0mCwyTHNvYO1IDziE5EKwfuaKVgOa62iCHVahgIVa+een4EfS
+hCCr3M3cq11Mi+mnRi1scxxrOno4OEEChWg2szZLlxBrkVJllrrq620XJ6RLB/8=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIDtzCCAp+gAwIBAgIQDOfg5RfYRv6P5WD8G/AwOTANBgkqhkiG9w0BAQUFADBl
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+(additional lines omitted for conciseness)
+H2sMNgcWfzd8qVttevESRmCD1ycEvkvOl77DZypoEd+A5wwzZr8TDRRu838fYxAe
++o0bJW1sj6W3YQGx0qMmoRBxna3iw/nDmVG3KwcIzi7mULKn+gpFL6Lw8g==
+-----END CERTIFICATE-----
+</code></pre></li>
+<li>
+<p>如果可能的话，将此文件保存到与全局配置文件相同的文件夹中，虽然Unity支持在文件系统的任何位置。</p>
+</li>
+<li>
+<p>在全局配置文件中，添加<strong>caFile</strong>键，并将其值设置为你的PEM文件的绝对文件路径。<strong>重要提示</strong>：在TOML文件中设置Windows路径时，使用正斜杠(<code>/</code>)或双反斜杠(<code>\\</code>)。不要使用单反斜杠(<code>\</code>)，因为它们是标记转义序列的特殊字符，可能会导致TOML解析错误。</p>
+<p><strong>Windows example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">caFile</span> = <span style="color:#e6db74">&#34;C:\\ProgramData\\Unity\\config\\cert.pem&#34;</span>
+</span></span></code></pre></div><p><strong>macOS and Linux example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">caFile</span> = <span style="color:#e6db74">&#34;/etc/cert.pem&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h1 id="scoped-registry-authentication限定范围的注册表身份验证">Scoped registry authentication(限定范围的注册表身份验证) <a href="#scoped-registry-authentication%e9%99%90%e5%ae%9a%e8%8c%83%e5%9b%b4%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" class="anchor">🔗</a></h1><p>一些组织在需要身份验证才能访问的私有包注册表上托管他们自己的包。如果你是这些组织的员工或客户，你必须配置一个带有npm身份验证的限定范围的注册表。为了建立这个，获取一个npm身份验证令牌，然后将该令牌添加到你的用户配置文件中。</p>
+<h2 id="1-fetch-the-npm-authentication-token获取npm身份验证令牌">1) Fetch the npm authentication token(获取npm身份验证令牌) <a href="#1-fetch-the-npm-authentication-token%e8%8e%b7%e5%8f%96npm%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e4%bb%a4%e7%89%8c" class="anchor">🔗</a></h2><p>创建和访问npm身份验证令牌的过程因每个注册表提供商而异。例如，JFrog的Artifactory仓库管理器生成身份验证令牌的程序与npm不同。这是一个典型程序的例子，但你需要遵循特定包注册表供应商为你的限定范围的注册表推荐的过程。</p>
+<p>要从npm获取身份验证令牌：</p>
+<ol>
+<li>
+<p>在你的计算机上本地安装npm。</p>
+</li>
+<li>
+<p>从终端，输入以下命令来登录注册表：</p>
+<p><code>$ npm login --registry &lt;registry url&gt;</code></p>
+</li>
+<li>
+<p>定位并打开生成的.npmrc文件。</p>
+</li>
+<li>
+<p>定位<code>_authToken</code>或<code>_auth</code>条目，并复制其值（参阅下面的例子）。</p>
+<p>根据注册表，令牌字符串可以是全局唯一标识符（GUID）、令牌，或者是专有格式的字符串。</p>
+</li>
+</ol>
+<h3 id="examples-of-npmrc-filesnpmrc文件的示例">Examples of .npmrc files(.npmrc文件的示例) <a href="#examples-of-npmrc-filesnpmrc%e6%96%87%e4%bb%b6%e7%9a%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h3><p>这是一个包含<code>_authToken</code>属性的<code>.npmrc</code>文件的例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">registry</span>=<span style="color:#a6e22e">https</span><span style="color:#960050;background-color:#1e0010">://</span><span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">com</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">1234</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">mylocation</span><span style="color:#960050;background-color:#1e0010">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">//</span><span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">com</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">1234</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">mylocation</span><span style="color:#960050;background-color:#1e0010">/:</span><span style="color:#a6e22e">_authToken</span>=<span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">AUTH</span> <span style="color:#a6e22e">TOKEN</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span></code></pre></div><p>这是一个包含<code>_auth</code>属性的<code>.npmrc</code>文件的示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">registry</span>=<span style="color:#a6e22e">https</span><span style="color:#960050;background-color:#1e0010">://</span><span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">com</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">1234</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">mylocation</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">_auth</span>=<span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">AUTH</span> <span style="color:#a6e22e">TOKEN</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">email</span>=<span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">EMAIL</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">always-auth</span>=<span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h2 id="2-configure-authentication-information配置身份验证信息">2) Configure authentication information(配置身份验证信息) <a href="#2-configure-authentication-information%e9%85%8d%e7%bd%ae%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h2><p>使用<code>npmAuth</code>配置模式在<code>.upmconfig.toml</code>用户配置文件中存储每个需要身份验证的限定范围的注册表的令牌信息。当你把这个信息保存到配置文件后，包管理器会在向文件中的每个注册表发起的每个请求上提供你的身份验证信息。</p>
+<p>遵循这些指示将你的身份验证信息添加到用户配置文件中：</p>
+<ol>
+<li>定位<code>.upmconfig.toml</code>用户配置文件。如果文件不存在，创建一个空的文本文件。</li>
+<li>根据你是否使用Bearer（基于令牌）或Basic（Base64加密）的身份验证机制，使用模式格式化你的身份验证信息。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">npmAuth</span>.<span style="color:#e6db74">&#34;&lt;REGISTRY URL&gt;&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">TOKEN-PROPERTY</span><span style="color:#960050;background-color:#1e0010">&gt;</span> = <span style="color:#e6db74">&#34;&lt;TOKEN-VALUE&gt;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;&lt;EMAIL&gt;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alwaysAuth</span> = <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">BOOLEAN</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span></code></pre></div><p>下表中的信息解释了如何指定配置文件的值：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Entry</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>[npmAuth.&quot;&lt;REGISTRY-URL&gt;&quot;]</code></td>
+<td style="text-align:left">需要。注册表的URL。例如，<code>[npmAuth.&quot;https://example.com:8081/mylocation&quot;]</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;TOKEN-PROPERTY&gt; = &quot;&lt;TOKEN-VALUE&gt;&quot;</code></td>
+<td style="text-align:left">需要。从npm注册表生成的身份验证令牌。这可以是GUID、令牌，或者是专有格式的字符串。例如，可以是<code>token = &quot;&lt;AUTH TOKEN&gt;&quot;</code>（Bearer）或<code>_auth = &quot;&lt;BASE64 TOKEN&gt;&quot;</code>（Basic）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>email</strong></td>
+<td style="text-align:left">可选。与注册表上用户邮箱地址匹配的用户邮箱地址。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>alwaysAuth</strong></td>
+<td style="text-align:left">可选。如果包元数据和压缩包不在同一服务器上，设置为<code>true</code>。通常，你可以从你生成的.npmrc文件中复制这个值。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-using-bearer-authentication使用bearer身份验证的例子">Example using bearer authentication(使用Bearer身份验证的例子) <a href="#example-using-bearer-authentication%e4%bd%bf%e7%94%a8bearer%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e7%9a%84%e4%be%8b%e5%ad%90" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">npmAuth</span>.<span style="color:#e6db74">&#34;http://localhost:8081/myrepository/mylocation&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">token</span> = <span style="color:#e6db74">&#34;NpmToken.2348c7ea-6f86-3dbe-86b6-f257e86569a8&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alwaysAuth</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">npmAuth</span>.<span style="color:#e6db74">&#34;http://localhost:4873&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">token</span> = <span style="color:#e6db74">&#34;eaJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyJwYXNjYWxsIl0sIm5hbWUiOiJwYXNjYWxsIiwiZ3JvdXBzIjpbIn&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">npmAuth</span>.<span style="color:#e6db74">&#34;https://api.bintray.example/npm/mycompany/myregistry&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">token</span> = <span style="color:#e6db74">&#34;aGFzY2FsbDo4ZWIwNTM5NzBjNTI3OTIwYjQ4MDVkYzY2YWEzNmQxOTkyNDYzZjky&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;username@example.com&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alwaysAuth</span> = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h3 id="configure-basic-authentication-information配置基本身份验证信息">Configure basic authentication information(配置基本身份验证信息) <a href="#configure-basic-authentication-information%e9%85%8d%e7%bd%ae%e5%9f%ba%e6%9c%ac%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h3><p>这些步骤以Azure DevOps为例，但是对于任何使用个人访问令牌（PAT）的平台，流程都是类似的。</p>
+<p>开始前，如果还未安装Node.js，请进行安装。</p>
+<ol>
+<li>
+<p>获取你的Azure DevOps个人访问令牌（PAT），准备在后续步骤中使用。如果你需要重新生成PAT，请登录Azure DevOps <a href="https://dev.azure.com/">https://dev.azure.com</a> 并前往 <strong>用户设置</strong> &gt; <strong>个人访问令牌</strong>。关于如何使用PAT的信息，可以参考Microsoft的文章，使用个人访问令牌。</p>
+</li>
+<li>
+<p>从命令行，运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>node -e <span style="color:#e6db74">&#34;require(&#39;readline&#39;).createInterface({input:process.stdin,output:process.stdout,historySize:0}).question(&#39;Enter PAT&gt; &#39;,p =&gt; {b64=Buffer.from(p.trim()).toString(&#39;base64&#39;);console.log(b64);process.exit();})&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>在<code>Enter PAT</code>提示时，输入<code>email:PAT</code>，将其替换为：</p>
+<ul>
+<li>将<code>email</code>替换为与你的Azure DevOps帐户关联的电子邮件和<code>.upmconfig.toml</code>文件中指定的电子邮件</li>
+<li>将<code>PAT</code>替换为你在早期步骤中获得的PAT</li>
+</ul>
+</li>
+<li>
+<p>命令将返回一个Base64加密的字符串。复制该字符串并将其赋值为<code>.upmconfig.toml</code>文件中的<code>_auth</code>键的值。</p>
+</li>
+</ol>
+<h4 id="example-using-basic-authentication">Example using basic authentication <a href="#example-using-basic-authentication" class="anchor">🔗</a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">npmAuth</span>.<span style="color:#e6db74">&#34;http://localhost:8081/myrepository/mylocation&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">_auth</span> = <span style="color:#e6db74">&#34;c19kaW5pcm9AaG90bWFpbC4jb206d3FzdzVhemU9Q==&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;username@example.com&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alwaysAuth</span> = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h1 id="customize-the-global-cache自定义全局缓存">Customize the global cache(自定义全局缓存) <a href="#customize-the-global-cache%e8%87%aa%e5%ae%9a%e4%b9%89%e5%85%a8%e5%b1%80%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h1><p>包管理器维护一个用于注册表数据和未压缩包的全局缓存。</p>
+<p>全局缓存与包管理器为 <strong>资源商店</strong> 包维护的缓存是分开的。关于资源商店缓存的信息，请参考自定义资源商店缓存位置。</p>
+<p>默认情况下，包管理器的全局缓存根目录有以下子目录，每个子缓存有不同的用途：</p>
+<ul>
+<li><code>db</code>子目录存储注册表数据（包元数据和tarballs）。</li>
+<li><code>packages</code>子目录存储未压缩的包tarballs的内容。</li>
+<li>如果你已启用Git LFS，<code>git-lfs</code>子目录会存储下载的Git大文件存储（LFS）文件。</li>
+</ul>
+<p>包管理器将全局缓存存储在默认位置，你可以覆盖它。关于全局缓存根目录的默认位置的信息，请参考全局缓存。</p>
+<p>你可能出于以下几个原因想要覆盖全局缓存位置：</p>
+<ul>
+<li>你想在你的内部驱动器上节省空间。</li>
+<li>你想在共享驱动器上存储缓存，以便其他人可以访问它。</li>
+<li>你想在非系统目录的文件夹中存储缓存。</li>
+</ul>
+<p>从2023.2.0f1开始，<code>db</code>子目录的最大大小默认为10千兆字节（GB），你可以覆盖它。你可能出于以下几个原因想要覆盖<code>db</code>子目录的最大大小：</p>
+<ul>
+<li>如果你的可用磁盘空间很小，你可以降低限制以节省空间。</li>
+<li>如果你有大量可用的磁盘空间，你可以增加限制。这允许包管理器在缓存中存储更多数据，这样它可以从缓存中获取包，而不是再次下载它们。缓存的包安装更快，减少了网络使用。</li>
+</ul>
+<p>以下表格列出了你可以用来覆盖默认属性的不同方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Method</strong></th>
+<th style="text-align:center"><strong>Global cache location</strong></th>
+<th style="text-align:center"><strong><code>db</code> subdirectory max size</strong></th>
+<th style="text-align:left"><strong>Additional notes(额外说明)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Preferences window(偏好设置窗口)</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
+<td style="text-align:left">这种方法因其易用性和持久性被推荐。当你使用这种方法更改包缓存位置时，Unity会为当前和未来的Unity编辑器会话存储偏好设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">User configuration file(用户配置文件)</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:left">用户配置文件中的包缓存属性覆盖会持续到当前Unity编辑器会话之后。</td>
+</tr>
+<tr>
+<td style="text-align:left">Environment variables(环境变量)</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:left">默认情况下，此方法为当前的命令提示符（或终端）会话设置配置，但你可以在你的操作系统设置中使其永久化。高级用户可能在特定用例下更喜欢基于会话的变量。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：使用<strong>偏好设置</strong>窗口设置全局缓存位置也会在用户配置文件中设置<code>cacheRoot</code>属性。如果你想手动设置用户配置文件，请参考使用用户配置文件。</p>
+<h2 id="important-notes-before-you-begin开始前的重要声明">Important notes before you begin(开始前的重要声明) <a href="#important-notes-before-you-begin%e5%bc%80%e5%a7%8b%e5%89%8d%e7%9a%84%e9%87%8d%e8%a6%81%e5%a3%b0%e6%98%8e" class="anchor">🔗</a></h2><ul>
+<li>无论你选择哪种方法，更改缓存位置都会告诉包管理器从此时开始使用该位置。包管理器在原始位置存储的现有包会保留在那个文件夹结构中。</li>
+<li>如果你设置了<code>db</code>子目录的最大大小，且新大小小于该子目录的当前大小，包管理器会从缓存中逐出内容，直到达到新的限制。包管理器会按照最近最少使用的内容进行驱逐（基于安装到项目中的日期）。</li>
+<li>当你使用用户配置文件时，你的更改应用于当前的用户帐户。尽管存在全局配置文件，但你不能在全局配置文件中设置缓存覆盖。</li>
+<li>有一些因素会影响如何设置多个值与使用不同方法一起工作：
+<ul>
+<li>如果你使用了环境变量方法来更改缓存位置，那么你不能使用<strong>偏好设置</strong>窗口来更改位置。</li>
+<li>设置环境变量优先于在用户配置文件或<strong>偏好设置</strong>窗口中应用相同的设置。</li>
+<li>如果你为注册表数据缓存(<code>UPM_NPM_CACHE_PATH</code>)、未压缩的包缓存(<code>UPM_CACHE_PATH</code>)或Git LFS缓存(<code>UPM_GIT_LFS_CACHE_PATH</code>)设置了环境变量，包管理器将使用环境变量设置的位置，而不管全局缓存根位置在哪里。</li>
+<li>如果你启用了Git LFS缓存(<code>UPM_ENABLE_GIT_LFS_CACHE</code>)但没有明确设置其路径(<code>UPM_GIT_LFS_CACHE_PATH</code>)，包管理器会使用全局缓存根下的<code>git-lfs</code>目录作为其位置。</li>
+</ul>
+</li>
+</ul>
+<h2 id="using-the-preferences-window偏好设置窗口">Using the Preferences window(偏好设置窗口) <a href="#using-the-preferences-window%e5%81%8f%e5%a5%bd%e8%ae%be%e7%bd%ae%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h2><p>若要使用<strong>偏好设置</strong>窗口来覆盖全局缓存的默认位置，请按照以下步骤操作。</p>
+<ol>
+<li>使用以下方法之一打开<strong>偏好设置</strong>窗口：
+<ul>
+<li>使用Unity编辑器的菜单，如偏好设置中所述。</li>
+<li>打开包管理器窗口，打开<strong>高级</strong> <img src="/2023-07-19-unity-document-3/iconSettings.png" alt="img"> 菜单，并选择<strong>偏好设置</strong>。</li>
+</ul>
+</li>
+<li>选择<strong>包管理器</strong>分类。</li>
+<li>在<strong>包</strong>下，打开<strong>缓存位置</strong>旁边的菜单 <img src="/2023-07-19-unity-document-3/package-manager-folder.png" alt="img">.</li>
+<li>选择<strong>更改位置</strong>。</li>
+<li>为全局缓存选择一个新位置。</li>
+</ol>
+<p><img src="/2023-07-19-unity-document-3/preferences-package-manager.png" alt="The Preferences window with the Package Manager category selected"></p>
+<p>选择了包管理器类别的偏好设定窗口</p>
+<h2 id="using-the-user-configuration-file使用用户配置文件">Using the user configuration file(使用用户配置文件) <a href="#using-the-user-configuration-file%e4%bd%bf%e7%94%a8%e7%94%a8%e6%88%b7%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>你可以手动编辑用户配置文件，以覆盖全局缓存根的位置，或<code>db</code>子目录的最大大小，或两者都覆盖。</p>
+<p>按照以下步骤编辑用户配置文件：</p>
+<ol>
+<li>定位<code>.upmconfig.toml</code>用户配置文件。要找到文件位置，请参阅配置文件。如果文件不存在，则创建一个空文本文件。</li>
+<li>要覆盖全局缓存根的位置，添加<code>cacheRoot</code>键，并将其值设置为自定义位置的绝对路径。<strong>重要提示</strong>：在TOML文件中设置Windows路径时，使用正斜杠(<code>/</code>)或双反斜杠(<code>\\</code>)。不要使用单个反斜杠(<code>\</code>)，因为它们是标记转义序列的特殊字符，可能导致TOML解析错误。</li>
+<li>要覆盖<code>db</code>子目录的最大大小，添加<code>maxCacheSize</code>键，并将其值设置为表示字节数的正整数。例如，要将大小设置为5GB，请赋值<code>5000000000</code>。</li>
+</ol>
+<p>在设置任一属性后，你无需重新启动Unity编辑器或Hub，更改即可生效。</p>
+<p><strong>Windows example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">cacheRoot</span> = <span style="color:#e6db74">&#34;E:\\Unity\\cache&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxCacheSize</span> = <span style="color:#ae81ff">5000000000</span>
+</span></span></code></pre></div><p><strong>macOS and Linux example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">cacheRoot</span> = <span style="color:#e6db74">&#34;/dev/external/shared/Unity/cache&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxCacheSize</span> = <span style="color:#ae81ff">5000000000</span>
+</span></span></code></pre></div><h2 id="using-environment-variables使用环境变量">Using environment variables(使用环境变量) <a href="#using-environment-variables%e4%bd%bf%e7%94%a8%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="anchor">🔗</a></h2><p>在涉及自动化或持续集成的场景中，在用户配置文件或<strong>偏好设置</strong>窗口中配置设置可能不太实际，而且更容易出错。在这种情况下，你可能会考虑使用环境变量来配置全局缓存及其附属缓存的设置。下列环境变量可供使用：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Environment variable</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>UPM_CACHE_ROOT</code></td>
+<td style="text-align:left">指定全局缓存的位置（包含注册表数据和未压缩包缓存的根文件夹）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UPM_NPM_CACHE_PATH</code></td>
+<td style="text-align:left">指定您希望包管理器用作其注册表数据缓存的位置的绝对路径。默认情况下，这是全局缓存根目录下的<code>db</code>子目录。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UPM_CACHE_PATH</code></td>
+<td style="text-align:left">指定您希望包管理器存储包 tarball 的未压缩内容的位置的绝对路径。默认情况下，这是全局缓存根目录下的<code>packages</code>子目录。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UPM_ENABLE_GIT_LFS_CACHE</code></td>
+<td style="text-align:left">指定任何非空（&quot;&quot;）的值以启用 Git LFS 缓存。默认情况下，包管理器使用全局缓存根目录下的<code>git-lfs</code>子目录，除非您使用<code>UPM_GIT_LFS_CACHE_PATH</code>环境变量指定了不同的路径。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UPM_GIT_LFS_CACHE_PATH</code></td>
+<td style="text-align:left">指定您希望包管理器存储 Git LFS 缓存的位置的绝对路径。通过设置此路径，您自动启用 Git LFS 缓存。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>UPM_MAX_CACHE_SIZE</code></td>
+<td style="text-align:left">以字节为单位，以正整数指定注册表数据缓存（<code>db</code>子目录）的最大大小。例如，要将大小设置为5GB，分配一个值为<code>5000000000</code>。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要提示</strong>：当你使用此方法时，请遵循以下指导原则：</p>
+<ul>
+<li>在设置环境变量之前，如果Unity编辑器和Unity Hub已经在运行，请关闭它们。</li>
+<li>在设置环境变量的同一个命令提示符或终端会话中启动Unity编辑器或Unity Hub。</li>
+<li>如果你在前述表格中设置了任何环境变量，每次启动Unity时都必须设置它们。</li>
+</ul>
+<p>有关设置环境变量的信息，请参阅你的操作系统的文档。要了解环境变量的介绍，请参考 <a href="https://en.wikipedia.org/wiki/Environment_variable">https://en.wikipedia.org/wiki/Environment_variable</a>.</p>
+<h1 id="customize-the-asset-store-cache-location自定义资源商店缓存位置">Customize the Asset Store cache location(自定义资源商店缓存位置) <a href="#customize-the-asset-store-cache-location%e8%87%aa%e5%ae%9a%e4%b9%89%e8%b5%84%e6%ba%90%e5%95%86%e5%ba%97%e7%bc%93%e5%ad%98%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>包管理器为你从<strong>资源商店</strong>获取的包维护一个缓存。包管理器将此缓存存储在一个默认位置，你可以覆盖这个位置。</p>
+<p>你可能有多种原因想要覆盖资源商店缓存的位置：</p>
+<ul>
+<li>你想节省内部驱动器的空间。</li>
+<li>你想将缓存存储在一个共享驱动器上，其他人可以访问。</li>
+<li>你想将缓存存储在不在系统目录中的文件夹。</li>
+</ul>
+<p>默认情况下，包管理器对其资源商店包缓存使用以下文件夹结构：</p>
+<pre tabindex="0"><code>&lt;asset-store-cache-root&gt;
+  └── Asset Store-5.x
+      └── &lt;subfolders for Asset Store vendors&gt;
+</code></pre><p>关于资源商店包缓存根的默认位置的信息，请参考已下载资产文件的位置。</p>
+<p><strong>注意</strong>：包管理器为注册表包和资源商店包维护独立的缓存。关于覆盖全局缓存的默认位置的信息，请参考自定义全局缓存。</p>
+<p>要覆盖包管理器对资源商店包的缓存的默认位置，你可以使用以下方法：</p>
+<ul>
+<li>推荐使用首选项窗口方法，因为它既简单又持久。当你使用该方法更改包缓存位置时，Unity会为当前会话和未来的会话存储偏好设置。</li>
+<li><code>ASSETSTORE_CACHE_PATH</code>环境变量方法不是永久性的，但高级用户在特定的使用情况下可能会发现它更可取。</li>
+</ul>
+<h2 id="important-notes-before-you-begin开始前的重要提示">Important notes before you begin(开始前的重要提示) <a href="#important-notes-before-you-begin%e5%bc%80%e5%a7%8b%e5%89%8d%e7%9a%84%e9%87%8d%e8%a6%81%e6%8f%90%e7%a4%ba" class="anchor">🔗</a></h2><ul>
+<li>无论你选择哪种方法，改变缓存位置都会告诉包管理器往后使用那个位置。包管理器在原始位置存储的现有包仍会保留在那个文件夹结构中。</li>
+<li>如果你使用环境变量方法更改了缓存位置，那么你就不能使用首选项窗口来更改位置。</li>
+</ul>
+<h2 id="using-the-preferences-window使用首选项窗口">Using the Preferences window(使用首选项窗口) <a href="#using-the-preferences-window%e4%bd%bf%e7%94%a8%e9%a6%96%e9%80%89%e9%a1%b9%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h2><p>要使用首选项窗口覆盖资源商店包缓存的默认位置，请按照以下步骤操作。</p>
+<ol>
+<li>使用以下方法之一打开首选项窗口：
+<ul>
+<li>使用Unity编辑器的菜单，如首选项中所述。</li>
+<li>打开包管理器窗口，点击设置图标 <img src="/2023-07-19-unity-document-3/iconSettings-1712903391407-7.png" alt="img">，然后选择 <strong>首选项</strong>。</li>
+</ul>
+</li>
+<li>选择 <strong>包管理器</strong> 类别。</li>
+<li>在 <strong>我的资源</strong> 下，打开 <strong>缓存位置</strong> 旁边的菜单 <img src="/2023-07-19-unity-document-3/package-manager-folder-1712903396270-10.png" alt="img">.</li>
+<li>选择 <strong>更改位置</strong>。</li>
+<li>为资源商店包缓存选择一个新的位置。</li>
+</ol>
+<p><img src="/2023-07-19-unity-document-3/preferences-package-manager-1712903398996-13.png" alt="The Preferences window with the Package Manager category selected"></p>
+<p>选择首选项窗口的包管理器类别</p>
+<h2 id="using-the-environment-variable使用环境变量">Using the environment variable(使用环境变量) <a href="#using-the-environment-variable%e4%bd%bf%e7%94%a8%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="anchor">🔗</a></h2><p>在涉及自动化或持续集成的场景中，通过配置文件或首选项窗口配置设置的方式显得不够实用，而且更容易出错。在这样的场景下，你可能会考虑设置<code>ASSETSTORE_CACHE_PATH</code>环境变量，以覆盖资源商店包缓存的默认位置。</p>
+<p><strong>注意</strong>：在使用此方法时，请遵循以下指南：</p>
+<ul>
+<li>在设置环境变量之前，如果Unity编辑器和Unity Hub已经在运行，则关闭它们。</li>
+<li>从设置环境变量的同一命令提示符或终端会话中启动Unity编辑器或Unity Hub。</li>
+<li>每次启动Unity时，你都必须设置<code>ASSETSTORE_CACHE_PATH</code>环境变量。</li>
+</ul>
+<p>关于设置环境变量的信息，请参照你的操作系统的文档。关于环境变量的入门介绍，请参考https://en.wikipedia.org/wiki/Environment_variable</p>
+<h1 id="using-private-repositories-with-https-git-urls使用https-git-url访问私有仓库">Using private repositories with HTTPS Git URLs(使用HTTPS Git URL访问私有仓库) <a href="#using-private-repositories-with-https-git-urls%e4%bd%bf%e7%94%a8https-git-url%e8%ae%bf%e9%97%ae%e7%a7%81%e6%9c%89%e4%bb%93%e5%ba%93" class="anchor">🔗</a></h1><p>当你在终端中使用Git通过HTTPS访问私有仓库时，Git会提示你输入用户名和密码。然后，Git将这些凭证提交给服务器，如果服务器接受这些凭证并允许访问仓库，Git就会继续执行命令。</p>
+<p>当Unity包管理器使用Git URL获取包时，没有终端供用户输入凭证。因此，当服务器向Git请求凭证时，Git不会发出提示，而是向Unity包管理器报告错误。为了解决这个问题，你必须为Git配置一个Git凭证助手，而且该助手必须已经为该仓库加载了所需的凭证。如果凭证有效，Git可以成功执行Unity包管理器发出的命令。</p>
+<p><strong>注意</strong>：使用SSH协议的Git URL，包括SCP样式的语法时，Git凭证助手无效。</p>
+<h2 id="git-credential-managergit凭证管理器">Git Credential ManagerGit(凭证管理器) <a href="#git-credential-managergit%e5%87%ad%e8%af%81%e7%ae%a1%e7%90%86%e5%99%a8" class="anchor">🔗</a></h2><p>尽管Git支持多个凭证助手来存储凭证，但Git凭证管理器（GCM）仍是推荐的凭证助手。GCM灵活，易于安装，并得到了积极的支持。它基于.NET构建，这意味着它可以在支持.NET的Windows、macOS和Linux发行版上运行。</p>
+<p>默认情况下，GCM使用Windows凭证管理器（在Windows上）和macOS钥匙串（在macOS上）作为配置的凭证存储。GCM没有为Linux配置默认的存储库。关于GCM支持的不同凭证存储配置的更多信息，请参考GCM凭证存储文档。</p>
+<h2 id="prerequisites先决条件">Prerequisites(先决条件) <a href="#prerequisites%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6" class="anchor">🔗</a></h2><p>在你可以使用HTTPS URL从私有Git仓库获取包之前，确保你已经安装了GCM。</p>
+<p>Git for Windows安装程序包含一个步骤，可以自动安装和配置GCM。如果你在以下情况下，你也可以单独安装GCM：</p>
+<ul>
+<li>在Windows上用其他方法安装Git。</li>
+<li>使用macOS或Linux</li>
+</ul>
+<p>关于安装GCM的更多信息，请参考GCM安装指南。</p>
+<h2 id="procedure操作步骤">Procedure(操作步骤) <a href="#procedure%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4" class="anchor">🔗</a></h2><p>遵循以下步骤来访问使用HTTPS Git URL的私有仓库中的包：</p>
+<ol>
+<li>
+<p>在终端中运行以下命令，配置Git使用GCM：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global credential.helper manager
+</span></span></code></pre></div></li>
+<li>
+<p>通过终端一次性访问仓库。例如，运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git ls-remote --heads https://&lt;url-to-repository&gt; HEAD
+</span></span></code></pre></div></li>
+<li>
+<p>当Git提示你时，输入你的凭证。如果你的用户账户可以访问远程Git服务器，且服务器接受你的凭证，那么Git凭证助手将会安全地存储你的凭证。</p>
+</li>
+<li>
+<p>使用Unity包管理器。当需要时，它将使用你存储的凭证，从你有权限访问的基于HTTPS的仓库获取包。</p>
+</li>
+</ol>
+<h1 id="using-passphrase-protected-ssh-keys-with-ssh-git-urls使用口令保护的ssh密钥与ssh-git-url配合使用">Using passphrase-protected SSH keys with SSH Git URLs(使用口令保护的SSH密钥与SSH Git URL配合使用) <a href="#using-passphrase-protected-ssh-keys-with-ssh-git-urls%e4%bd%bf%e7%94%a8%e5%8f%a3%e4%bb%a4%e4%bf%9d%e6%8a%a4%e7%9a%84ssh%e5%af%86%e9%92%a5%e4%b8%8essh-git-url%e9%85%8d%e5%90%88%e4%bd%bf%e7%94%a8" class="anchor">🔗</a></h1><p>当你使用Git通过SSH访问私有仓库时，Git用SSH客户端和服务器建立了一个安全连接。在建立连接时，Git在SSH握手阶段使用了你配置的SSH密钥。在此阶段，SSH客户端需要能够读取你的密钥。然而，如果你用口令对你的密钥进行了加密，SSH客户端就无法直接使用这个密钥。在这种情况下，终端会提示你输入口令。在你输入正确的口令后，SSH连接就完成了，Git命令会使用这个连接进行运行。</p>
+<p>当Unity包管理器使用Git URL获取包时，没有界面供你输入SSH客户端请求的凭证。因此，如果你用口令保护了你的SSH密钥文件，SSH客户端就无法建立连接，Git就会报告错误。为了解决这个问题，必须有一个SSH认证代理正在运行，并已加载SSH密钥，这样SSH客户端就可以在不需要口令的情况下使用它。</p>
+<p>具体方法根据你的操作系统和你使用的SSH客户端而异：</p>
+<ul>
+<li>如果你使用Windows 10或更高版本及其内置的OpenSSH客户端，请参考在Windows（OpenSSH）上自动加载SSH密钥。</li>
+<li>如果你使用Windows和PuTTY及其认证代理（Pageant），请参考在Windows（PuTTY）上自动加载SSH密钥。</li>
+<li>如果你使用macOS，请参考在macOS上自动加载SSH密钥。</li>
+</ul>
+<h1 id="loading-ssh-keys-automatically-on-windows-openssh在windows上自动加载ssh密钥openssh">Loading SSH keys automatically on Windows (OpenSSH)在Windows上自动加载SSH密钥（OpenSSH) <a href="#loading-ssh-keys-automatically-on-windows-openssh%e5%9c%a8windows%e4%b8%8a%e8%87%aa%e5%8a%a8%e5%8a%a0%e8%bd%bdssh%e5%af%86%e9%92%a5openssh" class="anchor">🔗</a></h1><p>如果你使用Windows及其内置的OpenSSH客户端，按照以下的步骤配置OpenSSH客户端，这样你就可以在不提示口令的情况下使用你的SSH密钥。</p>
+<h2 id="prerequisites前提条件">Prerequisites(前提条件) <a href="#prerequisites%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6" class="anchor">🔗</a></h2><ul>
+<li>Windows 10或更晚的版本。</li>
+</ul>
+<h2 id="before-you-begin在你开始之前">Before you begin(在你开始之前) <a href="#before-you-begin%e5%9c%a8%e4%bd%a0%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d" class="anchor">🔗</a></h2><p>检查是否有任何已存在的SSH密钥。请参考GitHub Docs文章，检查现有的SSH密钥。</p>
+<p>如果你还没有SSH密钥：</p>
+<ol>
+<li>按照GitHub Docs文章，生成新的SSH密钥来创建一个。</li>
+<li>按照GitHub Docs文章，将新的SSH密钥添加到你的GitHub账户，添加新的SSH密钥到你的GitHub账户。</li>
+</ol>
+<h2 id="procedure步骤">Procedure(步骤) <a href="#procedure%e6%ad%a5%e9%aa%a4" class="anchor">🔗</a></h2><ol>
+<li>
+<p>检查<code>C:\Users\&lt;YourUserName&gt;\.ssh\config</code>是否存在。<strong>注意</strong>：在一些应用程序中，如Git Bash，<code>.ssh</code>是一个隐藏的子目录。</p>
+</li>
+<li>
+<p>如果<code>C:\Users\&lt;YourUserName&gt;\.ssh\config</code>不存在，则创建它。</p>
+</li>
+<li>
+<p>向<code>C:\Users\&lt;YourUserName&gt;\.ssh\config</code>中添加以下内容，来在认证代理中设置要加载的密钥，并指定目标服务器的使用。确保你在标记为<code>Host *</code>的任何全局设置之前添加这个条目。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">Host</span> <span style="color:#a6e22e">SERVER_NAME</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentitiesOnly</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentityFile</span> <span style="color:#a6e22e">FILE_PATH</span>
+</span></span></code></pre></div><ul>
+<li><code>SERVER_NAME</code>是使用<code>IdentityFile</code>指定文件的服务器。一个示例值是<code>github.com</code>。</li>
+<li><code>FILE_PATH</code>是你创建的SSH文件的完全限定路径。一个示例值是<code>C:\Users\&lt;YourUserName&gt;\.ssh\&lt;FILE&gt;</code>，其中<code>&lt;FILE&gt;</code>可能是<code>id_rsa</code>，<code>id_ecdsa</code>，<code>id_ed25519</code>，或一个自定义名称。</li>
+</ul>
+<p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">Host</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentitiesOnly</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentityFile</span> <span style="color:#a6e22e">C</span><span style="color:#960050;background-color:#1e0010">:/</span><span style="color:#a6e22e">Users</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">user1</span><span style="color:#960050;background-color:#1e0010">/</span>.<span style="color:#a6e22e">ssh</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">id_ed25519</span>
+</span></span></code></pre></div></li>
+<li>
+<p>打开Windows PowerShell，确保你选择<strong>以管理员身份运行</strong>来打开它。</p>
+</li>
+<li>
+<p>通过运行以下命令，配置SSH认证代理服务，以便它每次你重启电脑时启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Service ssh-agent | Set-Service -StartupType Automatic
+</span></span></code></pre></div></li>
+<li>
+<p>运行以下命令以启动服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Start-Service ssh-agent
+</span></span></code></pre></div></li>
+<li>
+<p>运行以下命令以检查服务是否运行，并确认<code>Status</code>的值为<code>Running</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Service ssh-agent
+</span></span></code></pre></div></li>
+<li>
+<p>将你的密钥文件加载到<code>ssh-agent</code>中，将<code>&lt;FILE&gt;</code>替换为你的密钥实际的文件名，然后在提示时输入你的密码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>ssh-add $env:USERPROFILE\.ssh\&lt;FILE&gt;
+</span></span></code></pre></div><p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>ssh-add $env:USERPROFILE\.ssh\id_ed25519
+</span></span></code></pre></div></li>
+<li>
+<p>确保Git使用Windows OpenSSH客户端，而不是Git附带的SSH客户端，可以使用以下任一方法：</p>
+<ul>
+<li>
+<p>对于系统范围的配置，创建一个名为<code>GIT_SSH_COMMAND</code>的环境变量，其值为<code>C:/Windows/System32/OpenSSH/ssh.exe</code>。<strong>重要提示</strong>：确保你在路径中使用正斜杠。</p>
+</li>
+<li>
+<p>要设置特定范围的配置，可以在终端中运行以下<code>git config</code>命令。可以参考git config文档了解详细信息。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
+</span></span></code></pre></div><ul>
+<li><strong>重要</strong>: 确保你在路径中使用正斜杠。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>现在，你可以使用Unity包管理器通过使用带有密码保护的SSH密钥从该Git仓库中获取包了。</p>
+<h1 id="loading-ssh-keys-automatically-on-windows-putty在windows上自动加载ssh密钥putty">Loading SSH keys automatically on Windows (PuTTY)在Windows上自动加载SSH密钥（PuTTY） <a href="#loading-ssh-keys-automatically-on-windows-putty%e5%9c%a8windows%e4%b8%8a%e8%87%aa%e5%8a%a8%e5%8a%a0%e8%bd%bdssh%e5%af%86%e9%92%a5putty" class="anchor">🔗</a></h1><p>如果你使用PuTTY及其身份验证代理（Pageant）而非Windows内置的OpenSSH客户端，请按照以下步骤操作。例如，如果你使用SourceTree作为你的Git客户端，它会自带PuTTY（和Pageant）供你使用。</p>
+<h2 id="before-you-begin开始之前">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d" class="anchor">🔗</a></h2><p>确保你已安装了包含Pageant的PuTTY套件。如果没有安装，可以在https://www.putty.org/ 下载。</p>
+<p>检查你是否有任何现有的SSH密钥。参考GitHub文档文章，检查现有的SSH密钥。</p>
+<p>如果你没有SSH密钥：</p>
+<ol>
+<li>使用<strong>PuTTYgen</strong>应用生成一个私钥/公钥对，将其保存为私钥。参考PuTTY用户手册中的使用PuTTYgen，PuTTY密钥生成器。</li>
+<li>按照GitHub文档文章，将新的SSH密钥添加到你的GitHub账户。</li>
+</ol>
+<h2 id="procedure操作步骤-1">Procedure(操作步骤) <a href="#procedure%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4-1" class="anchor">🔗</a></h2><p>按照以下步骤在Windows上自动加载密钥和口令：</p>
+<ol>
+<li>从PuTTY文件夹启动Pageant：<strong>开始菜单</strong> &gt; <strong>所有程序</strong> &gt; <strong>PuTTY</strong> &gt; <strong>Pageant</strong></li>
+<li>在系统托盘中找到Pageant图标. <img src="/2023-07-19-unity-document-3/upm-pageant.png" alt="img"></li>
+<li>在系统托盘中右键点击Pageant图标并选择<strong>查看密钥</strong>。<strong>Pageant密钥列表</strong>窗口会打开。</li>
+<li>点击<strong>添加密钥</strong>。</li>
+<li>使用<strong>文件资源管理器</strong>窗口来选择你要加载的SSH密钥文件。确保选择的文件是<code>.ppk</code>扩展名，然后点击<strong>打开</strong>。</li>
+<li>如果该密钥受到口令保护，输入你的口令。</li>
+<li>确保你选择的密钥现在已经在<strong>Pageant密钥列表</strong>窗口中列出。现在可在任何你的PuTTY会话中连接到任何服务器。</li>
+</ol>
+<p>你可能已将Git配置为使用PuTTY的<code>plink.exe</code>程序。检查当使用SSH密钥时Git是否使用Pageant：</p>
+<ol>
+<li>检查是否存在<code>GIT_SSH_COMMAND</code>环境变量。如果没有，创建它。</li>
+<li>将其值设置为PuTTY的<code>plink.exe</code>文件的完全限定路径。默认位置为<code>&quot;C:\Program Files\PuTTY\plink.exe&quot;</code>。<strong>重要</strong>: 如果路径包含空格，确保你使用引号将值括起来。</li>
+</ol>
+<p>要在启动时自动加载私钥：</p>
+<ol>
+<li>
+<p>打开开始菜单并右键点击<strong>Pageant</strong>。</p>
+</li>
+<li>
+<p>选择<strong>更多</strong> &gt; <strong>打开文件位置</strong>。<strong>文件资源管理器</strong>窗口会打开。</p>
+</li>
+<li>
+<p>右键点击<strong>Pageant</strong>并选择<strong>属性</strong>。<strong>Pageant属性</strong>窗口会打开。</p>
+</li>
+<li>
+<p>更新<strong>目标</strong>字段，通过添加你想在启动时加载的私钥的完全路径。每个密钥之间用空格分隔。例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;C:\Program Files\PuTTY\pageant.exe&#34;</span> <span style="color:#e6db74">&#34;C:\Users\user1\myKeys\privatekey.ppk&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>选择<strong>应用</strong>然后选择<strong>确定</strong>。</p>
+</li>
+<li>
+<p>通过打开命令行并在你的仓库中运行<code>git</code>命令来测试你的配置，以确保无需输入口令就可以完成操作。</p>
+</li>
+</ol>
+<p>当Pageant运行且你输入了口令后，你可以使用Unity包管理器通过使用口令保护的SSH密钥从那个Git仓库中获取包。</p>
+<p>下次当Pageant启动时，如果它受到口令保护，它会提示你输入口令。</p>
+<p>要在Windows启动时自动加载Pageant，参考微软支持文章，将应用添加到Windows 10启动时自动运行。</p>
+<h1 id="loading-ssh-keys-automatically-on-macos在macos上自动加载ssh密钥">Loading SSH keys automatically on macOS(在macOS上自动加载SSH密钥) <a href="#loading-ssh-keys-automatically-on-macos%e5%9c%a8macos%e4%b8%8a%e8%87%aa%e5%8a%a8%e5%8a%a0%e8%bd%bdssh%e5%af%86%e9%92%a5" class="anchor">🔗</a></h1><p>如果你使用macOS，按照以下步骤配置OpenSSH客户端，这样你就可以在不出现提示的情况下使用受口令保护的SSH密钥。</p>
+<h2 id="prerequisites前提条件-1">Prerequisites(前提条件) <a href="#prerequisites%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6-1" class="anchor">🔗</a></h2><ul>
+<li>macOS 10.13或更高版本。</li>
+</ul>
+<h2 id="before-you-begin开始之前-1">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d-1" class="anchor">🔗</a></h2><p>检查是否有任何现有的SSH密钥。参考GitHub文档文章，检查现有的SSH密钥。</p>
+<p>如果你没有SSH密钥：</p>
+<ol>
+<li>按照GitHub文档文章，生成一个新的SSH密钥来创建一个。</li>
+<li>按照GitHub文档文章，将新的SSH密钥添加到你的GitHub账户中。</li>
+</ol>
+<h2 id="procedure操作步骤-2">Procedure(操作步骤) <a href="#procedure%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4-2" class="anchor">🔗</a></h2><ol>
+<li>
+<p>检查你的家目录<code>.ssh</code>子目录是否包含一个<code>config</code>文件。<strong>注意</strong>：<code>.ssh</code>是一个隐藏子目录。</p>
+</li>
+<li>
+<p>如果<code>~/.ssh/config</code>文件不存在，创建它。</p>
+</li>
+<li>
+<p>将以下内容添加到<code>~/.ssh/config</code>，以指定在认证代理中加载的密钥，并指明目标服务器的使用。确保你在标记为<code>Host *</code>的全局设置之前添加此条目。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">Host</span> <span style="color:#a6e22e">SERVER_NAME</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">UseKeychain</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentitiesOnly</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentityFile</span> <span style="color:#a6e22e">FILE_PATH</span>        
+</span></span></code></pre></div><ul>
+<li><code>SERVER_NAME</code>是使用<code>IdentityFile</code>指定文件的服务器。一个示例值是<code>github.com</code>。</li>
+<li><code>FILE_PATH</code>是你创建的SSH文件的路径。一个示例值是<code>~/.ssh/&lt;FILE&gt;</code>，其中<code>&lt;FILE&gt;</code>可能是<code>id_rsa</code>、<code>id_ecdsa</code>、<code>id_ed25519</code>或自定义名称。</li>
+</ul>
+<p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">Host</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">UseKeychain</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentitiesOnly</span> <span style="color:#a6e22e">yes</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IdentityFile</span> <span style="color:#960050;background-color:#1e0010">~/</span>.<span style="color:#a6e22e">ssh</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">id_ed25519</span>
+</span></span></code></pre></div></li>
+<li>
+<p>打开终端应用程序。</p>
+</li>
+<li>
+<p>将你的密钥文件加载到<code>ssh-agent</code>中，将<code>&lt;FILE&gt;</code>替换为你的密钥的实际文件名，然后在提示时输入你的口令。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-add ~/.ssh/&lt;FILE&gt;
+</span></span></code></pre></div><p>示例:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-add ~/.ssh/id_ed25519
+</span></span></code></pre></div></li>
+</ol>
+<p>配置完成。macOS默认启动<code>ssh-agent</code>，所以你现在可以使用Unity包管理器通过你的受口令保护的SSH密钥从那个Git仓库获取包。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/19/2023-07-19-unity-Documents-3/">Unity中文版-Unity&#39;s Package Manager(二)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/17/2023-07-17-unity-Documents-2/">Unity中文版-Unity&#39;s Package Manager(一)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/09/2023-07-09-unity-ugui/">UGUI中文教程(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/03/2023-07-05-unity-mathematics-1/">游戏数学基础</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(13)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (4)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
