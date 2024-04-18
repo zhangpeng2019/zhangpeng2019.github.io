@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity&#39;s Package Manager(三)(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity&#39;s Package Manager(三)(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-19 11:13:34 &#43;0800 CST">2023/07/19</time>
+        <span class="split">·</span>
+        <span> 1102 words </span>
+        <span class="split">·</span>
+        <span>
+            6 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unitys-package-manager三">Unity’s Package Manager(三) <a href="#unitys-package-manager%e4%b8%89" class="anchor">🔗</a></h1><h1 id="package-manager-window包管理器窗口">Package Manager window(包管理器窗口) <a href="#package-manager-window%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><p>从Unity编辑器的<strong>窗口</strong>菜单访问包管理器窗口。</p>
+<p>你可以使用包管理器窗口来查看哪些包和功能集可以安装或已在你的项目中安装。你也可以使用此窗口来检查哪些包版本可以使用，以及为每个项目安装、删除、禁用或更新包和功能集。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui.png" alt=""></p>
+<p>包管理器窗口显示：</p>
+<p><strong>(A)</strong> 实验性包指示器，如果你的项目有实验性的包，会向你发出警告。</p>
+<p><strong>(B)</strong> <strong>安装</strong>按钮，您可以通过输入git的URL、本地路径或包的名称点击它直接在项目中安装包。</p>
+<p><strong>(C)</strong> 导航面板，你可以使用它来选择上下文，以改变在列表面板**(H)**中显示的内容。</p>
+<p><strong>(D)</strong> 排序菜单，你可以使用它按照名称或日期对包和功能集列表进行排序。</p>
+<p><strong>(E)</strong> 过滤菜单，你可以使用它来缩小在列表面板**(H)<strong>中显示的包的范围。 **过滤**菜单和</strong>清除过滤<strong>按钮对</strong>内置<strong>列表不可用。它们也对</strong>项目中<strong>的上下文不可用 (除非你有基于订阅的包)，因为导航面板中的那个上下文有一个</strong>更新**的嵌套项。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-asset-filters.png" alt=""></p>
+<p><strong>(F)</strong> 搜索框，您可以通过名称查找包和功能集。</p>
+<p><strong>(G)</strong> <strong>高级</strong>菜单，您可以使用它来访问Package Manager的<strong>项目设置</strong>以及更多。详情请参考高级设置部分。</p>
+<p><strong>(H)</strong> 列表面板，展示你在导航面板中选定的类型的包，受你设定的任何过滤器和搜索参数的限制。</p>
+<p><strong>(I)</strong> 详情面板，显示在列表面板中选定的包或功能集特定的信息。</p>
+<p><strong>(J)</strong> 包详细信息标签，显示关于选定包或功能集的更多信息。这些标签是基于选定项变化的。关于这些标签的信息，请参考详情面板。</p>
+<p><strong>(K)</strong> 在项目级别执行以下任何操作的按钮：</p>
+<ul>
+<li>安装或移除功能集</li>
+<li>安装，更新或者移除包</li>
+<li>下载并导入，更新或者移除<strong>Asset Store</strong>包</li>
+<li>禁用或启用内置包</li>
+<li>安装或移除服务</li>
+</ul>
+<p><strong>(L)</strong> 状态栏，当Package Manager加载包和功能集时显示信息。这些信息包括错误和警告信息，可用的Asset Store包的数量，以及加载更多Asset Store包的链接。</p>
+<p><strong>(M)</strong> <strong>刷新列表</strong>按钮让您可以刷新显示的包列表。在<strong>我的资源</strong>上下文中，<strong>刷新列表</strong>是一个菜单，其中有一个<strong>检查更新</strong>选项。您可以使用<strong>检查更新</strong>来检查您电脑上所有包的更新，而不仅仅是在<strong>我的资源</strong>上下文中可见的那些包的更新。</p>
+<h2 id="advanced-settings高级设置">Advanced settings(高级设置) <a href="#advanced-settings%e9%ab%98%e7%ba%a7%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>高级设置菜单允许你执行以下操作：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Menu item</strong>(菜单项)</th>
+<th style="text-align:left"><strong>Action results</strong>(操作结果)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Project Settings</strong>(<strong>项目设置</strong>)</td>
+<td style="text-align:left">选择此项可以打开Package Manager的项目设置，在这里你可以: - 浏览Unity Registry时列出预发布版的包。- 在你的项目中添加，编辑和移除作用域注册。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preferences(首选项)</strong></td>
+<td style="text-align:left">选择此项来查看和设置Unity编辑器及相关窗口和工具的首选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Manual resolve(手动解决)</strong></td>
+<td style="text-align:left">选择此项可以强制Package Manager解决项目的包问题。如果需要，它会重新安装修改过的或缺失的包，并移除多余的包。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="status-bar状态栏">Status bar(状态栏) <a href="#status-bar%e7%8a%b6%e6%80%81%e6%a0%8f" class="anchor">🔗</a></h2><p>Package Manager在其窗口底部的状态栏中显示消息。</p>
+<p>典型的，Package Manager可能会显示四种状态消息：</p>
+<ul>
+<li>
+<p>在新项目中首次打开Package Manager窗口时，会短暂出现<strong>刷新列表</strong>的消息：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-loading.png" alt=""></p>
+<p>当你点击<strong>刷新列表</strong>时，也会出现这条消息。</p>
+</li>
+<li>
+<p>当你在导航面板中选择<strong>我的资产</strong>上下文时，加载条会出现在日期上方。它会显示Asset Store包的数量和一个<strong>加载</strong>链接。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-assets-loadbar.png" alt=""></p>
+</li>
+<li>
+<p>大部分时间，状态栏都会显示Package Manager窗口最近一次刷新其信息的日期和时间。但是，如果Package Manager检测到一个问题，例如网络问题，它会提示你登陆：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-errors.png" alt=""></p>
+</li>
+<li>
+<p>如果你的网络连接正常，但你没有登录到你的Unity账户，Package Manager不会显示任何Asset Store的包。当你在导航面板中选择<strong>我的资产</strong>时，Package Manager会提示你登录：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-unityid.png" alt=""></p>
+<p>在列表面板中，点击<strong>登陆</strong>通过Unity Hub登陆到你的Unity账户。</p>
+</li>
+</ul>
+<p>如需获取如何解决这些错误以及更多问题的信息，参考Package Manager的故障排除。</p>
+<h1 id="access-the-package-manager-window打开package-manager窗口">Access the Package Manager window(打开Package Manager窗口) <a href="#access-the-package-manager-window%e6%89%93%e5%bc%80package-manager%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><p>打开Package Manager窗口，导航至Unity的主菜单，然后前往<strong>窗口</strong> &gt; <strong>Package Manager</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-access.png" alt=""></p>
+<h1 id="navigation-panel导航面板">Navigation panel(导航面板) <a href="#navigation-panel%e5%af%bc%e8%88%aa%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h1><p>使用Package Manager的导航面板选择你想要查看的程序包子集。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-nav.png" alt=""></p>
+<p>导航面板**（A）<strong>，列表面板</strong>（B）<strong>和详细信息面板</strong>（C）**</p>
+<p>导航面板**（A）<strong>选择一个上下文，以在列表面板</strong>（B）**中列出这类包。</p>
+<p>当你从列表面板选择一个包时，其详情会在详细信息视图**（C）**中显示。</p>
+<p>有关导航面板中的上下文信息，请参照包列表上下文。</p>
+<h1 id="list-panel列表面板">List panel(列表面板) <a href="#list-panel%e5%88%97%e8%a1%a8%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h1><p>Package Manager窗口展示了满足你设定条件的功能集，包，或者<strong>Asset Store</strong>包。</p>
+<p>你通过在导航面板中选择一个上下文以及可选地设置额外的筛选和搜索条件来设定这些条件。</p>
+<p>有关搜索工作方式的重要信息，请参考搜索框。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-list.png" alt=""></p>
+<p><strong>(A)</strong> 当你选择<strong>Unity Registry</strong>或<strong>In Project</strong>上下文时，功能集会出现在列表面板的顶部。功能集用功能集图标表示。切换展开图标以展开或收缩功能集列表。当你从列表中选择一个功能集时，其详细信息会显示在右侧。这些详细信息包括简短的描述，所包含包的列表，以及该功能集的<strong>QuickStart</strong>指南的链接。</p>
+<p><strong>(B)</strong> Asset Store包会出现在你从<strong>My Assets</strong>列表导入到项目中的所有包的<strong>In Project</strong>列表中。</p>
+<p><strong>(C)</strong> 注册表组织了已安装到你的项目中或可供安装的包的列表。该列表为来自Unity的注册表和你在项目中安装的其他范围注册表的包分别设立了不同的组。选择左边的展开器以展开或折叠每个注册表的包列表。</p>
+<p><strong>(D)</strong> 当包被锁定，作为依赖性安装，弃用等情况时，图标会在这一列显示。</p>
+<p><strong>(E)</strong> 包版本显示已安装的包的版本。如果包尚未安装或导入，显示的版本即为推荐版本。版本号旁边经常出现特殊图标，表示其状态：</p>
+<ul>
+<li><img src="/2023-07-19-unity-document-4/iconRel.png" alt=""> Released 已发布</li>
+<li><img src="https://docs.unity3d.com/2023.2/Documentation/uploads/Main/iconRC.png" alt=""> Release Candidate 发布候选</li>
+<li><img src="/2023-07-19-unity-document-4/iconPre.png" alt=""> Pre-release 预发布</li>
+<li><img src="/2023-07-19-unity-document-4/iconExp.png" alt=""> Experimental 实验性</li>
+<li><img src="/2023-07-19-unity-document-4/iconCustom.png" alt=""> Custom (embedded) 定制（内嵌)</li>
+</ul>
+<p>对于Asset Store包，显示的版本是你已经下载的版本，或者是在Asset Store中可供下载的版本。</p>
+<p><strong>(F)</strong> 这些图标显示了包或Asset Store包的状态：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Icon:</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconCheck.png" alt=""></td>
+<td style="text-align:left">勾选标记表示包或功能集已经被安装，启用或导入。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconUpdate.png" alt=""></td>
+<td style="text-align:left">更新图标表示包有可用的更新。要更新你的包，请根据包的类型遵循适当的说明： - 对于Unity包，参考切换到另一个包版本。- 对于Asset Store包，参考更新你的Asset Store包。- 你不能更新功能集版本，因为它们固定于编辑器版本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconImport.png" alt=""></td>
+<td style="text-align:left">导入图标表示有一个Asset Store包可供导入。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconDownload.png" alt=""></td>
+<td style="text-align:left">下载图标表示有一个Asset Store包可供下载。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconWarning.png" alt=""></td>
+<td style="text-align:left">警告图标表示包存在问题，例如弃用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/iconError.png" alt=""></td>
+<td style="text-align:left">错误图标表示在安装或加载过程中出了些问题。有关解决错误的信息，参考故障排查。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(G)</strong> &ldquo;<strong>我的资源</strong>&ldquo;上下文显示一个计数器，显示可用但未在列表中显示的Asset Store包的数量。要加载更多Asset Store包，点击<strong>加载</strong>链接。</p>
+<p><strong>注意</strong>：如果你选择了“我的资源”上下文，但是包管理器窗口没有列出任何包，请参考包管理器窗口中的错误消息以获取解释和解决方案。</p>
+<p><strong>(H)</strong> 状态栏显示关于包加载状态和网络警告的消息。</p>
+<p><strong>(I)</strong> 点击<strong>重新加载</strong>按钮，强制包管理器重新加载你的包和功能集。</p>
+<p>默认情况下，包管理器窗口显示选定上下文中所有可用的包和功能集的列表，但你可以过滤列表，以显示满足你标准的包和功能集。</p>
+<p>你也可以在列表中包含预发布的包，并通过名称（ID）或显示名称搜索特定的包或功能集。</p>
+<h1 id="details-panel详情面板">Details panel(详情面板) <a href="#details-panel%e8%af%a6%e6%83%85%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h1><p>包管理器窗口的右侧面板显示了所选包的详细信息。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-details.png" alt=""></p>
+<p>这些详情包括以下信息：</p>
+<p><strong>(A)</strong> 显示名称。</p>
+<p><strong>(B)</strong> 包版本，包发布到仓库或Asset Store的日期，以及任何资源或资产标签。如果适用，可能会显示其他信息：</p>
+<ul>
+<li>版本之前可能还会出现一个信息提示。你可以点击提示获取更多关于包的信息。例如，如果你请求的包版本与已安装的版本不匹配，这个提示就可能出现。</li>
+<li>对于Unity包，当已安装的<strong>功能集</strong>需要所选的包时，版本号之前会出现一个锁定图标。锁定包可以防止你无意中更改包版本，以使功能集继续有效地工作。</li>
+</ul>
+<p><strong>(C)</strong> 主机包的仓库和包作者（仅限Unity包），或者包发布商（Asset Store）。</p>
+<p><strong>(D)</strong> 包名称（仅限Unity包）。</p>
+<p><strong>(E)</strong> 链接到附加资源：</p>
+<ul>
+<li>对于Unity包：链接打开包文档页，包更新日志（如果有）和许可信息。</li>
+<li>对于Asset Store包：链接打开Asset Store上Asset Store包的官方页面，以及链接到发布商的支持页面和他们的网站（如果有）。</li>
+</ul>
+<p><strong>(F)</strong> 包详细信息选项卡，根据包类型不同：</p>
+<ul>
+<li>
+<p>对于Unity包：</p>
+<ul>
+<li>
+<p><strong>描述</strong>：包的简短描述。</p>
+</li>
+<li>
+<p><strong>版本历史</strong>：包管理器始终列出已安装或推荐的包版本，并提供安装、更新或删除的操作按钮。如果有其他支持的版本可用，并且与你的Unity编辑器版本兼容，包管理器也会列出这些版本。展开每个条目以检查发布日期，该版本的更新日志，以及指向完整更新日志的链接。</p>
+</li>
+<li>
+<p>依赖性: 包的依赖信息。此部分两个方向列出依赖项：</p>
+<ul>
+<li><strong>正在使用</strong>：此包是否依赖于另一个包，如果是，哪个版本。已安装的包在版本号后显示依赖项的状态。</li>
+</ul>
+</li>
+<li>
+<p><strong>被使用</strong>：是否有另一个包依赖于此包，如果是，哪个版本。</p>
+</li>
+<li>
+<p><strong>样本</strong>：只有当包作者提供了样本时，此选项卡才会显示。选项卡旁边显示一个描述和<strong>导入</strong>按钮。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>对于Asset Store包：</p>
+<ul>
+<li>
+<p>概览 : 关于包的信息</p>
+<ul>
+<li>你分配给此Asset Store包的任何自定义标签。</li>
+</ul>
+</li>
+<li>
+<p>支持的Unity版本。</p>
+<ul>
+<li>所需的磁盘空间。</li>
+<li>你获取Asset Store包的日期。</li>
+<li>包的简短描述。</li>
+</ul>
+</li>
+<li>
+<p><strong>发布</strong>：发布信息，包括原始包的发布日期和当前包的发布日期。</p>
+</li>
+<li>
+<p><strong>导入的资源</strong>：列出了你从Asset Store包导入到你的项目中的项。只有下载了包并将其导入到你的项目后，此选项卡才会出现。</p>
+</li>
+<li>
+<p><strong>图片</strong>：市场推广图片、音频和视频在Asset Store上的缩略图。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>(G)</strong> 解锁、安装、更新、删除或禁用Unity包的按钮。</p>
+<p><strong>(H)</strong> 下载、导入或删除Asset Store包的控件，以及下载和导入包更新的控件。有时是按钮，有时是菜单，最常见的操作显示在最前面。当你的项目和缓存与Asset Store包的最新版本保持同步时，<strong>包管理器</strong>窗口会显示<strong>在项目中</strong>（和一个勾选标记）。具体来说，这意味着该包的至少一个项目是最新的。然而，即使显示<strong>在项目中</strong>，你仍然可以从菜单中选择其他操作。</p>
+<h2 id="labels标签">Labels标签 <a href="#labels%e6%a0%87%e7%ad%be" class="anchor">🔗</a></h2><p>一些包和 Asset Store 包在包名称或版本号旁边显示标签。这些标签提供关于包的源或状态的信息：</p>
+<ul>
+<li>源标签类型表示包的来源（例如，它是来自本地文件夹，还是你从包注册表下载的）。</li>
+<li>状态标签类型表示包的开发周期阶段。例如，它是一个实验包，还是在特定Unity版本的发布轨道上。</li>
+<li>Asset Store 标签表明该包起源于Asset Store。这些标签也可能表示一种特殊状态（例如，已弃用）。</li>
+</ul>
+<p>一些源标签暗示状态标签，反之亦然。例如，如果你将一个包嵌入到你的项目中，则Unity自动假定它是一个正在开发的自定义包，所以在详情面板中只显示<strong>自定义</strong>标签。</p>
+<p>包管理器窗口显示以下值：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Label</strong></th>
+<th style="text-align:left"><strong>Type</strong></th>
+<th style="text-align:left"><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Released(发布)</td>
+<td style="text-align:left">state</td>
+<td style="text-align:left">Unity官方已经发布并全面支持这个包。质量保证团队已经测试过这个版本的包，并保证它与特定版本的编辑器以及为该编辑器版本发布的所有其他包兼容。</td>
+</tr>
+<tr>
+<td style="text-align:left">Release Candidate(发布候选)</td>
+<td style="text-align:left">state</td>
+<td style="text-align:left">这个版本的包将在下一个Tech Stream的当前发布周期内完全发布。</td>
+</tr>
+<tr>
+<td style="text-align:left">Pre-Release(预发布)</td>
+<td style="text-align:left">state</td>
+<td style="text-align:left">这个版本的包处于开发的早期阶段，但Unity保证在长期支持（LTS）发布周期结束时将其发布。它可能还没有完整的文档，或者没有完全通过开发团队或Unity的质量保证团队的验证。</td>
+</tr>
+<tr>
+<td style="text-align:left">Experimental()实验版</td>
+<td style="text-align:left">state</td>
+<td style="text-align:left">这些包是新包，或者包含实验性的修改。Unity不支持Experimental包，因为它们处于开发的早期阶段。</td>
+</tr>
+<tr>
+<td style="text-align:left">Deprecated(已弃用)</td>
+<td style="text-align:left">state</td>
+<td style="text-align:left">这些包在该Unity编辑器版本中不再开发，或者一个特定版本的包有严重问题。Unity不支持已弃用的包。</td>
+</tr>
+<tr>
+<td style="text-align:left">Custom(自定义)</td>
+<td style="text-align:left">state, source</td>
+<td style="text-align:left">这个包嵌入在你的项目中。大多数自定义包开发者开始时会在他们的项目中嵌入一个新包，这就是为什么显示<strong>自定义</strong>标签。</td>
+</tr>
+<tr>
+<td style="text-align:left">local(本地)</td>
+<td style="text-align:left">source</td>
+<td style="text-align:left">包管理器从你本地磁盘上的一个文件夹或tarball文件，而非你的Unity项目文件夹，安装了这个包。</td>
+</tr>
+<tr>
+<td style="text-align:left">git</td>
+<td style="text-align:left">source</td>
+<td style="text-align:left">包管理器直接从Git仓库在你的项目中安装了这个包。</td>
+</tr>
+<tr>
+<td style="text-align:left">asset store</td>
+<td style="text-align:left">asset</td>
+<td style="text-align:left">这是一个你从Asset Store购买或下载的Asset Store包。</td>
+</tr>
+<tr>
+<td style="text-align:left">deprecated(已弃用)</td>
+<td style="text-align:left">asset</td>
+<td style="text-align:left">除非你之前已经下载或购买过这个包，否则这个包在Asset Store上不再可用。换句话说，新的客户无法再发现它。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="features-details-panel特性详情面板">Features (details panel)(特性（详情面板）) <a href="#features-details-panel%e7%89%b9%e6%80%a7%e8%af%a6%e6%83%85%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h1><p>在包管理器窗口中，当你从列表面板中选择一个特性集后，右侧的详情面板会显示选中的特性集的详细信息。详情面板会以一种微型包管理器窗口的形式展现特性集的内容：</p>
+<p><img src="/2023-07-19-unity-document-4/fs-details.png" alt=""></p>
+<p><strong>(A)</strong> 当你从列表面板选择一个特性集时，其信息将在详情面板中显示。</p>
+<p><strong>(B)</strong> 特性集的显示名称。</p>
+<p><strong>(C)</strong> 特性集的名称。</p>
+<p><strong>(D)</strong> 一个<strong>安装</strong>或<strong>移除</strong>特性集的按钮。</p>
+<p><strong>(E)</strong> 链接到这个特性集的<strong>快速入门</strong>指南，包含了如何一起使用这个包集的详细信息。</p>
+<p><strong>(F)</strong> 特性集详情选项卡：</p>
+<ul>
+<li>
+<p><strong>描述</strong>：对特性集的简介。</p>
+</li>
+<li>
+<p>包含的包 这个选项卡显示以下信息：</p>
+<ol>
+<li>包含的包的列表。</li>
+<li>选中的包的详细信息。显示的信息包括包的显示名称，特性集推荐或已安装的版本，以及其描述。</li>
+<li>一个将选中的包加载到包管理器窗口的快捷方式。选择这个快捷方式会替换列表面板和详情面板中的特性集。当你直接从包中访问详情时，包管理器窗口提供的信息比你从特性集内部访问时更多。例如，包详情视图显示依赖信息和包含的任何示例。</li>
+</ol>
+</li>
+</ul>
+<h2 id="package-version-overrides包版本覆盖">Package version overrides(包版本覆盖) <a href="#package-version-overrides%e5%8c%85%e7%89%88%e6%9c%ac%e8%a6%86%e7%9b%96" class="anchor">🔗</a></h2><p>特性集是一组针对特定版本的Unity良好协同工作的包的集合，这意味着包管理器会安装你的特性集所需的特定包版本。然而，包管理器实际上可能会安装一个不同的版本（覆盖请求的版本）的原因有几个：</p>
+<ul>
+<li>
+<p>另一个包或特性集需要相同包的不同版本，包管理器通过覆盖来解决包版本。</p>
+</li>
+<li>
+<p>你请求了一个不同的包版本，它与特性集所需的版本没有冲突。在这种情况下，一个重置按钮会显示，你可以点击它，返回到特性集所需（推荐）的版本。</p>
+<ul>
+<li><strong>注意</strong>：当包版本中的主要或次要数字改变时，<strong>重置</strong>按钮才会显示。当包版本中的补丁号改变时，<strong>重置</strong>按钮不会显示。关于语义版本方案的更多信息，请参考版本控制。</li>
+</ul>
+</li>
+</ul>
+<p>如果包管理器安装的版本并非你请求的版本，信息提示会解释更改的原因。</p>
+<h1 id="finding-packages-and-feature-sets查找包和特性集">Finding packages and feature sets(查找包和特性集) <a href="#finding-packages-and-feature-sets%e6%9f%a5%e6%89%be%e5%8c%85%e5%92%8c%e7%89%b9%e6%80%a7%e9%9b%86" class="anchor">🔗</a></h1><p>包管理器窗口提供了几种方法帮助你找到特定的包或<strong>特性集</strong>：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-find.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>(A)</strong></td>
+<td>Packages list context(包列表上下文)</td>
+<td>从导航面板选择一个“上下文”，以确定显示哪个包列表。上下文可能是包的来源，如注册服务器，资源商店，或Unity编辑器本身（内置包）。然而，<strong>项目中</strong> 上下文只显示那些已经安装在当前项目中的包和特性集，无论它们的来源是什么。例如，你可以选择 <strong>我的资源</strong> 上下文，只在列表中显示你可用的资源商店包，或者选择 <strong>项目中</strong> 上下文，显示资源商店包，Unity包，以及已经安装在你的项目中的特性集。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(B)</strong></td>
+<td><strong>Sort(排序)</strong></td>
+<td>以名称，发布日期（<strong>Unity注册表</strong>，<strong>我的注册表</strong>，<strong>项目中</strong>），购买日期（仅限资源商店包），或最近更新日期（仅限<strong>我的资产</strong>）的升序或降序排列列表。例如，如果你想找到一个最近更新的资源商店包，但你记不住它的名称，可以选择 <strong>我的资产</strong>，然后按 <strong>最近更新</strong> 排序，浏览列表找到它。排序影响每个可折叠区域下的项，但保持区域的位置不变。如果你从Z到A排序，包管理器将在 <strong>特性</strong> 部分内将所有的特性集重新排序为Z到A，以及每个区域下的所有包，但不会在列表中混淆内容。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(C)</strong></td>
+<td><strong>Filters(过滤)</strong></td>
+<td>选择选项来缩小列出的包。在 <strong>我的资产</strong> 中列出的包有增强的过滤选项：<strong>状态</strong> （已下载，已导入，有可用更新，未标记，隐藏，已弃用）;<strong>类别</strong> （3D，附加组件，2D，音频等）;<strong>标签</strong> （你在资源商店中定义的自定义标签）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>(D)</strong></td>
+<td>Search(搜索)</td>
+<td>使用搜索框按名称查找Unity包或 <strong>资源商店</strong> 包。</td>
+</tr>
+</tbody>
+</table>
+<p>使用这些控制可以缩小在列表面板中显示的包和特性集，以及它们的显示顺序。这使得更容易找到你正在查找的内容，或者在你不确切知道你想要什么的时候帮助你浏览。</p>
+<p>当你一起使用多个这些控制时，你可以缩小在列表中出现的匹配集。</p>
+<p>当你从注册表（非资产商店）找到一个包后，你可以选择它，然后可能在详情面板中找到一个特定的版本。对于特性集，总是只有一个版本可用，所以你可以安装它或移除它。</p>
+<h2 id="finding-a-specific-version寻找特定版本">Finding a specific version(寻找特定版本) <a href="#finding-a-specific-version%e5%af%bb%e6%89%be%e7%89%b9%e5%ae%9a%e7%89%88%e6%9c%ac" class="anchor">🔗</a></h2><p>要找到特定的包版本：</p>
+<ol>
+<li>
+<p>在Unity中，通过打开<strong>窗口</strong>菜单并选择<strong>包管理器</strong>来打开<strong>包管理器</strong>窗口。</p>
+</li>
+<li>
+<p>如果你正在寻找一个预发布的包，按照以下步骤进行：</p>
+<ul>
+<li>
+<p>在高级菜单下选择<strong>项目设置</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-settings.png" alt=""></p>
+</li>
+<li>
+<p>在<strong>高级设置</strong>组中，选择<strong>启用预发布包</strong>。</p>
+</li>
+<li>
+<p>关闭项目设置窗口。任何预发布包现在都会带有指示器显示在列表中。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>你可以浏览包列表，或者用以下方法之一找到特定的包：</p>
+<ul>
+<li>通过名称或关键字搜索包。<strong>注意：<strong>你在导航面板中选择的上下文限制了搜索范围。例如，如果你正在搜索一个资源商店的包，确保在开始搜索之前选择了</strong>我的资源</strong>上下文。当你切换上下文时，包管理器窗口会清空搜索框。但如果你返回到之前的上下文，包管理器窗口会恢复你的搜索词。</li>
+<li>对列表进行排序（例如，按<strong>最近更新</strong>，以找到最近更新的包）。</li>
+<li>对列表应用过滤器。</li>
+</ul>
+</li>
+<li>
+<p>从包列表中选择一个包。</p>
+</li>
+<li>
+<p>对于来自Unity注册表的包，在详细信息面板中选择<strong>版本历史</strong>选项卡。如果有多个版本可用，展开条目以显示每个版本的特定信息。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-update.png" alt=""></p>
+</li>
+<li>
+<p>当<strong>版本历史</strong>选项卡显示时，你可以在展开特定版本时执行各种操作：</p>
+<ul>
+<li>你可以查看该版本的更新日志，并点击<strong>更新日志</strong>以查看跨版本的所有更改列表。</li>
+<li>如果你还没有在你的项目中安装这个包，你可以安装这个版本。</li>
+<li>如果你的项目中已经安装了这个包的另一个版本，你可以将包更新到这个版本。</li>
+<li>如果你在项目中安装了这个包，但不再需要它，你可以从项目中移除这个包。</li>
+</ul>
+</li>
+</ol>
+<h1 id="packages-list-context包列表上下文">Packages list context(包列表上下文) <a href="#packages-list-context%e5%8c%85%e5%88%97%e8%a1%a8%e4%b8%8a%e4%b8%8b%e6%96%87" class="anchor">🔗</a></h1><p>要改变在包管理器窗口的列表面板中显示哪些包，从导航面板中选择你想要的上下文。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-unityregistry.png" alt=""></p>
+<p>你可以从以下选项中选择：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Context</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>In Project(项目中)</strong></td>
+<td style="text-align:left">显示安装在项目中的所有特性集和包，包括本地、git和嵌入的包，以及从任何注册表安装的包。列表还包括你从<strong>我的资源</strong>上下文导入的任何资源商店的包。<strong>项目中</strong>有一个嵌套条目，<strong>更新</strong>，列出了你的项目中可以更新的所有包，包括资源商店的包。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Unity Registry(Unity注册表)</strong></td>
+<td style="text-align:left">显示Unity包注册表上的所有<strong>特性集</strong>和包，无论它们是否已经在你的项目中安装。这不包括从任何其他位置或从任何作用域注册表安装的包。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Assets(我的资源)</strong></td>
+<td style="text-align:left">显示你用当前登录的Unity ID购买的所有资源商店的包。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Built-in(内置)</strong></td>
+<td style="text-align:left">只显示内置的Unity包，这些包代表Unity的核心功能。你可以用这些包来开启和关闭Unity模块。 <strong>提示</strong>：你可以在Unity脚本API中了解更多关于每个内置包（模块）实现的内容。每个模块程序集页面都列出了内置包实现的哪些API。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Services(服务)</strong></td>
+<td style="text-align:left">显示集成服务，帮助你吸引、保留和变现用户。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Registries(我的注册表)</strong></td>
+<td style="text-align:left">显示这个项目中安装的任何作用域注册表中可用的包。这个上下文只有在你在这个项目中安装了一个作用域注册表时才会出现。如果你安装了一个作用域注册表但它没有在<strong>我的注册表</strong>上下文中列出，或者<strong>我的注册表</strong>上下文根本无法使用，那可能是因为你添加的包注册表服务器没有实现<code>/-/v1/search</code>或<code>/-/all</code>端点，这意味着它不兼容Unity的包管理器。</td>
+</tr>
+</tbody>
+</table>
+<p>当你在导航面板中选择一个上下文时，列表面板会显示符合你选择的特性集和包。</p>
+<p><strong>注意</strong>：如果你在搜索框中输入了任何文本或设定了任何过滤器，列表面板只会显示符合上下文、搜索条件和活动过滤器的特性集和包。</p>
+<h1 id="sorting-the-list排序列表">Sorting the list(排序列表) <a href="#sorting-the-list%e6%8e%92%e5%ba%8f%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h1><p>你可以根据<strong>特性集</strong>或包的名字进行升序或降序排序。根据列表上下文，你也可能有一个或多个日期可以排序。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Context</strong></th>
+<th style="text-align:left"><strong>Menu options</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>In Project(项目中)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-inproj.png" alt=""></td>
+<td style="text-align:left">- 名称 - 创建者将这个特性集或包发布到Unity注册表、资源商店或作用域注册表的日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Unity Registry(Unity注册表)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-unity.png" alt=""></td>
+<td style="text-align:left">- 名称 - 创建者将这个特性集或包发布到Unity注册表的日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Assets(我的资源)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-assets.png" alt=""></td>
+<td style="text-align:left">- 名称 - 你从资源商店获得这个包的日期 - 这个资源商店包的最后更新日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Built-in(内置)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-core.png" alt=""></td>
+<td style="text-align:left">- 名称是唯一的排序选项</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Services(服务)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-services.png" alt=""></td>
+<td style="text-align:left">- 名称 - 最后一次发布此服务包的日期</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Registries(我的注册表)</strong></td>
+<td style="text-align:left"><img src="/2023-07-19-unity-document-4/upm-ui-sort-myreg.png" alt=""></td>
+<td style="text-align:left">- 名称 - 创建者将此包发布到作用域注册表的日期</td>
+</tr>
+</tbody>
+</table>
+<h1 id="filtering-the-list过滤列表">Filtering the list(过滤列表) <a href="#filtering-the-list%e8%bf%87%e6%bb%a4%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h1><p>要缩小在列表面板中出现的包的范围，从<strong>包管理器</strong>窗口选择<strong>过滤器</strong>菜单。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-filter2.png" alt=""></p>
+<p><strong>注意：<strong>当你在导航面板中选择</strong>项目中</strong>时，过滤控制被禁用，因为<strong>项目中</strong>有一个嵌套视图来列出有更新的包。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-filter2b.png" alt=""></p>
+<p>以<strong>我的资源</strong>列表为例，你可以使用以下类型的过滤选项来缩小显示的<strong>资产商店</strong>包列表：</p>
+<ul>
+<li><strong>状态</strong>组让你选择一个<strong>状态</strong>，列出具有该状态的包。例如，如果你选择<strong>未标记</strong>，那么只有那些你从未分配标签的资产商店包将出现在列表中。</li>
+<li>选择一个或多个<strong>类别</strong>，列出与你的选择匹配的资产商店包。</li>
+<li>选择一个或多个你在资产商店为你的包创建的自定义<strong>标签</strong>。如果你选择了多于一个的标签，那么只有那些匹配任何一个标签的包会保留在列表中。关于如何创建和管理标签，请参考使用标签组织我的资源。</li>
+</ul>
+<p>如果你需要重新开始，点击<strong>过滤器</strong>菜单旁的<strong>清除过滤器</strong>，将所有过滤选项重置为默认值。</p>
+<h1 id="search-box搜索框">Search box(搜索框) <a href="#search-box%e6%90%9c%e7%b4%a2%e6%a1%86" class="anchor">🔗</a></h1><p>你可以在包管理器窗口的列表面板顶部的搜索框，用来查找任何与你输入的文本匹配的包或<strong>功能集</strong>。</p>
+<p>随着你输入搜索文字，包管理器窗口更新列表，显示你在导航面板中选中的上下文每个匹配的包或功能集。</p>
+<p><strong>注意</strong>：你可以搜索Unity包和功能集或者<strong>资产商店</strong>包。你选择的列表上下文定义了包管理器搜索的位置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>List context</strong></th>
+<th style="text-align:left"><strong>Where the Package Manager searches</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>In Project(项目中)</strong></td>
+<td style="text-align:left">包缓存和你当前项目下的<code>Packages</code>文件夹。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Unity Registry(Unity注册表)</strong></td>
+<td style="text-align:left">Unity注册表上的包和功能集列表。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Assets(我的资源)</strong></td>
+<td style="text-align:left">和你的Unity帐户可用的资产商店包列表。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Built-in(内置)</strong></td>
+<td style="text-align:left">Unity注册表上的内置包列表。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Services(服务)</strong></td>
+<td style="text-align:left">你可以安装的集成服务列表。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Registries(我的注册表)</strong></td>
+<td style="text-align:left">为你的项目定义的任何有限定范围的注册表。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要</strong>：包管理器窗口会根据每个上下文记住你的搜索词。例如，如果你在<strong>项目中</strong>设置了一个搜索词，包管理器窗口会过滤该列表。如果你选择了任何其他上下文，包管理器窗口会重置搜索并列出该上下文的所有包。但是，如果你返回到<strong>项目中</strong>，包管理器窗口会恢复你的搜索词并再次过滤<strong>项目中</strong>的列表。</p>
+<p>为了进一步说明这种每个上下文的搜索范围，如果你在不同的上下文中输入相同的搜索词，你将得到不同的结果。例如，如果你选择<strong>Unity注册表</strong>上下文，然后在搜索框中输入<code>web</code>，结果会与你选择<strong>内置</strong>上下文并搜索同一词语时不同：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-search.png" alt=""></p>
+<p>你可以通过以下方式搜索包或功能集：</p>
+<ul>
+<li>其显示名称（如详细信息面板顶部所示）。</li>
+<li>其名称（ID）（仅限Unity包和功能集），这是以<strong>com.unity</strong> 开头的注册包名。</li>
+</ul>
+<p>你的搜索文本可以匹配名称的开头、中间或结尾。包管理器窗口会动态更新列表。</p>
+<h1 id="install-a-feature-set-from-the-unity-registry从unity注册表安装功能集">Install a feature set from the Unity registry(从Unity注册表安装功能集) <a href="#install-a-feature-set-from-the-unity-registry%e4%bb%8eunity%e6%b3%a8%e5%86%8c%e8%a1%a8%e5%ae%89%e8%a3%85%e5%8a%9f%e8%83%bd%e9%9b%86" class="anchor">🔗</a></h1><p>安装<strong>功能集</strong> 与从Unity注册表安装包相似，只不过你在<strong>功能</strong>扩展器下面而不是<strong>包</strong>扩展器下面查找功能集。</p>
+<ol>
+<li>
+<p>打开<strong>包管理器</strong>窗口，从导航面板中选择<strong>Unity注册表</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-unityregistry-1713439592232-69.png" alt=""></p>
+</li>
+<li>
+<p>从包列表中选择你想要安装的功能集。功能集信息会在详情面板中显示。</p>
+</li>
+<li>
+<p>可选：在详情面板中点击<strong>快速启动</strong>链接，了解更多关于这个功能集以及你如何共同使用其包的信息。</p>
+</li>
+<li>
+<p>在详情面板中，选择<strong>安装</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/fs-install.png" alt=""></p>
+</li>
+</ol>
+<p><strong>注释:</strong></p>
+<ul>
+<li>如果你需要移除功能集，点击详情面板中的<strong>删除</strong>按钮。</li>
+<li>你可以使用多选功能一键安装多个功能集。欲了解更多信息，请参考在多个包或功能集上执行操作。</li>
+</ul>
+<h1 id="install-a-package-from-a-registry从注册表安装包">Install a package from a registry(从注册表安装包) <a href="#install-a-package-from-a-registry%e4%bb%8e%e6%b3%a8%e5%86%8c%e8%a1%a8%e5%ae%89%e8%a3%85%e5%8c%85" class="anchor">🔗</a></h1><p><strong>注意</strong>：当你使用包管理器安装包时，包管理器会评估其他包及其依赖关系，以确定你选择的版本是否与其他版本有冲突。如果检测到任何冲突或限制，它将安装解决这些问题的版本。欲了解更多信息，请参考依赖关系与解析。</p>
+<p>从Unity注册表或你的项目中定义的任何作用域注册表安装包的过程是相同的。</p>
+<ol>
+<li>
+<p>打开<strong>包管理器</strong>窗口，从导航面板中选择<strong>Unity注册表</strong>。如果你设置了作用域注册表，并且想从作用域注册表安装包，请选择<strong>我的注册表</strong>。</p>
+<p><strong>注意</strong>：如果你没有为这个项目定义任何作用域注册表，那么导航面板中将不会显示<strong>我的注册表</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-unityregistry-1713439596313-74.png" alt=""></p>
+</li>
+<li>
+<p>从包列表中选择你想要安装的包。包信息将在详情面板中显示。</p>
+<p><strong>注意</strong>：如果包管理器没有在包列表中列出你想要安装的包，那可能是一个不可被发现的包，例如实验性质的或预发布的包。包管理器不会显示实验性质的包，除非它们已经被安装，但是在你启用预发布包项目设置后，预发布的包会在包管理器中显示。</p>
+</li>
+<li>
+<p>选择要安装的版本。如果你想要了解更多关于可用版本的信息，可以参考查找特定版本。</p>
+</li>
+<li>
+<p>点击<strong>安装</strong>。</p>
+</li>
+</ol>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-install.png" alt="Install button in the corner of the details panel"></p>
+<p>当进度条完成时，新的包就已经准备好可以使用了。</p>
+<p><strong>注意</strong>：你可以使用多选功能一键安装多个包。欲了解更多信息，请参考在多个包或功能集上执行操作。</p>
+<h1 id="install-a-package-from-a-local-folder从本地文件夹安装包">Install a package from a local folder(从本地文件夹安装包) <a href="#install-a-package-from-a-local-folder%e4%bb%8e%e6%9c%ac%e5%9c%b0%e6%96%87%e4%bb%b6%e5%a4%b9%e5%ae%89%e8%a3%85%e5%8c%85" class="anchor">🔗</a></h1><p>包管理器可以从你电脑的任何位置加载包，即使你把它保存在你的Unity项目文件夹外面（例如，如果你有一个名为<strong>com.unity.my-local-package</strong>的包，并且你把它保存在<code>桌面</code>上，但你的Unity项目存放在<code>文档</code>文件夹中）。</p>
+<p>你也可以使用你项目文件夹内的一个文件夹，只要它不是预留的项目子文件夹之一。</p>
+<p>要从本地磁盘安装包：</p>
+<ol>
+<li>
+<p>打开包管理器窗口，如果它还未打开的话。</p>
+</li>
+<li>
+<p>点击工具栏中的<strong>安装</strong>按钮。安装包的选项将会出现。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-local.png" alt=""></p>
+</li>
+<li>
+<p>从安装菜单中选择<strong>从磁盘安装包</strong>，将会弹出一个文件浏览器。</p>
+</li>
+<li>
+<p>导航到你的<strong>本地包</strong>的文件夹根目录。</p>
+</li>
+<li>
+<p>在文件浏览器中双击 <code>package.json</code> 文件。</p>
+</li>
+</ol>
+<p>文件浏览器关闭，且该包现在会在包列表中出现，并带有标签。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-local-ver.png" alt=""></p>
+<p>请记住，如果你已经更新至注册表版本，但你在本地项目上做过更改，那么注册表版本将会覆盖你的本地更改。</p>
+<h2 id="local-packages-inside-your-project项目内的本地包">Local packages inside your project(项目内的本地包) <a href="#local-packages-inside-your-project%e9%a1%b9%e7%9b%ae%e5%86%85%e7%9a%84%e6%9c%ac%e5%9c%b0%e5%8c%85" class="anchor">🔗</a></h2><p>你可以将本地包放置在项目内的任何地方，除了以下文件夹：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Project folder:</strong></th>
+<th style="text-align:left"><strong>Reason:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>Assets</code></td>
+<td style="text-align:left">如果你在这个文件夹内放置一个包，Asset Database会将这个文件夹下的任何资源导入两次：一次作为资源，一次作为包内容。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Library</code></td>
+<td style="text-align:left">不要修改这个文件夹的内容。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ProjectSettings</code></td>
+<td style="text-align:left">这个文件夹只用于存放设置资产。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Packages</code></td>
+<td style="text-align:left">如果你在这个文件夹下放置一个包，不论<strong>项目清单</strong>中的引用如何，包管理器会自动把它解释为<strong>嵌入包</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="install-a-package-from-a-local-tarball-file从本地tarball文件安装包">Install a package from a local tarball file(从本地tarball文件安装包) <a href="#install-a-package-from-a-local-tarball-file%e4%bb%8e%e6%9c%ac%e5%9c%b0tarball%e6%96%87%e4%bb%b6%e5%ae%89%e8%a3%85%e5%8c%85" class="anchor">🔗</a></h1><p>包管理器可以从本地存储的tarball文件加载包。这适用于高级场景，其中你可以将包发布工作流分解成多部分，你的用户可以使用其中部分的中间产品。</p>
+<p>例如，如果你在你的自定义包仓库上设置了持续集成（CI），那么你可以从包文件夹创建一个Gzip tarball文件。你可以通过使用npm pack CLI或者Unity包管理器的Pack API来创建一个<code>Gzip</code> tarball文件。如果你创建了一个<code>Gzip</code> tarball文件，在你将其发布到自定义注册表之前进行测试。</p>
+<p>从本地tarball文件安装包：</p>
+<ol>
+<li>
+<p>打开包管理器窗口，如果它还未开启的话。</p>
+</li>
+<li>
+<p>点击工具栏中的<strong>安装</strong>按钮。安装包的选项就会出现。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-tarball.png" alt=""></p>
+</li>
+<li>
+<p>在安装菜单中选择 <strong>从tarball安装包</strong> 以打开文件浏览器。</p>
+</li>
+<li>
+<p>跳转到你保存tarball的文件夹。</p>
+<p><strong>注意</strong>：只有具有<code>.tgz</code>扩展名的tarballs，包管理器的文件选择对话框才能识别。</p>
+</li>
+<li>
+<p>在文件选择对话框中双击tarball文件。</p>
+</li>
+</ol>
+<p>文件选择对话框将会关闭，现在包会带有标签出现在列表面板中。</p>
+<h1 id="install-a-package-from-a-git-url从git-url安装包">Install a package from a Git URL(从Git URL安装包) <a href="#install-a-package-from-a-git-url%e4%bb%8egit-url%e5%ae%89%e8%a3%85%e5%8c%85" class="anchor">🔗</a></h1><p>包管理器可以从远程服务器上的Git仓库加载包。</p>
+<h2 id="prerequisites先决条件">Prerequisites(先决条件) <a href="#prerequisites%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6" class="anchor">🔗</a></h2><ul>
+<li>在你的电脑上安装Git客户端（最低版本为2.14.0）。</li>
+<li>在Windows上，将Git可执行路径添加到<code>PATH</code>系统环境变量。</li>
+<li>如果目标仓库使用Git LFS跟踪文件，需要在你的电脑上安装Git LFS客户端。</li>
+<li>阅读关于在项目中使用Git依赖项的信息。</li>
+</ul>
+<h2 id="procedure流程">Procedure(流程) <a href="#procedure%e6%b5%81%e7%a8%8b" class="anchor">🔗</a></h2><p>如需从Git URL安装包：</p>
+<ol>
+<li>
+<p>打开包管理器窗口，如果它还未开启的话。</p>
+</li>
+<li>
+<p>在包管理器的工具栏中打开<strong>安装</strong>菜单。</p>
+</li>
+<li>
+<p>安装包的选项就会出现。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-giturl.png" alt=""></p>
+</li>
+<li>
+<p>在安装菜单中选择 <strong>从git URL安装包</strong>。文本框和<strong>安装</strong>按钮将会出现。</p>
+</li>
+<li>
+<p>在文本框中输入一个有效的Git URL。关于如何构造有效的Git URL的信息，请参考以下内容：</p>
+<p>Git URLs和扩展语法</p>
+<p>. 有效的Git URL示例包括:</p>
+<ul>
+<li><code>https://github.example.com/myuser/myrepo.git</code> （如果你的包在仓库的根目录中）。</li>
+<li><code>https://github.example.com/myuser/myrepo.git?path=/subfolder</code> （如果你的包在仓库内的子文件夹中）。</li>
+</ul>
+</li>
+<li>
+<p>选择<strong>安装</strong>。</p>
+</li>
+</ol>
+<p>如果Unity能够成功安装包，该包现在将会带有标签出现在包列表中。如果Unity无法安装包，Unity控制台将显示错误消息，比如：</p>
+<ul>
+<li>没有找到‘Git’可执行程序</li>
+<li>Git-lfs：未找到命令</li>
+<li>未找到仓库</li>
+<li>无法读取用户名：终端提示被禁用</li>
+</ul>
+<p>点击错误消息链接在解决问题页面获取一些帮助。</p>
+<p><strong>提示</strong>：如果你想检查更新并从仓库更新你的Git依赖项到最新版本，点击<strong>更新</strong>。你也可以使用从git URL安装包菜单项来更新你的Git依赖项。关于Git依赖项的信息，请参阅已锁定的Git依赖项。</p>
+<h1 id="install-a-package-from-a-registry-by-name通过名字从注册表中安装包">Install a package from a registry by name(通过名字从注册表中安装包) <a href="#install-a-package-from-a-registry-by-name%e9%80%9a%e8%bf%87%e5%90%8d%e5%ad%97%e4%bb%8e%e6%b3%a8%e5%86%8c%e8%a1%a8%e4%b8%ad%e5%ae%89%e8%a3%85%e5%8c%85" class="anchor">🔗</a></h1><p>如果你知道你想安装的包的确切名称，你可以使用 <strong>按名称安装包</strong> 选项进行安装。这是从注册表中安装包的一种快速方式。</p>
+<p>指定版本是可选的。如果你不知道要安装哪个版本，或者想安装最新的兼容版本，只需输入包的名称。</p>
+<p><strong>注意</strong>：最新的兼容版本可能不是最新发布的包。如果有一个已发布的包版本和一个更新的预发行或实验版本，包管理器会选择已发布的包版本，除非你在可选的 <strong>版本</strong> 字段中明确输入一个值。</p>
+<h2 id="before-you-begin开始之前">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d" class="anchor">🔗</a></h2><p>确保你知道包的名称。包的名字是一个唯一的标识符，而不是用户界面和文档上使用的显示名称。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-name-v-dname.png" alt=""></p>
+<p>对于Unity注册表中的包，名称的唯一标识符使用反向域名表示法，格式为 <code>com.unity.example</code>。对于在范围内注册表中的包，名称可能不会遵循同样的模式。</p>
+<p>对于Unity注册表和你已添加的任何范围内注册表，如果你在包管理器中可以看到包，选择它并在<strong>检查器</strong>窗口中查看其详细信息。<strong>名字</strong>值就是包的名称。</p>
+<p>确定包名的其他方法因托管它的注册表的不同而不同：</p>
+<ul>
+<li>对于Unity注册表中的包:
+<ul>
+<li>使用已发布包和预发布包中的列表，通过其显示名称（如 <code>2D Animation</code>）识别包。超链接值就是那个包的名称；在这个例子中，是<code>com.unity.2d.animation</code>。</li>
+<li>包的文档可能有明确提供<code>名字</code>值的安装说明。</li>
+<li>常常会在包文档URL的地址中嵌套包名。以<strong>AR</strong>基础包为例，其包文档的URL是<code>https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html</code>；<code>com.unity.xr.arfoundation</code>这一部分就是该包的名称。</li>
+</ul>
+</li>
+<li>对于范围注册表中的包，如果你无法使用包管理器和检查器窗口确定其名称，联系包的创建者，请求包名。包的创建者在包的清单文件（<code>package.json</code>）中将此值记录为必填属性。</li>
+</ul>
+<h2 id="procedure流程-1">Procedure(流程) <a href="#procedure%e6%b5%81%e7%a8%8b-1" class="anchor">🔗</a></h2><p>按名称安装注册表包，请按照以下步骤操作：</p>
+<ol>
+<li>
+<p>打开包管理器窗口，如果它还未打开的话。</p>
+</li>
+<li>
+<p>点击工具栏中的 <strong>安装</strong> 按钮。安装包的选项会出现。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-quick.png" alt=""></p>
+</li>
+<li>
+<p>在安装菜单中选择 <strong>按名称安装包</strong>。两个文本框和一个 <strong>安装</strong> 按钮就会出现。</p>
+</li>
+<li>
+<p>在&quot;开始前&quot;部分确定的基础上，输入包的 <strong>名称</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-quick-add.png" alt=""></p>
+<p><strong>注意</strong>：如果你输入了一个无效的包名或版本，包管理器会警告你找不到那个名称或版本。确认包的名称和版本是否正确，然后再试一次。</p>
+</li>
+<li>
+<p>（可选）如果你知道要安装的版本，可以在 <strong>版本（可选）</strong> 框中输入完整的包版本，例如 <code>1.3.0-pre.2</code>。</p>
+</li>
+<li>
+<p>点击 <strong>安装</strong>。如果Unity能够成功安装包，该包现在就像任何其他从注册表安装的包一样出现在包列表中。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：此方法适用于当前托管在Unity包注册表或任何你已为当前项目设置的范围包注册表上的任何包和版本。</p>
+<h1 id="removing-an-installed-package-from-a-project从项目中移除已安装的包">Removing an installed package from a project(从项目中移除已安装的包) <a href="#removing-an-installed-package-from-a-project%e4%bb%8e%e9%a1%b9%e7%9b%ae%e4%b8%ad%e7%a7%bb%e9%99%a4%e5%b7%b2%e5%ae%89%e8%a3%85%e7%9a%84%e5%8c%85" class="anchor">🔗</a></h1><p>当你从项目中&quot;移除&quot;一个Unity注册表包或范围注册表包时，包管理器实际上是在移除你的project manifest中的项目<strong>直接依赖项</strong>。移除直接依赖项的结果根据你要移除的包的依赖项而变化：</p>
+<ul>
+<li>如果没有其他的包或<strong>功能集</strong>对此包有依赖，它实现的任何编辑器或运行时功能在你的项目中将不再可用。关于直接和<strong>间接依赖项</strong>的更多信息，请参考依赖和解析。</li>
+<li>如果另一个已安装的包或一个已安装的功能集依赖于你试图移除的包，此操作只移除你的项目清单中的依赖项。包本身及其所有功能仍然在你的项目中安装，并在列表面板中显示依赖项图标。</li>
+</ul>
+<h2 id="before-you-begin开始之前-1">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d-1" class="anchor">🔗</a></h2><p>在你开始之前，确保你了解这些重要的注意事项：</p>
+<ul>
+<li>只在你<em>安装</em> 包到当前项目中时使用此程序来移除包，比如（但不限于）安装功能集，从注册表安装，和安装自定义包。不要试图使用此程序来：
+<ul>
+<li>移除你<em>下载</em> <em>和</em> <em>导入</em> 到你的项目中的 <strong>Asset Store</strong>包。关于移除你下载和导入的Asset Store包的信息，请参阅从项目中移除导入的资源。</li>
+<li>移除你<em>导入</em> 到你的项目的本地 <strong>资源包</strong>。关于移除你导入的本地资源包的信息，请参考移除本地资源包。</li>
+</ul>
+</li>
+<li>如果你使用此程序来移除你从注册表中安装的包，操作会从当前项目中移除包。它不会移除可能存在于其他项目中的同一包。它也不会从全局缓存中移除包；关于包管理器，不支持这个操作，手动操控全局缓存是不被鼓励的。</li>
+<li>如果你用这个程序来移除一个嵌入到你的项目中的包，包管理器会从你的电脑中删除整个包文件夹。然而，从任何其他来源（包括本地包）安装的包只移除清单中对包的引用，但是保持包本身及其内容完整。</li>
+</ul>
+<h2 id="procedure流程-2">Procedure(流程) <a href="#procedure%e6%b5%81%e7%a8%8b-2" class="anchor">🔗</a></h2><p>要移除已安装的包：</p>
+<ol>
+<li>
+<p>打开 <strong>包管理器</strong> 窗口，并从导航面板中选择 <strong>在项目中</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-inproject.png" alt=""></p>
+</li>
+<li>
+<p>从包列表中选择你想要移除的包。详细信息面板现在显示该包的信息。</p>
+</li>
+<li>
+<p>点击 <strong>移除</strong>。</p>
+<p>如果没有显示此按钮，你可能查看的是 <strong>我的资产</strong> 列表。请参阅开始前。</p>
+<p>如果此按钮已禁用，你不能移除该包。更多信息，请参考锁定和不可移除的包。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-remove.png" alt=""></p>
+</li>
+<li>
+<p>如果你想恢复已移除的包，按照安装包的说明进行操作。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：你可以使用多选功能一次性移除多个包。更多信息，请参考在多个包或功能集上执行操作。</p>
+<h2 id="locked-and-non-removable-packages锁定和无法移除的包">Locked and non-removable packages(锁定和无法移除的包) <a href="#locked-and-non-removable-packages%e9%94%81%e5%ae%9a%e5%92%8c%e6%97%a0%e6%b3%95%e7%a7%bb%e9%99%a4%e7%9a%84%e5%8c%85" class="anchor">🔗</a></h2><p>你只能移除那些未被其他的包或功能集要求的包。包管理器通过禁用所有被要求包的<strong>移除</strong>按钮来强制执行此规定。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Required by</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A feature set(功能集)</td>
+<td style="text-align:left">如果功能集需要此包，那么在列表面板和详细信息面板中都会显示一个锁定图标。详细信息面板还会在该面板的锁定图标下方显示需要此包的功能集的名称。然而，即使你点击了<strong>解锁</strong>按钮，只有在你移除所有需要它的功能集之后，你才能从项目中移除这个包。解锁包使你可以为你的项目请求一个不同的版本，但它仍然不允许你移除它。</td>
+</tr>
+<tr>
+<td style="text-align:left">Another package(另一个包)</td>
+<td style="text-align:left">如果一个或多个包需要选中的包，<strong>移除</strong>按钮就会被禁用。你可以从详细信息面板中的<strong>依赖项</strong>选项卡中找到有依赖关系的包的名称。如果你不需要其他包，你可以移除它们，包管理器会自动同时移除这个包。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：你可以使用多选功能一次性解锁多个包。更多信息，请参阅在多个包或功能集上执行操作。</p>
+<h1 id="disabling-a-built-in-package禁用内置包">Disabling a built-in package(禁用内置包) <a href="#disabling-a-built-in-package%e7%a6%81%e7%94%a8%e5%86%85%e7%bd%ae%e5%8c%85" class="anchor">🔗</a></h1><p>如果你不需要某些模块，想节省资源，你可以禁用<strong>内建包</strong>。然而，当你禁用内建包时，相应的Unity功能将不再可用。</p>
+<p>禁用内建包将导致以下结果：</p>
+<ul>
+<li>如果你使用了一个被禁用的包实现的脚本API，你会得到编译错误。</li>
+<li>被禁用的内建包实现的组件也会被禁用，这意味着你不能把它们添加到任何游戏对象上。如果你有一个<strong>游戏对象</strong>已经有了这些组件中的一个，Unity会在播放模式中忽略它们。你可以在<strong>检查器</strong>窗口中查看它们，但它们会显示为灰色，表示它们不可用。</li>
+<li>在构建游戏时，Unity会剔除所有禁用的组件。对于支持引擎代码剔除的构建目标（像Web，iOS，和Android），Unity不会添加任何来自被禁用的内建包的代码。</li>
+</ul>
+<p>要禁用内置包：</p>
+<ol>
+<li>
+<p>打开 <strong>包管理器</strong> 窗口，从导航面板中选择 <strong>内置包</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-builtin.png" alt=""></p>
+</li>
+<li>
+<p>选择你想要禁用的内置包。它的信息会显示在详细信息面板中。</p>
+</li>
+<li>
+<p>点击 <strong>禁用</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-disable.png" alt=""></p>
+</li>
+<li>
+<p>如果你想要重新启用一个被禁用的内置包，点击 <strong>启用</strong> 按钮。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：你可以使用多选功能一次点击禁用多个内置包。更多信息，请参阅在多个包或功能集上执行操作。</p>
+<h1 id="switching-to-another-package-version切换至另一个包版本">Switching to another package version(切换至另一个包版本) <a href="#switching-to-another-package-version%e5%88%87%e6%8d%a2%e8%87%b3%e5%8f%a6%e4%b8%80%e4%b8%aa%e5%8c%85%e7%89%88%e6%9c%ac" class="anchor">🔗</a></h1><p>使用此页面的信息来更新你从Unity注册表、范围注册表或本地源安装的包。</p>
+<p>如果你想要安装包的特定版本，参考按名称安装包，并按照其可选步骤指定版本。</p>
+<p>如果你想要更新从Git URL安装的包，你可以使用以下任意一种方法：</p>
+<ul>
+<li>在 <strong>包管理器</strong> 窗口中定位到包，选择它，然后点击 <strong>更新</strong> 按钮。</li>
+<li>使用新的修订版将包重新安装为Git依赖项。关于如何用 <strong>Git依赖项</strong> 指定修订版的更多信息，参照定向至特定修订版。</li>
+<li>从Unity注册表重新安装包。</li>
+</ul>
+<p>要更新包：</p>
+<ol>
+<li>
+<p>打开 <strong>包管理器</strong> 窗口，并从导航面板选择 <strong>在项目中</strong>， <strong>Unity注册表</strong>，或 <strong>我的注册表</strong>。你也可以选择 <strong>更新</strong> 条目，它列出了你的项目中所有有可用更新的包。箭头图标出现在有可用更新的包旁边。</p>
+</li>
+<li>
+<p>从包列表中选择你想要更新的已安装的包。包信息显示在详细信息面板中。</p>
+</li>
+<li>
+<p>锁定图标表示这个包和版本被锁定到已安装的 <strong>功能集</strong>。要解锁包并选择另一个版本，点击 <strong>解锁</strong> 按钮。</p>
+<p><strong>注意</strong>：包暂时被解开。如果你在导航面板中选择了不同的上下文，或者关闭了 <strong>包管理器</strong> 窗口或Unity编辑器，包会恢复为锁定状态。然而，如果在包解锁时你更改了版本（例如，通过按名称从注册表安装包的方法），包保持解锁状态。</p>
+</li>
+<li>
+<p>在包列表中选择一个包。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-update-list.png" alt=""></p>
+</li>
+<li>
+<p>在详细信息面板中，选择 <strong>版本历史</strong> 标签。如果有多个版本可用，展开条目查看特定于每个版本的信息。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-update-1713439625941-103.png" alt=""></p>
+</li>
+<li>
+<p>点击 <strong>更新至#.#</strong> 按钮，或者点击在 <strong>版本历史</strong> 标签中列出的版本旁边的 <strong>更新</strong> 按钮。</p>
+<p>进度条完成时，任何新功能立即可用。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>如果你切换到包的旧版本，可能需要在包内容上运行API更新器。</li>
+<li>你可以使用多选功能一次点击切换多个包的版本。更多信息，请参考在多个包或功能集上执行操作。</li>
+</ul>
+<h1 id="importing-an-asset-store-package导入资源商店包">Importing an Asset Store package(导入资源商店包) <a href="#importing-an-asset-store-package%e5%af%bc%e5%85%a5%e8%b5%84%e6%ba%90%e5%95%86%e5%ba%97%e5%8c%85" class="anchor">🔗</a></h1><p>你可以使用 <strong>包管理器</strong> 窗口将 <strong>资源商店</strong> 包导入到你的项目中。</p>
+<p><strong>注意：</strong> 遵循此任务导入尚未在你的项目中的资源商店包。关于更新已经在你的项目中的资源商店包的信息，参阅更新资源商店包。</p>
+<ol>
+<li>
+<p>打开 <strong>包管理器</strong> 窗口，从导航面板中选择 <strong>我的资源</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-myassets.png" alt=""></p>
+<p>列表面板显示你使用当前登录的Unity ID从资源商店获取的任何包。</p>
+</li>
+<li>
+<p>如果 <strong>我的资源</strong> 列表中出现了很多资源商店的包，你可以通过名称搜索特定的资源商店包。</p>
+</li>
+<li>
+<p>从包列表中选择你想要导入的资源商店包。资源商店包的信息会显示在详细信息面板中。</p>
+<p>如果你之前没有在这台电脑或设备上下载过资源商店包， <strong>下载</strong> 按钮会出现。否则，<strong>导入#.#到项目</strong> 按钮会出现，你可以跳到步骤5立即导入资源商店包。</p>
+</li>
+<li>
+<p>如果在详细信息面板中出现 <strong>下载</strong> 按钮，点击它以下载资源商店包。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-import.png" alt=""></p>
+<p>如果下载按钮显示为 <strong>下载更新</strong>，星号 (*) 表示在你的包缓存中有一个同版本号的旧版包。发布者随后发布了不改变版本号的包的更新版本。点击那个下载按钮获取包的最新版本。</p>
+<p>当资源商店包下载到你的电脑时，会出现一个进度条，<strong>暂停</strong> 和 <strong>取消</strong> 按钮会替换你点击的 <strong>下载</strong> 按钮。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-download.png" alt=""></p>
+<p>这些按钮让你可以控制下载进度：</p>
+<ul>
+<li>点击 <strong>暂停</strong> 按钮以暂停下载。你可以点击 <strong>播放</strong> 按钮以继续。</li>
+<li>点击 <strong>取消</strong> 按钮以完全停止下载。</li>
+</ul>
+<p>下载完成后，包管理器将 <strong>下载</strong> 替换为一个包含 <strong>导入到项目</strong> 和 <strong>重新下载</strong> 操作的菜单。</p>
+</li>
+<li>
+<p>点击 <strong>导入到项目</strong> 以导入所选资源商店包。</p>
+<p>如果资源商店包是一个完整的项目，会出现一个确认对话框。参考从资源商店导入完整项目。</p>
+<p>对于所有其他资源商店包，<strong>导入Unity包</strong> 窗口会显示出来，所有项目都已选中且准备好导入。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-import-assets.png" alt=""></p>
+</li>
+<li>
+<p>清除你不想导入的任何项目，然后点击 <strong>导入</strong>。</p>
+<p>包管理器会把导入的资源商店包的内容放入 <code>Assets</code> 文件夹，以便你可以从 <strong>项目</strong> 窗口中访问它们。</p>
+</li>
+</ol>
+<p>当导入操作完成后，导入的包仍然在 <strong>我的资源</strong> 列表中，但你也可以在 <strong>项目中</strong> 列表中查看它。每当包有更新可用时，你可以在同样的列表中查看它，以及 <strong>更新</strong> 列表中，它就在 <strong>项目中</strong> 下面。</p>
+<p><strong>提示</strong>：你可以通过使用多选功能一键下载多个包。有关更多信息，请参考执行多个包的操作。</p>
+<h2 id="viewing-imported-assets查看导入的资源">Viewing imported assets(查看导入的资源) <a href="#viewing-imported-assets%e6%9f%a5%e7%9c%8b%e5%af%bc%e5%85%a5%e7%9a%84%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><p>你导入资源商店包，或从资源商店包中的一部分资源后，你可以查看已导入资源的列表。</p>
+<p>查看已导入的资源有以下步骤：</p>
+<ol>
+<li>在导航面板中选择 <strong>我的资源</strong>。</li>
+<li>在列表面板中选择包。</li>
+<li>在详细信息面板中选择 <strong>已导入资源</strong> 标签。</li>
+</ol>
+<h2 id="importing-a-complete-project-from-the-asset-store从资源商店导入完整的项目">Importing a complete project from the Asset Store(从资源商店导入完整的项目) <a href="#importing-a-complete-project-from-the-asset-store%e4%bb%8e%e8%b5%84%e6%ba%90%e5%95%86%e5%ba%97%e5%af%bc%e5%85%a5%e5%ae%8c%e6%95%b4%e7%9a%84%e9%a1%b9%e7%9b%ae" class="anchor">🔗</a></h2><p>完整的项目具有资源和<strong>项目设置</strong>。导入完整项目的过程与其他资源商店包相似，除了多了关于项目设置的步骤。</p>
+<p>完整项目中的项目设置可能与你的项目设置冲突，所以当你从资源商店导入一个完整的项目时，包管理器会打开一个对话框。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-import-project.png" alt=""></p>
+<p>如果你确定要将包的资源添加到你的项目中，选择<strong>导入</strong>。一个<strong>导入Unity包</strong>窗口会出现，像下面的图片显示的那样。清除你不想导入的任何资产内容，然后点击<strong>下一步</strong>。窗口的第二步列出了包的项目设置。如果你的项目中有任何这些项目设置，包管理器会用<strong>覆盖</strong>标志来标识它们。除非你清除选择，否则这些设置将被包中的项目设置覆盖。清除你不想导入的任何项目设置，然后点击<strong>导入</strong>。</p>
+<p>如果你想在一个安全的环境中探索包的资源和项目设置，选择<strong>切换项目</strong>。选择<strong>切换项目</strong>将创建一个新的、临时的项目，只有该包的资源和项目设置。探索临时项目后，你可以不保存它然后关闭。如果你想在主项目中继续使用该包，则返回到主项目并再次导入包。在出现的警告对话框上选择<strong>导入</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-import-assets2.png" alt=""></p>
+<h1 id="updating-an-asset-store-package更新资源商店的包">Updating an Asset Store package(更新资源商店的包) <a href="#updating-an-asset-store-package%e6%9b%b4%e6%96%b0%e8%b5%84%e6%ba%90%e5%95%86%e5%ba%97%e7%9a%84%e5%8c%85" class="anchor">🔗</a></h1><p>你可以通过使用<strong>包管理器</strong>窗口来更新<strong>资源商店</strong>的包。</p>
+<p>**注意：**按照此任务来更新已经在你的项目中的资源商店包。如果你想了解关于导入还没有在你的项目中的资源商店包的信息，请参考导入资源商店包。</p>
+<ol>
+<li>
+<p>打开<strong>包管理器</strong>窗口，并从导航面板选择<strong>我的资源</strong>。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-myassets-1713439638777-118.png" alt=""></p>
+<p>任何有可用更新的资源商店包旁边都会出现一个向上指的箭头指示器。</p>
+</li>
+<li>
+<p>可选：要以最近更新的资源商店包为主的列表，按照<strong>最近更新</strong>排列。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-update2-sort.png" alt=""></p>
+</li>
+<li>
+<p>从包列表中选择你想更新的资源商店包。资源商店包的信息会在详细面板中显示。</p>
+</li>
+<li>
+<p>可选：选择<strong>发布</strong>标签以查看包最新版本的变化。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-update-rel.png" alt=""></p>
+</li>
+<li>
+<p>点击<strong>下载更新</strong>按钮。<strong>注意</strong>：</p>
+<ul>
+<li>
+<p>如果下载按钮显示为<strong>下载更新</strong>，星号(*)意味着你的包缓存中有一个相同版本号的旧版本包。发布者随后发布了新版本的包，但没有改变其版本号。点击下载按钮可以获取包的最新版本。</p>
+</li>
+<li>
+<p>如果你下载的包的版本与你的Unity编辑器版本不兼容，详细面板中会出现一条消息，附带有一个<strong>更新</strong>按钮，让你下载包的兼容版本。</p>
+<p>不兼容版本的<strong>更新</strong>按钮</p>
+</li>
+</ul>
+</li>
+<li>
+<p>要使用前一步中下载的包来更新你的项目，选择<strong>导入更新至项目</strong>。</p>
+</li>
+</ol>
+<h1 id="remove-imported-assets-from-a-project从项目中移除已导入的资产">Remove imported assets from a project(从项目中移除已导入的资产) <a href="#remove-imported-assets-from-a-project%e4%bb%8e%e9%a1%b9%e7%9b%ae%e4%b8%ad%e7%a7%bb%e9%99%a4%e5%b7%b2%e5%af%bc%e5%85%a5%e7%9a%84%e8%b5%84%e4%ba%a7" class="anchor">🔗</a></h1><p>当你导入<strong>资产商店</strong>中的资产时，Unity包管理器会将它们放在你的项目的<code>Assets</code>目录中。</p>
+<p>如果你知道某些资产没有被使用，你可以从项目中移除这些资产。你可能会考虑这样做是为了减少项目目录的混乱或释放你的本地硬盘空间。</p>
+<p><strong>警告</strong>：确保你的项目不再使用任何你要移除的资产。</p>
+<h2 id="before-you-begin开始之前-2">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d-2" class="anchor">🔗</a></h2><p>在开始之前，请确保你明白以下重要注意事项：</p>
+<ul>
+<li>
+<p>只有当你按照“导入资产商店包”的步骤导入了这些资产到当前项目时，才按照此流程去移除资产。</p>
+<ul>
+<li>不要试图使用此流程来移除你从注册表中<em>安装</em>的包。关于从项目中移除你从注册表中安装的包的信息，请参考“从项目中移除已安装的包”。</li>
+<li>不要试图使用此流程来移除你从本地资产包中<em>导入</em>后的资产。关于删除你从本地资产包中导入的资产的信息，请参考“删除本地资产包”。</li>
+</ul>
+</li>
+<li>
+<p>此流程将资产从当前项目中移除。它不会移除可能存在于其他项目中的同样的资产。它也不会从资产商店缓存中移除包。为了完全从你的电脑中移除资产商店包和其资产，你必须从多个位置移除它们：</p>
+<ol>
+<li>使用下列流程将每个使用这些资产的项目中的资产移除。</li>
+<li>从你的资产商店缓存中删除此包。请参考“从资产商店缓存中删除一个包”。</li>
+</ol>
+</li>
+</ul>
+<h2 id="procedure流程-3">Procedure(流程) <a href="#procedure%e6%b5%81%e7%a8%8b-3" class="anchor">🔗</a></h2><p>要从你的项目中移除已导入的资产：</p>
+<ol>
+<li>
+<p>打开你的项目。</p>
+</li>
+<li>
+<p>打开<strong>包管理器</strong>窗口，并从导航面板中选择<strong>我的资源</strong>或<strong>项目中的资源</strong>。</p>
+</li>
+<li>
+<p>选择你想要从你的项目中移除的资源商店包。</p>
+</li>
+<li>
+<p>打开详细面板右上角的菜单。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-details-menu.png" alt=""></p>
+</li>
+<li>
+<p>选择<strong>从项目中移除资产</strong>来打开<strong>移除</strong>对话框。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-remove-assets.png" alt=""></p>
+</li>
+<li>
+<p>选择要移除的资产。你可以用<strong>全部</strong>来移除所有资产，或者你可以使用复选框来选择一部分资产。</p>
+</li>
+<li>
+<p>选择<strong>移除</strong>。</p>
+</li>
+</ol>
+<p><strong>重要</strong>：</p>
+<ul>
+<li>依赖于已删除资产的<strong>场景</strong>在<strong>控制台</strong>窗口中不会报告为错误。如果你怀疑移除操作造成问题，请重新导入包。参考导入资源商店包。</li>
+<li>从你的项目中移除的资产仍会保留在我的资产列表中。要从<strong>我的资产</strong>中移除这些资产，请参考从资源商店缓存中删除包。</li>
+</ul>
+<p>如果你删除了一部分资产，你可以通过在详细面板中选择<strong>已导入的资产</strong>标签来查看剩余资产的列表。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-ui-imported-assets.png" alt=""></p>
+<h1 id="delete-a-package-from-the-asset-store-cache从资产商店缓存中删除包">Delete a package from the Asset Store cache(从资产商店缓存中删除包) <a href="#delete-a-package-from-the-asset-store-cache%e4%bb%8e%e8%b5%84%e4%ba%a7%e5%95%86%e5%ba%97%e7%bc%93%e5%ad%98%e4%b8%ad%e5%88%a0%e9%99%a4%e5%8c%85" class="anchor">🔗</a></h1><p>当你下载一个<code>.unitypackage</code>文件时，Unity包管理器会将其存储在<strong>资产商店</strong>缓存中。每次你导入一个下载的包或自定义包时，Unity包管理器都会将其存储在你项目的<code>Assets</code>目录中。</p>
+<p>你可能想要从资产商店缓存中删除包以释放你本地硬盘的空间。如果硬盘空间是你从资产商店缓存中删除包的主要原因，可以考虑改变资产商店缓存的位置。</p>
+<p><strong>重要</strong>：从资产商店缓存中删除包并不会从使用该包的任何项目中移除同一包。如果你也想从一个项目中移除同一的包，参考从项目中移除已导入的资产。</p>
+<p>要从资产商店缓存中删除包：</p>
+<ol>
+<li>
+<p>打开<strong>包管理器</strong>窗口。</p>
+</li>
+<li>
+<p>在导航面板中选择<strong>我的资产</strong>上下文。</p>
+</li>
+<li>
+<p>在列表面板中选择你想要删除的包。</p>
+</li>
+<li>
+<p>注意两个重要的值，你在后续步骤中需要它们：</p>
+<ul>
+<li>
+<p>发行商的名字，位于<strong>包管理器</strong>窗口详细面板下的显示名字下方。</p>
+</li>
+<li>
+<p><strong>显示名字</strong>值，位于<em><strong>检视器</strong></em>中。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-details-and-inspector.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li>
+<p>转到资产商店缓存目录的根目录：</p>
+<ul>
+<li>
+<p>对于Unity编辑器2022.1或更高版本：</p>
+<p>a) 打开Unity编辑器的首选项窗口。</p>
+<p>b) 选择<strong>包管理器</strong>类别。</p>
+<p>c)  点击<strong>My Assets</strong> &gt; <strong>Cache Location</strong>图标.</p>
+<p>d) 选择<strong>在Explorer中显示</strong>（Windows）或<strong>在Finder中显示</strong>（macOS）。</p>
+</li>
+<li>
+<p>对于Unity编辑器2021.3或更早版本：</p>
+<p>a) 参考下载的资产文件的位置，确定你的操作系统的缓存位置。</p>
+<p>b) 使用你的操作系统的文件管理器应用程序转到该目录。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>选择与发行商名称相对应的子目录，这是你在前面的步骤中记录的。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-as-cache.png" alt=""></p>
+</li>
+<li>
+<p>发行商的目录有一个或多个子目录。发行商决定这些子目录的名称：</p>
+<ul>
+<li>如果有一个子目录，进入它。</li>
+<li>如果有多个子目录，浏览子目录，直到你找到包含要删除的包的子目录。</li>
+</ul>
+</li>
+<li>
+<p>选择<code>&lt;name&gt;.unitypackage</code>文件，其中<code>&lt;name&gt;</code>对应于你在前面的步骤中确定的<strong>检视器</strong>窗口的<strong>显示名字</strong>值。</p>
+</li>
+<li>
+<p>删除文件。</p>
+</li>
+</ol>
+<p>这个包现在已经从资产商店缓存中移除，但任何已导入的资产仍在使用它们的项目中保留。</p>
+<h2 id="adding-the-deleted-package-back-to-your-asset-store-cache将删除的包重新添加到你的资产商店缓存中">Adding the deleted package back to your Asset Store cache(将删除的包重新添加到你的资产商店缓存中) <a href="#adding-the-deleted-package-back-to-your-asset-store-cache%e5%b0%86%e5%88%a0%e9%99%a4%e7%9a%84%e5%8c%85%e9%87%8d%e6%96%b0%e6%b7%bb%e5%8a%a0%e5%88%b0%e4%bd%a0%e7%9a%84%e8%b5%84%e4%ba%a7%e5%95%86%e5%ba%97%e7%bc%93%e5%ad%98%e4%b8%ad" class="anchor">🔗</a></h2><p>如果你删除的包是一个资产商店的包，并且你想要将此包重新添加到资产商店的缓存中，参见导入资产商店包。</p>
+<h1 id="perform-an-action-on-multiple-packages对多个包执行操作">Perform an action on multiple packages(对多个包执行操作) <a href="#perform-an-action-on-multiple-packages%e5%af%b9%e5%a4%9a%e4%b8%aa%e5%8c%85%e6%89%a7%e8%a1%8c%e6%93%8d%e4%bd%9c" class="anchor">🔗</a></h1><p>你可以在包管理器的列表面板中选择多个包或<strong>特性集</strong>，并一次性对所有选定的项目执行操作。</p>
+<p>例如，你可以使用此功能一次性更新多个包至其最新版本。</p>
+<p>以下表格列出了你可以用来选择多个项目的快捷方式。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Selection type</strong></th>
+<th style="text-align:left"><strong>Keyboard shortcut</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">选择列表中的所有项目</td>
+<td style="text-align:left">Command + a (macOS) 或 Ctrl + a (Windows和Linux).</td>
+</tr>
+<tr>
+<td style="text-align:left">使用键盘和鼠标选择一个范围</td>
+<td style="text-align:left">选择范围内的第一项，按住Shift键，然后选择范围内的最后一项.</td>
+</tr>
+<tr>
+<td style="text-align:left">用箭头键选择一个范围</td>
+<td style="text-align:left">选择范围内的第一项，按住Shift键，然后使用向上箭头键或向下箭头键扩大范围.</td>
+</tr>
+<tr>
+<td style="text-align:left">选择不是一起分组的多个项目</td>
+<td style="text-align:left">选择一项，按住Command(macOS)或Ctrl（Windows或Linux），然后选择其他项目.</td>
+</tr>
+</tbody>
+</table>
+<p>如需对多个包或特性集执行操作，请按照以下步骤操作：</p>
+<ol>
+<li>打开Package Manager窗口，从导航面板中选择一个上下文.</li>
+<li>可选：使用过滤控件来缩小列表.</li>
+<li>可选：使用排序控件对列表进行排序.</li>
+<li>使用上面表格中的其中一种快捷方式从列表中选择多个包或特性集.</li>
+<li>可选：在详细信息面板中打开展开器，查看有关所选项的更多信息，例如包的版本号.</li>
+<li>点击详细信息面板中的操作按钮，在所选项目上执行该操作.</li>
+</ol>
+<p><img src="/2023-07-19-unity-document-4/package-manager-multi-select.png" alt=""></p>
+<p><strong>注</strong>：如果你在 <strong>我的资产</strong> 列表中选择了多个包，以下操作将无法执行：</p>
+<ul>
+<li><strong>导入到项目</strong></li>
+<li><strong>将更新导入到项目</strong></li>
+<li><strong>重新下载</strong></li>
+<li><strong>下载更新</strong></li>
+</ul>
+<h1 id="finding-package-documentation寻找包文档">Finding package documentation(寻找包文档) <a href="#finding-package-documentation%e5%af%bb%e6%89%be%e5%8c%85%e6%96%87%e6%a1%a3" class="anchor">🔗</a></h1><p>Unity手册为特定版本的Unity提供文档。对于包文档，每个包都有自己的版本，因此每个包都为该包的特定版本提供文档。因此，包文档不是主要的Unity手册文档的一部分。相反，每个包的文档都在Unity的文档服务器上的自己的网站上。</p>
+<p>要访问特定包的文档，你有两个选择：</p>
+<ul>
+<li>获取最新版本的文档。</li>
+<li>获取特定包版本的文档（从包管理器窗口）。</li>
+</ul>
+<p>当包页面打开时，页面顶部有四个链接**(A)<strong>，以及一个下拉菜单</strong>(B)**，你可以在其中选择不同的版本：</p>
+<p><img src="/2023-07-19-unity-document-4/upm-docs.png" alt=""></p>
+<p>使用页面顶部的链接查看包的核心使用（<strong>手册</strong>），包的<strong>脚本API</strong>文档，包的<strong>变更日志</strong>，以及包的<strong>许可</strong>信息。</p>
+<h2 id="getting-documentation-for-the-latest-version获取最新版本的文档">Getting documentation for the latest version(获取最新版本的文档) <a href="#getting-documentation-for-the-latest-version%e8%8e%b7%e5%8f%96%e6%9c%80%e6%96%b0%e7%89%88%e6%9c%ac%e7%9a%84%e6%96%87%e6%a1%a3" class="anchor">🔗</a></h2><p>每个版本的Unity手册文档都提供了已发布和预发布包的列表，内置包的列表，以及按关键字列出的包的列表。每个列表都有链接到与该版本的Unity匹配的包文档。<strong>注意</strong>：只有与文档匹配的Unity版本兼容的包才会出现在这些列表中。</p>
+<p><img src="/2023-07-19-unity-document-4/upm-docs-list.png" alt=""></p>
+<p>你可以展开侧边栏导航**(A)<strong>中的条目以获取每个包的特定信息。包括兼容版本列表，包的简短说明，和任何相关的关键字。或者，你可以点击列表页</strong>(B)**上的链接，直接打开与文档版本匹配的最兼容的包文档版本。</p>
+<p>如果你在此列表中找不到你想要的包，可能有几个原因：</p>
+<ul>
+<li>它与这个版本的Unity不兼容。</li>
+<li>它是一个实验性的或私有的包。有些包由Unity以外的人开发，或者它们在特殊许可证下，不能对所有人开放。</li>
+</ul>
+<p>对于在另一个Unity版本中发布的包，你可能可以通过包管理器窗口访问文档。对于私有包，请尝试直接联系开发者请求访问。</p>
+<h2 id="getting-documentation-for-a-specific-package-version获取特定包版本的文档">Getting documentation for a specific package version(获取特定包版本的文档) <a href="#getting-documentation-for-a-specific-package-version%e8%8e%b7%e5%8f%96%e7%89%b9%e5%ae%9a%e5%8c%85%e7%89%88%e6%9c%ac%e7%9a%84%e6%96%87%e6%a1%a3" class="anchor">🔗</a></h2><p>你可以通过查看其文档，变更日志或许可信息，了解更多来自注册表（非资产商店）的包的信息。</p>
+<p>要访问任何这些页面，你可以点击包管理器窗口内的<strong>文档</strong>，<strong>变更日志</strong>，或<strong>许可</strong>链接。</p>
+<p>要访问特定包版本的文档：</p>
+<ol>
+<li>
+<p>在Unity中打开包管理器窗口。</p>
+</li>
+<li>
+<p>遵循在寻找包中的指南，定位你想要的特定包和版本号。</p>
+</li>
+<li>
+<p>点击<strong>文档</strong>链接，打开所选版本包的文档。</p>
+<p><strong>注意</strong>：如果已安装包，你可以右键点击<strong>文档</strong>，<strong>变更日志</strong>或<strong>许可</strong>链接，并选择<strong>本地打开</strong>。包管理器会在适当的文件夹打开你的文件浏览器。</p>
+</li>
+</ol>
+<p>你可以按照这个流程查找来自注册表（非资产商店）的任何版本的包。请注意，对于每个包版本的发布，文档并不一定是不同的，因为有些版本更新（补丁）只涉及到错误修复或微小的更改。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/19/2023-07-19-unity-Documents-3/">Unity中文版-Unity&#39;s Package Manager(二)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/19/2023-07-19-unity-Documents-4/">Unity中文版-Unity&#39;s Package Manager(三)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/17/2023-07-17-unity-Documents-2/">Unity中文版-Unity&#39;s Package Manager(一)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/09/2023-07-09-unity-ugui/">UGUI中文教程(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(14)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design-pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (5)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
