@@ -92,10 +92,10 @@
 <p>原因：当点击Frame Debugger不同DrawCall时，Unity会传递一<strong>帧</strong>，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。</p>
 <p>总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在<strong>帧</strong>通过时进行更改。</p>
 <p>解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">#if UNITY_EDITOR</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">#if</span> UNITY_EDITOR
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(UnityEditor.EditorApplication.isPaused)
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span>endif
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif</span>
 </span></span></code></pre></div><h3 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h3><p>搬砖愉快！</p>
     </div>
 
@@ -115,6 +115,10 @@
     <ul>
         
             <li>
+                <a href="/2023/07/21/2023-07-21-unity-Documents-5/">Unity中文版-Unity&#39;s Package Manager(四)(自翻译)</a>
+            </li>
+        
+            <li>
                 <a href="/2023/07/19/2023-07-19-unity-Documents-3/">Unity中文版-Unity&#39;s Package Manager(二)(自翻译)</a>
             </li>
         
@@ -128,10 +132,6 @@
         
             <li>
                 <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
-            </li>
-        
-            <li>
-                <a href="/2023/07/09/2023-07-09-unity-ugui/">UGUI中文教程(自翻译)</a>
             </li>
         
     </ul>
@@ -149,7 +149,7 @@
             </li>
         
             <li>
-                <a href="/categories/unity">unity(14)</a>
+                <a href="/categories/unity">unity(15)</a>
             </li>
         
     </ul>
@@ -162,7 +162,7 @@
     <ul>
         
             <li>
-                <a href="/tags/buildin-render-pipeline">buildin-render-pipeline (3)</a>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
             </li>
         
             <li>
@@ -170,11 +170,11 @@
             </li>
         
             <li>
-                <a href="/tags/design-pattern">design-pattern (24)</a>
+                <a href="/tags/design-pattern">design pattern (24)</a>
             </li>
         
             <li>
-                <a href="/tags/document">document (5)</a>
+                <a href="/tags/document">document (6)</a>
             </li>
         
             <li>

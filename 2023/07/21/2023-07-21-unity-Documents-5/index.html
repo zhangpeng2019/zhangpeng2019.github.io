@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity&#39;s Package Manager(四)(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity&#39;s Package Manager(四)(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-21 11:13:34 &#43;0800 CST">2023/07/21</time>
+        <span class="split">·</span>
+        <span> 2097 words </span>
+        <span class="split">·</span>
+        <span>
+            10 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unitys-package-manager四">Unity’s Package Manager(四) <a href="#unitys-package-manager%e5%9b%9b" class="anchor">🔗</a></h1><h1 id="package-manager-window包管理器窗口">Package Manager window(包管理器窗口) <a href="#package-manager-window%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><h1 id="inspecting-packages检查包">Inspecting packages(检查包) <a href="#inspecting-packages%e6%a3%80%e6%9f%a5%e5%8c%85" class="anchor">🔗</a></h1><p>项目视图显示了你的项目中当前从所有来源安装的包的列表。这意味着你从包注册表中安装的<strong>不可变</strong>包是可见的，以及<strong>可变</strong>的包（如嵌入式和本地包）。</p>
+<p><img src="/2023-07-19-unity-document-5/upm-inspect.png" alt=""></p>
+<p>左边是注册表包（不可变），右边是嵌入式包（可变）。</p>
+<p>你可以查看在项目视图中出现的任何包的内容。你还可以通过专用的<strong>检查器</strong>查看<strong>包清单</strong>。</p>
+<p>要查看包清单，只需在项目视图中点击它。</p>
+<p><img src="/2023-07-19-unity-document-5/upm-project-view.png" alt=""></p>
+<p>检查包清单</p>
+<p>对于嵌入式或本地包，你可以改变包的内容，并编辑包清单。</p>
+<h1 id="package-manifest-window包清单窗口">Package Manifest window(包清单窗口) <a href="#package-manifest-window%e5%8c%85%e6%b8%85%e5%8d%95%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><p>当你在<strong>项目</strong>窗口的<code>Packages</code>子文件夹中选择包清单文件(<code>package.json</code>)时，<strong>包清单</strong>窗口将会打开。</p>
+<p><img src="/2023-07-19-unity-document-5/class-PackageManifestImporter.png" alt=""></p>
+<p>在编辑器中检查包清单：</p>
+<p><strong>(A)</strong> 选择<strong>打开</strong>来在你的默认代码编辑器中（例如Visual Studio）加载这个包清单。选择<strong>在包管理器中查看</strong>以打开包管理器窗口，并在其详绕面板中加载这个包。如果你想选择不同的导入器，选择<strong>导入器</strong>下拉菜单并选择你想使用的包导入器。</p>
+<p><strong>(B)</strong> 信息部分包含了这个特定包版本的详细信息。</p>
+<p><strong>(C)</strong> 使用<strong>简短描述</strong>文本框来指定你想在包管理器窗口的详细面板中显示的文本。更多信息，参考描述属性的文档。</p>
+<p><strong>(D)</strong> 使用依赖项部分来管理这个包所依赖的包的列表。</p>
+<p><strong>(E)</strong> 选择<strong>还原</strong>以丢弃你对清单所作的任何更改。选择<strong>应用</strong>来保存你对清单所作的任何更改。</p>
+<h2 id="information信息">Information(信息) <a href="#information%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h2><p><img src="/2023-07-19-unity-document-5/class-PackageManifestImporter-Info.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Name</strong></td>
+<td style="text-align:left">这个包的官方名称。对于Unity包，这是短名称（去掉<code>com.unity.</code>字符串后的官方名称。）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Organization name</strong></td>
+<td style="text-align:left">创建这个包的Unity组织的标识符。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Display name</strong></td>
+<td style="text-align:left">在<strong>项目窗口</strong>和包管理器窗口中显示给用户看的名称。更多信息，请参考displayName属性的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Version</strong></td>
+<td style="text-align:left">包的版本号码。更多信息，请参考version属性的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Minimal Unity version</strong></td>
+<td style="text-align:left">启用这个选项来指定这个包兼容的最低Unity版本。当你启用这个选项时，<strong>主要版本</strong>，<strong>次要版本</strong>，和<strong>发布版</strong>属性会显示。如果这个包兼容所有Unity版本，取消勾选这个选项并移除<strong>主要版本</strong>，<strong>次要版本</strong>，和<strong>发布版</strong>属性。更多信息，请参考unity属性的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Major</strong></td>
+<td style="text-align:left">指定最小Unity版本的主要部分。更多信息，请参考unity属性的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Minor</strong></td>
+<td style="text-align:left">指定最小Unity版本的次要部分。更多信息，请参考unity属性的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Release</strong></td>
+<td style="text-align:left">指定最小Unity版本的更新和发布部分。更多信息，请参考unityRelease属性的文档。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dependencies依赖项">Dependencies(依赖项) <a href="#dependencies%e4%be%9d%e8%b5%96%e9%a1%b9" class="anchor">🔗</a></h2><p><img src="/2023-07-19-unity-document-5/class-PackageManifestImporter-Depend.png" alt=""></p>
+<p>依赖项部分</p>
+<p>列出了其他作为此包依赖项的包。每个条目由官方包名（例如，<code>com.unity.probuilder</code>）和其版本号组成。</p>
+<p>要添加新的依赖项：</p>
+<ol>
+<li>选择<strong>添加</strong>按钮。列表中会出现新的一行。</li>
+<li>在左边输入包名，在右边输入版本号。</li>
+</ol>
+<p>若要删除依赖项：</p>
+<ol>
+<li>点击你想删除的包左边的选择器按钮。</li>
+<li>选择<strong>移除</strong>按钮，该行将从列表中消失。</li>
+</ol>
+<h1 id="scripting-api-for-packages包脚本api">Scripting API for packages(包脚本API) <a href="#scripting-api-for-packages%e5%8c%85%e8%84%9a%e6%9c%acapi" class="anchor">🔗</a></h1><p>你可以使用包管理器的脚本API通过C#<strong>脚本</strong>与包管理器进行交互。例如，你可能想要根据目标机器的平台安装特定的包或版本。</p>
+<p>该系统严重依赖PackageManager.Client类，你可以使用它来寻找包，浏览包列表，以及通过脚本安装和卸载包。</p>
+<p>另一个重要的类是PackageManager.PackageInfo，它包含了包的状态，包括从<strong>包清单</strong>和注册表获取的元数据。例如，你可以获取该包的可用版本列表，或者在查找或安装包时可能发生的任何错误的列表。</p>
+<h2 id="adding-a-package-to-the-project把包添加到项目中">Adding a package to the project(把包添加到项目中) <a href="#adding-a-package-to-the-project%e6%8a%8a%e5%8c%85%e6%b7%bb%e5%8a%a0%e5%88%b0%e9%a1%b9%e7%9b%ae%e4%b8%ad" class="anchor">🔗</a></h2><p>这个例子演示了如何使用Client类来安装或添加包到项目中。</p>
+<p>你可以使用Client.Add来添加包。当你调用<code>Client.Add</code>方法时，你可以只指定包名，或者带有特定版本的名字。例如，使用<code>Client.Add(&quot;com.unity.textmeshpro&quot;)</code>安装（或更新到）TextMesh Pro包的最新版本；使用<code>Client.Add(&quot;com.unity.textmeshpro@1.3.0&quot;)</code>安装TextMesh Pro包的1.3.0版本。</p>
+<p><code>Client.Add</code>方法返回一个AddRequest实例，你可以使用它来获取状态，任何错误，或者包含新添加包的PackageInfo信息的Request响应。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager.Requests;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Unity.Editor.Example {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddPackageExample</span>
+</span></span><span style="display:flex;"><span>   {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> AddRequest Request;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">       [MenuItem(&#34;Window/Add Package Example&#34;)]</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Add()
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#75715e">// Add a package to the project</span>
+</span></span><span style="display:flex;"><span>           Request = Client.Add(<span style="color:#e6db74">&#34;com.unity.textmeshpro&#34;</span>);
+</span></span><span style="display:flex;"><span>           EditorApplication.update += Progress;
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Progress()
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> (Request.IsCompleted)
+</span></span><span style="display:flex;"><span>           {
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (Request.Status == StatusCode.Success)
+</span></span><span style="display:flex;"><span>                   Debug.Log(<span style="color:#e6db74">&#34;Installed: &#34;</span> + Request.Result.packageId);
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (Request.Status &gt;= StatusCode.Failure)
+</span></span><span style="display:flex;"><span>                   Debug.Log(Request.Error.message);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>               EditorApplication.update -= Progress;
+</span></span><span style="display:flex;"><span>           }
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="browsing-the-list-of-packages-in-a-project浏览项目中的包列表">Browsing the list of packages in a project(浏览项目中的包列表) <a href="#browsing-the-list-of-packages-in-a-project%e6%b5%8f%e8%a7%88%e9%a1%b9%e7%9b%ae%e4%b8%ad%e7%9a%84%e5%8c%85%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h2><p>这个例子演示了如何使用Client类遍历项目中的包。</p>
+<p>Client.List方法返回一个ListRequest实例，你可以使用它获取List操作的状态、任何错误，或者包含你可以遍历的PackageCollection的Request响应。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager.Requests;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Unity.Editor.Example {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ListPackageExample</span>
+</span></span><span style="display:flex;"><span>   {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> ListRequest Request;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">       [MenuItem(&#34;Window/List Package Example&#34;)]</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> List()
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           Request = Client.List();    <span style="color:#75715e">// List packages installed for the project</span>
+</span></span><span style="display:flex;"><span>           EditorApplication.update += Progress;
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Progress()
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> (Request.IsCompleted)
+</span></span><span style="display:flex;"><span>           {
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (Request.Status == StatusCode.Success)
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> package <span style="color:#66d9ef">in</span> Request.Result)
+</span></span><span style="display:flex;"><span>                       Debug.Log(<span style="color:#e6db74">&#34;Package name: &#34;</span> + package.name);
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (Request.Status &gt;= StatusCode.Failure)
+</span></span><span style="display:flex;"><span>                   Debug.Log(Request.Error.message);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>               EditorApplication.update -= Progress;
+</span></span><span style="display:flex;"><span>           }
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="embedding-a-package-in-the-project将包嵌入项目中">Embedding a package in the project(将包嵌入项目中) <a href="#embedding-a-package-in-the-project%e5%b0%86%e5%8c%85%e5%b5%8c%e5%85%a5%e9%a1%b9%e7%9b%ae%e4%b8%ad" class="anchor">🔗</a></h2><p>这个例子演示了如何使用Client类将已经安装在你的项目中的某个包嵌入其中。主要方法是Client.Embed方法，它复制一个包并将其存储在你的项目的<code>Packages</code>文件夹下。</p>
+<p>Client.Embed方法返回一个EmbedRequest实例，你可以使用它获取Embed操作的状态、任何错误，或者包含新嵌入包的PackageInfo信息的Request响应。</p>
+<p>这个例子还使用了Client.List方法来访问当前已经安装在你的项目中的包集合，并选择出第一个既非嵌入也非内置的包。</p>
+<p>Client.List方法返回一个ListRequest实例，你可以使用它获取List操作的状态、任何错误，或者包含你可以遍历的PackageCollection的Request响应。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager.Requests;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Unity.Editor.Example
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmbedPackageExample</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> String targetPackage;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> EmbedRequest Request;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> ListRequest LRequest;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [MenuItem(&#34;Window/Embed Package Example&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> GetPackageName()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// First get the name of an installed package</span>
+</span></span><span style="display:flex;"><span>            LRequest = Client.List();
+</span></span><span style="display:flex;"><span>            EditorApplication.update += LProgress;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> LProgress()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (LRequest.IsCompleted)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (LRequest.Status == StatusCode.Success)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> package <span style="color:#66d9ef">in</span> LRequest.Result)
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// Only retrieve packages that are currently installed in the</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// project (and are neither Built-In nor already Embedded)</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (package.isDirectDependency &amp;&amp; package.source
+</span></span><span style="display:flex;"><span>                            != PackageSource.BuiltIn &amp;&amp; package.source
+</span></span><span style="display:flex;"><span>                            != PackageSource.Embedded)
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            targetPackage = package.name;
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                    Debug.Log(LRequest.Error.message);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                EditorApplication.update -= LProgress;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                Embed(targetPackage);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Embed(<span style="color:#66d9ef">string</span> inTarget)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Embed a package in the project</span>
+</span></span><span style="display:flex;"><span>            Debug.Log(<span style="color:#e6db74">&#34;Embed(&#39;&#34;</span> + inTarget + <span style="color:#e6db74">&#34;&#39;) called&#34;</span>);
+</span></span><span style="display:flex;"><span>            Request = Client.Embed(inTarget);
+</span></span><span style="display:flex;"><span>            EditorApplication.update += Progress;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Progress()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (Request.IsCompleted)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (Request.Status == StatusCode.Success)
+</span></span><span style="display:flex;"><span>                    Debug.Log(<span style="color:#e6db74">&#34;Embedded: &#34;</span> + Request.Result.packageId);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (Request.Status &gt;= StatusCode.Failure)
+</span></span><span style="display:flex;"><span>                    Debug.Log(Request.Error.message);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                EditorApplication.update -= Progress;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="package-manager-events包管理器事件">Package Manager events(包管理器事件) <a href="#package-manager-events%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e4%ba%8b%e4%bb%b6" class="anchor">🔗</a></h2><p>使用Events类在包管理器中注册一个事件处理器。Events类包含两个你可以订阅的事件，包管理器在以下时机会触发这些事件：</p>
+<ul>
+<li>在包管理器更改依赖列表之前立即（registeringPackages）</li>
+<li>在包管理器导入并编译了更改后的包依赖列表之后（registeredPackages）</li>
+</ul>
+<p>以下示例演示了如何使用这两种事件。</p>
+<h3 id="example-of-using-the-registeringpackages-event使用registeringpackages事件的示例">Example of using the registeringPackages event(使用registeringPackages事件的示例) <a href="#example-of-using-the-registeringpackages-event%e4%bd%bf%e7%94%a8registeringpackages%e4%ba%8b%e4%bb%b6%e7%9a%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Unity.Editor.Example
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EventSubscribingExample_RegisteringPackages</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> EventSubscribingExample_RegisteringPackages()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Subscribe to the event using the addition assignment operator (+=).</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// This executes the code in the handler whenever the event is fired.</span>
+</span></span><span style="display:flex;"><span>            Events.registeringPackages += RegisteringPackagesEventHandler;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// The method is expected to receive a PackageRegistrationEventArgs event argument.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> RegisteringPackagesEventHandler(PackageRegistrationEventArgs packageRegistrationEventArgs)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Debug.Log(<span style="color:#e6db74">&#34;The list of registered packages is about to change!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> addedPackage <span style="color:#66d9ef">in</span> packageRegistrationEventArgs.added)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">$&#34;Adding {addedPackage.displayName}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> removedPackage <span style="color:#66d9ef">in</span> packageRegistrationEventArgs.removed)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">$&#34;Removing {removedPackage.displayName}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// The changedFrom and changedTo collections contain the packages that are about to be updated.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Both collections are guaranteed to be the same size with indices matching the same package name.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt;= packageRegistrationEventArgs.changedFrom.Count; i++)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> oldPackage = packageRegistrationEventArgs.changedFrom[i];
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> newPackage = packageRegistrationEventArgs.changedTo[i];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">$&#34;Changing ${oldPackage.displayName} version from ${oldPackage.version} to ${newPackage.version}&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="example-of-using-the-registeredpackages-event使用registeredpackages事件的示例">Example of using the registeredPackages event(使用registeredPackages事件的示例) <a href="#example-of-using-the-registeredpackages-event%e4%bd%bf%e7%94%a8registeredpackages%e4%ba%8b%e4%bb%b6%e7%9a%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.PackageManager;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Unity.Editor.Example
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EventSubscribingExample_RegisteredPackages</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// You must use &#39;[InitializeOnLoadMethod]&#39; or &#39;[InitializeOnLoad]&#39; to subscribe to this event.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [InitializeOnLoadMethod]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> SubscribeToEvent()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// This causes the method to be invoked after the Editor registers the new list of packages.</span>
+</span></span><span style="display:flex;"><span>            Events.registeredPackages += RegisteredPackagesEventHandler;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> RegisteredPackagesEventHandler(PackageRegistrationEventArgs packageRegistrationEventArgs)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Code executed here can safely assume that the Editor has finished compiling the new list of packages</span>
+</span></span><span style="display:flex;"><span>            Debug.Log(<span style="color:#e6db74">&#34;The list of registered packages has changed!&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="accessing-package-assets访问包内资产">Accessing package assets(访问包内资产) <a href="#accessing-package-assets%e8%ae%bf%e9%97%ae%e5%8c%85%e5%86%85%e8%b5%84%e4%ba%a7" class="anchor">🔗</a></h1><p>本节解释如何访问或引用在包内定义的资产：</p>
+<ul>
+<li>引用包路径</li>
+<li>加载包内的纹理</li>
+<li>解析绝对路径</li>
+</ul>
+<p><strong>注意</strong>：包管理器不支持在包中流处理资产。请使用Addressables包代替。</p>
+<h2 id="referring-to-package-paths引用包路径">Referring to package paths(引用包路径) <a href="#referring-to-package-paths%e5%bc%95%e7%94%a8%e5%8c%85%e8%b7%af%e5%be%84" class="anchor">🔗</a></h2><p>要引用在包内定义的资产，请使用这个路径方案：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Packages/&lt;package-name&gt;/...&#34;</span>
+</span></span></code></pre></div><p>包内的资产路径以<code>Packages/</code>和包名（而非显示名）开头。</p>
+<p>相比之下，你可以使用这个策略访问项目资产：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Assets/...&#34;</span>
+</span></span></code></pre></div><p>例如，<strong>com.unity.images-library</strong>包的<code>/Example/Images</code>子文件夹中的<code>image.png</code>文件的路径为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Packages/com.unity.images-library/Example/Images/image.png&#34;</span>
+</span></span></code></pre></div><p>要获取在你<code>Packages</code>文件夹中的项目的绝对路径，你可以使用部分路径作为Path.GetFullPath()方法的参数。举例可参考解析绝对路径部分。</p>
+<h2 id="loading-a-texture-inside-a-package加载包内的纹理">Loading a Texture inside a package(加载包内的纹理) <a href="#loading-a-texture-inside-a-package%e5%8a%a0%e8%bd%bd%e5%8c%85%e5%86%85%e7%9a%84%e7%ba%b9%e7%90%86" class="anchor">🔗</a></h2><p>要加载存储在包内的纹理，使用LoadAssetAtPath方法，它需要<code>using UnityEditor</code>指令。指定路径遵循<code>Packages/&lt;package-name&gt;/</code>路径方案，如本示例所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>Texture2D texture = (Texture2D)AssetDatabase.LoadAssetAtPath(<span style="color:#e6db74">&#34;Packages/com.unity.images-library/Example/Images/image.png&#34;</span>, <span style="color:#66d9ef">typeof</span>(Texture2D));
+</span></span></code></pre></div><h2 id="resolving-absolute-paths解析绝对路径">Resolving absolute paths(解析绝对路径) <a href="#resolving-absolute-paths%e8%a7%a3%e6%9e%90%e7%bb%9d%e5%af%b9%e8%b7%af%e5%be%84" class="anchor">🔗</a></h2><p>要获取打包资产的绝对路径，使用Path.GetFullPath()方法，它需要<code>using System.IO</code>指令。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.IO;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span> absolute =   Path.GetFullPath(<span style="color:#e6db74">&#34;Packages/com.unity.images-library/Example/Images/image.png&#34;</span>);
+</span></span></code></pre></div><h1 id="scoped-registries作用域注册表">Scoped registries(作用域注册表) <a href="#scoped-registries%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h1><p>作用域注册表允许Unity将任何自定义包注册服务器的位置信息传递给包管理器，这样你可以同时访问多个包集合。</p>
+<p>以下是一些重要概念，以帮助你理解这个功能：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Concept概念</strong></th>
+<th style="text-align:left"><strong>Description描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>package registry server包注册服务器</strong></td>
+<td style="text-align:left">一个跟踪包并提供存储它们的地方的应用程序。在Unity的包管理器窗口中，当你选择Unity注册表上下文时，所有在Unity注册表上注册的包都会在列表面板中显示。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>package manager包管理器</strong></td>
+<td style="text-align:left">一个告诉用户什么包可用，并根据用户对其项目的需求下载安装任何包的应用程序。Unity实现了其自己的包管理器版本，但在其他组织中有几个类似的应用程序。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>scope作用域</strong></td>
+<td style="text-align:left">定义一个包名或名称空间(以反向域格式)，如<code>com.example.mycompany.animation</code>或<code>com.example</code>。当用户请求一个包时，包管理器从最匹配作用域的注册表中获取包。更多信息，请参考下方的为项目管理作用域注册表。</td>
+</tr>
+<tr>
+<td style="text-align:left">你与作用域注册表的交互方式取决于你的角色：</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>包提供者设置自定义注册服务器，除Unity注册表外，还托管并分发自定义包。</li>
+<li>包消费者为每个项目设置作用域注册表，以访问自定义包提供商的注册服务器。</li>
+</ul>
+<h2 id="integrity-and-security-of-scoped-registries作用域注册表的完整性和安全性">Integrity and security of scoped registries(作用域注册表的完整性和安全性) <a href="#integrity-and-security-of-scoped-registries%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8%e7%9a%84%e5%ae%8c%e6%95%b4%e6%80%a7%e5%92%8c%e5%ae%89%e5%85%a8%e6%80%a7" class="anchor">🔗</a></h2><p>作为一个包提供者，确保你设置的任何包注册服务器都符合Unity的服务条款和Unity的包指导原则和指南。Unity提供了访问包管理器的权限以便分享知识和内容，但并非作为第三方产品的市场。</p>
+<p>作为一个包消费者，当你安装一个作用域注册表时，要像安装其他任何第三方软件一样保持警惕：</p>
+<ul>
+<li>仅从可信赖的来源安装作用域注册表，因为那些注册表中的包可以包含可执行代码。</li>
+<li>警惕可能会带来危害或在没有适当控制的情况下捕获数据的第三方注册表。也要防备假扮为Unity，或者声明获得或得到Unity支持的第三方。</li>
+</ul>
+<h2 id="benefits-of-scoped-registries作用域注册表的好处">Benefits of scoped registries(作用域注册表的好处) <a href="#benefits-of-scoped-registries%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8%e7%9a%84%e5%a5%bd%e5%a4%84" class="anchor">🔗</a></h2><p>作用域注册表可以帮助：</p>
+<ul>
+<li>
+<p><strong>通过分发工具、库和其他资产来提供新功能</strong>。</p>
+<p>作为提供者，你可以创建你自己的注册表来分发工具和<strong>脚本</strong>(或其他类型的资产)，版本号表示包的成熟程度。基于语义版本，版本号也表示更新是引入破坏性的API变更还是小修正。你的代码可以依赖其它包中的代码，因为包管理器支持包的依赖。</p>
+<p>作为消费者，你浏览和安装包管理器中的第三方自定义包的体验与浏览Unity的包一样。</p>
+</li>
+<li>
+<p><strong>扩展现有Unity包的功能</strong>。</p>
+<p>作为消费者，你可以有一个无缝的体验，其中自定义包覆盖Unity包，而不需要手动更改注册表或明确安装不同的包版本。这是因为你可以将包映射到特定的注册表，以便包管理器从Unity注册表或自定义包注册服务器获取。</p>
+</li>
+<li>
+<p><strong>在封闭网络环境中访问包</strong>。</p>
+<p>有些组织在封闭的网络内工作，这使得访问Unity的包注册表变得困难。在这些情况下，组织可以在他们封闭网络内的服务器上设置他们自己的包注册表。然后，网络管理员可以定期与Unity的包注册表同步，以确保作用域注册表有最新的包集合。</p>
+</li>
+</ul>
+<p>如果你是一个包消费者，参考为项目管理作用域注册表获取关于如何在你的Unity项目中连接到现有的自定义包注册服务器的信息。如果你是包生产者，参考分享你的包获取关于受支持的包注册服务器的信息。这些信息还包括如何设置他们与作用域注册表一起使用的链接。</p>
+<p><strong>注意:</strong> 如果你正在设置一个指向有访问限制的包注册服务器的作用域注册表，你可以配置包管理器将你的<code>npm</code>验证令牌传递给服务器。更多信息，请参考作用域注册表验证。</p>
+<h2 id="importing-scoped-registries导入作用域注册表">Importing scoped registries(导入作用域注册表) <a href="#importing-scoped-registries%e5%af%bc%e5%85%a5%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h2><p>如果你正在一个共享项目中工作，另一个用户在项目中添加了一个作用域注册表，Unity会警告你另一个用户添加了一个新的作用域注册表。</p>
+<p><img src="/2023-07-19-unity-document-5/class-PackageManager-scoped.png" alt=""></p>
+<p>如果你的项目的作用域注册表列表有更改，Unity会发出警告。</p>
+<p>当你点击<strong>关闭</strong>时，包管理器项目设置窗口会出现，让你可以为你的项目添加、修改或移除作用域注册表。</p>
+<p><strong>提示：<strong>要在任何时候访问包管理器项目设置窗口，使用Unity的主菜单（<strong>Edit &gt; Project Settings</strong>，然后选择</strong>Package Manager</strong>类别）。你也可以在包管理器窗口的高级设置菜单中选择<strong>Advanced Project Settings</strong>。</p>
+<h2 id="managing-scoped-registries-for-a-project对项目进行作用域注册表管理">Managing scoped registries for a project(对项目进行作用域注册表管理) <a href="#managing-scoped-registries-for-a-project%e5%af%b9%e9%a1%b9%e7%9b%ae%e8%bf%9b%e8%a1%8c%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8%e7%ae%a1%e7%90%86" class="anchor">🔗</a></h2><p>要管理项目中的作用域包注册表，你可以直接编辑你的项目清单文件，或使用包管理器项目设置窗口让Unity为你更改清单。</p>
+<p>项目清单使用了一个scopedRegistries属性，它包含了一个作用域注册表配置对象的数组。每个对象都有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>JSON Type</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>name</strong></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">在用户界面中显示的作用域名称。包管理器窗口在详情面板中显示此名称。例如，<code>&quot;name&quot;: &quot;工具&quot;</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>url</strong></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指向与npm兼容的注册表服务器的URL。例如，<code>&quot;url&quot;: &quot;https://mycompany.example.com/tools-registry&quot;</code> <strong>注意</strong>：并非所有的注册表提供商都与Unity的包管理器兼容。确保你试图添加的包注册表服务器实现了 <code>/-/v1/search</code> 或 <code>/-/all</code> 端点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>scopes</strong></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">你可以映射到包名的作用域数组，可以是包名的确切匹配，也可以是命名空间。不支持通配符和其他全局模式。例如，<code>&quot;scopes&quot;: [ &quot;com.example&quot;, &quot;com.example.tools.physics&quot; ]</code> <strong>注意</strong>：这种配置类型假设包遵循反向域名标记。这确保了 <code>com.unity</code> 等同于匹配 <code>com.unity</code> 命名空间的任何包名，如 <code>com.unity.timeline</code> 或 <code>com.unity.2d.animation</code>。 <strong>警告</strong>：Unity不支持npm的作用域表示法。</td>
+</tr>
+</tbody>
+</table>
+<p>当包管理器决定从哪个注册表获取一个包时，它会比较包的<strong>名称</strong>和<strong>作用域</strong>值，找到与<strong>作用域</strong>值最接近匹配的注册表。</p>
+<p>例如，在下面的项目清单中，有两个作用域注册表，“General”和“Tools”：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;scopedRegistries&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;General&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://example.com/registry&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;scopes&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;com.example&#34;</span>, <span style="color:#e6db74">&#34;com.example.tools.physics&#34;</span>
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Tools&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://mycompany.example.com/tools-registry&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;scopes&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;com.example.mycompany.tools&#34;</span>
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;com.unity.animation&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;com.example.mycompany.tools.animation&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;com.example.tools.physics&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;com.example.animation&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当包管理器查找 <code>com.example.animation</code> 包时，它发现 <code>com.example</code> 名称空间与其名称最接近，于是从&quot;General&quot;注册表中获取该包。</p>
+<p>当包管理器查找 <code>com.example.tools.physics</code> 包时，&ldquo;General&quot;注册表具有与包名完全匹配的作用域。</p>
+<p>当包管理器查找 <code>com.example.mycompany.tools.animation</code> 包时，包管理器发现 <code>com.example.mycompany.tools</code> 名称空间与其名称最接近，于是从&quot;Tools&quot;注册表中获取该包。尽管它也匹配&quot;General&quot;作用域，但 <code>com.example</code> 名称空间不是最接近的匹配。</p>
+<p>当包管理器查找 <code>com.unity.animation</code> 包时，包管理器在任何作用域注册表中都找不到匹配项。在这种情况下，它是从默认注册表中获取包的。</p>
+<h1 id="resolution-and-conflict解决和冲突">Resolution and conflict(解决和冲突) <a href="#resolution-and-conflict%e8%a7%a3%e5%86%b3%e5%92%8c%e5%86%b2%e7%aa%81" class="anchor">🔗</a></h1><p>当你将一个包添加到<strong>项目清单</strong>中，Unity将该包视为项目的依赖项（直接依赖）。然而，一个包也可以依赖于其他包，这在需要该包的任何项目中创建<strong>间接依赖</strong>。</p>
+<p>由于大多数项目在开发游戏和应用程序时需要不止一个包，包管理器必须评估要从注册表中检索的所有请求包版本（无论是直接还是间接的），并决定安装哪些包版本。为了做到这一点，它计算满足项目中所有直接和间接依赖项的包集合，从项目依赖项开始，递归地探索每个间接依赖项，收集所有依赖项信息，然后选择满足依赖性要求而没有任何冲突的包集合。例如，这个依赖图表示了一个有四个<strong>直接依赖</strong>的项目以及他们所有的间接依赖：</p>
+<p><img src="/2023-07-19-unity-document-5/1.png" alt=""></p>
+<p>一个项目直接和间接包依赖的图表</p>
+<p>在这个例子中：</p>
+<ul>
+<li>浅蓝色节点代表项目的直接依赖。</li>
+<li>深蓝色节点表示该项目中作为间接依赖的相同包和版本。</li>
+<li>红色节点显示两个版本不同的相同包，这是一个冲突。</li>
+</ul>
+<p><strong>注意</strong>：只有声明了版本的包依赖需要被解决。包管理器会选择从其他来源安装的包，例如嵌入式包，以及使用本地路径、Git URL和内置包声明的依赖，优先于基于版本的依赖。</p>
+<h2 id="choosing-the-best-solution选择最佳解决方案">Choosing the best solution(选择最佳解决方案) <a href="#choosing-the-best-solution%e9%80%89%e6%8b%a9%e6%9c%80%e4%bd%b3%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="anchor">🔗</a></h2><p>根据在项目清单中定义的包集合，评估所有可能的包组合可能需要很长时间：一个项目可能依赖于数百个包，每个包又依赖于数百个其他包，大多数需要不同的版本。</p>
+<h3 id="lock-files-and-resolutionstrategy锁定文件和解决策略">Lock files and resolutionStrategy(锁定文件和解决策略) <a href="#lock-files-and-resolutionstrategy%e9%94%81%e5%ae%9a%e6%96%87%e4%bb%b6%e5%92%8c%e8%a7%a3%e5%86%b3%e7%ad%96%e7%95%a5" class="anchor">🔗</a></h3><p>为了提供最有效的解决方案，包管理器通过在锁定文件中跟踪它们来优先考虑之前使用过的包版本。这保证了使用相同输入进行后续依赖解决时，得到的输出是相同的。它也最小化了耗时的操作，如下载、解压或复制包。</p>
+<p>有时，包管理器无法找到只包括锁定包的解决方案。在这种情况下，包管理器会使用风险最小的升级方案，优先考虑补丁升级而不是小版本或大版本升级，默认情况下，小版本升级优先于大版本升级。然而，你可以通过解决策略属性自定义在考虑更高版本时，你希望包管理器有多大的进取心。</p>
+<h2 id="example示例">Example(示例) <a href="#example%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h2><p>在这个例子中，有以下几个包的多个版本被请求：</p>
+<ul>
+<li><code>burst@1.2.2</code> (twice) and <code>burst@1.3.0-preview.3</code></li>
+<li><code>collections@0.5.1-preview.11</code> and <code>collections@0.5.2-preview.8</code></li>
+<li><code>jobs@0.2.4-preview.11</code> (twice) and <code>jobs@0.2.5-preview.20</code></li>
+</ul>
+<p>使用直接和间接依赖的集合，包管理器选择了 burst 包的最高版本(<code>burst@1.3.0-preview.3</code>)，这满足了 <code>collections@0.5.2-preview.8</code> 包的依赖：</p>
+<p><img src="/2023-07-19-unity-document-5/2.png" alt=""></p>
+<p>在依赖关系图中，蓝色节点表示包管理器选择了哪些版本</p>
+<h1 id="lock-files锁定文件">Lock files(锁定文件) <a href="#lock-files%e9%94%81%e5%ae%9a%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h1><p>锁定文件包含了包管理器对一个项目进行依赖解析的结果。包管理器用锁定文件来在解析包依赖图时提供一个确定的结果。当Unity包管理器计算出一个成功的解析时，它会将该解析存储在项目的<code>Packages</code>文件夹中，名为<code>packages-lock.json</code>的JSON文件里。对<strong>项目清单</strong>或<strong>可变</strong>包清单（嵌入的或从本地文件夹安装的）的任何修改都可能迫使包管理器重新计算已解析的包版本。但只要锁定文件中的包版本满足依赖版本和解析策略预设的范围，那么该包将被锁定在那个版本。</p>
+<p>例如，这是锁定文件中的一个典型条目：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;com.unity.textmeshpro&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;2.0.1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;depth&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;registry&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.ugui&#34;</span>: <span style="color:#e6db74">&#34;2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://packages.unity.com&#34;</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">etc.</span>
+</span></span></code></pre></div><p>当包管理器解析任何冲突的间接依赖时，它尽量重用尽可能多的锁定包。这确保了对同一组依赖进行后续的依赖解析会产生相同的结果。它也最大程度地减少了耗时的操作，如下载、提取或复制包。</p>
+<p>如果没有只包括锁定包的解决方案，那么包管理器会选择一组风险最小的升级包，优先选择补丁级别的升级而不是小版本或大版本的升级，而小版本的升级优先于大版本的升级。实际上，你可以自定义升级的风险级别。有关更多信息，请查看自定义解析策略。</p>
+<p>要强制刷新间接依赖版本，就删除锁定文件。</p>
+<p>不要手动修改锁定文件：包管理器创建和维护锁定文件，因此它会覆盖你对文件做的任何更改。</p>
+<p>将锁定文件放在源代码控制下，这样你可以始终复现相同的包集，确保你的项目随着时间的推移和在不同的机器上保持一致。</p>
+<h2 id="disabling-the-lock-file禁止锁定文件">Disabling the lock file(禁止锁定文件) <a href="#disabling-the-lock-file%e7%a6%81%e6%ad%a2%e9%94%81%e5%ae%9a%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>默认情况下，当包管理器成功计算出一个依赖图时，它会创建或更新锁定文件。如果你看到意外的结果，你可以在你的项目清单中设置enableLockFile属性为<code>false</code>来禁用锁定。然而，如果你禁用了锁定文件，包管理器会再次克隆Git URL包，这会导致性能降低和额外的网络使用。如果你在两次解析之间向远程Git仓库提交了更新的提交，那么可能会导致结果不确定。</p>
+<h1 id="project-manifest项目清单">Project manifest(项目清单) <a href="#project-manifest%e9%a1%b9%e7%9b%ae%e6%b8%85%e5%8d%95" class="anchor">🔗</a></h1><p>当Unity加载一个项目时，Unity包管理器会读取<strong>项目清单</strong>，以便计算出要获取和加载哪些包的列表。当用户通过包管理器窗口安装或卸载一个包时，包管理器会将这些更改存储在项目清单文件中。项目清单文件通过依赖对象管理包的列表。</p>
+<p>此外，项目清单还充当包管理器的配置文件，包管理器使用清单来自定义注册表URL并注册自定义注册表。</p>
+<p>你可以在你的Unity项目的根文件夹下的<code>Packages</code>文件夹中找到项目清单文件，名为<code>manifest.json</code>。像包清单文件一样，项目清单文件使用JSON（JavaScript对象表示法）语法。</p>
+<h2 id="properties属性">Properties(属性) <a href="#properties%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p>所有属性都是可选的。然而，如果你的项目清单文件不包含任何值，包管理器窗口将无法加载，而且包管理器也不会加载任何包。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Key</strong></th>
+<th style="text-align:left"><strong>JSON Type</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>dependencies依赖</strong></td>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">需要的包集合，仅包括直接依赖（间接依赖放在包清单中）。每个条目将包名映射到最低版本需求： <code>{</code> <code>&quot;dependencies&quot;: {</code> <code>&quot;com.my-package&quot;: &quot;2.3.1&quot;,</code> <code>&quot;com.my-other-package&quot;: &quot;1.0.1-preview.1&quot;,</code> <code>等.</code> <code>}</code> <code>}</code> 指定版本号表示需要包管理器从包注册中心下载此包（也就是说，这个包的来源是注册中心）。然而，除了使用版本号外，你也可以指定一个本地文件夹或tarball文件的路径，或者一个Git的URL。 <strong>注意</strong>：你不需要在这里指定内嵌包，因为包管理器会在你的项目的<code>Packages</code>文件夹中找到它们，并自动加载。如果有与同名的内嵌包在它自己的包清单里，包管理器会忽略此项。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>enableLockFile启动锁定文件</strong></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">启用锁定文件，以确保以确定的方式解析依赖。这个默认设置为<code>true</code>。更多信息，请查看使用锁定文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>resolutionStrategy解决策略</strong></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">基于语义化版本规则升级间接依赖。这个默认设置为<code>lowest</code>。更多信息，请在下方查看设置解析策略。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>scopedRegistries范围注册</strong></td>
+<td style="text-align:left">Array of Objects</td>
+<td style="text-align:left">除了默认注册中心，你可以指定自定义注册中心。这可以让你自己托管你的包。 更多详细信息，请查看范围注册中心。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>testables可测试</strong></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">列出那些你想在Unity测试框架中加载的包。更多信息，请查看如何给包添加测试。 <strong>注意</strong>：你不需要在这里指定内嵌包，因为Unity测试框架默认他们是可测试的。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example <a href="#example" class="anchor">🔗</a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scopedRegistries&#34;</span>: [{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;My internal registry&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://my.internal.registry.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;scopes&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;com.company&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.package-1&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.package-2&#34;</span>: <span style="color:#e6db74">&#34;2.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.company.my-package&#34;</span>: <span style="color:#e6db74">&#34;3.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.my-local-package&#34;</span>: <span style="color:#e6db74">&#34;file:&lt;path&gt;/my_package_folder&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.my-local-tarball&#34;</span>: <span style="color:#e6db74">&#34;file:&lt;path&gt;/my_package_tarball.tgz&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.unity.my-git-package&#34;</span>: <span style="color:#e6db74">&#34;https://my.repository/my-package.git#v1.2.3&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;enableLockFile&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;resolutionStrategy&#34;</span>: <span style="color:#e6db74">&#34;highestMinor&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;testables&#34;</span>: [ <span style="color:#e6db74">&#34;com.unity.package-1&#34;</span>, <span style="color:#e6db74">&#34;com.unity.package-2&#34;</span> ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="setting-a-resolution-strategy设置解决策略">Setting a resolution strategy(设置解决策略) <a href="#setting-a-resolution-strategy%e8%ae%be%e7%bd%ae%e8%a7%a3%e5%86%b3%e7%ad%96%e7%95%a5" class="anchor">🔗</a></h2><p>虽然你可以通过在项目清单中显式添加它们来强制Unity的包依赖解析使用间接依赖的更高版本，但这并不是一个好的策略，原因有两点：</p>
+<ul>
+<li>这将更多的责任放在项目所有者身上，以维护依赖版本。</li>
+<li>随着时间的推移，你可能会有一些项目不需要的依赖。</li>
+</ul>
+<p>一个更好的方法是通过设置 <strong>resolutionStrategy</strong> 属性来自定义包管理器根据语义化版本规则选择间接依赖的方式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Value:</strong></th>
+<th style="text-align:left"><strong>Description:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>lowest</strong></td>
+<td style="text-align:left">不升级间接依赖。相反，它使用的是精确的请求版本。这是默认模式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>highestPatch</strong></td>
+<td style="text-align:left">升级到具有相同主要和次要组件的最高版本。例如，请求版本1.2.3，此策略选择范围 <code>[1.2.3, 1.3.0)</code>（即，<code>&gt;= 1.2.3</code> 和 <code>&lt; 1.3.0</code>）中的最高版本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>highestMinor</strong></td>
+<td style="text-align:left">升级到具有相同主要组件的最高版本。例如，请求版本1.2.3，此策略选择范围 <code>[1.2.3, 2.0.0)</code>（即，<code>&gt;= 1.2.3</code> 和 <code>&lt; 2.0.0</code>）中的最高版本。 <strong>注意</strong>：版本<code>1.0.0</code>标记为第一个稳定的，生产就绪的版本。在那之下，版本<code>0.X.Y</code>表明它们的API尚未稳定，连续的次要版本可能引入破坏性的变化。SemVer规范的这一部分允许在不妨碍快速开发的情况下发布包的早期版本。因此，当目标版本为<code>0.X.Y</code>时，<strong>最高次要</strong>表现得像<strong>最高补丁</strong>，以确保选择一个向后兼容的版本。例如，请求版本<code>0.1.3</code>，此策略选择范围 <code>[0.1.3,0.2.0)</code> 中的最高版本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>highest</strong></td>
+<td style="text-align:left">升级到最高版本。例如，请求版本1.2.3，此策略选择范围 <code>[1.2.3,)</code>（即，<code>&gt;= 1.2.3</code>，没有上限）中的最高版本。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：这些范围永远不允许依赖从稳定版本跳到实验性或预发布包中。</p>
+<h1 id="embedded-dependencies嵌入式依赖">Embedded dependencies(嵌入式依赖) <a href="#embedded-dependencies%e5%b5%8c%e5%85%a5%e5%bc%8f%e4%be%9d%e8%b5%96" class="anchor">🔗</a></h1><p>你项目中<code>Packages</code>文件夹下的任何包都被嵌入到那个项目中。你可以通过几种方式创建一个<strong>嵌入式包</strong>：</p>
+<ul>
+<li>在项目的<code>Packages</code>文件夹下直接创建新包。</li>
+<li>手动从项目的包缓存中复制Unity包，粘贴到你的项目的<code>Packages</code>文件夹下。</li>
+<li>使用C#脚本将已安装的包版本嵌入到项目中。</li>
+</ul>
+<p>嵌入式包不需要作为依赖出现在<strong>项目清单</strong>中。然而，如果你嵌入了一个已安装的包的版本，你的项目清单仍然会列出对原始已安装版本的依赖。在这种情况下，磁盘上的包优先于作为依赖列出的包版本，所以不需要从项目清单中删除它。例如，如果项目清单指定了对<code>com.unity.example</code>包版本1.3.1的依赖，但项目也有一个嵌入了名为该名称的包，包管理器会使用嵌入式包，无论它的明显版本如何，而不会去从注册表中下载版本1.3.1。</p>
+<p>确保你跟踪你的嵌入式包的内容，以及你对其进行的任何更改。如果你的Unity项目在源代码控制之下，将在该项目中嵌入的任何包添加到同一源代码控制中。</p>
+<h2 id="creating-a-new-custom-package创建新的自定义包">Creating a new custom package(创建新的自定义包) <a href="#creating-a-new-custom-package%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89%e5%8c%85" class="anchor">🔗</a></h2><p>要嵌入一个新的包，将你的新包内容创建在<code>Packages</code>文件夹下的一个子文件夹中。获取更多信息，可以按照创建自定义包的指示进行操作。</p>
+<p>通常，你的新包会一直嵌入在你的项目中，直到你准备好与其他用户分享并在其他项目中测试它。然后，你可以将它发布到有作用域的包注册表中。</p>
+<h2 id="copying-a-unity-package-from-the-cache从缓存复制unity包">Copying a Unity package from the cache(从缓存复制Unity包) <a href="#copying-a-unity-package-from-the-cache%e4%bb%8e%e7%bc%93%e5%ad%98%e5%a4%8d%e5%88%b6unity%e5%8c%85" class="anchor">🔗</a></h2><p>从注册表安装的包是<strong>不可变的</strong>，这意味着你不能编辑它。如果你想编辑一个包，你可以通过将它复制到你的<code>Projects</code>文件夹来使其变为<strong>可变的</strong>。这种类型的包被称为嵌入式包，它会覆盖你的包缓存中的内容。之后，你可以从<code>Project</code>文件夹中删除该嵌入式包的文件夹，包管理器会自动切换到不可变的，已缓存的包。</p>
+<p>在缓存中找到你的包文件夹的最可靠方法是直接在Unity编辑器中定位已安装的版本：</p>
+<ol>
+<li>
+<p>打开项目窗口，选择<strong>Window</strong>菜单，然后选择<strong>General</strong> &gt; <strong>Project</strong>。</p>
+</li>
+<li>
+<p>从<strong>Project窗口</strong>中找出你想要嵌入的已安装包。</p>
+</li>
+<li>
+<p>右键点击所选包的文件夹，选择<strong>Show in Explorer</strong>（Windows）或<strong>Reveal in Finder</strong>（macOS）。此操作将在文件浏览器中使用<code>&lt;package-name&gt;@&lt;package-version&gt;</code>命名规则直接打开该包的文件夹。</p>
+<p><strong>注意</strong>：如果你想要嵌入在你的项目中找不到的包，你可以直接从你项目的包缓存（<code>&lt;project&gt;/Library/PackageCache</code>）获取，只需使用你的文件浏览器或命令行导航到正确的文件夹。然而，让编辑器为你找到它更为可靠，因为除了在项目缓存中定位包外，编辑器还会找到从本地文件夹或tarball安装，以及已经嵌入的包。</p>
+<p><img src="/2023-07-19-unity-document-5/upm-embed.png" alt=""></p>
+<p>文件浏览器打开到项目包缓存下的包文件夹</p>
+</li>
+<li>
+<p>复制包文件夹并直接粘贴到你的项目的<code>Packages</code>文件夹中。不要将它放在<code>Assets</code>文件夹中，因为包管理器不会扫描该文件夹以寻找包。</p>
+</li>
+<li>
+<p>移除文件夹名中的<code>@&lt;package-version&gt;</code>部分。</p>
+</li>
+<li>
+<p>如果你的项目已经在源代码控制下，那么将新嵌入的包添加到源代码控制中。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：你也可以在全局缓存下找到包文件夹，但全局缓存包含了你的系统上曾安装过的所有Unity编辑器版本的包，所以选择与你的项目的编辑器版本兼容的版本时要小心。</p>
+<p>如果你想删除嵌入式包，使用你的文件浏览器或命令行在你的<code>Packages</code>文件夹中定位那个包。考虑给嵌入式包的文件夹备份，否则你会失去对该包作的任何更改。然后，从你的<code>Packages</code>文件夹中删除那个包的文件夹。包管理器会自动切换回不可改变的，已缓存的包。</p>
+<h1 id="git-dependenciesgit依赖项">Git dependencies(Git依赖项) <a href="#git-dependenciesgit%e4%be%9d%e8%b5%96%e9%a1%b9" class="anchor">🔗</a></h1><p>当包管理器从Git仓库获取一个包时，它会将包本地添加到你的项目中。这允许你测试未发布的更改，但你不能用它来为那个Git仓库贡献代码。如果你想将一个已存在的本地Git仓库设为你的项目的依赖项，那么可以使用指向你本地Git仓库的路径来代替。</p>
+<p><strong>注意</strong>：你不能在package.json文件中指定<strong>Git依赖项</strong>，因为包管理器不支持包之间的Git依赖。它只支持项目的Git依赖，所以你只能在项目的manifest.json文件中声明Git依赖。</p>
+<p><strong>提示</strong>：如果你想更新你的Git依赖到仓库中的特定版本（修订版），请参阅Locked Git依赖项。</p>
+<p>本节包括以下主题：</p>
+<ul>
+<li>要求</li>
+<li>Git URLs
+<ul>
+<li>使用HTTP/HTTPS协议</li>
+<li>使用SSH协议</li>
+<li>使用FILE协议</li>
+<li>使用GIT协议</li>
+</ul>
+</li>
+<li>扩展语法
+<ul>
+<li>指定一个Git修订版</li>
+<li>在仓库的子文件夹中指定一个包</li>
+<li>同时指定修订版和路径</li>
+</ul>
+</li>
+<li>锁定的Git依赖项</li>
+<li>Git LFS支持</li>
+</ul>
+<h2 id="requirements要求">Requirements(要求) <a href="#requirements%e8%a6%81%e6%b1%82" class="anchor">🔗</a></h2><p>要在项目中使用Git依赖项，请确保你在电脑上安装了Git客户端（最低版本2.14.0），并已将Git可执行路径添加到PATH系统环境变量中。</p>
+<p><strong>警告</strong>：Unity已经测试过包管理器与Git 2.14.0及以上版本的兼容性。如果你使用的Git版本低于2.14.0，Unity无法保证结果。</p>
+<p>如果仓库跟踪的文件使用的是Git LFS，确保你的机器上也安装了Git LFS客户端。如果未安装，包管理器无法获取存储在LFS服务器上的文件，而是在没有任何错误或警告消息的情况下检出LFS指针文件。</p>
+<p>你可以使用包管理器窗口直接从Git仓库安装一个包。要获取更多信息，请参考从Git URL安装。</p>
+<h2 id="git-urls">Git URLs <a href="#git-urls" class="anchor">🔗</a></h2><p>包管理器支持所有的Git协议，除了本地文件路径。要将Git URL指定为依赖项，需要在<strong>项目清单</strong>中添加包的名称，使用Git的URL而不是版本号或本地文件路径。例如，以下是如何使用不同协议指定远程Git的示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository1.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;ssh://git@github.example.com/myuser/myrepository2.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage3&#34;</span>: <span style="color:#e6db74">&#34;file://localhost/github.example.com/myuser/myrepository3.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage4&#34;</span>: <span style="color:#e6db74">&#34;git://github.example.com/myuser/myrepository4.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">etc.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>包管理器通过查看仓库路径末尾的<code>.git</code>文件扩展名，来识别格式为URL的依赖项是否为Git URL。一些Git仓库托管服务不支持带有此扩展名的URL，而其他一些则强制要求。因此，Git依赖项语法允许你在使用GIT协议，或在HTTP/HTTPS，SSH，FILE URL之前添加特殊的<code>git+</code>前缀时，省略这个扩展名。</p>
+<p><strong>注意</strong>：<code>git+</code>前缀是<code>manifest.json</code>文件中的一个特殊标记，表明依赖项是基于Git的。包管理器在克隆仓库时不会将它传递给Git。</p>
+<p>要获取有关Git支持的URL格式的更多信息，请参考git clone命令的文档。要了解Git使用的协议之间的区别，请参阅Git文档中关于使用协议的部分。</p>
+<p>你还可以为Git依赖项使用扩展语法：</p>
+<ul>
+<li>
+<p>如果你想要的包不在仓库的根目录，你可以指定到仓库中包的子文件夹的路径。只有当你需要的包不在仓库的根部时，才需要这样做。例如，在以下字符串中的<code>?path=/folder1/folder2</code>:</p>
+<p><code>&quot;https://github.example.com/myuser/myrepository.git?path=/folder1/folder2&quot;</code> 。</p>
+<p>要获取更多信息，请参阅在子文件夹中指定一个包。</p>
+</li>
+<li>
+<p>你可以指定一个Git修订版，它可以是一个标签，分支名，或一个特定的提交哈希来锁定。这确保包管理器始终加载那个确切的修订版。如果你不指定修订版，包管理器会克隆默认分支和最新提交的仓库，并锁定到那个修订版。例如，以下字符串中的<code>#v2.0.0</code>:</p>
+<p><code>&quot;https://github.example.com/myuser/myrepository.git#v2.0.0&quot;</code>。</p>
+<p>要获取更多信息，请参阅指定一个Git修订版。</p>
+</li>
+</ul>
+<h3 id="using-the-httphttps-protocol">Using the HTTP/HTTPS protocol <a href="#using-the-httphttps-protocol" class="anchor">🔗</a></h3><p>你可以使用带有完整URL的HTTPS协议：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository.git&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果你的Git服务器不支持<code>.git</code>扩展，你可以添加特殊的<code>git+</code>前缀，带或不带这个扩展：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;git+https://github.example.com/myuser/myrepository1.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;git+https://github.example.com/myuser/myrepository2&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：或者，你可以使用GIT协议，而不是<code>git+</code>前缀。要获取更多信息，请参阅使用GIT协议。</p>
+<p>如果仓库可以公开访问，对于与用户分享Git URLs，我们建议使用HTTPS方案，因为你可以直接从Git仓库托管服务网页复制和粘贴URL。</p>
+<p><img src="/2023-07-19-unity-document-5/upm-git-cloning.png" alt=""></p>
+<p>从包仓库复制URL</p>
+<p>如果仓库不是公开可访问的，并且你正在使用HTTPS，仓库服务器会因为你无法与服务器交互以提供你的凭证而无法验证你的身份。在这种情况下，编辑器会通知你身份验证失败。</p>
+<p>要解决这些身份验证问题，你可以：</p>
+<ul>
+<li>预先使用Git凭证助手进行身份验证。获取更多信息，请参考&quot;使用HTTPS Git URL与私有仓库进行交互&rdquo;。</li>
+<li>改为使用SSH协议。如果你设置并配置了与Git仓库托管服务的SSH密钥对，包管理器可以无缝地代表你验证请求。</li>
+</ul>
+<h3 id="using-the-ssh-protocol">Using the SSH protocol <a href="#using-the-ssh-protocol" class="anchor">🔗</a></h3><p>你可以使用带有完整URL的SSH协议：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage&#34;</span>: <span style="color:#e6db74">&#34;ssh://git@mycompany.github.com/gitproject/com.mycompany.mypackage.git&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果你的Git服务器不支持<code>.git</code>扩展，你可以添加特殊的<code>git+</code>前缀，带或不带这个扩展：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;git+ssh://git@github.example.com/myuser/myrepository1.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;git+ssh://git@github.example.com/myuser/myrepository2&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：或者，你可以使用GIT协议，而不是<code>git+</code>前缀。要获取更多信息，请参见使用GIT协议的部分。</p>
+<p>你也可以使用类似SCP的简写，包管理器总是会识别它为Git依赖项：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage&#34;</span>: <span style="color:#e6db74">&#34;git@mycompany.github.com:gitproject/com.mycompany.mypackage.git&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="using-putty-on-windows在windows上使用putty">Using PuTTY on Windows(在Windows上使用PuTTY) <a href="#using-putty-on-windows%e5%9c%a8windows%e4%b8%8a%e4%bd%bf%e7%94%a8putty" class="anchor">🔗</a></h4><p>当你使用SSH进行身份验证时，Git将使用默认位置的密钥。然而，如果你在Windows上使用PuTTY作为SSH客户端，你需要配置<code>GIT_SSH</code>环境变量，使其指向<code>plink.exe</code>。</p>
+<h4 id="authenticating-with-sshssh身份验证">Authenticating with SSH(SSH身份验证) <a href="#authenticating-with-sshssh%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81" class="anchor">🔗</a></h4><p>如果你想使用SSH协议，你需要在Unity外部设置SSH密钥。有关为特定主机设置身份验证的更多信息，请参阅Bitbucket、GitLab和GitHub的帮助页面。</p>
+<p><strong>注意</strong>：如果你用密语加密了你的SSH密钥，包管理器就无法检索到包，因为它没有提供在终端或命令行中输入密语的方式。在这种情况下，编辑器会通知你身份验证失败。关于使用身份验证代理的信息，请参阅&quot;使用SSH Git URLs的口令保护SSH密钥&quot;。关于使用<strong>ssh-agent</strong>进行身份验证的更多信息，请参阅SSH的解决方案。</p>
+<h3 id="using-the-file-protocol使用file协议">Using the FILE protocol(使用FILE协议) <a href="#using-the-file-protocol%e4%bd%bf%e7%94%a8file%e5%8d%8f%e8%ae%ae" class="anchor">🔗</a></h3><p>除非它们格式正确，否则包管理器不会把带有<code>file:</code>前缀的Git URL识别为Git依赖项。这意味着你必须使用<code>git+file:</code>协议，或者使用带<code>.git</code>后缀的<code>file:</code>协议：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;git+file://github.example.com/myuser/myrepository1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;git+file:///github.example.com/myuser/myrepository2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage3&#34;</span>: <span style="color:#e6db74">&#34;file:///github.example.com/myuser/myrepository3.git&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：或者，你可以使用GIT协议，而不是<code>git+</code>前缀。要获得更多信息，请参见使用GIT协议的部分。</p>
+<p>包管理器会将任何其他语法解读为本地路径。</p>
+<h3 id="using-the-git-protocol使用git协议">Using the GIT protocol(使用GIT协议) <a href="#using-the-git-protocol%e4%bd%bf%e7%94%a8git%e5%8d%8f%e8%ae%ae" class="anchor">🔗</a></h3><p>包管理器能识别带或不带<code>.git</code>路径后缀的<code>git:</code>协议：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;git://github.example.com/myuser/myrepository1.git&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;git://github.example.com/myuser/myrepository2&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>GIT协议不需要也不支持<code>git+</code>前缀。</p>
+<h2 id="extended-syntax扩展语法">Extended syntax(扩展语法) <a href="#extended-syntax%e6%89%a9%e5%b1%95%e8%af%ad%e6%b3%95" class="anchor">🔗</a></h2><p>你可以使用扩展语法来标识特定的Git版本，一个子文件夹中的包，或者两者都标识。</p>
+<p>你可以在Unity支持的任何Git协议中使用扩展语法。</p>
+<h3 id="specifying-a-git-revision指定git版本">Specifying a Git revision(指定Git版本) <a href="#specifying-a-git-revision%e6%8c%87%e5%ae%9agit%e7%89%88%e6%9c%ac" class="anchor">🔗</a></h3><p>为了声明你希望包管理器克隆的特定版本，在URL的末尾加上由井号(<code>#</code>)前缀的版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository1.git#revision&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage2&#34;</span>: <span style="color:#e6db74">&#34;git+https://github.example.com/myuser/myrepository2#revision&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>版本可以是任何标签，分支或提交哈希。你必须提供完整的提交哈希。Unity不支持缩短的SHA-1哈希。以下表格展示了指定版本的例子：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Syntax语法</strong></th>
+<th style="text-align:left"><strong>URL example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">最新默认分支</td>
+<td style="text-align:left"><code>&quot;https://github.example.com/myuser/myrepository.git&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">指定的分支</td>
+<td style="text-align:left"><code>&quot;https://github.example.com/myuser/myrepository.git#my-branch&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">特定版本</td>
+<td style="text-align:left"><code>&quot;https://github.example.com/myuser/myrepository.git#v2.0.0&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">提交哈希</td>
+<td style="text-align:left"><code>&quot;https://github.example.com/myuser/myrepository.git#9e72f9d5a6a3dadc38d813d8399e1b0e86781a49&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="specifying-a-package-in-a-subfolder-of-the-repository指定仓库子文件夹中的包">Specifying a package in a subfolder of the repository(指定仓库子文件夹中的包) <a href="#specifying-a-package-in-a-subfolder-of-the-repository%e6%8c%87%e5%ae%9a%e4%bb%93%e5%ba%93%e5%ad%90%e6%96%87%e4%bb%b6%e5%a4%b9%e4%b8%ad%e7%9a%84%e5%8c%85" class="anchor">🔗</a></h3><p>如果你使用Git URL语法指定一个仓库，包管理器会假设包必须位于仓库的根目录。然而，有些包并不在它们的仓库的根级别，有些仓库中包含了多个包。</p>
+<p>你可以在Git URL中使用<code>path</code>查询参数通知包管理器在何处找到包。你指定的路径必须是相对于仓库根目录的，并且你指定的子文件夹必须包含<strong>包清单</strong>（<code>package.json</code>文件）。</p>
+<p>要为Git依赖关系指定一个仓库子文件夹，使用<code>path</code>查询参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository.git?path=/subfolder&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在这种情况下，包管理器会注册位于指定仓库子文件夹中的包，并忽略仓库的其他部分。</p>
+<p>有时，一个仓库包含几个相关的包。如果你想要从同一仓库添加多个包，你必须在你的项目清单中添加两个单独的条目：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage1&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository.git?path=/subfolder1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage3&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository.git?path=/subfolder2/subfolder3&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：如果你多次指定同一仓库，包管理器会克隆同一个仓库多次，这将导致性能降低和额外的网络使用。</p>
+<h3 id="specifying-revisions-and-paths-at-the-same-time同时指定修订版本和路径">Specifying revisions and paths at the same time(同时指定修订版本和路径) <a href="#specifying-revisions-and-paths-at-the-same-time%e5%90%8c%e6%97%b6%e6%8c%87%e5%ae%9a%e4%bf%ae%e8%ae%a2%e7%89%88%e6%9c%ac%e5%92%8c%e8%b7%af%e5%be%84" class="anchor">🔗</a></h3><p>你可以使用Unity支持的任何Git协议指定路径和修订版本。然而，<code>path</code>查询参数总是位于修订版本锚点的前面。反向顺序是无效的。以下是正确顺序的一个示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;com.mycompany.mypackage&#34;</span>: <span style="color:#e6db74">&#34;https://github.example.com/myuser/myrepository.git?path=/example/folder#v1.2.3&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="locked-git-dependencies锁定的git依赖">Locked Git dependencies(锁定的Git依赖) <a href="#locked-git-dependencies%e9%94%81%e5%ae%9a%e7%9a%84git%e4%be%9d%e8%b5%96" class="anchor">🔗</a></h2><p>包管理器的核心原则之一是确定性。如果你与其他用户共享你的项目，包管理器应该安装相同的包依赖和版本集，并包括它从Git中获取的包。为了达到这个目标，包管理器通过使用锁文件来跟踪Git依赖的提交哈希。</p>
+<p>当你添加一个Git依赖项并将修订版本设置为一个分支或一个标签时，包管理器会获取相应的提交哈希以存储在锁文件中。随着时间的推移，分支和标签可能会指向Git仓库上的不同提交。例如，一个分支可能有更多的新提交添加到它上面。</p>
+<p>要更新包到分支或标签指向的不同提交，使用从git URL安装包的按钮并输入一个Git URL。你可以使用相同的Git URL，因为当你提交一个新请求时，包管理器会忽略锁定的提交哈希。然而，你也可以指定一个新的修订号、标签或分支作为修订。</p>
+<p>另外，你也可以使用那个Git URL创建一个带有Client.Add C# API方法的脚本。</p>
+<h2 id="git-lfs-supportgit-lfs支持">Git LFS Support(Git LFS支持) <a href="#git-lfs-supportgit-lfs%e6%94%af%e6%8c%81" class="anchor">🔗</a></h2><p>包管理器支持使用Git LFS的Git依赖项仓库。由于Git LFS设计用来进行最小的配置开销，因此它支持HTTPS和SSH认证：</p>
+<ul>
+<li>关于HTTPS认证的信息，请参考使用HTTP/HTTPS协议。</li>
+<li>关于SSH认证的信息，请参考使用SSH协议。</li>
+</ul>
+<p>如果用户需要认证并且没有访问远程仓库权限的有效凭据，则无法从LFS服务器检索存储的文件。</p>
+<p>包作者可以通过在仓库中的<code>.lfsconfig</code>配置文件中提供URL来帮助Git LFS客户端定位LFS服务器。有两种方式可以做到这一点：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">Option</span> <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">global</span> <span style="color:#960050;background-color:#1e0010">setting</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#960050;background-color:#1e0010">lfs</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">url</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">ssh:</span><span style="color:#75715e">//git@HOSTNAME/path/to/repo.git
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">Option</span> <span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">per-remote</span> <span style="color:#960050;background-color:#1e0010">setting</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#960050;background-color:#1e0010">remote</span> <span style="color:#e6db74">&#34;origin&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">lfsurl</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">ssh:</span><span style="color:#75715e">//git@HOSTNAME/path/to/repo.git
+</span></span></span></code></pre></div><p>如果仓库包含一个<code>.lfsconfig</code>文件，确保你将其包含在<code>.npmignore</code>文件中，以避免在发布包的版本中包含它。</p>
+<h3 id="git-lfs-cachegit-lfs缓存">Git LFS cache(Git LFS缓存) <a href="#git-lfs-cachegit-lfs%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h3><p>从Unity 2021.2开始，你可以选择启用一个Git LFS缓存供包管理器在检出基于Git的依赖项时使用。这样可以避免在检出仓库的不同修改版本时下载相同的文件。</p>
+<p>包管理器的Git LFS缓存与你的Git仓库的<code>.git/lfs</code>文件夹中的Git LFS缓存是不同的。包管理器不能使用默认的Git缓存，因为它在将包复制到项目缓存后不会保留克隆的仓库。</p>
+<p>要启用包管理器的Git LFS缓存，选择以下选项之一：</p>
+<ul>
+<li>要启用Git LFS缓存并使用默认全局缓存根下的<code>git-lfs</code>子文件夹作为其位置，将<code>UPM_ENABLE_GIT_LFS_CACHE</code>环境变量设置为任何非空值。</li>
+<li>要启用Git LFS缓存并为其使用自定义位置，将<code>UPM_GIT_LFS_CACHE_PATH</code>环境变量设置为自定义路径。当你设置位置时，Git LFS缓存选项将自动启用。</li>
+</ul>
+<p>有关设置全局缓存的环境变量的更多信息，请参阅自定义全局缓存。</p>
+<p>**注意：**使用启用Git LFS的包时，这种优化需要额外的硬盘空间。你需要决定哪个更有利：Git LFS文件缓存消耗磁盘空间但避免了重新下载相同的文件。然而，有些情况不能利用缓存，并在不复用文件的情况下占用磁盘空间。例如，你的Git依赖项可能解析为引用不同LFS跟踪文件内容的修订，如下面的情况：</p>
+<ul>
+<li>在多个项目的依赖项中使用不同的Git修订</li>
+<li>频繁更新包至包含不同变更的LFS文件的修订</li>
+</ul>
+<h1 id="local-folder-or-tarball-paths本地文件夹或压缩包路径">Local folder or tarball paths(本地文件夹或压缩包路径) <a href="#local-folder-or-tarball-paths%e6%9c%ac%e5%9c%b0%e6%96%87%e4%bb%b6%e5%a4%b9%e6%88%96%e5%8e%8b%e7%bc%a9%e5%8c%85%e8%b7%af%e5%be%84" class="anchor">🔗</a></h1><p>你可以将依赖项指定为包含包的任何本地文件夹或压缩包。此功能对本地离线开发和测试非常有用。</p>
+<p><strong>注意</strong>：如果你想将本地文件系统上的包作为Git依赖项引用，应使用<code>file://&lt;url&gt;</code>格式。Unity不支持直接用文件路径引用本地可访问的Git仓库。有关<code>file://&lt;url&gt;</code>格式的更多信息，请参考Git依赖。</p>
+<p>本节描述了如何使用<strong>项目清单</strong>设置本地依赖项。如果你想使用包管理器窗口，可按照以下页面的说明操作：</p>
+<ul>
+<li>从本地文件夹安装包</li>
+<li>从本地压缩包文件安装包</li>
+</ul>
+<p>路径引用始终以<code>file:</code>为前缀，并使用正斜杠(<code>/</code>)作为路径分隔符。</p>
+<p><strong>注意</strong>：在Windows上，你也可以使用反斜杠(<code>\</code>)，但每个反斜杠都必须转义（例如，<code>&quot;file:..\\github\\my_package_folder&quot;</code>或<code>&quot;file:C:\\Users\\my_username\\github\\my_package_folder&quot;</code>）。这些路径并不容易阅读，容易打错，且只能在Windows机器上使用。因此，使用正斜杠是更好的选择。</p>
+<p>你可以使用绝对路径，或相对于项目的<code>Packages</code>文件夹（即项目清单的根文件夹）的路径。换句话说，前缀为两个点(<code>..</code>)的路径指的是项目路径的根，因此<code>../another_folder</code>是<code>Packages</code>文件夹的同级文件夹。</p>
+<p><strong>提示</strong>：相对路径配合正斜杠在同一仓库中跟踪项目和包时，可以在不同的机器和操作系统上提供更好的可移植性。</p>
+<p>对于Windows的绝对路径，驱动器字母及其冒号（通常为<code>C:</code>）跟在<code>file:</code>前缀后，其余的与Linux或macOS路径相同。</p>
+<h2 id="example-of-a-relative-path相对路径示例">Example of a relative path(相对路径示例) <a href="#example-of-a-relative-path%e7%9b%b8%e5%af%b9%e8%b7%af%e5%be%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h2><p>在<code>file:</code>前缀之后，路径是一个标准的相对路径。在以下示例中：</p>
+<ul>
+<li>项目的<code>Packages</code>文件夹是<code>C:\Users\my_username\Projects\my_project\Packages</code>。</li>
+<li><code>Projects</code>，<code>github</code>，和<code>Downloads</code>文件夹是同级文件夹。</li>
+<li><code>my_package_c</code>是一个<strong>嵌入式包</strong>（复制到<code>Packages</code>文件夹中以使其可变的包）。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_a&#34;</span>: <span style="color:#e6db74">&#34;file:../github/my_package_folder&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_b&#34;</span>: <span style="color:#e6db74">&#34;file:../Downloads/my_package_tarball.tgz&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;my_package_c&#34;</span>: <span style="color:#e6db74">&#34;file:com.unity.textmeshpro&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="example-of-an-absolute-path-in-linux-or-macoslinux或macos中的绝对路径示例">Example of an absolute path in Linux or macOS(Linux或macOS中的绝对路径示例) <a href="#example-of-an-absolute-path-in-linux-or-macoslinux%e6%88%96macos%e4%b8%ad%e7%9a%84%e7%bb%9d%e5%af%b9%e8%b7%af%e5%be%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h2><p>在<code>file:</code>前缀之后，路径是一个标准的可移植操作系统接口（POSIX）路径，以正斜杠<code>/</code>开头：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_a&#34;</span>: <span style="color:#e6db74">&#34;file:/Users/my_username/github/my_package_folder&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_b&#34;</span>: <span style="color:#e6db74">&#34;file:/Users/my_username/Downloads/my_package_tarball.tgz&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="example-of-an-absolute-path-in-windowswindows中的绝对路径示例">Example of an absolute path in Windows(Windows中的绝对路径示例) <a href="#example-of-an-absolute-path-in-windowswindows%e4%b8%ad%e7%9a%84%e7%bb%9d%e5%af%b9%e8%b7%af%e5%be%84%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h2><p>注意，驱动器字母紧跟在<code>file:</code>前缀之后：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_a&#34;</span>: <span style="color:#e6db74">&#34;file:C:/Users/my_username/github/my_package_folder&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_package_b&#34;</span>: <span style="color:#e6db74">&#34;file:C:/Users/my_username/Downloads/my_package_tarball.tgz&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="troubleshooting故障排除">Troubleshooting(故障排除) <a href="#troubleshooting%e6%95%85%e9%9a%9c%e6%8e%92%e9%99%a4" class="anchor">🔗</a></h1><p>本节提供以下问题的信息：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Type of error:</strong></th>
+<th style="text-align:left"><strong>Error message:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">一般启动问题</td>
+<td style="text-align:left">- 在包管理器窗口中的错误消息 - 包管理器缺失或窗口无法打开 - 升级Unity至新版本后出现的问题</td>
+</tr>
+<tr>
+<td style="text-align:left">包安装问题</td>
+<td style="text-align:left">- 包安装失败 - 无法从Git URL添加包 - 硬盘空间不足</td>
+</tr>
+<tr>
+<td style="text-align:left">包签名问题</td>
+<td style="text-align:left">- 包版本没有签名 - 包版本没有有效的签名</td>
+</tr>
+<tr>
+<td style="text-align:left">安装git依赖项的问题</td>
+<td style="text-align:left">- 没有找到&rsquo;git&rsquo;可执行文件 - git-lfs: 命令未找到 - 仓库未找到 - 无法读取用户名: 终端提示禁用 - 无法更新Git版本</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>资产商店</strong>中的<strong>资产包</strong>（我的资产）</td>
+<td style="text-align:left">- 在我的资产上下文中&rsquo;解析http回应失败'</td>
+</tr>
+<tr>
+<td style="text-align:left">域注册</td>
+<td style="text-align:left">- 在包管理器窗口中找不到‘我的注册’</td>
+</tr>
+<tr>
+<td style="text-align:left">构建包时的问题</td>
+<td style="text-align:left">- 缺少MonoBehaviour错误</td>
+</tr>
+</tbody>
+</table>
+<p>如果你遇到可能与网络有关的问题，你也可以运行Unity包管理器的<strong>诊断</strong>工具。欲了解更多信息，请参考诊断网络问题。</p>
+<h2 id="error-messages-in-the-package-manager-window包管理器窗口中的错误消息">Error messages in the Package Manager window(包管理器窗口中的错误消息) <a href="#error-messages-in-the-package-manager-window%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e7%aa%97%e5%8f%a3%e4%b8%ad%e7%9a%84%e9%94%99%e8%af%af%e6%b6%88%e6%81%af" class="anchor">🔗</a></h2><p>当包管理器遇到问题时，它会在包管理器窗口中显示错误指示符。</p>
+<h3 id="system-wide-issues系统范围的问题">System-wide issues(系统范围的问题) <a href="#system-wide-issues%e7%b3%bb%e7%bb%9f%e8%8c%83%e5%9b%b4%e7%9a%84%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h3><ul>
+<li>
+<p><strong>网络连接问题</strong></p>
+<p>当包管理器检测到与特定包无关的问题时，错误消息会出现在状态栏中。例如，如果包管理器无法访问包注册服务器，它会在状态栏中显示此消息：</p>
+<p><img src="/2023-07-19-unity-document-5/upm-ui-errors.png" alt=""></p>
+</li>
+<li>
+<p><strong>刷新资产错误（或刷新包错误）</strong></p>
+<p>如果您的网络无法连接到包注册服务器，可能是因为网络连接问题。当您或您的系统管理员诊断并解决网络错误后，状态栏会被清空。</p>
+<p>如果您的网络连接正常，但你没有登录您的Unity账户，包管理器不会显示任何资产商店的包。当你试图使用<strong>我的资产</strong>上下文时，包管理器会提示你登录：</p>
+<p><img src="/2023-07-19-unity-document-5/upm-ui-unityid.png" alt=""></p>
+<p>点击列表面板内的<strong>登录</strong>按钮，通过Unity Hub登录您的Unity账户。</p>
+</li>
+</ul>
+<h3 id="package-specific-issues特定包的问题">Package-specific issues(特定包的问题) <a href="#package-specific-issues%e7%89%b9%e5%ae%9a%e5%8c%85%e7%9a%84%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h3><ul>
+<li>
+<p>如果在加载或安装特定包时出现问题（例如，确定要加载哪个版本的包时），错误图标会在被影响的包旁边的列表面板中出现 <strong>(A)</strong>。要了解问题在哪，检查被影响的包的详细信息面板，以查看详细的错误消息 <strong>(B)</strong>：</p>
+<p><img src="/2023-07-19-unity-document-5/upm-ui-errormsg.png" alt=""></p>
+</li>
+</ul>
+<h2 id="package-manager-missing-or-window-doesnt-open包管理器缺失或窗口无法打开">Package Manager missing or window doesn’t open(包管理器缺失或窗口无法打开) <a href="#package-manager-missing-or-window-doesnt-open%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e7%bc%ba%e5%a4%b1%e6%88%96%e7%aa%97%e5%8f%a3%e6%97%a0%e6%b3%95%e6%89%93%e5%bc%80" class="anchor">🔗</a></h2><p>包管理器窗口可能被移出屏幕或被其它窗口覆盖。当这种情况发生时，看起来就像包管理器窗口无法打开一样。在这种情况下，你可以尝试重置窗口布局（<strong>Window</strong> &gt; <strong>Layouts</strong> &gt; <strong>Default</strong>），然后重试打开包管理器窗口。</p>
+<p>如果包管理器窗口仍然无法显示，你可以检查一下你的Unity <strong>Console window</strong>。</p>
+<pre tabindex="0"><code>Failed to resolve packages: The file [&lt;project-path&gt;/Packages/manifest.json] is not valid JSON:
+  Unexpected token &#39;}&#39; at 44:1
+  }
+</code></pre><p>这个错误信息表明 <code>manifest.json</code> 文件存在问题。它还告诉你包管理器在解析文件失败的行号，因此你可以修复 JSON。你可以使用几个在线验证器尝试纠正问题。一旦你保存了修正后的文件，Unity就会重新加载包管理器窗口。</p>
+<p>如果你从早期版本的Unity编辑器升级，可能会存在其它的 <strong>包清单</strong> 文件问题：</p>
+<ul>
+<li>
+<p>从2019.3开始，你的 <code>manifest.json</code> 文件中不应该包含对 <strong>com.unity.package-manager-ui</strong> 包的引用。请从依赖列表中删除以下这行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;com.unity.package-manager-ui&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;2.1.1&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div></li>
+<li>
+<p>检查你的 <strong>项目清单</strong> 是否使用 <strong>“exclude”</strong> 作为包版本。这是依赖性属性的已废弃值。如果你找到了类似的行，删除整行。包管理器只安装显式地作为项目依赖包含的包，所以一旦你删除了那个条目，包管理器就会忽略该包，不会进行安装。</p>
+</li>
+</ul>
+<h2 id="problems-after-upgrading-unity-to-new-version升级到新版unity后的问题">Problems after upgrading Unity to new version(升级到新版Unity后的问题) <a href="#problems-after-upgrading-unity-to-new-version%e5%8d%87%e7%ba%a7%e5%88%b0%e6%96%b0%e7%89%88unity%e5%90%8e%e7%9a%84%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h2><p>当你将一个项目升级到更新的Unity版本后，包管理器会自动更新不兼容的包到新的适用的版本。然而，如果你的包无法编译，包管理器会在 <strong>控制台</strong> 窗口显示错误信息。</p>
+<p>为了纠正这些信息，阅读错误消息并修复你能解决的任何问题。例如，一个包可能缺少对其他包或版本的依赖。在这种情况下，你可以尝试自行安装此包。</p>
+<p>你也可以尝试以下解决方案的顺序，直到你找到有效的方法：</p>
+<ul>
+<li>备份然后删除项目下的 <code>Packages</code> 文件夹。</li>
+<li>备份并删除项目 <code>Packages</code> 文件夹中的包源，只留下 <code>manifest.json</code> 文件。然后尝试重新载入项目。</li>
+<li>创建一个新的空白项目。如果包管理器窗口在没有错误的情况下加载，将失败项目中的 <code>Library/PackageCache/com.unity.package-manager-ui@&lt;version&gt;</code> 文件夹替换成新创建项目中的相同文件夹。</li>
+</ul>
+<h2 id="package-installation-fails包安装失败">Package installation fails(包安装失败) <a href="#package-installation-fails%e5%8c%85%e5%ae%89%e8%a3%85%e5%a4%b1%e8%b4%a5" class="anchor">🔗</a></h2><p>如果你正在尝试从注册表安装一个新的包但不行，可能是由于权限问题。</p>
+<p>你必须对缓存文件夹具有完全权限：</p>
+<ul>
+<li>Windows（用户帐户）：<code>%LOCALAPPDATA%\Unity\cache\upm</code></li>
+<li>Windows（系统账户）：<code>%ALLUSERSPROFILE%\Unity\cache\upm</code></li>
+<li>macOS：<code>$HOME/Library/Caches/Unity/upm</code></li>
+<li>Linux: <code>$HOME/.cache/Unity/upm</code></li>
+</ul>
+<p>可能是网络问题。请检查你的防火墙和代理设置。</p>
+<p>有时，像学校、政府办公室或使用网络保护的工作场所等机构环境会设置代理服务器，以控制网络和互联网之间的流量，并使用他们自己的服务器证书，这些证书可能无法被Unity或包管理器识别。请联系你的网络管理员。</p>
+<h2 id="unable-to-add-package-from-git-url无法从git-url添加包">Unable to add package from Git URL(无法从Git URL添加包) <a href="#unable-to-add-package-from-git-url%e6%97%a0%e6%b3%95%e4%bb%8egit-url%e6%b7%bb%e5%8a%a0%e5%8c%85" class="anchor">🔗</a></h2><p>请参阅“无法找到存储库”</p>
+<h2 id="insufficient-drive-space磁盘空间不足">Insufficient drive space(磁盘空间不足) <a href="#insufficient-drive-space%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4%e4%b8%8d%e8%b6%b3" class="anchor">🔗</a></h2><p>如果你的安装盘空间不足，可以考虑下列解决方案：</p>
+<ul>
+<li>更改全局缓存的位置。参阅“自定义全局缓存”。</li>
+<li>更改资源包缓存的位置。参阅“自定义资源包缓存位置”。</li>
+<li>减少注册表数据缓存限制的最大大小。参阅“自定义全局缓存”。</li>
+</ul>
+<h2 id="package-version-has-no-signature包版本没有签名">Package version has no signature(包版本没有签名) <a href="#package-version-has-no-signature%e5%8c%85%e7%89%88%e6%9c%ac%e6%b2%a1%e6%9c%89%e7%ad%be%e5%90%8d" class="anchor">🔗</a></h2><p>当你从定制注册表获取Unity包时，可能会出现此信息。Unity会对其创建的包进行签名，除了较老的包，这些包在后续版本中不一定重新签名。如果你从定制注册表复制一个未签名的Unity包到另一个注册表，包管理器无法确定包内容是否安全，和原始包是否相同。</p>
+<p>如果你收到此信息，可以尝试以下解决方案：</p>
+<ul>
+<li>使用包的其他版本。</li>
+<li>从Unity注册表获取Unity包。</li>
+<li>如果你拥有定制注册表，确保你从Unity注册表复制包的最新版本。</li>
+</ul>
+<h2 id="package-version-doesnt-have-a-valid-signature包版本没有有效的签名">Package version doesn’t have a valid signature(包版本没有有效的签名) <a href="#package-version-doesnt-have-a-valid-signature%e5%8c%85%e7%89%88%e6%9c%ac%e6%b2%a1%e6%9c%89%e6%9c%89%e6%95%88%e7%9a%84%e7%ad%be%e5%90%8d" class="anchor">🔗</a></h2><p>包有一个签名以确保内容在传输前或传输过程中不被更改。无效签名通常发生在以下情况：</p>
+<ul>
+<li>有人在他们自己的注册表上发布了修改后的包。</li>
+<li>在将文件传输给最终用户时发生了错误。</li>
+</ul>
+<p>在这两种情况下，包管理器认为该包可能有恶意。</p>
+<p>当你收到一个无效的签名时，你可以尝试安装包的不同版本。同样，避免使用来自Unity注册表以外的注册表的Unity包。</p>
+<p>如果你正在分享一个有修复内容的Unity包，可以考虑使用Git URL，或者将包嵌入到你的项目中。</p>
+<h2 id="no-git-executable-was-found未找到-git-可执行文件">No ‘git’ executable was found(未找到 &lsquo;git&rsquo; 可执行文件) <a href="#no-git-executable-was-found%e6%9c%aa%e6%89%be%e5%88%b0-git-%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>如果你尝试从git URL安装包，会出现类似这样的信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Cannot perform upm operation: Unable to add package
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>https://github.example.com/myuser/myrepository.git<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>No <span style="color:#e6db74">&#39;git&#39;</span> executable was found. Please install Git on your system and restart Unity <span style="color:#f92672">[</span>NotFound<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>UnityEditor.EditorApplication:Internal_CallUpdateFunctions<span style="color:#f92672">()</span>
+</span></span></code></pre></div><h2 id="git-lfs-command-not-found找不到git-lfs命令">git-lfs: command not found(找不到git-lfs命令) <a href="#git-lfs-command-not-found%e6%89%be%e4%b8%8d%e5%88%b0git-lfs%e5%91%bd%e4%bb%a4" class="anchor">🔗</a></h2><p>如果你正在尝试下载使用了Git LFS（大型文件存储）的包，你可能会收到此错误信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Error when executing git command. git-lfs filter-process: command not found.
+</span></span></code></pre></div><p>这表示你的计算机上可能没有安装Git LFS。为了确认，可以在命令行上进行测试：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git lfs --version
+</span></span></code></pre></div><p>如果命令返回类似以下内容，表示已安装Git LFS：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git-lfs/2.8.0 <span style="color:#f92672">(</span>GitHub; darwin amd64; go 1.12.7<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>否则，你可以按照Bitbucket GitHub的说明进行安装。</p>
+<h2 id="repository-not-found未找到存储库">Repository not found(未找到存储库) <a href="#repository-not-found%e6%9c%aa%e6%89%be%e5%88%b0%e5%ad%98%e5%82%a8%e5%ba%93" class="anchor">🔗</a></h2><p>如果你指定了一个不存在的位置，在Unity控制台会出现类似的信息：</p>
+<pre tabindex="0"><code>Cannot perform upm operation: Unable to add package [https://mycompany.github.com/gitproject/com.mycompany.mypackage.git]:
+  Error when executing git command. fatal: repository &#39;https://mycompany.github.com/gitproject/com.mycompany.mypackage.git/&#39; not found
+ [NotFound]
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions() (at /Users/builduser/buildslave/unity/build/Editor/Mono/EditorApplication.cs:310)
+</code></pre><p>检查你的拼写是否正确。为了确保你使用的URL是正确的，可以转到存储库的页面，从“克隆”按钮中复制URL。</p>
+<p><img src="/2023-07-19-unity-document-5/upm-giturl-locate.png" alt=""></p>
+<p>点击GitHub <strong>（A）</strong> 或GitLab **（B）**上URL右侧的按钮，将URL复制到剪贴板。</p>
+<p>如果存储库的位置是正确的，那么URL可能存在其他问题：</p>
+<ul>
+<li>如果你定位特定的修订版本，确保你的修订版本在最后。例如：
+<code>https://github.example.com/myuser/myrepository1.git#revision</code></li>
+<li>如果你定位的是一个修订版本，并且包不在根目录，确保 <code>path</code>查询参数在修订锚点之前。例如：
+<code>https://github.example.com/myuser/myrepository.git?path=/example/folder#v1.2.3</code></li>
+</ul>
+<h2 id="could-not-read-username-terminal-prompts-disabled无法读取用户名终端提示已禁用">Could not read Username: terminal prompts disabled(无法读取用户名：终端提示已禁用) <a href="#could-not-read-username-terminal-prompts-disabled%e6%97%a0%e6%b3%95%e8%af%bb%e5%8f%96%e7%94%a8%e6%88%b7%e5%90%8d%e7%bb%88%e7%ab%af%e6%8f%90%e7%a4%ba%e5%b7%b2%e7%a6%81%e7%94%a8" class="anchor">🔗</a></h2><p>如果你正在尝试从需要认证的私有存储库安装包，在Unity控制台会显示类似这样的信息：</p>
+<pre tabindex="0"><code>Cannot perform upm operation: Unable to add package [https://mycompany.github.com/gitproject/com.mycompany.mypackage.git]:
+  Error when executing git command. fatal: could not read Username for &#39;https://mycompany.github.com&#39;: terminal prompts disabled
+ [NotFound]
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions() (at /Users/builduser/buildslave/unity/build/Editor/Mono/EditorApplication.cs:310)
+</code></pre><p>通常，这个信息出现是因为包管理器并没有提供一个交互式的终端或对话框，让你可以输入你的HTTP用户名和密码，或者输入你的SSH密钥的解锁密码：</p>
+<ul>
+<li>
+<p>对于<strong>HTTP(S)</strong>，每次你登录到Bitbucket、GitHub或GitLab，你需要在一个终端或对话框中输入你的用户名和密码。然而，包管理器并没有提供一个交互式的终端或对话框，让你可以为HTTP(S)输入你的用户名和密码。</p>
+<p>为了绕过这个问题，你可以使用HTTPS解决方案中给出的一些变通方法。</p>
+</li>
+<li>
+<p><strong>SSH</strong>使用一对公有和私有的SSH密钥。你可以将你的公有SSH密钥添加到Bitbucket、GitHub或GitLab，然后无需输入用户名和密码即可访问存储库。</p>
+<p>然而，如果你为了保护你的SSH密钥而设置了一个解锁密码，你仍然需要在一个终端或对话框中输入这个密码以授权你的密钥。在这种情况下，你可以使用一个SSH代理，该代理可以解锁你的SSH密钥，代你向包管理器进行验证。</p>
+</li>
+</ul>
+<h3 id="solutions-for-httpshttps的解决方案">Solutions for HTTPS(HTTPS的解决方案) <a href="#solutions-for-httpshttps%e7%9a%84%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="anchor">🔗</a></h3><p>包管理器并没有提供一个交互式的终端或对话框，让你可以输入你的HTTP(S)用户名和密码。为了绕过这个问题，你可以采取以下的一些变通方法：</p>
+<ul>
+<li>遵循使用HTTPS Git URL的私有存储库和使用SSH Git URL的密码保护SSH密钥的说明。</li>
+<li>使用资格证书管理器（Git Credential Manager for Windows 或 OSXKeyChain）。资格证书管理器可以在无需使用终端或命令提示符的情况下发送密码。</li>
+<li>从终端或命令提示符使用git-credentials，然后从同一终端启动Hub，这样Unity就可以访问到已缓存或存储的凭据。</li>
+<li>使用SSH进行身份验证。如果你设置你的SSH密钥时没有使用密码，包管理器不需要解密它来进行Git服务器的身份验证。如果你决定为了增加安全性而使用密码，你可以在macOS或Windows上使用<strong>ssh-agent</strong>来解决身份验证问题。</li>
+</ul>
+<h3 id="solutions-for-sshssh的解决方案">Solutions for SSH(SSH的解决方案) <a href="#solutions-for-sshssh%e7%9a%84%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="anchor">🔗</a></h3><p>如果你使用SSH协议通过Git URL安装包，你可能会从Git中收到一个身份验证错误。这种情况通常发生在你在本地计算机上设置了一个用密码保护的私有SSH密钥。</p>
+<p>解决这个问题的方法是，设置一个SSH代理，代理可以解锁你的SSH密钥，代你与包管理器进行身份验证。按照你的操作系统对应部分的说明进行操作：</p>
+<ul>
+<li>为Windows设置OpenSSH</li>
+<li>为macOS添加SSH密钥到你的SSH代理</li>
+</ul>
+<h4 id="setting-up-openssh-for-windows为windows设置openssh">Setting up OpenSSH for Windows(为Windows设置OpenSSH) <a href="#setting-up-openssh-for-windows%e4%b8%bawindows%e8%ae%be%e7%bd%aeopenssh" class="anchor">🔗</a></h4><p>内置的Windows OpenSSH版本的<strong>ssh-agent</strong>比默认与Git for Windows一起提供的版本效果更好。此程序说明如何设置OpenSSH客户端并将您的密钥添加到其ssh-agent中。如果您正在使用Git for Windows，您也可以将内置Windows OpenSSH优先于Git for Windows SSH代理：</p>
+<ol>
+<li>
+<p>确保已安装OpenSSH客户端。为此，在Windows设置<strong>可选功能</strong>窗口中（<strong>开始</strong> &gt; <strong>设置</strong>，然后搜索“可选功能”）中搜索它。这适用于Windows 10+。</p>
+</li>
+<li>
+<p>检查您的<code>%PATH%</code>环境变量，确保内置的Windows OpenSSH位置出现（例如，<code>C:\WINDOWS\System32\OpenSSH\</code>）。</p>
+<p><strong>注意</strong>：如果您已经在使用Git for Windows，确保内置的Windows OpenSSH位置在<code>%PATH%</code>变量中的Git for Windows SSH位置之前出现。这确保Windows使用内置Windows OpenSSH代理而非Git for Windows SSH代理。</p>
+</li>
+<li>
+<p>在PowerShell终端中，启动<code>ssh-agent</code>进程并确保它自动启动:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Set the ssh-agent service to start automatically and manually start it now</span>
+</span></span><span style="display:flex;"><span>Get-Service ssh-agent | Set-Service -StartupType Automatic
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run the ssh-agent process to start the ssh-agent service</span>
+</span></span><span style="display:flex;"><span>ssh-agent
+</span></span></code></pre></div></li>
+<li>
+<p>将您的密钥导入到ssh-agent中。要做到这一点，在命令行上运行<code>ssh-add</code>，然后按照说明操作。默认情况下，代理添加<code>%USERPROFILE%\.ssh\id_rsa</code>密钥并提示您输入密码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Import the key</span>
+</span></span><span style="display:flex;"><span>ssh-add
+</span></span></code></pre></div><p>要使用不同的密钥，您可以将其指定为参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Set the ssh-agent service to start automatically and manually start it now</span>
+</span></span><span style="display:flex;"><span>ssh-add &lt;your-secure-ssh-key-name&gt;
+</span></span></code></pre></div><p>如果您记不住密钥的名称，使用以下命令列出您的密钥：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>ssh-add -l
+</span></span></code></pre></div></li>
+<li>
+<p>如果您安装了Git for Windows，重置<code>%GIT-SSH%</code>环境变量以确保Git始终使用内置Windows OpenSSH版本的ssh-agent。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>[<span style="color:#66d9ef">Environment</span>]::SetEnvironmentVariable(<span style="color:#e6db74">&#34;GIT_SSH&#34;</span>, <span style="color:#e6db74">&#34;</span>$((Get-Command ssh).Source)<span style="color:#e6db74">&#34;</span>, [<span style="color:#66d9ef">System.EnvironmentVariableTarget</span>]::User)
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="adding-ssh-keys-to-your-ssh-agent-for-macos为macos向你的ssh代理添加ssh密钥">Adding SSH keys to your SSH Agent for macOS(为macOS向你的SSH代理添加SSH密钥) <a href="#adding-ssh-keys-to-your-ssh-agent-for-macos%e4%b8%bamacos%e5%90%91%e4%bd%a0%e7%9a%84ssh%e4%bb%a3%e7%90%86%e6%b7%bb%e5%8a%a0ssh%e5%af%86%e9%92%a5" class="anchor">🔗</a></h4><p>使用<code>ssh-add</code>命令将SSH密钥添加到运行在macOS系统上的ssh-agent。你使用的命令参数取决于你的macOS版本：</p>
+<ul>
+<li>
+<p>在macOS 11及更早版本中，使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-add -K ~/.ssh/&lt;your-secure-ssh-key-name&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>在macOS 12及更高版本中，使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-add --apple-use-keychain ~/.ssh/&lt;your-secure-ssh-key-name&gt;
+</span></span></code></pre></div></li>
+</ul>
+<p>运行此命令后，终端会要求你输入密码以解锁SSH密钥，然后将其添加到macOS的钥匙串中。然而，一旦你重新启动你的系统，存储在ssh-agent中的每个密钥都会被重置。</p>
+<p>为了确保你在重新启动系统后不需要重新输入密码，打开<code>~/.ssh/config</code>文件（如果找不到则创建一个），并添加以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Host *
+</span></span><span style="display:flex;"><span>    UseKeychain yes
+</span></span><span style="display:flex;"><span>    AddKeysToAgent yes
+</span></span><span style="display:flex;"><span>    IdentityFile ~/.ssh/&lt;your-secure-ssh-key-name&gt;
+</span></span></code></pre></div><p>重启你的电脑以应用这些更改。</p>
+<h2 id="cant-update-git-version无法更新git版本">Can’t update Git version(无法更新Git版本) <a href="#cant-update-git-version%e6%97%a0%e6%b3%95%e6%9b%b4%e6%96%b0git%e7%89%88%e6%9c%ac" class="anchor">🔗</a></h2><p>如果你试图从仓库更新你的<strong>Git依赖</strong>到一个更新的版本，但它没有工作，那可能是因为一个锁定的Git依赖。如果你想从仓库更新你的Git依赖到一个新的版本，使用添加包从Git URL按钮并输入一个Git URL。要获取更多信息，请参考锁定的Git依赖项。</p>
+<h2 id="failed-to-parse-http-response-in-my-assets-context在我的资产上下文中无法解析http响应">‘Failed to parse http response’ in My Assets context(在我的资产上下文中“无法解析http响应”) <a href="#failed-to-parse-http-response-in-my-assets-context%e5%9c%a8%e6%88%91%e7%9a%84%e8%b5%84%e4%ba%a7%e4%b8%8a%e4%b8%8b%e6%96%87%e4%b8%ad%e6%97%a0%e6%b3%95%e8%a7%a3%e6%9e%90http%e5%93%8d%e5%ba%94" class="anchor">🔗</a></h2><p>如果当你试图从资产商店下载一个资产包时在<strong>控制台</strong>窗口中收到以下消息，那可能是你的资产包缓存有问题：</p>
+<pre tabindex="0"><code>[PackageManager] Error Failed to parse response. UnityEditor.AsyncHTTPClient![:D](https://forum.unity.com/styles/default/xenforo/clear.png)one(State, Int32)
+</code></pre><p>要解决这个问题，从已下载的资产包文件的位置删除所有下载的资产，然后试图再次下载资产。</p>
+<p><strong>警告</strong>：如果你的项目有大量的资产数据，重新下载所有的内容可能需要大量的时间和带宽。</p>
+<h2 id="missing-my-registries-in-the-package-manager-window在包管理器窗口中缺少我的注册表">Missing ‘My Registries’ in the Package Manager window(在包管理器窗口中缺少&quot;我的注册表&quot;) <a href="#missing-my-registries-in-the-package-manager-window%e5%9c%a8%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e7%aa%97%e5%8f%a3%e4%b8%ad%e7%bc%ba%e5%b0%91%e6%88%91%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h2><p>并非所有的注册表提供商都与Unity的包管理器兼容。如果你添加的包注册服务没有实现<code>/-/v1/search</code>或 <code>/-/all</code>端点，那么你的范围内的注册表将与Unity的包管理器不兼容，而且在包管理器窗口的导航面板的<strong>我的注册表</strong>中不会显示。</p>
+<h2 id="missing-monobehaviour-errors缺少monobehaviour错误">Missing MonoBehaviour errors(缺少MonoBehaviour错误) <a href="#missing-monobehaviour-errors%e7%bc%ba%e5%b0%91monobehaviour%e9%94%99%e8%af%af" class="anchor">🔗</a></h2><p>在构建过程中，如果出现很多关于缺失行为的错误，那么UnityLinker可能错误地剔除了它认为未被引用的组件。通常是因为剔除级别过高导致的。例如，如果你在一个AssetBundle中有一个<strong>预设</strong>，它引用了2D SpriteShape包中的SpriteShape组件，那么这个对象可能会丢失，并可能会生成编译器警告。</p>
+<p>为解决这个问题，你可以降低UnityLinker的剔除级别，或者在<code>link.xml</code>文件中声明包的程序集，以防止它们被剔除。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;linker&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;assembly</span> <span style="color:#a6e22e">fullname=</span><span style="color:#e6db74">&#34;Unity.2D.SpriteShape.Runtime&#34;</span> <span style="color:#a6e22e">preserve=</span><span style="color:#e6db74">&#34;all&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;assembly</span> <span style="color:#a6e22e">fullname=</span><span style="color:#e6db74">&#34;Unity.2D.Common.Runtime&#34;</span> <span style="color:#a6e22e">preserve=</span><span style="color:#e6db74">&#34;all&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/linker&gt;</span>
+</span></span></code></pre></div><p>有关剔除级别和UnityLinker的更多信息，请参考托管代码剔除。</p>
+<h1 id="diagnose-network-issues诊断网络问题">Diagnose network issues(诊断网络问题) <a href="#diagnose-network-issues%e8%af%8a%e6%96%ad%e7%bd%91%e7%bb%9c%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h1><p>使用Unity包管理器诊断工具可以帮助你诊断与Unity包管理器相关的常见网络问题。诊断工具运行一些基本的网络测试并生成Unity支持团队需要的文件，以诊断常见的网络问题。运行工具后，你可以将结果分享给Unity支持团队，他们会更好地指导你解决这些问题。</p>
+<p>要诊断网络问题：</p>
+<ol>
+<li>通过使用Unity包管理器错误对话框或手动运行脚本来运行Unity包管理器诊断工具。</li>
+<li>查看shell窗口中的测试结果。工具的输出结果也会列出它创建的<code>upm-diagnostic-report.txt</code>报告和<code>upm-diag.log</code>文件的位置。</li>
+<li>如果你需要Unity支持团队的帮助，在提交错误时请附上<code>upm-diagnostic-report.txt</code>和<code>upm-diag.log</code>。</li>
+</ol>
+<h2 id="method-1-use-the-unity-package-manager-error-dialog方法1使用unity包管理器错误对话框">Method 1: Use the Unity Package Manager Error dialog(方法1：使用Unity包管理器错误对话框) <a href="#method-1-use-the-unity-package-manager-error-dialog%e6%96%b9%e6%b3%951%e4%bd%bf%e7%94%a8unity%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e9%94%99%e8%af%af%e5%af%b9%e8%af%9d%e6%a1%86" class="anchor">🔗</a></h2><p>当Unity尝试启动时，它在加载项目之前运行包管理器进程。如果遇到包管理器的重大错误，Unity会显示以下错误信息：</p>
+<p><img src="/2023-07-19-unity-document-5/upm-network.png" alt=""></p>
+<p>要运行诊断工具，点击<strong>诊断</strong>。Unity会关闭并在新窗口中启动诊断工具。</p>
+<h2 id="method-2-manually-run-the-script方法2手动运行脚本">Method 2: Manually run the script(方法2：手动运行脚本) <a href="#method-2-manually-run-the-script%e6%96%b9%e6%b3%952%e6%89%8b%e5%8a%a8%e8%bf%90%e8%a1%8c%e8%84%9a%e6%9c%ac" class="anchor">🔗</a></h2><p>在你的Unity编辑器安装文件夹中的<code>Diagnostics</code>文件夹内找到<code>RunUnityPackageManagerDiagnostics</code>脚本。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统:</strong></th>
+<th style="text-align:left"><strong>诊断命令行工具的路径</strong>:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left"><code>&lt;path-to-unity-installation-folder&gt;</code>   <code>\Unity</code>    <code>\Data</code>      <code>\Resources</code>       <code>\PackageManager</code>         <code>\Diagnostics</code>          <code>\RunUnityPackageManagerDiagnostics.bat</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS Linux</td>
+<td style="text-align:left"><code>&lt;path-to-unity-installation-folder&gt;</code>   <code>\Unity.app</code>    <code>\Contents</code>      <code>\Resources</code>       <code>\PackageManager</code>         <code>\Diagnostics</code>          <code>\RunUnityPackageManagerDiagnostics</code></td>
+</tr>
+</tbody>
+</table>
+<p>要启动工具，你可以选择：</p>
+<ul>
+<li>从命令行运行脚本文件。</li>
+<li>在文件浏览器中双击脚本文件。<strong>注意：<strong>在macOS上，你必须右键单击<code>Unity.app</code>，然后选择</strong>显示包内容</strong>来访问<code>Unity.app</code>的内容。</li>
+</ul>
+<h2 id="sample-output样本输出">Sample output(样本输出) <a href="#sample-output%e6%a0%b7%e6%9c%ac%e8%be%93%e5%87%ba" class="anchor">🔗</a></h2><p><img src="/2023-07-19-unity-document-5/upm-network-diagnostics.png" alt=""></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/21/2023-07-21-unity-Documents-5/">Unity中文版-Unity&#39;s Package Manager(四)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/19/2023-07-19-unity-Documents-3/">Unity中文版-Unity&#39;s Package Manager(二)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/19/2023-07-19-unity-Documents-4/">Unity中文版-Unity&#39;s Package Manager(三)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/17/2023-07-17-unity-Documents-2/">Unity中文版-Unity&#39;s Package Manager(一)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/13/2023-07-13-unity-Documents-1/">Unity中文版-Unity2023.2更新日志(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(15)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

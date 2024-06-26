@@ -34,10 +34,10 @@
 &lt;p&gt;原因：当点击Frame Debugger不同DrawCall时，Unity会传递一&lt;strong&gt;帧&lt;/strong&gt;，所以行为的Mono都会执行一次Update，因此Update里面的逻辑也会被执行。Unity使用Time.Scale = 0来实现暂停，Time.deltaTime将为零并且Time.time在下一帧中不会改变，如果Update逻辑中使用了改两个值逻辑也将保持不变。 但是 Time.unscaledTime 和 Time.unscaledDeltaTime 始终有效，即使编辑器已经处于暂停状态，Frame Debugger点击的时候DrawCall也会发生变化。&lt;/p&gt;
 &lt;p&gt;总之，如果Update方法中有一些逻辑，而不是使用 Time.scale计算时间，那么即使编辑器暂停，也会在&lt;strong&gt;帧&lt;/strong&gt;通过时进行更改。&lt;/p&gt;
 &lt;p&gt;解决方案：可以通过使用UnityEditor.EditorApplication.isPaused在一些关键的Update进行检查即可。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#if UNITY_EDITOR&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#if&lt;/span&gt; UNITY_EDITOR
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(UnityEditor.EditorApplication.isPaused)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;#&lt;/span&gt;endif
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#endif&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
