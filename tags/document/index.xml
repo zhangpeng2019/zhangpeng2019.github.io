@@ -6,7 +6,952 @@
     <description>Recent content in Document on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Unity&#39;s Package Manager(五)(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/07/23/2023-07-23-unity-document-6/</link>
+      <pubDate>Sun, 23 Jul 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/07/23/2023-07-23-unity-document-6/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;unitys-package-manager五&#34;&gt;Unity’s Package Manager(五) &lt;a href=&#34;#unitys-package-manager%e4%ba%94&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h1 id=&#34;creating-custom-packages创建自定义包&#34;&gt;Creating custom packages(创建自定义包) &lt;a href=&#34;#creating-custom-packages%e5%88%9b%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Unity Package Manager 是 Unity 的官方包管理系统。它具有以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;允许 Unity 快速、轻松地分发新功能和更新现有功能。&lt;/li&gt;
+&lt;li&gt;为用户提供了一个平台，用于发现和共享可重用的组件。&lt;/li&gt;
+&lt;li&gt;推动 Unity 成为一个可扩展和开放的平台。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;您可以使用 Package Manager 来定义项目的依赖关系，解决包的依赖关系，下载包，添加包，以及在您的项目中集成内容。&lt;/p&gt;
+&lt;p&gt;有关包是什么以及 Unity Package Manager 如何工作的一般信息，请参阅 Packages 文档。&lt;/p&gt;
+&lt;h2 id=&#34;overview概览&#34;&gt;Overview(概览) &lt;a href=&#34;#overview%e6%a6%82%e8%a7%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;包可以包含以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C# 脚本&lt;/li&gt;
+&lt;li&gt;程序集&lt;/li&gt;
+&lt;li&gt;本地插件&lt;/li&gt;
+&lt;li&gt;模型、纹理、动画和音频剪辑等其他资源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：包管理器不支持在包中使用流式资源。请改用 Addressables 包。&lt;/p&gt;
+&lt;p&gt;每个包还包含一个包清单文件，其中包含诸如包名称、版本、依赖关系列表和存储库 URL 等信息。&lt;/p&gt;
+&lt;h2 id=&#34;procedure操作步骤&#34;&gt;Procedure(操作步骤) &lt;a href=&#34;#procedure%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;创建新包的方法如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用以下方法之一创建包的空壳：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置嵌入式包。&lt;/li&gt;
+&lt;li&gt;设置本地包。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确保您的文件夹结构布局符合 Unity 包的约定。例如，如果您有编辑器和运行时库，确保将它们存储在 &lt;code&gt;Editor&lt;/code&gt; 和 &lt;code&gt;Runtime&lt;/code&gt; 文件夹下。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果您的包包含代码，请确保您创建的包布局具有必要的程序集定义文件。有关创建和定义程序集定义文件的信息，请参阅程序集定义和包。有关更多信息，请参阅程序集定义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果在添加程序集定义文件后，&lt;strong&gt;控制台窗口&lt;/strong&gt;报告警告，请保存项目，关闭项目，然后重新打开。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加您的工具、库以及您的包所需的任何资源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;向您的包添加测试。测试对于确保包在不同场景下按预期工作非常重要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将所有编辑器测试写入 &lt;code&gt;Tests/Editor&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将所有播放模式测试写入 &lt;code&gt;Tests/Runtime&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果您的包包含示例，请将它们添加到适当的示例子文件夹中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：包可以仅包含示例，但您也可以使用相同的布局和 JSON 结构将示例包含在工具或模板包的一部分中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每次发布新版本时，您可以更新 &lt;code&gt;CHANGELOG.md&lt;/code&gt; 文件。每个新功能或错误修复都应在此文件中有记录。有关所选更改日志格式的详细信息，请参阅 Keep a Changelog 文档。&lt;/p&gt;
+&lt;p&gt;对于您不共享的包，此步骤是可选的，但对于共享的包强烈推荐，以使用户了解哪个版本最适合他们的需求。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：您可以通过在包的 &lt;code&gt;package.json&lt;/code&gt; 清单文件中设置 changelogUrl 属性，为外部网页提供链接，其中托管了此包的更改日志。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;您可以在 &lt;code&gt;LICENSE.md&lt;/code&gt; 和 &lt;code&gt;THIRD PARTY NOTICES.md&lt;/code&gt; 文件中包含许可证和第三方通知。&lt;/p&gt;
+&lt;p&gt;对于您不共享的包，此步骤是可选的，但对于共享的包强烈推荐，以防止用户滥用您的包或违反第三方许可证。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：您可以通过在包的 &lt;code&gt;package.json&lt;/code&gt; 清单文件中设置 licensesUrl 属性，为外部网页提供链接，其中托管了此包的许可证和第三方通知。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写您的包的文档。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：您可以通过在包的 &lt;code&gt;package.json&lt;/code&gt; 清单文件中设置 documentationUrl 属性，为外部网页提供链接，其中托管了此包的文档。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;共享您的包。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;creating-a-new-embedded-package创建新的嵌入式包&#34;&gt;Creating a new embedded package(创建新的嵌入式包) &lt;a href=&#34;#creating-a-new-embedded-package%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84%e5%b5%8c%e5%85%a5%e5%bc%8f%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;按照以下说明在项目文件夹中创建自定义包。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：这些说明是创建自定义包的更大过程的一部分。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开 Unity Hub，并在计算机上创建一个空项目。&lt;/p&gt;
+&lt;p&gt;您也可以使用计算机上的现有项目，在您的项目下嵌入包，或者从本地文件夹安装包。然而，从一个新项目开始可以减少包内容出现错误的可能性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用计算机的文件管理器（例如 Windows 文件资源管理器或 macOS Finder），导航到您的项目文件夹，并找到 &lt;code&gt;Packages&lt;/code&gt; 子文件夹。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;code&gt;Packages&lt;/code&gt; 文件夹中创建一个新的子文件夹，使用与包名称匹配且符合命名规范的名称。例如，如果您的包名称是 &lt;code&gt;com.example.mypackage&lt;/code&gt;，请创建一个名为 &lt;code&gt;com.example.mypackage&lt;/code&gt; 的子文件夹。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果您的包包含资源，这一点尤其重要，因为 AssetDatabase 会寻找与 &lt;code&gt;Packages/&amp;lt;your-package-name&amp;gt;/Assets&lt;/code&gt; 匹配的资源路径，而不考虑实际文件夹名字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开您喜欢的文本编辑器，在包文件夹的根目录中创建一个名为 &lt;code&gt;package.json&lt;/code&gt; 的 JSON 文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;code&gt;package.json&lt;/code&gt; 文件中填写所有必填和推荐的字段。您可以使用包清单示例作为参考。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当您重新打开 Unity 时，新的包将出现在 Package Manager 窗口和&lt;strong&gt;项目窗口&lt;/strong&gt;中，您可以查看和修改包内容。如果在项目窗口中选择 &lt;code&gt;package.json&lt;/code&gt; 文件，您还可以在&lt;strong&gt;检查器&lt;/strong&gt;窗口中直接修改其 JSON 值。&lt;/p&gt;
+&lt;p&gt;返回主要过程以完成包的创建。&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-new-local-package创建新的本地包&#34;&gt;Creating a new local package(创建新的本地包) &lt;a href=&#34;#creating-a-new-local-package%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84%e6%9c%ac%e5%9c%b0%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;按照以下说明在项目文件夹外部创建自定义包。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：这些说明是创建自定义包的更大过程的一部分。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用计算机的文件管理器（例如 Windows 文件资源管理器或 macOS Finder），为您的包创建一个文件夹。&lt;/p&gt;
+&lt;p&gt;如果您已经创建了一些包内容，您也可以使用现有位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开您喜欢的文本编辑器，在包文件夹的根目录中创建一个名为 &lt;code&gt;package.json&lt;/code&gt; 的 JSON 文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;code&gt;package.json&lt;/code&gt; 文件中填写所有必填和推荐的字段，并确保 &lt;code&gt;name&lt;/code&gt; 属性符合命名规范。您可以使用包清单示例作为参考。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Unity 中，创建一个新项目或打开现有项目。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开 Package Manager 窗口，并按照安装本地包的说明操作，使用刚创建的 &lt;code&gt;package.json&lt;/code&gt; 文件。这一步骤对于确保创建所需的&lt;code&gt;.meta&lt;/code&gt;文件至关重要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;新的包将出现在 Package Manager 窗口和项目窗口中，您可以在其中查看和修改包内容。如果在项目窗口中选择 &lt;code&gt;package.json&lt;/code&gt; 文件，您还可以在检查器窗口中直接修改其 JSON 值。&lt;/p&gt;
+&lt;h1 id=&#34;naming-your-package给您的包命名&#34;&gt;Naming your package(给您的包命名) &lt;a href=&#34;#naming-your-package%e7%bb%99%e6%82%a8%e7%9a%84%e5%8c%85%e5%91%bd%e5%90%8d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;包有两个名称：您在注册包时使用的官方名称和用户在编辑器中看到的用户界面显示名称。&lt;/p&gt;
+&lt;p&gt;显示名称应该简洁，但应提供一些关于包含内容的指示。否则，Unity Package Manager 对显示名称没有限制。&lt;/p&gt;
+&lt;p&gt;官方名称必须符合 Unity Package Manager 的命名约定，使用反向域名表示法。名称必须满足以下条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以 &lt;strong&gt;&lt;!-- raw HTML omitted --&gt;.&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; 开头（例如 &lt;code&gt;com.example&lt;/code&gt; 或 &lt;code&gt;net.example&lt;/code&gt;），即使您的公司或网站名称以数字开头。&lt;/li&gt;
+&lt;li&gt;如果您希望在编辑器中可见，则不超过 50 个字符。如果包名称无需在编辑器中显示，Unity Package Manager 对字符数限制为 214 个或更少。&lt;/li&gt;
+&lt;li&gt;仅包含小写字母、数字、连字符(-)、下划线(_)和句点(.)。&lt;/li&gt;
+&lt;li&gt;要指示嵌套的命名空间，请在命名空间后面加上额外的句点。例如，“&lt;strong&gt;com.unity.2d.animation&lt;/strong&gt;” 和 “&lt;strong&gt;com.unity.2d.ik&lt;/strong&gt;”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如，“&lt;strong&gt;com.unity.2d.animation&lt;/strong&gt;” 和 “&lt;strong&gt;com.unity.2d.ik&lt;/strong&gt;” 是两个 Unity 2D 包的名称，但是位于 &lt;a href=&#34;https://example.net/&#34;&gt;https://example.net&lt;/a&gt; 的自定义包开发者可以创建一个名为 “&lt;strong&gt;net.example.physics&lt;/strong&gt;” 的包。在您的包名称中使用您自己的公司名称。请勿在您自己的包名称中使用 “unity” 前缀。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：这些命名限制仅适用于包名称本身，不需要与您代码中的命名空间匹配。例如，您可以在名为 &lt;strong&gt;net.example.3d.base&lt;/strong&gt; 的包中使用 &lt;code&gt;Project3dBase&lt;/code&gt; 作为命名空间。&lt;/p&gt;
+&lt;h1 id=&#34;package-layout包布局&#34;&gt;Package layout(包布局) &lt;a href=&#34;#package-layout%e5%8c%85%e5%b8%83%e5%b1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;这是自定义包推荐使用的包布局：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;package-root&amp;gt;
+  ├── package.json
+  ├── README.md
+  ├── CHANGELOG.md
+  ├── LICENSE.md
+  ├── Third Party Notices.md
+  ├── Editor
+  │   ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.asmdef
+  │   └── EditorExample.cs
+  ├── Runtime
+  │   ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.asmdef
+  │   └── RuntimeExample.cs
+  ├── Tests
+  │   ├── Editor
+  │   │   ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.Tests.asmdef
+  │   │   └── EditorExampleTest.cs
+  │   └── Runtime
+  │        ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Tests.asmdef
+  │        └── RuntimeExampleTest.cs
+  ├── Samples~
+  │        ├── SampleFolder1
+  │        ├── SampleFolder2
+  │        └── ...
+  └── Documentation~
+       └── &amp;lt;package-name&amp;gt;.md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;许多官方 Unity 包也采用了这种结构。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Location&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;package.json&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包清单文件，定义了包的依赖关系和其他元数据。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;开发者包文档。通常是为了帮助想要更改包或在包的主分支上推送新更改的开发者而提供的文档。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;CHANGELOG.md&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;以逆时间顺序描述包的更改。建议使用标准格式，例如 Keep a Changelog。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;LICENSE.md&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包含包的许可证文本。通常，包管理器会从所选的 SPDX 列表网站上复制此文本。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Third Party Notices.md&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包含满足法律要求所需的信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Editor/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;特定于编辑器平台的资源文件夹。与 Assets 下的 Editor 文件夹不同，这只是一种约定，不影响资源导入管道。请参考程序集定义和包，以在此文件夹中正确配置特定于编辑器的程序集。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Runtime/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;特定于运行时平台的资源文件夹。这只是一种约定，不影响资源导入管道。请参考程序集定义和包，以在此文件夹中正确配置运行时程序集。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Tests/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存储包中包含的任何测试的文件夹。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Tests/Editor/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;特定于编辑器平台的测试文件夹。请参考程序集定义和包，以在此文件夹中正确配置特定于编辑器的测试程序集。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Tests/Runtime/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;特定于运行时平台的测试。请参考程序集定义和包，以在此文件夹中正确配置运行时测试程序集。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Samples~/&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存储包中包含的任何示例的文件夹。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;Documentation~&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存储包中包含的任何文档的文件夹。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Unity会忽略以&lt;code&gt;~&lt;/code&gt;字符结尾的文件夹名称的内容，并且不会通过&lt;code&gt;.meta&lt;/code&gt;文件追踪它们。但是，您需要为&lt;code&gt;Editor&lt;/code&gt;、&lt;code&gt;Runtime&lt;/code&gt;和&lt;code&gt;Tests&lt;/code&gt;文件夹及其内容包括&lt;code&gt;.meta&lt;/code&gt;文件，以便它们正常工作。有关&lt;code&gt;.meta&lt;/code&gt;文件以及Unity如何使用它们进行跟踪的更多信息，请参考资源工作流程。&lt;/p&gt;
+&lt;h1 id=&#34;adding-tests-to-a-package为包添加测试&#34;&gt;Adding tests to a package(为包添加测试) &lt;a href=&#34;#adding-tests-to-a-package%e4%b8%ba%e5%8c%85%e6%b7%bb%e5%8a%a0%e6%b5%8b%e8%af%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;与任何类型的开发一样，为您的包添加测试是一个良好的实践。要在包中设置测试，您需要完成以下三个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 C# 测试文件并将其放在 Tests 文件夹下。&lt;/li&gt;
+&lt;li&gt;为您的测试创建 asmdef 文件。&lt;/li&gt;
+&lt;li&gt;启用包的测试。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;location-of-test-files测试文件的位置&#34;&gt;Location of test files(测试文件的位置) &lt;a href=&#34;#location-of-test-files%e6%b5%8b%e8%af%95%e6%96%87%e4%bb%b6%e7%9a%84%e4%bd%8d%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以将测试文件添加到包的 Tests 文件夹中的 Editor 和 Runtime 子文件夹中。例如，一个包含测试的简单包可能如下所示：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;package-root&amp;gt;
+  ├── package.json
+  ├── Editor
+  │     ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.asmdef
+  │     └── EditorExample.cs
+  ├── Runtime
+  │     ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.asmdef
+  │     └── RuntimeExample.cs
+  └── Tests
+        ├── Editor
+        │    ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.Tests.asmdef
+        │    └── EditorExampleTest.cs
+        └── Runtime
+             ├── &amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Tests.asmdef
+             └── RuntimeExampleTest.cs
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;每个子文件夹都必须包含一个&lt;code&gt;.asmdef&lt;/code&gt;文件，该文件提供对编辑器和运行时程序集的引用。程序集定义文件还提供对测试程序集文件的引用。有关更多信息，请参阅用于测试的程序集定义文件。&lt;/p&gt;
+&lt;h2 id=&#34;assembly-definition-files-for-tests用于测试的程序集定义文件&#34;&gt;Assembly definition files for tests(用于测试的程序集定义文件) &lt;a href=&#34;#assembly-definition-files-for-tests%e7%94%a8%e4%ba%8e%e6%b5%8b%e8%af%95%e7%9a%84%e7%a8%8b%e5%ba%8f%e9%9b%86%e5%ae%9a%e4%b9%89%e6%96%87%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;使用测试框架包创建或编辑您的程序集定义文件。有关更多信息，请参阅创建测试程序集。&lt;/p&gt;
+&lt;p&gt;虽然您可以选择直接编辑程序集定义文件，但您需要确保添加以下引用：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Attribute&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;name&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;没有文件扩展名的程序集名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;references&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Array of Strings&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对编辑器和运行时程序集的引用。程序集定义文件根据测试类型需要不同的引用：- 对于编辑器测试，添加对包的编辑器和运行时程序集的引用。- 对于运行时测试，只添加对包的运行时程序集的引用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;optionalUnityReferences&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Array of Strings&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;此 Unity 引用列表必须包含&lt;code&gt;&amp;quot;TestAssemblies&amp;quot;&lt;/code&gt;，以将程序集标记为测试程序集。这将在程序集定义中添加对&lt;code&gt;nunit.framework.dll&lt;/code&gt;和&lt;code&gt;UnityEngine.TestRunner.dll&lt;/code&gt;库的引用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;includePlatforms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Array of Strings&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对于编辑器测试，此平台列表必须包含&lt;code&gt;&amp;quot;Editor&amp;quot;&lt;/code&gt;平台。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：您还可以在&lt;strong&gt;检查器&lt;/strong&gt;中编辑程序集定义文件。有关更多信息，请参阅程序集定义。&lt;/p&gt;
+&lt;h3 id=&#34;editor-file-example编辑器文件示例&#34;&gt;Editor file example(编辑器文件示例) &lt;a href=&#34;#editor-file-example%e7%bc%96%e8%be%91%e5%99%a8%e6%96%87%e4%bb%b6%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;编辑器测试的&lt;code&gt;.asmdef&lt;/code&gt;文件如下所示：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyCompany.MyPackage.Editor.Tests&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;references&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyPackage.Editor&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyPackage&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;optionalUnityReferences&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TestAssemblies&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;includePlatforms&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Editor&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;excludePlatforms&amp;#34;&lt;/span&gt;: []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;runtime-file-example运行时文件示例&#34;&gt;Runtime file example(运行时文件示例) &lt;a href=&#34;#runtime-file-example%e8%bf%90%e8%a1%8c%e6%97%b6%e6%96%87%e4%bb%b6%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;运行时测试的&lt;code&gt;.asmdef&lt;/code&gt;文件如下所示：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyCompany.MyPackage.Tests&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;references&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyPackage&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;optionalUnityReferences&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TestAssemblies&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;includePlatforms&amp;#34;&lt;/span&gt;: [],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;excludePlatforms&amp;#34;&lt;/span&gt;: []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;enabling-tests-for-a-package启用包的测试&#34;&gt;Enabling tests for a package(启用包的测试) &lt;a href=&#34;#enabling-tests-for-a-package%e5%90%af%e7%94%a8%e5%8c%85%e7%9a%84%e6%b5%8b%e8%af%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;对于&lt;strong&gt;嵌入式包&lt;/strong&gt;，您无需明确启用测试，因为嵌入式包正在开发中。&lt;/p&gt;
+&lt;p&gt;然而，对于其他类型的依赖项，您需要在**项目清单(Project manifest)*&lt;em&gt;中添加&lt;code&gt;testables&lt;/code&gt;属性，并添加要运行测试的包的名称。这包括项目的直接和*&lt;em&gt;间接依赖项&lt;/em&gt;&lt;/em&gt;。例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;dependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;com.unity.some-package&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;com.unity.other-package&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;com.unity.yet-another-package&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;3.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;testables&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;com.unity.some-package&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;com.unity.other-package&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个示例在Unity的测试框架包中为&lt;strong&gt;com.unity.&lt;em&gt;some-package&lt;/em&gt;&lt;/strong&gt;和&lt;strong&gt;com.unity.&lt;em&gt;other-package&lt;/em&gt;&lt;/strong&gt;添加了测试。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：您可能需要重新导入包，因为测试框架不会立即对&lt;code&gt;testables&lt;/code&gt;属性的更改进行查看。&lt;/p&gt;
+&lt;h1 id=&#34;creating-samples-for-packages创建包的示例&#34;&gt;Creating samples for packages(创建包的示例) &lt;a href=&#34;#creating-samples-for-packages%e5%88%9b%e5%bb%ba%e5%8c%85%e7%9a%84%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;从Unity编辑器版本2019.1开始，您可以为包添加示例。示例可以是一段示例代码、一些&lt;strong&gt;着色器&lt;/strong&gt;(shaders)和纹理(textures)、一些动画或其他您通常可以在项目的&lt;code&gt;Assets&lt;/code&gt;文件夹下找到的文件。&lt;/p&gt;
+&lt;p&gt;当您打开Package Manager窗口并选择包含示例的包时，包的详细信息面板中会出现一个&lt;strong&gt;Import&lt;/strong&gt;按钮，用于每个示例。当您选择&lt;strong&gt;Import&lt;/strong&gt;时，Package Manager会将该示例的整个子文件夹结构复制到项目的&lt;code&gt;Assets&lt;/code&gt;文件夹下。&lt;/p&gt;
+&lt;p&gt;要将示例添加到您的包中，请按照以下步骤进行操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将资产文件或示例C#代码文件放在&lt;code&gt;Samples~&lt;/code&gt;文件夹下。您可以在一个包中拥有多个示例；&lt;code&gt;Samples~&lt;/code&gt;文件夹的每个子文件夹对应一个示例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：波浪字符(&lt;code&gt;~&lt;/code&gt;)告诉Unity忽略&lt;code&gt;Samples~&lt;/code&gt;文件夹的内容。此类文件夹不会被&lt;code&gt;meta&lt;/code&gt;文件跟踪。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;code&gt;package.json&lt;/code&gt;清单文件的&lt;code&gt;samples&lt;/code&gt;数组下为每个示例添加一个JSON对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;location-of-sample-files示例文件的位置&#34;&gt;Location of sample files(示例文件的位置) &lt;a href=&#34;#location-of-sample-files%e7%a4%ba%e4%be%8b%e6%96%87%e4%bb%b6%e7%9a%84%e4%bd%8d%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以将示例资产添加到您的包的&lt;code&gt;Samples~&lt;/code&gt;文件夹的子文件夹中。例如，包含着色器示例的包可能如下所示：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;MyPackage
+  ├── package.json
+  └── Samples~
+        ├── SamplesHDRP
+        │    ├── Textures
+        │    |     ├── MossyRock.bmp
+        │    |     └── SandyRock.bmp
+        │    └── Shader
+        │          ├── Lit Texture Blend HDRP.ShaderGraph
+        │          └── Lit Vertex Color HDRP.ShaderGraph
+        └── SamplesStandard
+        │    ├── Textures
+        │    |     ├── MossyRock.bmp
+        │    |     └── SandyRock.bmp
+        │    └── Shader
+        │          ├── StandardTextureBlend.shader
+        │          └── StandardVertexColor.shader
+        └── SamplesUniversalRP
+             ├── Textures
+             |     ├── MossyRock.bmp
+             |     └── SandyRock.bmp
+             └── Shader
+                   ├── Lit Texture Blend URP.ShaderGraph
+                   └── Lit Vertex Color URP.ShaderGraph
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;include-your-samples-in-the-manifest在清单中包含示例&#34;&gt;Include your samples in the manifest(在清单中包含示例) &lt;a href=&#34;#include-your-samples-in-the-manifest%e5%9c%a8%e6%b8%85%e5%8d%95%e4%b8%ad%e5%8c%85%e5%90%ab%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在&lt;code&gt;package.json&lt;/code&gt;文件中添加一个名为&lt;code&gt;samples&lt;/code&gt;的JSON数组。对于每个示例，添加一个包含至少&lt;code&gt;displayName&lt;/code&gt;和示例文件夹&lt;code&gt;path&lt;/code&gt;的JSON对象：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Key&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;displayName&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;示例在Package Manager窗口中显示的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;示例所展示或包含的简要描述。这仅用于&lt;strong&gt;包清单&lt;/strong&gt;。描述不会出现在界面中，甚至不会作为提示出现。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;path&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从&lt;code&gt;Samples~&lt;/code&gt;文件夹到示例根文件夹的路径。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;例如，按照示例文件位置的示例结构，&lt;code&gt;samples&lt;/code&gt;部分看起来类似于以下内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;samples&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;displayName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HDRP Shaders&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Contains sample shaders for the High Definition render pipeline&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Samples~/SamplesHDRP&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;displayName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;URP Shaders&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Contains sample shaders for the Universal render pipeline&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Samples~/SamplesUniversalRP&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;displayName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Standard RP Shaders&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Contains sample shaders for the Standard render pipeline&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Samples~/SamplesStandard&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;package-manifest包清单&#34;&gt;Package manifest(包清单) &lt;a href=&#34;#package-manifest%e5%8c%85%e6%b8%85%e5%8d%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Unity使用一个名为&lt;code&gt;package.json&lt;/code&gt;的&lt;strong&gt;包清单&lt;/strong&gt;文件来管理有关特定版本特定包的信息。包清单始终位于包的根目录，并包含关于包的重要信息，例如注册名称和版本号。&lt;/p&gt;
+&lt;p&gt;包清单还定义了向用户传达的有用信息，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在用户界面中显示的友好名称。&lt;/li&gt;
+&lt;li&gt;包的简要描述。&lt;/li&gt;
+&lt;li&gt;与该包兼容的Unity编辑器的最早版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;包清单使用JSON（JavaScript对象表示法）语法来描述包的内容。该文件的格式类似于npm的&lt;code&gt;package.json&lt;/code&gt;格式，但对某些属性的语义使用不同。请参考示例来查看示例包清单文件。&lt;/p&gt;
+&lt;p&gt;Package Manager读取此清单以查找包的内容，如何解压缩其内容以及在Package Manager窗口中显示哪些信息。清单以一系列必需、推荐和可选属性存储此信息。&lt;/p&gt;
+&lt;h2 id=&#34;required-properties必需属性&#34;&gt;Required properties(必需属性) &lt;a href=&#34;#required-properties%e5%bf%85%e9%9c%80%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果缺少这些属性，注册表将在发布包时拒绝该包，或者Package Manager无法获取或加载该包。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Property&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;JSON Type&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;name&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;符合Unity Package Manager命名约定的唯一标识符，其使用反转的域名表示法。有关命名约定的更多信息，请参阅命名您的包。 &lt;strong&gt;注意&lt;/strong&gt;：&lt;code&gt;name&lt;/code&gt;标识符与在&lt;strong&gt;Package Manager&lt;/strong&gt;窗口的列表面板中显示的友好显示名称不同。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;version&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包版本号，使用格式 &lt;code&gt;&amp;quot;major.minor.patch&amp;quot;&lt;/code&gt;。例如，&lt;code&gt;&amp;quot;3.2.1&amp;quot;&lt;/code&gt;表示这是第3个主要版本、第2个次要版本和第1个修补程序。此值必须符合语义化版本控制。有关详细信息，请参阅版本控制。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;recommended-properties推荐属性&#34;&gt;Recommended properties(推荐属性) &lt;a href=&#34;#recommended-properties%e6%8e%a8%e8%8d%90%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;即使缺少或具有无效值，Package Manager也可以在项目中安装包。&lt;/p&gt;
+&lt;p&gt;然而，推荐的最佳实践是为这些属性赋值，以确保您的包能够被发现，并为用户提供更好的体验。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Property&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;JSON Type&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;description&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包的简要描述。这是出现在&lt;strong&gt;Package Manager&lt;/strong&gt;窗口的详细信息面板中的文本。该字段支持UTF-8字符代码。这意味着您可以使用特殊的格式化字符代码，例如换行符(&lt;code&gt;\n&lt;/code&gt;)和项目符号(&lt;code&gt;\u25AA&lt;/code&gt;)。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;displayName&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在Unity编辑器中显示的用户友好名称（例如，在&lt;strong&gt;Project&lt;/strong&gt;窗口、&lt;strong&gt;Package Manager&lt;/strong&gt;窗口等中）。&lt;code&gt;displayName&lt;/code&gt;值的示例有&lt;strong&gt;Unity Timeline&lt;/strong&gt;、&lt;strong&gt;ProBuilder&lt;/strong&gt;和&lt;strong&gt;In App Purchasing&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;unity&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指示该包兼容的最低Unity版本。如果省略，Package Manager会认为该包与所有Unity版本兼容。期望的格式为&lt;code&gt;&amp;quot;major.minor&amp;quot;&lt;/code&gt;（例如，&lt;code&gt;&amp;quot;2018.3&amp;quot;&lt;/code&gt;）。要指定到特定的修补程序版本，还需要包括&lt;code&gt;unityRelease&lt;/code&gt;属性，参见可选属性部分。&lt;strong&gt;注意&lt;/strong&gt;：与Unity不兼容的包将不会出现在Package Manager窗口中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;optional-properties可选属性&#34;&gt;Optional properties(可选属性) &lt;a href=&#34;#optional-properties%e5%8f%af%e9%80%89%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;这些属性是可选的，这意味着您可以省略它们。但是，如果存在这些属性，它们必须具有有效的值。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Property&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;JSON Type&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;author&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Object or string&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包的作者。此属性仅支持一个作者。该属性有一个必填字段&lt;strong&gt;name&lt;/strong&gt;和两个可选字段&lt;strong&gt;email&lt;/strong&gt;和&lt;strong&gt;url&lt;/strong&gt;。您可以将这些字段指定为JSON对象，也可以将其合并为一个字符串，其键为&lt;strong&gt;author&lt;/strong&gt;。对象示例： &lt;code&gt;{&lt;/code&gt; &lt;code&gt;&amp;quot;name&amp;quot; : &amp;quot;约翰·多伊&amp;quot;,&lt;/code&gt; &lt;code&gt;&amp;quot;email&amp;quot; : &amp;quot;john.doe@example.com&amp;quot;,&lt;/code&gt; &lt;code&gt;&amp;quot;url&amp;quot; : &amp;quot;http://john.doe.example.com/&amp;quot;&lt;/code&gt; &lt;code&gt;}&lt;/code&gt; 字符串示例：&lt;code&gt;&amp;quot;约翰·多伊 &amp;lt;john.doe@example.com&amp;gt; (http://john.doe.example.com/)&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;changelogUrl&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定该包的changelog的自定义位置，作为URL。例如：&lt;code&gt;&amp;quot;changelogUrl&amp;quot;: &amp;quot;https://example.com/changelog.html&amp;quot;&lt;/code&gt; &lt;strong&gt;注意&lt;/strong&gt;：当Package Manager无法访问URL位置（例如，如果存在网络问题）时，执行以下操作： - 如果已安装该包，则Package Manager打开一个文件浏览器，显示包缓存中的&lt;code&gt;CHANGELOG.md&lt;/code&gt;文件。- 如果未安装该包，则Package Manager显示警告，表示离线changelog不可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;dependencies&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Object&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包依赖关系的映射。键是包名称，值是特定版本。它们标识该包依赖的其他包。&lt;strong&gt;注意&lt;/strong&gt;：Package Manager不支持范围语法，仅支持&lt;strong&gt;Semantic Versioning&lt;/strong&gt;的版本。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;documentationUrl&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定该包文档的自定义位置，作为URL。例如：&lt;code&gt;&amp;quot;documentationUrl&amp;quot;: &amp;quot;https://example.com/&amp;quot;&lt;/code&gt; &lt;strong&gt;注意&lt;/strong&gt;：当Package Manager无法访问URL位置（例如，如果存在网络问题）时，执行以下操作： - 如果已安装该包，则Package Manager打开一个文件浏览器，显示包缓存中的&lt;code&gt;Documentation~&lt;/code&gt;文件夹。- 如果未安装该包，则Package Manager显示警告，表示离线文档不可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;hideInEditor&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Boolean&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;默认情况下，&lt;strong&gt;Project&lt;/strong&gt;窗口会隐藏包的资源并在在&lt;strong&gt;Inspector&lt;/strong&gt;窗口中使用对象选择器时省略它们的结果。将此属性设置为&lt;code&gt;&amp;quot;false&amp;quot;&lt;/code&gt;，确保该包的资源始终可见。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;keywords&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Array of Strings&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包管理器搜索API使用的关键字数组。这有助于用户找到相关的包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;license&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;使用SPDX标识符格式或类似于“参见LICENSE.md文件”的字符串的OSS许可标识符。&lt;strong&gt;注意&lt;/strong&gt;：如果在您的包清单中省略了此属性，则您的包必须包含一个&lt;code&gt;LICENSE.md&lt;/code&gt;文件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;licensesUrl&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定该包的许可信息的自定义位置，作为URL。例如：&lt;code&gt;&amp;quot;licensesUrl&amp;quot;: &amp;quot;https://example.com/licensing.html&amp;quot;&lt;/code&gt; &lt;strong&gt;注意&lt;/strong&gt;：如果Package Manager无法访问URL位置（例如，如果存在网络问题），执行以下操作： - 如果已安装该包，则打开一个文件浏览器，显示包缓存中的&lt;code&gt;LICENSE.md&lt;/code&gt;文件。- 如果未安装该包，则Package Manager显示警告，表示离线许可信息不可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;samples&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Array of Objects&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包中包含的示例列表。每个示例都具有显示名称、描述和从&lt;code&gt;Samples~&lt;/code&gt;文件夹开始到示例文件夹的路径：&lt;code&gt;{&lt;/code&gt; &lt;code&gt;&amp;quot;displayName&amp;quot;: &amp;quot;&amp;lt;在界面中显示的名称&amp;gt;&amp;quot;,&lt;/code&gt; &lt;code&gt;&amp;quot;description&amp;quot;: &amp;quot;&amp;lt;简要描述&amp;gt;&amp;quot;,&lt;/code&gt; &lt;code&gt;&amp;quot;path&amp;quot;: &amp;quot;Samples~/&amp;lt;示例子文件夹&amp;gt;&amp;quot;&lt;/code&gt; &lt;code&gt;}&lt;/code&gt; 有关详细信息，请参阅创建包的示例。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;type&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;保留供内部使用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;unityRelease&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Unity版本的一部分，指示包兼容的特定版本。在更新的包需要在Unity的alpha/beta开发周期内进行更改时，可以使用此属性。如果包需要新引入的API，或者使用现有的API在没有API更新规则的情况下以不向后兼容的方式进行更改，可能会出现这种情况。 期望的格式为&lt;code&gt;&amp;quot;&amp;lt;update&amp;gt;&amp;lt;release&amp;gt;&amp;quot;&lt;/code&gt;（例如，&lt;code&gt;&amp;quot;0b4&amp;quot;&lt;/code&gt;）。 &lt;strong&gt;注意&lt;/strong&gt;：如果省略了建议的unity属性，则此属性无效。与Unity不兼容的包将不会出现在Package Manager窗口中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;package-manifest-example包清单示例&#34;&gt;Package manifest example(包清单示例) &lt;a href=&#34;#package-manifest-example%e5%8c%85%e6%b8%85%e5%8d%95%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;com.[company-name].[package-name]&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.2.3&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;displayName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Package Example&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;This is an example package&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;unity&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2019.1&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;unityRelease&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0b5&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;documentationUrl&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://example.com/&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;changelogUrl&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://example.com/changelog.html&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;licensesUrl&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://example.com/licensing.html&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;dependencies&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;com.[company-name].some-package&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;com.[company-name].other-package&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;keyword1&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;keyword2&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;keyword3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;author&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unity&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;email&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;unity@example.com&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://www.unity3d.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;versioning版本控制&#34;&gt;Versioning(版本控制) &lt;a href=&#34;#versioning%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;包必须遵循&lt;strong&gt;语义化版本控制&lt;/strong&gt;（Semantic Versioning，SemVer）。语义化版本控制是一种策略，允许包作者以自动化工具可用的格式提供关于给定版本与上一个版本相比所包含的更改类型的信息。&lt;/p&gt;
+&lt;p&gt;语义化版本控制将版本表示为&lt;strong&gt;主版本.次版本.修订版本&lt;/strong&gt;，其中主版本引入一个或多个重大更改，次版本引入一个或多个向后兼容的API更改，修订版本只引入不包含任何API更改的错误修复。&lt;/p&gt;
+&lt;p&gt;当开始开发一个包时，将版本号设置为&lt;code&gt;0.1.0&lt;/code&gt;。主版本号&lt;code&gt;0&lt;/code&gt;保留用于处于初始开发阶段的包。在初始开发阶段，包的API经常发生变化，常常是一种破坏性的方式，因此保持主版本号为&lt;code&gt;0&lt;/code&gt;，直到您认为您的包足够稳定并准备好用于生产为止。&lt;/p&gt;
+&lt;p&gt;包正式准备好用于生产后，将主版本增加到&lt;code&gt;1&lt;/code&gt;，并遵循以下指南进行后续更改：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Increment this value:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Under these conditions:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;主版本（MAJOR）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;至少有一项重大更改，且两个版本之间的包不能相互替代。破坏性更改包括： • 以可能引发编译或运行时错误的方式更改API表面（公开的API部分）或特性。 • 删除非API特性，包括删除资源或更改资源的GUID。 • 删除或重命名程序集和资源（因为编译器可能无法找到它们）。 &lt;strong&gt;注意&lt;/strong&gt;：当增加主版本时，始终将修订版本（PATCH）和次版本（MINOR）的值重置为&lt;code&gt;0&lt;/code&gt;。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;版本1.2.3和2.0.0不兼容，不能互换使用而不产生风险。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;次版本（同一主版本值）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;最高的次版本以向后兼容的方式引入功能。向后兼容（或非破坏性）的API更改包括： • 在不引发编译或运行时错误的情况下更改API表面或特性。 • 添加非API特性。 • 添加程序集和资源（因为新项目没有现有的引用）。 &lt;strong&gt;注意&lt;/strong&gt;：当增加次版本时，始终将修订版本重置为&lt;code&gt;0&lt;/code&gt;。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;您可以使用版本1.3.0来满足对1.2.0的依赖，因为1.3.0是向后兼容的。您不能使用1.2.0来满足对1.3.0的依赖。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;修订版本（同一主版本.次版本值）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;最高的修订版本以向后兼容的方式引入错误修复，而不更改API。如果满足以下条件，则API不会更改： • API表面相同且特性保持不变。 • 更改不会影响公共API。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;版本1.3.0和1.3.1应该可以互换，因为它们具有相同的API，尽管1.3.1中包含了1.3.0中不存在的错误修复。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;遵循这些版本控制实践，可以使Package Manager自动解决冲突（如果可能）或升级到更新的向后兼容版本。&lt;/p&gt;
+&lt;p&gt;以下节描述了几个情景，以帮助您确定这些规则如何影响各种包元素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通用资源（例如音频、纹理和模型）。&lt;/li&gt;
+&lt;li&gt;程序集定义（&lt;em&gt;.asmdef&lt;/em&gt;文件）和预编译程序集（托管的*.dll*文件）。&lt;/li&gt;
+&lt;li&gt;包清单文件（&lt;em&gt;package.json&lt;/em&gt;）。&lt;/li&gt;
+&lt;li&gt;废弃的API。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了这些情景之外，还有另一个因素可能会影响某些变化，这些变化通常只需要增加次版本或修订版本的版本号：自动引用的属性是启用还是禁用。&lt;/p&gt;
+&lt;h2 id=&#34;automatic-referencing自动引用&#34;&gt;Automatic referencing(自动引用) &lt;a href=&#34;#automatic-referencing%e8%87%aa%e5%8a%a8%e5%bc%95%e7%94%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以为程序集定义设置的一个属性是**自动引用（Auto Referenced）**属性，它控制在编译过程中Unity是否自动引用该文件。当启用此属性时，一些本来只需要递增次版本或修订版本的变化现在会成为破坏性更改。&lt;/p&gt;
+&lt;p&gt;当您&lt;strong&gt;禁用&lt;/strong&gt;自动引用时，如果您进行的任何更改导致新的程序集可用，那么您引入了对API的向后兼容变更。向后兼容的API变更，例如添加平台、禁用Unity测试引用、添加新的*.asmdef*文件或删除定义约束，只需要递增次版本。&lt;/p&gt;
+&lt;p&gt;然而，当您&lt;strong&gt;启用&lt;/strong&gt;自动引用时，新增的程序集会隐式地添加到其他各种程序集的引用中。由于这些情况可能导致其他程序集的编译错误，因此需要递增主版本。&lt;/p&gt;
+&lt;p&gt;另一种常见情况是添加或更改包依赖项的版本。大多数情况下，更改包依赖项只需要递增修订版本。然而，新的包版本可能包含一个启用了自动引用属性的程序集，这会造成破坏性更改，因此需要递增主版本。&lt;/p&gt;
+&lt;p&gt;为避免出现这些问题，您应尽量避免将第三方DLL文件放入与之无关的包中（例如，在SaveGameManager包中包含Newtonsoft.Json.dll文件）。&lt;/p&gt;
+&lt;h2 id=&#34;assets资源&#34;&gt;Assets(资源) &lt;a href=&#34;#assets%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;项目可以引用任何在资源数据库中可见的资源。资源数据库使用其*.meta*文件中定义的GUID来唯一跟踪这些资源。&lt;/p&gt;
+&lt;p&gt;当您对公共API引入以下更改时，这将需要进行新的主版本发布，因为它们是破坏性更改：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scenario:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Why these are breaking changes:&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;删除资源，而这些资源对资源数据库可见&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您删除一个资源，这可能会破坏用户项目或其他包中的引用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;改变资源的GUID&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您更改资源的GUID，资源数据库会将其理解为删除原始资源，然后添加一个新的（相同）资源。这会导致引用失效，因为原始GUID不再指向资源，所以资源数据库无法解析引用关系。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;assemblies程序集&#34;&gt;Assemblies(程序集) &lt;a href=&#34;#assemblies%e7%a8%8b%e5%ba%8f%e9%9b%86&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;程序集定义（&lt;em&gt;.asmdef&lt;/em&gt;）定义了一组&lt;strong&gt;脚本&lt;/strong&gt;，Unity编辑器的编译流程将其转换为单独的托管程序集（&lt;em&gt;.dll&lt;/em&gt;）。这些*.asmdef*资源包括驱动生成程序集属性的属性。其中包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导入器设置，比如包括和排除的平台&lt;/li&gt;
+&lt;li&gt;与编译相关的属性，比如输出程序集名称以及传递给编译器用于构建程序集的引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大多数属性都会对程序集的使用者产生影响，因此修改任何这些属性都会构成对包公共API的更改。其他属性对程序集的使用者没有影响，因此修改任何这些属性不被视为对包API的更改。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;strong&gt;自动引用（Auto Referenced）&lt;/strong&gt; 属性是一个特例，因为通常情况下不会改变API或以向后兼容的方式改变API的变化，在启用或禁用该属性的情况下可能会导致编译错误。更多信息请参阅自动引用。&lt;/p&gt;
+&lt;p&gt;Unity可以预编译程序集，也可以通过脚本和程序集定义来进行编译。因此，适用于程序集定义的任何内容通常也适用于预编译程序集。&lt;/p&gt;
+&lt;p&gt;本节详细介绍了程序集定义和预编译程序集的更改，以及对包版本的影响：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;破坏性更改（仅在新的主版本中允许）&lt;/li&gt;
+&lt;li&gt;向后兼容的API变更（允许在新的主版本或次版本中）&lt;/li&gt;
+&lt;li&gt;不会改变API的向后兼容更改（允许在新的主版本、次版本或修订版本中）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;major-only-breaking-changes仅限主版本破坏性更改&#34;&gt;MAJOR only: breaking changes(仅限主版本：破坏性更改) &lt;a href=&#34;#major-only-breaking-changes%e4%bb%85%e9%99%90%e4%b8%bb%e7%89%88%e6%9c%ac%e7%a0%b4%e5%9d%8f%e6%80%a7%e6%9b%b4%e6%94%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;W当您对公共API引入破坏性更改时，这将需要进行新的主版本发布，因为它可能导致编译和运行时错误。以下场景中，所有都会从引用它的其他程序集中删除或隐藏一个程序集。当编译使用引用程序集中定义的类型的程序集时，如果编译器找不到其他程序集，将导致编译错误。有关使用程序集和程序集定义的更多信息，请参阅程序集定义。&lt;/p&gt;
+&lt;p&gt;请注意，以下内容适用于包使用和消费的运行时和编辑器程序集。它不适用于测试程序集，因为包通常不使用它们，所以它们不是包的API的一部分。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scenario:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Why the compiler can’t find the referenced assembly:&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;删除程序集定义或预编译程序集&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;删除程序集定义文件会阻止编译流程生成对应的程序集。&lt;strong&gt;请注意&lt;/strong&gt;：从2019.1开始，允许存在缺少的引用以支持“可选引用”用例，但重命名Unity需要编译程序集定义所需的程序集会导致编译错误。同样，如果编译的代码需要一个来自程序集的类型，重命名该程序集可能会导致运行时错误，如&lt;code&gt;TypeLoadException&lt;/code&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改程序集名称（无论是在*.asmdef&lt;em&gt;文件中还是重命名&lt;/em&gt;.dll*文件）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改程序集名称等效于删除程序集，然后添加一个具有不同名称的新程序集。这意味着Unity认为原始程序集丢失了，尽管API仍然以其他名称包含了相同的程序集代码。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;向*.asmdef*添加定义约束&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果添加了定义约束，当未满足定义约束时，Unity会跳过编译程序集。这会导致程序集丢失的情况，尽管先前可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;删除平台&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您移除对特定平台的支持，Unity将不再在该平台上导入程序集，这等效于删除程序集。删除平台的方式有：• &lt;strong&gt;includePlatforms&lt;/strong&gt;，这会与所有未列出的平台不兼容• &lt;strong&gt;excludePlatforms&lt;/strong&gt;，这会添加条目&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将公共API从一个程序集移动到另一个程序集&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;当您将公共可访问代码从程序集A移动到程序集B时，任何引用A但不引用B的程序集都无法编译通过。对于程序集定义，如果您移动脚本位置，可能会将公共API移动到不同的程序集中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改**自动引用（Auto Referenced）**属性&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;禁用**自动引用（Auto Referenced）&lt;strong&gt;属性后，您将无法在没有显式引用的情况下使用此程序集的公共API：• 对于预编译程序集，禁用此属性将阻止Unity将预编译程序集隐式添加为程序集定义和项目编译程序集的引用。• 对于程序集定义，禁用此属性将阻止Unity将生成的程序集隐式添加为项目编译程序集的引用。启用&lt;/strong&gt;自动引用（Auto Referenced）**属性时，可能会产生与API、属性或依赖项的其他更改冲突的情况。更多信息请参阅自动引用部分。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在程序集定义中启用&lt;strong&gt;Unity References → Test Assemblies&lt;/strong&gt;属性&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;启用&lt;strong&gt;Unity References → Test Assemblies&lt;/strong&gt;属性会将该程序集标记为测试程序集，Unity通常不会在构建中包含它（或者在某些情况下不会编译它）。在此情况下，任何引用缺失的程序集都无法定位它，除非它也是一个测试程序集。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;major-minor-non-breaking-api-changes仅限主版本次版本非破坏性api更改&#34;&gt;MAJOR, MINOR: non-breaking API changes(仅限主版本、次版本：非破坏性API更改) &lt;a href=&#34;#major-minor-non-breaking-api-changes%e4%bb%85%e9%99%90%e4%b8%bb%e7%89%88%e6%9c%ac%e6%ac%a1%e7%89%88%e6%9c%ac%e9%9d%9e%e7%a0%b4%e5%9d%8f%e6%80%a7api%e6%9b%b4%e6%94%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;以下更改是向后兼容的非破坏性API更改。与破坏性更改删除程序集不同，这些场景都是添加程序集。由于添加程序集会增加API表面（API的公开部分），因此被视为API更改。然而，因为没有现有的引用，所以添加一个新程序集不会影响使用早期API创建的其他程序集。&lt;/p&gt;
+&lt;p&gt;向后兼容的更改需要至少进行新的次版本发布。如果您还包括其他破坏性更改的更新，则这些更改也可以成为新的主版本发布的一部分。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;警告&lt;/strong&gt;：这些更改仅在禁用了**自动引用（Auto Referenced）&lt;strong&gt;属性时向后兼容。当启用&lt;/strong&gt;自动引用（Auto Referenced）**属性时，上表中列出的更改可能会导致破坏性更改。有关详情，请参阅自动引用部分。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scenario&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Why these changes don’t break compilation&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从.asmdef中删除定义约束&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;删除定义约束意味着编译和脚本流程不再跳过此程序集。因为Unity始终构建该程序集，所以编译器始终可以解析对其的引用，而不论是否满足该定义约束。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;添加平台&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;添加平台对现有平台支持没有影响，因此是向后兼容的。这是一项API更改，因为它增加了API表面。您可以通过修改以下属性来添加平台：• 添加条目到&lt;strong&gt;includePlatforms&lt;/strong&gt;属性中。• 完全删除&lt;strong&gt;includePlatforms&lt;/strong&gt;属性。这相当于添加所有之前未包含在&lt;strong&gt;includePlatforms&lt;/strong&gt;属性中的平台。• 从&lt;strong&gt;excludePlatforms&lt;/strong&gt;属性中删除条目。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;使用新的脚本创建程序集定义（之前不是在不同的*.asmdef*文件中）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;添加新的程序集会增加API表面（API的公开部分），而不会修改任何现有实现。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在程序集定义文件中禁用&lt;strong&gt;Unity References → Test Assemblies&lt;/strong&gt;属性&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;禁用&lt;strong&gt;Unity References → Test Assemblies&lt;/strong&gt;属性将该程序集标记为普通程序集，Unity不再将其视为与任何程序集定义不同。这是一项API更改，因为它增加了API表面。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;major-minor-patch-no-api-changes主版本次版本修订版本无api更改&#34;&gt;MAJOR, MINOR, PATCH: no API changes(主版本、次版本、修订版本：无API更改) &lt;a href=&#34;#major-minor-patch-no-api-changes%e4%b8%bb%e7%89%88%e6%9c%ac%e6%ac%a1%e7%89%88%e6%9c%ac%e4%bf%ae%e8%ae%a2%e7%89%88%e6%9c%ac%e6%97%a0api%e6%9b%b4%e6%94%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;以下更改不会影响公共API，允许在修订版本中进行。这些场景下的更改不会改变公共API，因为它们不会影响API表面（API的公开部分），也不会对其他使用者造成任何变化。&lt;/p&gt;
+&lt;p&gt;不会改变公共API的更改需要至少进行新的修订版本发布。如果您还包括其他引入破坏性或非破坏性更改的更新，则还可以将它们包含在主版本或次版本发布中。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scenario&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Why these changes don’t impact other consumers&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改*.asmdef*文件中引用的程序集和程序集定义的列表&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;引用另一个程序集的程序集不会自动引用该程序集的引用，而是必须显式列出它们。因此，在程序集定义或程序集中更改引用不会影响其他使用者。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在程序集定义中更改**允许不安全代码（Allow unsafe code）**属性&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;此属性控制编译器是否允许编译具有&lt;strong&gt;unsafe&lt;/strong&gt;修饰符的代码。仅更改此标志不会修改公共API。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在程序集定义中更改**覆盖引用（Override References）**属性&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;此属性控制Unity如何调用该程序集的编译器，对生成的程序集的使用者没有影响。仅更改此标志不会修改公共API。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;package-manifest-files包清单文件&#34;&gt;Package manifest files(包清单文件) &lt;a href=&#34;#package-manifest-files%e5%8c%85%e6%b8%85%e5%8d%95%e6%96%87%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;包清单文件（&lt;code&gt;package.json&lt;/code&gt;）指定了包的名称、版本、包依赖关系和其他关于包本身的元数据。&lt;/p&gt;
+&lt;p&gt;本节详细介绍了包清单文件的更改以及对包版本的影响：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;名称更改（不允许）&lt;/li&gt;
+&lt;li&gt;依赖项的更改（上下文决定了最小版本变化）&lt;/li&gt;
+&lt;li&gt;其他更改（允许在新的主版本、次版本或修订版本中）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;name-changes-not-allowed名称更改不允许&#34;&gt;Name changes (not allowed)(名称更改（不允许）) &lt;a href=&#34;#name-changes-not-allowed%e5%90%8d%e7%a7%b0%e6%9b%b4%e6%94%b9%e4%b8%8d%e5%85%81%e8%ae%b8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;更改&lt;strong&gt;name&lt;/strong&gt;属性等同于删除一个包并添加一个具有不同名称的新包，这是不受支持的。您不能通过尝试发布一个更新来重命名一个包：您必须将其作为一个全新的包发布。不允许更改名称，因为现有的项目和包无法将这些名称解释为同义词。&lt;/p&gt;
+&lt;h3 id=&#34;dependency-changes依赖项更改&#34;&gt;Dependency changes(依赖项更改) &lt;a href=&#34;#dependency-changes%e4%be%9d%e8%b5%96%e9%a1%b9%e6%9b%b4%e6%94%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在项目中更改依赖项本身不需要不同的主版本或次版本，除非它是API更改的一部分，或者启用了自动引用属性。&lt;/p&gt;
+&lt;p&gt;本节提供了依赖项更改的示例及其适用的上下文（假设已禁用自动引用属性，并且除了每个示例所描述的更改外，没有其他API更改）：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Dependency change&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Minimum version change&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;添加新的依赖项&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用新的包而不改变功能行为，并且不改变API表面。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;修订&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用新的包引入新的行为，而不修改API表面。•创建新的API公开了在新包中定义的类型。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;次版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用新的包以不向后兼容的方式更改现有行为，而不修改API表面。 • 以不向后兼容的方式修改现有的API以公开在新包中定义的类型。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;主版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除依赖项&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 移除包而不改变功能行为，并且不改变API表面。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;修订版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 移除包以不向后兼容的方式更改现有行为，而不改变API表面。  • 移除公开在该依赖项中定义的类型的API。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;主版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改依赖项&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用修改后的包而不改变功能行为，并且不改变API表面。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;修订版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用修改后的包引入新的行为，而不修改API表面。   • 创建新的API公开了在修改后的包中定义的类型。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;次版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;• 使用修改后的包以不向后兼容的方式更改现有行为，而不修改API表面。•以不向后兼容的方式更改现有的API以公开在修改后的包中定义的类型。•在修改后的包中以非向后兼容的方式更改的API中公开一些类型。•在修改后的包中不再定义的API中公开一些类型。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;主版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;major-minor-or-patch-other-changes主版本次版本或修订版本其他更改&#34;&gt;MAJOR, MINOR or PATCH: other changes(主版本、次版本或修订版本：其他更改) &lt;a href=&#34;#major-minor-or-patch-other-changes%e4%b8%bb%e7%89%88%e6%9c%ac%e6%ac%a1%e7%89%88%e6%9c%ac%e6%88%96%e4%bf%ae%e8%ae%a2%e7%89%88%e6%9c%ac%e5%85%b6%e4%bb%96%e6%9b%b4%e6%94%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以在任何发布版本中更改与包管理器、构建流程、脚本流程或资产数据库没有特殊影响的包清单属性。这包括更改&lt;strong&gt;description&lt;/strong&gt;、&lt;strong&gt;category&lt;/strong&gt;、&lt;strong&gt;keywords&lt;/strong&gt;或&lt;strong&gt;displayName&lt;/strong&gt;等字段。&lt;/p&gt;
+&lt;p&gt;如果更改这些字段，可能表明您的更改涉及的不仅仅是错误修复。始终考虑新版本中的其他更改是否实际上需要一个新的次版本或主版本发布，而不是修订版本发布。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：在包的清单中更改&lt;strong&gt;unity&lt;/strong&gt;或&lt;strong&gt;unityRelease&lt;/strong&gt;属性总是需要进行次版本或主版本发布。虽然这些属性不会影响包的API本身，但增加Unity版本会导致包版本无法在较早的Unity编辑器上工作，并可能导致依赖的项目或包出现故障。降低Unity版本将使包在旧的Unity编辑器上可用。&lt;/p&gt;
+&lt;h2 id=&#34;deprecated-and-obsolete-apis弃用和过时的api&#34;&gt;Deprecated and obsolete APIs(弃用和过时的API) &lt;a href=&#34;#deprecated-and-obsolete-apis%e5%bc%83%e7%94%a8%e5%92%8c%e8%bf%87%e6%97%b6%e7%9a%84api&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您想要从您的API中删除一些功能时，首先发布至少一个包含已弃用功能的次版本。这样可以向用户发出警告，使他们可以顺利过渡到新的API。然后，在新的主版本发布中删除该功能。&lt;/p&gt;
+&lt;p&gt;如果另一个开发人员使用警告标记了一个过时的包，并且您在项目中启用了&lt;strong&gt;警告视为错误（Warnings as Errors）&lt;/strong&gt;，那么过时的包可能会在技术上破坏您的项目，即使它不是一个真正的破坏，因为代码仍然可以像以前一样工作。&lt;/p&gt;
+&lt;p&gt;在这种情况下，您可以根据常见的期望顺序选择如何修复警告作为错误（从上到下）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更改代码，不再使用该API。&lt;/li&gt;
+&lt;li&gt;在使用API的代码中使用&lt;code&gt;#pragma warning&lt;/code&gt;指令来消除警告。&lt;/li&gt;
+&lt;li&gt;禁用**CS0612（已过时）&lt;strong&gt;和&lt;/strong&gt;CS0618（带有警告消息的已过时）**警告。&lt;/li&gt;
+&lt;li&gt;在项目中禁用&lt;strong&gt;警告视为错误（Warnings as Errors）&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;assembly-definition-and-packages程序集定义和包&#34;&gt;Assembly definition and packages(程序集定义和包) &lt;a href=&#34;#assembly-definition-and-packages%e7%a8%8b%e5%ba%8f%e9%9b%86%e5%ae%9a%e4%b9%89%e5%92%8c%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您必须将包中的&lt;strong&gt;脚本&lt;/strong&gt;与程序集定义文件（&lt;code&gt;.asmdef&lt;/code&gt;）关联起来。程序集定义文件是Unity中对应.NET生态系统中的C#项目的概念。您必须在程序集定义文件中显式设置对其他程序集的引用（无论是在同一个包中还是在外部包中）。详情请参阅程序集定义的说明。&lt;/p&gt;
+&lt;p&gt;请使用以下命名和存储程序集定义文件的约定，以确保编译后的程序集文件名符合.NET Framework设计准则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在根编辑器程序集定义文件下存储特定于编辑器的代码：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Editor/&amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.asmdef&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在根运行时程序集定义文件下存储特定于运行时的代码：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Runtime/&amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.asmdef&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为编辑器和运行时脚本配置相关的测试程序集：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Tests/Editor/&amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Editor.Tests.asmdef&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Tests/Runtime/&amp;lt;company-name&amp;gt;.&amp;lt;package-name&amp;gt;.Tests.asmdef&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要获取有关推荐的包文件夹布局的更一般概述，请参阅包布局。&lt;/p&gt;
+&lt;h2 id=&#34;example-file示例文件&#34;&gt;Example file(示例文件) &lt;a href=&#34;#example-file%e7%a4%ba%e4%be%8b%e6%96%87%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在此示例中，程序集定义文件使用对其自己的程序集和一个作为包依赖项（HDRP）的程序集的引用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyCompany.MyPackageName&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;references&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyCompany.MyPackageName.Tools&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MyCompany.MyPackageName.Planes&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Unity.RenderPipelines.HighDefinition.Runtime&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;includePlatforms&amp;#34;&lt;/span&gt;: [],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;excludePlatforms&amp;#34;&lt;/span&gt;: [],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;allowUnsafeCode&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;overrideReferences&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;precompiledReferences&amp;#34;&lt;/span&gt;: [],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;autoReferenced&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defineConstraints&amp;#34;&lt;/span&gt;: [],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;versionDefines&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;com.unity.render-pipelines.high-definition&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;expression&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;7.1.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;define&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HDRP_7_1_0_OR_NEWER&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;com.unity.modules.particlesystem&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;expression&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;define&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USING_PARTICLE_SYSTEM&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;noEngineReferences&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;有关程序集定义文件结构的详细信息，请参阅程序集定义文件格式。&lt;/p&gt;
+&lt;h1 id=&#34;meeting-legal-requirements满足法律要求&#34;&gt;Meeting legal requirements(满足法律要求) &lt;a href=&#34;#meeting-legal-requirements%e6%bb%a1%e8%b6%b3%e6%b3%95%e5%be%8b%e8%a6%81%e6%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以使用&lt;code&gt;Third Party Notices.md&lt;/code&gt;和&lt;code&gt;LICENSE.md&lt;/code&gt;文件来确保您的包满足任何法律要求。例如，下面是来自Unity Timeline包的示例许可文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unity Timeline copyright © 2017-2019 Unity Technologies ApS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Licensed under the Unity Companion License for Unity-dependent projects--see [&lt;span style=&#34;color:#f92672&#34;&gt;Unity Companion License&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;http://www.unity3d.com/legal/licenses/Unity_Companion_License&lt;/span&gt;).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unless expressly provided otherwise, the Software under this license is made available strictly on an “AS IS” BASIS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. Please review the license for details on these and other terms and conditions.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;third-party-notices第三方声明&#34;&gt;Third Party Notices(第三方声明) &lt;a href=&#34;#third-party-notices%e7%ac%ac%e4%b8%89%e6%96%b9%e5%a3%b0%e6%98%8e&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果您的包含有第三方元素，您可以将许可证包含在&lt;code&gt;Third Party Notices.md&lt;/code&gt;文件中。您可以为每个要包含的许可证包括&lt;strong&gt;组件名称&lt;/strong&gt;、&lt;strong&gt;许可证类型&lt;/strong&gt;、&lt;strong&gt;版本号&lt;/strong&gt;和&lt;strong&gt;提供许可证详细信息&lt;/strong&gt;部分。例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;This package contains third-party software components governed by the license(s) indicated below:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Component Name: Semver
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;License Type: &amp;#34;MIT&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#f92672&#34;&gt;SemVer License&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://github.com/myusername/semver/blob/master/License.txt&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Component Name: MyComponent
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;License Type: &amp;#34;MyLicense&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#f92672&#34;&gt;MyComponent License&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://www.mycompany.com/licenses/License.txt&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;strong&gt;提供许可证详细信息&lt;/strong&gt;部分中的URL应指向包含复制的许可证和版权信息（如果适用）的位置。如果许可证适用于特定版本的组件，请尽可能提供该版本的URL。&lt;/p&gt;
+&lt;h1 id=&#34;documenting-your-package文档化您的包&#34;&gt;Documenting your package(文档化您的包) &lt;a href=&#34;#documenting-your-package%e6%96%87%e6%a1%a3%e5%8c%96%e6%82%a8%e7%9a%84%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;大多数包需要某种形式的说明，以帮助用户获得最佳体验并优化其使用。本页面提供了一些关于如何结构化信息和格式化文档的提示。&lt;/p&gt;
+&lt;h2 id=&#34;structure-of-the-information信息结构&#34;&gt;Structure of the information(信息结构) &lt;a href=&#34;#structure-of-the-information%e4%bf%a1%e6%81%af%e7%bb%93%e6%9e%84&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在包的标题之后，提供该包和其内容的基本概述。在概述和包内容之后，包括安装说明、系统要求和限制条件。您还可以提供获取帮助和提供反馈的链接，包括公共论坛或知识库以及支持联系方式。&lt;/p&gt;
+&lt;p&gt;在这些初步信息之后，您可以提供更深入的工作流程、用户界面描述或示例目录列表，然后是更高级的主题。最好在最后提供参考页面。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Section&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;概述&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对包进行简洁、高层次的解释。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;包内容&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包括您希望用户知道的重要文件的位置。例如，如果这是一个包含纹理、模型和材质的示例包，并按示例组分成不同文件夹，您可能想要指定每个组的文件夹位置。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;安装说明&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;您可以指向官方的Package Manager安装说明，但如果您有任何特殊的安装要求，比如安装示例，可以在这里添加它们。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;要求&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;这是一个很好的地方加入硬件或软件要求，包括这个包与哪些Unity编辑器版本兼容。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;限制条件&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您的包有任何已知限制条件，您可以在这里列出。如果没有，或者如果限制条件是微不足道的，可以省略本节。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;工作流程&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包括用户可以按照的步骤列表，演示如何使用某个功能。您可以包含屏幕截图，以帮助描述如何使用该功能。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;高级主题&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对您向用户提供的内容进行详细介绍。如果您不想一开始就给用户提供太多的信息，这是理想的选择。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您的用户界面有很多属性，您可以在参考部分中描述其详细信息。使用表格是提供特定属性描述的好方法。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;示例&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对于包含示例文件的包，您可以提供有关用户如何在其项目和&lt;strong&gt;场景&lt;/strong&gt;中使用这些示例文件的详细信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;教程&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果您想为复杂的步骤提供演示，也可以在这里添加。使用逐步说明，并包含图像，如果图像有助于用户理解的话。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;documentation-format文档格式&#34;&gt;Documentation format(文档格式) &lt;a href=&#34;#documentation-format%e6%96%87%e6%a1%a3%e6%a0%bc%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Markdown是一种常用的轻量级格式，在包中广泛使用。许多存储库托管服务（如GitHub和Bitbucket）支持Markdown格式的&lt;code&gt;README&lt;/code&gt;文件和文档站点。您可以在包根目录下的&lt;code&gt;Documentation~&lt;/code&gt;文件夹中包含一个Markdown文件。然后，当用户在Unity的Package Manager窗口的详细面板中点击&lt;strong&gt;Documentation&lt;/strong&gt;链接时，用户的默认Markdown查看器将打开该文件。&lt;/p&gt;
+&lt;p&gt;您还可以使用自己的网站来托管您的文档。要将&lt;strong&gt;Documentation&lt;/strong&gt;链接的位置指向您自己的网站，请在&lt;code&gt;package.json&lt;/code&gt;文件中使用&lt;code&gt;documentationUrl&lt;/code&gt;属性进行设置。&lt;/p&gt;
+&lt;p&gt;如果您决定使用Markdown来记录您的包，可以从许多站点找到有关撰写Markdown文件的信息，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Markdown指南&lt;/li&gt;
+&lt;li&gt;Bitbucket的教程&lt;/li&gt;
+&lt;li&gt;GitHub的Markdown备忘单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;sharing-your-package分享您的包&#34;&gt;Sharing your package(分享您的包) &lt;a href=&#34;#sharing-your-package%e5%88%86%e4%ba%ab%e6%82%a8%e7%9a%84%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;如果您想控制包的访问权限，或者需要在封闭网络组织中设置包注册服务器，您可以设置自己的包注册服务器。&lt;/p&gt;
+&lt;p&gt;当您开发完成包并希望与其他用户分享时，您有几个选项：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Compressed file&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;您可以向其他Unity用户分发一个zip文件。这样，他们可以将zip文件解压缩到自己计算机上的本地文件夹，并从磁盘上安装该包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Tarball&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;您可以向其他Unity用户分发一个tarball文件。这样，他们可以直接从本地tarball安装该包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Git URL&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;您可以通过链接到您的Git存储库，使用支持的协议。然后用户可以使用其Git URL安装您的包，因为Unity Package Manager可以从GitHub和GitLab等Git存储库托管服务中获取包。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scoped Registry&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;您可以设置一个包注册服务器来托管您的包，并使用&lt;code&gt;npm&lt;/code&gt;发布命令将其发布到该注册服务器。然后，您的包的消费者可以在其项目中设置一个作用域注册配置，从您自己的包注册服务器中获取您的自定义包。Unity Package Manager支持基于&lt;code&gt;npm&lt;/code&gt;协议的注册表。请确保您选择的任何注册服务器实现了&lt;code&gt;/-/v1/search&lt;/code&gt;或&lt;code&gt;/-/all&lt;/code&gt;端点。 &lt;strong&gt;警告&lt;/strong&gt;：当您设置自己的包注册服务器时，请确保仅使用与Unity的Scoped Registries兼容的功能。例如，Unity不支持使用&lt;code&gt;npm&lt;/code&gt;支持的&lt;code&gt;@scope&lt;/code&gt;符号表示的命名空间。 在大多数情况下，在本地网络中匿名访问足以满足您的安全要求。 但是，如果您想对通过作用域注册表访问包的用户进行更多的控制，可以为特定用户启用npm身份验证。然后，您的包的用户可以配置其作用域注册表以使用其npm身份验证令牌。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>解密游戏中关卡难度的统计建模-中文版</title>
       <link>https://www.chenqiaoqian.com/2023/07/22/2023-07-22-Statistical.Modelling.of.Level.Difficulty.in.Puzzle.Games/</link>
