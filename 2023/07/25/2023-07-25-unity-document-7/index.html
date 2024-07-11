@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Install Unity(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Install Unity(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-25 11:13:34 &#43;0800 CST">2023/07/25</time>
+        <span class="split">·</span>
+        <span> 1935 words </span>
+        <span class="split">·</span>
+        <span>
+            10 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="install-unity安装unity">Install Unity(安装Unity) <a href="#install-unity%e5%ae%89%e8%a3%85unity" class="anchor">🔗</a></h1><p>Hub是安装Unity编辑器、创建项目和管理Unity体验的主要方式。它提供了一个集中管理编辑器安装、账户和授权、项目的位置。有关更多信息，请参阅使用Hub安装Unity。</p>
+<h2 id="other-installation-options其他安装选项">Other installation options(其他安装选项) <a href="#other-installation-options%e5%85%b6%e4%bb%96%e5%ae%89%e8%a3%85%e9%80%89%e9%a1%b9" class="anchor">🔗</a></h2><p>您还可以以以下方式安装Unity编辑器：</p>
+<ul>
+<li>您可以使用命令行安装编辑器。如果随后选择安装Hub，您可以在那时将其添加到Hub中。有关更多信息，请参阅从命令行安装Unity。</li>
+<li>您可以离线安装Unity而不使用Hub。这允许您下载安装Unity所需的所有文件，并生成一个脚本，在没有互联网访问的计算机上安装编辑器。有关更多信息，请参阅在没有Hub的情况下离线安装Unity。</li>
+</ul>
+<h1 id="system-requirements-for-unity-20232unity-20232的系统要求">System requirements for Unity 2023.2(Unity 2023.2的系统要求) <a href="#system-requirements-for-unity-20232unity-20232%e7%9a%84%e7%b3%bb%e7%bb%9f%e8%a6%81%e6%b1%82" class="anchor">🔗</a></h1><p>此页面概述了运行Unity 2023.2所需的最低系统要求，适用于所有支持的平台。</p>
+<h2 id="unity-editor-system-requirementsunity编辑器系统要求">Unity Editor system requirements(Unity编辑器系统要求) <a href="#unity-editor-system-requirementsunity%e7%bc%96%e8%be%91%e5%99%a8%e7%b3%bb%e7%bb%9f%e8%a6%81%e6%b1%82" class="anchor">🔗</a></h2><p>本节列出了运行Unity编辑器所需的最低要求。实际性能和渲染质量可能会因项目的复杂性而有所不同。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>最低要求</strong></th>
+<th style="text-align:left"><strong>Windows</strong></th>
+<th style="text-align:left"><strong>macOS</strong></th>
+<th style="text-align:left"><strong>Linux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Operating system version</strong></td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本（仅 x64 架构）</td>
+<td style="text-align:left">Big Sur 11.0</td>
+<td style="text-align:left">Ubuntu 20.04 和 Ubuntu 22.04</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">支持 SSE2 指令集的 x64 架构</td>
+<td style="text-align:left">支持 SSE2 指令集的 x64 架构 (英特尔处理器) Apple M1 及以上（基于 Apple Silicon 的处理器）</td>
+<td style="text-align:left">支持 SSE2 指令集的 x64 架构</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">支持 DX10、DX11 和 DX12 的显卡</td>
+<td style="text-align:left">支持 Metal 的英特尔和 AMD 显卡</td>
+<td style="text-align:left">支持 OpenGL 3.2+ 或 Vulkan 的 Nvidia 和 AMD 显卡</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>其他要求</strong></td>
+<td style="text-align:left">硬件供应商官方支持的驱动程序</td>
+<td style="text-align:left">Apple 官方支持的驱动程序（英特尔处理器）需在 Apple Silicon 设备上通过 Rosetta 2 运行基于 Apple Silicon 或英特尔版本的 Unity Editor</td>
+<td style="text-align:left">基于 X11 窗口系统运行的 Gnome 桌面环境、Nvidia 官方专有图形驱动或 AMD Mesa 图形驱动。其他配置和用户环境与支持的发行版提供的原始配置相同（内核、组合器等）</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">对于所有操作系统，Unity 编辑器仅在工作站或笔记本设备上支持运行，不支持使用仿真、容器或兼容性层</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="unity-editor-platform-limitationsunity编辑器平台限制">Unity Editor platform limitations(Unity编辑器平台限制) <a href="#unity-editor-platform-limitationsunity%e7%bc%96%e8%be%91%e5%99%a8%e5%b9%b3%e5%8f%b0%e9%99%90%e5%88%b6" class="anchor">🔗</a></h3><h4 id="apple">Apple <a href="#apple" class="anchor">🔗</a></h4><p>在macOS上，辅助编辑器窗口只能最大化，并不进入全屏模式。</p>
+<h4 id="apple-silicon-devices">Apple silicon devices <a href="#apple-silicon-devices" class="anchor">🔗</a></h4><p>Apple Silicon 编辑器有以下限制：</p>
+<ul>
+<li>通过 Unity Hub 下载和安装 Apple Silicon 编辑器只能通过 3.0 Beta 6 或更高版本的 Hub 进行，而 3.0 Beta 6 中存在一些限制。有关更多信息，请参阅 Hub 发布说明：
+<ul>
+<li>要切换到 Hub 的最新 Beta 版本，请在首选项 &gt; 高级中将“通道”更改为“Beta”，或从 <a href="https://unity.com/download">https://unity.com/download</a> 重新下载。</li>
+</ul>
+</li>
+<li>如果您使用的是 Hub 2.4.5 并且想要使用 Apple Silicon 编辑器：卸载 Apple Intel 版本，从 <a href="https://unity3d.com/unity/whats-new/2023.2.0">https://unity3d.com/unity/whats-new/2023.2.0</a> 下载并运行独立安装程序，然后通过 Hub 找到它。</li>
+<li>原生的 Apple Silicon 编辑器不支持 CPU 光照贴图器（lightmapper）或从 SketchUp 导入。</li>
+</ul>
+<h4 id="linux">Linux <a href="#linux" class="anchor">🔗</a></h4><p>Linux 编辑器有以下限制：</p>
+<ul>
+<li>视频导入仅支持 VP8 视频格式</li>
+<li>文件系统区分大小写</li>
+<li>如果编辑器生成“Pipe error !”错误信息，则需要在当前的编辑器会话中增加最大打开文件限制。例如，在启动编辑器之前，在终端中运行 <code>ulimit -n 4096</code>。有关详细信息，请参阅Linux编辑器问题排除页面。</li>
+</ul>
+<h2 id="unity-player-system-requirementsunity-player系统要求">Unity Player system requirements(Unity Player系统要求) <a href="#unity-player-system-requirementsunity-player%e7%b3%bb%e7%bb%9f%e8%a6%81%e6%b1%82" class="anchor">🔗</a></h2><p>本节列出了构建和运行Unity Player所需的最低要求。实际性能和渲染质量可能会因项目的复杂性而有所不同。</p>
+<h3 id="mobile移动设备">Mobile(移动设备) <a href="#mobile%e7%a7%bb%e5%8a%a8%e8%ae%be%e5%a4%87" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统</strong></th>
+<th style="text-align:left"><strong>Android</strong></th>
+<th style="text-align:left"><strong>ChromeOS</strong></th>
+<th style="text-align:left"><strong>iOS/iPadOS</strong></th>
+<th style="text-align:left"><strong>tvOS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>版本</strong></td>
+<td style="text-align:left">6.0 (API 23) 或更高版本。自定义Android版本必须包含所有支持的Google标准API。</td>
+<td style="text-align:left">稳定发布频道上的 R89+ 版本（Android API 28+）</td>
+<td style="text-align:left">13+</td>
+<td style="text-align:left">13+</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">支持ARMv7 Neon指令集的ARMv7处理器 (32位)或ARM64处理器</td>
+<td style="text-align:left">支持ARMv7、ARM64、x86和x86_64的处理器</td>
+<td style="text-align:left">A7 SoC+</td>
+<td style="text-align:left">A8芯片及以上</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">OpenGL ES 3.0+、Vulkan</td>
+<td style="text-align:left">OpenGL ES 3.0+、Vulkan</td>
+<td style="text-align:left">Metal</td>
+<td style="text-align:left">Metal</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>其他要求</strong></td>
+<td style="text-align:left">- 1GB+ RAM - 支持的硬件设备必须符合或超过Google Android兼容性定义（版本9.0）的要求，仅适用于以下设备类型： 1. 手持设备（第2.2节） 2. 电视（第2.3节） 3. 平板电脑（第2.6节） - 硬件设备必须使用原生的Android操作系统。除了ChromeOS上的Android外，不支持在容器或模拟器内运行Android。 - 用于开发：Android SDK（12 / API 31）、Android NDK（r23b）和OpenJDK（11），这些工具默认与Unity Hub一起安装</td>
+<td style="text-align:left">- 支持2019年后发布的ChromeOS设备，如Chromebook、Chromebase、Chromebox和能够运行Android应用并在其自动更新到期日内的平板电脑。 - 使用Android Debug Bridge（adb）通过WiFi或以太网进行脚本调试和性能分析。</td>
+<td style="text-align:left">有关开发和调试：请参阅Apple关于XCode支持的文档。有关App Store提交：请参阅苹果的提交指南获取所需的Xcode版本</td>
+<td style="text-align:left">第四代及以上的Apple TV</td>
+</tr>
+</tbody>
+</table>
+<h3 id="console游戏主机">Console(游戏主机) <a href="#console%e6%b8%b8%e6%88%8f%e4%b8%bb%e6%9c%ba" class="anchor">🔗</a></h3><p>有关PlayStation 4（包括PS VR）、PlayStation 5（包括PS VR2）、Xbox One、Xbox Series S|X和Nintendo Switch的信息，请参阅游戏主机平台开发页面。只支持在Windows版本的Unity上构建主机平台。有关所需的任何其他特定于平台的软件的具体要求，请参阅平台持有人网站上的开发者文档，或直接联系平台代表以获取进一步的信息。</p>
+<p>有关Unity编辑器的具体系统要求，请参阅在Unity下载页面上使用的Unity版本。</p>
+<h3 id="desktop桌面设备">Desktop(桌面设备) <a href="#desktop%e6%a1%8c%e9%9d%a2%e8%ae%be%e5%a4%87" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统</strong></th>
+<th style="text-align:left"><strong>Windows</strong></th>
+<th style="text-align:left">**<em>*Universal Windows Platform*</em> **</th>
+<th style="text-align:left"><strong>macOS</strong></th>
+<th style="text-align:left"><strong>Linux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本</td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本，Xbox One、Xbox Series X</td>
+<td style="text-align:left">Big Sur 11.0+</td>
+<td style="text-align:left">Ubuntu 20.04、Ubuntu 22.04 和 CentOS 7</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">支持 SSE2 指令集的 x86、x64 架构及 ARM64 架构</td>
+<td style="text-align:left">支持 SSE2 指令集的 x86、x64 架构及 ARM、ARM64 架构</td>
+<td style="text-align:left">Apple Silicon、支持 SSE2 指令集的 x64 架构</td>
+<td style="text-align:left">支持 SSE2 指令集的 x64 架构</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">支持 DX10、DX11、DX12 的显卡</td>
+<td style="text-align:left">支持 DX10、DX11、DX12 的显卡</td>
+<td style="text-align:left">支持 Metal 的英特尔和 AMD 显卡</td>
+<td style="text-align:left">支持 OpenGL 3.2+ 或 Vulkan 的显卡</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>其他要求</strong></td>
+<td style="text-align:left">硬件供应商官方支持的驱动程序。开发时需要使用 IL2CPP 脚本后端，需要使用 Visual Studio 2019 的 C++ 工具组件或更高版本，并使用 Windows SDK 版本 10.0.19041.0 或更高版本。</td>
+<td style="text-align:left">硬件供应商官方支持的驱动程序。开发时需要使用 IL2CPP 脚本后端。需要安装 Visual Studio 2019 的 C++ 工具组件或更高版本，并使用 Windows SDK 版本 10.0.19041.0 或更高版本。</td>
+<td style="text-align:left">Apple 官方支持的驱动程序。开发时需要使用 IL2CPP 脚本后端，需要使用 Xcode。针对 Apple Silicon 的开发需要 macOS Catalina 10.15.4 和 Xcode 12.2 或更高版本</td>
+<td style="text-align:left">基于 X11 窗口系统运行的 Gnome 桌面环境。其他配置和用户环境与支持的发行版提供的原始配置相同（如内核或窗口管理器）。使用 Nvidia 官方专有显卡驱动程序或 AMD Mesa 显卡驱动程序的 Nvidia 和 AMD 显卡支持</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">对于所有操作系统，Unity Player 仅在工作站、笔记本电脑或平板电脑上支持运行，不支持使用仿真、容器或兼容性层</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="server-platform服务器平台">Server platform(服务器平台) <a href="#server-platform%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%b9%b3%e5%8f%b0" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Operating system</strong></th>
+<th style="text-align:left"><strong>Windows</strong></th>
+<th style="text-align:left"><strong>macOS</strong></th>
+<th style="text-align:left"><strong>Linux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本，运行在工作站和机架形态，不支持仿真或兼容性层</td>
+<td style="text-align:left">Big Sur 11.0+，运行在工作站和机架形态，不支持仿真或兼容性层</td>
+<td style="text-align:left">Ubuntu 20.04、Ubuntu 22.04 和 CentOS 7，运行在工作站和机架形态，不支持仿真或兼容性层</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">支持 SSE2 指令集的 x86、x64 架构及 ARM64 架构</td>
+<td style="text-align:left">支持 SSE2 指令集的 Apple Silicon、x64 架构</td>
+<td style="text-align:left">支持 SSE2 指令集的 x64 架构</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GPU</strong></td>
+<td style="text-align:left">不支持显卡</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>其他要求</strong></td>
+<td style="text-align:left">硬件供应商官方支持的驱动程序</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="web">Web <a href="#web" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>运行浏览器的操作系统</strong></th>
+<th style="text-align:left"><strong>Windows, macOS, and Linux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>硬件</strong></td>
+<td style="text-align:left">工作站和笔记本电脑形态</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>其他要求</strong></td>
+<td style="text-align:left">Chrome、Firefox、Safari 或 Edge (基于 Chromium 的版本) 的版本应满足以下要求： - 支持 WebGL 2.0 - 符合 HTML 5 标准 - 64 位 - 支持 WebAssembly</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>运行浏览器的操作系统</strong></th>
+<th style="text-align:left"><strong>Android and iOS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>硬件</strong></td>
+<td style="text-align:left">Android 或 iOS 设备</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>浏览器要求</strong>v</td>
+<td style="text-align:left">- iOS Safari 15 及以上版本 - Chrome 58 及以上版本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xr-platform-system-requirementsxr平台系统要求">XR platform system requirements(XR平台系统要求) <a href="#xr-platform-system-requirementsxr%e5%b9%b3%e5%8f%b0%e7%b3%bb%e7%bb%9f%e8%a6%81%e6%b1%82" class="anchor">🔗</a></h2><p>要启用<strong>XR</strong>并正确配置Unity项目，请按照XR插件架构页面中的步骤进行操作。</p>
+<h3 id="oculus">Oculus <a href="#oculus" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>硬件</strong></th>
+<th style="text-align:left"><strong>Oculus Rift/Rift S</strong></th>
+<th style="text-align:left"><strong>Oculus Quest</strong></th>
+<th style="text-align:left"><strong>Oculus Quest 2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本</td>
+<td style="text-align:left">Android</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">请参阅 Oculus 的推荐规格</td>
+<td style="text-align:left">ARM 64位（Snapdragon 835）</td>
+<td style="text-align:left">ARM 64位（Snapdragon XR2）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GPU</strong></td>
+<td style="text-align:left">请参阅 Oculus 的推荐规格</td>
+<td style="text-align:left">NVIDIA GTX 1050Ti/AMD Radeon RX 470 或更高版本</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">DX11</td>
+<td style="text-align:left">OpenGL ES 3.0, Vulkan*</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：*Oculus Quest 的 Vulkan支持是实验性功能，不应在生产环境中使用。有关更多信息，请参阅Oculus XR插件包文档。</p>
+<h3 id="openxr">OpenXR <a href="#openxr" class="anchor">🔗</a></h3><p>请参阅OpenXR插件文档以获取兼容的运行时列表。</p>
+<h3 id="windows-mixed-reality">Windows Mixed Reality <a href="#windows-mixed-reality" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>硬件</strong></th>
+<th style="text-align:left"><strong>WMR 交互式（VR）</strong></th>
+<th style="text-align:left"><strong>HoloLens</strong></th>
+<th style="text-align:left"><strong>HoloLens 2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本</td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本</td>
+<td style="text-align:left">Windows 10 版本 21H1（构建 19043）或更高版本</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">64 位 Intel</td>
+<td style="text-align:left">Intel Atom</td>
+<td style="text-align:left">ARM 64位（Snapdragon 850）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">DX11</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="magic-leap">Magic Leap <a href="#magic-leap" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统</strong></th>
+<th style="text-align:left"><strong>Magic Leap One</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">Lumin OS</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">请参阅 Magic Leap 的规格</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GPU</strong></td>
+<td style="text-align:left">请参阅 Magic Leap 的规格</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">OpenGL ES 3.2+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arcore">ARCore <a href="#arcore" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统</strong></th>
+<th style="text-align:left"><strong>Android phones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">请参阅支持 ARCore 的设备列表</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">ARM 32位和64位</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">OpenGL ES 3.0+</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Latest supported SDK version</strong></td>
+<td style="text-align:left">ARCore 1.24</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arkit">ARKit <a href="#arkit" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作系统</strong></th>
+<th style="text-align:left"><strong>iPhone and iPad</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>操作系统版本</strong></td>
+<td style="text-align:left">iOS 12</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left">A9+</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics API</strong></td>
+<td style="text-align:left">Metal</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Latest supported SDK version</strong></td>
+<td style="text-align:left">ARKit 5</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Additional requirements</strong></td>
+<td style="text-align:left">当编译包含 ARKit XR 插件的 iOS Player 时，您必须使用 Xcode 12.5 或更高版本。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="install-unity-from-the-command-line从命令行安装unity">Install Unity from the command line(从命令行安装Unity) <a href="#install-unity-from-the-command-line%e4%bb%8e%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ae%89%e8%a3%85unity" class="anchor">🔗</a></h1><p>如果您想要在组织中自动部署Unity，可以通过命令行安装编辑器和其他组件。这些组件是普通的可执行安装程序和包，可以用于自动部署Unity。</p>
+<p>要下载这些组件，您可以使用Unity安装程序将Unity组件下载到计算机上的一个文件夹中。</p>
+<ol>
+<li>下载并运行安装程序。安装程序的稳定版本可在Unity下载存档中获取。如果需要预发布版本的安装程序，请参阅Beta程序页面。</li>
+<li>在“选择组件”中，选择要自动部署的所有组件。</li>
+<li>在“选择下载和安装位置”中，选择“下载至”选项。</li>
+<li>输入一个位置，用于存储组件的安装程序。</li>
+<li>完成安装。</li>
+</ol>
+<p>打开指定的下载位置。在文件夹中，您会找到所选组件的安装程序文件，以及一个脚本文件（Windows上为<code>install.bat</code>，Linux或OS X上为<code>install.sh</code>），您可以运行该脚本文件来安装这些组件。</p>
+<p><img src="/2023-07-25-unity-document-7/gs_hub_downloaded_installers.png" alt=""></p>
+<p>要在另一台计算机上使用已下载的组件安装Unity，请将文件夹的内容复制到目标计算机，并运行安装脚本。</p>
+<h2 id="installing-individual-unity-components-on-windows-from-the-command-line在windows上使用命令行安装单独的unity组件">Installing individual Unity components on Windows from the command line(在Windows上使用命令行安装单独的Unity组件) <a href="#installing-individual-unity-components-on-windows-from-the-command-line%e5%9c%a8windows%e4%b8%8a%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ae%89%e8%a3%85%e5%8d%95%e7%8b%ac%e7%9a%84unity%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h2><p>在Windows上使用命令行安装编辑器和其他组件时，请使用以下选项。</p>
+<p><strong>注意</strong>：安装程序命令行参数区分大小写。</p>
+<h3 id="unity-editor-install安装unity编辑器">Unity Editor install(安装Unity编辑器) <a href="#unity-editor-install%e5%ae%89%e8%a3%85unity%e7%bc%96%e8%be%91%e5%99%a8" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>/S</strong></td>
+<td style="text-align:left">执行静默安装（不需要确认）的安装。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>/D=PATH</strong></td>
+<td style="text-align:left">设置默认安装目录。与静默安装选项结合使用时非常有用。默认文件夹为<strong>C:\Program Files (x86)\Unity</strong>（32位）或<strong>C:\Program Files\Unity</strong>（64位）。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong>:</p>
+<pre tabindex="0"><code>UnitySetup64.exe /S /D=E:\Development\Unity
+</code></pre><p>这个示例将Unity静默安装到<strong>E:\Development\Unity</strong>文件夹，并将其作为Unity安装的根目录。在这种情况下，编辑器可执行文件将安装在<strong>E:\Development\Unity\Editor\Unity.exe</strong>中。默认安装目录必须作为命令行的最后一个参数。提供的路径不能包含引号，即使路径中包含了空格。</p>
+<h3 id="卸载unity编辑器">卸载Unity编辑器 <a href="#%e5%8d%b8%e8%bd%bdunity%e7%bc%96%e8%be%91%e5%99%a8" class="anchor">🔗</a></h3><p>要执行静默卸载，请从命令行或脚本中运行<code>Uninstall.exe /S</code>。</p>
+<p><strong>注意</strong>：虽然进程会立即完成，但实际上文件被删除之前会有一段延迟。这是因为卸载程序被复制到临时位置以便删除自身。请确保工作目录不在Unity安装位置内，否则卸载程序无法删除该文件夹。</p>
+<h3 id="standard-assets-install安装standard-assets">Standard Assets install(安装Standard Assets) <a href="#standard-assets-install%e5%ae%89%e8%a3%85standard-assets" class="anchor">🔗</a></h3><p>要静默安装Standard Assets：</p>
+<pre tabindex="0"><code>UnityStandardAssetsSetup.exe /S /D=E:\Development\Unity
+</code></pre><p><strong>注意</strong>：如果指定一个文件夹，请使用Unity根目录（即包含Editor文件夹的文件夹），而不是安装<strong>Unity.exe</strong>的文件夹。</p>
+<h3 id="example-project-install安装示例项目">Example Project install(安装示例项目) <a href="#example-project-install%e5%ae%89%e8%a3%85%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae" class="anchor">🔗</a></h3><p>要静默安装示例项目，请使用：</p>
+<pre tabindex="0"><code>UnityExampleProjectSetup.exe /S /D=E:\Development\Unity
+</code></pre><p><strong>注意</strong>：默认文件夹为<code>C:\Users\Public\Documentation\Unity Projects\Standard Assets Example Project</code>。</p>
+<h2 id="installing-unity-on-os-x-from-the-command-line在os-x上使用命令行安装unity">Installing Unity on OS X from the command line(在OS X上使用命令行安装Unity) <a href="#installing-unity-on-os-x-from-the-command-line%e5%9c%a8os-x%e4%b8%8a%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ae%89%e8%a3%85unity" class="anchor">🔗</a></h2><p>Unity的单独安装程序以.pkg文件的形式提供，可以使用<code>installer</code>命令进行安装，如下所述。</p>
+<h3 id="unity-editor-install安装unity编辑器-1">Unity Editor install(安装Unity编辑器) <a href="#unity-editor-install%e5%ae%89%e8%a3%85unity%e7%bc%96%e8%be%91%e5%99%a8-1" class="anchor">🔗</a></h3><p>要将编辑器安装到指定目标卷的<code>/Applications/Unity</code>文件夹中，请输入：</p>
+<pre tabindex="0"><code>sudo installer [-dumplog] -package Unity.pkg -target /
+</code></pre><h3 id="standard-assets-install安装standard-assets-1">Standard Assets install(安装Standard Assets) <a href="#standard-assets-install%e5%ae%89%e8%a3%85standard-assets-1" class="anchor">🔗</a></h3><p>要将Standard Assets安装到指定卷的<code>/Applications/Unity/Standard Assets</code>文件夹中，请输入：</p>
+<pre tabindex="0"><code>sudo installer [-dumplog] -package StandardAssets.pkg -target /
+</code></pre><h3 id="example-project-install安装示例项目-1">Example Project install(安装示例项目) <a href="#example-project-install%e5%ae%89%e8%a3%85%e7%a4%ba%e4%be%8b%e9%a1%b9%e7%9b%ae-1" class="anchor">🔗</a></h3><p>要将示例项目安装到指定卷的<code>/Users/Shared/Unity/Standard-Assets</code>文件夹中，请输入：</p>
+<pre tabindex="0"><code>sudo installer [-dumplog] -package Examples.pkg -target /
+</code></pre><h2 id="torrent-download">Torrent download <a href="#torrent-download" class="anchor">🔗</a></h2><p>如果您喜欢通过BitTorrent客户端下载Unity，您可以从Unity下载存档页面获取一个Torrent下载链接。并非所有版本都支持Torrent下载。如果某个版本可以作为Torrent下载，该选项将在<strong>下载</strong>下拉菜单中以**Torrent下载（Win+Mac）**的形式呈现。</p>
+<p><img src="/2023-07-25-unity-document-7/InstallingUnityTorrentDownload.png" alt=""></p>
+<h2 id="installing-several-versions-at-once同时安装多个版本">Installing several versions at once(同时安装多个版本) <a href="#installing-several-versions-at-once%e5%90%8c%e6%97%b6%e5%ae%89%e8%a3%85%e5%a4%9a%e4%b8%aa%e7%89%88%e6%9c%ac" class="anchor">🔗</a></h2><p>您可以在同一台计算机上安装多个版本的Unity。</p>
+<p>在Mac上，安装程序会创建一个名为<strong>Unity</strong>的文件夹，并覆盖任何具有相同名称的现有文件夹。要在Mac上安装多个Unity版本，请在安装另一个版本之前重命名现有的<strong>Unity</strong>文件夹。</p>
+<p>在Windows上，安装文件夹的名称始终为<strong>Unity X.Y.Z[fp]W</strong>，其中<strong>f</strong>表示官方版本，<strong>p</strong>用于标记补丁版本。</p>
+<p>我们强烈建议，如果要重命名Unity文件夹，将新文件夹命名为逻辑上的名称（例如，在名称末尾添加版本号）。任何现有的快捷方式、别名和链接到离线文档的链接可能会不再指向旧版本的Unity。这在离线文档中可能尤其令人困惑；如果您突然发现浏览器书签到离线文档无法正常工作，请检查URL中的文件夹名称是否正确。</p>
+<h1 id="install-unity-offline-without-the-hub在没有unity-hub的情况下离线安装unity">Install Unity offline without the Hub(在没有Unity Hub的情况下离线安装Unity) <a href="#install-unity-offline-without-the-hub%e5%9c%a8%e6%b2%a1%e6%9c%89unity-hub%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%e7%a6%bb%e7%ba%bf%e5%ae%89%e8%a3%85unity" class="anchor">🔗</a></h1><p>Unity下载助手支持离线部署。使用下载助手下载安装Unity所需的文件，以及生成用于在其他没有互联网访问的计算机上重复安装的脚本。</p>
+<p>有关手动激活Unity的更多信息，请参考Unity手动激活指南。</p>
+<h2 id="prerequisites先决条件">Prerequisites(先决条件) <a href="#prerequisites%e5%85%88%e5%86%b3%e6%9d%a1%e4%bb%b6" class="anchor">🔗</a></h2><p>进行以下步骤，您需要：</p>
+<ul>
+<li>一台有互联网访问的计算机</li>
+<li>一台没有互联网访问的计算机</li>
+</ul>
+<h2 id="download-files-with-an-internet-connected-machine在有互联网访问的计算机上下载文件">Download files with an internet connected machine(在有互联网访问的计算机上下载文件) <a href="#download-files-with-an-internet-connected-machine%e5%9c%a8%e6%9c%89%e4%ba%92%e8%81%94%e7%bd%91%e8%ae%bf%e9%97%ae%e7%9a%84%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%b8%8a%e4%b8%8b%e8%bd%bd%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><ol>
+<li>在具有互联网访问的计算机上，打开以下网站：https://unity3d.com/get-unity/download/archive</li>
+<li>选择离线计算机操作系统和所需的Unity版本的下载选项卡。</li>
+<li>选择<strong>Unity安装程序</strong>。</li>
+<li>继续安装，并选择您想要的任何构建支持选项。</li>
+<li>将文件下载到指定位置，例如下载文件夹，而不是临时位置。</li>
+</ol>
+<p>要确认下载成功，请执行以下操作：</p>
+<ol>
+<li>打开文件管理器。</li>
+<li>导航到您之前指定的位置文件夹。</li>
+<li>确认<code>.sh</code>或<code>.bat</code>文件位于该文件夹内。</li>
+<li>检查此文件的内容，确保其类似于以下示例：</li>
+</ol>
+<p><img src="https://docs.unity3d.com/2023.2/Documentation/uploads/Main/deploying-unity-offline-install-bat.png" alt="img"></p>
+<h2 id="install-unity-on-the-offline-computer在离线计算机上安装unity">Install Unity on the offline computer(在离线计算机上安装Unity) <a href="#install-unity-on-the-offline-computer%e5%9c%a8%e7%a6%bb%e7%ba%bf%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%b8%8a%e5%ae%89%e8%a3%85unity" class="anchor">🔗</a></h2><ol>
+<li>
+<p>将所有下载的文件复制到离线计算机。如果离线计算机使用Windows操作系统:</p>
+<ol>
+<li>从管理员shell中运行提供的<code>.bat</code>文件:
+<ol>
+<li>在<strong>开始</strong>菜单中搜索<code>cmd.exe</code>。</li>
+<li>右键点击。</li>
+<li>选择<strong>以管理员身份运行</strong>。</li>
+</ol>
+</li>
+<li>导航到包含<strong>scripts</strong>的文件夹。通常位于下载文件夹中（<code>cd C:\Users\[YourName]\Download\UnityPackages</code>）。</li>
+</ol>
+<p>如果离线计算机使用OSX操作系统：</p>
+<ol>
+<li>将所有下载的文件复制到离线计算机。</li>
+<li>运行提供的<code>.sh</code>文件。</li>
+<li>运行<code>sudo install.sh</code>。</li>
+<li>导航到包含脚本的文件夹。通常位于下载文件夹中（<code>cd ~/Downloads/UnityPackages</code>）。</li>
+</ol>
+</li>
+<li>
+<p>根据需要重复这些步骤，为每台需要安装Unity的计算机执行。</p>
+</li>
+<li>
+<p>安装Unity后，通过桌面快捷方式打开Unity。</p>
+</li>
+</ol>
+<h2 id="activate-a-license-on-the-offline-computer在离线计算机上激活许可证">Activate a license on the offline computer(在离线计算机上激活许可证) <a href="#activate-a-license-on-the-offline-computer%e5%9c%a8%e7%a6%bb%e7%ba%bf%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%b8%8a%e6%bf%80%e6%b4%bb%e8%ae%b8%e5%8f%af%e8%af%81" class="anchor">🔗</a></h2><p>按照手动激活指南上的说明，在离线计算机上激活您的许可证。</p>
+<h2 id="install-unity-hub-offline离线安装unity-hub">Install Unity Hub offline(离线安装Unity Hub) <a href="#install-unity-hub-offline%e7%a6%bb%e7%ba%bf%e5%ae%89%e8%a3%85unity-hub" class="anchor">🔗</a></h2><ol>
+<li>
+<p>作为Unity下载助手的一部分，有一个名为“UnityHubSetup.exe”的文件。在离线机器上运行此文件以安装Unity Hub。Unity Hub用于管理您的Unity项目和编辑器安装。</p>
+</li>
+<li>
+<p>要定位现有的Unity安装，请导航到先前安装的“Unity.exe”文件。例如：</p>
+<p>C:\Program Files\Unity XXXXXX\Editor\Unity.exe（不使用Hub的默认Unity安装路径）</p>
+<p>或</p>
+<p>C:\Program Files\Unity\Hub\Editor\20XXXX\Editor\Unity.exe（使用Hub的默认Unity安装路径）</p>
+</li>
+<li>
+<p>要禁用欢迎屏幕：</p>
+</li>
+</ol>
+<p>如果您以前从未设置过services-config.json文件，则需要创建配置目录和services-config.json文件：</p>
+<ul>
+<li>MacOS：/Library/Application Support/Unity/config</li>
+<li>Windows：C:\ProgramData\Unity\config</li>
+<li>Linux：/usr/share/unity3d/config</li>
+</ul>
+<p>在此文件中添加以下选项：</p>
+<pre tabindex="0"><code>{
+  &#34;hubDisableWelcomeScreen&#34;: true
+}
+</code></pre><h1 id="deploy-unity-across-your-enterprise在企业中部署unity">Deploy Unity across your enterprise(在企业中部署Unity) <a href="#deploy-unity-across-your-enterprise%e5%9c%a8%e4%bc%81%e4%b8%9a%e4%b8%ad%e9%83%a8%e7%bd%b2unity" class="anchor">🔗</a></h1><p>Unity为在企业基础架构中使用其产品的大型组织提供解决方案。这些解决方案可以帮助在企业环境中使用Unity的IT管理员和创作者。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Topic</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">启用标准用户安装Unity（Windows）</td>
+<td style="text-align:left">允许Windows上的标准用户在没有管理员权限的情况下安装Unity。</td>
+</tr>
+<tr>
+<td style="text-align:left">通过Web代理使用Unity</td>
+<td style="text-align:left">了解在使用Web代理的组织中使用Unity的不同方式。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="enable-unity-installation-by-standard-users-windows启用标准用户安装unitywindows">Enable Unity installation by standard users (Windows)(启用标准用户安装Unity（Windows）) <a href="#enable-unity-installation-by-standard-users-windows%e5%90%af%e7%94%a8%e6%a0%87%e5%87%86%e7%94%a8%e6%88%b7%e5%ae%89%e8%a3%85unitywindows" class="anchor">🔗</a></h1><p>默认情况下，安装Unity编辑器是一个需要管理员权限的过程。</p>
+<p>从2023.1版本开始，您可以启用Windows上的标准用户在没有提升的权限下安装Unity编辑器。</p>
+<p>一旦启用了此功能，管理员只需安装Unity安装程序检测到的缺失依赖项（如Visual C++运行时库），就可以减少管理员的参与。这些依赖项很少更改，因此标准用户在安装其他Unity编辑器实例时无需每次都需要管理员干预。</p>
+<h2 id="before-you-begin开始之前">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d" class="anchor">🔗</a></h2><p>确保您对<code>C:\ProgramData\Unity\config</code>文件夹具有写入权限。</p>
+<p>在编辑JSON文件时，请遵循以下实践:</p>
+<ul>
+<li>使用直角双引号(&quot;&quot;)，而不是弯曲引号（“”）。</li>
+<li>用逗号分隔键值对。</li>
+<li>使用JSON验证器检查JSON的语法。您可以使用PowerShell中的<code>Get-Content</code>和<code>ConvertFrom-Json</code>命令，如以下示例所示。</li>
+</ul>
+<h2 id="procedure步骤">Procedure(步骤) <a href="#procedure%e6%ad%a5%e9%aa%a4" class="anchor">🔗</a></h2><p>要启用标准用户安装Unity编辑器，请按照以下步骤操作：</p>
+<ol>
+<li>
+<p>确保以下路径存在。如果需要，创建其中的任何文件夹：</p>
+<pre tabindex="0"><code>C:\ProgramData\Unity\config
+</code></pre></li>
+<li>
+<p>确保以下文件存在。如果需要，创建该文件:</p>
+<pre tabindex="0"><code>C:\ProgramData\Unity\config\services-config.json
+</code></pre><p>如果需要创建该文件，请确保它至少具有以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>在<code>services-config.json</code>的花括号之间添加以下条目：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;hubDisableElevate&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div></li>
+<li>
+<p>可选：为了让同一台计算机的多个用户共享Unity编辑器的二进制文件而不需要多次安装相同的版本，请创建一个用于所有Unity编辑器的共同目标文件夹，例如<code>C:\UnityEditors</code>。<strong>重要：**确保为**所有用户</strong>授予该文件夹的<strong>读取</strong>和<strong>写入</strong>访问权限。</p>
+</li>
+<li>
+<p>可选：如果您在上一步创建了共享文件夹，请在<code>services-config.json</code>中添加<code>machineWideSecondaryInstallLocation</code>键，以便Unity Hub使用该文件夹。根据上一步的文件夹路径，条目如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;machineWideSecondaryInstallLocation&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;C:\\UnityEditors&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>退出Unity Hub，并确保它已停止运行，而不仅仅是最小化到任务栏中。</p>
+</li>
+</ol>
+<h2 id="sample-configuration-file示例配置文件">Sample configuration file(示例配置文件) <a href="#sample-configuration-file%e7%a4%ba%e4%be%8b%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>使用上述步骤中的值，示例<code>services-config.json</code>文件如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;hubDisableElevate&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;machineWideSecondaryInstallLocation&#34;</span>: <span style="color:#e6db74">&#34;C:\\UnityEditors&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="next-steps下一步">Next steps(下一步) <a href="#next-steps%e4%b8%8b%e4%b8%80%e6%ad%a5" class="anchor">🔗</a></h2><p>现在，标准用户的计算机可以在没有管理员干预的情况下安装Unity编辑器，除非存在依赖项。管理员必须安装任何依赖项。</p>
+<h3 id="missing-dependencies-warning缺少依赖项警告">Missing dependencies warning(缺少依赖项警告) <a href="#missing-dependencies-warning%e7%bc%ba%e5%b0%91%e4%be%9d%e8%b5%96%e9%a1%b9%e8%ad%a6%e5%91%8a" class="anchor">🔗</a></h3><p>以下是标准用户可能会看到的依赖项警告示例：</p>
+<p><img src="/2023-07-25-unity-document-7/ent-unpriv-install-00.png" alt=""></p>
+<h3 id="list-of-missing-dependencies依赖项列表">List of missing dependencies(依赖项列表) <a href="#list-of-missing-dependencies%e4%be%9d%e8%b5%96%e9%a1%b9%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h3><p>如果标准用户收到有关缺少依赖项的警告，安装程序将把依赖项列表写入一个文本文件中。警告会指示这个文本文件的位置。管理员必须在标准用户能够稳定使用Unity之前安装这些依赖项。</p>
+<p>以下是Unity安装程序可能生成的一个缺少依赖项列表的示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Dependency: Visual C++ 2010 runtime (x64)
+</span></span><span style="display:flex;"><span>Download location: https://www.microsoft.com/en-ca/download/details.aspx?id=26999
+</span></span><span style="display:flex;"><span>Local Installer: C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\MissingDependencies\vcredist_x64_2010.exe
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>Dependency: Visual C++ 2013 runtime (x64)
+</span></span><span style="display:flex;"><span>Download location: https://www.microsoft.com/en-ca/download/details.aspx?id=40784
+</span></span><span style="display:flex;"><span>Local Installer: C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\MissingDependencies\vcredist_x64_2013.exe
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>Dependency: Visual C++ 2015 runtime (x64)
+</span></span><span style="display:flex;"><span>Download location: https://www.microsoft.com/en-ca/download/details.aspx?id=48145
+</span></span><span style="display:flex;"><span>Local Installer: C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\MissingDependencies\vcredist_x64_2015.exe
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>Make sure that the following rules are set:
+</span></span><span style="display:flex;"><span>netsh advfirewall firewall delete rule name=all program=&#39;C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\Editor\Unity.exe&#39;
+</span></span><span style="display:flex;"><span>netsh advfirewall firewall delete rule name=all program=&#39;C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\Editor\Data\Tools\nodejs\node.exe&#39;
+</span></span><span style="display:flex;"><span>netsh advfirewall firewall add rule name=&#39;Unity 2023.1.0a5 Editor&#39; dir=in action=allow program=&#39;C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\Editor\Unity.exe&#39; profile=domain protocol=any
+</span></span><span style="display:flex;"><span>netsh advfirewall firewall add rule name=&#39;Unity 2023.1.0a5 Editor&#39; dir=in action=block program=&#39;C:\Users\nonadmin\AppData\Local\Unity 2023.1.0a5\Editor\Unity.exe&#39; profile=public protocol=any
+</span></span></code></pre></div><h1 id="using-unity-through-web-proxies通过web代理使用unity">Using Unity through web proxies(通过Web代理使用Unity) <a href="#using-unity-through-web-proxies%e9%80%9a%e8%bf%87web%e4%bb%a3%e7%90%86%e4%bd%bf%e7%94%a8unity" class="anchor">🔗</a></h1><p>一些组织使用Web代理，它是用户与互联网资源之间的中间服务器。组织使用Web代理的原因有多种，包括安全性、隐私性和网络效率。</p>
+<p>如果您在需要通过Web代理访问互联网的环境中部署Unity，您可能需要配置Web代理、客户端计算机或两者兼而有之。根据您的环境，此配置可能包括以下一些或全部任务：</p>
+<ul>
+<li>准备您的环境，以便Unity应用程序可以使用您的Web代理</li>
+<li>Web代理拦截安全通信</li>
+<li>允许Web代理下载可执行文件</li>
+</ul>
+<h2 id="preparing-your-environment-so-unity-applications-can-use-your-web-proxy准备您的环境以便unity应用程序可以使用您的web代理">Preparing your environment so Unity applications can use your web proxy(准备您的环境，以便Unity应用程序可以使用您的Web代理) <a href="#preparing-your-environment-so-unity-applications-can-use-your-web-proxy%e5%87%86%e5%a4%87%e6%82%a8%e7%9a%84%e7%8e%af%e5%a2%83%e4%bb%a5%e4%be%bfunity%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e6%82%a8%e7%9a%84web%e4%bb%a3%e7%90%86" class="anchor">🔗</a></h2><p>从Unity Editor 2023.1开始，自动代理配置功能可以使Unity应用程序在需要通过Web代理进行通信时无缝使用。Unity应用程序可以在不中断和不安装其他软件的情况下与Web代理进行通信。所需的配置量取决于以下因素：</p>
+<ul>
+<li><strong>Unity版本和操作系统</strong>：从Unity Editor 2023.1开始，Unity应用程序可以从Windows操作系统访问Web代理配置。较早的版本和其他操作系统需要额外的配置。</li>
+<li><strong>身份验证类型</strong>：检查您的代理是否支持基本身份验证（用户名和密码），或者是否使用SPNEGO机制和协议（如Kerberos或NTLM）。</li>
+</ul>
+<p>请使用以下表格来确定与您的环境相匹配的解决方案：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作系统</th>
+<th style="text-align:left">Unity 版本</th>
+<th style="text-align:left">代理身份验证</th>
+<th style="text-align:left">解决方案</th>
+<th style="text-align:left">其他信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left">2023.1或更新的版本的Unity Editor和3.4.2或更新的Hub版本</td>
+<td style="text-align:left">支持基本身份验证</td>
+<td style="text-align:left">启用自动代理配置。将凭据存储在凭据管理器中。</td>
+<td style="text-align:left">您必须能够将代理信息存储在操作系统设置或环境变量中。</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left">2023.1或更新的版本的Unity Editor和3.4.2或更新的Hub版本</td>
+<td style="text-align:left">不支持基本身份验证，或者不需要身份验证</td>
+<td style="text-align:left">启用自动代理配置。如果您的代理需要身份验证，请在代理异常列表中允许Unity应用程序进行无身份验证访问。</td>
+<td style="text-align:left">您必须能够将代理信息存储在操作系统设置或环境变量中。</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left">2022.x或更早版本的Unity Editor或3.4.1或更早版本的Hub</td>
+<td style="text-align:left">支持基本身份验证</td>
+<td style="text-align:left">使用环境变量来标识Web代理。在代理异常列表中允许Unity应用程序进行无身份验证访问（首选），或者在环境变量中存储代理的用户名和密码。</td>
+<td style="text-align:left">在2023.1版本之前，自动代理配置的支持不完整。</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows</td>
+<td style="text-align:left">2022.x或更早版本的Unity Editor或3.4.1或更早版本的Hub</td>
+<td style="text-align:left">需要身份验证，但不支持基本身份验证</td>
+<td style="text-align:left">如果您的代理需要身份验证，请在代理异常列表中允许Unity应用程序进行无身份验证访问。</td>
+<td style="text-align:left">在2023.1版本之前，自动代理配置的支持不完整。</td>
+</tr>
+<tr>
+<td style="text-align:left">macOS, Linux</td>
+<td style="text-align:left">任意</td>
+<td style="text-align:left">任意</td>
+<td style="text-align:left">使用环境变量来标识Web代理。如果您的代理需要身份验证，请在代理异常列表中允许Unity应用程序进行无身份验证访问。</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interception-of-secure-communication-by-the-web-proxyweb代理拦截安全通信">Interception of secure communication by the web proxy(Web代理拦截安全通信) <a href="#interception-of-secure-communication-by-the-web-proxyweb%e4%bb%a3%e7%90%86%e6%8b%a6%e6%88%aa%e5%ae%89%e5%85%a8%e9%80%9a%e4%bf%a1" class="anchor">🔗</a></h2><p>检查您的Web代理是否使用SSL检查，一些企业使用它来检查安全（TLS）请求的内容。如果您的企业使用SSL检查，请配置客户端计算机信任Web代理证书。</p>
+<h2 id="allow-the-web-proxy-to-download-executable-files允许web代理下载可执行文件">Allow the web proxy to download executable files(允许Web代理下载可执行文件) <a href="#allow-the-web-proxy-to-download-executable-files%e5%85%81%e8%ae%b8web%e4%bb%a3%e7%90%86%e4%b8%8b%e8%bd%bd%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>检查您的Web代理是否阻止下载可执行文件，或者是否需要用户在下载可执行文件之前确认。如果是这样，您需要配置Web代理以允许特定端点上的此流量。否则，用户将无法运行Unity Hub用于安装Unity Editor所需组件的安装程序。详细信息请参阅下载可执行文件的端点。</p>
+<h2 id="known-issues已知问题">Known issues(已知问题) <a href="#known-issues%e5%b7%b2%e7%9f%a5%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h2><ul>
+<li>对于使用代理自动配置（PAC）文件配置Web代理的组织，不支持<code>HTTP</code>关键字。请改用<code>PROXY</code>关键字来指定使用HTTP通信的代理。</li>
+</ul>
+<h1 id="enable-automatic-proxy-configuration启用自动代理配置">Enable automatic proxy configuration(启用自动代理配置) <a href="#enable-automatic-proxy-configuration%e5%90%af%e7%94%a8%e8%87%aa%e5%8a%a8%e4%bb%a3%e7%90%86%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>如果您的环境与Unity的自动代理配置功能兼容，则必须配置客户端计算机来使用它。</p>
+<p>请查看在“通过Web代理使用Unity”中的解决方案，以检查您的环境是否支持Unity的自动代理配置功能。</p>
+<p>无论是手动启用Unity的自动代理配置功能，还是使用更可伸缩的方法，都要按照以下步骤配置客户端计算机：</p>
+<ol>
+<li>
+<p>检查客户端计算机上是否存在以下目录，如果缺少，则创建它：</p>
+<ul>
+<li>Windows: <code>C:\ProgramData\Unity\config</code></li>
+<li>macOS: <code>/Library/Application\ Support/Unity/config</code></li>
+</ul>
+</li>
+<li>
+<p>检查上一步中的目录是否有一个 <code>services-config.json</code> 文件，如果缺少，则创建它。</p>
+</li>
+<li>
+<p>在文件中添加 <code>&quot;enableProxyAutoconfig&quot;</code> 键，并赋值为 <code>true</code>。如果您正在创建文件，请确保其类似于以下示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;enableProxyAutoconfig&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>保存 <code>services-config.json</code> 文件。</p>
+</li>
+</ol>
+<p>启用自动代理配置后，Unity应用程序将查找存储的用户凭据（如果您的组织的Web代理需要身份验证）。如果凭据未存储或不正确，您将遇到以下问题：</p>
+<ul>
+<li>在创建新项目时，Unity Hub 中将无法使用项目模板。</li>
+<li>包管理器的操作（如搜索或下载软件包）将失败。在这种情况下，编辑器会在&quot;控制台窗口&quot;中显示错误消息：</li>
+</ul>
+<p><img src="/2023-07-25-unity-document-7/ent-proxy-autoconfig-00.png" alt=""></p>
+<h2 id="next-steps后续步骤">Next steps(后续步骤) <a href="#next-steps%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4" class="anchor">🔗</a></h2><ul>
+<li>如果您的组织设置了需要身份验证的Web代理，用户需要存储他们的凭据以进行Web代理身份验证。有关存储凭据的信息，请参阅存储凭据以进行自动代理配置。</li>
+<li>查看“通过Web代理使用Unity”中的解决方案，以检查您的环境是否需要任何其他操作。</li>
+</ul>
+<h1 id="store-credentials-for-automatic-proxy-configuration存储凭据以进行自动代理配置">Store credentials for automatic proxy configuration(存储凭据以进行自动代理配置) <a href="#store-credentials-for-automatic-proxy-configuration%e5%ad%98%e5%82%a8%e5%87%ad%e6%8d%ae%e4%bb%a5%e8%bf%9b%e8%a1%8c%e8%87%aa%e5%8a%a8%e4%bb%a3%e7%90%86%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>如果您的组织的Web代理要求用户身份验证，并配置为接受基本身份验证（用户名和密码），那么用户在使用Unity应用程序之前必须存储他们的凭据。</p>
+<p>如果您在Windows上使用Unity，请按照以下步骤进行操作。对于其他平台和环境，请参阅其他平台和环境的替代方法。</p>
+<p>开始之前，请确保您已启用自动代理配置。</p>
+<h2 id="procedure步骤-1">Procedure(步骤) <a href="#procedure%e6%ad%a5%e9%aa%a4-1" class="anchor">🔗</a></h2><p>按照以下步骤在Windows中存储您的代理凭据，将 <code>webproxy.mycompany.com</code> 的代理地址和 <code>proxyuser</code> 的用户名替换为您自己的信息。</p>
+<ol>
+<li>
+<p>在任务栏的搜索框中输入 <code>凭据管理器</code>，找到<strong>凭据管理器控制面板</strong>并打开。</p>
+</li>
+<li>
+<p>打开<strong>凭据管理器</strong>。</p>
+</li>
+<li>
+<p>选择<strong>Windows凭据</strong>。</p>
+</li>
+<li>
+<p>选择<strong>添加通用凭据</strong>。</p>
+<p><img src="/2023-07-25-unity-document-7/ent-proxy-autoconfig-01.png" alt=""></p>
+</li>
+<li>
+<p>在<strong>Internet 或网络地址</strong>中，输入Web代理的主机名或IP地址。</p>
+</li>
+<li>
+<p>输入您的<strong>用户名</strong>和<strong>密码</strong>。</p>
+<p><img src="/2023-07-25-unity-document-7/ent-proxy-autoconfig-02.png" alt=""></p>
+</li>
+<li>
+<p>单击<strong>确定</strong>。</p>
+</li>
+</ol>
+<p>Unity应用程序将在与指定的Web代理进行身份验证时使用这些存储的凭据。</p>
+<h2 id="alternatives-for-other-platforms-and-environments其他平台和环境的替代方法">Alternatives for other platforms and environments(其他平台和环境的替代方法) <a href="#alternatives-for-other-platforms-and-environments%e5%85%b6%e4%bb%96%e5%b9%b3%e5%8f%b0%e5%92%8c%e7%8e%af%e5%a2%83%e7%9a%84%e6%9b%bf%e4%bb%a3%e6%96%b9%e6%b3%95" class="anchor">🔗</a></h2><p>某些平台和环境不完全支持Unity的自动代理配置功能，或者不支持存储用户凭据，或者两者都不支持。以下是一些例子：</p>
+<ul>
+<li>macOS 支持Unity的自动代理配置功能，但不支持存储用户凭据。</li>
+<li>在持续集成（CI）或持续交付（CD）环境中，流水线（而不是用户）与Web代理进行交互。</li>
+</ul>
+<p>在这种情况下，请考虑以下替代方法：</p>
+<ul>
+<li>对于在Windows环境中运行的CI/CD流水线，可以使用 <code>cmdkey</code> 命令将凭据从命令行界面（CLI）添加到Windows凭据管理器中。可参考 Microsoft Learn 上的 cmdkey 文档了解示例用法。</li>
+<li>对于不支持存储凭据的环境，可以在环境变量中定义代理配置。这个定义也可以包括用户名和密码（如果有必要）。更多信息，请参阅使用环境变量来标识您的Web代理。</li>
+<li>如果基本身份验证和Unity的自动代理配置都不可行，您需要在Web代理中定义例外情况，以便Unity应用程序请求的资源无需身份验证。</li>
+</ul>
+<h2 id="next-steps后续步骤-1">Next steps(后续步骤) <a href="#next-steps%e5%90%8e%e7%bb%ad%e6%ad%a5%e9%aa%a4-1" class="anchor">🔗</a></h2><ul>
+<li>查看“通过Web代理使用Unity”中的解决方案，以检查您的环境是否需要任何其他操作。</li>
+</ul>
+<h1 id="trusting-the-web-proxy-security-certificate信任web代理的安全证书">Trusting the web proxy security certificate(信任Web代理的安全证书) <a href="#trusting-the-web-proxy-security-certificate%e4%bf%a1%e4%bb%bbweb%e4%bb%a3%e7%90%86%e7%9a%84%e5%ae%89%e5%85%a8%e8%af%81%e4%b9%a6" class="anchor">🔗</a></h1><p>一些企业在其网络环境中使用SSL检查来检查、跟踪和控制网络流量。</p>
+<p>通过SSL检查，Web代理作为实际客户端的服务器，然后作为实际服务器的客户端。为了防止客户端看到安全警告，Web代理必须代表服务器向客户端呈现有效的SSL/TLS证书。如果没有有效的SSL/TLS证书，客户端可能不信任Web代理，并可能阻止或警告用户其连接不安全。</p>
+<p>SSL检查有时与中间人攻击（MITM）相关联。</p>
+<p>假设您已设置使用SSL检查的Web代理。也假设客户端计算机在操作系统级别配置为接受SSL/TLS证书，以便它们可以与Web代理进行通信。</p>
+<p>即使在操作系统级别信任证书，客户端计算机也必须进行以下配置：</p>
+<ul>
+<li>启用自动代理配置，以使Unity Hub信任证书。</li>
+<li>设置 NODE_EXTRA_CA_CERTS 环境变量或设置全局配置文件，以使Unity Package Manager信任证书。</li>
+</ul>
+<p>作为替代方案，您可以在Web代理上定义例外情况，以使Unity的URL不受SSL检查的影响。</p>
+<h2 id="set-certificates-with-the-node_extra_ca_certs-environment-variable使用-node_extra_ca_certs-环境变量设置证书">Set certificates with the NODE_EXTRA_CA_CERTS environment variable(使用 NODE_EXTRA_CA_CERTS 环境变量设置证书) <a href="#set-certificates-with-the-node_extra_ca_certs-environment-variable%e4%bd%bf%e7%94%a8-node_extra_ca_certs-%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e8%ae%be%e7%bd%ae%e8%af%81%e4%b9%a6" class="anchor">🔗</a></h2><p>要使使用 SSL 检查的 Web 代理与 Unity Package Manager 一起正常工作，您需要设置 <code>NODE_EXTRA_CA_CERTS</code> 环境变量或使用配置文件设置证书。</p>
+<p>证书文件必须分发到每台运行 Unity 的计算机。然后，必须设置 <code>NODE_EXTRA_CA_CERTS</code> 环境变量，使其值指向证书文件的绝对路径。无论是手动设置还是使用更可扩展的方法，证书和环境变量都必须在每个与 Web 代理通信的设备上进行设置。按照以下通用步骤进行操作：</p>
+<ol>
+<li>创建一个文本文件，其中包含一个或多个自定义证书颁发机构的证书。该文件必须由一个或多个以 Privacy-Enhanced Mail (PEM) 格式表示的可信任证书组成。有关详细信息，请参阅您的 Web 代理软件的帮助文档。</li>
+<li>将 <code>.pem</code> 文件分发到每台计算机上的 Unity 实例。</li>
+<li>在一个命令文件中定义 <code>NODE_EXTRA_CA_CERTS</code> 环境变量。请参阅创建命令文件以设置环境变量和打开应用程序。</li>
+</ol>
+<h3 id="examples示例">Examples(示例) <a href="#examples%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h3><p>在以下示例中，<code>mycert.pem</code> 是证书的名称，它存在于用户的主目录中。</p>
+<h4 id="windows">Windows <a href="#windows" class="anchor">🔗</a></h4><pre tabindex="0"><code>set NODE_EXTRA_CA_CERTS=C:\Users\username\mycert.pem
+</code></pre><h4 id="macos-and-linux">macOS and Linux <a href="#macos-and-linux" class="anchor">🔗</a></h4><pre tabindex="0"><code>export NODE_EXTRA_CA_CERTS=/Users/username/mycert.pem
+</code></pre><p>您可以在 Node.js 文档中找到有关 <code>NODE_EXTRA_CA_CERTS</code> 环境变量的更多信息。</p>
+<h2 id="set-certificates-with-a-configuration-file使用配置文件设置证书">Set certificates with a configuration file(使用配置文件设置证书) <a href="#set-certificates-with-a-configuration-file%e4%bd%bf%e7%94%a8%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e8%ae%be%e7%bd%ae%e8%af%81%e4%b9%a6" class="anchor">🔗</a></h2><p>如果无法使用 <code>NODE_EXTRA_CA_CERTS</code> 环境变量来启用 Unity Package Manager 操作，则按照以下过程进行操作。</p>
+<p><strong>注意</strong>：无论是手动添加还是使用更可扩展的方法更新配置文件，都必须将添加或更新应用于每台客户端计算机。</p>
+<ol>
+<li>
+<p>找到 <code>upmconfig.toml</code> 全局配置文件。如果该文件尚不存在，请创建一个空的文本文件。</p>
+</li>
+<li>
+<p>创建一个文本文件，其中包含一个或多个自定义证书颁发机构的证书。该文件必须由一个或多个以 Privacy-Enhanced Mail (PEM) 格式表示的可信任证书组成。例如：</p>
+<pre tabindex="0"><code class="language-pem" data-lang="pem">-----BEGIN CERTIFICATE-----
+MIIC+zCCAeOgAwIBAgIJAO0U6hVJnbvjMA0GCSqGSIb3DQEBBQUAMBQxEjAQBgNV
+BAMMCWxvY2FsaG9zdDAeFw0xOTAzMTIwMTIxMzRaFw0yOTAzMDkwMTIxMzRaMBQx
+(additional lines omitted for conciseness)
+LFwHSUdqk0lJK4b0mCwyTHNvYO1IDziE5EKwfuaKVgOa62iCHVahgIVa+een4EfS
+hCCr3M3cq11Mi+mnRi1scxxrOno4OEEChWg2szZLlxBrkVJllrrq620XJ6RLB/8=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIDtzCCAp+gAwIBAgIQDOfg5RfYRv6P5WD8G/AwOTANBgkqhkiG9w0BAQUFADBl
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+(additional lines omitted for conciseness)
+H2sMNgcWfzd8qVttevESRmCD1ycEvkvOl77DZypoEd+A5wwzZr8TDRRu838fYxAe
++o0bJW1sj6W3YQGx0qMmoRBxna3iw/nDmVG3KwcIzi7mULKn+gpFL6Lw8g==
+-----END CERTIFICATE-----
+</code></pre></li>
+<li>
+<p>将此文件保存到全局配置文件所在的同一文件夹，如果可能的话。虽然 Unity 支持文件系统上的任何位置。</p>
+</li>
+<li>
+<p>在全局配置文件中，添加 <strong>caFile</strong> 键，并将其值设置为您 PEM 文件的绝对文件路径。<strong>重要提示</strong>：在 TOML 文件中设置 Windows 路径时，请使用斜杠 (<code>/</code>) 或双反斜杠 (<code>\\</code>)。不要使用单反斜杠 (<code>\</code>)，因为它们是特殊字符，用于标记转义序列，可能导致 TOML 解析错误。</p>
+<p><strong>Windows example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">caFile</span> = <span style="color:#e6db74">&#34;C:\\ProgramData\\Unity\\config\\cert.pem&#34;</span>
+</span></span></code></pre></div><p><strong>macOS and Linux example</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">caFile</span> = <span style="color:#e6db74">&#34;/etc/cert.pem&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h1 id="use-environment-variables-to-identify-your-web-proxy使用环境变量标识您的-web-代理">Use environment variables to identify your web proxy(使用环境变量标识您的 Web 代理) <a href="#use-environment-variables-to-identify-your-web-proxy%e4%bd%bf%e7%94%a8%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%a0%87%e8%af%86%e6%82%a8%e7%9a%84-web-%e4%bb%a3%e7%90%86" class="anchor">🔗</a></h1><p>如果您的环境不支持自动代理配置，您可以使用环境变量来标识您的 Web 代理。</p>
+<p><code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code> 是您将用于标识您的 Web 代理的环境变量。如果您的企业使用 Unity 许可服务器，请同时设置 <code>NO_PROXY</code> 环境变量。无论您是手动设置这些环境变量还是使用更可扩展的方法，它们都必须在每个通过 Web 代理进行通信的设备上设置。</p>
+<p><strong>重要提示</strong>：在环境变量中指定代理配置将会覆盖自动代理配置。</p>
+<p>根据您的环境，您使用的环境变量和分配的值可能有所不同。请在以下部分或多个部分中找到最适合您情况的指导。</p>
+<h3 id="proxy-environment-variable-values-that-exclude-authentication-information排除身份验证信息的代理环境变量值">Proxy environment variable values that exclude authentication information(排除身份验证信息的代理环境变量值) <a href="#proxy-environment-variable-values-that-exclude-authentication-information%e6%8e%92%e9%99%a4%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e4%bf%a1%e6%81%af%e7%9a%84%e4%bb%a3%e7%90%86%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%80%bc" class="anchor">🔗</a></h3><p>如果您的环境变量定义可以排除身份验证信息，则代理值采用以下形式:</p>
+<pre tabindex="0"><code>http://&lt;proxy_name_or_IP_address&gt;:&lt;proxy_port&gt;
+</code></pre><p>示例： <code>http://webproxy.mycompany.com:8080</code></p>
+<h3 id="proxy-environment-variable-values-that-include-authentication-information包含身份验证信息的代理环境变量值">Proxy environment variable values that include authentication information(包含身份验证信息的代理环境变量值) <a href="#proxy-environment-variable-values-that-include-authentication-information%e5%8c%85%e5%90%ab%e8%ba%ab%e4%bb%bd%e9%aa%8c%e8%af%81%e4%bf%a1%e6%81%af%e7%9a%84%e4%bb%a3%e7%90%86%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%80%bc" class="anchor">🔗</a></h3><p><strong>重要提示</strong>：如果您在环境变量中使用密码，会存在安全风险。</p>
+<p>如果您的环境变量定义需要包含身份验证信息，则代理值采用以下形式:</p>
+<pre tabindex="0"><code>http://&lt;username&gt;:&lt;password&gt;@&lt;proxy_name_or_IP_address&gt;:&lt;proxy_port&gt;
+</code></pre><p>示例： <code>http://DanaLee:My1337password@webproxy.mycompany.com:8080</code></p>
+<h3 id="proxy-environment-variable-value-for-unity-licensing-server适用于-unity-许可服务器的代理环境变量值">Proxy environment variable value for Unity Licensing Server(适用于 Unity 许可服务器的代理环境变量值	) <a href="#proxy-environment-variable-value-for-unity-licensing-server%e9%80%82%e7%94%a8%e4%ba%8e-unity-%e8%ae%b8%e5%8f%af%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e4%bb%a3%e7%90%86%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%80%bc" class="anchor">🔗</a></h3><p>如果您的企业使用 Unity 许可服务器，请设置 <code>NO_PROXY</code> 环境变量，并分配您的许可服务器的名称或 IP 地址。</p>
+<h2 id="next-steps下一步操作">Next steps(下一步操作) <a href="#next-steps%e4%b8%8b%e4%b8%80%e6%ad%a5%e6%93%8d%e4%bd%9c" class="anchor">🔗</a></h2><p>不同的操作系统有多种设置环境变量的方法。但是，创建一个命令文件是一种在所有操作系统上都适用的方法，可以为每个会话设置环境变量。</p>
+<p>现在，您已经知道了在您的环境中使用哪些环境变量以及如何设置它们的值，请使用它们来创建一个命令文件。</p>
+<h1 id="create-a-command-file-to-set-environment-variables-and-open-applications创建一个命令文件以设置环境变量和打开应用程序">Create a command file to set environment variables and open applications(创建一个命令文件以设置环境变量和打开应用程序) <a href="#create-a-command-file-to-set-environment-variables-and-open-applications%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e5%91%bd%e4%bb%a4%e6%96%87%e4%bb%b6%e4%bb%a5%e8%ae%be%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e5%92%8c%e6%89%93%e5%bc%80%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="anchor">🔗</a></h1><p>当您从命令行定义环境变量时，这些值不会跨会话保留。如果是从同一个会话启动该流程，它可以使用那些环境变量，但是在结束该会话之后，您必须再次定义这些值。</p>
+<p>管理员可以在操作系统级别设置环境变量。如果没有这个选项，您可以创建一个命令文件来设置环境变量并从同一个会话启动 Unity 应用程序，例如 Hub。这个可执行文件成为了一个重复使用的方法，可以使用您的环境所需的环境变量来打开 Unity Hub。</p>
+<p><strong>重要提示</strong>：创建命令文件后，请确保始终使用该文件来启动 Unity Hub，而不是使用标准方法，例如 <strong>开始</strong> 菜单（Windows）或 <strong>应用程序</strong> 文件夹（macOS）。</p>
+<h2 id="before-you-begin开始之前-1">Before you begin(开始之前) <a href="#before-you-begin%e5%bc%80%e5%a7%8b%e4%b9%8b%e5%89%8d-1" class="anchor">🔗</a></h2><p>决定您需要设置哪些环境变量，并仅包含所需的环境变量：</p>
+<ul>
+<li>如果您的环境不支持自动代理配置，请设置 <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code> 环境变量以标识您的 Web 代理。有关详细信息，请参阅使用环境变量标识您的 Web 代理。</li>
+<li>如果您的环境使用 Unity 许可服务器进行浮动许可证，请设置 <code>NO_PROXY</code> 环境变量。</li>
+<li>如果您的环境使用具有 SSL 检查的 Web 代理，请设置 <code>NODE_EXTRA_CA_CERTS</code> 环境变量。有关详细信息，请参阅信任 Web 代理安全证书。</li>
+</ul>
+<p>如果您设置 <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code> 环境变量，请确保使用正确的值来包含或排除身份验证信息。</p>
+<h2 id="create-a-command-file-windows创建命令文件windows">Create a command file (Windows)(创建命令文件（Windows）) <a href="#create-a-command-file-windows%e5%88%9b%e5%bb%ba%e5%91%bd%e4%bb%a4%e6%96%87%e4%bb%b6windows" class="anchor">🔗</a></h2><p>这些说明将创建一个名为 <code>launchUnityHub.cmd</code> 的可执行文件。</p>
+<ol>
+<li>
+<p>如果 Unity Hub 正在运行，请关闭它。</p>
+</li>
+<li>
+<p>打开一个文本编辑器，例如记事本。</p>
+</li>
+<li>
+<p>输入以下文本，根据需要进行调整：</p>
+<ul>
+<li>仅包含所需的环境变量，并正确设置它们的值。请参阅开始之前的部分。</li>
+<li>将 Hub 路径设置为与您的 Unity Hub 程序文件的位置匹配。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>@echo off
+</span></span><span style="display:flex;"><span>REM *** NOTE: Add the next <span style="color:#ae81ff">3</span> lines only <span style="color:#66d9ef">if</span> you’re not using Automatic Proxy Configuration
+</span></span><span style="display:flex;"><span>set HTTP_PROXY<span style="color:#f92672">=</span>http://&lt;username&gt;:&lt;password&gt;@&lt;proxy_name_or_IP_address&gt;:8080
+</span></span><span style="display:flex;"><span>set HTTPS_PROXY<span style="color:#f92672">=</span>http://&lt;username&gt;:&lt;password&gt;@&lt;proxy_name_or_IP_address&gt;:8080
+</span></span><span style="display:flex;"><span>set NO_PROXY<span style="color:#f92672">=</span>&lt;licensing_server_name_or_IP_address&gt;
+</span></span><span style="display:flex;"><span>REM *** NOTE: Add the following line only <span style="color:#66d9ef">if</span> your web proxy uses SSL inspection
+</span></span><span style="display:flex;"><span>set NODE_EXTRA_CA_CERTS<span style="color:#f92672">=</span>&lt;path_to_pem_file&gt;
+</span></span><span style="display:flex;"><span>start <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#e6db74">&#34;C:\Program Files\Unity Hub\Unity Hub.exe&#34;</span>
+</span></span></code></pre></div><p><strong>注意：</strong> 如果路径中有空格，您必须在程序路径周围使用双引号。</p>
+</li>
+<li>
+<p>将文件保存到您可以找到的位置（例如 <code>桌面</code>），确保文件具有 <code>.cmd</code> 扩展名（例如 <code>launchUnityHub.cmd</code>），而不是 <code>launchUnityHub.txt</code> 或 <code>launchUnityHub.cmd.txt</code>。</p>
+</li>
+<li>
+<p>双击 <code>launchUnityHub.cmd</code> 以使用所需的环境变量启动 Unity Hub。</p>
+</li>
+</ol>
+<p>Unity Hub会将这些环境变量传递给它生成的任何进程，例如 Unity 编辑器。</p>
+<h2 id="create-a-command-file-macos-and-linux创建命令文件macos-和-linux">Create a command file (macOS and Linux)(创建命令文件（macOS 和 Linux）) <a href="#create-a-command-file-macos-and-linux%e5%88%9b%e5%bb%ba%e5%91%bd%e4%bb%a4%e6%96%87%e4%bb%b6macos-%e5%92%8c-linux" class="anchor">🔗</a></h2><p>这些说明将创建一个名为 <code>launchUnityHub.command</code> 的可执行文件。</p>
+<ol>
+<li>
+<p>如果 Unity Hub 正在运行，请关闭它。</p>
+</li>
+<li>
+<p>打开一个终端窗口。</p>
+</li>
+<li>
+<p>运行以下命令，根据需要进行调整：</p>
+<ul>
+<li>仅包含所需的环境变量，并正确设置它们的值。请参阅开始之前的部分。</li>
+<li>将 Hub 路径设置为与您的 Unity Hub 应用程序的位置匹配。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># *** NOTE: Add the next 3 lines only if you’re not using Automatic Proxy Configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HTTP_PROXY=http://&lt;username&gt;:&lt;password&gt;@&lt;proxy_name_or_IP_address&gt;:8080
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export HTTPS_PROXY=http://&lt;username&gt;:&lt;password&gt;@&lt;proxy_name_or_IP_address&gt;:8080
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export NO_PROXY=&lt;licensing_server_name_or_IP_address&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># *** NOTE: Add the following line only if your web proxy uses SSL inspection
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export NODE_EXTRA_CA_CERTS=&lt;path_to_pem_file&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nohup &#34;/Applications/Unity Hub.app/Contents/MacOS/Unity Hub&#34; &amp;&gt;/dev/null &amp;&#39;</span> &gt; launchUnityHub.command
+</span></span><span style="display:flex;"><span>解释
+</span></span></code></pre></div><p><strong>注意：</strong> 如果路径中有空格，您必须在应用程序路径周围使用双引号。</p>
+</li>
+<li>
+<p>运行以下命令以使 <code>launchUnityHub.command</code> 可执行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x launchUnityHub.command
+</span></span></code></pre></div></li>
+<li>
+<p>将 <code>launchUnityHub.command</code> 文件移动到一个方便的位置（例如 <code>桌面</code>），如果您愿意的话。</p>
+</li>
+<li>
+<p>双击 <code>launchUnityHub.command</code> 以使用所需的环境变量启动 Unity Hub。</p>
+</li>
+</ol>
+<p>Unity Hub会将这些环境变量传递给它生成的任何进程，例如 Unity 编辑器。</p>
+<h1 id="define-exceptions-on-your-web-proxy在web代理上定义例外情况">Define exceptions on your web proxy(在Web代理上定义例外情况) <a href="#define-exceptions-on-your-web-proxy%e5%9c%a8web%e4%bb%a3%e7%90%86%e4%b8%8a%e5%ae%9a%e4%b9%89%e4%be%8b%e5%a4%96%e6%83%85%e5%86%b5" class="anchor">🔗</a></h1><p>Web代理的一个用途是过滤和阻止某些网站。但是，在某些情况下，管理员需要允许某些网站或URL通过Web代理，在不需要身份验证的情况下访问。</p>
+<p>管理员可以在例外列表中定义这些例外情况，该列表标识了用户可以通过Web代理访问的批准或允许的网站。</p>
+<p>您的环境中的Unity用户需要访问多个URL，并且例外列表使他们能够在以下情况下访问这些资源：</p>
+<ul>
+<li>您的环境支持自动代理配置，但不支持基本身份验证。请参考Unity应用程序访问的终端点，以使Unity应用程序能够在不需要身份验证的情况下通过Web代理进行通信。</li>
+<li>您的Web代理使用SSL检查，而您无法使Unity应用程序信任Web代理证书。请参考Unity应用程序访问的终端点，以使Unity应用程序能够在不进行SSL检查的情况下通过Web代理进行通信。</li>
+<li>您的Web代理阻止下载可执行文件，或者在下载可执行文件之前需要用户确认。请参考下载可执行文件的终端点，以使Unity应用程序能够在无需用户确认的情况下下载可执行文件。</li>
+</ul>
+<p>定义您的例外列表，以便您可以在这些情况下绕过任何或所有限制。</p>
+<p>添加例外的过程因代理软件而异，但通常可以在Web代理配置设置或通过Web管理界面进行操作。请参阅您的Web代理软件的帮助文档获取详细信息。</p>
+<h2 id="endpoints-that-unity-applications-accessunity应用程序访问的终端点">Endpoints that Unity applications access(Unity应用程序访问的终端点) <a href="#endpoints-that-unity-applications-accessunity%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e8%ae%bf%e9%97%ae%e7%9a%84%e7%bb%88%e7%ab%af%e7%82%b9" class="anchor">🔗</a></h2><p>最简单的解决方法是在您的例外列表中添加以下资源的整个域名：</p>
+<ul>
+<li><code>unity.com</code></li>
+<li><code>unity3d.com</code></li>
+<li><code>plasticscm.com</code></li>
+<li><code>google.com</code></li>
+<li><code>googleapis.com</code></li>
+<li><code>microsoft.com</code></li>
+<li><code>aka.ms</code></li>
+</ul>
+<p>如果您希望选择性地控制用户可以访问的子域名，请将以下表格中的条目添加到您的例外列表中。<strong>注意</strong>：除非另有说明，这些终端点的协议类型为<code>TCP</code>，端口号为<code>80</code>和<code>443</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">终端点或URL</th>
+<th style="text-align:left">使用该终端点的功能或服务</th>
+<th style="text-align:left">附加信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">live-platform-api.prd.ld.unity3d.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">用于检索Hub内容的API，如Unity发行版、模板、学习内容等。</td>
+</tr>
+<tr>
+<td style="text-align:left">api.hub-proxy.unity3d.com core.hub-proxy.unity3d.com config.hub-proxy.unity3d.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">各种管理数据的服务的代理。</td>
+</tr>
+<tr>
+<td style="text-align:left">config.uca.cloud.unity3d.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">通过远程配置使用的分析数据的选择加入状态。</td>
+</tr>
+<tr>
+<td style="text-align:left">learn.unity.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">Hub链接到互联网上的Unity学习内容。仅在用户希望从Hub内部访问培训内容时才需要。</td>
+</tr>
+<tr>
+<td style="text-align:left">aka.ms</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">Visual Studio Tools for Unity的下载地址。</td>
+</tr>
+<tr>
+<td style="text-align:left">analytics.cloud.unity3d.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">api2.amplitude.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">Unity Hub的分析数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">id.unity.com</td>
+<td style="text-align:left">Unity ID portal</td>
+<td style="text-align:left">管理Unity ID、基于座位的订阅、组织等的门户。</td>
+</tr>
+<tr>
+<td style="text-align:left">api.unity.com</td>
+<td style="text-align:left">Identity</td>
+<td style="text-align:left">身份验证和认证的API。</td>
+</tr>
+<tr>
+<td style="text-align:left">accounts.unity3d.com</td>
+<td style="text-align:left">Web authentication</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">license.unity3d.com</td>
+<td style="text-align:left">License</td>
+<td style="text-align:left">许可证操作的API，包括激活、更新和退还。</td>
+</tr>
+<tr>
+<td style="text-align:left">activation.unity3d.com</td>
+<td style="text-align:left">Activation</td>
+<td style="text-align:left">许可证操作的API，包括激活。</td>
+</tr>
+<tr>
+<td style="text-align:left">packages.unity.com</td>
+<td style="text-align:left">Unity Package Registry</td>
+<td style="text-align:left">用于搜索包并检索包信息的主要注册服务终端点。</td>
+</tr>
+<tr>
+<td style="text-align:left">download.packages.unity.com</td>
+<td style="text-align:left">Unity Package Registry</td>
+<td style="text-align:left">packages.unity.com的别名。</td>
+</tr>
+<tr>
+<td style="text-align:left">packages-v2.unity.com</td>
+<td style="text-align:left">Unity Package Registry</td>
+<td style="text-align:left">Package Manager中Asset Store集成使用的终端点。packages.unity.com的别名。</td>
+</tr>
+<tr>
+<td style="text-align:left">upm-cdn.unity.com</td>
+<td style="text-align:left">Unity Package Files</td>
+<td style="text-align:left">用于下载公共可用Unity包的地理位置化内容传递网络。</td>
+</tr>
+<tr>
+<td style="text-align:left">upm-cdn-china.unitychina.cn</td>
+<td style="text-align:left">Unity Package Files</td>
+<td style="text-align:left">用于从中国位置下载Unity包的内容传递网络。</td>
+</tr>
+<tr>
+<td style="text-align:left">private.download.packages.unity.com</td>
+<td style="text-align:left">Unity Package Files</td>
+<td style="text-align:left">根据仅具备许可权的包的请求提供的已签名URL。</td>
+</tr>
+<tr>
+<td style="text-align:left">storage.googleapis.com</td>
+<td style="text-align:left">Unity Package Files</td>
+<td style="text-align:left">根据仅具备许可权的包的请求提供的已签名URL。</td>
+</tr>
+<tr>
+<td style="text-align:left">assetstore.unity.com</td>
+<td style="text-align:left">Unity Asset Store</td>
+<td style="text-align:left">Unity Asset Store的核心URL。</td>
+</tr>
+<tr>
+<td style="text-align:left">kharma.unity3d.com</td>
+<td style="text-align:left">Unity Asset Store</td>
+<td style="text-align:left">用于Asset Store操作的终端点。</td>
+</tr>
+<tr>
+<td style="text-align:left">core.cloud.unity3d.com</td>
+<td style="text-align:left">Core Cloud services</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">developer.cloud.unity3d.com</td>
+<td style="text-align:left">Unity Gaming Services</td>
+<td style="text-align:left">用于Unity游戏服务仪表板的终端点。</td>
+</tr>
+<tr>
+<td style="text-align:left">perf.cloud.unity3d.com</td>
+<td style="text-align:left">Performance</td>
+<td style="text-align:left">用于性能和崩溃报告的服务。</td>
+</tr>
+<tr>
+<td style="text-align:left">perf-events.cloud.unity3d.com</td>
+<td style="text-align:left">Performance events</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">euwest4–00-cloud.plasticscm.com</td>
+<td style="text-align:left">PlasticSCM</td>
+<td style="text-align:left">适用于欧洲西部的Unity DevOps。</td>
+</tr>
+<tr>
+<td style="text-align:left">useast4–00-cloud.plasticscm.com</td>
+<td style="text-align:left">PlasticSCM</td>
+<td style="text-align:left">适用于美国东部的Unity DevOps。</td>
+</tr>
+<tr>
+<td style="text-align:left">asiaeast1–00-cloud.plasticscm.com</td>
+<td style="text-align:left">PlasticSCM</td>
+<td style="text-align:left">适用于东亚的Unity DevOps。</td>
+</tr>
+<tr>
+<td style="text-align:left">asianortheast1–00-cloud.plasticscm.com</td>
+<td style="text-align:left">PlasticSCM</td>
+<td style="text-align:left">适用于东北亚的Unity DevOps。</td>
+</tr>
+<tr>
+<td style="text-align:left">cdp.cloud.unity3d.com</td>
+<td style="text-align:left">Analytics</td>
+<td style="text-align:left">用于收集分析数据的Common Data Platform。</td>
+</tr>
+<tr>
+<td style="text-align:left">prd-lender.cdp.internal.unity3d.com</td>
+<td style="text-align:left">Analytics</td>
+<td style="text-align:left">用于将数据中继给Unity进行内部分析。</td>
+</tr>
+<tr>
+<td style="text-align:left">google-analytics.com</td>
+<td style="text-align:left">Google Analytics</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">dashboard.unityads.unity3d.com</td>
+<td style="text-align:left">Ads Dashboard</td>
+<td style="text-align:left">用于广告和盈利的仪表板。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>重要</strong>：继续查看下载可执行文件的终端点，并将该列表中的URL添加到您的列表中。</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="endpoints-that-download-executable-files下载可执行文件的终端点">Endpoints that download executable files(下载可执行文件的终端点) <a href="#endpoints-that-download-executable-files%e4%b8%8b%e8%bd%bd%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6%e7%9a%84%e7%bb%88%e7%ab%af%e7%82%b9" class="anchor">🔗</a></h2><p>即使您根据您的环境不需要根据之前的表格添加例外，如果满足以下任一条件，请将例外添加到您的Web代理中：</p>
+<ul>
+<li>您的Web代理阻止下载可执行文件。</li>
+<li>您的Web代理在下载可执行文件之前需要用户确认。</li>
+</ul>
+<p>如果不添加这些例外，任何需要Unity应用程序下载可执行文件的操作都将失败。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">终端点或URL</th>
+<th style="text-align:left">下载的可执行文件</th>
+<th style="text-align:left">附加信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public-cdn.cloud.unity3d.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">用于存储配置（如自动更新）和二进制文件（如Hub安装程序）的内容传递网络。</td>
+</tr>
+<tr>
+<td style="text-align:left">download.unity3d.com</td>
+<td style="text-align:left">Unity Editor installers</td>
+<td style="text-align:left">在使用Unity Hub时下载。</td>
+</tr>
+<tr>
+<td style="text-align:left">dl.google.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">使Unity Hub能够下载Android模块。</td>
+</tr>
+<tr>
+<td style="text-align:left">go.microsoft.com</td>
+<td style="text-align:left">Unity Hub</td>
+<td style="text-align:left">Microsoft提供的Visual Studio安装程序。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/25/2023-07-25-unity-document-7/">Unity中文版-Install Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/23/2023-07-23-unity-document-6/">Unity中文版-Unity&#39;s Package Manager(五)(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/22/2023-07-22-Statistical.Modelling.of.Level.Difficulty.in.Puzzle.Games/">解密游戏中关卡难度的统计建模-中文版</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/21/2023-07-21-Predicting.Game.Level.Difficulty.Using.Deep.Neural.Networks/">基于深度神经网络预测游戏关卡难度-中文版</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/21/2023-07-21-unity-Documents-5/">Unity中文版-Unity&#39;s Package Manager(四)(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(17)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
