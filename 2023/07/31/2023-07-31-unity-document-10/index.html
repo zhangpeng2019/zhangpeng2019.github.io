@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-2D or 3D projects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-2D or 3D projects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-07-31 11:13:34 &#43;0800 CST">2023/07/31</time>
+        <span class="split">·</span>
+        <span> 21 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="2d或3d项目">2D或3D项目 <a href="#2d%e6%88%963d%e9%a1%b9%e7%9b%ae" class="anchor">🔗</a></h1><p>Unity既适用于创建2D游戏，也适用于创建3D游戏。当您在Unity中创建一个新项目时，您可以选择以2D模式或3D模式开始。您可能已经知道您想要构建什么，但有一些细微的差别可能会影响您选择哪种模式。</p>
+<p>在2D或3D模式下开始的选择会为Unity编辑器设置一些参数，例如将图像导入为纹理还是精灵。您可以在任何时候在2D和3D模式之间切换，而不管您在创建项目时设置的模式是什么（请参阅2D和3D模式设置）。以下是一些指南，应该能帮助您做出选择。</p>
+<h3 id="纯3d">纯3D <a href="#%e7%ba%af3d" class="anchor">🔗</a></h3><p><img src="/2023-07-31-unity-document-10/3dGames.jpg" alt=""></p>
+<p>3D游戏通常利用三维几何形状，通过在<strong>游戏对象</strong>的表面渲染材质和纹理，使它们呈现为实体的环境、角色和对象，构成了您的游戏世界。相机可以在<strong>场景</strong>中自由移动，在世界中以逼真的方式投射光线和阴影。3D游戏通常使用透视渲染场景，因此随着物体靠近相机，它们在屏幕上显得更大。如果您的游戏符合此描述，请选择以<strong>3D</strong>模式开始。</p>
+<h3 id="正交3d">正交3D <a href="#%e6%ad%a3%e4%ba%a43d" class="anchor">🔗</a></h3><p><img src="/2023-07-31-unity-document-10/3dOrthographicGames.jpg" alt=""></p>
+<p>有时候游戏使用3D几何形状，但使用正交相机而不是透视相机。这是在游戏中以鸟瞰视角展示动作的常用技术，有时被称为“2.5D”。如果您正在制作这样的游戏，您应该在<strong>3D</strong>模式下使用编辑器，因为即使没有<em>透视</em>，您仍然会使用3D模型和资源。不过，您需要将相机和场景视图切换为<strong>正交视图</strong>。</p>
+<h3 id="纯2d">纯2D <a href="#%e7%ba%af2d" class="anchor">🔗</a></h3><p><img src="/2023-07-31-unity-document-10/2dGames.jpg" alt=""></p>
+<p>许多2D游戏使用平面图形，有时被称为精灵（sprites），它们完全没有三维几何形状。它们作为平面图像绘制到屏幕上，游戏的相机没有透视效果。对于这种类型的游戏，您应该在<strong>2D</strong>模式下启动编辑器。</p>
+<h3 id="2d游戏中使用3d图形">2D游戏中使用3D图形 <a href="#2d%e6%b8%b8%e6%88%8f%e4%b8%ad%e4%bd%bf%e7%94%a83d%e5%9b%be%e5%bd%a2" class="anchor">🔗</a></h3><p><img src="/2023-07-31-unity-document-10/2dGame3dSceneSideScroll.jpg" alt=""></p>
+<p>有些2D游戏在环境和角色方面使用3D几何形状，但将<em>游戏玩法</em>限制在二维中。例如，相机可能显示一个横向滚动的视角，玩家只能在二维中移动，但游戏本身仍然使用3D模型作为障碍物，并使用3D透视效果作为相机效果。对于这些游戏来说，3D效果可能更多地用于风格而非功能方面。这种类型的游戏有时也被称为“2.5D”。尽管玩法是2D的，但您主要是通过操纵3D模型来构建游戏，因此您应该在<strong>3D</strong>模式下启动编辑器。</p>
+<h3 id="具有透视相机的2d游戏玩法和图形">具有透视相机的2D游戏玩法和图形 <a href="#%e5%85%b7%e6%9c%89%e9%80%8f%e8%a7%86%e7%9b%b8%e6%9c%ba%e7%9a%842d%e6%b8%b8%e6%88%8f%e7%8e%a9%e6%b3%95%e5%92%8c%e5%9b%be%e5%bd%a2" class="anchor">🔗</a></h3><p><img src="/2023-07-31-unity-document-10/2dParallaxScroller.jpg" alt=""></p>
+<p>这是另一种流行的2D游戏风格，使用2D图形，但通过透视相机来实现视差滚动效果。这是一种“纸板剧院”风格的场景，其中所有的图形都是平面的，但与相机的距离不同。在这种情况下，<strong>2D</strong>模式可能最适合您的开发。不过，您需要将相机的投影模式更改为<strong>透视</strong>，场景视图模式更改为<strong>3D</strong>。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/07/31/2023-07-31-unity-document-10/">Unity中文版-2D or 3D projects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/29/2023-07-29-unity-document-9/">Unity中文版-Create with Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/27/2023-07-27-unity-document-8/">Unity中文版-Licenses and activation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/25/2023-07-25-unity-document-7/">Unity中文版-Install Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/23/2023-07-23-unity-document-6/">Unity中文版-Unity&#39;s Package Manager(五)(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(20)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (13)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
