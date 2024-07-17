@@ -6,7 +6,29 @@
     <description>Recent content on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Jul 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Unity’s interface(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/01/2023-08-01-unity-document-11/</link>
+      <pubDate>Tue, 01 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/01/2023-08-01-unity-document-11/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;unity的界面&#34;&gt;Unity的界面 &lt;a href=&#34;#unity%e7%9a%84%e7%95%8c%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;本节提供了对最常见的编辑器窗口的详细介绍，以及如何充分利用它们。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-01-unity-document-11/using-editor-window.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;(A)&lt;/strong&gt; 工具栏提供了访问您的Unity账户和Unity云服务的功能。它还包含了Play模式的控制、撤销历史记录、Unity搜索、图层可见性菜单以及编辑器布局菜单。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(B)&lt;/strong&gt; 层级窗口是一个层级文本表示，显示了场景中每个物体（GameObject）的层次结构。场景中的每个物体在层级窗口中都有一个条目，因此这两个窗口之间具有天然的联系。层级窗口揭示了物体之间的结构关系，显示了它们如何相互连接。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(C)&lt;/strong&gt;  游戏视图通过场景中的相机（Cameras）模拟了最终生成的游戏效果。当您点击播放按钮时，模拟会开始。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(D)&lt;/strong&gt; 场景视图允许您以可视化的方式导航和编辑场景。根据您所使用的项目类型，场景视图可以显示3D或2D透视图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(E)&lt;/strong&gt; 叠加层包含了操作场景视图以及其中的物体的基本工具。您还可以添加自定义叠加层以提高工作流程。v&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(F)&lt;/strong&gt; 检查器窗口允许您查看和编辑当前选中的物体的所有属性。由于不同类型的物体具有不同的属性集，每次选择不同的物体时，检查器窗口的布局和内容都会发生变化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(G)&lt;/strong&gt; 项目窗口显示了你项目中可用的资源库。当你导入资源到项目中时，它们会显示在这里。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(H)&lt;/strong&gt; 状态栏提供了关于Unity各个进程的通知，并快速访问相关的工具和设置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-2D or 3D projects(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/07/31/2023-07-31-unity-document-10/</link>
