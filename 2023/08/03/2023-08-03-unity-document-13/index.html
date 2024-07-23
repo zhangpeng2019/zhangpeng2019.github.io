@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-The Scene view(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-The Scene view(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-03 11:13:34 &#43;0800 CST">2023/08/03</time>
+        <span class="split">·</span>
+        <span> 2436 words </span>
+        <span class="split">·</span>
+        <span>
+            12 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unity界面-场景视图">Unity界面-场景视图 <a href="#unity%e7%95%8c%e9%9d%a2-%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h1><p><img src="/2023-08-03-unity-document-13/scene-view.png" alt=""></p>
+<p><strong>场景</strong>视图是您在编辑器中查看和与创建的世界进行交互的地方。在<strong>场景视图</strong>中，您可以选择、操作和修改充当景物、角色、摄像机、灯光等的<strong>游戏对象</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>主题</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Overlays</td>
+<td style="text-align:left">管理包含场景视图制作工具的持续存在的、可定制的面板和<strong>工具栏</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left">Position GameObjects</td>
+<td style="text-align:left">修改游戏对象的变换数值。</td>
+</tr>
+<tr>
+<td style="text-align:left">Scene view navigation</td>
+<td style="text-align:left">高效地在场景视图中移动。</td>
+</tr>
+<tr>
+<td style="text-align:left">Scene view Camera</td>
+<td style="text-align:left">配置场景摄像机。</td>
+</tr>
+<tr>
+<td style="text-align:left">Control a camera in first person</td>
+<td style="text-align:left">在查看摄像机时通过场景视图导航。</td>
+</tr>
+<tr>
+<td style="text-align:left">Pick and select GameObjects</td>
+<td style="text-align:left">在场景视图中选择游戏对象并管理其可选性。</td>
+</tr>
+<tr>
+<td style="text-align:left">Scene visibility</td>
+<td style="text-align:left">在场景视图中隐藏和显示游戏对象。</td>
+</tr>
+<tr>
+<td style="text-align:left">Scene view View Options toolbar</td>
+<td style="text-align:left">选择场景视图的视图选项，并启用或禁用光照和音频。</td>
+</tr>
+<tr>
+<td style="text-align:left">Gizmos menu</td>
+<td style="text-align:left">在场景视图中隐藏和显示<strong>图示</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left">Scene view context menu</td>
+<td style="text-align:left">直接在场景视图中访问常见的场景视图操作。</td>
+</tr>
+<tr>
+<td style="text-align:left">Custom Editor tools</td>
+<td style="text-align:left">创建可在场景视图中使用的编辑器工具。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="覆盖层">覆盖层 <a href="#%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h1><p>在<strong>场景</strong>视图中，制作工具以持久存在、可定制的面板和工具栏的形式作为覆盖层提供。覆盖层还可以显示关于您选择的上下文信息。</p>
+<p>为了提高工作效率，您可以调整覆盖层的位置、选择显示或隐藏的覆盖层，并保存、导入或导出覆盖层配置。</p>
+<p>要查看<strong>场景视图</strong>中有哪些可用的覆盖层，请按键 `键打开覆盖层菜单。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>主题</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>默认场景视图覆盖层参考</strong></td>
+<td style="text-align:left">了解场景视图中的默认覆盖层面板和工具栏。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>显示或隐藏覆盖层</strong></td>
+<td style="text-align:left">选择在场景视图中显示哪些覆盖层。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>调整覆盖层位置</strong></td>
+<td style="text-align:left">移动和停靠覆盖层。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>更改覆盖层布局</strong></td>
+<td style="text-align:left">将覆盖层的方向更改为面板、水平或垂直。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>创建和管理覆盖层配置</strong></td>
+<td style="text-align:left">保存、切换、导入和导出覆盖层配置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>相机覆盖层</strong></td>
+<td style="text-align:left">在场景视图中管理相机，并对附有相机组件的游戏对象进行第一人称控制。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>创建自定义覆盖层</strong></td>
+<td style="text-align:left">为场景视图创建自定义覆盖层。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="默认场景视图覆盖层参考">默认场景视图覆盖层参考 <a href="#%e9%bb%98%e8%ae%a4%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e8%a6%86%e7%9b%96%e5%b1%82%e5%8f%82%e8%80%83" class="anchor">🔗</a></h1><p>通过覆盖层菜单，您可以控制在场景视图中显示哪些覆盖层，并管理您的覆盖层配置。要在<strong>场景</strong>视图中显示覆盖层菜单，请按键 `键。要恢复默认的覆盖层配置，请从覆盖层菜单中选择<strong>默认</strong>覆盖层配置。</p>
+<p>默认情况下，在<strong>场景视图</strong>中显示以下覆盖层。</p>
+<p><img src="/2023-08-03-unity-document-13/overlays-default-view.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>覆盖层</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A: <strong>Tools</strong></td>
+<td style="text-align:left">使用工具覆盖层选择工具环境，使用变换工具，并且如果可用，使用组件工具。</td>
+</tr>
+<tr>
+<td style="text-align:left">B: <strong>Tool Settings</strong></td>
+<td style="text-align:left">使用工具设置覆盖层显示所选工具的可用设置。例如，如果选择了变换工具，则使用工具设置覆盖层选择任何变换工具图示的位置和用于操作图示的手柄。</td>
+</tr>
+<tr>
+<td style="text-align:left">C: <strong>Grid and Snap</strong></td>
+<td style="text-align:left">使用网格和对齐覆盖层控制<strong>游戏对象</strong>对齐到网格的方式。</td>
+</tr>
+<tr>
+<td style="text-align:left">D: <strong>View Options</strong></td>
+<td style="text-align:left">使用视图选项覆盖层选择视图选项，控制场景视图的光照和音频。这些控件仅影响场景视图，不会影响构建后的游戏。</td>
+</tr>
+<tr>
+<td style="text-align:left">E: <strong>Orientation</strong></td>
+<td style="text-align:left">使用方向覆盖层查看场景<strong>摄像机</strong>的当前方向，并更改其视角和投影模式。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="显示或隐藏覆盖层">显示或隐藏覆盖层 <a href="#%e6%98%be%e7%a4%ba%e6%88%96%e9%9a%90%e8%97%8f%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h1><p>为了自定义您的工作空间，在<strong>场景</strong>视图中选择要显示的覆盖层。</p>
+<p>如果您想保存您的覆盖层配置，请参考创建和管理覆盖层配置。</p>
+<h2 id="显示或隐藏覆盖层-1">显示或隐藏覆盖层 <a href="#%e6%98%be%e7%a4%ba%e6%88%96%e9%9a%90%e8%97%8f%e8%a6%86%e7%9b%96%e5%b1%82-1" class="anchor">🔗</a></h2><p>要在<strong>场景视图</strong>中显示或隐藏覆盖层：</p>
+<ol>
+<li>在场景视图中，按键 `键，以在光标处显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中，选择要在场景视图中显示或隐藏的覆盖层。在场景视图中显示的覆盖层旁边会显示一个眼睛图标。如果在场景视图中隐藏了覆盖层，眼睛图标则被划掉。</li>
+</ol>
+<p><strong>注意</strong>：在<strong>覆盖层</strong>菜单中，将鼠标悬停在覆盖层名称上，以突出显示其在场景视图中的位置。</p>
+<h2 id="隐藏所有覆盖层">隐藏所有覆盖层 <a href="#%e9%9a%90%e8%97%8f%e6%89%80%e6%9c%89%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>要从场景视图中隐藏所有覆盖层：</p>
+<ol>
+<li>在场景视图中，按键 `键，以在光标处显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中，取消选择<strong>覆盖层</strong>复选框。</li>
+</ol>
+<p><strong>提示</strong>：您还可以按下Shift+`来隐藏或显示场景视图中的所有覆盖层。</p>
+<h1 id="调整覆盖层位置">调整覆盖层位置 <a href="#%e8%b0%83%e6%95%b4%e8%a6%86%e7%9b%96%e5%b1%82%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>在<strong>场景</strong>视图中移动覆盖层以整理您的工作空间。</p>
+<p>覆盖层可以浮动或停靠到<strong>场景视图</strong>的边缘或角落。</p>
+<p>如果您想保存您的覆盖层配置，请参考创建和管理覆盖层配置。</p>
+<h2 id="移动覆盖层">移动覆盖层 <a href="#%e7%a7%bb%e5%8a%a8%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>将覆盖层放置在场景视图的任意位置。</p>
+<p>要在场景视图中移动覆盖层:</p>
+<ol>
+<li>单击并按住您要移动的覆盖层的手柄 (<strong>=</strong>)。</li>
+<li>拖动覆盖层以移动它。</li>
+</ol>
+<p><strong>注意</strong>：在场景视图中浮动的覆盖层可能会重叠。选择一个覆盖层以将其置于前方。</p>
+<h2 id="停靠覆盖层">停靠覆盖层 <a href="#%e5%81%9c%e9%9d%a0%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>覆盖层可以停靠到场景视图的顶部、底部、侧边和角落。</p>
+<p>您可以将多个覆盖层停靠到场景视图的同一边缘或角落。但是，停靠到同一位置的多个覆盖层之间没有连接。如果您移动一个停靠的覆盖层，停靠在相同位置的其他覆盖层不会移动。</p>
+<p>停靠到场景视图顶部或底部的展开的覆盖层以水平布局显示。停靠到场景视图侧边的展开的覆盖层以垂直布局显示。</p>
+<p>停靠到场景视图边缘的非<strong>工具栏</strong>覆盖层在停靠时会折叠起来。例如，停靠时，方向覆盖层会折叠起来。点击向下箭头以访问折叠覆盖层的选项。</p>
+<p>要将覆盖层停靠到场景视图中:</p>
+<ol>
+<li>单击并按住您要停靠的覆盖层的手柄 (<strong>=</strong>)。</li>
+<li>拖动覆盖层到场景视图的一个角落或边缘。如果覆盖层可以停靠，角落或边缘会以蓝色突出显示。</li>
+<li>释放覆盖层。</li>
+</ol>
+<h1 id="管理覆盖层布局">管理覆盖层布局 <a href="#%e7%ae%a1%e7%90%86%e8%a6%86%e7%9b%96%e5%b1%82%e5%b8%83%e5%b1%80" class="anchor">🔗</a></h1><p>您可以设置覆盖层以以下布局之一显示：</p>
+<ul>
+<li><strong>折叠</strong>：只显示覆盖层的图标和一个向下箭头。点击箭头可以显示覆盖层的内容。如果覆盖层没有图标，则折叠容器的图标为覆盖层标签的前两个字母。您可以展开折叠的覆盖层。</li>
+<li><strong>面板</strong>：显示覆盖层的所有内容和标签。无法将停靠在<strong>场景</strong>视图边缘的覆盖层设置为面板。</li>
+<li><strong>水平</strong>：以水平容器显示覆盖层的内容。以水平布局设置的覆盖层不会显示其标签。</li>
+<li><strong>垂直</strong>：以垂直容器显示覆盖层的内容。以垂直布局设置的覆盖层不会显示其标签。</li>
+</ul>
+<p>如果您想保存您的覆盖层配置，请参考创建和管理覆盖层配置。</p>
+<h2 id="更改覆盖层的布局">更改覆盖层的布局 <a href="#%e6%9b%b4%e6%94%b9%e8%a6%86%e7%9b%96%e5%b1%82%e7%9a%84%e5%b8%83%e5%b1%80" class="anchor">🔗</a></h2><p>非<strong>工具栏</strong>类型的覆盖层（例如方向覆盖层）无法使用水平或垂直布局。</p>
+<p>要更改覆盖层的布局:</p>
+<ol>
+<li>右键单击覆盖层的手柄(<strong>=</strong>)。</li>
+<li>选择一种布局:
+<ul>
+<li>如果覆盖层没有停靠在<strong>场景视图</strong>的边缘，您可以选择任何布局。</li>
+<li>如果覆盖层停靠在<strong>场景视图</strong>的边缘，您只能展开或折叠该覆盖层。</li>
+</ul>
+</li>
+</ol>
+<h2 id="展开折叠的覆盖层">展开折叠的覆盖层 <a href="#%e5%b1%95%e5%bc%80%e6%8a%98%e5%8f%a0%e7%9a%84%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>非<strong>工具栏</strong>类型的覆盖层（例如方向覆盖层）在停靠在<strong>场景视图</strong>的边缘时会折叠起来，无法展开。</p>
+<p>要展开覆盖层，右键单击折叠覆盖层的手柄(<strong>=</strong>)，然后选择<strong>展开</strong>。</p>
+<h1 id="创建和管理覆盖层配置">创建和管理覆盖层配置 <a href="#%e5%88%9b%e5%bb%ba%e5%92%8c%e7%ae%a1%e7%90%86%e8%a6%86%e7%9b%96%e5%b1%82%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h1><p>将覆盖层配置保存为可重用和共享的预设。</p>
+<h2 id="保存覆盖层配置">保存覆盖层配置 <a href="#%e4%bf%9d%e5%ad%98%e8%a6%86%e7%9b%96%e5%b1%82%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h2><p>保存的覆盖层预设在计算机上的任何Unity项目中都可用。</p>
+<p>在保存编辑器布局时，也会保存覆盖层配置。</p>
+<p>将覆盖层配置保存为预设:</p>
+<ol>
+<li>在<strong>场景</strong>视图中，按键 `键，以显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中的下拉菜单中，选择<strong>保存预设</strong>。</li>
+<li>在<strong>保存窗口预设</strong>窗口中，为您的覆盖层预设命名。</li>
+<li>点击<strong>保存</strong>。</li>
+</ol>
+<h2 id="切换覆盖层配置">切换覆盖层配置 <a href="#%e5%88%87%e6%8d%a2%e8%a6%86%e7%9b%96%e5%b1%82%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h2><p>要切换覆盖层配置:</p>
+<ol>
+<li>在<strong>场景</strong>视图中，按键 `键，以显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中的下拉菜单中，选择一个覆盖层预设。</li>
+</ol>
+<h2 id="导出覆盖层预设">导出覆盖层预设 <a href="#%e5%af%bc%e5%87%ba%e8%a6%86%e7%9b%96%e5%b1%82%e9%a2%84%e8%ae%be" class="anchor">🔗</a></h2><p>要导出覆盖层配置，请将其保存为文件，然后将其导入到另一个项目中：</p>
+<ol>
+<li>在<strong>场景</strong>视图中，按键 `键，以显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中的下拉菜单中，选择<strong>导出预设到文件</strong>。</li>
+<li>选择要保存预设的位置。</li>
+<li>名称覆盖层预设。</li>
+<li>点击<strong>保存</strong>。</li>
+</ol>
+<h2 id="导入覆盖层预设">导入覆盖层预设 <a href="#%e5%af%bc%e5%85%a5%e8%a6%86%e7%9b%96%e5%b1%82%e9%a2%84%e8%ae%be" class="anchor">🔗</a></h2><p>要将覆盖层预设导入到您的项目中：</p>
+<ol>
+<li>在<strong>场景</strong>视图中，按键 `键，以显示<strong>覆盖层</strong>菜单。</li>
+<li>在<strong>覆盖层</strong>菜单中的下拉菜单中，选择<strong>从文件加载预设</strong>。</li>
+<li>选择要导入的覆盖层预设文件，然后点击<strong>打开</strong>。</li>
+</ol>
+<h1 id="摄像机覆盖层">摄像机覆盖层 <a href="#%e6%91%84%e5%83%8f%e6%9c%ba%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h1><p>使用摄像机覆盖层在<strong>场景</strong>视图中以第一人称控制摄像机并管理摄像机。</p>
+<p>要在<strong>场景</strong>视图中显示摄像机覆盖层，请从覆盖层菜单中启用它。</p>
+<h2 id="选择摄像机">选择摄像机 <a href="#%e9%80%89%e6%8b%a9%e6%91%84%e5%83%8f%e6%9c%ba" class="anchor">🔗</a></h2><p>摄像机覆盖层会在一个可搜索的下拉列表中列出在打开的场景中每个具有Camera或Cinemachine Camera组件的<strong>游戏对象</strong>。当您在摄像机覆盖层下拉列表中选择摄像机时，摄像机所看到的内容将以画中画的方式显示在摄像机覆盖层中。</p>
+<p><strong>注意</strong>：如果您在摄像机覆盖层下拉列表中选择了摄像机，则该摄像机不会在层级窗口中被选中。</p>
+<h2 id="编辑摄像机组件设置">编辑摄像机组件设置 <a href="#%e7%bc%96%e8%be%91%e6%91%84%e5%83%8f%e6%9c%ba%e7%bb%84%e4%bb%b6%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>在摄像机覆盖层中，选择<strong>打开摄像机属性</strong>以配置摄像机覆盖层下拉列表中选中的摄像机的组件设置。要了解有关摄像机组件参数的详细信息，请参考相机组件和设置Cinemachine摄像机属性。</p>
+<h2 id="控制摄像机">控制摄像机 <a href="#%e6%8e%a7%e5%88%b6%e6%91%84%e5%83%8f%e6%9c%ba" class="anchor">🔗</a></h2><p>在摄像机覆盖层中，选择<strong>以第一人称控制摄像机</strong>以进行摄像机的第一人称控制。要了解更多信息，请参考以第一人称控制摄像机。</p>
+<h1 id="创建自定义覆盖层">创建自定义覆盖层 <a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h1><p>您可以为<strong>场景视图</strong>窗口创建自定义面板覆盖层和<strong>工具栏</strong>覆盖层。</p>
+<ul>
+<li>面板覆盖层</li>
+<li>工具栏覆盖层</li>
+</ul>
+<p><strong>提示</strong>：有关创建UIElements的信息，请参考UI Elements开发人员指南。</p>
+<h2 id="了解editortoolbarelement">了解EditorToolbarElement <a href="#%e4%ba%86%e8%a7%a3editortoolbarelement" class="anchor">🔗</a></h2><p>工具栏元素可以包含文本、图标或两者的组合。</p>
+<p>使用<code>EditorToolbarElement(Identifier, EditorWindowType)</code>来注册要在<code>ToolbarOverlay</code>实现中使用的工具栏元素。</p>
+<p>您可以继承自任何<code>VisualElement</code>类型并自己创建样式，但是工具栏元素需要特定的样式。最好继承自以下预定义的<code>EditorToolbar</code>类型之一:</p>
+<ul>
+<li><code>EditorToolbarButton</code>: 基于 <code>UnityEditor.UIElements.ToolbarButton</code></li>
+<li><code>EditorToolbarToggle</code>: 基于 <code>UnityEditor.UIElements.ToolbarToggle</code></li>
+<li><code>EditorToolbarDropdown</code>: 基于 <code>EditorToolbarButton</code></li>
+<li><code>EditorToolbarDropdownToggle</code>: 基于 <code>UnityEngine.UIElements.BaseField</code></li>
+</ul>
+<p><strong>提示</strong>：如果工具栏水平或垂直停靠，其文本可能不可见或被裁剪。您可以为每个工具栏指定一个图标以避免文本裁剪。</p>
+<h2 id="创建面板覆盖层">创建面板覆盖层 <a href="#%e5%88%9b%e5%bb%ba%e9%9d%a2%e6%9d%bf%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>所有覆盖层都必须继承自Overlay基类，并实现CreatePanelContent方法。这将创建一个基本面板，您可以将工具栏元素添加到其中。</p>
+<p>创建面板覆盖层的步骤如下:</p>
+<ol>
+<li>在Editor文件夹中创建一个新的C#脚本并命名。</li>
+<li>打开您创建的脚本。</li>
+<li>删除脚本中的默认内容。</li>
+<li>从<code>UnityEditor.Overlays</code>命名空间中实现<code>Overlay</code>类。</li>
+<li>重写CreatePanelContent函数，并将您的内容添加到<strong>visual element</strong>中。</li>
+<li>将OverlayAttribute属性添加到类中。</li>
+<li>在<code>OverlayAttribute</code>中，指定您希望此覆盖层出现在哪种类型的窗口中：
+<ul>
+<li>如果您希望在所有编辑器窗口中都可用，指定<code>EditorWindow</code>作为类型。</li>
+<li>如果您只希望在<strong>场景视图</strong>中可用，指定<code>SceneView</code>作为类型。</li>
+</ul>
+</li>
+<li>在<code>OverlayAttribute</code>中，为覆盖层添加一个名字、ID和显示名。</li>
+<li>要添加一个在覆盖层折叠时显示的图标，请将<code>Icon</code>属性添加到<code>Overlay</code>类中，并指定一个图标。如果覆盖层没有图标，默认情况下系统将使用覆盖层名称的前两个字母或前两个单词的首字母作为图标。</li>
+</ol>
+<h3 id="示例">示例 <a href="#%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.Overlays;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.UIElements;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Overlay(typeof(SceneView), &#34;Panel Overlay Example&#34;, true)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyToolButtonOverlay</span> : Overlay
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> VisualElement CreatePanelContent()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> root = <span style="color:#66d9ef">new</span> VisualElement() { name = <span style="color:#e6db74">&#34;My Toolbar Root&#34;</span> };
+</span></span><span style="display:flex;"><span>        root.Add(<span style="color:#66d9ef">new</span> Label() { text = <span style="color:#e6db74">&#34;Hello&#34;</span> });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="创建工具栏覆盖层">创建工具栏覆盖层 <a href="#%e5%88%9b%e5%bb%ba%e5%b7%a5%e5%85%b7%e6%a0%8f%e8%a6%86%e7%9b%96%e5%b1%82" class="anchor">🔗</a></h2><p>工具栏覆盖层是容器，用于容纳工具栏项，并由多个<code>EditorToolbarElement</code>组成。</p>
+<p>工具栏覆盖层具有内置的水平、垂直和面板布局。<code>ToolbarOverlay</code>实现了一个无参数的构造函数，该构造函数传递了<code>EditorToolbarElementAttribute</code>的ID。与面板覆盖层不同，工具栏覆盖层的内容被定义为独立的元素，它们被收集起来形成一系列元素。</p>
+<p>创建工具栏覆盖层时:</p>
+<ul>
+<li>使用<code>EditorToolbarElement(Identifier, EditorWindowType)</code>来注册要在<code>ToolbarOverlay</code>实现中使用的工具栏元素。</li>
+<li>使用<code>OverlayAttribute</code>为所有覆盖层添加标记。</li>
+<li>确保工具栏覆盖层继承自<code>ToolbarOverlay</code>并实现一个无参数的构造函数。</li>
+<li>确保工具栏的内容使用字符串ID进行填充，并将其传递给基类构造函数。</li>
+<li>确保ID由<code>EditorToolbarElementAttribute</code>定义。</li>
+<li>使用<code>Icon</code>属性为覆盖层添加图标。该图标在覆盖层折叠时可见。如果覆盖层没有图标，默认情况下会显示覆盖层名称的前两个字母（或前两个单词的首字母）。</li>
+</ul>
+<p>在覆盖层中实现特定于<code>ToolbarOverlay</code>的元素时：</p>
+<ul>
+<li>仅针对工具栏使用<code>IAccessContainerWindow</code>接口。该元素对其上下文不可见。在<code>DropdownToggleExample</code>中，如果切换元素，它不会执行任何操作。</li>
+<li>对于视觉效果，请使用<code>UIElement</code>样式。工具栏元素不会在覆盖层中具备其样式。</li>
+</ul>
+<p>要创建工具栏覆盖层：</p>
+<ol>
+<li>在Editor文件夹中创建一个新的C#脚本并命名。</li>
+<li>打开您创建的脚本。</li>
+<li>删除脚本中的默认内容。</li>
+<li>在脚本中添加工具栏元素。</li>
+<li>将工具栏元素添加到覆盖层的构造函数中。</li>
+<li>添加面板覆盖层并实现工具栏元素。</li>
+</ol>
+<h3 id="示例-1">示例 <a href="#%e7%a4%ba%e4%be%8b-1" class="anchor">🔗</a></h3><p>下面的示例展示了一个名为<strong>Element Toolbars Example</strong>的覆盖层，该覆盖层演示了以下工具栏元素:</p>
+<ul>
+<li><code>EditorToolbarButton</code></li>
+<li><code>EditorToolbarToggle</code></li>
+<li><code>EditorToolbarDropdown</code></li>
+<li><code>EditorToolbarDropdownToggle</code></li>
+</ul>
+<p>每个工具栏元素都作为独立的类创建，然后添加到覆盖层的面板中。</p>
+<p>该覆盖层具有以下特点：</p>
+<ul>
+<li>可以作为面板、水平和垂直方式排列。</li>
+<li>按钮包括文本和工具提示。</li>
+<li>工具栏图标由<code>Icon</code>属性定义。该图标在覆盖层折叠时显示。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> System.Collections;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> System.Text;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEditor.EditorTools;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEditor.Toolbars;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEditor.Overlays;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEngine.UIElements;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> UnityEditor;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Use [EditorToolbarElement(Identifier, EditorWindowType)] to register toolbar elements for use in ToolbarOverlay implementation.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DropdownExample</span> : EditorToolbarDropdown
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Dropdown&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> dropChoice = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> DropdownExample()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Axis&#34;</span>;
+</span></span><span style="display:flex;"><span>            clicked += ShowDropdown;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ShowDropdown()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> menu = <span style="color:#66d9ef">new</span> GenericMenu();
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;X&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;X&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;X&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;X&#34;</span>; });
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Y&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;Y&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;Y&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;Y&#34;</span>; });
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Z&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;Z&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;Z&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;Z&#34;</span>; });
+</span></span><span style="display:flex;"><span>            menu.ShowAsContext();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ToggleExample</span> : EditorToolbarToggle
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Toggle&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ToggleExample()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Toggle OFF&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.RegisterValueChangedCallback(Test);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> Test(ChangeEvent&lt;<span style="color:#66d9ef">bool</span>&gt; evt)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (evt.newValue)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">&#34;ON&#34;</span>);
+</span></span><span style="display:flex;"><span>                text = <span style="color:#e6db74">&#34;Toggle ON&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">&#34;OFF&#34;</span>);
+</span></span><span style="display:flex;"><span>                text = <span style="color:#e6db74">&#34;Toggle OFF&#34;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DropdownToggleExample</span> : EditorToolbarDropdownToggle, IAccessContainerWindow
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/DropdownToggle&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This property is specified by IAccessContainerWindow and is used to access the Overlay&#39;s EditorWindow.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> EditorWindow containerWindow { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> colorIndex = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Color[] colors = <span style="color:#66d9ef">new</span> Color[] { Color.red, Color.green, Color.cyan };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> DropdownToggleExample()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Color Bar&#34;</span>;
+</span></span><span style="display:flex;"><span>            tooltip = <span style="color:#e6db74">&#34;Display a color rectangle in the top left of the Scene view. Toggle on or off, and open the dropdown&#34;</span> +
+</span></span><span style="display:flex;"><span>                      <span style="color:#e6db74">&#34;to change the color.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// When the dropdown is opened, ShowColorMenu is invoked and we can create a popup menu.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            dropdownClicked += ShowColorMenu;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Subscribe to the Scene view OnGUI callback so that we can draw our color swatch.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            SceneView.duringSceneGui += DrawColorSwatch;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> DrawColorSwatch(SceneView view)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e">// Test that this callback is for the Scene View that we&#39;re interested in, and also check if the toggle is on</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// or off (value).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (view != containerWindow || !<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Handles.BeginGUI();
+</span></span><span style="display:flex;"><span>            GUI.color = colors[colorIndex];
+</span></span><span style="display:flex;"><span>            GUI.DrawTexture(<span style="color:#66d9ef">new</span> Rect(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">24</span>), Texture2D.whiteTexture);
+</span></span><span style="display:flex;"><span>            GUI.color = Color.white;
+</span></span><span style="display:flex;"><span>            Handles.EndGUI();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// When the dropdown button is clicked, this method will create a popup menu at the mouse cursor position.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> ShowColorMenu()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> menu = <span style="color:#66d9ef">new</span> GenericMenu();
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Red&#34;</span>), colorIndex == <span style="color:#ae81ff">0</span>, () =&gt; colorIndex = <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Green&#34;</span>), colorIndex == <span style="color:#ae81ff">1</span>, () =&gt; colorIndex = <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Blue&#34;</span>), colorIndex == <span style="color:#ae81ff">2</span>, () =&gt; colorIndex = <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>            menu.ShowAsContext();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateCube</span> : EditorToolbarButton<span style="color:#75715e">//, IAccessContainerWindow</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This ID is used to populate toolbar elements.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Button&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// IAccessContainerWindow provides a way for toolbar elements to access the `EditorWindow` in which they exist.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Here we use `containerWindow` to focus the camera on our newly instantiated objects after creation.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//public EditorWindow containerWindow { get; set; }</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Because this is a VisualElement, it is appropriate to place initialization logic in the constructor.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In this method you can also register to any additional events as required. In this example there is a tooltip, an icon, and an action.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> CreateCube()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// A toolbar element can be either text, icon, or a combination of the two. Keep in mind that if a toolbar is</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// docked horizontally the text will be clipped, so usually it&#39;s a good idea to specify an icon.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Create Cube&#34;</span>;
+</span></span><span style="display:flex;"><span>            icon = AssetDatabase.LoadAssetAtPath&lt;Texture2D&gt;(<span style="color:#e6db74">&#34;Assets/CreateCubeIcon.png&#34;</span>);
+</span></span><span style="display:flex;"><span>            tooltip = <span style="color:#e6db74">&#34;Instantiate a cube in the scene.&#34;</span>;
+</span></span><span style="display:flex;"><span>            clicked += OnClick;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This method will be invoked when the `Create Cube` button is clicked.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">void</span> OnClick()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> newObj = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// When writing editor tools don&#39;t forget to be a good citizen and implement Undo!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Undo.RegisterCreatedObjectUndo(newObj.gameObject, <span style="color:#e6db74">&#34;Create Cube&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//if (containerWindow is SceneView view)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//    view.FrameSelected();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// All Overlays must be tagged with the OverlayAttribute</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [Overlay(typeof(SceneView), &#34;ElementToolbars Example&#34;)]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// IconAttribute provides a way to define an icon for when an Overlay is in collapsed form. If not provided, the name initials are used.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [Icon(&#34;Assets/unity.png&#34;)]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Toolbar Overlays must inherit `ToolbarOverlay` and implement a parameter-less constructor. The contents of a toolbar are populated with string IDs, which are passed to the base constructor. IDs are defined by EditorToolbarElementAttribute.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EditorToolbarExample</span> : ToolbarOverlay
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// ToolbarOverlay implements a parameterless constructor, passing the EditorToolbarElementAttribute ID.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This is the only code required to implement a toolbar Overlay. Unlike panel Overlays, the contents are defined</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// as standalone pieces that will be collected to form a strip of elements.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        EditorToolbarExample() : <span style="color:#66d9ef">base</span>(
+</span></span><span style="display:flex;"><span>            CreateCube.id,
+</span></span><span style="display:flex;"><span>            ToggleExample.id,
+</span></span><span style="display:flex;"><span>            DropdownExample.id,
+</span></span><span style="display:flex;"><span>            DropdownToggleExample.id
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        { }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h2 id="工具栏元素实现">工具栏元素实现 <a href="#%e5%b7%a5%e5%85%b7%e6%a0%8f%e5%85%83%e7%b4%a0%e5%ae%9e%e7%8e%b0" class="anchor">🔗</a></h2><p>工具栏元素的控件与UIToolkit中的等效控件相同，但它们继承了一些工具栏功能和特定的样式。</p>
+<p>本节中包含以下工具栏元素的示例:</p>
+<ul>
+<li>EditorToolbarButton</li>
+<li>EditorToolbarToggle</li>
+<li>EditorToolbarDropdown</li>
+<li>EditorToolbarDropdownToggle</li>
+</ul>
+<h3 id="editortoolbarbutton">EditorToolbarButton <a href="#editortoolbarbutton" class="anchor">🔗</a></h3><p><code>EditorToolbarButton</code>是一个独立的类，包含了元素的逻辑。下面的示例创建了一个按钮，当您点击该按钮时会生成一个立方体:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateCube</span> : EditorToolbarButton
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// This ID is used to populate toolbar elements.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Button&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Because this is a VisualElement, it is appropriate to place initialization logic in the constructor.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// In this method you can also register to any additional events as required. In this example there is a tooltip, an icon, and an action.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> CreateCube()
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// A toolbar element can be either text, icon, or a combination of the two. Keep in mind that if a toolbar is docked horizontally the text will be clipped, so it&#39;s a good idea to specify an icon.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            text = <span style="color:#e6db74">&#34;Create Cube&#34;</span>;
+</span></span><span style="display:flex;"><span>            icon = AssetDatabase.LoadAssetAtPath&lt;Texture2D&gt;(<span style="color:#e6db74">&#34;Assets/CreateCubeIcon.png&#34;</span>);
+</span></span><span style="display:flex;"><span>            tooltip = <span style="color:#e6db74">&#34;Instantiate a cube in the scene.&#34;</span>;
+</span></span><span style="display:flex;"><span>            clicked += OnClick;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> OnClick()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> newObj = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// When writing editor tools, don&#39;t forget to be a good citizen and implement Undo.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Undo.RegisterCreatedObjectUndo(newObj.gameObject, <span style="color:#e6db74">&#34;Create Cube&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Note: Using ObjectFactory class instead of GameObject(like in this example) will register the undo entry automatically removing the need to register manually.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Add the element’s ID to the Overlay constructor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[Overlay(typeof(SceneView), &#34;ElementToolbar Example&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Icon(&#34;Assets/unity.png&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EditorToolbarExample</span> : ToolbarOverlay
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    EditorToolbarExample() : <span style="color:#66d9ef">base</span>(CreateCube.id) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="editortoolbartoggle">EditorToolbarToggle <a href="#editortoolbartoggle" class="anchor">🔗</a></h3><p>创建包含元素所有逻辑的独立类。以下示例创建了一个切换按钮，它会将其状态打印到控制台并更新元素中的文本:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ToggleExample</span> : EditorToolbarToggle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Toggle&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ToggleExample()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;Toggle OFF&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Register the class to a callback for when the toggle’s state changes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.RegisterValueChangedCallback(OnStateChange);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> OnStateChange(ChangeEvent&lt;<span style="color:#66d9ef">bool</span>&gt; evt)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (evt.newValue)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Put logic for when the state is ON here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">&#34;Toggle State -&gt; ON&#34;</span>);
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;Toggle ON&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Put logic for when the state is OFF here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                Debug.Log(<span style="color:#e6db74">&#34;Toggle State -&gt; OFF&#34;</span>);
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;Toggle OFF&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>将元素的ID添加到Overlay构造函数中:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[[Overlay(typeof(SceneView), &#34;ElementToolbar Example&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Icon(&#34;Assets/unity.png&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EditorToolbarExample</span> : ToolbarOverlay
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    EditorToolbarExample() : <span style="color:#66d9ef">base</span>(
+</span></span><span style="display:flex;"><span>ToggleExample.id
+</span></span><span style="display:flex;"><span>) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="editortoolbardropdown">EditorToolbarDropdown <a href="#editortoolbardropdown" class="anchor">🔗</a></h3><p>创建一个独立的类，包含元素的所有逻辑。以下是一个简单的示例，演示了一个下拉菜单根据选择的选项调整其文本。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DropdownExample</span> : EditorToolbarDropdown
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/Dropdown&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> dropChoice = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> DropdownExample()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;Axis&#34;</span>;
+</span></span><span style="display:flex;"><span>        clicked += ShowDropdown;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> ShowDropdown()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// A simple GenericMenu to populate the dropdown content</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> menu = <span style="color:#66d9ef">new</span> GenericMenu();
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;X&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;X&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;X&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;X&#34;</span>; });
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Y&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;Y&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;Y&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;Y&#34;</span>; });
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Z&#34;</span>), dropChoice == <span style="color:#e6db74">&#34;Z&#34;</span>, () =&gt; { text = <span style="color:#e6db74">&#34;Z&#34;</span>; dropChoice = <span style="color:#e6db74">&#34;Z&#34;</span>; });
+</span></span><span style="display:flex;"><span>        menu.ShowAsContext();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>将元素的ID添加到Overlay构造函数中:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[Overlay(typeof(SceneView), &#34;ElementToolbar Example&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Icon(&#34;Assets/unity.png&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EditorToolbarExample</span> : ToolbarOverlay
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    EditorToolbarExample() : <span style="color:#66d9ef">base</span>(
+</span></span><span style="display:flex;"><span>DropdownExample.id
+</span></span><span style="display:flex;"><span>) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="editortoolbardropdowntoggle">EditorToolbarDropdownToggle <a href="#editortoolbardropdowntoggle" class="anchor">🔗</a></h3><p>创建一个包含元素所有逻辑的独立类。下拉菜单切换是一种类似于场景视图中的Gizmo菜单的下拉菜单切换。该示例在场景视图的角落创建一个矩形，您可以从覆盖中的下拉菜单中选择颜色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[EditorToolbarElement(id, typeof(SceneView))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DropdownToggleExample</span> : EditorToolbarDropdownToggle, IAccessContainerWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> id = <span style="color:#e6db74">&#34;ExampleToolbar/DropdownToggle&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This property is specified by IAccessContainerWindow and is used to access the Overlay&#39;s EditorWindow.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> EditorWindow containerWindow { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> colorIndex = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Color[] colors = <span style="color:#66d9ef">new</span> Color[] { Color.red, Color.green, Color.cyan };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> DropdownToggleExample()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        text = <span style="color:#e6db74">&#34;Color Bar&#34;</span>;
+</span></span><span style="display:flex;"><span>        tooltip = <span style="color:#e6db74">&#34;Display a color rectangle in the top left of the Scene view. Toggle on or off, and open the dropdown&#34;</span> +
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;to change the color.&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// When the dropdown is opened, ShowColorMenu is invoked and you can create a pop-up menu.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        dropdownClicked += ShowColorMenu;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Subscribe to the Scene view OnGUI callback to draw a color swatch.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        SceneView.duringSceneGui += DrawColorSwatch;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> DrawColorSwatch(SceneView view)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Test that this callback is for the correct Scene view, and check if the toggle is on</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// or off (value).</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (view != containerWindow || !<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Handles.BeginGUI();
+</span></span><span style="display:flex;"><span>            GUI.color = colors[colorIndex];
+</span></span><span style="display:flex;"><span>        GUI.DrawTexture(<span style="color:#66d9ef">new</span> Rect(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">24</span>), Texture2D.whiteTexture);
+</span></span><span style="display:flex;"><span>        GUI.color = Color.white;
+</span></span><span style="display:flex;"><span>        Handles.EndGUI();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// When the drop-down button is clicked, this method creates a pop-up menu at the mouse cursor position.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> ShowColorMenu()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> menu = <span style="color:#66d9ef">new</span> GenericMenu();
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Red&#34;</span>), colorIndex == <span style="color:#ae81ff">0</span>, () =&gt; colorIndex = <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Green&#34;</span>), colorIndex == <span style="color:#ae81ff">1</span>, () =&gt; colorIndex = <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        menu.AddItem(<span style="color:#66d9ef">new</span> GUIContent(<span style="color:#e6db74">&#34;Blue&#34;</span>), colorIndex == <span style="color:#ae81ff">2</span>, () =&gt; colorIndex = <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>        menu.ShowAsContext();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>将元素的ID添加到Overlay构造函数中:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cs" data-lang="cs"><span style="display:flex;"><span><span style="color:#a6e22e">[Overlay(typeof(SceneView), &#34;ElementToolbar Example&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Icon(&#34;Assets/unity.png&#34;)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EditorToolbarExample</span> : ToolbarOverlay
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    EditorToolbarExample() : <span style="color:#66d9ef">base</span>(
+</span></span><span style="display:flex;"><span>DropdownToggleExample.id
+</span></span><span style="display:flex;"><span>) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="position-gameobjects">Position GameObjects <a href="#position-gameobjects" class="anchor">🔗</a></h1><p>要改变GameObject的Transform组件，可以使用鼠标来操作任何Gizmo轴，或直接在Inspector的Transform组件的数字字段中输入数值。</p>
+<p>另外，您还可以从Scene视图的工具覆盖或使用热键选择五个不同的Transform模式:</p>
+<ul>
+<li>使用键盘上的 <strong>W</strong> 键来选择移动模式</li>
+<li>使用键盘上的 <strong>E</strong> 键来选择旋转模式</li>
+<li>使用键盘上的 <strong>R</strong> 键来选择缩放模式</li>
+<li>使用键盘上的 <strong>T</strong> 键来选择RectTransform模式</li>
+<li>使用键盘上的 <strong>Y</strong> 键来选择Transform模式</li>
+</ul>
+<p><img src="/2023-08-03-unity-document-13/game-objects-transform-modes.png" alt=""></p>
+<h3 id="移动">移动 <a href="#%e7%a7%bb%e5%8a%a8" class="anchor">🔗</a></h3><p>在“移动”Gizmo的中心有三个小正方形，您可以使用它们在同一平面上拖动GameObject（这意味着您可以同时移动两个轴，而保持第三个轴不变）。</p>
+<p>如果您在Move Gizmo的中心点击并拖动时按住Shift键，Gizmo的中心将变成一个平面正方形。平面正方形表示您可以相对于场景视图相机面向的方向在平面上移动GameObject。</p>
+<h3 id="旋转">旋转 <a href="#%e6%97%8b%e8%bd%ac" class="anchor">🔗</a></h3><p>选择“旋转”工具后，通过点击和拖动围绕GameObject出现的线框球状Gizmo的轴来更改GameObject的旋转。与“移动”Gizmo类似，您上次更改的轴会被标记为黄色。将红色、绿色和蓝色圆视为围绕在“移动”模式中出现的红色、绿色和蓝色轴周围执行旋转的圆圈（红色是x轴，绿色是y轴，蓝色是z轴）。最后，使用最外层的圆圈绕场景视图的z轴旋转GameObject。可以将其视为在屏幕空间中进行旋转。</p>
+<h3 id="缩放">缩放 <a href="#%e7%bc%a9%e6%94%be" class="anchor">🔗</a></h3><p>“缩放”工具可以通过在Gizmo中心的立方体上点击和拖动，使GameObject在所有轴上均匀地重新缩放。您还可以分别缩放各个轴，但如果在存在子GameObject时进行此操作时要小心，因为效果可能看起来相当奇怪。</p>
+<h3 id="recttransform">RectTransform <a href="#recttransform" class="anchor">🔗</a></h3><p>RectTransform通常用于定位2D元素，如Sprites或UI元素，但它也可以用于操作3D GameObjects。它将移动、缩放和旋转合并为一个Gizmo：</p>
+<ul>
+<li>在矩形Gizmo内点击并拖动以移动GameObject。</li>
+<li>在矩形Gizmo的任何角落或边缘上点击并拖动以缩放GameObject。</li>
+<li>拖动边缘以沿一个轴缩放GameObject。</li>
+<li>拖动角落以在两个轴上缩放GameObject。</li>
+<li>要旋转GameObject，将光标放在矩形角的外面。光标会变成一个显示旋转图标的符号。从此区域点击并拖动以旋转GameObject。</li>
+</ul>
+<p>请注意，在2D模式下，您无法使用Gizmos在Scene中更改z轴。然而，使用z轴进行某些脚本编写技术可能很有用，所以您仍然可以使用Inspector中的Transform组件来设置z轴。</p>
+<p>有关转换GameObject的更多信息，请参阅Transform组件的文档。</p>
+<h3 id="transform">Transform <a href="#transform" class="anchor">🔗</a></h3><p><strong>Transform</strong>工具结合了<strong>Move</strong>、<strong>Rotate</strong>和<strong>Scale</strong>工具。它的Gizmo提供了移动和旋转的控制手柄。当<strong>工具手柄旋转</strong>设置为<strong>局部</strong>（参见下文）时，Transform工具还提供了用于缩放选定的GameObject的控制手柄。</p>
+<h2 id="gizmo控制柄位置切换"><strong>Gizmo控制柄位置切换</strong> <a href="#gizmo%e6%8e%a7%e5%88%b6%e6%9f%84%e4%bd%8d%e7%bd%ae%e5%88%87%e6%8d%a2" class="anchor">🔗</a></h2><p><img src="/2023-08-03-unity-document-13/gizmo-handle-position-toggles.png" alt=""></p>
+<p>在工具设置叠加中，可以找到<strong>Gizmo控制柄位置切换</strong>功能，用于定义任何变换工具的Gizmo位置以及用于操作Gizmo本身的控制柄。</p>
+<p><img src="/2023-08-03-unity-document-13/gizmo-handle-position-toggles-menu.png" alt=""></p>
+<h3 id="关于位置">关于位置 <a href="#%e5%85%b3%e4%ba%8e%e4%bd%8d%e7%bd%ae" class="anchor">🔗</a></h3><p>使用下拉菜单在<strong>Pivot</strong>和<strong>Center</strong>之间进行切换。</p>
+<ul>
+<li><strong>Pivot</strong> 将Gizmo定位在GameObject的实际枢轴点上，枢轴点由Transform组件定义。</li>
+<li><strong>Center</strong> 将Gizmo定位在基于选定的GameObject的中心位置上。</li>
+</ul>
+<h3 id="关于旋转">关于旋转 <a href="#%e5%85%b3%e4%ba%8e%e6%97%8b%e8%bd%ac" class="anchor">🔗</a></h3><p>使用下拉菜单在<strong>Local</strong>和<strong>Global</strong>之间进行切换。</p>
+<ul>
+<li><strong>Local</strong> 保持Gizmo相对于GameObject的旋转不变。</li>
+<li><strong>Global</strong> 将Gizmo约束为世界空间方向。</li>
+</ul>
+<h2 id="对齐">对齐 <a href="#%e5%af%b9%e9%bd%90" class="anchor">🔗</a></h2><p>Unity提供了三种对齐方式：</p>
+<ul>
+<li>世界网格对齐：将GameObject与沿X、Y或Z轴投影的网格对齐，或按照X、Y或Z轴的增量转换GameObject。只有在使用世界或全局的操作柄方向时才可用。</li>
+<li>表面对齐：将GameObject对齐到任何<strong>Collider</strong>的交点上。</li>
+<li>顶点对齐：将给定<strong>Mesh</strong>的任何顶点对齐到另一个Mesh的顶点或表面的位置。可以进行顶点对顶点、顶点对表面和枢轴对顶点的对齐。</li>
+</ul>
+<p>当您将<strong>Prefab</strong>拖入场景时，Unity默认将它们放置在光标位置。您可以通过按住<strong>Alt</strong>键拖动Prefab来保持其与光标位置的任何偏移量。</p>
+<h3 id="表面对齐">表面对齐 <a href="#%e8%a1%a8%e9%9d%a2%e5%af%b9%e9%bd%90" class="anchor">🔗</a></h3><p>要将GameObject对齐到Collider的交点上，请按照以下步骤操作:</p>
+<ol>
+<li>确保<strong>移动</strong>工具处于激活状态。</li>
+<li>按住<strong>Shift+Ctrl</strong>（macOS：<strong>Shift+Command</strong>），然后单击并按住一个GameObject的操作柄。</li>
+<li>将GameObject拖动到具有Collider的另一个GameObject上。</li>
+</ol>
+<h3 id="顶点对齐">顶点对齐 <a href="#%e9%a1%b6%e7%82%b9%e5%af%b9%e9%bd%90" class="anchor">🔗</a></h3><p>使用<strong>顶点对齐</strong>可以快速组装场景：选择给定Mesh中的任何顶点，并将该顶点的位置与选择的任何其他Mesh中的任何顶点的位置相同。例如，在赛车游戏中使用顶点对齐来精确定位道路段，或者将道具物品放置在Mesh的顶点位置上。</p>
+<p>按照以下步骤使用顶点对齐:</p>
+<ol>
+<li>选择要操作的Mesh，并确保<strong>移动</strong>工具处于激活状态。</li>
+<li>按住<strong>V</strong>键来激活顶点对齐模式。</li>
+<li>将光标移到您希望用作枢轴点的Mesh的顶点上。</li>
+<li>一旦光标位于您想要的顶点上，请按住鼠标左键并将Mesh拖到另一个Mesh上的任何其他顶点旁边。
+<ul>
+<li>要将顶点对齐到另一个Mesh上的表面，请同时按住<strong>Shift+Ctrl</strong>（macOS：<strong>Shift+Command</strong>）并移动到您要对齐到的表面上。</li>
+<li>要将枢轴对齐到另一个Mesh上的顶点，请同时按住<strong>Ctrl</strong>（macOS：<strong>Command</strong>）并将光标移动到您要对齐到的顶点上。</li>
+</ul>
+</li>
+<li>在满意结果时释放鼠标按钮和<strong>V</strong>键（<strong>Shift+V</strong>用作此功能的切换）。</li>
+</ol>
+<h3 id="将gameobject旋转至collider上的某一点">将GameObject旋转至Collider上的某一点 <a href="#%e5%b0%86gameobject%e6%97%8b%e8%bd%ac%e8%87%b3collider%e4%b8%8a%e7%9a%84%e6%9f%90%e4%b8%80%e7%82%b9" class="anchor">🔗</a></h3><p>使用面向视点方式旋转GameObject，将其朝向Collider表面上的某一点。这在将GameObject朝向目标（如摄像机或玩家）时非常有用。</p>
+<p>使用面向视点旋转方式:</p>
+<ol>
+<li>在场景视图中选择要旋转的GameObject。</li>
+<li>在工具叠加中选择<strong>旋转</strong>工具或按下<strong>E</strong>键。</li>
+<li>单击旋转Gizmo控制柄以选中它。</li>
+<li>按住<strong>Shift+Ctrl</strong>（macOS：<strong>Shift+Command</strong>），并将鼠标移动到您要将所选GameObject对齐到的Collider的表面上。</li>
+</ol>
+<h3 id="屏幕空间变换">屏幕空间变换 <a href="#%e5%b1%8f%e5%b9%95%e7%a9%ba%e9%97%b4%e5%8f%98%e6%8d%a2" class="anchor">🔗</a></h3><p>在使用<strong>变换</strong>工具时，按住<strong>Shift</strong>键可启用屏幕空间模式。这种模式允许您根据在屏幕上的显示情况移动、旋转和缩放GameObject，而不是在场景中进行操作。</p>
+<h1 id="网格对齐">网格对齐 <a href="#%e7%bd%91%e6%a0%bc%e5%af%b9%e9%bd%90" class="anchor">🔗</a></h1><p>Unity在编辑器的<strong>场景视图</strong>窗口中提供了一个可视化网格，可以通过将<strong>GameObjects</strong>对齐到最近的网格位置来帮助精确对齐它们。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneGrids.png" alt=""></p>
+<p>您可以通过以下几种方式将GameObject对齐到沿X、Y或Z轴投影的网格上:</p>
+<ul>
+<li>将选定的GameObject对齐到最近的网格点上。</li>
+<li>在移动、旋转或缩放GameObject时打开网格对齐功能。</li>
+</ul>
+<p>您还可以按增量对GameObject进行变换，而无需将其与网格线对齐。如果您需要更改移动、旋转或缩放的量大小，可以更改增量对齐值。</p>
+<p>默认情况下，网格是隐藏的，但您可以使其可见，并更改其出现的轴线。您可以通过更改以下内容来自定义网格的外观和行为:</p>
+<ul>
+<li>网格的大小（调整线之间的距离）。</li>
+<li>网格线本身的颜色。</li>
+<li>网格线的透明度或不透明度。</li>
+</ul>
+<p>许多操作都支持键盘快捷键。您可以查看分配给这些操作的按键组合，并使用快捷键管理器进行自定义设置。</p>
+<h2 id="网格和对齐工具栏叠加层">网格和对齐工具栏叠加层 <a href="#%e7%bd%91%e6%a0%bc%e5%92%8c%e5%af%b9%e9%bd%90%e5%b7%a5%e5%85%b7%e6%a0%8f%e5%8f%a0%e5%8a%a0%e5%b1%82" class="anchor">🔗</a></h2><p><img src="/2023-08-03-unity-document-13/scene-grids-overlay.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">图标</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon.png" alt="">显示网格</td>
+<td style="text-align:left">切换网格的显示或隐藏 切换网格轴线 更改网格的透明度 将网格移动到工具柄或返回原点</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/SceneGrids-Mode-icon.png" alt="">对齐网格</td>
+<td style="text-align:left">切换网格对齐的开启或关闭 更改网格的大小 将GameObject对齐到轴线</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/scene-grids-increment-icon.png" alt="">对齐增量</td>
+<td style="text-align:left">更改默认的增量对齐值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>: <strong>网格和对齐</strong>叠加层上的设置对所有的<strong>场景视图</strong>都是全局的。</p>
+<h2 id="对齐对准网格和增量移动">对齐、对准网格和增量移动 <a href="#%e5%af%b9%e9%bd%90%e5%af%b9%e5%87%86%e7%bd%91%e6%a0%bc%e5%92%8c%e5%a2%9e%e9%87%8f%e7%a7%bb%e5%8a%a8" class="anchor">🔗</a></h2><p>本节提供以下操作的信息:</p>
+<ul>
+<li>对齐到网格</li>
+<li>激活自动对齐</li>
+<li>以增量方式移动、旋转和缩放</li>
+</ul>
+<h3 id="对齐到网格">对齐到网格 <a href="#%e5%af%b9%e9%bd%90%e5%88%b0%e7%bd%91%e6%a0%bc" class="anchor">🔗</a></h3><p>您可以将GameObject对齐到单个轴上最近的网格点，或同时对齐到所有轴上的网格点。</p>
+<p>要将GameObject对齐到特定轴线上最近的网格点:</p>
+<ol>
+<li>
+<p>在<strong>网格和对齐</strong>叠加层的工具栏中，打开网格对齐的下拉菜 (<img src="/2023-08-03-unity-document-13/SceneGrids-Mode-icon-inline.png" alt="">).</p>
+</li>
+<li>
+<p>在<strong>对齐选定物体</strong>部分，点击与要对齐到的轴线匹配的<strong>X</strong>、<strong>Y</strong>或<strong>Z</strong>按钮。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-grid-align-selection.png" alt=""></p>
+</li>
+</ol>
+<p>要同时将GameObject对齐到所有轴线上：</p>
+<ol>
+<li>
+<p>选择要对齐到网格的GameObject。</p>
+</li>
+<li>
+<p>使用**Ctrl +（Windows）<strong>或</strong>Cmd +（macOS）**快捷键将GameObject推入所有轴上的网格上。</p>
+<p>或者，从<strong>网格和对齐</strong>叠加层工具栏中，打开网格可见性的下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Mode-icon-inline-172137287267825.png" alt="">) ，在<strong>对齐选定物体</strong>部分，点击<strong>所有轴</strong>。</p>
+</li>
+</ol>
+<h3 id="激活自动对齐">激活自动对齐 <a href="#%e6%bf%80%e6%b4%bb%e8%87%aa%e5%8a%a8%e5%af%b9%e9%bd%90" class="anchor">🔗</a></h3><p>要启用自动对齐到网格:</p>
+<ol>
+<li>激活<strong>移动</strong>工具，并确保在<strong>工具设置</strong>叠加层中，将处理器方向设置为全局 (<img src="/2023-08-03-unity-document-13/SceneGrids-Global-icon.png" alt="">).</li>
+<li>点击<strong>网格和对齐</strong>工具栏叠加层中的网格对齐图标 (<img src="/2023-08-03-unity-document-13/SceneGrids-Mode-icon-inline-172137294316330.png" alt="">) 激活时图标为蓝色。</li>
+</ol>
+<p>当您启用自动网格对齐时，<strong>移动</strong>、<strong>旋转</strong>和<strong>缩放</strong>变换工具将选定的GameObject对齐到沿着活动的<strong>工具柄</strong>轴线的网格上。如果您需要以较小的增量移动GameObject，您还可以进行增量变换。</p>
+<h3 id="以增量方式移动旋转和缩放">以增量方式移动、旋转和缩放 <a href="#%e4%bb%a5%e5%a2%9e%e9%87%8f%e6%96%b9%e5%bc%8f%e7%a7%bb%e5%8a%a8%e6%97%8b%e8%bd%ac%e5%92%8c%e7%bc%a9%e6%94%be" class="anchor">🔗</a></h3><p>要按增量对齐值进行移动、旋转或缩放:</p>
+<ul>
+<li>在使用变换工具柄时，按住<strong>Control</strong>键（Windows）或<strong>Command</strong>键（macOS）。</li>
+</ul>
+<p>要更改默认的增量对齐值:</p>
+<ol>
+<li>
+<p>从<strong>网格和对齐</strong>工具栏叠加层中，打开增量对齐的下拉菜单 (<img src="/2023-08-03-unity-document-13/scene-grids-increment-icon-inline.png" alt="">).</p>
+</li>
+<li>
+<p><strong>增量对齐</strong>部分包含几个属性，可让您为所有轴设置相同的值或不同的值:</p>
+<p><img src="/2023-08-03-unity-document-13/scene-grid-snapping-increment.png" alt=""></p>
+<p><strong>移动</strong>：选中链接图标时，输入所有轴的统一增量对齐值，或取消链接轴并在<strong>X</strong>、<strong>Y</strong>和<strong>Z</strong>轴属性中设置不同的增量对齐值。</p>
+<p><strong>旋转</strong>：输入旋转增量值（以度为单位）。</p>
+<p><strong>缩放</strong>：以缩放因子的形式输入缩放增量值。例如，如果缩放值为2，则选定的GameObject将以原始大小的两倍进行缩放。</p>
+</li>
+</ol>
+<h2 id="自定义网格">自定义网格 <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bd%91%e6%a0%bc" class="anchor">🔗</a></h2><p>本节提供有关以下内容的自定义信息:</p>
+<ul>
+<li>显示和隐藏网格线</li>
+<li>更改网格出现的轴线</li>
+<li>调整网格大小</li>
+<li>更改网格线的默认颜色</li>
+<li>更改网格的透明度</li>
+<li>将网格移动到GameObject的工具柄上</li>
+<li>将值和设置重置为默认值</li>
+</ul>
+<h3 id="显示和隐藏网格线">显示和隐藏网格线 <a href="#%e6%98%be%e7%a4%ba%e5%92%8c%e9%9a%90%e8%97%8f%e7%bd%91%e6%a0%bc%e7%ba%bf" class="anchor">🔗</a></h3><p>通过单击网格可见性图标 (<img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon-inline.png" alt="">) 在网格和对齐叠加层工具栏上开启或关闭网格的显示。您可以选择在任何轴（X、Y、Z）上显示或隐藏网格。如果您处于正交模式 (Iso)，Unity会选择视图。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneGridsAxis.png" alt=""></p>
+<h3 id="更改网格出现的轴线">更改网格出现的轴线 <a href="#%e6%9b%b4%e6%94%b9%e7%bd%91%e6%a0%bc%e5%87%ba%e7%8e%b0%e7%9a%84%e8%bd%b4%e7%ba%bf" class="anchor">🔗</a></h3><p>要更改网格出现的轴线:</p>
+<ol>
+<li>
+<p>从<strong>网格和对齐</strong>工具栏的网格可见性下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon-inline-172137312556545.png" alt="">)中打开。</p>
+</li>
+<li>
+<p>在<strong>网格平面</strong>部分，选择您想要出现的轴线。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-grids-select-axis.png" alt=""></p>
+</li>
+</ol>
+<h3 id="调整网格的大小">调整网格的大小 <a href="#%e8%b0%83%e6%95%b4%e7%bd%91%e6%a0%bc%e7%9a%84%e5%a4%a7%e5%b0%8f" class="anchor">🔗</a></h3><p>您可以设置在<strong>场景视图</strong>窗口中显示的网格线的大小。网格的大小会影响网格的外观以及GameObject在网格上的自动对齐方式，但不会影响GameObject的移动、旋转或缩放的增量方式。</p>
+<p>如果同时设置所有轴的大小，将显示一个统一的、基于正方形的网格。但您也可以在任意三个轴上使用不同的值，以显示一个非统一的、基于矩形的网格。默认情况下，网格在所有轴上的距离都设置为1。</p>
+<p>要调整网格的大小:</p>
+<ol>
+<li>在<strong>网格和对齐</strong>叠加层中，单击<strong>网格对齐</strong>按钮旁边的箭头，以打开<strong>对齐</strong>菜单。</li>
+<li>要输入网格大小的统一值，并使所有网格线的长度相同:
+<ol>
+<li>在<strong>大小</strong>属性中，选择链接图标。</li>
+<li>输入<strong>X</strong>属性的值，以设置所有轴上的网格线的大小。</li>
+</ol>
+</li>
+<li>要输入网格大小的非统一值，并为每个轴指定网格线的大小:
+<ol>
+<li>确保<strong>大小</strong>属性中的链接图标未选择。</li>
+<li>输入<strong>X</strong>、<strong>Y</strong>和<strong>Z</strong>属性的值，以设置每个轴上的网格线的大小。</li>
+</ol>
+</li>
+</ol>
+<p><strong>提示</strong>：使用以下快捷键增加或减小网格的大小:</p>
+<ul>
+<li>要增加网格大小，请按<strong>Ctrl</strong>+<strong>]</strong>（macOS：<strong>Cmd</strong>+<strong>]</strong>）。</li>
+<li>要减小网格大小，请按<strong>Ctrl</strong>+<strong>[</strong>（macOS：<strong>Cmd</strong>+<strong>[</strong>）。</li>
+</ul>
+<h3 id="更改网格线的默认颜色">更改网格线的默认颜色 <a href="#%e6%9b%b4%e6%94%b9%e7%bd%91%e6%a0%bc%e7%ba%bf%e7%9a%84%e9%bb%98%e8%ae%a4%e9%a2%9c%e8%89%b2" class="anchor">🔗</a></h3><p>要更改<strong>场景视图</strong>窗口中可见网格线的颜色:</p>
+<ol>
+<li>
+<p>打开首选项窗口。</p>
+</li>
+<li>
+<p>从列表中选择<strong>颜色</strong>类别，以查看<strong>颜色</strong>页面。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneGridsPrefs.png" alt=""></p>
+</li>
+<li>
+<p>使用<strong>网格</strong>属性的颜色选择器选择新的颜色。</p>
+</li>
+</ol>
+<h3 id="更改网格的透明度">更改网格的透明度 <a href="#%e6%9b%b4%e6%94%b9%e7%bd%91%e6%a0%bc%e7%9a%84%e9%80%8f%e6%98%8e%e5%ba%a6" class="anchor">🔗</a></h3><p>如果网格线过亮或过暗，您可以进行调整：</p>
+<ol>
+<li>
+<p>从<strong>网格和对齐</strong>叠加层工具栏，打开网格可见性下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon-inline-172137322662254.png" alt="">).</p>
+</li>
+<li>
+<p>使用滑块调整<strong>不透明度</strong>。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-grids-opacity.png" alt=""></p>
+</li>
+</ol>
+<h3 id="将网格移动到gameobject的工具柄上">将网格移动到GameObject的工具柄上 <a href="#%e5%b0%86%e7%bd%91%e6%a0%bc%e7%a7%bb%e5%8a%a8%e5%88%b0gameobject%e7%9a%84%e5%b7%a5%e5%85%b7%e6%9f%84%e4%b8%8a" class="anchor">🔗</a></h3><p>从<strong>网格和对齐</strong>叠加层工具栏的网格可见性下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon-inline-172137323770157.png" alt="">) 中，使用<strong>移动到</strong>部分将网格移动到所选GameObject的工具柄（<strong>Handle</strong>），或将其移回默认位置（<strong>Origin</strong>)。</p>
+<h3 id="将值和设置重置为默认值">将值和设置重置为默认值 <a href="#%e5%b0%86%e5%80%bc%e5%92%8c%e8%ae%be%e7%bd%ae%e9%87%8d%e7%bd%ae%e4%b8%ba%e9%bb%98%e8%ae%a4%e5%80%bc" class="anchor">🔗</a></h3><p>要将网格轴和不透明度设置重置为默认值：</p>
+<ol>
+<li>从<strong>网格和对齐</strong>叠加层工具栏，打开网格可见性下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Vis-icon-inline-172137325088560.png" alt="">).</li>
+<li>点击<strong>更多</strong>菜单（⋮），然后点击<strong>重置</strong>。</li>
+</ol>
+<p>要将网格大小重置为默认值：</p>
+<ol>
+<li>从<strong>网格和对齐</strong>叠加层工具栏，打开网格对齐下拉菜单 (<img src="/2023-08-03-unity-document-13/SceneGrids-Mode-icon-inline-172137325454863.png" alt="">).</li>
+<li>点击<strong>更多</strong>菜单（⋮），然后点击<strong>重置</strong>。</li>
+</ol>
+<p>要将增量对齐值重置为默认值：</p>
+<ol>
+<li>
+<p>从<strong>网格和对齐</strong>叠加层工具栏，打开增量对齐下拉菜单 (<img src="/2023-08-03-unity-document-13/scene-grids-increment-icon-inline-172137325851666.png" alt="">).</p>
+</li>
+<li>
+<p>点击<strong>更多</strong>菜单（⋮），然后点击<strong>重置</strong>。</p>
+<p>只有<strong>增量对齐</strong>部分下的值会返回到其原始默认值。</p>
+</li>
+</ol>
+<h2 id="快捷键默认设置">快捷键默认设置 <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e9%bb%98%e8%ae%a4%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>您可以使用以下默认的Unity快捷键执行以下操作：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作</strong></th>
+<th style="text-align:left"><strong>默认快捷键</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">增加网格大小</td>
+<td style="text-align:left"><strong>Ctrl</strong>+<strong>]</strong>（Windows）或<strong>Command</strong>+<strong>]</strong>（macOS）</td>
+</tr>
+<tr>
+<td style="text-align:left">减小网格大小</td>
+<td style="text-align:left"><strong>Ctrl</strong>+<strong>[</strong>（Windows）或<strong>Command</strong>+<strong>[</strong>（macOS）</td>
+</tr>
+<tr>
+<td style="text-align:left">将选择对象对齐到网格 Push to Grid</td>
+<td style="text-align:left"><strong>Ctrl</strong>+<em><strong>*（Windows）或</strong>Command</em>*+****（macOS）</td>
+</tr>
+<tr>
+<td style="text-align:left">重置网格</td>
+<td style="text-align:left">（默认没有快捷键）</td>
+</tr>
+</tbody>
+</table>
+<p>要更改这些默认键盘快捷键，请使用“快捷键管理器”。</p>
+<h1 id="场景视图导航">场景视图导航 <a href="#%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e5%af%bc%e8%88%aa" class="anchor">🔗</a></h1><p>默认情况下，当您在<strong>场景</strong>视图中导航时，您会通过场景摄像机查看并控制。要通过附有<strong>相机</strong>组件的<strong>GameObject</strong>查看并控制，请使用相机叠加层。</p>
+<p>您可以使用以下导航控件在<strong>场景视图</strong>中移动场景摄像机或附有相机组件的GameObject：</p>
+<ul>
+<li>场景Gizmo</li>
+<li>移动、旋转和缩放工具</li>
+<li>中心工具</li>
+</ul>
+<h2 id="场景gizmo">场景Gizmo <a href="#%e5%9c%ba%e6%99%afgizmo" class="anchor">🔗</a></h2><p>场景<strong>Gizmo</strong>出现在场景视图中。它显示了场景摄像机的当前方向，并允许您更改观察角度和投影模式。</p>
+<p><img src="/2023-08-03-unity-document-13/Editor-SceneGizmo.png" alt=""></p>
+<p>场景Gizmo在立方体的每一侧都有一个锥形的臂。最前面的臂上标有<strong>X</strong>、<strong>Y</strong>和<strong>Z</strong>。单击任何一个锥形轴臂，可以将场景摄像机对齐到它代表的轴上（例如：俯视图、左视图和前视图）。您也可以右键单击立方体，查看带有视角列表的菜单。要返回到默认的视角，请右键单击场景Gizmo并选择<strong>Free</strong>。</p>
+<p>您还可以切换<strong>透视</strong>模式。这会在场景视图的透视模式和正交模式（有时称为“等角”）之间切换。要执行此操作，单击场景Gizmo中心的立方体或其下方的文字。正交视图没有透视效果，在与单击其中一个锥形轴臂以获得前景、顶面或侧面高程结合使用时很有用。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-view-perspect-and-ortho.png" alt=""></p>
+<p><img src="/2023-08-03-unity-document-13/SceneViewOrthoTopAndSide.png" alt=""></p>
+<p>如果您的场景视图处于不便的视角（倒置或令您感到困惑的角度），请<strong>Shift</strong>点击场景Gizmo中心的立方体，以返回到一个稍微从侧面和略微从上方查看场景的<strong>透视</strong>视图。</p>
+<p>单击场景Gizmo右上角的锁形图标可启用或禁用场景的旋转。一旦禁用场景旋转，右键单击可平移视图而不是旋转。这与查看工具相同。</p>
+<p>请注意，在<strong>2D模式</strong>下，场景Gizmo不会显示。<strong>2D模式</strong>下的唯一视图选项是垂直查看XY平面。</p>
+<h3 id="mac触控板手势">Mac触控板手势 <a href="#mac%e8%a7%a6%e6%8e%a7%e6%9d%bf%e6%89%8b%e5%8a%bf" class="anchor">🔗</a></h3><p>在具有触控板的Mac上，您可以用双指拖动来缩放视图。</p>
+<p>您还可以使用三个手指来模拟点击<strong>场景Gizmo</strong>的效果：向上、向左、向右或向下拖动以将场景摄像机对齐到相应的方向。您必须在MacOS触控板手势设置中启用三指滑动才能使用此功能。</p>
+<h2 id="在场景视图中移动旋转和缩放">在场景视图中移动、旋转和缩放 <a href="#%e5%9c%a8%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e4%b8%ad%e7%a7%bb%e5%8a%a8%e6%97%8b%e8%bd%ac%e5%92%8c%e7%bc%a9%e6%94%be" class="anchor">🔗</a></h2><p>在场景视图导航中，移动、旋转和缩放是关键操作。Unity提供了多种方法来执行这些操作，以实现最大可访问性：</p>
+<ul>
+<li>使用箭头键</li>
+<li>使用视图工具</li>
+<li>使用飞行模式</li>
+<li>更改摄像机的移动速度</li>
+<li>使用移动快捷键</li>
+</ul>
+<h3 id="使用箭头键">使用箭头键 <a href="#%e4%bd%bf%e7%94%a8%e7%ae%ad%e5%a4%b4%e9%94%ae" class="anchor">🔗</a></h3><p>您可以使用<strong>箭头键</strong>在场景中移动，就像“步行”一样。向上和向下箭头键将相机向前和向后移动，朝向所面向的方向。左右箭头键将视图向侧面平移。按住<strong>Shift</strong>和箭头键，可以更快地移动。</p>
+<h3 id="使用视图工具">使用<strong>视图工具</strong> <a href="#%e4%bd%bf%e7%94%a8%e8%a7%86%e5%9b%be%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h3><p>选择视图工具（快捷键：<strong>Q</strong>）后，可以使用以下鼠标控件：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>控制</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>平移</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/Editor-MoveTool.png" alt="">  单击并拖动以在场景中平移相机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>旋转</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/Editor-EyeTool.png" alt="">  按住<strong>Alt</strong>（Windows）或<strong>Option</strong>（macOS），左键单击并拖动以围绕当前枢轴点旋转相机。2D模式下无法使用此选项，因为视图是正交的。<strong>注意</strong>：如果无法旋转相机，请确保场景Gizmo右上角的锁形图标处于禁用状态。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缩放</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/Editor-ZoomTool.png" alt="">  按住<strong>Alt</strong>（Windows）或<strong>Option</strong>（macOS），右键单击并拖动以缩放场景视图。在macOS上，您还可以按住<strong>Control</strong>键，然后左键单击并拖动。</td>
+</tr>
+</tbody>
+</table>
+<p>按住<strong>Shift</strong>键可以加快移动和缩放的速度。</p>
+<h3 id="使用飞行模式">使用<strong>飞行模式</strong> <a href="#%e4%bd%bf%e7%94%a8%e9%a3%9e%e8%a1%8c%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h3><p>使用<strong>飞行模式</strong>以第一人称视角在场景视图中飞行，类似于在许多游戏中导航的方式。</p>
+<p>飞行模式专为<strong>透视模式</strong>设计。在<strong>正交模式</strong>下，如果您点击并按住右鼠标按钮，然后移动鼠标，视图会围绕相机旋转。</p>
+<p>飞行模式在2D模式下不可用。在2D模式下，如果您点击并按住右鼠标按钮，然后移动鼠标，视图会在场景视图中平移。</p>
+<p>要进入<strong>飞行模式</strong>并在<strong>飞行模式</strong>下导航场景视图，请执行以下操作：</p>
+<ol>
+<li>点击并按住右鼠标按钮。</li>
+<li>使用以下操作来导航场景视图：
+<ul>
+<li>使用鼠标移动视图。</li>
+<li>要向前或向后移动，请按下<strong>W</strong>或<strong>S</strong>。</li>
+<li>要向左或向右移动，请按下<strong>A</strong>或<strong>D</strong>。</li>
+<li>要向上或向下移动，请按下<strong>Q</strong>或<strong>E</strong>。</li>
+<li>要加快速度，请按住<strong>Shift</strong>键。</li>
+</ul>
+</li>
+</ol>
+<h3 id="更改相机的移动速度">更改相机的移动速度 <a href="#%e6%9b%b4%e6%94%b9%e7%9b%b8%e6%9c%ba%e7%9a%84%e7%a7%bb%e5%8a%a8%e9%80%9f%e5%ba%a6" class="anchor">🔗</a></h3><p>场景摄像机在编辑器中显示场景视图。默认情况下，当您在场景视图中导航时，可通过控制和查看场景摄像机来进行操作。有关如何控制附有摄像机组件的游戏对象，请参阅以第一人称控制摄像机。</p>
+<p>要更改场景视图中摄像机的移动速度，请在“视图选项”叠加层中选择摄像机图标，然后调整<strong>相机速度</strong>属性的值以设置所需速度。</p>
+<p><strong>注意</strong>：要找到“视图选项”叠加层，请按**`<strong>键打开叠加菜单。在叠加菜单中，将鼠标悬停在</strong>视图选项**上，以在场景视图中突出显示“视图选项”叠加层。</p>
+<p>在<strong>飞行模式</strong>下，使用鼠标滚轮或在触控板上用两根手指滑动来改变场景摄像机在场景中的移动速度。</p>
+<h3 id="移动快捷键">移动快捷键 <a href="#%e7%a7%bb%e5%8a%a8%e5%bf%ab%e6%8d%b7%e9%94%ae" class="anchor">🔗</a></h3><p>为了提高效率，无论选择了哪个变换工具，都可以使用这些控件。最方便的控件取决于您使用的鼠标或触控板。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>操作</strong></th>
+<th style="text-align:left"><strong>三键鼠标</strong></th>
+<th style="text-align:left"><strong>双键鼠标或触控板</strong></th>
+<th style="text-align:left"><strong>只有一个鼠标按钮或触控板的Mac</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>平移视图</strong></td>
+<td style="text-align:left">按住中间鼠标按钮然后拖动</td>
+<td style="text-align:left">按住<strong>Alt</strong>+<strong>Control</strong>键+左键单击，然后拖动</td>
+<td style="text-align:left">按住<strong>Option</strong>+<strong>Command</strong>键+左键单击，然后拖动</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>围绕旋转</strong></td>
+<td style="text-align:left">按住<strong>Alt</strong>+左键单击，然后拖动</td>
+<td style="text-align:left">按住<strong>Alt</strong>+左键单击，然后拖动</td>
+<td style="text-align:left">按住<strong>Option</strong>+左键单击，然后拖动</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缩放视图</strong></td>
+<td style="text-align:left">使用滚轮滚动，或按住<strong>Alt</strong>+右键单击，然后拖动</td>
+<td style="text-align:left">按住<strong>Alt</strong>+右键单击，然后拖动</td>
+<td style="text-align:left">使用两指滑动的方法进行缩放，或按住<strong>Option</strong>+<strong>Control</strong>键+左键单击，然后拖动</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>更改速度</strong>（仅在飞行模式下可用）</td>
+<td style="text-align:left">在移动时使用滚轮滚动。</td>
+<td style="text-align:left">在移动时用两根手指拖动</td>
+<td style="text-align:left">在移动时用两根手指拖动</td>
+</tr>
+</tbody>
+</table>
+<h2 id="将视图居中于gameobject">将视图居中于GameObject <a href="#%e5%b0%86%e8%a7%86%e5%9b%be%e5%b1%85%e4%b8%ad%e4%ba%8egameobject" class="anchor">🔗</a></h2><p>要将场景视图居中于GameObject，请在Hierarchy中选择GameObject，然后将鼠标移动到场景视图上并按下键<strong>F</strong>。如果GameObject已经被选择，<strong>F</strong>将缩放到轴心点。此功能还可以在菜单栏中找到，路径为<strong>Edit</strong> &gt; <strong>Frame Selected</strong>。</p>
+<p>要在GameObject移动时锁定视图，请按键<strong>Shift+F</strong>。此功能也可以在菜单栏中找到，路径为<strong>Edit</strong> &gt; <strong>Lock View to Selected</strong>。</p>
+<h1 id="场景视图摄像机">场景视图摄像机 <a href="#%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e6%91%84%e5%83%8f%e6%9c%ba" class="anchor">🔗</a></h1><p>摄像机设置菜单包含配置<strong>场景</strong>摄像机的选项。这些调整不会影响具有摄像机组件的<strong>游戏对象</strong>的设置。</p>
+<p>要打开场景摄像机设置菜单，请在<strong>场景视图</strong>中的视图选项叠加层中点击摄像机图标。</p>
+<p>您还可以使用SceneView.CameraSetting API在脚本中配置场景摄像机。</p>
+<p><strong>提示</strong>：要将属性重置为默认值，点击场景摄像机设置菜单右上角的齿轮图标，然后选择<strong>重置</strong>。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneViewCameraSettings.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Field of View</strong></td>
+<td style="text-align:left">更改场景摄像机的视野角度。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Dynamic Clipping</strong></td>
+<td style="text-align:left">启用后，编辑器会根据场景的视口大小自动计算摄像机的近裁剪面和远裁剪面。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Clipping Planes</strong></td>
+<td style="text-align:left">设置摄像机开始和停止渲染场景中的游戏对象距摄像机的距离。这些距离适用于透视投影模式和正交（等距）投影模式。当禁用<strong>动态裁剪</strong>时，<strong>近裁剪面</strong>和<strong>远裁剪面</strong>属性是可修改的。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>近裁剪面</strong></td>
+<td>设置编辑器渲染游戏对象时距离摄像机最近的点。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>远裁剪面</strong></td>
+<td>设置编辑器渲染游戏对象时距离摄像机最远的点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Occlusion Culling</strong></td>
+<td style="text-align:left">在场景视图中启用遮挡剔除。这样可以防止编辑器渲染位于其他游戏对象后面而摄像机无法看到的游戏对象。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Camera Easing</strong></td>
+<td style="text-align:left">使摄像机在场景视图中的运动中起到缓动效果。这样，当摄像机开始移动时，它会缓慢启动而不是立即以全速开始，并在停止时缓慢减速。您可以在API中设置持续时间。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Camera Acceleration</strong></td>
+<td style="text-align:left">在移动摄像机时启用加速度。启用后，摄像机开始时以基于速度值的速度移动，并持续增加速度，直到停止移动。禁用后，摄像机根据<strong>相机速度</strong>加速到一个恒定速度。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Camera Speed</strong></td>
+<td style="text-align:left">设置场景视图中场景摄像机使用的当前速度。在飞行模式下，您可以在移动时更改摄像机的速度。要执行此操作，请使用鼠标滚轮或在触控板上拖动两个手指。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>最小值</strong></td>
+<td>设置场景视图中摄像机的最小速度。有效值介于0.01和98之间。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>最大值</strong></td>
+<td>设置场景视图中摄像机的最大速度。有效值介于0.02和99之间。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="在第一人称视角下控制摄像机">在第一人称视角下控制摄像机 <a href="#%e5%9c%a8%e7%ac%ac%e4%b8%80%e4%ba%ba%e7%a7%b0%e8%a7%86%e8%a7%92%e4%b8%8b%e6%8e%a7%e5%88%b6%e6%91%84%e5%83%8f%e6%9c%ba" class="anchor">🔗</a></h1><p>通过摄像机浏览<strong>场景</strong>视图，在第一人称视角下工作，以更好地构图。</p>
+<p>您可以使用摄像机覆盖层选择并控制具有相机或Cinemachine相机组件的<strong>游戏对象</strong>，以第一人称视角来进行操作。</p>
+<p>在控制摄像机时，您可以像使用场景摄像机时一样使用编辑器工具。例如，选择一个游戏对象并按下F键，将镜头定位到特定的游戏对象上。您还可以在控制摄像机时调整游戏对象的位置、方向和比例，以改变画面的构图。</p>
+<p>可以使用摄像机覆盖层来调整直接控制的摄像机的过扫描。使用过扫描，您可以有意地在摄像机的视图中看到更多或更少的场景，而不是摄像机的最终输出所显示的内容。</p>
+<p>摄像机覆盖层支持时间轴和动画摄像机路径编辑和动画摄像机。通过以第一人称视角控制摄像机来为其游戏对象生成关键帧，以便动画摄像机的编辑和生成。</p>
+<p>要在第一人称视角下控制摄像机，请按照以下步骤操作：</p>
+<ol>
+<li>按下**`**键打开覆盖层菜单。</li>
+<li>在覆盖层菜单中，启用摄像机覆盖层。</li>
+<li>在摄像机覆盖层的下拉列表中，选择要以第一人称视角控制的摄像机。</li>
+<li>选择<strong>以第一人称视角控制所选摄像机</strong>。</li>
+<li>要调整过扫描的大小和不透明度，请选择<strong>配置过扫描设置</strong>，然后执行以下操作：
+<ul>
+<li>要选择视图指南的大小，请输入<strong>过扫描</strong>的值或使用鼠标上的滚轮。1是默认值。输入大于1的值以查看比摄像机视锥更多的内容。输入小于1的值进行缩放，并查看比摄像机视锥更少的内容。</li>
+<li>要调整视图指南的不透明度，请输入<strong>过扫描不透明度</strong>的值。</li>
+</ul>
+</li>
+<li>使用场景视图导航控件在场景中移动摄像机。</li>
+<li>要退出摄像机视图，在摄像机覆盖层中选择<strong>返回场景摄像机</strong>。</li>
+</ol>
+<h1 id="挑选并选择游戏对象">挑选并选择游戏对象 <a href="#%e6%8c%91%e9%80%89%e5%b9%b6%e9%80%89%e6%8b%a9%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h1><p>您可以在场景视图或层级窗口中选择一个单独的<strong>游戏对象</strong>，也可以同时选择多个游戏对象。</p>
+<p>Unity会在场景视图中突出显示选定的游戏对象及其子对象。默认情况下，选择的轮廓颜色为橙色，子对象的轮廓颜色为蓝色。您还可以选择使用不同颜色突出显示选定游戏对象的线框。可以从首选项窗口中更改所有这些轮廓突出显示的颜色。要打开<strong>首选项</strong>窗口，请转到主菜单中的<strong>Edit &gt; Preferences</strong>（macOS：<strong>Unity &gt; Settings</strong>）。</p>
+<p>有关轮廓和线框选择可视化效果的更多信息，请参阅Gizmos菜单的文档。</p>
+<h2 id="选择游戏对象">选择游戏对象 <a href="#%e9%80%89%e6%8b%a9%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h2><p>要选择单个游戏对象，请选择以下方法之一：</p>
+<ul>
+<li>在场景视图中单击它。如果您反复单击重叠游戏对象之间的共享空间，则选择将在它们之间循环。</li>
+<li>在层级窗口中点击其名称。</li>
+</ul>
+<p>要选择或取消选择多个游戏对象，请选择以下方法之一：</p>
+<ul>
+<li>
+<p>在多个游戏对象周围拖动一个矩形框。Unity会选择在此边界框内的所有内容。</p>
+</li>
+<li>
+<p>按住<strong>Shift</strong>键并在<strong>场景</strong>中单击游戏对象。您还可以使用<strong>Ctrl</strong>（Windows）或<strong>Command</strong>（macOS）键添加或删除选定的游戏对象。</p>
+<p>**注意：**当编辑器中的某个功能需要选择一个单一的游戏对象执行操作时，它会寻找一个“活动”对象。例如，在轴心模式下，Unity需要决定在转换工具中使用哪个游戏对象作为轴心点。默认情况下，Unity认为您最后选择的游戏对象是“活动”对象。当您Shift+单击所选的多个游戏对象中的其中一个时，您会改变哪一个是活动对象。如果一个游戏对象在场景视图中处于活动状态，Unity不会显示任何可见的提示。但是，在轴心模式下使用多个对象重复Shift+单击时，您可以看到哪个游戏对象是活动对象。</p>
+</li>
+</ul>
+<p>但是，如果您正在使用包含大量场景物体（如游戏对象、地形对象、摄像机和灯光）的大型场景，并选择多个对象可能会非常棘手。为了帮助您只选择您想要的物体，您可以使用场景拾取控件来阻止一些物体被拾取。</p>
+<h2 id="场景拾取控件">场景拾取控件 <a href="#%e5%9c%ba%e6%99%af%e6%8b%be%e5%8f%96%e6%8e%a7%e4%bb%b6" class="anchor">🔗</a></h2><p>您可以在编辑器中切换场景拾取控件的打开和关闭以标记哪些物体在您的编辑器工作中是可选的。默认情况下，所有物体都是可选的，但是您可以选择Unity在您单击它们时跳过的场景物体。例如，如果您正在使用超过10,000个对象的大型场景，您可以临时阻止特定的游戏对象被选择，以防止意外编辑。</p>
+<p>一旦将物体标记为不可选，Unity将继续渲染它们，即使您无法再在场景视图中选择或编辑它们。选择状态仅在编辑器中持续存在，并且仅适用于设置状态的项目中的用户。更改选择状态不会“脏化”场景（即，不计为修改）。</p>
+<p>场景拾取控件与场景可见性控件非常相似。</p>
+<h3 id="切换拾取能力">切换拾取能力 <a href="#%e5%88%87%e6%8d%a2%e6%8b%be%e5%8f%96%e8%83%bd%e5%8a%9b" class="anchor">🔗</a></h3><p>您可以从层级窗口控制单个游戏对象的场景拾取能力。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-picking-icons-hierarchy.png" alt=""></p>
+<p>要切换场景拾取能力，可以执行以下操作：</p>
+<ul>
+<li>
+<p>单击层级窗口中游戏对象的拾取能力图标，以在启用和禁用拾取游戏对象及其子对象之间切换。</p>
+<p>切换游戏对象及其子对象的拾取能力会影响所有子游戏对象，从“目标”游戏对象一直到层级的底部。</p>
+</li>
+<li>
+<p>按住<strong>Alt</strong>键点击层级窗口中游戏对象的拾取能力图标，以仅切换拾取游戏对象的启用和禁用。</p>
+<p>仅切换单个游戏对象的拾取能力不会影响其子对象。它们会保留先前的拾取能力状态。</p>
+</li>
+</ul>
+<p>由于可以为整个分支或单个游戏对象切换拾取能力，您可能会出现可以拾取的游戏对象，但却无法拾取其子对象或父对象的情况。为了帮助您跟踪情况，拾取能力图标会更改以指示每个游戏对象的状态。</p>
+<p><img src="/2023-08-03-unity-document-13/scene-picking-icons-ovw.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/ScenePickingPickableUnpickableChildren.png" alt=""></td>
+<td style="text-align:left">您可以选择游戏对象，但无法选择其中某些子对象。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/ScenePickingUnpickablePickableChildren.png" alt=""></td>
+<td style="text-align:left">您无法选择游戏对象，但可以选择其中某些子对象。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>C</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/ScenePickingUnpickable.png" alt=""></td>
+<td style="text-align:left">您无法选择游戏对象及其子对象。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>D</strong></td>
+<td style="text-align:left"><img src="/2023-08-03-unity-document-13/ScenePickingPickable.png" alt=""></td>
+<td style="text-align:left">您可以选择游戏对象及其子对象。此图标仅在将鼠标悬停在游戏对象上时才会出现。</td>
+</tr>
+</tbody>
+</table>
+<p>您在层级窗口中对场景拾取进行的任何更改都是持久的。Unity会在您使用<strong>选择全部</strong>或<strong>取消选择全部</strong>功能、关闭并重新打开场景等操作时重新应用这些更改。</p>
+<h1 id="场景可见性">场景可见性 <a href="#%e5%9c%ba%e6%99%af%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h1><p>Unity的<strong>场景</strong>可见性控件允许您在场景视图中快速隐藏和显示<strong>游戏对象</strong>，而不会改变它们在游戏中的可见性。这对于处理大型或复杂场景非常有用，可以更轻松地查看和选择特定的游戏对象。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisExVisible.png" alt=""></p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisExHidden.png" alt=""></p>
+<p>使用可见性选项比停用游戏对象更安全，因为可见性选项仅影响场景视图。这意味着您不会意外地从渲染的场景中移除游戏对象，也不会触发不必要的光照、遮挡和其他系统的烘焙作业。</p>
+<p>编辑器将场景可见性设置保存到一个名为<code>SceneVisibilityState.asset</code>的文件中，该文件位于项目的<code>Library</code>文件夹中。场景会从此文件中读取并在您更改可见性设置时自动更新它。这使得您的设置可以持久保存，从而在不同的会话之间保持一致。由于Unity的源代码管理设置通常会忽略<code>Library</code>文件夹，更改可见性设置不应该导致源代码管理冲突。</p>
+<p>您可以在层级窗口中为特定的场景项设置可见性，但如果场景范围内的可见性设置被禁用，则被标记为隐藏的项仍可能出现在场景视图中。要更改此设置，您可以在工具栏中切换场景可见性。</p>
+<p>要从脚本中控制场景可见性，请参考SceneVisibilityManager。</p>
+<p>场景可见性控制与场景拾取控制非常相似。</p>
+<h2 id="设置游戏对象及其子对象的场景可见性">设置游戏对象及其子对象的场景可见性 <a href="#%e8%ae%be%e7%bd%ae%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1%e5%8f%8a%e5%85%b6%e5%ad%90%e5%af%b9%e8%b1%a1%e7%9a%84%e5%9c%ba%e6%99%af%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h2><p>您可以从层级窗口控制单个游戏对象的场景可见性。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisIconsHierarchy.png" alt=""></p>
+<p>要切换场景可见性：</p>
+<ul>
+<li>单击层级窗口中游戏对象的可见性图标，或按下<strong>H</strong>键，以在隐藏和显示游戏对象及其子对象之间进行切换。</li>
+</ul>
+<p>切换对象及其子对象的可见性会影响所有子对象，从“目标”对象一直到层级结构的最底部。</p>
+<ul>
+<li>按住<strong>Alt</strong>键并单击层级窗口中游戏对象的可见性图标，以在隐藏和显示游戏对象之间进行切换。</li>
+</ul>
+<p>切换单个对象的可见性不会影响其子对象。它们将保留其先前的可见性状态。</p>
+<p><strong>提示</strong>：您还可以单击场景的可见性图标，以在场景中隐藏和显示标记为隐藏的项目之间进行切换。</p>
+<p>由于您可以为整个分支或单个游戏对象切换可见性，可能会出现游戏对象是可见的，但其子对象或父对象是隐藏的情况。为了帮助您跟踪发生了什么，可见性图标会更改以指示每个游戏对象的状态。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisIconsOvw.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A</strong></td>
+<td><img src="/2023-08-03-unity-document-13/SceneVisVisibleHiddenChildren.png" alt=""></td>
+<td>游戏对象是可见的，但其中一些子对象是隐藏的。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B</strong></td>
+<td><img src="/2023-08-03-unity-document-13/SceneVisHiddenVisibleChildren.png" alt=""></td>
+<td>游戏对象是隐藏的，但其中一些子对象是可见的。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>C</strong></td>
+<td><img src="/2023-08-03-unity-document-13/SceneVisVisible.png" alt=""></td>
+<td>游戏对象及其子对象是可见的。当您将鼠标悬停在游戏对象上时，此图标才会出现。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>D</strong></td>
+<td><img src="/2023-08-03-unity-document-13/SceneVisHidden.png" alt=""></td>
+<td>游戏对象及其子对象是隐藏的。</td>
+</tr>
+</tbody>
+</table>
+<p>您在层级窗口中进行的场景可见性更改是持久的。Unity会在您在场景视图中切换场景可见性开关、关闭并重新打开场景等操作时重新应用这些更改。</p>
+<h2 id="打开和关闭场景可见性">打开和关闭场景可见性 <a href="#%e6%89%93%e5%bc%80%e5%92%8c%e5%85%b3%e9%97%ad%e5%9c%ba%e6%99%af%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h2><p>在场景视图的<strong>工具栏</strong>中，场景可见性开关可以显示或隐藏场景中的游戏对象。单击它以切换场景可见性开关的状态。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisSceneViewToggle.png" alt=""></p>
+<p>关闭场景可见性实际上是将您在层级窗口中设置的场景可见性设置静音，但不会删除或更改它们。所有隐藏的游戏对象都暂时可见。</p>
+<p>重新打开场景可见性将重新应用在层级窗口中设置的可见性设置。</p>
+<h2 id="隔离选定的游戏对象">隔离选定的游戏对象 <a href="#%e9%9a%94%e7%a6%bb%e9%80%89%e5%ae%9a%e7%9a%84%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h2><p>隔离视图临时覆盖场景可见性设置，以使只有选定的游戏对象可见，其他所有内容都会被隐藏。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneVisIsolation.png" alt=""></p>
+<p>要进入隔离视图：</p>
+<ul>
+<li>
+<p>按下<strong>Shift + H</strong>键。</p>
+<p>这将隔离所有选定的游戏对象及其子对象。隔离隐藏的游戏对象会使它们可见，直到您退出隔离视图。</p>
+</li>
+</ul>
+<p>在隔离视图中，您可以继续更改场景可见性设置，但在退出视图时，所做的任何更改都将丢失。</p>
+<p>要退出隔离视图：</p>
+<ul>
+<li>
+<p>再次按下<strong>Shift + H</strong>键，或在场景视图中单击<strong>退出</strong>按钮。</p>
+<p>退出隔离视图会恢复您最初的场景可见性设置。</p>
+</li>
+</ul>
+<h1 id="场景视图视图选项工具栏">场景视图视图选项工具栏 <a href="#%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e8%a7%86%e5%9b%be%e9%80%89%e9%a1%b9%e5%b7%a5%e5%85%b7%e6%a0%8f" class="anchor">🔗</a></h1><p>您可以使用<strong>场景</strong>视图视图选项<strong>工具栏</strong>覆盖来选择各种查看场景的选项，以及启用/禁用光照和音频。这些控件只会在开发期间影响<strong>场景视图</strong>，不会对构建游戏产生影响。</p>
+<p><img src="/2023-08-03-unity-document-13/SceneViewControlBar.png" alt=""></p>
+<h2 id="绘制模式菜单">绘制模式菜单 <a href="#%e7%bb%98%e5%88%b6%e6%a8%a1%e5%bc%8f%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>第一个下拉菜单选择要用于表示场景的<strong>绘制模式</strong>。可用选项如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>绘制模式</strong></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Shading Mode</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">平面着色</td>
+<td style="text-align:left">显示带有其纹理的表面。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">线框</td>
+<td style="text-align:left">用线框表示绘制网格。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">带线框的平面着色</td>
+<td style="text-align:left">显示带纹理且带有覆盖线框的网格。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Miscellaneous</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">阴影级联</td>
+<td style="text-align:left">显示定向光的阴影级联。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">渲染路径</td>
+<td style="text-align:left">使用颜色代码为每个游戏对象显示渲染路径：蓝色表示延迟着色，黄色表示正向渲染，红色表示顶点光照。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">Alpha通道</td>
+<td style="text-align:left">使用Alpha渲染颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">重绘</td>
+<td style="text-align:left">将<strong>游戏对象</strong>渲染为透明的“轮廓”。透明颜色会叠加，使您可以轻松发现一个对象绘制在另一个对象上的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">Mipmaps</td>
+<td style="text-align:left">使用颜色代码显示理想纹理大小：红色表示纹理比所需的尺寸大（在当前的距离和分辨率下），蓝色表示纹理可能较大。理想纹理大小取决于应用程序运行的分辨率以及相机能接近特定表面的程度。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">纹理流</td>
+<td style="text-align:left">根据纹理流系统中的状态以绿色、红色或蓝色对游戏对象进行着色。有关详细信息，请参阅有关纹理流调试的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>精灵遮罩</strong></td>
+<td style="text-align:left">精灵遮罩用于隐藏或显示精灵或一组精灵的部分。有关更多信息，请参阅精灵遮罩文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Deferred</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">这些模式允许您单独查看G缓冲区（<strong>反照率</strong>，<strong>高光</strong>，<strong>光滑度</strong>和<strong>法线</strong>）的各个元素。有关更多信息，请参阅延迟渲染文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Global Illumination</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">可用以下模式来帮助可视化全局照明系统的各个方面：<strong>系统</strong>，<strong>聚类</strong>，<strong>聚光</strong>，<strong>UV图</strong>和<strong>贡献者/接收器</strong>。有关每个模式的详细信息，请参阅全局照明可视化文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Realtime Global Illumination</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">可用以下模式来帮助可视化Enlighten实时全局照明系统的各个方面：<strong>反照率</strong>，<strong>自发光</strong>，<strong>间接光</strong>和<strong>方向性</strong>。有关每个模式的详细信息，请参阅全局照明可视化文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Baked Global Illumination</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">可用以下模式来帮助可视化烘焙全局照明系统的各个方面：<strong>烘焙光照贴图</strong>，<strong>方向性</strong>，<strong>阴影蒙版</strong>，<strong>反照率</strong>，<strong>自发光</strong>，<strong>UV图</strong>，<strong>像素有效性</strong>，<strong>UV重叠</strong>，<strong>烘焙光照剔除</strong>，<strong>光照图索引</strong>和<strong>光照重叠</strong>。有关每个模式的详细信息，请参阅全局照明可视化文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Material Validator</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">有两种<strong>材质验证器</strong>模式：<strong>反照率</strong>和<strong>金属高光</strong>。这些模式可用于检查您的基于物理的材质是否使用了推荐范围内的值。有关更多信息，请参阅基于物理的材质验证器文档。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2d灯光和音频开关">2D，灯光和音频开关。 <a href="#2d%e7%81%af%e5%85%89%e5%92%8c%e9%9f%b3%e9%a2%91%e5%bc%80%e5%85%b3" class="anchor">🔗</a></h2><p>在<strong>渲染模式</strong>菜单右侧有三个按钮，用于打开或关闭特定的场景视图选项：</p>
+<ul>
+<li><strong>2D</strong>：在场景中切换2D和3D视图。在2D模式下，<strong>相机</strong>朝向正Z轴，X轴指向右侧，Y轴指向上方。</li>
+<li><strong>灯光</strong>：打开或关闭场景视图的光照效果（光源，物体阴影等）。</li>
+<li><strong>音频</strong>：打开或关闭场景视图的音频效果。</li>
+</ul>
+<h2 id="特效按钮和菜单">特效按钮和菜单 <a href="#%e7%89%b9%e6%95%88%e6%8c%89%e9%92%ae%e5%92%8c%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>菜单（通过右侧<strong>音频</strong>按钮旁边的图标激活）具有用于在场景视图中启用或禁用渲染效果的选项。</p>
+<ul>
+<li><strong>天空盒</strong>：在场景的背景中渲染天空盒纹理。</li>
+<li><strong>云层</strong>：显示云层和体积云。仅在使用支持云层的SRP时才可用。</li>
+<li><strong>雾效</strong>：随着距离相机的增加逐渐将视图淡化为一个平面颜色。</li>
+<li><strong>光晕</strong>：在光源上显示<strong>镜头光晕</strong>效果。</li>
+<li><strong>始终刷新</strong>：定义动画材质是否显示动画效果。当选中时，任何基于时间的效果（例如着色器）将会动画。例如，场景效果（例如地形上的草波动）。</li>
+<li><strong>后期处理</strong>：显示后期处理效果。</li>
+<li><strong>粒子系统</strong>：显示粒子系统效果。</li>
+</ul>
+<p><strong>特效</strong>按钮本身是一个开关，可以一次启用或禁用所有选定的效果。</p>
+<h2 id="场景可见性开关">场景可见性开关 <a href="#%e5%9c%ba%e6%99%af%e5%8f%af%e8%a7%81%e6%80%a7%e5%bc%80%e5%85%b3" class="anchor">🔗</a></h2><p>场景可见性开关用于切换游戏对象的场景可见性。当开启时，Unity应用场景可见性设置。当关闭时，Unity将忽略这些设置。</p>
+<p>有关更多信息，请参阅场景可见性的文档。</p>
+<h2 id="相机设置菜单">相机设置菜单 <a href="#%e7%9b%b8%e6%9c%ba%e8%ae%be%e7%bd%ae%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>相机设置菜单包含用于配置场景视图相机的选项。有关更多信息，请参阅相机设置的文档。</p>
+<h2 id="gizmos菜单">Gizmos菜单 <a href="#gizmos%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p><strong>Gizmos</strong>菜单包含用于显示对象、图标和Gizmos的选项。此菜单在场景视图和游戏视图中都可用。有关更多信息，请参阅Gizmos菜单的文档页面。</p>
+<h1 id="gizmos菜单-1">Gizmos菜单 <a href="#gizmos%e8%8f%9c%e5%8d%95-1" class="anchor">🔗</a></h1><p>场景视图和游戏视图都有一个<strong>Gizmos</strong>菜单。在场景视图或游戏视图的<strong>工具栏</strong>中点击<strong>Gizmos</strong>按钮以访问<strong>Gizmos</strong>菜单。</p>
+<p><img src="/2023-08-03-unity-document-13/gizmo-button-scene-view.png" alt=""></p>
+<p><img src="/2023-08-03-unity-document-13/gizmo-button-game-view.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">功能</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>3D Icons</strong></td>
+<td style="text-align:left"><strong>3D图标</strong>复选框用于控制编辑器是否在场景视图中以3D方式绘制组件图标（例如光源和相机）。当勾选<strong>3D图标</strong>复选框时，组件图标会根据其与相机的距离进行编辑器缩放，并被场景中的游戏对象遮挡。使用滑块来控制它们的外观整体大小。当未勾选<strong>3D图标</strong>复选框时，组件图标以固定大小绘制，并始终显示在场景视图中的任何游戏对象的前面。有关图像和进一步信息，请参见下面的Gizmos和Icons部分。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fade Gizmos</strong></td>
+<td style="text-align:left">淡出并停止渲染在屏幕上较小的Gizmos。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Selection Outline</strong></td>
+<td style="text-align:left">选择<strong>选择轮廓</strong>以显示带有彩色轮廓的选定游戏对象，以及带有不同彩色轮廓的其子对象。默认情况下，Unity以橙色突出显示选定的游戏对象，并以蓝色突出显示子游戏对象。**注意：**此选项仅在场景视图的Gizmos菜单中可用；无法在游戏视图的Gizmos菜单中启用。有关图像和进一步信息，请参见下面的选择轮廓和选择线框部分。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Selection Wire</strong></td>
+<td style="text-align:left">选择<strong>选择线框</strong>以显示带有网格线框的选定游戏对象。要更改选择线框的颜色，转到主菜单中的<strong>Edit &gt; Preferences</strong>（macOS：<strong>Unity &gt; Settings</strong>），选择<strong>Colors</strong>，并更改<strong>Selected Wireframe</strong>设置。此选项仅在场景视图的Gizmos菜单中可用；无法在游戏视图的Gizmos菜单中启用。有关图像和进一步信息，请参见下面的选择轮廓和选择线框部分。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Light Probe Visualization</strong></td>
+<td style="text-align:left">选择要在场景视图中显示的光探头。默认值为<strong>仅使用的探头</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>仅使用的探头</strong></td>
+<td>Display only Light Probes that affect the current selection.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>全部探头，没有单元格</strong></td>
+<td>Display all Light Probes.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>全部探头，包括单元格</strong></td>
+<td>Display all Light Probes, and the tetrahedrons that Unity uses for interpolation of Light Probe data.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>无</strong></td>
+<td>Display no Light Probes.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Display Weights</strong></td>
+<td style="text-align:left">启用时，Unity会从用于活动选择的光探头绘制一条线到用于插值的四面体上的位置。这是一种调试探头插值和放置问题的方法。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Display Occlusion</strong></td>
+<td style="text-align:left">启用时，如果<strong>照明模式</strong>设置为<strong>Shadowmask</strong>，Unity会显示光探头的遮挡数据。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Highlight Invalid Cells</strong></td>
+<td style="text-align:left">启用以突出显示Unity无法用于间接照明的四面体。例如，如果光探头非常靠近。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Recently Changed</strong></td>
+<td style="text-align:left">控制已最近修改的组件和脚本的图标和Gizmos的可见性。此部分在您首次更改一个或多个项后出现，并在随后的更改后更新。有关更多信息，请参见下面的内置组件、脚本和最近更改的项部分。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scripts</strong></td>
+<td style="text-align:left">控制场景中脚本的图标和Gizmos的可见性。此部分仅在您的场景使用符合特定条件的脚本时出现。有关更多信息，请参见下面的内置组件、脚本和最近更改的项部分。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Built-in Components</strong></td>
+<td style="text-align:left">控制所有具有图标或Gizmos的组件类型的图标和Gizmos的可见性。有关更多信息，请参见下面的内置组件、脚本和最近更改的项部分。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="gizmos和icons">Gizmos和Icons <a href="#gizmos%e5%92%8cicons" class="anchor">🔗</a></h2><h3 id="gizmos">Gizmos <a href="#gizmos" class="anchor">🔗</a></h3><p><strong>Gizmos</strong>是与场景中的游戏对象相关联的图形。某些Gizmos仅在选择了<strong>GameObject</strong>时绘制，而其他Gizmos无论选择了哪个GameObject都会由编辑器绘制。它们通常是用代码绘制而不是位图图形的线框，并且可以是交互式的。<strong>Camera</strong> Gizmo和<strong>Light direction</strong> Gizmo（如下所示）都是内置的Gizmos的示例；您还可以使用脚本创建自己的Gizmos。有关相机的更多信息，请参见Understanding Frustum文档。</p>
+<p>某些Gizmos是被动的图形覆盖，用于参考（例如<strong>Light direction</strong> Gizmo，显示了光线的方向）。其他一些Gizmos是交互式的，例如AudioSource的<strong>spherical range</strong> Gizmo，您可以点击并拖动以调整AudioSource的最大范围。</p>
+<p><strong>Move</strong>、<strong>Scale</strong>、<strong>Rotate</strong>和<strong>Transform</strong>工具也是交互式的Gizmos。请参阅位置游戏对象文档以了解有关这些工具的更多信息。</p>
+<p><img src="/2023-08-03-unity-document-13/IconAndGizmoForLightAndCamera.png" alt=""></p>
+<p>请参阅脚本参考页面的OnDrawGizmos函数以了解有关在脚本中实现自定义Gizmos的更多信息。</p>
+<h3 id="icons">Icons <a href="#icons" class="anchor">🔗</a></h3><p>您可以在游戏视图或场景视图中显示<strong>图标</strong>。它们是扁平的广告牌式覆盖层，您可以使用它们清楚地指示游戏对象在工作时的位置。<strong>Camera</strong>图标和<strong>Light</strong>图标是内置图标的示例；您还可以将自己的图标分配给游戏对象或单独的脚本（参见指南文档以了解如何进行分配图标）。</p>
+<p><img src="/2023-08-03-unity-document-13/GizmosMenu2.png" alt=""></p>
+<p><img src="/2023-08-03-unity-document-13/GizmoMenu2Dvs3Dicons.png" alt=""></p>
+<h2 id="选择轮廓和选择线框">选择轮廓和选择线框 <a href="#%e9%80%89%e6%8b%a9%e8%bd%ae%e5%bb%93%e5%92%8c%e9%80%89%e6%8b%a9%e7%ba%bf%e6%a1%86" class="anchor">🔗</a></h2><h3 id="选择轮廓">选择轮廓 <a href="#%e9%80%89%e6%8b%a9%e8%bd%ae%e5%bb%93" class="anchor">🔗</a></h3><p>启用<strong>选择轮廓</strong>后，选定的游戏对象及其子游戏对象周围会出现一个轮廓。默认情况下，Unity使用橙色突出显示选定的游戏对象，使用蓝色突出显示子游戏对象。您可以在Unity首选项中更改这些颜色（请参见下面的选择颜色）。</p>
+<p><img src="/2023-08-03-unity-document-13/GameObjectSelectedOutline.jpg" alt=""></p>
+<p>当您选择一个游戏对象时，Unity会突出显示其所有的子游戏对象（以及它们的子游戏对象，依此类推），但不会突出显示父游戏对象（或者它们的父游戏对象，依此类推）。</p>
+<p><img src="/2023-08-03-unity-document-13/GameObjectSelectedOutlineParentChild.jpg" alt=""></p>
+<p>如果选定的游戏对象超出了场景视图的边界，选择轮廓会沿着窗口边缘运行：</p>
+<p><img src="/2023-08-03-unity-document-13/GameObjectSelectedBeyondEdges.png" alt=""></p>
+<h3 id="选择线框">选择线框 <a href="#%e9%80%89%e6%8b%a9%e7%ba%bf%e6%a1%86" class="anchor">🔗</a></h3><p>启用<strong>选择线框</strong>时，当您在场景视图或层级窗口中选择一个游戏对象时，该游戏对象的网格线框就会在场景视图中变得可见：</p>
+<p><img src="/2023-08-03-unity-document-13/GameObjectSelectedWire.png" alt=""></p>
+<h3 id="选择颜色">选择颜色 <a href="#%e9%80%89%e6%8b%a9%e9%a2%9c%e8%89%b2" class="anchor">🔗</a></h3><p>您可以为选择的线框设置自定义颜色。</p>
+<ol>
+<li>打开<strong>Unity</strong> &gt; <strong>Preferences</strong>（macOS）或<strong>Edit</strong> &gt; <strong>Preferences</strong>（Windows）以打开首选项编辑器。</li>
+<li>在颜色选项卡上，更改以下一个或多个颜色：
+<ul>
+<li><strong>Selected Children Outline</strong>：选定的游戏对象子级的轮廓颜色。</li>
+<li><strong>Selected Outline</strong>：选定的游戏对象的轮廓颜色。</li>
+<li><strong>Wireframe Selected</strong>：选定的游戏对象的线框颜色。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2023-08-03-unity-document-13/game-object-selected-custom-colors.png" alt=""></p>
+<h2 id="内置组件脚本和最近更改的项目">内置组件、脚本和最近更改的项目 <a href="#%e5%86%85%e7%bd%ae%e7%bb%84%e4%bb%b6%e8%84%9a%e6%9c%ac%e5%92%8c%e6%9c%80%e8%bf%91%e6%9b%b4%e6%94%b9%e7%9a%84%e9%a1%b9%e7%9b%ae" class="anchor">🔗</a></h2><p>使用<strong>Gizmos</strong>菜单中的列表来控制各种组件的图标和Gizmos的可见性。该列表分为以下几个部分：</p>
+<p><img src="/2023-08-03-unity-document-13/GizmosMenuAll.png" alt=""></p>
+<h3 id="最近更改">最近更改 <a href="#%e6%9c%80%e8%bf%91%e6%9b%b4%e6%94%b9" class="anchor">🔗</a></h3><p><strong>最近更改</strong>部分控制您最近修改的项目的图标和Gizmos的可见性。当您第一次更改一个或多个项目时，它会出现。在随后的更改后，Unity会更新该列表。</p>
+<h3 id="脚本">脚本 <a href="#%e8%84%9a%e6%9c%ac" class="anchor">🔗</a></h3><p><strong>脚本</strong>部分控制具有以下条件的脚本的图标和Gizmos的可见性：</p>
+<ul>
+<li>为它们分配了一个图标（详见分配图标的文档）。</li>
+<li>实现了OnDrawGizmos函数。</li>
+<li>实现了OnDrawGizmosSelected函数。</li>
+</ul>
+<p>当您的场景包含一个或多个满足上述条件的脚本时，该部分将显示。</p>
+<h3 id="内置组件">内置组件 <a href="#%e5%86%85%e7%bd%ae%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h3><p><strong>内置组件</strong>部分控制所有具有图标或Gizmo的组件类型的可见性。</p>
+<p>在场景视图中没有显示图标或Gizmo的内置组件类型（例如Rigidbody）不在此列表中。</p>
+<h3 id="切换图标可见性">切换图标可见性 <a href="#%e5%88%87%e6%8d%a2%e5%9b%be%e6%a0%87%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h3><p><strong>图标</strong>列显示或隐藏每个组件类型的图标。在主场景视图窗口中会显示完整彩色的图标，而半透明的图标则不会显示。</p>
+<p><img src="/2023-08-03-unity-document-13/gizmos-icon.png" alt=""></p>
+<p>要在场景视图中切换图标的可见性，请单击<strong>图标</strong>列中的任何图标。</p>
+<p><strong>注意：<strong>如果列表中的某个项目具有Gizmo但没有图标，则该项目的</strong>图标</strong>列为空。</p>
+<h3 id="更改脚本图标">更改脚本图标 <a href="#%e6%9b%b4%e6%94%b9%e8%84%9a%e6%9c%ac%e5%9b%be%e6%a0%87" class="anchor">🔗</a></h3><p>具有自定义图标的脚本在<strong>图标</strong>列中显示一个小的下拉菜单箭头。要更改自定义图标，请单击箭头以打开选择图标菜单。</p>
+<p><img src="/2023-08-03-unity-document-13/GizmosMenuIconsMenu.png" alt=""></p>
+<h3 id="切换gizmo可见性">切换Gizmo可见性 <a href="#%e5%88%87%e6%8d%a2gizmo%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h3><p>要控制编辑器是否为特定的组件类型（例如，<strong>Collider</strong>的线框Gizmo或<strong>Camera</strong>的视野锥体Gizmo）或脚本绘制Gizmo图形，请使用<strong>Gizmo</strong>列中的复选框。</p>
+<ul>
+<li>当复选框被选中时，编辑器会为该组件类型绘制Gizmo。</li>
+<li>当复选框被取消选中时，编辑器不会为该组件类型绘制Gizmo。</li>
+</ul>
+<p><strong>注意：<strong>如果列表中的某个项目具有图标但没有Gizmo，则该项目的</strong>Gizmo</strong>列为空。</p>
+<p>要切换整个部分（所有<strong>内置组件</strong>，所有<strong>脚本</strong>等）的Gizmo可见性，请使用各部分名称旁边的复选框。</p>
+<p><strong>内置组件</strong>复选框切换了该部分中列出的每种组件类型的Gizmo可见性。</p>
+<p>当复选框被切换为启用状态时，该部分中的一个或多个项目类型的Gizmo可见性也会被切换为启用状态。</p>
+<h1 id="场景视图上下文菜单">场景视图上下文菜单 <a href="#%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h1><p>使用<strong>场景</strong>视图上下文菜单可以直接在场景中访问常见的<strong>场景视图</strong>操作，而不是在菜单<strong>工具栏</strong>中进行。</p>
+<p>显示在场景视图上下文菜单中的菜单选项取决于您当前的选择和工具覆盖层中启用的工具上下文。如果您选择了一个<strong>游戏对象</strong>，场景视图上下文菜单将显示该游戏对象和任何相关的附加组件的选项。</p>
+<p>要显示上下文菜单，请在场景视图中右键单击。</p>
+<p>**注意：**您可以选择其他快捷方式以显示场景视图上下文菜单。</p>
+<p>场景视图中的默认工具上下文是<strong>游戏对象</strong>。当启用<strong>游戏对象</strong>工具上下文时，选择游戏对象时，默认情况下，场景视图上下文菜单会显示以下菜单项：</p>
+<ul>
+<li>剪贴板操作，如剪切、复制、粘贴、删除和复制。</li>
+<li>游戏对象视图选项，帮助您在场景视图中可视化所选的游戏对象。</li>
+<li>在场景视图中隔离所选游戏对象的选项，以使只有所选的游戏对象可见。</li>
+<li>向所选的游戏对象添加组件的选项。</li>
+<li>以新窗口打开所选游戏对象的属性的选项。</li>
+<li>Prefab菜单。</li>
+<li>Transform菜单。</li>
+</ul>
+<p>如果游戏对象附加有其他组件，与这些组件相关的操作将显示在场景视图上下文菜单的末尾。</p>
+<p>如果您的项目包含多个工具上下文，您可以使用工具覆盖层中的第一个按钮来选择工具上下文。如果启用了一个不是<strong>游戏对象</strong>的工具上下文，场景视图上下文菜单将显示与您在该工具上下文中的选择相关的选项。例如，如果您的项目包含Splines包并启用了<strong>Splines</strong>工具上下文，则场景视图上下文菜单将显示创建和编辑样条的选项。</p>
+<h1 id="自定义编辑器工具">自定义编辑器工具 <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bc%96%e8%be%91%e5%99%a8%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h1><p>您可以使用EditorTool API创建编辑器工具。</p>
+<p>编辑器工具的上下文决定了该工具在编辑器中所影响的内容。工具可以是全局工具或组件工具。</p>
+<p>您可以通过以下叠加层在场景视图中访问编辑器工具：</p>
+<ul>
+<li>工具叠加层</li>
+<li>工具设置叠加层</li>
+</ul>
+<h2 id="工具上下文">工具上下文 <a href="#%e5%b7%a5%e5%85%b7%e4%b8%8a%e4%b8%8b%e6%96%87" class="anchor">🔗</a></h2><p><code>EditorToolContext API</code>可更改编辑器内置的变换工具所影响的内容。</p>
+<p>默认的工具上下文是GameObject。具有GameObject工具上下文的工具会影响GameObject的变换值。其他上下文可以影响不同的元素。例如，Spline工具上下文使得<strong>移动</strong>、<strong>旋转</strong>和<strong>缩放</strong>工具影响Spline的节点和切线。</p>
+<p>如果您的项目包含多个工具上下文，可以使用工具叠加层中的第一个按钮选择工具上下文。如果未选择工具上下文按钮，则默认的GameObject工具上下文处于活动状态。如果您的项目中没有额外的工具上下文，则无法从工具叠加层中使用工具上下文按钮。</p>
+<h2 id="全局工具-vs-组件工具">全局工具 vs 组件工具 <a href="#%e5%85%a8%e5%b1%80%e5%b7%a5%e5%85%b7-vs-%e7%bb%84%e4%bb%b6%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h2><p>使用EditorTool API创建的工具可以是全局工具或组件工具。</p>
+<h3 id="全局工具">全局工具 <a href="#%e5%85%a8%e5%b1%80%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h3><p>全局工具会影响任何GameObject。</p>
+<p>不管您选择的GameObject的类型是什么，全局工具始终可用。例如，您始终可以访问变换工具，因为变换工具适用于任何GameObject。</p>
+<p>工具叠加层在内置的变换工具（如<strong>移动</strong>、<strong>旋转</strong>、<strong>缩放</strong>和<strong>矩形</strong>）之后的部分显示全局工具。</p>
+<h3 id="组件工具">组件工具 <a href="#%e7%bb%84%e4%bb%b6%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h3><p>组件工具只影响特定的组件。</p>
+<p>只有当您选择的GameObject上附加了工具所属的组件时，才能使用组件工具。例如，只有在选择了带有Light组件的GameObject时，才能使用用于光源的自定义操作工具。</p>
+<p>工具叠加层中的最后几个按钮是组件工具。组件工具根据它们所属的组件分组。组件工具的可用性取决于您在<strong>场景视图</strong>或<strong>层级</strong>窗口中选择的内容。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/03/2023-08-03-unity-document-13/">Unity中文版-Unity’s interface-The Scene view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/02/2023-08-02-unity-document-12/">Unity中文版-Unity’s interface-The Project window(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/01/2023-08-01-unity-document-11/">Unity中文版-Unity’s interface(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/31/2023-07-31-unity-document-10/">Unity中文版-2D or 3D projects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/07/29/2023-07-29-unity-document-9/">Unity中文版-Create with Unity(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(23)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (16)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
