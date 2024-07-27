@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-Device Simulator(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-Device Simulator(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-07 11:13:34 &#43;0800 CST">2023/08/07</time>
+        <span class="split">·</span>
+        <span> 271 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="hierarchy-窗口"><strong>Hierarchy</strong> 窗口 <a href="#hierarchy-%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><p><img src="/2023-08-07-unity-document-16/Hierarchy_01.png" alt=""></p>
+<p><strong>Hierarchy</strong>窗口显示场景中的每个GameObject，例如模型、相机或预制件。您可以使用Hierarchy窗口对场景中使用的GameObject进行排序和分组。当您在场景视图中添加或删除GameObject时，它们也会在Hierarchy窗口中添加或删除。</p>
+<p>Hierarchy窗口还可以包含其他场景，每个场景都包含自己的GameObject。</p>
+<h2 id="父子关系">父子关系 <a href="#%e7%88%b6%e5%ad%90%e5%85%b3%e7%b3%bb" class="anchor">🔗</a></h2><p>Unity使用父子层次结构或父子关系的概念来对GameObject进行分组。一个对象可以包含继承其属性的其他GameObject。您可以将GameObject链接在一起，以便移动、缩放或转换一组GameObject。当您移动顶层对象或父GameObject时，也会移动所有子GameObject。</p>
+<p>您还可以创建嵌套的父子GameObject。所有嵌套对象仍然是原始父GameObject或根GameObject的子级。</p>
+<p>子GameObject继承父GameObject的运动和旋转。要了解更多信息，请参阅关于Transform组件的文档。</p>
+<p><img src="/2023-08-07-unity-document-16/HierarchyParenting1_01.png" alt=""></p>
+<h2 id="组织-gameobject">组织 GameObject <a href="#%e7%bb%84%e7%bb%87-gameobject" class="anchor">🔗</a></h2><h3 id="创建新的-gameobject">创建新的 GameObject <a href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84-gameobject" class="anchor">🔗</a></h3><p>要在 Hierarchy 窗口中创建新的 GameObject：</p>
+<ol>
+<li>在选定的场景中，右键单击空白处。</li>
+<li>选择要创建的 GameObject。</li>
+</ol>
+<p>您还可以按下 <strong>Ctrl+Shift+N</strong>（Windows）或 <strong>Command+Shift+N</strong>（macOS）来创建一个新的空 GameObject。</p>
+<p><strong>注意</strong>：新的 GameObject 会自动创建在“重命名”模式下。要禁用此行为，请在 Hierarchy 窗口中选择“更多”（⋮）菜单，然后取消选择<strong>重命名新对象</strong>。</p>
+<h3 id="切换子-gameobject-的可见性">切换子 GameObject 的可见性 <a href="#%e5%88%87%e6%8d%a2%e5%ad%90-gameobject-%e7%9a%84%e5%8f%af%e8%a7%81%e6%80%a7" class="anchor">🔗</a></h3><p>要切换子 GameObject 的可见性：</p>
+<ol>
+<li>选择父 GameObject 左侧的下拉箭头（►）。</li>
+<li>在点击下拉箭头（►）时按住 <strong>Alt</strong> 键，以切换根 GameObject 的所有子级 GameObject 的可见性。</li>
+<li>再次选择下拉箭头（▼），折叠所有子级 GameObject。</li>
+</ol>
+<h3 id="创建子-gameobject">创建子 GameObject <a href="#%e5%88%9b%e5%bb%ba%e5%ad%90-gameobject" class="anchor">🔗</a></h3><p>要创建一个子 GameObject：</p>
+<ul>
+<li>将 GameObject 拖动到 Hierarchy 中的父 GameObject 上方。</li>
+</ul>
+<p><img src="/2023-08-07-unity-document-16/HierarchyParenting2.png" alt=""></p>
+<h3 id="创建父-gameobject">创建父 GameObject <a href="#%e5%88%9b%e5%bb%ba%e7%88%b6-gameobject" class="anchor">🔗</a></h3><p>您可以将一个新的 GameObject 添加到 Hierarchy 视图中，作为现有 GameObject 的父级。</p>
+<p>要创建父 GameObject：</p>
+<ol>
+<li>右键单击一个 GameObject，或在同一级别上选择多个 GameObject 并右键单击。</li>
+<li>选择<strong>创建空父级</strong>。</li>
+</ol>
+<p>您还可以按下 <strong>Ctrl+Shift+G</strong>（Windows）或 <strong>Command+Shift+G</strong>（macOS）来创建一个父 GameObject。</p>
+<p><strong>注意</strong>：如果您已设置默认的父 GameObject，创建空父级将创建新的 GameObject 作为默认父级的子级，而不是选定的 GameObject 的父级。</p>
+<h3 id="创建同级-gameobject">创建同级 GameObject <a href="#%e5%88%9b%e5%bb%ba%e5%90%8c%e7%ba%a7-gameobject" class="anchor">🔗</a></h3><p>同级 GameObject 是与另一个子 GameObject 具有相同层次结构的 GameObject。要创建同级 GameObject：</p>
+<ol>
+<li>将 GameObject 拖动到现有 GameObject 的上方或下方。</li>
+<li>使用水平蓝线确定 GameObject 的顺序。</li>
+</ol>
+<p><img src="/2023-08-07-unity-document-16/HierarchyParenting3_01.png" alt=""></p>
+<h3 id="复制-gameobject">复制 GameObject <a href="#%e5%a4%8d%e5%88%b6-gameobject" class="anchor">🔗</a></h3><p>要复制 GameObject，右键单击目标 GameObject，然后选择<strong>复制</strong>。</p>
+<p>您还可以按下<strong>Ctrl+D</strong>（Windows）或<strong>Command+D</strong>（macOS）来复制选定的 GameObject。</p>
+<h3 id="将-gameobject-粘贴为子级">将 GameObject 粘贴为子级 <a href="#%e5%b0%86-gameobject-%e7%b2%98%e8%b4%b4%e4%b8%ba%e5%ad%90%e7%ba%a7" class="anchor">🔗</a></h3><p>您可以剪切或复制一个选定的 GameObject，然后将其粘贴为另一个 GameObject 的子级。粘贴的子 GameObject 会保持其世界坐标。</p>
+<p>要将 GameObject 粘贴为子级：</p>
+<ol>
+<li>右键单击选定的 GameObject，然后选择<strong>剪切</strong>或<strong>复制</strong>。</li>
+<li>右键单击目标父 GameObject，然后选择<strong>粘贴为子级</strong>。</li>
+</ol>
+<p>您还可以按下<strong>Ctrl+Shift+V</strong>（Windows）或<strong>Command+Shift+V</strong>（macOS）将 GameObject 粘贴为子级。</p>
+<h3 id="使用默认父-gameobject-组织-gameobject">使用默认父 GameObject 组织 GameObject <a href="#%e4%bd%bf%e7%94%a8%e9%bb%98%e8%ae%a4%e7%88%b6-gameobject-%e7%bb%84%e7%bb%87-gameobject" class="anchor">🔗</a></h3><p>您可以将 Hierarchy 窗口中的任何 GameObject 设置为“默认父 GameObject”。当您将一个 GameObject 拖动到场景视图中时，Unity 自动将该 GameObject 设置为默认父 GameObject 的子级。</p>
+<p>要将 GameObject 设置为默认父 GameObject：</p>
+<ol>
+<li>在 Hierarchy 窗口中，右键单击 GameObject。</li>
+<li>选择<strong>设置为默认父 GameObject</strong>。</li>
+</ol>
+<p>当您将 GameObject 拖动到场景视图中时，Hierarchy 窗口中的子 GameObject 会缩进显示在默认父 GameObject 的下方。默认父 GameObject 的名称会以粗体显示。</p>
+<p><img src="/2023-08-07-unity-document-16/default-parent.png" alt=""></p>
+<p>要将 GameObject 的默认父级设置取消：</p>
+<ol>
+<li>在 Hierarchy 窗口中，右键单击 GameObject。</li>
+<li>选择<strong>清除默认父级</strong>。</li>
+</ol>
+<p>之前作为默认父级的 GameObject 的名称将不再以粗体显示。当您将 GameObject 拖动到场景视图中时，它会出现在 Hierarchy 窗口的顶层。换句话说，Unity 不会将此 GameObject 设置为之前默认父级 GameObject 的子级。</p>
+<p><img src="/2023-08-07-unity-document-16/no-default-parent.png" alt=""></p>
+<p>每个场景只能设置一个默认父级。在 Hierarchy 窗口中，如果您将一个 GameObject 设置为默认父级，然后在同一个场景中将另一个 GameObject 设置为默认父级，那么只有第二个 GameObject 会成为默认父级。</p>
+<p>如果在 Hierarchy 窗口中有多个场景，并且您在每个场景中设置了默认父级，当您将一个 GameObject 拖动到场景视图中时，Unity 会将处于活动场景中的默认父级 GameObject 设置为新 GameObject 的父级。</p>
+<p><img src="/2023-08-07-unity-document-16/multi-scene-default-parent.png" alt=""></p>
+<p>您可以在快捷键管理器中为默认父级设置键盘快捷键。在快捷键窗口中，将一个键盘快捷键分配给<strong>Hierarchy View</strong> &gt; <strong>Set as Default Parent</strong>。如果没有设置默认父级，并且在 Hierarchy 窗口中选择一个 GameObject，使用快捷键将该 GameObject 设置为默认父级。当设置了默认父级时，使用快捷键可以从任何具有默认父级的 GameObject 中移除默认父级状态。</p>
+<h2 id="设置场景的可见性和可选性">设置场景的可见性和可选性 <a href="#%e8%ae%be%e7%bd%ae%e5%9c%ba%e6%99%af%e7%9a%84%e5%8f%af%e8%a7%81%e6%80%a7%e5%92%8c%e5%8f%af%e9%80%89%e6%80%a7" class="anchor">🔗</a></h2><p>单击场景可见性图标可以在场景视图中隐藏和显示 GameObject，而不改变它们在应用程序中的可见性。</p>
+<p>选择场景选取图标可以切换在编辑时是否可以选择场景视图中的 GameObject。</p>
+<p>这些控件对于处理大型或复杂的场景非常有用，因为它们可以帮助您查看和选择特定的 GameObject。</p>
+<p><img src="/2023-08-07-unity-document-16/SceneVisIconsHierarchy_01.png" alt=""></p>
+<p>要了解有关场景可见性和场景选取的更多信息，请参阅文档。</p>
+<h2 id="对-gameobject-进行排序">对 GameObject 进行排序 <a href="#%e5%af%b9-gameobject-%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f" class="anchor">🔗</a></h2><p>默认情况下，Hierarchy 窗口按照创建顺序来列出 GameObject。您可以在场景中将选定的 GameObject 上下拖动，以改变 GameObject 的顺序。</p>
+<h3 id="字母数字排序">字母数字排序 <a href="#%e5%ad%97%e6%af%8d%e6%95%b0%e5%ad%97%e6%8e%92%e5%ba%8f" class="anchor">🔗</a></h3><p>要按照字母数字顺序对 GameObject 进行排序，请执行以下操作：</p>
+<ol>
+<li>选择 <strong>Edit &gt; Preferences</strong> (macOS: <strong>Unity &gt; Settings</strong>).</li>
+<li>选择 <strong>Enable Alphanumeric Sorting</strong>.</li>
+</ol>
+<p>当选中此选项时，Hierarchy 窗口中会显示一个图标，用于在<strong>变换排序</strong>（默认值）和<strong>字母顺序排序</strong>之间切换。</p>
+<p><img src="/2023-08-07-unity-document-16/AlphanumericToggle_01.png" alt=""></p>
+<h2 id="多场景编辑">多场景编辑 <a href="#%e5%a4%9a%e5%9c%ba%e6%99%af%e7%bc%96%e8%be%91" class="anchor">🔗</a></h2><p>您可以同时在 Hierarchy 窗口中打开多个场景。要了解更多信息，请参阅多场景编辑页面。</p>
+<h2 id="覆盖指示器">覆盖指示器 <a href="#%e8%a6%86%e7%9b%96%e6%8c%87%e7%a4%ba%e5%99%a8" class="anchor">🔗</a></h2><p>当您在场景中编辑预制体实例时，Unity 在层级中的父级 GameObject 旁边显示一个指示器。该指示器突出显示任何具有其子级 GameObject 中非默认覆盖值的预制体。要直接从 Hierarchy 窗口打开 Overrides 下拉菜单，请单击覆盖指示器。覆盖指示器将显示为边距左侧的蓝色线，并且与<strong>Inspector</strong>窗口中的实例覆盖相同。要了解更多信息，请参阅实例覆盖。</p>
+<p><img src="/2023-08-07-unity-document-16/hierarchy-override-indicator.png" alt=""></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/07/2023-08-07-unity-document-16/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/05/2023-08-05-unity-document-15/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/2023-08-04-unity-document-14/">Unity中文版-Unity’s interface-The Game view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/03/2023-08-03-unity-document-13/">Unity中文版-Unity’s interface-The Scene view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/02/2023-08-02-unity-document-12/">Unity中文版-Unity’s interface-The Project window(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(26)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (19)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

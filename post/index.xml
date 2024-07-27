@@ -6,7 +6,100 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Unity’s interface-Device Simulator(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/07/2023-08-07-unity-document-16/</link>
+      <pubDate>Mon, 07 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/07/2023-08-07-unity-document-16/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;hierarchy-窗口&#34;&gt;&lt;strong&gt;Hierarchy&lt;/strong&gt; 窗口 &lt;a href=&#34;#hierarchy-%e7%aa%97%e5%8f%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/Hierarchy_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hierarchy&lt;/strong&gt;窗口显示场景中的每个GameObject，例如模型、相机或预制件。您可以使用Hierarchy窗口对场景中使用的GameObject进行排序和分组。当您在场景视图中添加或删除GameObject时，它们也会在Hierarchy窗口中添加或删除。&lt;/p&gt;
+&lt;p&gt;Hierarchy窗口还可以包含其他场景，每个场景都包含自己的GameObject。&lt;/p&gt;
+&lt;h2 id=&#34;父子关系&#34;&gt;父子关系 &lt;a href=&#34;#%e7%88%b6%e5%ad%90%e5%85%b3%e7%b3%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity使用父子层次结构或父子关系的概念来对GameObject进行分组。一个对象可以包含继承其属性的其他GameObject。您可以将GameObject链接在一起，以便移动、缩放或转换一组GameObject。当您移动顶层对象或父GameObject时，也会移动所有子GameObject。&lt;/p&gt;
+&lt;p&gt;您还可以创建嵌套的父子GameObject。所有嵌套对象仍然是原始父GameObject或根GameObject的子级。&lt;/p&gt;
+&lt;p&gt;子GameObject继承父GameObject的运动和旋转。要了解更多信息，请参阅关于Transform组件的文档。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/HierarchyParenting1_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;组织-gameobject&#34;&gt;组织 GameObject &lt;a href=&#34;#%e7%bb%84%e7%bb%87-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;创建新的-gameobject&#34;&gt;创建新的 GameObject &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要在 Hierarchy 窗口中创建新的 GameObject：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在选定的场景中，右键单击空白处。&lt;/li&gt;
+&lt;li&gt;选择要创建的 GameObject。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;您还可以按下 &lt;strong&gt;Ctrl+Shift+N&lt;/strong&gt;（Windows）或 &lt;strong&gt;Command+Shift+N&lt;/strong&gt;（macOS）来创建一个新的空 GameObject。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：新的 GameObject 会自动创建在“重命名”模式下。要禁用此行为，请在 Hierarchy 窗口中选择“更多”（⋮）菜单，然后取消选择&lt;strong&gt;重命名新对象&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;切换子-gameobject-的可见性&#34;&gt;切换子 GameObject 的可见性 &lt;a href=&#34;#%e5%88%87%e6%8d%a2%e5%ad%90-gameobject-%e7%9a%84%e5%8f%af%e8%a7%81%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要切换子 GameObject 的可见性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择父 GameObject 左侧的下拉箭头（►）。&lt;/li&gt;
+&lt;li&gt;在点击下拉箭头（►）时按住 &lt;strong&gt;Alt&lt;/strong&gt; 键，以切换根 GameObject 的所有子级 GameObject 的可见性。&lt;/li&gt;
+&lt;li&gt;再次选择下拉箭头（▼），折叠所有子级 GameObject。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;创建子-gameobject&#34;&gt;创建子 GameObject &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e5%ad%90-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要创建一个子 GameObject：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 GameObject 拖动到 Hierarchy 中的父 GameObject 上方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/HierarchyParenting2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建父-gameobject&#34;&gt;创建父 GameObject &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e7%88%b6-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以将一个新的 GameObject 添加到 Hierarchy 视图中，作为现有 GameObject 的父级。&lt;/p&gt;
+&lt;p&gt;要创建父 GameObject：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;右键单击一个 GameObject，或在同一级别上选择多个 GameObject 并右键单击。&lt;/li&gt;
+&lt;li&gt;选择&lt;strong&gt;创建空父级&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;您还可以按下 &lt;strong&gt;Ctrl+Shift+G&lt;/strong&gt;（Windows）或 &lt;strong&gt;Command+Shift+G&lt;/strong&gt;（macOS）来创建一个父 GameObject。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果您已设置默认的父 GameObject，创建空父级将创建新的 GameObject 作为默认父级的子级，而不是选定的 GameObject 的父级。&lt;/p&gt;
+&lt;h3 id=&#34;创建同级-gameobject&#34;&gt;创建同级 GameObject &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e5%90%8c%e7%ba%a7-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;同级 GameObject 是与另一个子 GameObject 具有相同层次结构的 GameObject。要创建同级 GameObject：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将 GameObject 拖动到现有 GameObject 的上方或下方。&lt;/li&gt;
+&lt;li&gt;使用水平蓝线确定 GameObject 的顺序。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/HierarchyParenting3_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;复制-gameobject&#34;&gt;复制 GameObject &lt;a href=&#34;#%e5%a4%8d%e5%88%b6-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要复制 GameObject，右键单击目标 GameObject，然后选择&lt;strong&gt;复制&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;您还可以按下&lt;strong&gt;Ctrl+D&lt;/strong&gt;（Windows）或&lt;strong&gt;Command+D&lt;/strong&gt;（macOS）来复制选定的 GameObject。&lt;/p&gt;
+&lt;h3 id=&#34;将-gameobject-粘贴为子级&#34;&gt;将 GameObject 粘贴为子级 &lt;a href=&#34;#%e5%b0%86-gameobject-%e7%b2%98%e8%b4%b4%e4%b8%ba%e5%ad%90%e7%ba%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以剪切或复制一个选定的 GameObject，然后将其粘贴为另一个 GameObject 的子级。粘贴的子 GameObject 会保持其世界坐标。&lt;/p&gt;
+&lt;p&gt;要将 GameObject 粘贴为子级：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;右键单击选定的 GameObject，然后选择&lt;strong&gt;剪切&lt;/strong&gt;或&lt;strong&gt;复制&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;右键单击目标父 GameObject，然后选择&lt;strong&gt;粘贴为子级&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;您还可以按下&lt;strong&gt;Ctrl+Shift+V&lt;/strong&gt;（Windows）或&lt;strong&gt;Command+Shift+V&lt;/strong&gt;（macOS）将 GameObject 粘贴为子级。&lt;/p&gt;
+&lt;h3 id=&#34;使用默认父-gameobject-组织-gameobject&#34;&gt;使用默认父 GameObject 组织 GameObject &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e9%bb%98%e8%ae%a4%e7%88%b6-gameobject-%e7%bb%84%e7%bb%87-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以将 Hierarchy 窗口中的任何 GameObject 设置为“默认父 GameObject”。当您将一个 GameObject 拖动到场景视图中时，Unity 自动将该 GameObject 设置为默认父 GameObject 的子级。&lt;/p&gt;
+&lt;p&gt;要将 GameObject 设置为默认父 GameObject：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Hierarchy 窗口中，右键单击 GameObject。&lt;/li&gt;
+&lt;li&gt;选择&lt;strong&gt;设置为默认父 GameObject&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当您将 GameObject 拖动到场景视图中时，Hierarchy 窗口中的子 GameObject 会缩进显示在默认父 GameObject 的下方。默认父 GameObject 的名称会以粗体显示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/default-parent.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要将 GameObject 的默认父级设置取消：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Hierarchy 窗口中，右键单击 GameObject。&lt;/li&gt;
+&lt;li&gt;选择&lt;strong&gt;清除默认父级&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;之前作为默认父级的 GameObject 的名称将不再以粗体显示。当您将 GameObject 拖动到场景视图中时，它会出现在 Hierarchy 窗口的顶层。换句话说，Unity 不会将此 GameObject 设置为之前默认父级 GameObject 的子级。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/no-default-parent.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;每个场景只能设置一个默认父级。在 Hierarchy 窗口中，如果您将一个 GameObject 设置为默认父级，然后在同一个场景中将另一个 GameObject 设置为默认父级，那么只有第二个 GameObject 会成为默认父级。&lt;/p&gt;
+&lt;p&gt;如果在 Hierarchy 窗口中有多个场景，并且您在每个场景中设置了默认父级，当您将一个 GameObject 拖动到场景视图中时，Unity 会将处于活动场景中的默认父级 GameObject 设置为新 GameObject 的父级。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/multi-scene-default-parent.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您可以在快捷键管理器中为默认父级设置键盘快捷键。在快捷键窗口中，将一个键盘快捷键分配给&lt;strong&gt;Hierarchy View&lt;/strong&gt; &amp;gt; &lt;strong&gt;Set as Default Parent&lt;/strong&gt;。如果没有设置默认父级，并且在 Hierarchy 窗口中选择一个 GameObject，使用快捷键将该 GameObject 设置为默认父级。当设置了默认父级时，使用快捷键可以从任何具有默认父级的 GameObject 中移除默认父级状态。&lt;/p&gt;
+&lt;h2 id=&#34;设置场景的可见性和可选性&#34;&gt;设置场景的可见性和可选性 &lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e5%9c%ba%e6%99%af%e7%9a%84%e5%8f%af%e8%a7%81%e6%80%a7%e5%92%8c%e5%8f%af%e9%80%89%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;单击场景可见性图标可以在场景视图中隐藏和显示 GameObject，而不改变它们在应用程序中的可见性。&lt;/p&gt;
+&lt;p&gt;选择场景选取图标可以切换在编辑时是否可以选择场景视图中的 GameObject。&lt;/p&gt;
+&lt;p&gt;这些控件对于处理大型或复杂的场景非常有用，因为它们可以帮助您查看和选择特定的 GameObject。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/SceneVisIconsHierarchy_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要了解有关场景可见性和场景选取的更多信息，请参阅文档。&lt;/p&gt;
+&lt;h2 id=&#34;对-gameobject-进行排序&#34;&gt;对 GameObject 进行排序 &lt;a href=&#34;#%e5%af%b9-gameobject-%e8%bf%9b%e8%a1%8c%e6%8e%92%e5%ba%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;默认情况下，Hierarchy 窗口按照创建顺序来列出 GameObject。您可以在场景中将选定的 GameObject 上下拖动，以改变 GameObject 的顺序。&lt;/p&gt;
+&lt;h3 id=&#34;字母数字排序&#34;&gt;字母数字排序 &lt;a href=&#34;#%e5%ad%97%e6%af%8d%e6%95%b0%e5%ad%97%e6%8e%92%e5%ba%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要按照字母数字顺序对 GameObject 进行排序，请执行以下操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择 &lt;strong&gt;Edit &amp;gt; Preferences&lt;/strong&gt; (macOS: &lt;strong&gt;Unity &amp;gt; Settings&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;选择 &lt;strong&gt;Enable Alphanumeric Sorting&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当选中此选项时，Hierarchy 窗口中会显示一个图标，用于在&lt;strong&gt;变换排序&lt;/strong&gt;（默认值）和&lt;strong&gt;字母顺序排序&lt;/strong&gt;之间切换。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/AlphanumericToggle_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;多场景编辑&#34;&gt;多场景编辑 &lt;a href=&#34;#%e5%a4%9a%e5%9c%ba%e6%99%af%e7%bc%96%e8%be%91&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以同时在 Hierarchy 窗口中打开多个场景。要了解更多信息，请参阅多场景编辑页面。&lt;/p&gt;
+&lt;h2 id=&#34;覆盖指示器&#34;&gt;覆盖指示器 &lt;a href=&#34;#%e8%a6%86%e7%9b%96%e6%8c%87%e7%a4%ba%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您在场景中编辑预制体实例时，Unity 在层级中的父级 GameObject 旁边显示一个指示器。该指示器突出显示任何具有其子级 GameObject 中非默认覆盖值的预制体。要直接从 Hierarchy 窗口打开 Overrides 下拉菜单，请单击覆盖指示器。覆盖指示器将显示为边距左侧的蓝色线，并且与&lt;strong&gt;Inspector&lt;/strong&gt;窗口中的实例覆盖相同。要了解更多信息，请参阅实例覆盖。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-07-unity-document-16/hierarchy-override-indicator.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Unity’s interface-Device Simulator(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/08/05/2023-08-05-unity-document-15/</link>
