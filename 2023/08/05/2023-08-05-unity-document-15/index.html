@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-Device Simulator(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-Device Simulator(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-05 11:13:34 &#43;0800 CST">2023/08/05</time>
+        <span class="split">·</span>
+        <span> 971 words </span>
+        <span class="split">·</span>
+        <span>
+            5 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="设备模拟器">设备模拟器 <a href="#%e8%ae%be%e5%a4%87%e6%a8%a1%e6%8b%9f%e5%99%a8" class="anchor">🔗</a></h1><p>本文档部分包含有关Unity设备模拟器的信息。</p>
+<p><img src="/2023-08-05-unity-document-15/device-simulator-view.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>页面</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">设备模拟器简介</td>
+<td style="text-align:left">介绍设备模拟器及其功能。</td>
+</tr>
+<tr>
+<td style="text-align:left">模拟器视图</td>
+<td style="text-align:left">解释设备模拟器使用的窗口，用于显示模拟。</td>
+</tr>
+<tr>
+<td style="text-align:left">模拟类</td>
+<td style="text-align:left">包含设备模拟器提供的类的信息，以便您可以测试响应特定设备行为的代码。</td>
+</tr>
+<tr>
+<td style="text-align:left">添加设备</td>
+<td style="text-align:left">解释如何定义新设备进行模拟，并在设备模拟器中使用它。</td>
+</tr>
+<tr>
+<td style="text-align:left">扩展设备模拟器</td>
+<td style="text-align:left">解释如何创建设备模拟器插件来扩展模拟器视图的功能和用户界面。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="设备模拟器简介">设备模拟器简介 <a href="#%e8%ae%be%e5%a4%87%e6%a8%a1%e6%8b%9f%e5%99%a8%e7%ae%80%e4%bb%8b" class="anchor">🔗</a></h1><p>设备模拟器是Unity编辑器的一个功能，用于模拟应用程序在移动设备上的外观和行为。</p>
+<p>设备模拟器由以下组成：</p>
+<ul>
+<li>模拟器视图：在模拟的移动设备上查看应用程序。</li>
+<li>模拟类：测试响应特定设备行为的代码。</li>
+<li>设备定义：描述要模拟的设备。</li>
+<li>设备模拟器插件：配置模拟器视图的用户界面。</li>
+</ul>
+<h2 id="模拟器视图中的控件">模拟器视图中的控件 <a href="#%e6%a8%a1%e6%8b%9f%e5%99%a8%e8%a7%86%e5%9b%be%e4%b8%ad%e7%9a%84%e6%8e%a7%e4%bb%b6" class="anchor">🔗</a></h2><p>模拟器视图模拟移动设备的许多常见功能，包括：</p>
+<ul>
+<li>自动旋转</li>
+<li>屏幕安全区域</li>
+<li>触摸输入</li>
+</ul>
+<h2 id="玩家设置">玩家设置 <a href="#%e7%8e%a9%e5%ae%b6%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>设备模拟器会与以下<strong>玩家设置</strong>具有相同的反应，就像真实设备一样：</p>
+<ul>
+<li><strong>全屏模式</strong></li>
+<li><strong>分辨率缩放</strong></li>
+<li><strong>默认方向</strong></li>
+<li><strong>图形API</strong></li>
+<li><strong>超出安全区域渲染</strong></li>
+</ul>
+<h2 id="模拟触摸输入">模拟触摸输入 <a href="#%e6%a8%a1%e6%8b%9f%e8%a7%a6%e6%91%b8%e8%be%93%e5%85%a5" class="anchor">🔗</a></h2><p>如果您使用鼠标光标在模拟设备屏幕上点击，设备模拟器将在活动的输入解决方案（根据项目设置，可以是输入管理器、输入系统或两者）中创建触摸事件。</p>
+<p><strong>注意</strong>：只有在编辑器处于播放模式时，设备模拟器才会模拟输入。设备模拟器不支持多点触控，只能模拟单指触摸。</p>
+<h2 id="限制">限制 <a href="#%e9%99%90%e5%88%b6" class="anchor">🔗</a></h2><p>设备模拟器的主要目的是查看应用程序在目标设备上的布局，并测试基本交互。它不能准确地表示应用程序在真实设备上的运行情况。</p>
+<p>模拟器视图不会模拟以下内容：</p>
+<ul>
+<li>设备的性能特征，如处理器速度或可用内存。</li>
+<li>设备的渲染能力。</li>
+<li>在编辑器中无法使用的原生插件。</li>
+<li>模拟设备的平台#define指令，如UNITY_IOS。</li>
+<li>陀螺仪旋转。</li>
+</ul>
+<p>只能同时模拟一个模拟器视图。这是活动的模拟器视图。</p>
+<ul>
+<li>如果只打开一个模拟器视图且没有打开游戏视图，则无论该模拟器视图是否可见，它都是活动的。</li>
+<li>如果打开了多个模拟器视图且没有打开游戏视图，则上次获取焦点的模拟器视图是活动的。</li>
+<li>如果同时打开了模拟器视图和游戏视图，如果将焦点放在游戏视图上，Unity将禁用所有模拟器；如果将焦点放在模拟器视图上，只要它具有焦点，模拟器视图始终是活动的。</li>
+</ul>
+<p>设备模拟器不会模拟所有模拟类中的API。更多信息，请参阅模拟类。</p>
+<h1 id="模拟器视图">模拟器视图 <a href="#%e6%a8%a1%e6%8b%9f%e5%99%a8%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h1><p>模拟器视图以模拟的移动设备显示您的应用程序。使用它来查看应用程序在该设备上的屏幕形状、分辨率和方向等外观。</p>
+<p><img src="/2023-08-05-unity-document-15/device-simulator-view-17217962357833.png" alt=""></p>
+<h2 id="使用模拟器视图">使用模拟器视图 <a href="#%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e5%99%a8%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h2><p>要打开模拟器视图，请执行以下操作之一：</p>
+<ul>
+<li>在游戏视图中，左上角使用下拉菜单在游戏视图和模拟器视图之间切换。</li>
+<li>在菜单中选择：<strong>Window</strong> &gt; <strong>General</strong> &gt; <strong>Device Simulator</strong></li>
+</ul>
+<p>Unity在模拟器视图中模拟设备。要控制模拟，请使用工具栏和控制面板。</p>
+<h3 id="工具栏">工具栏 <a href="#%e5%b7%a5%e5%85%b7%e6%a0%8f" class="anchor">🔗</a></h3><p>工具栏位于模拟器视图的顶部，包含与控制面板一起控制模拟的选项。</p>
+<p><img src="/2023-08-05-unity-document-15/device-simulator-toolbar.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>控制选项</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>游戏视图/模拟器视图</strong></td>
+<td style="text-align:left">使用此下拉菜单在模拟器视图和游戏视图之间切换。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>设备选择下拉菜单</strong></td>
+<td style="text-align:left">从可用的设备定义中选择要模拟的设备。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缩放</strong></td>
+<td style="text-align:left">放大或缩小模拟屏幕的大小。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>适应屏幕</strong></td>
+<td style="text-align:left">将显示内容缩放以适应窗口内。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>旋转</strong></td>
+<td style="text-align:left">模拟设备的物理旋转。如果启用自动旋转并且设备支持旋转，设备屏幕上的图像将与设备一起旋转。否则，旋转设备将导致图像横向或颠倒。<strong>注意</strong>：设备模拟器不支持陀螺仪模拟。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>安全区域</strong></td>
+<td style="text-align:left">指示视图是否绘制当前设备屏幕的安全区域周围的线条。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>播放模式行为</strong></td>
+<td style="text-align:left">此部分根据以下选择描述了播放模式的行为。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>聚焦</strong></td>
+<td>在编辑器处于播放模式时，启用聚焦可将焦点切换到选定的游戏视图。进入播放模式时，只能有一个游戏视图处于焦点状态。使用Display模式中的最大化或全屏模式意味着将焦点放在最大化的游戏视图上。在一个游戏视图上启用聚焦时，其他游戏视图上的聚焦将被禁用。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>垂直同步（仅对游戏视图有效）</strong></td>
+<td>启用**垂直同步（仅对游戏视图有效）**以允许同步，这对于录制视频等情况非常有用。Unity尝试以显示器刷新率渲染游戏视图，但不能保证。当启用此选项时，最好在播放模式下将游戏视图最大化，以隐藏其他视图并减少Unity渲染的视图数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>进入播放模式：</strong></td>
+<td style="text-align:left">根据以下选项选择确定编辑器在进入播放模式时的设置。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>正常</strong></td>
+<td>选择此选项以在不强制聚焦或将任何视图最大化到全屏的情况下查看游戏视图。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>最大化</strong></td>
+<td>选择此选项后，Unity会以100%的编辑器窗口大小最大化Simulator视图运行播放模式。<strong>注意</strong>：如果禁用<strong>Play时创建游戏视图</strong>的编辑器首选项，此选项不会创建Simulator视图。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>控制面板</strong></td>
+<td style="text-align:left">显示或隐藏控制面板。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="控制面板">控制面板 <a href="#%e6%8e%a7%e5%88%b6%e9%9d%a2%e6%9d%bf" class="anchor">🔗</a></h3><p>要打开控制面板，请单击工具栏右上角的<strong>控制面板</strong>。默认情况下，控制面板包含对应用程序模拟类的设置。</p>
+<p><img src="/2023-08-05-unity-document-15/device-simulator-control-panel.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>System Language</strong></td>
+<td style="text-align:left">指定从<code>Device.Application.systemLanguage</code>接收的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Internet Reachability</strong></td>
+<td style="text-align:left">指定从<code>Device.Application.internetReachability</code>接收的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>On Low Memory</strong></td>
+<td style="text-align:left">调用<code>lowMemory</code>事件。</td>
+</tr>
+</tbody>
+</table>
+<p>设备模拟器插件可以更改控制面板的外观，添加内容和控件。某些包（例如自适应性能包）包含设备模拟器插件。如果安装了该包，它们的<strong>UI</strong>将显示在控制面板中。有关更多信息，请参阅设备模拟器插件。</p>
+<h1 id="模拟类">模拟类 <a href="#%e6%a8%a1%e6%8b%9f%e7%b1%bb" class="anchor">🔗</a></h1><p>Device Simulator提供了模拟类，您可以使用它们来测试对Device Simulator中的设备特定行为做出响应的代码。</p>
+<p>以下模拟类位于UnityEngine.Device命名空间中：</p>
+<ul>
+<li>Application</li>
+<li>Screen</li>
+<li>SystemInfo</li>
+</ul>
+<p>这些模拟类具有与它们的常规UnityEngine命名空间对应类相同的成员。您可以在代码库中的任何位置使用它们，就像正常类一样使用它们。它们不会对性能产生影响，并且可以在发布版本中使用。</p>
+<p>在编辑器中，当Device Simulator处于活动状态时，模拟类会模拟模拟设备的特定平台行为；例如，Device.SystemInfo.operatingSystem会返回模拟设备的Android或iOS版本。</p>
+<p>在构建的应用程序中或者当Device Simulator不活动时，模拟类的行为与它们在UnityEngine命名空间中的对应类相同。</p>
+<p>尽管模拟类具有与常规类相同的成员，但Device Simulator不会模拟每个行为。在Unity编辑器中，Device Simulator不模拟的成员会与它们在UnityEngine命名空间中的等效成员具有相同的行为，这些成员与特定平台无关。例如，Device Simulator不会模拟Device.Screen.brightness。这意味着此成员在编辑器中的行为与UnityEngine.Screen.brightness相同，始终返回<code>1</code>。有关Device Simulator模拟的成员，请参阅以下API文档：</p>
+<ul>
+<li>Device.Application</li>
+<li>Device.Screen</li>
+<li>Device.SystemInfo</li>
+</ul>
+<h2 id="更新脚本以使用模拟类">更新脚本以使用模拟类 <a href="#%e6%9b%b4%e6%96%b0%e8%84%9a%e6%9c%ac%e4%bb%a5%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e7%b1%bb" class="anchor">🔗</a></h2><p>如果您想要将现有代码转换为使用UnityEngine.Device命名空间的类，最佳实践是使用别名指令。例如：</p>
+<pre tabindex="0"><code>using Screen = UnityEngine.Device.Screen;
+using Application = UnityEngine.Device.Application;
+using SystemInfo = UnityEngine.Device.SystemInfo;
+</code></pre><p>这样，您可以更改整个文件使用的类，而无需更改每个API调用。</p>
+<h1 id="添加设备">添加设备 <a href="#%e6%b7%bb%e5%8a%a0%e8%ae%be%e5%a4%87" class="anchor">🔗</a></h1><p>要将新设备添加到Device Simulator中，您需要创建设备定义和设备覆盖。</p>
+<p>设备定义是Unity项目中以<code>.device</code>扩展名的文本文件。它包含描述设备属性的JSON数据。</p>
+<p>设备覆盖是一个图像，包含设备屏幕的边框，以及刘海、孔洞和屏幕矩形的任何其他元素。您可以选择将其与设备定义一起使用，以可视化硬件元素如何遮挡设备屏幕，并确定触摸输入何时失败。</p>
+<h2 id="创建设备定义">创建设备定义 <a href="#%e5%88%9b%e5%bb%ba%e8%ae%be%e5%a4%87%e5%ae%9a%e4%b9%89" class="anchor">🔗</a></h2><p>设备定义是一个表示设备的JSON文件。它包含必需的属性和一些可选的属性。如果设备定义文件包含任何错误，选择文件时将在<strong>检查器</strong>中显示错误信息。</p>
+<h3 id="schema">Schema <a href="#schema" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>friendlyName</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">在<strong>UI</strong>中显示的设备名称。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>version</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">设备定义文件的版本。当前版本为<code>1</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>screens</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">描述要模拟设备的每个屏幕的对象列表。必须至少包含一个屏幕。有关每个屏幕对象的架构信息，请参阅屏幕。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>systemInfo</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">描述设备的能力的对象。此对象中的值与SystemInfo对应。有关systemInfo对象的架构信息，请参阅systemInfo。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="screen">screen <a href="#screen" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>width</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">屏幕的宽度，以<strong>像素</strong>为单位。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>height</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">屏幕的高度，以像素为单位。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>navigationBarHeight</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">非全屏模式下，在某些设备上显示的屏幕上的Android导航栏的高度，以像素为单位。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>dpi</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">屏幕的dpi。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>orientations</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">描述屏幕可以模拟的每个方向的对象列表。如果不为此属性设置值，则屏幕支持所有方向。有关每个方向对象的架构信息，请参阅orientation。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>presentation</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">描述设备覆盖层的对象。有关此对象的架构信息，请参阅presentation。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orientation">orientation <a href="#orientation" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>orientation</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">屏幕的方向。此属性的值是一个映射到ScreenOrientation枚举类型的数字。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>safeArea</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">确定屏幕的安全区域的矩形。如果不为此属性设置值，则模拟器假设整个屏幕都是安全区域。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cutouts</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">指定屏幕上不用于显示内容的区域的矩形列表。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="presentation">presentation <a href="#presentation" class="anchor">🔗</a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>overlayPath</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">设备定义文件到要用作设备覆盖的图像的相对路径。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>borderSize</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">覆盖层到屏幕开始的距离，以像素为单位。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="systeminfo">systeminfo <a href="#systeminfo" class="anchor">🔗</a></h4><p>此对象中的属性描述设备的能力和系统信息。由于它们描述系统信息，因此其中的许多属性与SystemInfo中的属性相对应。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>deviceModel</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.deviceModel。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>deviceType</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.deviceType。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>operatingSystem</strong></td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">参见Device.SystemInfo.operatingSystem。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>operatingSystemFamily</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.operatingSystemFamily。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>processorCount</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.processorCount。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>processorFrequency</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.processorFrequency。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>processorType</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.processorType。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsAccelerometer</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsAccelerometer。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsAudio</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsAudio。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsGyroscope</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsGyroscope。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsLocationService</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsLocationService。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsVibration</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsVibration。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>systemMemorySize</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.systemMemorySize。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>unsupportedIdentifier</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">参见Device.SystemInfo.unsupportedIdentifier。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDependentData</strong></td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">描述设备支持的图形API的对象列表。有关每个对象的架构信息，请参阅graphicsDependentData。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="graphicsdependentdata">graphicsDependentData <a href="#graphicsdependentdata" class="anchor">🔗</a></h4><p>该对象中的属性描述设备支持的图形API。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>必需的</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceType</strong></td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceType。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsMemorySize</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsMemorySize。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceName</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceName。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceVendor</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceVendor。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceID</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceID。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceVendorID</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceVendorID。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsUVStartsAtTop</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsUVStartsAtTop。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsDeviceVersion</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsDeviceVersion。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsShaderLevel</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsShaderLevel。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>graphicsMultiThreaded</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.graphicsMultiThreaded。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>renderingThreadingMode</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.renderingThreadingMode。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>hasHiddenSurfaceRemovalOnGPU</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.hasHiddenSurfaceRemovalOnGPU。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>hasDynamicUniformArrayIndexingInFragmentShaders</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.hasDynamicUniformArrayIndexingInFragmentShaders。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsShadows</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsShadows。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsRawShadowDepthSampling</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsRawShadowDepthSampling。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsMotionVectors</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsMotionVectors。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supports3DTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supports3DTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supports2DArrayTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supports2DArrayTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supports3DRenderTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supports3DRenderTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsCubemapArrayTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsCubemapArrayTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>copyTextureSupport</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.copyTextureSupport。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsComputeShaders</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsComputeShaders。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsGeometryShaders</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsGeometryShaders。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsTessellationShaders</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsTessellationShaders。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsInstancing</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsInstancing。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsHardwareQuadTopology</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsHardwareQuadTopology。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supports32bitsIndexBuffer</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supports32bitsIndexBuffer。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsSparseTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsSparseTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportedRenderTargetCount</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportedRenderTargetCount。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsSeparatedRenderTargetsBlend</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsSeparatedRenderTargetsBlend。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportedRandomWriteTargetCount</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportedRandomWriteTargetCount。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsMultisampledTextures</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsMultisampledTextures。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsMultisampleAutoResolve</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsMultisampleAutoResolve。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsTextureWrapMirrorOnce</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsTextureWrapMirrorOnce。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>usesReversedZBuffer</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.usesReversedZBuffer。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npotSupport</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.npotSupport。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxTextureSize</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxTextureSize。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxCubemapSize</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxCubemapSize。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsVertex</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsVertex。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsFragment</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsFragment。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsGeometry</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsGeometry。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsDomain</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsDomain。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsHull</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsHull。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeBufferInputsCompute</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeBufferInputsCompute。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeWorkGroupSize</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeWorkGroupSize。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeWorkGroupSizeX</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeWorkGroupSizeX。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeWorkGroupSizeY</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeWorkGroupSizeY。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>maxComputeWorkGroupSizeZ</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.maxComputeWorkGroupSizeZ。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsAsyncCompute</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsAsyncCompute。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsGraphicsFence</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsGraphicsFence。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsAsyncGPUReadback</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsAsyncGPUReadback。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsRayTracing</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsRayTracing。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsRayTracingShaders</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsRayTracingShaders。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsInlineRayTracing</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsInlineRayTracing。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsSetConstantBuffer</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsSetConstantBuffer。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>hasMipMaxLevel</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.hasMipMaxLevel。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>supportsMipStreaming</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.supportsMipStreaming。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>usesLoadStoreActions</strong></td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">参见Device.SystemInfo.usesLoadStoreActions。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="最低设备定义">最低设备定义 <a href="#%e6%9c%80%e4%bd%8e%e8%ae%be%e5%a4%87%e5%ae%9a%e4%b9%89" class="anchor">🔗</a></h4><p>以下设备定义包含了每个必需的属性，没有可选的属性。这是您可以拥有的最小设备定义。</p>
+<p><strong>注意</strong>：该设备定义没有提供方向数据，因此模拟器假设设备支持所有方向，并且安全区域覆盖整个屏幕。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;friendlyName&#34;</span>: <span style="color:#e6db74">&#34;Minimal Device&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screens&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">1080</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">1920</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dpi&#34;</span>: <span style="color:#ae81ff">450.0</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;systemInfo&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;operatingSystem&#34;</span>: <span style="color:#e6db74">&#34;Android&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="完整设备定义">完整设备定义 <a href="#%e5%ae%8c%e6%95%b4%e8%ae%be%e5%a4%87%e5%ae%9a%e4%b9%89" class="anchor">🔗</a></h4><p>以下设备定义包含了每个必需和可选的属性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;friendlyName&#34;</span>: <span style="color:#e6db74">&#34;Apple iPhone XR&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screens&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">828</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">1792</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;navigationBarHeight&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dpi&#34;</span>: <span style="color:#ae81ff">326.0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;orientations&#34;</span>: [
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;orientation&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;safeArea&#34;</span>: {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">0.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">68.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">828.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">1636.0</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;cutouts&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">184.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">1726.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">460.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">66.0</span>
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    ]
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;orientation&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;safeArea&#34;</span>: {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">88.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">42.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">1616.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">786.0</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;cutouts&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">0.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">184.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">66.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">460.0</span>
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    ]
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;orientation&#34;</span>: <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;safeArea&#34;</span>: {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">88.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">42.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">1616.0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">786.0</span>
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;cutouts&#34;</span>: [
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;serializedVersion&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">1726.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">184.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">66.0</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">460.0</span>
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    ]
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;presentation&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;overlayPath&#34;</span>: <span style="color:#e6db74">&#34;Apple iPhone 11_Overlay.png&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;borderSize&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;z&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;w&#34;</span>: <span style="color:#ae81ff">51.0</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;systemInfo&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;deviceModel&#34;</span>: <span style="color:#e6db74">&#34;iPhone11,8&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;deviceType&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;operatingSystem&#34;</span>: <span style="color:#e6db74">&#34;iOS 12.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;operatingSystemFamily&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;processorCount&#34;</span>: <span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;processorFrequency&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;processorType&#34;</span>: <span style="color:#e6db74">&#34;arm64e&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;supportsAccelerometer&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;supportsAudio&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;supportsGyroscope&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;supportsLocationService&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;supportsVibration&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;systemMemorySize&#34;</span>: <span style="color:#ae81ff">2813</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;unsupportedIdentifier&#34;</span>: <span style="color:#e6db74">&#34;n/a&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;graphicsDependentData&#34;</span>: [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceType&#34;</span>: <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsMemorySize&#34;</span>: <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceName&#34;</span>: <span style="color:#e6db74">&#34;Apple A12 GPU&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceVendor&#34;</span>: <span style="color:#e6db74">&#34;Apple&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceID&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceVendorID&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsUVStartsAtTop&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsDeviceVersion&#34;</span>: <span style="color:#e6db74">&#34;Metal&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsShaderLevel&#34;</span>: <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;graphicsMultiThreaded&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;renderingThreadingMode&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;hasHiddenSurfaceRemovalOnGPU&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;hasDynamicUniformArrayIndexingInFragmentShaders&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsShadows&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsRawShadowDepthSampling&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsMotionVectors&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supports3DTextures&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supports2DArrayTextures&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supports3DRenderTextures&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsCubemapArrayTextures&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;copyTextureSupport&#34;</span>: <span style="color:#ae81ff">31</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsComputeShaders&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsGeometryShaders&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsTessellationShaders&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsInstancing&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsHardwareQuadTopology&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supports32bitsIndexBuffer&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsSparseTextures&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportedRenderTargetCount&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsSeparatedRenderTargetsBlend&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportedRandomWriteTargetCount&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsMultisampledTextures&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsMultisampleAutoResolve&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsTextureWrapMirrorOnce&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;usesReversedZBuffer&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;npotSupport&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxTextureSize&#34;</span>: <span style="color:#ae81ff">16384</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxCubemapSize&#34;</span>: <span style="color:#ae81ff">16384</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsVertex&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsFragment&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsGeometry&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsDomain&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsHull&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeBufferInputsCompute&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeWorkGroupSize&#34;</span>: <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeWorkGroupSizeX&#34;</span>: <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeWorkGroupSizeY&#34;</span>: <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;maxComputeWorkGroupSizeZ&#34;</span>: <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsAsyncCompute&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsGraphicsFence&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsAsyncGPUReadback&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsRayTracing&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsRayTracingShaders&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsInlineRayTracing&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsSetConstantBuffer&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;hasMipMaxLevel&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportsMipStreaming&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;usesLoadStoreActions&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportedTextureFormats&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;supportedRenderTextureFormats&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;ldrGraphicsFormat&#34;</span>: <span style="color:#ae81ff">59</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;hdrGraphicsFormat&#34;</span>: <span style="color:#ae81ff">74</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="创建设备叠加层">创建设备叠加层 <a href="#%e5%88%9b%e5%bb%ba%e8%ae%be%e5%a4%87%e5%8f%a0%e5%8a%a0%e5%b1%82" class="anchor">🔗</a></h2><p>设备叠加层是一个包含设备屏幕边框和其他特征（如凹槽、孔洞和屏幕矩形的任何其他附加部分）的图像。您可以选择性地与设备定义一起使用它，以可视化硬件元件如何阻碍设备屏幕，并确定触摸输入因此失败的时间。</p>
+<p>设备模拟器将透明像素解释为您可以点击的屏幕区域，将其他任何颜色的不透明像素解释为硬件阻碍的区域。纹理本身可以是任何形状。</p>
+<p>以下示例显示了两个iPhone型号的设备叠加层。</p>
+<p><strong>注意</strong>：为了模拟使用设备叠加层时所看到的效果，这些示例在您可以点击的屏幕区域显示了Unity的默认<strong>天空盒（skybox）</strong>。在真实的设备叠加层中，这些像素应该是透明的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Apple iPhone 8 Overlay</th>
+<th style="text-align:left">Apple iPhone XS Overlay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="/2023-08-05-unity-document-15/device-simulator-overlay-iphone8.png" alt=""></td>
+<td style="text-align:left"><img src="/2023-08-05-unity-document-15/device-simulator-overlay-iphonexs.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用设备叠加层">使用设备叠加层 <a href="#%e4%bd%bf%e7%94%a8%e8%ae%be%e5%a4%87%e5%8f%a0%e5%8a%a0%e5%b1%82" class="anchor">🔗</a></h3><p>在创建设备叠加层纹理后，要将其与设备定义一起使用，您首先必须将设备叠加层纹理文件导入到项目中。</p>
+<p><strong>注意</strong>：当设备模拟器加载设备叠加层纹理时，会尝试启用<strong>读/写</strong>功能。如果这不可能实现，设备模拟器将显示纹理，但无法使用纹理来遮罩输入。这意味着如果您在设备叠加层应该遮挡的凹槽和其他区域上点击，设备模拟器会检测到输入。为确保不发生这种情况，请在导入设备叠加层纹理时，在“纹理导入设置”窗口中启用<strong>读/写</strong>功能。</p>
+<p>当设备叠加层纹理在您的项目中时，打开设备定义文件，在定义设备支持的屏幕的对象中添加<code>presentation</code>属性。在这里，设置图像文件的路径（<code>overlayPath</code>）和边框的大小（<code>borderSize</code>）。有关如何执行此操作的示例，请参见以下设备定义文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;friendlyName&#34;</span>: <span style="color:#e6db74">&#34;Minimal Device with Overlay&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;screens&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;width&#34;</span>: <span style="color:#ae81ff">1080</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;height&#34;</span>: <span style="color:#ae81ff">1920</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dpi&#34;</span>: <span style="color:#ae81ff">450.0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;presentation&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;overlayPath&#34;</span>: <span style="color:#e6db74">&#34;Overlays/MinimalDeviceOverlay.png&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;borderSize&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;x&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;y&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;z&#34;</span>: <span style="color:#ae81ff">51.0</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">&#34;w&#34;</span>: <span style="color:#ae81ff">130.0</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;systemInfo&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;operatingSystem&#34;</span>: <span style="color:#e6db74">&#34;Android&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：设备叠加层纹理文件的路径可以相对于设备定义文件，也可以相对于您的Unity项目中包含<strong>Assets</strong>或<strong>Packages</strong>目录的目录。例如，如果设备定义文件位于<strong>Assets/Devices</strong>目录中，而设备叠加文件位于<strong>Assets/Devices/Overlays</strong>目录中，则以下文件路径都是有效的：</p>
+<ul>
+<li>相对于设备定义文件：<strong>Overlays/MinimalDeviceOverlay.png</strong></li>
+<li>相对于包含<strong>Assets</strong>目录的目录：<strong>Assets/Devices/Overlays/MinimalDeviceOverlay.png</strong></li>
+</ul>
+<h1 id="扩展设备模拟器">扩展设备模拟器 <a href="#%e6%89%a9%e5%b1%95%e8%ae%be%e5%a4%87%e6%a8%a1%e6%8b%9f%e5%99%a8" class="anchor">🔗</a></h1><p>设备模拟器支持插件来扩展其功能并更改模拟器视图中控制面板的<strong>UI</strong>。</p>
+<h2 id="创建插件">创建插件 <a href="#%e5%88%9b%e5%bb%ba%e6%8f%92%e4%bb%b6" class="anchor">🔗</a></h2><p>要创建一个设备模拟器插件，需要扩展DeviceSimulatorPlugin类。</p>
+<p>要将UI插入到设备模拟器视图中，您的插件必须满足以下条件：</p>
+<ul>
+<li>重写<code>title</code>属性以返回一个非空字符串。</li>
+<li>重写<code>OnCreateUI</code>方法以返回包含UI的VisualElement。</li>
+</ul>
+<p>如果您的插件不符合这些条件，设备模拟器会实例化插件，但不会在模拟器视图中显示其UI。</p>
+<p>以下示例演示如何创建一个插件，该插件重写title属性并向模拟器视图添加UI。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TouchInfoPlugin</span> : DeviceSimulatorPlugin
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">string</span> title =&gt; <span style="color:#e6db74">&#34;Touch Info&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Label m_TouchCountLabel;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Label m_LastTouchEvent;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Button m_ResetCountButton;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [SerializeField]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> m_TouchCount = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> OnCreate()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        deviceSimulator.touchScreenInput += touchEvent =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            m_TouchCount += <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            UpdateTouchCounterText();
+</span></span><span style="display:flex;"><span>            m_LastTouchEvent.text = <span style="color:#e6db74">$&#34;Last touch event: {touchEvent.phase.ToString()}&#34;</span>;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> VisualElement OnCreateUI()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        VisualElement root = <span style="color:#66d9ef">new</span> VisualElement();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        m_LastTouchEvent = <span style="color:#66d9ef">new</span> Label(<span style="color:#e6db74">&#34;Last touch event: None&#34;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        m_TouchCountLabel = <span style="color:#66d9ef">new</span> Label();
+</span></span><span style="display:flex;"><span>        UpdateTouchCounterText();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        m_ResetCountButton = <span style="color:#66d9ef">new</span> Button {text = <span style="color:#e6db74">&#34;Reset Count&#34;</span> };
+</span></span><span style="display:flex;"><span>        m_ResetCountButton.clicked += () =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            m_TouchCount = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            UpdateTouchCounterText();
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        root.Add(m_LastTouchEvent);
+</span></span><span style="display:flex;"><span>        root.Add(m_TouchCountLabel);
+</span></span><span style="display:flex;"><span>        root.Add(m_ResetCountButton);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> UpdateTouchCounterText()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (m_TouchCount &gt; <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            m_TouchCountLabel.text = <span style="color:#e6db74">$&#34;Touches recorded: {m_TouchCount}&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            m_TouchCountLabel.text = <span style="color:#e6db74">&#34;No taps recorded&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/05/2023-08-05-unity-document-15/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/2023-08-04-unity-document-14/">Unity中文版-Unity’s interface-The Game view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/03/2023-08-03-unity-document-13/">Unity中文版-Unity’s interface-The Scene view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/02/2023-08-02-unity-document-12/">Unity中文版-Unity’s interface-The Project window(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/01/2023-08-01-unity-document-11/">Unity中文版-Unity’s interface(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(25)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (18)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

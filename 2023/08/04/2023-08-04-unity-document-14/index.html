@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-The Game view(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-The Game view(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-04 11:13:34 &#43;0800 CST">2023/08/04</time>
+        <span class="split">·</span>
+        <span> 74 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="游戏视图">游戏视图 <a href="#%e6%b8%b8%e6%88%8f%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h1><p><img src="/2023-08-04-unity-document-14/game-view-window.png" alt=""></p>
+<p>游戏视图是由应用程序中的相机渲染而来。游戏视图显示了最终构建的应用程序的外观。您需要使用一个或多个相机来控制玩家在使用应用程序时看到的内容。</p>
+<p>游戏视图包含在默认的Unity编辑器布局中。如果游戏视图未打开，请转到<strong>窗口 &gt; 常规</strong>，然后选择<strong>游戏</strong>以打开游戏视图。</p>
+<p>在编辑器中，您可在游戏视图和模拟器视图之间切换。模拟器视图显示了您构建的应用程序在移动设备上的外观。</p>
+<h2 id="播放模式">播放模式 <a href="#%e6%92%ad%e6%94%be%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h2><p><img src="/2023-08-04-unity-document-14/Editor-PlayButtons.png" alt=""></p>
+<p>使用播放模式来运行项目并测试其在构建应用程序时的工作方式。</p>
+<p>在工具栏中使用播放模式控制按钮来控制播放模式：</p>
+<ul>
+<li>点击播放按钮以切换编辑器到播放模式。</li>
+<li>点击暂停按钮以暂停播放模式。</li>
+<li>点击步进按钮以将播放模式前进一帧。</li>
+</ul>
+<p>在播放模式下，您所做的任何更改都是临时的，并在退出播放模式时重置。当您进入播放模式时，编辑器将变暗在游戏视图外的界面部分。</p>
+<h2 id="使用模拟器视图">使用模拟器视图 <a href="#%e4%bd%bf%e7%94%a8%e6%a8%a1%e6%8b%9f%e5%99%a8%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h2><p>使用模拟器视图来预览构建应用程序在移动设备上的外观。</p>
+<p>要在游戏视图和模拟器视图之间切换，在<strong>游戏/模拟器</strong>选项卡中，从<strong>游戏/模拟器</strong>菜单中选择一个选项。</p>
+<p>或者，要打开模拟器视图，转到<strong>窗口 &gt; 通用</strong>，然后选择<strong>设备模拟器</strong>。如果没有打开模拟器视图的实例，它将作为一个浮动窗口打开。然而，如果模拟器视图已经在编辑器中打开，那么尝试从菜单中打开模拟器视图将使其获得焦点。</p>
+<h2 id="游戏视图控制栏">游戏视图控制栏 <a href="#%e6%b8%b8%e6%88%8f%e8%a7%86%e5%9b%be%e6%8e%a7%e5%88%b6%e6%a0%8f" class="anchor">🔗</a></h2><p>游戏视图控制栏位于游戏视图的顶部，包含控制游戏视图的选项。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Game/Simulator</strong></td>
+<td style="text-align:left">选择<strong>游戏</strong>或<strong>模拟器</strong>视图。使用游戏视图预览构建后的应用程序外观。使用模拟器视图预览构建后的应用程序在移动设备上的外观。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Display</strong></td>
+<td style="text-align:left">选择在游戏视图中渲染的显示器。如果在场景中有多个带有摄像机组件的<strong>游戏对象</strong>，可选择一个选项在它们之间切换。默认情况下，<strong>显示器</strong>设置为<strong>显示器 1</strong>。您可以在摄像机组件的<strong>检视面板</strong>中，通过<strong>目标显示器</strong>选项为摄像机分配显示器。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Aspect ratio</strong></td>
+<td style="text-align:left">在具有不同纵横比的监视器上测试您的游戏外观。默认情况下，<strong>纵横比</strong>设置为<strong>自由纵横比</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>低分辨率纵横比</strong></td>
+<td>当选择一个纵横比时，模拟低分辨率显示屏的像素密度，并在选择纵横比时降低游戏视图的分辨率。当游戏视图在非Retina显示屏上时，<strong>低分辨率纵横比</strong>始终可用。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>垂直同步（仅游戏视图）</strong></td>
+<td>允许同步。同步可以在录制视频时非常有用。编辑器会尝试以显示器的刷新率来渲染游戏视图，但这并不保证。当启用此选项时，将游戏视图最大化在播放模式下可以隐藏其他视图并减少编辑器渲染的视图数量，这仍然是有用的。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Scale slider</strong></td>
+<td style="text-align:left">增加或减小游戏视图的缩放比例。向右滚动以放大并详细查看游戏视图中的区域。当设备分辨率高于游戏视图窗口大小时，此滑块可让您缩小以显示整个屏幕。您还可以在应用程序停止或暂停时使用滚动轮和鼠标中键来进行此操作。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Play Mode behavior</strong></td>
+<td style="text-align:left">本部分根据您所选择的内容描述了播放模式的行为。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>播放模式聚焦</strong></td>
+<td>当编辑器处于播放模式时，将焦点切换到选定的游戏视图上。进入播放模式时，只能有一个游戏视图处于焦点状态。在最大化模式下使用时，意味着在最大化的游戏视图上聚焦。在一个游戏视图上启用聚焦将禁用其他游戏视图上的聚焦。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>播放模式最大化</strong></td>
+<td>以最大化到编辑器窗口的100％的大小运行播放模式的游戏视图。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>播放模式不聚焦</strong></td>
+<td>进入播放模式时不将焦点切换到选定的游戏视图上。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Open the Frame Debugger</strong></td>
+<td style="text-align:left">打开帧调试器窗口。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mute audio</strong></td>
+<td style="text-align:left">进入播放模式时禁用应用程序内的音频。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Unity快捷键</strong></td>
+<td>在播放模式下，当游戏视图窗口不在焦点时，禁用编辑器的键盘快捷键触发。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Stats</strong></td>
+<td style="text-align:left">显示或隐藏统计信息覆盖图，其中包含关于应用程序音频和图形的渲染统计信息。使用统计信息覆盖图来监控播放模式下应用程序的性能。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gizmos</strong></td>
+<td style="text-align:left">显示或隐藏Gizmos菜单。使用<strong>Gizmos</strong>菜单来选择在播放模式中隐藏或显示的Gizmos。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="gizmos菜单">Gizmos菜单 <a href="#gizmos%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>Gizmos菜单包含Unity在场景视图和游戏视图中为游戏对象和其他项目显示的Gizmos的选项。此菜单在场景视图和游戏视图中均可用。有关更多信息，请参阅Gizmos菜单。</p>
+<h2 id="高级选项">高级选项 <a href="#%e9%ab%98%e7%ba%a7%e9%80%89%e9%a1%b9" class="anchor">🔗</a></h2><p>右键单击<strong>游戏</strong>选项卡以显示高级的游戏视图选项。</p>
+<p><img src="/2023-08-04-unity-document-14/GameView-AdvancedOptions.png" alt=""></p>
+<p>高级游戏视图选项包括：</p>
+<ul>
+<li><strong>当没有摄像机渲染时警告</strong>：如果没有摄像机渲染到屏幕上，则引擎会显示警告。例如，用于诊断问题，如意外删除或禁用摄像机。除非您有意不使用摄像机来渲染应用程序，请启用此选项。此选项默认启用。</li>
+<li><strong>在编辑模式下每帧清空</strong>：在应用程序不播放时，引擎会清空游戏视图中的每帧内容。这样可以避免在配置应用程序时出现模糊效果。除非不在播放模式下时需要使用上一帧的内容，否则保持启用。此选项默认启用。</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/05/2023-08-05-unity-document-15/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/2023-08-04-unity-document-14/">Unity中文版-Unity’s interface-The Game view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/03/2023-08-03-unity-document-13/">Unity中文版-Unity’s interface-The Scene view(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/02/2023-08-02-unity-document-12/">Unity中文版-Unity’s interface-The Project window(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/01/2023-08-01-unity-document-11/">Unity中文版-Unity’s interface(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(25)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (18)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
