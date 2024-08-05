@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-Editing properties(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-Editing properties(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-09 11:13:34 &#43;0800 CST">2023/08/09</time>
+        <span class="split">·</span>
+        <span> 104 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="编辑属性">编辑属性 <a href="#%e7%bc%96%e8%be%91%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h1><p>属性是<strong>GameObject</strong>组件和资源的设置和选项。您可以在检视器窗口中编辑属性。</p>
+<p><img src="/2023-08-09-unity-document-18/PropertiesExample.png" alt=""></p>
+<p>属性可以分为以下几个主要类别：</p>
+<ul>
+<li>**引用（References）：**链接到其他GameObject和资源。</li>
+<li>**值（Values）：**数字、颜色、开关设置、文本等。</li>
+</ul>
+<h2 id="引用">引用 <a href="#%e5%bc%95%e7%94%a8" class="anchor">🔗</a></h2><p>引用属性可以接受项目资源或场景中的GameObject作为输入。例如，网格过滤器（Mesh Filter）组件引用了项目中的某个网格资源（Mesh Asset）。</p>
+<p>创建组件时，其引用属性为未分配状态。</p>
+<p><img src="/2023-08-09-unity-document-18/RefPropUnassigned.png" alt=""></p>
+<p>您可以通过将对象和资源拖放到引用属性字段上，或使用目标选择器窗口将引用分配给属性。</p>
+<p>某些引用属性接受特定类型的组件（例如Transform）。当您将GameObject分配给这些属性时，Unity会在GameObject上找到第一个所需类型的组件，并将其分配给引用属性。如果GameObject没有任何正确类型的组件，则无法将GameObject分配给属性。</p>
+<h3 id="通过拖放分配引用">通过拖放分配引用 <a href="#%e9%80%9a%e8%bf%87%e6%8b%96%e6%94%be%e5%88%86%e9%85%8d%e5%bc%95%e7%94%a8" class="anchor">🔗</a></h3><p>要将引用分配给属性，请将兼容的GameObject或资源拖放到检视器中的属性字段上。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-refprop-dragdrop.png" alt=""></p>
+<h3 id="使用对象选择器窗口进行引用对象的分配">使用对象选择器窗口进行引用对象的分配 <a href="#%e4%bd%bf%e7%94%a8%e5%af%b9%e8%b1%a1%e9%80%89%e6%8b%a9%e5%99%a8%e7%aa%97%e5%8f%a3%e8%bf%9b%e8%a1%8c%e5%bc%95%e7%94%a8%e5%af%b9%e8%b1%a1%e7%9a%84%e5%88%86%e9%85%8d" class="anchor">🔗</a></h3><p>使用对象选择器窗口来查找和选择要分配的引用对象。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-refprop-picker.png" alt=""></p>
+<ol>
+<li>点击检视器（Inspector）中属性右侧的小圆圈图标，打开一个对象选择器窗口。</li>
+<li>找到要引用的对象或资产，并双击它以将其分配给属性。</li>
+</ol>
+<h2 id="值">值 <a href="#%e5%80%bc" class="anchor">🔗</a></h2><p>您可以使用简单的控件来编辑大多数值属性。例如：</p>
+<p><strong>字段</strong>：您可以在字段中输入文本和数值。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-numeric.png" alt=""></p>
+<p>您可以直接在属性字段中输入数值，或者点击并拖动属性标签来增加和减小数值。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-numeric-drag.png" alt=""></p>
+<p>某些属性还具有<strong>滑块</strong>，用于调整数值。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-slider.png" alt=""></p>
+<p><strong>复选框</strong>：您可以切换属性的开启和关闭状态。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-checkbox.png" alt=""></p>
+<p><strong>下拉框</strong>和<strong>弹出菜单</strong>：您可以从多个可能的值中选择一个。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-popup.png" alt=""></p>
+<h3 id="数字字段表达式">数字字段表达式 <a href="#%e6%95%b0%e5%ad%97%e5%ad%97%e6%ae%b5%e8%a1%a8%e8%be%be%e5%bc%8f" class="anchor">🔗</a></h3><p>数字字段输入控件也接受数学表达式，例如在字段中输入<code>2+3</code>将得到值<code>5</code>。有关支持的表达式的详细信息，请参阅ExpressionEvaluator C＃类文档。</p>
+<p>数字字段还支持在同时编辑多个选定对象时非常有用的特殊函数：</p>
+<ul>
+<li><code>L(a,b)</code>：在<code>a</code>和<code>b</code>之间产生线性过渡。
+<img src="/2023-08-09-unity-document-18/inspector-expr-L.png" alt="">
+<strong>在X坐标中输入<code>L(-6,6)</code>可以将十个选定的胶囊均匀分布在-6到6之间。</strong></li>
+<li><code>R(a,b)</code>：在<code>a</code>和<code>b</code>之间产生随机值。
+<img src="/2023-08-09-unity-document-18/inspector-expr-R.png" alt="">
+<strong>在Z坐标中输入<code>R(-2,2)</code>将选定的胶囊的Z坐标设置为-2到2之间的随机值。</strong></li>
+<li><code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>表达式可用于修改当前值，例如输入<code>*=2</code>会使所有字段的值增大一倍。
+<img src="/2023-08-09-unity-document-18/inspector-expr-assign.png" alt="">
+<strong>在Z坐标中输入<code>/=3</code>会使所有的Z坐标减小三倍。</strong></li>
+</ul>
+<p>您可以组合数学表达式。例如，您可以将线性分布值<code>L(0,2*pi)</code>作为三角函数的参数。为了说明这一点，以下示例将此线性过渡函数作为正弦和余弦函数的参数，以便将一组选定的对象分布在圆形中：
+<img src="/2023-08-09-unity-document-18/inspector-expr-trig.png" alt=""><em>在X坐标中输入<code>cos(L(0,2\*pi))\*5</code>，在Z坐标中输入<code>sin(L(0,2\*pi))\*5</code>将十个选定的胶囊放置在一个圆环中。</em></p>
+<p>在编写自定义检视器时，所有EditorGUI.PropertyField和EditorGUILayout.PropertyField控件都自动支持数字表达式。</p>
+<p>一些游戏对象和资源具有更复杂的属性，您可以使用专用的控件或专用的编辑器进行编辑。本节的其余部分将介绍如何设置这些复杂属性。</p>
+<p><strong>注意</strong>：约束比例缩放不支持多选的数学表达式。</p>
+<h3 id="颜色值">颜色值 <a href="#%e9%a2%9c%e8%89%b2%e5%80%bc" class="anchor">🔗</a></h3><p>Inspector窗口将颜色属性显示为色块。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-color.png" alt=""></p>
+<p>点击任何一个色块，将打开一个颜色选择器或者一个HDR颜色选择器，具体取决于上下文。例如，当您编辑标准着色器中的<strong>emission</strong>颜色属性时，Unity会显示HDR颜色选择器窗口。</p>
+<p><img src="/2023-08-09-unity-document-18/color-pickers.png" alt=""></p>
+<p>您还可以使用取色器从屏幕上的任何位置选择颜色值。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-property-color-eyedropper.png" alt=""></p>
+<p>要选择颜色，请点击颜色属性旁边的取色器按钮，然后在屏幕上的任意位置单击。Unity会将颜色属性设置为您单击的<strong>像素</strong>的颜色。</p>
+<p>您可以将设置的颜色保存在可重用的色块库中，这样您可以在项目之间共享这些色块。</p>
+<h3 id="渐变值">渐变值 <a href="#%e6%b8%90%e5%8f%98%e5%80%bc" class="anchor">🔗</a></h3><p>渐变是颜色过渡的视觉表示。它们对于将一个颜色逐渐混合到另一个颜色中，在空间或时间上非常有用。</p>
+<p>在Unity中，渐变值被粒子系统、线渲染器和其他一些组件使用。您还可以在您的C#脚本中使用公共的Gradient类变量，检视器将为其显示渐变编辑器。</p>
+<p><img src="/2023-08-09-unity-document-18/inspector-gradient-editor.png" alt=""></p>
+<p>渐变编辑器显示了主要的颜色，称为&quot;键&quot;，以及渐变条中它们之间的所有中间色调（1）。</p>
+<p>渐变条底部的向上箭头表示颜色键（2）。</p>
+<ul>
+<li>单击键以选择它。Unity将在颜色字段中显示其颜色值。
+<ul>
+<li>单击颜色色板（3），使用标准颜色选择器编辑颜色。</li>
+<li>您还可以使用取色器工具（4）从屏幕上的任何位置选择颜色值。单击取色器按钮，然后单击屏幕上的任何位置。Unity将颜色属性设置为您单击的像素的颜色。</li>
+</ul>
+</li>
+<li>单击渐变条下的空白区域添加一个键。</li>
+<li>单击并拖动键进行移动。</li>
+<li>要删除键，选择它并使用<strong>Ctrl/Cmd + Delete</strong>快捷键。</li>
+</ul>
+<p>渐变条上方的向下箭头表示Alpha键（5），它们控制给定点处渐变的透明度。您可以通过相同的方式添加和编辑Alpha键来编辑颜色键。当您选择一个Alpha键时，渐变编辑器将显示一个<strong>Alpha</strong>滑块，而不是<strong>Color</strong>字段。</p>
+<p>默认情况下，渐变有两个键设置为100%的Alpha，使渐变完全不透明。您可以编辑键来调整透明度，并根据需要添加其他键。</p>
+<p>渐变可以使用几种不同的颜色插值模式：</p>
+<ul>
+<li>*混合（Blend）*模式在颜色键之间线性插值。</li>
+<li>*混合（感知）（Blend (Perceptual)）*模式使用感知统一的“Oklab”颜色空间在颜色键之间进行插值。</li>
+<li>*固定（Fixed）*模式不插值颜色，而是使用颜色或Alpha键的值，直到下一个键。</li>
+</ul>
+<p><img src="/2023-08-09-unity-document-18/GradientEditorModeBlend.png" alt=""></p>
+<p><img src="/2023-08-09-unity-document-18/GradientEditorModePerceptual.png" alt=""></p>
+<p><img src="/2023-08-09-unity-document-18/GradientEditorModeFixed.png" alt=""></p>
+<h3 id="曲线">曲线 <a href="#%e6%9b%b2%e7%ba%bf" class="anchor">🔗</a></h3><p><strong>曲线</strong>是一条线图，显示了对于输入值（x轴）的变化，响应值（y轴）的变化情况。</p>
+<p><img src="/2023-08-09-unity-document-18/CurveEditor.png" alt=""></p>
+<p>Unity在各种不同的上下文中使用曲线，尤其是在动画中。曲线编辑器具有许多不同的选项和工具。有关详细信息，请参阅编辑曲线。</p>
+<h3 id="条形滑块">条形滑块 <a href="#%e6%9d%a1%e5%bd%a2%e6%bb%91%e5%9d%97" class="anchor">🔗</a></h3><p>条形滑块是一种专门的控件，可以通过可视化方式来分配特定的资源。例如，LOD Group组件使用条形滑块来定义游戏对象LOD级别之间的过渡。</p>
+<p><img src="/2023-08-09-unity-document-18/LODGroup-SpeedTreeModels.png" alt=""></p>
+<p>您可以通过拖动段边缘来调整条中每个段的相对值。某些条形滑块还具有可拖动的手柄。</p>
+<h3 id="数组">数组 <a href="#%e6%95%b0%e7%bb%84" class="anchor">🔗</a></h3><p>当脚本将数组公开为公共变量时，检视器将显示一个控件，可让您同时编辑数组中的条目数量（大小）以及其中的值或引用。</p>
+<p><img src="/2023-08-09-unity-document-18/ArrayInspector.png" alt=""></p>
+<p>当您减小大小值时，Unity会从数组的末尾移除值。当您增加大小值时，Unity会将当前最后一个值复制到添加的所有新元素中。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">提示：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">要设置一个值大部分相同的数组，先添加第一个元素，然后更改大小以将其值复制到后续元素中。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建色卡库">创建色卡库 <a href="#%e5%88%9b%e5%bb%ba%e8%89%b2%e5%8d%a1%e5%ba%93" class="anchor">🔗</a></h2><p>使用色卡库来重用、保存和共享颜色、渐变和动画曲线。您可以在颜色选择器、渐变编辑器和曲线编辑器中保存和选择色卡。</p>
+<p><img src="/2023-08-09-unity-document-18/PresetLibrary.png" alt=""></p>
+<p>色卡库是保存在文件中的色卡集合。色卡部分每次只显示一个库。</p>
+<p>保存色卡的步骤如下：</p>
+<ol>
+<li>打开颜色选择器、渐变编辑器或曲线编辑器。例如，在Hierarchy窗口中选择Main Camera。</li>
+<li>在Inspector窗口中，点击Background Color。</li>
+<li>在选择器窗口中，调整颜色、渐变或曲线以适合您的喜好。</li>
+<li>在色卡中，点击轮廓框。</li>
+<li>如果视图处于列表模式，可以选择为色卡键入一个名称。</li>
+</ol>
+<p><img src="/2023-08-09-unity-document-18/SwatchSaving.png" alt=""></p>
+<p>拖放色卡以更改它们的顺序。右键点击色卡可将其移动到顶部、替换它、重命名它或删除它。也可以通过Alt/Option点击色卡来删除它。</p>
+<p>在色卡中的下拉菜单中，可以进行以下操作：</p>
+<ul>
+<li>选择&quot;列表&quot;或&quot;网格&quot;以改变视图。列表视图还显示色卡的名称。</li>
+<li>选择色卡库。</li>
+<li>选择&quot;创建库&quot;以创建一个新的色卡库并选择保存位置。</li>
+<li>选择&quot;显示当前库的位置&quot;以在Windows资源管理器/Mac OS Finder中查看当前库的位置。</li>
+</ul>
+<p>默认情况下，Unity将色卡库保存在用户首选项中。您也可以将色卡库保存在项目中。Unity将项目色卡库保存在Assets文件夹的Editor文件夹中。要在用户之间共享项目色卡库，或将其包含在软件包中，可以将它们添加到版本控制存储库中。</p>
+<p>要编辑项目色卡库，请执行以下操作：</p>
+<ol>
+<li>在Project窗口中选择色卡库。</li>
+<li>在Inspector窗口中，点击&quot;编辑&quot;。</li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/09/2023-08-09-unity-document-18/">Unity中文版-Unity’s interface-Editing properties(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/08/2023-08-08-unity-document-17/">Unity中文版-Unity’s interface-The Inspector window(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/07/2023-08-07-unity-document-16/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/05/2023-08-05-unity-document-15/">Unity中文版-Unity’s interface-Device Simulator(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/04/2023-08-04-unity-document-14/">Unity中文版-Unity’s interface-The Game view(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(28)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (21)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
