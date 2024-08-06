@@ -6,7 +6,66 @@
     <description>Recent content on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Unity’s interface-The Toolbar(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/10/2023-08-10-unity-document-19/</link>
+      <pubDate>Thu, 10 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/10/2023-08-10-unity-document-19/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;工具栏&#34;&gt;工具栏 &lt;a href=&#34;#%e5%b7%a5%e5%85%b7%e6%a0%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以在编辑器的顶部找到工具栏。工具栏不是一个窗口，它是编辑器界面中唯一无法重新排列的部分。&lt;/p&gt;
+&lt;p&gt;如需在场景视图中使用其他工具，请参考覆盖工具。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-10-unity-document-19/ToolbarCallout.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Unity Account按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从&amp;quot;账户&amp;quot;下拉菜单中访问您的Unity账户。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Cloud按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;选择&amp;quot;Cloud&amp;quot;按钮，打开Unity服务窗口。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Asset Store按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从&amp;quot;Asset Store&amp;quot;下拉菜单中前往Asset Store或在软件包管理器中查看您的资产。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Unity Version control按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开Unity版本控制窗口。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Play模式控制按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在Game视图中控制播放模式。按下播放按钮将编辑器切换到播放模式。按下暂停按钮暂停播放模式。按下步骤按钮将播放模式向前移动一帧。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Undo History按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;使用撤销历史记录查看、撤销或重做在编辑器中执行的操作。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的Global Search按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开全局搜索。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的图层按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从&amp;quot;图层&amp;quot;下拉菜单中控制在场景视图中显示什么。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器工具栏上的布局按钮&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;更改视图的排列方式，然后从&amp;quot;布局&amp;quot;下拉菜单中保存新布局或加载现有布局。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Unity’s interface-Editing properties(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/08/09/2023-08-09-unity-document-18/</link>
