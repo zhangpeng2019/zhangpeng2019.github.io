@@ -6,7 +6,420 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Unity’s interface-Search in the Editor(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/17/2023-08-17-unity-document-26/</link>
+      <pubDate>Thu, 17 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/17/2023-08-17-unity-document-26/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;自定义您的工作空间&#34;&gt;自定义您的工作空间 &lt;a href=&#34;#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%82%a8%e7%9a%84%e5%b7%a5%e4%bd%9c%e7%a9%ba%e9%97%b4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以通过点击拖动任何视图的标签，将其自定义到不同的位置来自定义您的布局。将标签投放到现有窗口的标签区域，将在任何现有标签旁边添加标签。或者，将标签投放到任何停靠区域，将在一个新窗口中添加该视图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/DockZones.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;标签也可以从主编辑器窗口中分离，并组合成自己独立的浮动编辑器窗口。浮动窗口可以包含与主编辑器窗口类似的视图和标签的排列方式。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/FloatingWindows.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在标签视图中工作时，处于活动状态的标签（即拥有焦点的标签）在顶部有一个细小的蓝色条纹。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/TabHighlight.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;当您打开的标签数量超过Unity视图的标签区域容纳能力时，会显示小的导航箭头。点击这些箭头可以滚动查看已打开的标签。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/TabScrollButtons.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您可以随时右键单击任何视图的标签，以查看其他选项，如最大化和关闭标签，或在同一窗口中添加一个新标签。您还可以中键单击已打开的标签来关闭它。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/Editor-tabcontext.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;保存和恢复布局&#34;&gt;保存和恢复布局 &lt;a href=&#34;#%e4%bf%9d%e5%ad%98%e5%92%8c%e6%81%a2%e5%a4%8d%e5%b8%83%e5%b1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您创建了一组编辑器窗口的布局后，您可以随时保存和恢复该布局。您可以点击工具栏上的&amp;quot;布局&amp;quot;下拉菜单并选择**保存布局&amp;hellip;**来保存当前的布局。为布局取一个名称并保存，然后随时可以通过在&amp;quot;布局&amp;quot;下拉菜单中选择相应的布局来恢复之前保存的布局。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/FunkyView.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-Search in the Editor(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/16/2023-08-16-unity-document-25/</link>
+      <pubDate>Wed, 16 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/16/2023-08-16-unity-document-25/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;在编辑器中进行搜索&#34;&gt;在编辑器中进行搜索 &lt;a href=&#34;#%e5%9c%a8%e7%bc%96%e8%be%91%e5%99%a8%e4%b8%ad%e8%bf%9b%e8%a1%8c%e6%90%9c%e7%b4%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;有两种类型的搜索功能可供选择：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unity搜索（之前称为QuickSearch）- 包括执行搜索结果操作的更高级搜索功能。要打开此功能，请选择&lt;strong&gt;Edit&lt;/strong&gt; &amp;gt; &lt;strong&gt;Search All&lt;/strong&gt;，或在&lt;strong&gt;Preferences&lt;/strong&gt;中设置搜索引擎为&lt;strong&gt;默认&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;传统搜索 - Unity的原始搜索功能，如下所述。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;传统搜索功能允许您在&lt;strong&gt;场景视图&lt;/strong&gt;和&lt;strong&gt;层级窗口&lt;/strong&gt;中搜索&lt;strong&gt;游戏对象&lt;/strong&gt;，在&lt;strong&gt;项目窗口&lt;/strong&gt;中搜索&lt;strong&gt;资源&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;每个搜索栏都有相同的基本工作流程。要输入搜索词，请选择文本框并键入一个单词或短语。随着您的输入，Unity会自动搜索这些词并提供结果。&lt;/p&gt;
+&lt;p&gt;一些搜索栏允许您按名称、类型或标签等不同的条件进行搜索。要选择要搜索的条件，请选择搜索栏上的放大镜图标以打开搜索下拉菜单，然后选择要使用的条件。&lt;/p&gt;
+&lt;p&gt;要清除搜索并将您的游戏对象或资源列表视图恢复为正常状态，请清空搜索栏或选择搜索栏中的小x图标。再次为给您带来的困惑道歉。&lt;/p&gt;
+&lt;h2 id=&#34;在场景视图和层级窗口中搜索游戏对象&#34;&gt;在场景视图和层级窗口中搜索游戏对象 &lt;a href=&#34;#%e5%9c%a8%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e5%92%8c%e5%b1%82%e7%ba%a7%e7%aa%97%e5%8f%a3%e4%b8%ad%e6%90%9c%e7%b4%a2%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;场景视图和层级窗口都有一个搜索栏，允许您按名称或类型搜索游戏对象。场景视图和层级窗口表示相同的信息，当您在一个搜索栏中使用时，Unity会自动在另一个搜索栏中以相同的文字填充。&lt;/p&gt;
+&lt;p&gt;搜索词充当场景视图和层级窗口中游戏对象的过滤器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在场景视图中，与搜索词匹配的游戏对象会显示为彩色。所有其他游戏对象显示为灰色。&lt;/li&gt;
+&lt;li&gt;在层级窗口中，与搜索词匹配的游戏对象按字母顺序显示。其他所有游戏对象将从视图中消失。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-16-unity-document-25/SearchingInEditor-Scene.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在项目视图中搜索资源&#34;&gt;在项目视图中搜索资源 &lt;a href=&#34;#%e5%9c%a8%e9%a1%b9%e7%9b%ae%e8%a7%86%e5%9b%be%e4%b8%ad%e6%90%9c%e7%b4%a2%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;项目窗口有一个搜索栏，允许您按名称、类型或标签搜索资源。选择搜索框中的放大镜图标来定义要按哪些条件进行搜索。&lt;/p&gt;
+&lt;p&gt;搜索词在项目窗口中充当资源的过滤器。与搜索词匹配的资源按字母顺序显示。不与搜索词匹配的资源不会显示在结果中。&lt;/p&gt;
+&lt;h3 id=&#34;资源标签&#34;&gt;资源标签 &lt;a href=&#34;#%e8%b5%84%e6%ba%90%e6%a0%87%e7%ad%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;标签是一段短文本，可用于将特定的资源分组。要查看现有标签的菜单，请导航到项目窗口标题栏，并选择&lt;strong&gt;按标签搜索&lt;/strong&gt;按钮（标签图标）。从菜单中选择一个标签，以搜索项目中所有具有该标签的资源。&lt;/p&gt;
+&lt;p&gt;要向资源添加标签，请按照以下步骤操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;strong&gt;检查器&lt;/strong&gt;中打开资源，并找到底部的预览面板。此窗口可能是最小化的；如果是这种情况，请单击并拖动标题栏向上展开它。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-16-unity-document-25/SearchingInEditor-Inspector.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要打开&lt;strong&gt;标签菜单&lt;/strong&gt;，请点击此面板右下角显示的&lt;strong&gt;标签图标&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要将现有标签添加到资源中，请从此菜单中选择一个标签。已应用于资源的标签旁边有一个勾选标记。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-16-unity-document-25/SearchingInEditor-Labels.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要添加一个新的标签，您首先需要创建一个。将您的新标签名称输入到菜单顶部显示的文本框中，然后按下空格键或回车键。这将创建一个标签，您可以将其添加到任何资源中，并在项目窗口中使用该标签进行搜索。资源可以拥有任意数量的标签，并同时属于多个不同的标签组。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;要从资源中删除一个标签，请打开标签菜单，并选择要删除勾选标记的标签。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-Undo(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/15/2023-08-15-unity-document-24/</link>
+      <pubDate>Tue, 15 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/15/2023-08-15-unity-document-24/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;撤销&#34;&gt;撤销 &lt;a href=&#34;#%e6%92%a4%e9%94%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;撤销历史记录&lt;/strong&gt;窗口提供了一种可视化的方式来浏览撤销历史记录，或一次性撤销或重做编辑器中的多个操作。&lt;/p&gt;
+&lt;h2 id=&#34;撤销和重做操作&#34;&gt;撤销和重做操作 &lt;a href=&#34;#%e6%92%a4%e9%94%80%e5%92%8c%e9%87%8d%e5%81%9a%e6%93%8d%e4%bd%9c&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要打开&lt;strong&gt;撤销历史记录&lt;/strong&gt;窗口，请单击撤销图标 (&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-15-unity-document-24/undo-icon.png&#34; alt=&#34;&#34;&gt;), 或选择 &lt;strong&gt;Edit&lt;/strong&gt; &amp;gt; &lt;strong&gt;Undo History&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-15-unity-document-24/undo-window.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;撤销历史记录&lt;/strong&gt;窗口中选择一个条目，即可自动将项目恢复到该点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-15-unity-document-24/undo-history.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一旦选择了一个操作，可重做的操作将用红线标示。点击任何操作即可将其添加回来。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-15-unity-document-24/undo-history-redo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;更改操作顺序&#34;&gt;更改操作顺序 &lt;a href=&#34;#%e6%9b%b4%e6%94%b9%e6%93%8d%e4%bd%9c%e9%a1%ba%e5%ba%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要更改撤销窗口中操作的排序顺序，请在&lt;strong&gt;撤销历史记录&lt;/strong&gt;窗口中打开&lt;strong&gt;更多选项&lt;/strong&gt;（&lt;strong&gt;：&lt;/strong&gt;）菜单，并选择按最新操作显示或按最早操作显示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-15-unity-document-24/undo-action-order.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-Additional windows(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/14/2023-08-14-unity-document-23/</link>
+      <pubDate>Mon, 14 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/14/2023-08-14-unity-document-23/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;其他窗口&#34;&gt;其他窗口 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e7%aa%97%e5%8f%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;除了Unity界面的主要窗口之外，本指南的其他部分还介绍了几个其他窗口：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;该窗口的文档:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;领域或主题:&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;控制台&lt;/strong&gt;窗口显示消息、警告和错误的日志。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;脚本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;动画&lt;/strong&gt;窗口可让您为&lt;strong&gt;场景中的游戏对象&lt;/strong&gt;创建动画。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;动画&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Profiler&lt;/strong&gt;窗口可用于调查和查找游戏中的性能瓶颈。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;分析&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;照明&lt;/strong&gt;窗口可用于管理场景中的照明。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;照明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;遮挡剔除&lt;/strong&gt;窗口可用于管理遮挡剔除以提高性能。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;相机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-Console Window(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/13/2023-08-13-unity-document-22/</link>
+      <pubDate>Sun, 13 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/13/2023-08-13-unity-document-22/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;控制台窗口&#34;&gt;控制台窗口 &lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e5%8f%b0%e7%aa%97%e5%8f%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;控制台&lt;/strong&gt;窗口显示编辑器生成的错误、警告和其他消息。这些错误和警告可以帮助您找到项目中的问题，例如脚本编译错误。它们还可以提醒您编辑器自动执行的操作，例如替换丢失的元文件，这可能会在项目的其他地方引发问题。&lt;/p&gt;
+&lt;p&gt;为了帮助您调试项目，可以使用调试类将自己的消息打印到控制台。例如，您可以打印脚本中某些位置的变量值，以查看它们的变化情况。&lt;/p&gt;
+&lt;p&gt;本页面介绍了在使用&lt;strong&gt;控制台窗口&lt;/strong&gt;时可用的选项，以及如何通过搜索特定关键字来过滤消息。&lt;/p&gt;
+&lt;h2 id=&#34;控制台窗口界面&#34;&gt;控制台窗口界面 &lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e5%8f%b0%e7%aa%97%e5%8f%a3%e7%95%8c%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要打开控制台，请从 Unity 的主菜单中选择 &lt;strong&gt;Window&lt;/strong&gt; &amp;gt; &lt;strong&gt;General&lt;/strong&gt; &amp;gt; &lt;strong&gt;Console&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/Console.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;. 控制台的 &lt;em&gt;&lt;strong&gt;工具栏&lt;/strong&gt;&lt;/em&gt; 提供了控制消息显示方式、搜索和筛选消息的选项。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;B&lt;/strong&gt;. 控制台窗口菜单提供了打开日志文件、控制列表中每个消息的可见行数以及设置堆栈跟踪选项的选项。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;. 控制台列表显示了每条记录的消息。选择一条消息可以在详细区域显示其完整文本。在这里，您可以选择每条消息显示多少行。请参阅下面的调整行数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;D&lt;/strong&gt;. 详细区域显示了所选消息的完整文本。如果启用了堆栈跟踪，详细区域将显示代码文件中特定行的引用作为可点击的链接。&lt;/p&gt;
+&lt;h2 id=&#34;控制台工具栏选项&#34;&gt;控制台工具栏选项 &lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e5%8f%b0%e5%b7%a5%e5%85%b7%e6%a0%8f%e9%80%89%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;控制台窗口的工具栏提供了控制消息显示方式、搜索和筛选消息的选项。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;选项&lt;/strong&gt;：&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能&lt;/strong&gt;：&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;清除&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除由您的代码生成的任何消息，但保留编译器错误。打开下拉菜单以选择清除选项。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;游戏播放时清除&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在进入游戏模式时自动清除控制台中的消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建时清除&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在构建项目时清除控制台中的消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;重新编译时清除&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在重新编译项目时清除控制台中的消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;折叠&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;仅显示重复的错误消息的第一个实例。这在运行时错误中非常有用，例如每帧更新时都会发生的空引用错误。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;出错暂停&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;每当您从脚本中调用 &lt;code&gt;Debug.LogError&lt;/code&gt; 时，播放暂停。使用此选项可以在执行的特定位置冻结播放并检查场景。调用 &lt;code&gt;Debug.Log&lt;/code&gt; 时不会暂停播放。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;[连接到播放器]&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开下拉菜单，以连接到运行在远程设备上的开发构建，并在控制台中显示它们的播放器日志。此选项的标签是目标开发构建的名称（即在控制台窗口中显示的日志的构建）。如果控制台未连接到远程构建，则标签为&lt;strong&gt;Editor&lt;/strong&gt;，表示在控制台窗口中显示的日志来自本地Unity编辑器。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;播放器日志&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果控制台已连接到远程开发构建，则为该构建启用播放器日志记录。禁用此选项会暂停日志记录，但控制台仍会连接到目标构建。禁用此选项还会隐藏此下拉菜单中的其余选项。选择下面 &lt;strong&gt;播放器日志&lt;/strong&gt; 下列出的任何构建，可以在控制台窗口中显示其日志。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编辑器&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果控制台已连接到一个远程&lt;em&gt;&lt;strong&gt;开发构建&lt;/strong&gt;&lt;/em&gt;，选择此选项可显示本地Unity播放器的日志，而不是远程构建的日志。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&amp;lt;输入IP地址&amp;gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开&lt;strong&gt;输入播放器IP地址&lt;/strong&gt;对话框，您可以在其中指定远程设备上开发构建的IP地址。要连接到该构建，请在对话框中选择&lt;strong&gt;连接&lt;/strong&gt;，并将其添加到下拉菜单底部的开发构建列表中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;[开发构建列表]&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;列出可用的开发构建。包括自动检测到的构建以及使用&lt;strong&gt;输入IP地址&lt;/strong&gt;选项添加的构建。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;搜索和过滤控制台输出&#34;&gt;搜索和过滤控制台输出 &lt;a href=&#34;#%e6%90%9c%e7%b4%a2%e5%92%8c%e8%bf%87%e6%bb%a4%e6%8e%a7%e5%88%b6%e5%8f%b0%e8%be%93%e5%87%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以从控制台搜索栏中搜索特定关键字的控制台消息。当您输入搜索术语时，控制台会过滤显示只包含匹配文本的消息。控制台只在消息文本中的可见部分中突出显示第一个匹配项（参见下面的调整行数）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/ConsoleSearch.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您可以搜索任何出现在控制台消息中的内容，包括数字和特殊字符。例如，您可以搜索控制台记录消息的时间。&lt;/p&gt;
+&lt;p&gt;搜索栏中的搜索将查找与您键入的内容完全匹配的结果。您不能同时搜索两个不同的术语，也不能使用常见的搜索引擎运算符。&lt;/p&gt;
+&lt;p&gt;您还可以按类型筛选控制台消息。单击搜索栏旁边的按钮可以切换：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Button&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Function&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/ConsoleFilterMessage.png&#34; alt=&#34;&#34;&gt;&lt;strong&gt;消息筛选开关&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;显示控制台中的消息数量。单击以显示或隐藏消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/ConsoleFilterWarning.png&#34; alt=&#34;&#34;&gt;&lt;strong&gt;警告筛选开关&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;显示控制台中的警告数量。单击以显示或隐藏警告。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/ConsoleFilterError.png&#34; alt=&#34;&#34;&gt;&lt;strong&gt;错误筛选开关&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;显示控制台中的错误数量。单击以显示或隐藏错误。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;调整行数&#34;&gt;调整行数 &lt;a href=&#34;#%e8%b0%83%e6%95%b4%e8%a1%8c%e6%95%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;每个控制台条目最多可以有10行。&lt;/p&gt;
+&lt;p&gt;要控制在列表中可见的每个条目的行数，请单击控制台菜单按钮，然后从菜单中选择&lt;strong&gt;Log Entry&lt;/strong&gt; &amp;gt; &lt;strong&gt;[X] Lines&lt;/strong&gt;，其中**[X]**是每个条目要显示的行数。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-13-unity-document-22/ConsoleAdjustLineCount.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;更大的行数可显示每个条目的更多文本内容，但会减少在任意给定时间内可见的条目数量。行数不影响控制台的搜索功能，搜索始终搜索完整的消息文本。如果匹配的文本位于隐藏的行上，搜索结果中会返回该消息，但不会展开或突出显示匹配的文本。您可以在详细区域中查看完整的消息文本，但其中的匹配文本不会突出显示。&lt;/p&gt;
+&lt;h2 id=&#34;堆栈跟踪记录&#34;&gt;堆栈跟踪记录 &lt;a href=&#34;#%e5%a0%86%e6%a0%88%e8%b7%9f%e8%b8%aa%e8%ae%b0%e5%bd%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity控制台消息和日志文件可以包含详细的堆栈跟踪信息。您可以使用堆栈跟踪记录设置来控制堆栈跟踪信息的数量。&lt;/p&gt;
+&lt;h2 id=&#34;从控制台打开日志文件&#34;&gt;从控制台打开日志文件 &lt;a href=&#34;#%e4%bb%8e%e6%8e%a7%e5%88%b6%e5%8f%b0%e6%89%93%e5%bc%80%e6%97%a5%e5%bf%97%e6%96%87%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity或您的代码写入控制台窗口的所有内容也会写入日志文件中。您可以从控制台窗口菜单中打开日志文件。选择&lt;strong&gt;Open Player Log&lt;/strong&gt;或&lt;strong&gt;Open Editor Log&lt;/strong&gt;。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-The Background Tasks window(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/12/2023-08-12-unity-document-21/</link>
+      <pubDate>Sat, 12 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/12/2023-08-12-unity-document-21/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;后台任务窗口&#34;&gt;后台任务窗口 &lt;a href=&#34;#%e5%90%8e%e5%8f%b0%e4%bb%bb%e5%8a%a1%e7%aa%97%e5%8f%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;后台任务窗口显示正在运行的异步任务的进度。例如，您可以查看着色器编译、灯光图烘焙和遮挡剔除的进度。&lt;/p&gt;
+&lt;p&gt;要打开后台任务窗口，请执行以下操作之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从菜单中选择&lt;strong&gt;Window&lt;/strong&gt; &amp;gt; &lt;strong&gt;General&lt;/strong&gt; &amp;gt; &lt;strong&gt;Progress&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;从Unity编辑器状态栏，单击全局进度条或活动指示器（旋转器）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/window-bg-tasks-overview.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;工具栏&lt;/strong&gt;：提供筛选任务选项和从列表中清除非活动任务的选项。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任务列表&lt;/strong&gt;：显示有关每个任务的进度信息，包括：
+&lt;ul&gt;
+&lt;li&gt;活动任务，包括停止响应的任务。&lt;/li&gt;
+&lt;li&gt;一些已完成的任务。默认情况下，Unity会从列表中删除这些任务，但有些任务设计为手动清除之前一直保留在列表中。&lt;/li&gt;
+&lt;li&gt;失败和取消的任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;任务信息&#34;&gt;任务信息 &lt;a href=&#34;#%e4%bb%bb%e5%8a%a1%e4%bf%a1%e6%81%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;后台任务窗口中的每个条目显示了有关任务的以下信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/window-bg-tasks-task.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;截图标签&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;部分&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;显示内容&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务名称/描述&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务的名称或简短描述。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;进度条&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;显示任务完成的进度。如果任务无法测量其进度而是不确定的，则进度条会显示一个小的填充区域，在任务完成之前从一边移动到另一边。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;完成百分比&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;以百分比显示任务完成的进度。对于进度无法测量的不确定任务，该区域为空。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;取消&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;单击以取消活动任务。如果任务无法取消，则不会显示此图标。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;状态&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;可选择显示活动任务当前活动的简短描述。任务完成后，该区域将显示其最终状态（例如，完成、失败或取消）。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;经过时间/剩余时间/总时间&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;当活动任务耗时几秒钟以上时，显示当前已经经过的时间或估计剩余时间。任务完成后，该区域显示总耗时。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;子任务&#34;&gt;子任务 &lt;a href=&#34;#%e5%ad%90%e4%bb%bb%e5%8a%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;某些任务会生成子任务。进度窗口在父任务中显示总体进度条（1），并为每个子任务显示一个子进度条（2）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/window-bg-tasks-subtasks.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过监视子任务，可以确定复杂任务中耗时最长的部分。这对于像光照贴图烘焙这样有数百个子任务的操作非常有用。&lt;/p&gt;
+&lt;h2 id=&#34;查看任务状态&#34;&gt;查看任务状态 &lt;a href=&#34;#%e6%9f%a5%e7%9c%8b%e4%bb%bb%e5%8a%a1%e7%8a%b6%e6%80%81&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;后台任务可以具有以下状态：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;状态&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Icon&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;活动&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务正在运行，并报告完成的百分比或估计的剩余时间。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;不确定&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务正在运行，并报告进度，但无法确定离完成有多近。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;完成&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务已成功完成。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/CompletedTask@2x.png&#34; alt=&#34;&#34;&gt;（勾选标志）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;无响应&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;任务在五秒内未报告任何进展。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;取消&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;因手动取消，任务不再处于活动状态。某些任务无法从后台任务窗口中取消。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/Warning@2x.png&#34; alt=&#34;&#34;&gt;（警告符号）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;失败&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;因失败，任务不再处于活动状态。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/Error@2x.png&#34; alt=&#34;&#34;&gt;（错误符号）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;按状态筛选任务&#34;&gt;按状态筛选任务 &lt;a href=&#34;#%e6%8c%89%e7%8a%b6%e6%80%81%e7%ad%9b%e9%80%89%e4%bb%bb%e5%8a%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在后台任务窗口的工具栏中使用筛选选项来隐藏和显示不同类型的任务。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/window-bg-tasks-filters.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;筛选选项&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;显示或隐藏&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/CompletedTask@2x-172300805542715.png&#34; alt=&#34;&#34;&gt; （勾选标志）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;已完成的任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/Warning@2x-172300806097118.png&#34; alt=&#34;&#34;&gt;（警告符号）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;取消和无响应的任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-12-unity-document-21/Error@2x-172300806608221.png&#34; alt=&#34;&#34;&gt;（错误符号)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;失败的任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;取消活动任务&#34;&gt;取消活动任务 &lt;a href=&#34;#%e5%8f%96%e6%b6%88%e6%b4%bb%e5%8a%a8%e4%bb%bb%e5%8a%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以直接从后台任务窗口取消一些正在运行的任务。要取消正在运行的任务，请单击&lt;strong&gt;取消&lt;/strong&gt;（&lt;strong&gt;x&lt;/strong&gt;）图标。&lt;/p&gt;
+&lt;h2 id=&#34;清除不活动任务&#34;&gt;清除不活动任务 &lt;a href=&#34;#%e6%b8%85%e9%99%a4%e4%b8%8d%e6%b4%bb%e5%8a%a8%e4%bb%bb%e5%8a%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;单击工具栏中的&lt;strong&gt;清除不活动&lt;/strong&gt;按钮，以从列表中移除所有不活动任务。&lt;/p&gt;
+&lt;p&gt;Unity会自动清除大多数已完成的任务。然而，有些任务设计成在您手动清除之前一直保留在列表中。&lt;/p&gt;
+&lt;p&gt;失败的和被取消的任务也会保留在列表中，直到您手动清除它们。&lt;/p&gt;
+&lt;p&gt;要清除无响应的任务，您必须首先取消它们。&lt;/p&gt;
+&lt;h2 id=&#34;查看全局进度&#34;&gt;查看全局进度 &lt;a href=&#34;#%e6%9f%a5%e7%9c%8b%e5%85%a8%e5%b1%80%e8%bf%9b%e5%ba%a6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity编辑器的状态栏显示一个全局进度条，显示所有活动任务的汇总整体进度。它不包括已完成、失败或已取消的任务。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-The status bar(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/11/2023-08-11-unity-document-20/</link>
+      <pubDate>Fri, 11 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/11/2023-08-11-unity-document-20/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;状态栏&#34;&gt;状态栏 &lt;a href=&#34;#%e7%8a%b6%e6%80%81%e6%a0%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;状态栏提供有关各种Unity进程的通知，并快速访问相关工具和设置。您不能移动或重新排列状态栏。&lt;/p&gt;
+&lt;p&gt;状态栏显示如下内容：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-11-unity-document-20/status-bar-overview.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最近记录到控制台窗口的消息。单击消息以打开控制台窗口。&lt;/li&gt;
+&lt;li&gt;全局进度条，用于显示各种异步任务的进度（例如，着色器编译、灯光图烘焙和遮挡剔除）。单击进度条以打开后台任务窗口，该窗口显示每个任务和子任务的进度。&lt;/li&gt;
+&lt;li&gt;当前的代码优化模式。单击代码优化图标以在调试模式和发布模式之间进行切换。&lt;/li&gt;
+&lt;li&gt;缓存服务器状态。单击图标以获取有关缓存服务器的附加信息，并重新建立失去的连接。&lt;/li&gt;
+&lt;li&gt;活动指示器（旋转器），显示Unity正在编译C#脚本或运行异步任务的时候。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Unity’s interface-The Toolbar(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/08/10/2023-08-10-unity-document-19/</link>

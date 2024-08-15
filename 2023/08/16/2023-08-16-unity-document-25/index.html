@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-Search in the Editor(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-Search in the Editor(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-16 11:13:34 &#43;0800 CST">2023/08/16</time>
+        <span class="split">·</span>
+        <span> 33 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="在编辑器中进行搜索">在编辑器中进行搜索 <a href="#%e5%9c%a8%e7%bc%96%e8%be%91%e5%99%a8%e4%b8%ad%e8%bf%9b%e8%a1%8c%e6%90%9c%e7%b4%a2" class="anchor">🔗</a></h1><p>有两种类型的搜索功能可供选择：</p>
+<ul>
+<li>Unity搜索（之前称为QuickSearch）- 包括执行搜索结果操作的更高级搜索功能。要打开此功能，请选择<strong>Edit</strong> &gt; <strong>Search All</strong>，或在<strong>Preferences</strong>中设置搜索引擎为<strong>默认</strong>。</li>
+<li>传统搜索 - Unity的原始搜索功能，如下所述。</li>
+</ul>
+<p>传统搜索功能允许您在<strong>场景视图</strong>和<strong>层级窗口</strong>中搜索<strong>游戏对象</strong>，在<strong>项目窗口</strong>中搜索<strong>资源</strong>。</p>
+<p>每个搜索栏都有相同的基本工作流程。要输入搜索词，请选择文本框并键入一个单词或短语。随着您的输入，Unity会自动搜索这些词并提供结果。</p>
+<p>一些搜索栏允许您按名称、类型或标签等不同的条件进行搜索。要选择要搜索的条件，请选择搜索栏上的放大镜图标以打开搜索下拉菜单，然后选择要使用的条件。</p>
+<p>要清除搜索并将您的游戏对象或资源列表视图恢复为正常状态，请清空搜索栏或选择搜索栏中的小x图标。再次为给您带来的困惑道歉。</p>
+<h2 id="在场景视图和层级窗口中搜索游戏对象">在场景视图和层级窗口中搜索游戏对象 <a href="#%e5%9c%a8%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be%e5%92%8c%e5%b1%82%e7%ba%a7%e7%aa%97%e5%8f%a3%e4%b8%ad%e6%90%9c%e7%b4%a2%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h2><p>场景视图和层级窗口都有一个搜索栏，允许您按名称或类型搜索游戏对象。场景视图和层级窗口表示相同的信息，当您在一个搜索栏中使用时，Unity会自动在另一个搜索栏中以相同的文字填充。</p>
+<p>搜索词充当场景视图和层级窗口中游戏对象的过滤器。</p>
+<ul>
+<li>在场景视图中，与搜索词匹配的游戏对象会显示为彩色。所有其他游戏对象显示为灰色。</li>
+<li>在层级窗口中，与搜索词匹配的游戏对象按字母顺序显示。其他所有游戏对象将从视图中消失。</li>
+</ul>
+<p><img src="/2023-08-16-unity-document-25/SearchingInEditor-Scene.png" alt=""></p>
+<h2 id="在项目视图中搜索资源">在项目视图中搜索资源 <a href="#%e5%9c%a8%e9%a1%b9%e7%9b%ae%e8%a7%86%e5%9b%be%e4%b8%ad%e6%90%9c%e7%b4%a2%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><p>项目窗口有一个搜索栏，允许您按名称、类型或标签搜索资源。选择搜索框中的放大镜图标来定义要按哪些条件进行搜索。</p>
+<p>搜索词在项目窗口中充当资源的过滤器。与搜索词匹配的资源按字母顺序显示。不与搜索词匹配的资源不会显示在结果中。</p>
+<h3 id="资源标签">资源标签 <a href="#%e8%b5%84%e6%ba%90%e6%a0%87%e7%ad%be" class="anchor">🔗</a></h3><p>标签是一段短文本，可用于将特定的资源分组。要查看现有标签的菜单，请导航到项目窗口标题栏，并选择<strong>按标签搜索</strong>按钮（标签图标）。从菜单中选择一个标签，以搜索项目中所有具有该标签的资源。</p>
+<p>要向资源添加标签，请按照以下步骤操作：</p>
+<ol>
+<li>
+<p>在<strong>检查器</strong>中打开资源，并找到底部的预览面板。此窗口可能是最小化的；如果是这种情况，请单击并拖动标题栏向上展开它。</p>
+<p><img src="/2023-08-16-unity-document-25/SearchingInEditor-Inspector.png" alt=""></p>
+</li>
+<li>
+<p>要打开<strong>标签菜单</strong>，请点击此面板右下角显示的<strong>标签图标</strong>。</p>
+</li>
+<li>
+<p>要将现有标签添加到资源中，请从此菜单中选择一个标签。已应用于资源的标签旁边有一个勾选标记。</p>
+<p><img src="/2023-08-16-unity-document-25/SearchingInEditor-Labels.png" alt=""></p>
+</li>
+<li>
+<p>要添加一个新的标签，您首先需要创建一个。将您的新标签名称输入到菜单顶部显示的文本框中，然后按下空格键或回车键。这将创建一个标签，您可以将其添加到任何资源中，并在项目窗口中使用该标签进行搜索。资源可以拥有任意数量的标签，并同时属于多个不同的标签组。</p>
+</li>
+</ol>
+<p>要从资源中删除一个标签，请打开标签菜单，并选择要删除勾选标记的标签。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/17/2023-08-17-unity-document-26/">Unity中文版-Unity’s interface-Search in the Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/16/2023-08-16-unity-document-25/">Unity中文版-Unity’s interface-Search in the Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/15/2023-08-15-unity-document-24/">Unity中文版-Unity’s interface-Undo(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/14/2023-08-14-unity-document-23/">Unity中文版-Unity’s interface-Additional windows(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/13/2023-08-13-unity-document-22/">Unity中文版-Unity’s interface-Console Window(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(36)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (29)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

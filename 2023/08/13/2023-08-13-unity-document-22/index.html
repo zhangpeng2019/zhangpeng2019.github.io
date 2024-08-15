@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Unity’s interface-Console Window(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Unity’s interface-Console Window(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-13 11:13:34 &#43;0800 CST">2023/08/13</time>
+        <span class="split">·</span>
+        <span> 87 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="控制台窗口">控制台窗口 <a href="#%e6%8e%a7%e5%88%b6%e5%8f%b0%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h1><p><strong>控制台</strong>窗口显示编辑器生成的错误、警告和其他消息。这些错误和警告可以帮助您找到项目中的问题，例如脚本编译错误。它们还可以提醒您编辑器自动执行的操作，例如替换丢失的元文件，这可能会在项目的其他地方引发问题。</p>
+<p>为了帮助您调试项目，可以使用调试类将自己的消息打印到控制台。例如，您可以打印脚本中某些位置的变量值，以查看它们的变化情况。</p>
+<p>本页面介绍了在使用<strong>控制台窗口</strong>时可用的选项，以及如何通过搜索特定关键字来过滤消息。</p>
+<h2 id="控制台窗口界面">控制台窗口界面 <a href="#%e6%8e%a7%e5%88%b6%e5%8f%b0%e7%aa%97%e5%8f%a3%e7%95%8c%e9%9d%a2" class="anchor">🔗</a></h2><p>要打开控制台，请从 Unity 的主菜单中选择 <strong>Window</strong> &gt; <strong>General</strong> &gt; <strong>Console</strong>。</p>
+<p><img src="/2023-08-13-unity-document-22/Console.png" alt=""></p>
+<p><strong>A</strong>. 控制台的 <em><strong>工具栏</strong></em> 提供了控制消息显示方式、搜索和筛选消息的选项。</p>
+<p><strong>B</strong>. 控制台窗口菜单提供了打开日志文件、控制列表中每个消息的可见行数以及设置堆栈跟踪选项的选项。</p>
+<p><strong>C</strong>. 控制台列表显示了每条记录的消息。选择一条消息可以在详细区域显示其完整文本。在这里，您可以选择每条消息显示多少行。请参阅下面的调整行数。</p>
+<p><strong>D</strong>. 详细区域显示了所选消息的完整文本。如果启用了堆栈跟踪，详细区域将显示代码文件中特定行的引用作为可点击的链接。</p>
+<h2 id="控制台工具栏选项">控制台工具栏选项 <a href="#%e6%8e%a7%e5%88%b6%e5%8f%b0%e5%b7%a5%e5%85%b7%e6%a0%8f%e9%80%89%e9%a1%b9" class="anchor">🔗</a></h2><p>控制台窗口的工具栏提供了控制消息显示方式、搜索和筛选消息的选项。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>选项</strong>：</th>
+<th style="text-align:left"></th>
+<th style="text-align:left"><strong>功能</strong>：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>清除</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">移除由您的代码生成的任何消息，但保留编译器错误。打开下拉菜单以选择清除选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">游戏播放时清除</td>
+<td style="text-align:left">在进入游戏模式时自动清除控制台中的消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">构建时清除</td>
+<td style="text-align:left">在构建项目时清除控制台中的消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">重新编译时清除</td>
+<td style="text-align:left">在重新编译项目时清除控制台中的消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>折叠</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">仅显示重复的错误消息的第一个实例。这在运行时错误中非常有用，例如每帧更新时都会发生的空引用错误。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>出错暂停</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">每当您从脚本中调用 <code>Debug.LogError</code> 时，播放暂停。使用此选项可以在执行的特定位置冻结播放并检查场景。调用 <code>Debug.Log</code> 时不会暂停播放。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>[连接到播放器]</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">打开下拉菜单，以连接到运行在远程设备上的开发构建，并在控制台中显示它们的播放器日志。此选项的标签是目标开发构建的名称（即在控制台窗口中显示的日志的构建）。如果控制台未连接到远程构建，则标签为<strong>Editor</strong>，表示在控制台窗口中显示的日志来自本地Unity编辑器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">播放器日志</td>
+<td style="text-align:left">如果控制台已连接到远程开发构建，则为该构建启用播放器日志记录。禁用此选项会暂停日志记录，但控制台仍会连接到目标构建。禁用此选项还会隐藏此下拉菜单中的其余选项。选择下面 <strong>播放器日志</strong> 下列出的任何构建，可以在控制台窗口中显示其日志。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">编辑器</td>
+<td style="text-align:left">如果控制台已连接到一个远程<em><strong>开发构建</strong></em>，选择此选项可显示本地Unity播放器的日志，而不是远程构建的日志。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&lt;输入IP地址&gt;</td>
+<td style="text-align:left">打开<strong>输入播放器IP地址</strong>对话框，您可以在其中指定远程设备上开发构建的IP地址。要连接到该构建，请在对话框中选择<strong>连接</strong>，并将其添加到下拉菜单底部的开发构建列表中。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>[开发构建列表]</strong></td>
+<td style="text-align:left">列出可用的开发构建。包括自动检测到的构建以及使用<strong>输入IP地址</strong>选项添加的构建。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="搜索和过滤控制台输出">搜索和过滤控制台输出 <a href="#%e6%90%9c%e7%b4%a2%e5%92%8c%e8%bf%87%e6%bb%a4%e6%8e%a7%e5%88%b6%e5%8f%b0%e8%be%93%e5%87%ba" class="anchor">🔗</a></h2><p>您可以从控制台搜索栏中搜索特定关键字的控制台消息。当您输入搜索术语时，控制台会过滤显示只包含匹配文本的消息。控制台只在消息文本中的可见部分中突出显示第一个匹配项（参见下面的调整行数）。</p>
+<p><img src="/2023-08-13-unity-document-22/ConsoleSearch.png" alt=""></p>
+<p>您可以搜索任何出现在控制台消息中的内容，包括数字和特殊字符。例如，您可以搜索控制台记录消息的时间。</p>
+<p>搜索栏中的搜索将查找与您键入的内容完全匹配的结果。您不能同时搜索两个不同的术语，也不能使用常见的搜索引擎运算符。</p>
+<p>您还可以按类型筛选控制台消息。单击搜索栏旁边的按钮可以切换：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Button</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="/2023-08-13-unity-document-22/ConsoleFilterMessage.png" alt=""><strong>消息筛选开关</strong></td>
+<td style="text-align:left">显示控制台中的消息数量。单击以显示或隐藏消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-08-13-unity-document-22/ConsoleFilterWarning.png" alt=""><strong>警告筛选开关</strong></td>
+<td style="text-align:left">显示控制台中的警告数量。单击以显示或隐藏警告。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-08-13-unity-document-22/ConsoleFilterError.png" alt=""><strong>错误筛选开关</strong></td>
+<td style="text-align:left">显示控制台中的错误数量。单击以显示或隐藏错误。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="调整行数">调整行数 <a href="#%e8%b0%83%e6%95%b4%e8%a1%8c%e6%95%b0" class="anchor">🔗</a></h2><p>每个控制台条目最多可以有10行。</p>
+<p>要控制在列表中可见的每个条目的行数，请单击控制台菜单按钮，然后从菜单中选择<strong>Log Entry</strong> &gt; <strong>[X] Lines</strong>，其中**[X]**是每个条目要显示的行数。</p>
+<p><img src="/2023-08-13-unity-document-22/ConsoleAdjustLineCount.png" alt=""></p>
+<p>更大的行数可显示每个条目的更多文本内容，但会减少在任意给定时间内可见的条目数量。行数不影响控制台的搜索功能，搜索始终搜索完整的消息文本。如果匹配的文本位于隐藏的行上，搜索结果中会返回该消息，但不会展开或突出显示匹配的文本。您可以在详细区域中查看完整的消息文本，但其中的匹配文本不会突出显示。</p>
+<h2 id="堆栈跟踪记录">堆栈跟踪记录 <a href="#%e5%a0%86%e6%a0%88%e8%b7%9f%e8%b8%aa%e8%ae%b0%e5%bd%95" class="anchor">🔗</a></h2><p>Unity控制台消息和日志文件可以包含详细的堆栈跟踪信息。您可以使用堆栈跟踪记录设置来控制堆栈跟踪信息的数量。</p>
+<h2 id="从控制台打开日志文件">从控制台打开日志文件 <a href="#%e4%bb%8e%e6%8e%a7%e5%88%b6%e5%8f%b0%e6%89%93%e5%bc%80%e6%97%a5%e5%bf%97%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>Unity或您的代码写入控制台窗口的所有内容也会写入日志文件中。您可以从控制台窗口菜单中打开日志文件。选择<strong>Open Player Log</strong>或<strong>Open Editor Log</strong>。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/17/2023-08-17-unity-document-26/">Unity中文版-Unity’s interface-Search in the Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/16/2023-08-16-unity-document-25/">Unity中文版-Unity’s interface-Search in the Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/15/2023-08-15-unity-document-24/">Unity中文版-Unity’s interface-Undo(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/14/2023-08-14-unity-document-23/">Unity中文版-Unity’s interface-Additional windows(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/13/2023-08-13-unity-document-22/">Unity中文版-Unity’s interface-Console Window(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(36)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (29)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
