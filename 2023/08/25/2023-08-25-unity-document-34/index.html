@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-25 11:13:34 &#43;0800 CST">2023/08/25</time>
+        <span class="split">·</span>
+        <span> 69 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="设置多个场景">设置多个场景 <a href="#%e8%ae%be%e7%bd%ae%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h1><p>您可以添加多个场景，编辑如何查看它们，并更改<strong>场景</strong>设置。</p>
+<p>要创建新场景，请参见创建、加载和保存场景。</p>
+<h2 id="添加场景">添加场景 <a href="#%e6%b7%bb%e5%8a%a0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>要向项目添加新场景，请执行以下操作之一：</p>
+<ul>
+<li>在<strong>项目窗口</strong>中右键单击场景资产，然后选择<strong>以可加载方式打开场景</strong>。</li>
+<li>将一个或多个场景从项目窗口拖动到层级窗口中。</li>
+</ul>
+<h2 id="查看场景">查看场景 <a href="#%e6%9f%a5%e7%9c%8b%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>层级窗口显示项目中的所有场景：</p>
+<p><img src="/2023-08-25-unity-document-34/ViewScenes.png" alt=""></p>
+<p>A: 带有未保存更改的场景名称旁边有一个星号。
+B: 场景的更多菜单允许您对场景执行操作。
+C: 场景分隔符（倒三角形）允许您折叠场景，并将其内容从层级窗口中隐藏，以更好地管理多个场景。</p>
+<p><strong>提示</strong>：要在不加载场景的情况下将场景添加到层级窗口中，请按下Alt键（macOS：按下Option键）并将场景拖入层级窗口中。这样可以在适合您的时候加载场景。</p>
+<h2 id="已加载场景的更多菜单">已加载场景的更多菜单（⋮） <a href="#%e5%b7%b2%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af%e7%9a%84%e6%9b%b4%e5%a4%9a%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>您可以通过多种方式与已加载的场景进行交互和编辑。</p>
+<p><img src="/2023-08-25-unity-document-34/LoadedMoreMenu.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>设置项</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>设置为活动场景</strong></td>
+<td style="text-align:left">将场景设置为通过脚本创建的新<strong>游戏对象</strong>的目标场景。有关详细信息，请参阅SceneManager.SetActiveScene。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>保存场景</strong></td>
+<td style="text-align:left">保存您选择的场景。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>另存为场景</strong></td>
+<td style="text-align:left">打开文件浏览器，以便选择保存场景的位置和方式。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>全部保存</strong></td>
+<td style="text-align:left">保存层级窗口中打开的所有场景。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>卸载场景</strong></td>
+<td style="text-align:left">隐藏场景的内容，使其不在<strong>场景视图</strong>和层级窗口中显示。如果有未保存的更改，请在卸载场景之前保存它们，以免丢失任何更改。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>移除场景</strong></td>
+<td style="text-align:left">从层级窗口中移除场景。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>放弃更改</strong></td>
+<td style="text-align:left">撤销您尚未保存的任何更改。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>选择场景资产</strong></td>
+<td style="text-align:left">在项目窗口中突出显示场景资产。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>添加新场景</strong></td>
+<td style="text-align:left">在所选场景下方添加一个新的无标题场景。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>游戏对象</strong></td>
+<td style="text-align:left">打开一个下拉菜单，其中包含要添加到所选场景中的游戏对象。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="未加载场景的更多菜单">未加载场景的更多菜单（⋮） <a href="#%e6%9c%aa%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af%e7%9a%84%e6%9b%b4%e5%a4%9a%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>与已加载场景相比，您可以使用较少的方式与未加载场景进行交互和编辑。</p>
+<p><img src="/2023-08-25-unity-document-34/UnloadedMoreMenu.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>设置项</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>加载场景</strong></td>
+<td style="text-align:left">在层级窗口和场景视图中显示场景的内容，并允许您对其进行编辑。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>移除场景</strong></td>
+<td style="text-align:left">从层级窗口中移除场景。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>选择场景资产</strong></td>
+<td style="text-align:left">在项目窗口中突出显示场景资产。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>添加新场景</strong></td>
+<td style="text-align:left">在所选场景下方添加一个新的无标题场景。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="play模式中的多个场景">Play模式中的多个场景 <a href="#play%e6%a8%a1%e5%bc%8f%e4%b8%ad%e7%9a%84%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>当您处于Play模式并且在层级窗口中有多个场景时，编辑器会显示一个名为DontDestroyOnLoad的额外场景。</p>
+<h2 id="场景特定设置">场景特定设置 <a href="#%e5%9c%ba%e6%99%af%e7%89%b9%e5%ae%9a%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>以下设置适用于每个场景：</p>
+<ul>
+<li>RenderSettings和LightmapSettings（这两者在照明窗口中找到）。</li>
+<li>遮挡剔除窗口中的场景设置。</li>
+</ul>
+<p>每个场景都管理其自己的设置，因此只有与该场景关联的设置才会保存到场景文件中。</p>
+<p>要更改特定场景的设置，要么打开具体场景并更改设置，要么将场景设置为活动场景，然后更改设置。否则，如果有多个场景打开，Unity将使用活动场景的渲染设置。</p>
+<p>当您在编辑器中或运行时切换到新的活动场景时，Unity会用新活动场景的设置替换所有先前的设置。</p>
+<h2 id="其他资源">其他资源 <a href="#%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><ul>
+<li>创建、加载和保存场景</li>
+<li>在多个场景中烘焙数据</li>
+<li>使用脚本编辑多个场景</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

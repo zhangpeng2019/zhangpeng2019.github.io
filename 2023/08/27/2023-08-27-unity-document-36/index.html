@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-27 11:13:34 &#43;0800 CST">2023/08/27</time>
+        <span class="split">·</span>
+        <span> 18 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h2 id="使用脚本编辑多个场景">使用脚本编辑多个场景 <a href="#%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac%e7%bc%96%e8%be%91%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>您可以使用脚本在编辑器或运行时编辑多个场景。</p>
+<h2 id="在编辑器中使用脚本">在编辑器中使用脚本 <a href="#%e5%9c%a8%e7%bc%96%e8%be%91%e5%99%a8%e4%b8%ad%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac" class="anchor">🔗</a></h2><p>在编辑器中使用（或运行）脚本时，可以使用以下内容：</p>
+<ul>
+<li>Scene结构体：在编辑器和运行时都可用，Scene结构体包含与场景本身相关的只读属性，如名称和资源路径。</li>
+<li>EditorSceneManager API：此类仅在编辑器中可用，并具有多个函数来实现在“设置多个场景”和“在多个场景中烘焙数据”页面中描述的所有多场景编辑功能。</li>
+<li>SceneSetup实用程序类：您可以使用该实用程序类来存储与层级窗口中场景相关的信息。</li>
+</ul>
+<h2 id="在运行时使用脚本">在运行时使用脚本 <a href="#%e5%9c%a8%e8%bf%90%e8%a1%8c%e6%97%b6%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac" class="anchor">🔗</a></h2><p>在运行时使用脚本来编辑多个场景时，请使用SceneManager类中的函数，例如<code>LoadScene</code>和<code>UnloadScene</code>。</p>
+<p><strong>提示</strong>：</p>
+<ul>
+<li>要在场景中实例化预制体，请使用PrefabUtility.InstantiatePrefab。</li>
+<li>要将对象移动到场景的根目录，请使用Undo.MoveGameObjectToScene。</li>
+<li>为了避免每次重新启动编辑器时都必须设置层级窗口，或者为了存储不同的设置，可以使用EditorSceneManager.GetSceneManagerSetup。它还获取了一个SceneSetup对象列表，描述了当前设置。您可以将这些对象与您想要存储的任何其他关于场景设置的信息一起序列化到一个ScriptableObject中。要恢复您的层级窗口，请重新创建<code>SceneSetups</code>列表，并使用EditorSceneManager.RestoreSceneManagerSetup。</li>
+<li>要在运行时获取加载的场景列表，请获取<code>sceneCount</code>，然后使用<code>GetSceneAt</code>迭代遍历场景。</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Quickstart guides(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Quickstart guides(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-19 11:13:34 &#43;0800 CST">2023/08/19</time>
+        <span class="split">·</span>
+        <span> 133 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h2 id="快速入门指南">快速入门指南 <a href="#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h2><p>快速入门指南提供了一套流程，帮助您开始使用Unity。</p>
+<p>目前提供以下快速入门指南：</p>
+<ul>
+<li>2D游戏开发快速入门指南</li>
+<li>3D游戏开发快速入门指南</li>
+</ul>
+<h1 id="3d游戏开发快速入门指南">3D游戏开发快速入门指南 <a href="#3d%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h1><p>此快速入门指南为使用Unity进行3D游戏开发的开发者提供了一个工作流程。</p>
+<p>**注意：**该指南适用于从2019 LTS版本及以上的所有Unity版本。</p>
+<p>此快速入门指南将帮助您：</p>
+<ul>
+<li>设置Unity项目（请参阅下面的初始设置部分）</li>
+<li>创建一个3D游戏</li>
+</ul>
+<p>有关详细的3D游戏教程，请参阅以下Unity Learn材料：</p>
+<ul>
+<li>初学者3D开发学习课程</li>
+<li>John Lemon的幽灵之旅：3D初学者项目</li>
+<li>查看所有的3D学习教程</li>
+<li>使用代码创作</li>
+<li>创作者工具包：初学者代码</li>
+</ul>
+<h2 id="初始设置">初始设置 <a href="#%e5%88%9d%e5%a7%8b%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>**注意：**对于本指南，Unity推荐并假设您选择通用渲染管线（URP），而不是内置渲染管线。</p>
+<ol>
+<li>安装Unity 2019 LTS版本或更高版本。请参阅安装Unity。</li>
+<li>创建一个项目并选择通用<strong>渲染管线</strong>模板。请参阅Hub文档中的模板。</li>
+</ol>
+<p>如果需要熟悉Unity并进行设置，可以参考Unity Learn中的Unity Essentials学习路径。</p>
+<h1 id="创建一个3d游戏">创建一个3D游戏 <a href="#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa3d%e6%b8%b8%e6%88%8f" class="anchor">🔗</a></h1><p>要创建一个3D游戏，先设置您的Unity项目，然后按照以下顺序熟悉相关概念：</p>
+<ul>
+<li>基础知识</li>
+<li>脚本编写</li>
+<li>3D资源</li>
+<li>构建游戏环境</li>
+<li>动画</li>
+<li>图形</li>
+<li>音频</li>
+<li>物理</li>
+<li>用户界面</li>
+</ul>
+<h2 id="基础知识">基础知识 <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="anchor">🔗</a></h2><p>GameObjects是Unity中的基本对象，代表角色、道具、场景等。游戏中的每个对象都是一个GameObject。</p>
+<p>GameObjects存在于被称为场景的3D环境中。您可以将场景视为游戏关卡，但它也可以表示菜单、游戏结束时的制作人员名单或其他内容。</p>
+<p>GameObjects的行为由称为组件的功能块定义。您可以将多个组件附加到GameObject上。以下组件对于3D游戏至关重要：</p>
+<ul>
+<li>Transform（变换）：<strong>Transform组件</strong>确定场景中每个GameObject的位置、旋转和缩放。每个GameObject都有一个Transform组件。</li>
+<li>Mesh Filter（网格过滤器）：该组件定义了3D GameObject的形状。</li>
+<li>Mesh Renderer（网格渲染器）：该组件定义了由<strong>网格过滤器</strong>定义的3D形状的外观。</li>
+<li>Cameras（相机）：特别配置的GameObject，用于捕捉并向玩家显示游戏世界。</li>
+<li>Rigidbody（刚体）：刚体允许GameObject与物理系统进行交互，包括重力和<strong>碰撞</strong>。请参阅本指南中的物理部分。</li>
+<li>Colliders（碰撞体）：该组件定义了3D GameObject的形状，用于物理碰撞。</li>
+</ul>
+<h2 id="脚本编写">脚本编写 <a href="#%e8%84%9a%e6%9c%ac%e7%bc%96%e5%86%99" class="anchor">🔗</a></h2><p>Unity允许您使用<strong>脚本</strong>创建自己的组件。脚本可以让您触发游戏事件、随时间修改组件属性并响应用户输入。Unity原生支持C#编程语言。以下是您可以在游戏中使用脚本的一些示例：</p>
+<ul>
+<li>接收玩家输入，并使GameObject根据输入移动或执行相应操作。</li>
+<li>设置胜利和失败状态，打开相关的胜利或失败场景，创建完整的游戏循环。</li>
+<li>基于其他变量，影响GameObject的组件，如其变换、动画或渲染器。</li>
+</ul>
+<p>有关如何在Unity中使用脚本的详细信息，请参阅脚本概述。要学习脚本编写的基础知识，请按照Unity Learn的初学者脚本编写课程进行学习。如需更深入的指导，请参阅示例项目“使用代码创作”和“创作者工具包：初学者代码”。</p>
+<h2 id="3d资源">3D资源 <a href="#3d%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><p>模型是物体的三维表示。3D游戏的大部分视觉效果都由模型组成，例如角色、可交互对象和玩家周围的世界。</p>
+<p>您可以使用Probuilder等工具在Unity中创建模型。然而，这些工具更适合用于原型制作，而不适合用于最终产品。</p>
+<p>要向最终产品添加更精致的3D资源，可以在3D建模软件中创建3D模型、材质和纹理，然后将它们导入到Unity中。</p>
+<p><img src="/2023-08-19-unity-document-28/quickstart-3D-Graphics.png" alt=""></p>
+<h3 id="导入3d模型文件">导入3D模型文件 <a href="#%e5%af%bc%e5%85%a53d%e6%a8%a1%e5%9e%8b%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h3><p>Unity使用.fbx模型格式。您还可以使用其他常见的原生模型格式（例如.max、.blend、.mb、.ma），Unity在导入时会将其转换为.fbx格式。</p>
+<p>将模型导入到Unity中以在项目中使用。</p>
+<h3 id="渲染网格">渲染网格 <a href="#%e6%b8%b2%e6%9f%93%e7%bd%91%e6%a0%bc" class="anchor">🔗</a></h3><p>3D网格是3D模型的结构。它由多个多边形形状组成。要将3D模型添加到GameObject中，向GameObject添加一个Mesh Filter组件。Mesh Renderer组件在场景中渲染网格；为了确保模型在游戏中显示，必须将Mesh Renderer添加到任何具有Mesh Filter组件的GameObject中。</p>
+<h3 id="材质">材质 <a href="#%e6%9d%90%e8%b4%a8" class="anchor">🔗</a></h3><p>材质结合了有关表面视觉外观的信息，如纹理、颜色和着色器。使用材质定义如何渲染表面。</p>
+<ul>
+<li>纹理是您导入到Unity中的任何2D图像文件。使用纹理将网格包装并向模型添加细节。</li>
+<li>使用颜色调整来更改纹理的颜色。</li>
+<li>着色器是一系列指令，确定Unity如何在屏幕上显示GameObject。使用着色器根据光照输入和材质配置影响Unity如何渲染每个像素。</li>
+</ul>
+<p>请参阅关于材质设计的学习教程。</p>
+<h2 id="building-in-游戏环境">Building in-游戏环境 <a href="#building-in-%e6%b8%b8%e6%88%8f%e7%8e%af%e5%a2%83" class="anchor">🔗</a></h2><p><img src="/2023-08-19-unity-document-28/quickstart-3D-environment.png" alt=""></p>
+<p>环境设计是为游戏玩法创建一个环境的过程。您可以在Unity编辑器中同时设计和构建您的环境，或者您可以在Unity外部设计一个环境，然后在Unity中构建它。</p>
+<p>要构建一个游戏内环境，您需要向场景中添加游戏对象，并将它们位置调整到您喜欢的方式和设计中。除了在场景中手动放置模型外，Unity编辑器还包含一套内置的**地形（Terrain）**功能，允许您向游戏中添加地貌。在编辑器中，您可以创建多个地形瓦片，调整地形的高度或外观，并向其添加树木或草地。详细了解创建和使用地形。</p>
+<h2 id="animation">Animation <a href="#animation" class="anchor">🔗</a></h2><p>您可以导入其他程序中制作的动画，也可以直接在编辑器中对资源进行动画制作。有关3D动画的更多信息，请参阅Unity学习课程介绍3D动画系统。</p>
+<p><img src="/2023-08-19-unity-document-28/quickstart-3D-animation.png" alt=""></p>
+<h3 id="导入动画">导入动画 <a href="#%e5%af%bc%e5%85%a5%e5%8a%a8%e7%94%bb" class="anchor">🔗</a></h3><p>在导入带有动画的模型时，Unity可以导入动画剪辑。这意味着您可以在其他程序中对模型进行动画制作，然后在Unity中访问和操作这些剪辑。</p>
+<h3 id="在unity中制作模型动画">在Unity中制作模型动画 <a href="#%e5%9c%a8unity%e4%b8%ad%e5%88%b6%e4%bd%9c%e6%a8%a1%e5%9e%8b%e5%8a%a8%e7%94%bb" class="anchor">🔗</a></h3><p>使用动画窗口在Unity中直接创建和修改动画剪辑。使用**关键帧（Keyframe）**动画将简单的动画添加到场景中的GameObject，例如改变其位置、大小或旋转。</p>
+<h3 id="控制动画">控制动画 <a href="#%e6%8e%a7%e5%88%b6%e5%8a%a8%e7%94%bb" class="anchor">🔗</a></h3><p>要控制播放哪个动画剪辑，您可以在脚本中直接调用它们使用 Animator 类，或者在Animator窗口中创建和修改 Animator Controller。</p>
+<p>您可以使用Animator窗口：</p>
+<ul>
+<li>创建和设置动画控制器（Animator Controller）</li>
+<li>使用动画剪辑创建动画状态（Animator States）</li>
+<li>创建脚本可以访问或分配值给的动画参数（Animator Parameters）</li>
+<li>创建游戏状态之间的转换（Animator Transitions），指定更改状态的条件（基于参数）以及状态之间的混合时间</li>
+</ul>
+<h2 id="graphics">Graphics <a href="#graphics" class="anchor">🔗</a></h2><h3 id="lighting">Lighting <a href="#lighting" class="anchor">🔗</a></h3><p>为场景添加光照，可以增加环境的深度和氛围，帮助玩家体验您创建的游戏世界。要设置光照：</p>
+<ol>
+<li>创建光源。在Hierarchy窗口中右键单击打开GameObject菜单，选择<strong>Light</strong>，然后选择要添加到场景中的光源类型。详见光源类型。</li>
+<li>将光源放置在场景中。调整光源的颜色、强度和位置，直到达到所需的效果。详见使用光源。</li>
+<li>完善您的光照。例如，您可以选择不同的光照模式，或者添加一个遮罩蒙版来创建阴影。</li>
+</ol>
+<p><img src="/2023-08-19-unity-document-28/quickstart-3D-lights.png" alt=""></p>
+<p>请参阅Unity Learn中的URP光照教程。</p>
+<h2 id="audio">Audio <a href="#audio" class="anchor">🔗</a></h2><p>您可以在Unity中为游戏添加背景音乐和音效；请参阅音频概述。使用第三方软件创建音频，并按照建议的设置将其导入到Unity中。</p>
+<h2 id="physics">Physics <a href="#physics" class="anchor">🔗</a></h2><p><img src="/2023-08-19-unity-document-28/quickstart-3D-physics.png" alt=""></p>
+<p>使用Unity的<strong>物理引擎</strong>控制GameObject之间的互动。您可以使用物理引擎来模拟重力和力学等力量，定义GameObject在现实世界中碰撞时的行为。您还可以配置物理设置，以创建适合游戏设计的自定义物理效果，这可能不是对现实世界的准确模拟。要了解如何使用Unity的物理引擎，请参阅Unity Learn教程《Ruby&rsquo;s Adventure: 2D Beginner》。更多信息，请参阅用户手册中的物理部分。</p>
+<p>为GameObject设置物理效果：</p>
+<ol>
+<li>为了使GameObject受到物理系统的影响，并对重力和碰撞等事物作出反应，添加一个Rigidbody组件。</li>
+<li>使用Collider使GameObject能够与场景中的其他GameObject互动。例如，具有collider的GameObject可以被具有collider的另一个GameObject移动或被移动。</li>
+<li>为了在两个GameObject相交时能够在代码中调用函数，添加一个Collider，并将其设置为trigger。</li>
+</ol>
+<h2 id="用户界面">用户界面 <a href="#%e7%94%a8%e6%88%b7%e7%95%8c%e9%9d%a2" class="anchor">🔗</a></h2><p>如果您想要为游戏添加菜单或帮助功能，您需要设置一个用户界面。使用Unity UI来设置用户界面。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

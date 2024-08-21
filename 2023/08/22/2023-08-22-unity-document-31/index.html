@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-22 11:13:34 &#43;0800 CST">2023/08/22</time>
+        <span class="split">·</span>
+        <span> 40 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="创建游戏玩法场景">创建游戏玩法场景 <a href="#%e5%88%9b%e5%bb%ba%e6%b8%b8%e6%88%8f%e7%8e%a9%e6%b3%95%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h1><p>在Unity中，场景是您与内容进行工作的地方。它们是包含整个或部分游戏或应用程序的资产。例如，您可以在一个场景中构建一个简单的游戏，而对于更复杂的游戏，可以使用每个关卡一个场景，每个场景都有自己的环境、角色、障碍物、装饰物和<strong>UI</strong>。您可以在项目中创建任意数量的场景。</p>
+<p>当您创建一个新项目并首次打开它时，Unity会打开一个示例场景，其中只包含一个<strong>摄像机</strong>和一个灯光。</p>
+<p><img src="/2023-08-22-unity-document-31/NewEmptyScene_01.png" alt=""></p>
+<p>了解有关使用场景的信息，请参阅创建、加载和保存场景。</p>
+<h2 id="场景模板">场景模板 <a href="#%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h2><p>Unity使用场景模板来创建新的场景。场景模板是存储在项目中的资源。它们与场景类似，但是设计为复制而不是直接使用。</p>
+<p>详细了解创建和使用场景模板的信息，请参阅场景模板。</p>
+<h2 id="新场景对话框">新场景对话框 <a href="#%e6%96%b0%e5%9c%ba%e6%99%af%e5%af%b9%e8%af%9d%e6%a1%86" class="anchor">🔗</a></h2><p>当您从“文件”菜单: (<strong>文件</strong> &gt; <strong>新建场景</strong>) 或 <strong>Ctrl/Cmd + n</strong> 快捷键创建一个新场景时，新场景对话框会弹出。您可以使用它从项目的特定场景模板中创建新场景，并获取有关现有模板的信息。</p>
+<p><img src="/2023-08-22-unity-document-31/scene-template-new-scene-dialog.png" alt=""></p>
+<ol>
+<li><strong>搜索字段:</strong> 按名称查找可用的场景模板。</li>
+<li><strong>模板:</strong> 显示项目中所有可用模板的列表。</li>
+<li><strong>模板详情:</strong> 显示当前选定模板的信息。</li>
+<li><strong>命令栏:</strong> 提供从选定模板创建新场景的命令和选项。</li>
+</ol>
+<h3 id="创建新场景">创建新场景 <a href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>要从新场景对话框创建新场景，请从模板列表中选择一个模板，然后点击<strong>创建</strong>。有关以这种方式创建场景的详细说明，请参阅从新场景对话框创建新场景。</p>
+<h3 id="固定模板">固定模板 <a href="#%e5%9b%ba%e5%ae%9a%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h3><p>固定的模板将显示在新场景对话框的模板列表中的其他模板之前。最后固定的模板将显示在列表的顶部。</p>
+<p>单击任何模板的固定图标即可固定它。</p>
+<p><img src="/2023-08-22-unity-document-31/scene-template-pin.png" alt=""></p>
+<p>您还可以在编辑模板属性时固定模板。在场景模板的<strong>Inspector</strong>中，启用<strong>固定在新场景对话框中</strong>选项。</p>
+<h3 id="定位和编辑模板">定位和编辑模板 <a href="#%e5%ae%9a%e4%bd%8d%e5%92%8c%e7%bc%96%e8%be%91%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h3><p>当您在新场景对话框中选择一个模板时，详细信息窗格会显示模板的路径（下图中的1）。</p>
+<p>要在<strong>项目窗口</strong>中突出显示模板，请选择<strong>定位</strong>链接（下图中的2）。</p>
+<p>要在检查器窗口中打开模板并编辑其属性，请选择<strong>编辑</strong>链接（下图中的3）。</p>
+<p><img src="/2023-08-22-unity-document-31/scene-template-locate-edit.png" alt=""></p>
+<h2 id="多场景编辑">多场景编辑 <a href="#%e5%a4%9a%e5%9c%ba%e6%99%af%e7%bc%96%e8%be%91" class="anchor">🔗</a></h2><p>您可以同时打开多个场景进行编辑。详细信息请参阅多场景编辑。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

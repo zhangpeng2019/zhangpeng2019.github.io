@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Advanced best practice guides(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Advanced best practice guides(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-20 11:13:34 &#43;0800 CST">2023/08/20</time>
+        <span class="split">·</span>
+        <span> 100 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="高级最佳实践指南">高级最佳实践指南 <a href="#%e9%ab%98%e7%ba%a7%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h1><p>使用此页面来发现并学习Unity专家的生产经验和最佳实践。Unity的技术内容营销团队与行业专家、Unity研发团队的工程师和技术艺术家以及Accelerate Games Solutions团队共同创建了此页面上列出的指南。</p>
+<h2 id="art-and-design">Art and design <a href="#art-and-design" class="anchor">🔗</a></h2><p><img src="/2023-08-20-unity-document-29/best-practice-2d-game-art-animation-lighting.png" alt=""></p>
+<h3 id="2d游戏艺术动画和灯光指南">2D游戏艺术、动画和灯光指南 <a href="#2d%e6%b8%b8%e6%88%8f%e8%89%ba%e6%9c%af%e5%8a%a8%e7%94%bb%e5%92%8c%e7%81%af%e5%85%89%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h3><p>由Unity 2D演示项目《Dragon Crashers》的美术总监编写，并由Unity 2D专家的贡献，本指南展示了如何设置您的2D项目、在Unity和Autodesk之间切换、处理<strong>精灵</strong>、排序图层等等。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-create-bettergameplay.png" alt=""></p>
+<h3 id="unity游戏设计师白皮书">Unity游戏设计师白皮书 <a href="#unity%e6%b8%b8%e6%88%8f%e8%ae%be%e8%ae%a1%e5%b8%88%e7%99%bd%e7%9a%ae%e4%b9%a6" class="anchor">🔗</a></h3><p>本指南旨在帮助经验丰富的游戏设计师学习如何在Unity中原型化他们的想法，实现更高效的创作和团队协作。学习有关视觉脚本、创建输入、关卡设计工具、微交互等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-blog-post.png" alt=""></p>
+<h3 id="面向技术美术的unity关键工具集和工作流程unity-2021-lts版">面向技术美术的Unity：关键工具集和工作流程（Unity 2021 LTS版） <a href="#%e9%9d%a2%e5%90%91%e6%8a%80%e6%9c%af%e7%be%8e%e6%9c%af%e7%9a%84unity%e5%85%b3%e9%94%ae%e5%b7%a5%e5%85%b7%e9%9b%86%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8bunity-2021-lts%e7%89%88" class="anchor">🔗</a></h3><p>一些Unity最经验丰富的技术艺术家对本指南做出了重要贡献。它涵盖了与资产的工作、渲染管线、光照、世界建设、数字人物等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-blog-post2.png" alt=""></p>
+<h3 id="面向技术美术的unity关键工具集和工作流程unity-2020-lts版">面向技术美术的Unity：关键工具集和工作流程（Unity 2020 LTS版） <a href="#%e9%9d%a2%e5%90%91%e6%8a%80%e6%9c%af%e7%be%8e%e6%9c%af%e7%9a%84unity%e5%85%b3%e9%94%ae%e5%b7%a5%e5%85%b7%e9%9b%86%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8bunity-2020-lts%e7%89%88" class="anchor">🔗</a></h3><p>一些Unity最经验丰富的技术艺术家对本指南做出了重要贡献。它涵盖了与资产的工作、渲染管线、光照、世界建设、数字人物等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-interface-design.jpg" alt=""></p>
+<h3 id="unity中的用户界面设计和实现">Unity中的用户界面设计和实现 <a href="#unity%e4%b8%ad%e7%9a%84%e7%94%a8%e6%88%b7%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%e5%92%8c%e5%ae%9e%e7%8e%b0" class="anchor">🔗</a></h3><p>本指南由游戏行业的专业级设计师和Unity产品专家撰写，提供了关于职业技巧以及使用适用于世界构建的Unity工具（如Unity ProBuilder和**地形（Terrain）**系统）的说明。</p>
+<p><img src="/2023-08-20-unity-document-29/introduction-to-game-level-design.png" alt=""></p>
+<h3 id="游戏关卡设计简介">游戏关卡设计简介 <a href="#%e6%b8%b8%e6%88%8f%e5%85%b3%e5%8d%a1%e8%ae%be%e8%ae%a1%e7%ae%80%e4%bb%8b" class="anchor">🔗</a></h3><p>这本电子书提供了逐步指导，教授如何使用Unity的<strong>UI</strong>系统来构建界面。内容包括UI设计和开发概念、资源准备工作流程、样式和字体等。</p>
+<h2 id="devops">DevOps <a href="#devops" class="anchor">🔗</a></h2><p><img src="/2023-08-20-unity-document-29/best-practice-devops.png" alt=""></p>
+<h3 id="版本控制项目组织最佳实践">版本控制项目组织最佳实践 <a href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6%e9%a1%b9%e7%9b%ae%e7%bb%84%e7%bb%87%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="anchor">🔗</a></h3><p>学习Unity中版本控制和项目组织的基本原理。涵盖的关键主题包括使用不同版本控制解决方案设置Unity项目、组织Unity项目、适当的文件夹结构和命名标准。</p>
+<h2 id="图形与渲染">图形与渲染 <a href="#%e5%9b%be%e5%bd%a2%e4%b8%8e%e6%b8%b2%e6%9f%93" class="anchor">🔗</a></h2><p><img src="/2023-08-20-unity-document-29/best-practice-urp-recipes.png" alt=""></p>
+<h3 id="使用通用渲染管线创建流行视觉效果的技巧">使用通用渲染管线创建流行视觉效果的技巧 <a href="#%e4%bd%bf%e7%94%a8%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf%e5%88%9b%e5%bb%ba%e6%b5%81%e8%a1%8c%e8%a7%86%e8%a7%89%e6%95%88%e6%9e%9c%e7%9a%84%e6%8a%80%e5%b7%a7" class="anchor">🔗</a></h3><p>在本指南中，您可以选择12个使用URP创建流行效果的技巧。学习如何使用渲染器特性创建效果，使用Shader Graph构建Toon和轮廓<strong>着色器</strong>，使用GPU实例化，产生反射和折射等。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-URP-advanced-2022.jpg" alt=""></p>
+<h3 id="面向高级unity创作者的通用渲染管线unity-2022-lts">面向高级Unity创作者的通用渲染管线（Unity 2022 LTS） <a href="#%e9%9d%a2%e5%90%91%e9%ab%98%e7%ba%a7unity%e5%88%9b%e4%bd%9c%e8%80%85%e7%9a%84%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2022-lts" class="anchor">🔗</a></h3><p>本指南涵盖了关于贴花、URP质量设置和转换器的新增和更改，以及对渲染路径的比较，包括Forward+、全屏Shader Graph包括自定义<strong>后期处理</strong>等等。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-urp.png" alt=""></p>
+<h3 id="面向高级unity创作者的通用渲染管线unity-2021-lts">面向高级Unity创作者的通用渲染管线（Unity 2021 LTS） <a href="#%e9%9d%a2%e5%90%91%e9%ab%98%e7%ba%a7unity%e5%88%9b%e4%bd%9c%e8%80%85%e7%9a%84%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2021-lts" class="anchor">🔗</a></h3><p>使用本指南了解如何使用URP建立一个新项目，或将现有的基于内置渲染管线的项目转换为URP。了解URP质量设置和着色器，设置光照、阴影、特效等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/hdrp-lighting-guide-2022.jpg" alt=""></p>
+<h3 id="高清渲染管线unity-2022-lts">高清渲染管线（Unity 2022 LTS） <a href="#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2022-lts" class="anchor">🔗</a></h3><p>这本更新的指南涵盖了新的水系统、新的地形工具，包括使用SpeedTree创建地形，创建天空、云、光照效果的更多功能，更新了HDRP着色器和材质等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-hdrp-2021.png" alt=""></p>
+<h3 id="高清渲染管线unity-2021-lts">高清渲染管线（Unity 2021 LTS） <a href="#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2021-lts" class="anchor">🔗</a></h3><p>本指南提供了关于为PC和主机游戏创建高端光照的深入参考，包括HDRP设置、<strong>相机</strong>和体积框架，创建天空、反射、实时光照等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-hdrp-2020.png" alt=""></p>
+<h3 id="高清渲染管线unity-2020-lts">高清渲染管线（Unity 2020 LTS） <a href="#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2020-lts" class="anchor">🔗</a></h3><p>本指南提供了关于为PC和主机游戏创建高端光照的深入参考，包括HDRP设置、相机和体积框架，创建天空、反射、实时光照等内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-advanced-effects.jpg" alt=""></p>
+<h3 id="unity高级视觉效果创建终极指南">Unity高级视觉效果创建终极指南 <a href="#unity%e9%ab%98%e7%ba%a7%e8%a7%86%e8%a7%89%e6%95%88%e6%9e%9c%e5%88%9b%e5%bb%ba%e7%bb%88%e6%9e%81%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h3><p>本指南全面介绍了在Unity中如何使用视觉效果创作工具来创建任何类型的效果：水和液体、烟雾、火焰、爆炸、天气、冲击、魔法和电力等。</p>
+<h2 id="性能优化">性能优化 <a href="#%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96" class="anchor">🔗</a></h2><p><img src="/2023-08-20-unity-document-29/optimize-your-mobile-game-2022.png" alt=""></p>
+<h3 id="优化移动游戏性能unity-2022-lts">优化移动游戏性能（Unity 2022 LTS） <a href="#%e4%bc%98%e5%8c%96%e7%a7%bb%e5%8a%a8%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2022-lts" class="anchor">🔗</a></h3><p>从使用Unity的完整性能分析工具、编程和代码架构、项目配置和资源、GPU优化等方面获取提示，以优化移动游戏的性能。还包括音频、用户界面、动画、物理等方面的优化技巧。</p>
+<p><img src="/2023-08-20-unity-document-29/optimize-pc-game-performance.png" alt=""></p>
+<h3 id="优化主机和pc游戏性能unity-2022-lts">优化主机和PC游戏性能（Unity 2022 LTS） <a href="#%e4%bc%98%e5%8c%96%e4%b8%bb%e6%9c%ba%e5%92%8cpc%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2022-lts" class="anchor">🔗</a></h3><p>本指南汇集了超过100页的优化最佳实践，用于在Unity中开发主机和PC游戏。获取关于项目的全面分析、编程代码和架构、优化资源和图形等方面的技巧。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-profiling.png" alt=""></p>
+<h3 id="unity游戏性能分析终极指南">Unity游戏性能分析终极指南 <a href="#unity%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90%e7%bb%88%e6%9e%81%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h3><p>本指南提供了有关如何在Unity中进行应用程序性能分析、内存管理和优化电源消耗的高级知识和建议。学习性能分析工作流程和使用Unity的性能分析工具的最佳实践。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-pc-game.png" alt=""></p>
+<h3 id="优化主机和pc游戏性能unity-2020-lts">优化主机和PC游戏性能（Unity 2020 LTS） <a href="#%e4%bc%98%e5%8c%96%e4%b8%bb%e6%9c%ba%e5%92%8cpc%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2020-lts" class="anchor">🔗</a></h3><p>从Unity支持工程师那里获取超过80个关于如何优化PC和主机游戏以获得流畅性能和游戏体验的技巧。涵盖的主题包括编程代码和架构、GPU优化、内存、资源等。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-mobile.png" alt=""></p>
+<h3 id="优化移动游戏性能unity-2020-lts">优化移动游戏性能（Unity 2020 LTS） <a href="#%e4%bc%98%e5%8c%96%e7%a7%bb%e5%8a%a8%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2020-lts" class="anchor">🔗</a></h3><p>本指南提供75多个优化移动游戏性能的技巧，以在尽可能多的设备上流畅运行。了解编程代码和架构、GPU优化、内存、资源等方面的内容。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-game-dev-field.png" alt=""></p>
+<h3 id="unity游戏开发现场指南">Unity游戏开发现场指南 <a href="#unity%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91%e7%8e%b0%e5%9c%ba%e6%8c%87%e5%8d%97" class="anchor">🔗</a></h3><p>本指南帮助您熟悉最新的Unity功能和工作流程。涵盖的内容包括编辑器导航、设置开发环境、Unity的性能分析工具、物理和输入系统。</p>
+<p><img src="/2023-08-20-unity-document-29/increase-productivity-best-practice.jpg" alt=""></p>
+<h3 id="提高生产力的unity-2020-lts">提高生产力的Unity 2020 LTS <a href="#%e6%8f%90%e9%ab%98%e7%94%9f%e4%ba%a7%e5%8a%9b%e7%9a%84unity-2020-lts" class="anchor">🔗</a></h3><p>本指南收集了超过70个节省时间的技巧，以改善您在Unity 2020 LTS上的日常工作流程。</p>
+<h2 id="scripting">Scripting <a href="#scripting" class="anchor">🔗</a></h2><p><img src="/2023-08-20-unity-document-29/best-practice-modular-scriptable-objects.png" alt=""></p>
+<h3 id="使用scriptableobjects在unity中创建模块化游戏架构">使用ScriptableObjects在Unity中创建模块化游戏架构 <a href="#%e4%bd%bf%e7%94%a8scriptableobjects%e5%9c%a8unity%e4%b8%ad%e5%88%9b%e5%bb%ba%e6%a8%a1%e5%9d%97%e5%8c%96%e6%b8%b8%e6%88%8f%e6%9e%b6%e6%9e%84" class="anchor">🔗</a></h3><p>本指南提供了来自专业开发人员的技巧，教你如何在Unity项目中充分利用ScriptableObjects。从GitHub下载附带的示例项目，该项目受经典街机游戏机制的启发，可供您参考。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-c-style-guide.png" alt=""></p>
+<h3 id="c编码规范指南编写更整洁可扩展的代码">C#编码规范指南：编写更整洁、可扩展的代码 <a href="#c%e7%bc%96%e7%a0%81%e8%a7%84%e8%8c%83%e6%8c%87%e5%8d%97%e7%bc%96%e5%86%99%e6%9b%b4%e6%95%b4%e6%b4%81%e5%8f%af%e6%89%a9%e5%b1%95%e7%9a%84%e4%bb%a3%e7%a0%81" class="anchor">🔗</a></h3><p>学习行业的最佳实践，了解如何组织Unity C#代码以及在自己的代码风格指南中要考虑的内容，包括命名约定、格式化、类、方法和注释。</p>
+<p><img src="/2023-08-20-unity-document-29/best-practice-program-patterns.png" alt=""></p>
+<h3 id="使用游戏编程模式提升您的代码水平">使用游戏编程模式提升您的代码水平 <a href="#%e4%bd%bf%e7%94%a8%e6%b8%b8%e6%88%8f%e7%bc%96%e7%a8%8b%e6%a8%a1%e5%bc%8f%e6%8f%90%e5%8d%87%e6%82%a8%e7%9a%84%e4%bb%a3%e7%a0%81%e6%b0%b4%e5%b9%b3" class="anchor">🔗</a></h3><p>本指南涵盖了SOLID原则，并提供了如何实现游戏开发中众所周知的设计模式的示例，包括工厂模式、单例模式、命令模式、状态模式和观察者模式、对象池和模型视图呈现器（MVP）。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

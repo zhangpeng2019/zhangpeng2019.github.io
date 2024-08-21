@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-23 11:13:34 &#43;0800 CST">2023/08/23</time>
+        <span class="split">·</span>
+        <span> 111 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h2 id="创建加载和保存场景">创建、加载和保存场景 <a href="#%e5%88%9b%e5%bb%ba%e5%8a%a0%e8%bd%bd%e5%92%8c%e4%bf%9d%e5%ad%98%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>本文介绍了如何创建、加载和保存<strong>场景</strong>。</p>
+<h2 id="创建新场景">创建新场景 <a href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>有几种方法可以创建新场景：</p>
+<ul>
+<li>使用新场景对话框从特定的场景模板创建新场景。</li>
+<li>使用菜单或项目窗口从项目的基本场景模板创建新场景，而无需打开新场景对话框。</li>
+<li>直接从C#脚本创建特定模板的场景。</li>
+</ul>
+<p>Unity会根据场景模板创建每个新场景。有关创建和管理场景模板的信息，请参见场景模板。</p>
+<h3 id="从新场景对话框创建新场景">从新场景对话框创建新场景 <a href="#%e4%bb%8e%e6%96%b0%e5%9c%ba%e6%99%af%e5%af%b9%e8%af%9d%e6%a1%86%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>使用新场景对话框从项目中的特定场景模板创建新场景。您还可以使用新场景对话框查找和管理场景模板。详细信息请参见新场景对话框。</p>
+<p>默认情况下，当您从菜单（<strong>文件</strong> &gt; <strong>新建场景</strong>）或使用快捷键（<strong>Ctrl/Cmd + n</strong>）创建新场景时，新场景对话框会打开。</p>
+<p>要创建新场景：</p>
+<ol>
+<li>从列表中选择一个模板。</li>
+<li>如果希望Unity将新场景以可加载方式（请参见下方的注释）加载，请启用<strong>以可加载方式加载</strong>选项。</li>
+<li>单击<strong>创建</strong>以从模板创建新场景。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>注释:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">可加载方式加载意味着Unity会将场景加载到已打开的任何其他场景之外。有关详细信息，请参阅多场景编辑。</td>
+</tr>
+</tbody>
+</table>
+<p>如果模板没有可克隆的依赖关系，Unity会将新场景加载到内存中，但不保存。</p>
+<p>如果模板具有可克隆的依赖关系，Unity会提示您选择在项目中保存它的位置。当您保存场景时，Unity会在相同位置创建一个具有与新场景相同名称的文件夹，然后将克隆的依赖关系克隆到新文件夹中，并更新新场景以使用克隆的资源而不是模板场景使用的原始资源。</p>
+<h3 id="从菜单创建新场景">从菜单创建新场景： <a href="#%e4%bb%8e%e8%8f%9c%e5%8d%95%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>使用菜单 (<strong>Assets</strong> &gt; <strong>Create</strong> &gt; <strong>Scene</strong>) 创建新场景，而无需打开新场景对话框。</p>
+<p>从菜单创建新场景时，Unity会自动复制项目的基本模板，并将新场景添加到项目窗口中当前打开的文件夹。</p>
+<h3 id="从项目窗口创建新场景">从项目窗口创建新场景 <a href="#%e4%bb%8e%e9%a1%b9%e7%9b%ae%e7%aa%97%e5%8f%a3%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>使用项目窗口中的上下文菜单创建新场景，而无需打开新场景对话框。</p>
+<ol>
+<li>导航到要创建新场景的文件夹。</li>
+<li>在左侧窗格中右键单击文件夹，或在右侧窗格的空白区域右键单击，然后从上下文菜单中选择 <strong>Create</strong> &gt; <strong>Scene</strong> 。</li>
+</ol>
+<p>从项目窗口创建新场景时，Unity会自动复制项目的基本模板，并将新场景添加到所选文件夹中。</p>
+<h3 id="从c脚本创建新场景">从C#脚本创建新场景 <a href="#%e4%bb%8ec%e8%84%9a%e6%9c%ac%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>要使用特定的场景模板从C#脚本创建新场景，请使用<strong>Instantiate</strong>方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Tuple&lt;Scene, SceneAsset&gt; SceneTemplate.Instantiate(SceneTemplateAsset sceneTemplate, <span style="color:#66d9ef">bool</span> loadAdditively, <span style="color:#66d9ef">string</span> newSceneOutputPath = <span style="color:#66d9ef">null</span>);
+</span></span></code></pre></div><p><code>Instantiate</code>方法从场景模板实例化一个新场景。它返回新创建的<code>Scene</code>句柄和其匹配的<code>SceneAsset</code>。您可以以可加载方式创建此场景。如果场景包含需要克隆的资源，您必须提供一个路径供Unity保存到磁盘中。</p>
+<h4 id="新场景事件">新场景事件 <a href="#%e6%96%b0%e5%9c%ba%e6%99%af%e4%ba%8b%e4%bb%b6" class="anchor">🔗</a></h4><p>当您从模板创建一个新场景时，无论是从脚本还是使用新场景对话框，Unity都会触发一个事件。Unity在模板实例化之后触发此事件，并在触发<strong>EditorSceneManager.newSceneCreated</strong>或<strong>EditorSceneManager.sceneOpened</strong>事件后触发此事件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SceneTemplate</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">delegate</span> <span style="color:#66d9ef">void</span> NewTemplateInstantiated(SceneTemplateAsset sceneTemplateAsset, Scene scene, SceneAsset sceneAsset, <span style="color:#66d9ef">bool</span> additiveLoad);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">event</span> NewTemplateInstantiated newSceneTemplateInstantiated;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="加载场景">加载场景 <a href="#%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>要打开场景，请执行以下操作之一：</p>
+<ul>
+<li>在项目窗口中，双击场景资产。</li>
+<li>从菜单中选择 <strong>File</strong> &gt; <strong>Open Scene</strong>.</li>
+<li>从菜单中选择 <strong>File</strong> &gt; <strong>Recent Scenes</strong>，然后选择场景的名称。</li>
+</ul>
+<p>如果当前场景包含未保存的更改，Unity会提示您保存场景或放弃更改。</p>
+<h3 id="同时打开多个场景">同时打开多个场景 <a href="#%e5%90%8c%e6%97%b6%e6%89%93%e5%bc%80%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h3><p>您可以同时打开多个场景进行编辑。有关详细信息，请参见多场景编辑。</p>
+<h2 id="保存场景">保存场景 <a href="#%e4%bf%9d%e5%ad%98%e5%9c%ba%e6%99%af" class="anchor">🔗</a></h2><p>要保存当前正在工作的场景，请从菜单中选择 <strong>File</strong> &gt; <strong>Save Scene</strong>，或按 Ctrl + S (Windows) 或 Cmd + S (macOS).</p>
+<p><img src="/2023-08-23-unity-document-32/SceneAssetsInProjectView_01.png" alt=""></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/08/27/2023-08-27-unity-document-36/">Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/26/2023-08-26-unity-document-35/">Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/25/2023-08-25-unity-document-34/">Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/24/2023-08-24-unity-document-33/">Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/23/2023-08-23-unity-document-32/">Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(46)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (39)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

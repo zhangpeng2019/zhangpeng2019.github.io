@@ -6,7 +6,560 @@
     <description>Recent content in Document on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Aug 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes Use scripts to edit multiple scenes(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/27/2023-08-27-unity-document-36/</link>
+      <pubDate>Sun, 27 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/27/2023-08-27-unity-document-36/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h2 id=&#34;使用脚本编辑多个场景&#34;&gt;使用脚本编辑多个场景 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac%e7%bc%96%e8%be%91%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以使用脚本在编辑器或运行时编辑多个场景。&lt;/p&gt;
+&lt;h2 id=&#34;在编辑器中使用脚本&#34;&gt;在编辑器中使用脚本 &lt;a href=&#34;#%e5%9c%a8%e7%bc%96%e8%be%91%e5%99%a8%e4%b8%ad%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在编辑器中使用（或运行）脚本时，可以使用以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scene结构体：在编辑器和运行时都可用，Scene结构体包含与场景本身相关的只读属性，如名称和资源路径。&lt;/li&gt;
+&lt;li&gt;EditorSceneManager API：此类仅在编辑器中可用，并具有多个函数来实现在“设置多个场景”和“在多个场景中烘焙数据”页面中描述的所有多场景编辑功能。&lt;/li&gt;
+&lt;li&gt;SceneSetup实用程序类：您可以使用该实用程序类来存储与层级窗口中场景相关的信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;在运行时使用脚本&#34;&gt;在运行时使用脚本 &lt;a href=&#34;#%e5%9c%a8%e8%bf%90%e8%a1%8c%e6%97%b6%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在运行时使用脚本来编辑多个场景时，请使用SceneManager类中的函数，例如&lt;code&gt;LoadScene&lt;/code&gt;和&lt;code&gt;UnloadScene&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要在场景中实例化预制体，请使用PrefabUtility.InstantiatePrefab。&lt;/li&gt;
+&lt;li&gt;要将对象移动到场景的根目录，请使用Undo.MoveGameObjectToScene。&lt;/li&gt;
+&lt;li&gt;为了避免每次重新启动编辑器时都必须设置层级窗口，或者为了存储不同的设置，可以使用EditorSceneManager.GetSceneManagerSetup。它还获取了一个SceneSetup对象列表，描述了当前设置。您可以将这些对象与您想要存储的任何其他关于场景设置的信息一起序列化到一个ScriptableObject中。要恢复您的层级窗口，请重新创建&lt;code&gt;SceneSetups&lt;/code&gt;列表，并使用EditorSceneManager.RestoreSceneManagerSetup。&lt;/li&gt;
+&lt;li&gt;要在运行时获取加载的场景列表，请获取&lt;code&gt;sceneCount&lt;/code&gt;，然后使用&lt;code&gt;GetSceneAt&lt;/code&gt;迭代遍历场景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes Bake data in multiple scenes(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/26/2023-08-26-unity-document-35/</link>
+      <pubDate>Sat, 26 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/26/2023-08-26-unity-document-35/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;在多个场景中烘焙数据&#34;&gt;在多个场景中烘焙数据 &lt;a href=&#34;#%e5%9c%a8%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af%e4%b8%ad%e7%83%98%e7%84%99%e6%95%b0%e6%8d%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;如果将数据烘焙到多个&lt;strong&gt;场景&lt;/strong&gt;中，可以减少烘焙数据所需的时间和生成数据的大小。&lt;/p&gt;
+&lt;h2 id=&#34;使用多个场景烘焙光照贴图&#34;&gt;使用多个场景烘焙光照贴图 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af%e7%83%98%e7%84%99%e5%85%89%e7%85%a7%e8%b4%b4%e5%9b%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;为了预先确定场景中表面的亮度，可以烘焙光照贴图。有两种方法可以同时为多个场景烘焙光照贴图：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要自动化光照贴图构建，请使用Lightmapping.BakeMultipleScenes函数。&lt;/li&gt;
+&lt;li&gt;要手动烘焙多个场景的光照贴图，请使用Unity编辑器并执行以下步骤：
+&lt;ol&gt;
+&lt;li&gt;打开要烘焙的场景。&lt;/li&gt;
+&lt;li&gt;选择&lt;strong&gt;生成光照&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;阴影和GI光的反射在所有场景中起作用，但是光照贴图和实时全局光照数据会分别加载和卸载每个场景。这意味着场景之间不共享数据，您可以安全地卸载带有光照贴图的场景。场景共享&lt;strong&gt;光探针&lt;/strong&gt;数据，因此共同烘焙的场景中的所有光探针同时加载。&lt;/p&gt;
+&lt;h2 id=&#34;使用多个场景烘焙遮挡剔除数据&#34;&gt;使用多个场景烘焙遮挡剔除数据 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af%e7%83%98%e7%84%99%e9%81%ae%e6%8c%a1%e5%89%94%e9%99%a4%e6%95%b0%e6%8d%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;可以同时为多个场景烘焙&lt;strong&gt;遮挡剔除&lt;/strong&gt;数据，以确定哪些&lt;strong&gt;游戏对象&lt;/strong&gt;会进行渲染：1. 打开要烘焙的场景。2. 转到遮挡剔除窗口 (Window &amp;gt; Rendering &amp;gt; Occlusion Culling)。3. 选择烘焙按钮。4. 保存烘焙好的场景，以使场景和遮挡数据之间的引用持久化。&lt;/p&gt;
+&lt;p&gt;这将遮挡剔除数据保存到一个名为&lt;code&gt;OcclusionCullingData.asset&lt;/code&gt;的单个资源中，该资源保存在与当前活动场景同名的文件夹中。&lt;/p&gt;
+&lt;p&gt;如果以可加载方式加载一个与活动场景具有相同遮挡数据引用的场景，则为该场景初始化静态渲染器和门户，这些静态渲染器和门户在遮挡数据中进行剔除。这意味着遮挡系统的表现就像将静态渲染器和门户烘焙到单个场景中一样。&lt;/p&gt;
+&lt;h2 id=&#34;其他资源&#34;&gt;其他资源 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;创建、加载和保存场景&lt;/li&gt;
+&lt;li&gt;设置多个场景&lt;/li&gt;
+&lt;li&gt;使用脚本编辑多个场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes Set up multiple scenes(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/25/2023-08-25-unity-document-34/</link>
+      <pubDate>Fri, 25 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/25/2023-08-25-unity-document-34/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;设置多个场景&#34;&gt;设置多个场景 &lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以添加多个场景，编辑如何查看它们，并更改&lt;strong&gt;场景&lt;/strong&gt;设置。&lt;/p&gt;
+&lt;p&gt;要创建新场景，请参见创建、加载和保存场景。&lt;/p&gt;
+&lt;h2 id=&#34;添加场景&#34;&gt;添加场景 &lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要向项目添加新场景，请执行以下操作之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在&lt;strong&gt;项目窗口&lt;/strong&gt;中右键单击场景资产，然后选择&lt;strong&gt;以可加载方式打开场景&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;将一个或多个场景从项目窗口拖动到层级窗口中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看场景&#34;&gt;查看场景 &lt;a href=&#34;#%e6%9f%a5%e7%9c%8b%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;层级窗口显示项目中的所有场景：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-25-unity-document-34/ViewScenes.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A: 带有未保存更改的场景名称旁边有一个星号。
+B: 场景的更多菜单允许您对场景执行操作。
+C: 场景分隔符（倒三角形）允许您折叠场景，并将其内容从层级窗口中隐藏，以更好地管理多个场景。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：要在不加载场景的情况下将场景添加到层级窗口中，请按下Alt键（macOS：按下Option键）并将场景拖入层级窗口中。这样可以在适合您的时候加载场景。&lt;/p&gt;
+&lt;h2 id=&#34;已加载场景的更多菜单&#34;&gt;已加载场景的更多菜单（⋮） &lt;a href=&#34;#%e5%b7%b2%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af%e7%9a%84%e6%9b%b4%e5%a4%9a%e8%8f%9c%e5%8d%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以通过多种方式与已加载的场景进行交互和编辑。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-25-unity-document-34/LoadedMoreMenu.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置项&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置为活动场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将场景设置为通过脚本创建的新&lt;strong&gt;游戏对象&lt;/strong&gt;的目标场景。有关详细信息，请参阅SceneManager.SetActiveScene。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;保存场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;保存您选择的场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;另存为场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开文件浏览器，以便选择保存场景的位置和方式。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;全部保存&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;保存层级窗口中打开的所有场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;卸载场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;隐藏场景的内容，使其不在&lt;strong&gt;场景视图&lt;/strong&gt;和层级窗口中显示。如果有未保存的更改，请在卸载场景之前保存它们，以免丢失任何更改。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;移除场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从层级窗口中移除场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;放弃更改&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;撤销您尚未保存的任何更改。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;选择场景资产&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在项目窗口中突出显示场景资产。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;添加新场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在所选场景下方添加一个新的无标题场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;游戏对象&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打开一个下拉菜单，其中包含要添加到所选场景中的游戏对象。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;未加载场景的更多菜单&#34;&gt;未加载场景的更多菜单（⋮） &lt;a href=&#34;#%e6%9c%aa%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af%e7%9a%84%e6%9b%b4%e5%a4%9a%e8%8f%9c%e5%8d%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;与已加载场景相比，您可以使用较少的方式与未加载场景进行交互和编辑。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-25-unity-document-34/UnloadedMoreMenu.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置项&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;加载场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在层级窗口和场景视图中显示场景的内容，并允许您对其进行编辑。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;移除场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从层级窗口中移除场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;选择场景资产&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在项目窗口中突出显示场景资产。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;添加新场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在所选场景下方添加一个新的无标题场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;play模式中的多个场景&#34;&gt;Play模式中的多个场景 &lt;a href=&#34;#play%e6%a8%a1%e5%bc%8f%e4%b8%ad%e7%9a%84%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您处于Play模式并且在层级窗口中有多个场景时，编辑器会显示一个名为DontDestroyOnLoad的额外场景。&lt;/p&gt;
+&lt;h2 id=&#34;场景特定设置&#34;&gt;场景特定设置 &lt;a href=&#34;#%e5%9c%ba%e6%99%af%e7%89%b9%e5%ae%9a%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;以下设置适用于每个场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RenderSettings和LightmapSettings（这两者在照明窗口中找到）。&lt;/li&gt;
+&lt;li&gt;遮挡剔除窗口中的场景设置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个场景都管理其自己的设置，因此只有与该场景关联的设置才会保存到场景文件中。&lt;/p&gt;
+&lt;p&gt;要更改特定场景的设置，要么打开具体场景并更改设置，要么将场景设置为活动场景，然后更改设置。否则，如果有多个场景打开，Unity将使用活动场景的渲染设置。&lt;/p&gt;
+&lt;p&gt;当您在编辑器中或运行时切换到新的活动场景时，Unity会用新活动场景的设置替换所有先前的设置。&lt;/p&gt;
+&lt;h2 id=&#34;其他资源&#34;&gt;其他资源 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;创建、加载和保存场景&lt;/li&gt;
+&lt;li&gt;在多个场景中烘焙数据&lt;/li&gt;
+&lt;li&gt;使用脚本编辑多个场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes Work with multiple scenes in Unity(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/24/2023-08-24-unity-document-33/</link>
+      <pubDate>Thu, 24 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/24/2023-08-24-unity-document-33/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;在unity中处理多个场景&#34;&gt;在Unity中处理多个场景 &lt;a href=&#34;#%e5%9c%a8unity%e4%b8%ad%e5%a4%84%e7%90%86%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;如果您需要创建大型流式世界或希望在运行时有效地管理多个&lt;strong&gt;场景&lt;/strong&gt;，您可以同时在Unity编辑器中打开和编辑多个场景。同时打开多个场景还可以提高工作流程的效率，特别是在需要进行协同编辑场景时。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;主题&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置多个场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何设置、查看和编辑项目中的多个场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;在多个场景中烘焙数据&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何同时在多个场景中烘焙&lt;strong&gt;光照贴图&lt;/strong&gt;、&lt;strong&gt;导航网格&lt;/strong&gt;数据和&lt;strong&gt;遮挡剔除&lt;/strong&gt;数据。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;使用脚本编辑多个场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何通过脚本在编辑器或运行时编辑多个场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;其他资源&#34;&gt;其他资源 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;创建、加载和保存场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes Creating, loading, and saving Scenes(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/23/2023-08-23-unity-document-32/</link>
+      <pubDate>Wed, 23 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/23/2023-08-23-unity-document-32/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h2 id=&#34;创建加载和保存场景&#34;&gt;创建、加载和保存场景 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e5%8a%a0%e8%bd%bd%e5%92%8c%e4%bf%9d%e5%ad%98%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本文介绍了如何创建、加载和保存&lt;strong&gt;场景&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;创建新场景&#34;&gt;创建新场景 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;有几种方法可以创建新场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用新场景对话框从特定的场景模板创建新场景。&lt;/li&gt;
+&lt;li&gt;使用菜单或项目窗口从项目的基本场景模板创建新场景，而无需打开新场景对话框。&lt;/li&gt;
+&lt;li&gt;直接从C#脚本创建特定模板的场景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unity会根据场景模板创建每个新场景。有关创建和管理场景模板的信息，请参见场景模板。&lt;/p&gt;
+&lt;h3 id=&#34;从新场景对话框创建新场景&#34;&gt;从新场景对话框创建新场景 &lt;a href=&#34;#%e4%bb%8e%e6%96%b0%e5%9c%ba%e6%99%af%e5%af%b9%e8%af%9d%e6%a1%86%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;使用新场景对话框从项目中的特定场景模板创建新场景。您还可以使用新场景对话框查找和管理场景模板。详细信息请参见新场景对话框。&lt;/p&gt;
+&lt;p&gt;默认情况下，当您从菜单（&lt;strong&gt;文件&lt;/strong&gt; &amp;gt; &lt;strong&gt;新建场景&lt;/strong&gt;）或使用快捷键（&lt;strong&gt;Ctrl/Cmd + n&lt;/strong&gt;）创建新场景时，新场景对话框会打开。&lt;/p&gt;
+&lt;p&gt;要创建新场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从列表中选择一个模板。&lt;/li&gt;
+&lt;li&gt;如果希望Unity将新场景以可加载方式（请参见下方的注释）加载，请启用&lt;strong&gt;以可加载方式加载&lt;/strong&gt;选项。&lt;/li&gt;
+&lt;li&gt;单击&lt;strong&gt;创建&lt;/strong&gt;以从模板创建新场景。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;注释:&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;可加载方式加载意味着Unity会将场景加载到已打开的任何其他场景之外。有关详细信息，请参阅多场景编辑。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果模板没有可克隆的依赖关系，Unity会将新场景加载到内存中，但不保存。&lt;/p&gt;
+&lt;p&gt;如果模板具有可克隆的依赖关系，Unity会提示您选择在项目中保存它的位置。当您保存场景时，Unity会在相同位置创建一个具有与新场景相同名称的文件夹，然后将克隆的依赖关系克隆到新文件夹中，并更新新场景以使用克隆的资源而不是模板场景使用的原始资源。&lt;/p&gt;
+&lt;h3 id=&#34;从菜单创建新场景&#34;&gt;从菜单创建新场景： &lt;a href=&#34;#%e4%bb%8e%e8%8f%9c%e5%8d%95%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;使用菜单 (&lt;strong&gt;Assets&lt;/strong&gt; &amp;gt; &lt;strong&gt;Create&lt;/strong&gt; &amp;gt; &lt;strong&gt;Scene&lt;/strong&gt;) 创建新场景，而无需打开新场景对话框。&lt;/p&gt;
+&lt;p&gt;从菜单创建新场景时，Unity会自动复制项目的基本模板，并将新场景添加到项目窗口中当前打开的文件夹。&lt;/p&gt;
+&lt;h3 id=&#34;从项目窗口创建新场景&#34;&gt;从项目窗口创建新场景 &lt;a href=&#34;#%e4%bb%8e%e9%a1%b9%e7%9b%ae%e7%aa%97%e5%8f%a3%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;使用项目窗口中的上下文菜单创建新场景，而无需打开新场景对话框。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;导航到要创建新场景的文件夹。&lt;/li&gt;
+&lt;li&gt;在左侧窗格中右键单击文件夹，或在右侧窗格的空白区域右键单击，然后从上下文菜单中选择 &lt;strong&gt;Create&lt;/strong&gt; &amp;gt; &lt;strong&gt;Scene&lt;/strong&gt; 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从项目窗口创建新场景时，Unity会自动复制项目的基本模板，并将新场景添加到所选文件夹中。&lt;/p&gt;
+&lt;h3 id=&#34;从c脚本创建新场景&#34;&gt;从C#脚本创建新场景 &lt;a href=&#34;#%e4%bb%8ec%e8%84%9a%e6%9c%ac%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要使用特定的场景模板从C#脚本创建新场景，请使用&lt;strong&gt;Instantiate&lt;/strong&gt;方法。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Tuple&amp;lt;Scene, SceneAsset&amp;gt; SceneTemplate.Instantiate(SceneTemplateAsset sceneTemplate, &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; loadAdditively, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; newSceneOutputPath = &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Instantiate&lt;/code&gt;方法从场景模板实例化一个新场景。它返回新创建的&lt;code&gt;Scene&lt;/code&gt;句柄和其匹配的&lt;code&gt;SceneAsset&lt;/code&gt;。您可以以可加载方式创建此场景。如果场景包含需要克隆的资源，您必须提供一个路径供Unity保存到磁盘中。&lt;/p&gt;
+&lt;h4 id=&#34;新场景事件&#34;&gt;新场景事件 &lt;a href=&#34;#%e6%96%b0%e5%9c%ba%e6%99%af%e4%ba%8b%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;当您从模板创建一个新场景时，无论是从脚本还是使用新场景对话框，Unity都会触发一个事件。Unity在模板实例化之后触发此事件，并在触发&lt;strong&gt;EditorSceneManager.newSceneCreated&lt;/strong&gt;或&lt;strong&gt;EditorSceneManager.sceneOpened&lt;/strong&gt;事件后触发此事件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SceneTemplate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;delegate&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; NewTemplateInstantiated(SceneTemplateAsset sceneTemplateAsset, Scene scene, SceneAsset sceneAsset, &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; additiveLoad);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;event&lt;/span&gt; NewTemplateInstantiated newSceneTemplateInstantiated;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;加载场景&#34;&gt;加载场景 &lt;a href=&#34;#%e5%8a%a0%e8%bd%bd%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要打开场景，请执行以下操作之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在项目窗口中，双击场景资产。&lt;/li&gt;
+&lt;li&gt;从菜单中选择 &lt;strong&gt;File&lt;/strong&gt; &amp;gt; &lt;strong&gt;Open Scene&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;从菜单中选择 &lt;strong&gt;File&lt;/strong&gt; &amp;gt; &lt;strong&gt;Recent Scenes&lt;/strong&gt;，然后选择场景的名称。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果当前场景包含未保存的更改，Unity会提示您保存场景或放弃更改。&lt;/p&gt;
+&lt;h3 id=&#34;同时打开多个场景&#34;&gt;同时打开多个场景 &lt;a href=&#34;#%e5%90%8c%e6%97%b6%e6%89%93%e5%bc%80%e5%a4%9a%e4%b8%aa%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;您可以同时打开多个场景进行编辑。有关详细信息，请参见多场景编辑。&lt;/p&gt;
+&lt;h2 id=&#34;保存场景&#34;&gt;保存场景 &lt;a href=&#34;#%e4%bf%9d%e5%ad%98%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要保存当前正在工作的场景，请从菜单中选择 &lt;strong&gt;File&lt;/strong&gt; &amp;gt; &lt;strong&gt;Save Scene&lt;/strong&gt;，或按 Ctrl + S (Windows) 或 Cmd + S (macOS).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-23-unity-document-32/SceneAssetsInProjectView_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Scenes(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/22/2023-08-22-unity-document-31/</link>
+      <pubDate>Tue, 22 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/22/2023-08-22-unity-document-31/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;创建游戏玩法场景&#34;&gt;创建游戏玩法场景 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%b8%b8%e6%88%8f%e7%8e%a9%e6%b3%95%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在Unity中，场景是您与内容进行工作的地方。它们是包含整个或部分游戏或应用程序的资产。例如，您可以在一个场景中构建一个简单的游戏，而对于更复杂的游戏，可以使用每个关卡一个场景，每个场景都有自己的环境、角色、障碍物、装饰物和&lt;strong&gt;UI&lt;/strong&gt;。您可以在项目中创建任意数量的场景。&lt;/p&gt;
+&lt;p&gt;当您创建一个新项目并首次打开它时，Unity会打开一个示例场景，其中只包含一个&lt;strong&gt;摄像机&lt;/strong&gt;和一个灯光。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-22-unity-document-31/NewEmptyScene_01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;了解有关使用场景的信息，请参阅创建、加载和保存场景。&lt;/p&gt;
+&lt;h2 id=&#34;场景模板&#34;&gt;场景模板 &lt;a href=&#34;#%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity使用场景模板来创建新的场景。场景模板是存储在项目中的资源。它们与场景类似，但是设计为复制而不是直接使用。&lt;/p&gt;
+&lt;p&gt;详细了解创建和使用场景模板的信息，请参阅场景模板。&lt;/p&gt;
+&lt;h2 id=&#34;新场景对话框&#34;&gt;新场景对话框 &lt;a href=&#34;#%e6%96%b0%e5%9c%ba%e6%99%af%e5%af%b9%e8%af%9d%e6%a1%86&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您从“文件”菜单: (&lt;strong&gt;文件&lt;/strong&gt; &amp;gt; &lt;strong&gt;新建场景&lt;/strong&gt;) 或 &lt;strong&gt;Ctrl/Cmd + n&lt;/strong&gt; 快捷键创建一个新场景时，新场景对话框会弹出。您可以使用它从项目的特定场景模板中创建新场景，并获取有关现有模板的信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-22-unity-document-31/scene-template-new-scene-dialog.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;搜索字段:&lt;/strong&gt; 按名称查找可用的场景模板。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模板:&lt;/strong&gt; 显示项目中所有可用模板的列表。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模板详情:&lt;/strong&gt; 显示当前选定模板的信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;命令栏:&lt;/strong&gt; 提供从选定模板创建新场景的命令和选项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;创建新场景&#34;&gt;创建新场景 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%96%b0%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要从新场景对话框创建新场景，请从模板列表中选择一个模板，然后点击&lt;strong&gt;创建&lt;/strong&gt;。有关以这种方式创建场景的详细说明，请参阅从新场景对话框创建新场景。&lt;/p&gt;
+&lt;h3 id=&#34;固定模板&#34;&gt;固定模板 &lt;a href=&#34;#%e5%9b%ba%e5%ae%9a%e6%a8%a1%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;固定的模板将显示在新场景对话框的模板列表中的其他模板之前。最后固定的模板将显示在列表的顶部。&lt;/p&gt;
+&lt;p&gt;单击任何模板的固定图标即可固定它。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-22-unity-document-31/scene-template-pin.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您还可以在编辑模板属性时固定模板。在场景模板的&lt;strong&gt;Inspector&lt;/strong&gt;中，启用&lt;strong&gt;固定在新场景对话框中&lt;/strong&gt;选项。&lt;/p&gt;
+&lt;h3 id=&#34;定位和编辑模板&#34;&gt;定位和编辑模板 &lt;a href=&#34;#%e5%ae%9a%e4%bd%8d%e5%92%8c%e7%bc%96%e8%be%91%e6%a8%a1%e6%9d%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当您在新场景对话框中选择一个模板时，详细信息窗格会显示模板的路径（下图中的1）。&lt;/p&gt;
+&lt;p&gt;要在&lt;strong&gt;项目窗口&lt;/strong&gt;中突出显示模板，请选择&lt;strong&gt;定位&lt;/strong&gt;链接（下图中的2）。&lt;/p&gt;
+&lt;p&gt;要在检查器窗口中打开模板并编辑其属性，请选择&lt;strong&gt;编辑&lt;/strong&gt;链接（下图中的3）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-22-unity-document-31/scene-template-locate-edit.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;多场景编辑&#34;&gt;多场景编辑 &lt;a href=&#34;#%e5%a4%9a%e5%9c%ba%e6%99%af%e7%bc%96%e8%be%91&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以同时打开多个场景进行编辑。详细信息请参阅多场景编辑。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/21/2023-08-21-unity-document-30/</link>
+      <pubDate>Mon, 21 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/21/2023-08-21-unity-document-30/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;创建游戏玩法&#34;&gt;创建游戏玩法 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%b8%b8%e6%88%8f%e7%8e%a9%e6%b3%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以使用Unity设计和创建游戏。在Unity中有一些基本的工作流程和概念可以帮助您使用Unity。&lt;/p&gt;
+&lt;p&gt;为了创建游戏玩法机制，您可能需要编写脚本。有关如何使用&lt;strong&gt;脚本&lt;/strong&gt;创建工作的更多信息，请参阅脚本编程部分。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;主题&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;场景&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解场景以及如何在Unity中创建和使用场景。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;GameObjects&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解GameObject及其与组件的工作方式。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Prefabs&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;学习如何在Unity中创建和使用预制件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;图层&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解并使用图层和层遮罩在Unity中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解可以附加到GameObject的不同类型约束组件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;旋转和方向在Unity中的应用&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解Unity如何计算和处理旋转和方向。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;灯光&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解灯光在场景中的影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;摄像机&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解如何在游戏中使用摄像机。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;跨平台考虑因素&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解不同平台如何影响您的游戏。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;发布构建&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解如何发布您的构建版本。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;故障排除&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;查看解决Unity中一些常见问题的解决方案。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;其他资源&#34;&gt;其他资源 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;想要学习如何入门Unity的教程，可以参考Unity Learn上的Unity基础路径。&lt;/li&gt;
+&lt;li&gt;要查看可以用来创建游戏的模板列表，可以参考Templates。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Advanced best practice guides(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/20/2023-08-20-unity-document-29/</link>
+      <pubDate>Sun, 20 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/20/2023-08-20-unity-document-29/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;高级最佳实践指南&#34;&gt;高级最佳实践指南 &lt;a href=&#34;#%e9%ab%98%e7%ba%a7%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;使用此页面来发现并学习Unity专家的生产经验和最佳实践。Unity的技术内容营销团队与行业专家、Unity研发团队的工程师和技术艺术家以及Accelerate Games Solutions团队共同创建了此页面上列出的指南。&lt;/p&gt;
+&lt;h2 id=&#34;art-and-design&#34;&gt;Art and design &lt;a href=&#34;#art-and-design&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-2d-game-art-animation-lighting.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d游戏艺术动画和灯光指南&#34;&gt;2D游戏艺术、动画和灯光指南 &lt;a href=&#34;#2d%e6%b8%b8%e6%88%8f%e8%89%ba%e6%9c%af%e5%8a%a8%e7%94%bb%e5%92%8c%e7%81%af%e5%85%89%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;由Unity 2D演示项目《Dragon Crashers》的美术总监编写，并由Unity 2D专家的贡献，本指南展示了如何设置您的2D项目、在Unity和Autodesk之间切换、处理&lt;strong&gt;精灵&lt;/strong&gt;、排序图层等等。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-create-bettergameplay.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unity游戏设计师白皮书&#34;&gt;Unity游戏设计师白皮书 &lt;a href=&#34;#unity%e6%b8%b8%e6%88%8f%e8%ae%be%e8%ae%a1%e5%b8%88%e7%99%bd%e7%9a%ae%e4%b9%a6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南旨在帮助经验丰富的游戏设计师学习如何在Unity中原型化他们的想法，实现更高效的创作和团队协作。学习有关视觉脚本、创建输入、关卡设计工具、微交互等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-blog-post.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;面向技术美术的unity关键工具集和工作流程unity-2021-lts版&#34;&gt;面向技术美术的Unity：关键工具集和工作流程（Unity 2021 LTS版） &lt;a href=&#34;#%e9%9d%a2%e5%90%91%e6%8a%80%e6%9c%af%e7%be%8e%e6%9c%af%e7%9a%84unity%e5%85%b3%e9%94%ae%e5%b7%a5%e5%85%b7%e9%9b%86%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8bunity-2021-lts%e7%89%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一些Unity最经验丰富的技术艺术家对本指南做出了重要贡献。它涵盖了与资产的工作、渲染管线、光照、世界建设、数字人物等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-blog-post2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;面向技术美术的unity关键工具集和工作流程unity-2020-lts版&#34;&gt;面向技术美术的Unity：关键工具集和工作流程（Unity 2020 LTS版） &lt;a href=&#34;#%e9%9d%a2%e5%90%91%e6%8a%80%e6%9c%af%e7%be%8e%e6%9c%af%e7%9a%84unity%e5%85%b3%e9%94%ae%e5%b7%a5%e5%85%b7%e9%9b%86%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8bunity-2020-lts%e7%89%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;一些Unity最经验丰富的技术艺术家对本指南做出了重要贡献。它涵盖了与资产的工作、渲染管线、光照、世界建设、数字人物等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-interface-design.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unity中的用户界面设计和实现&#34;&gt;Unity中的用户界面设计和实现 &lt;a href=&#34;#unity%e4%b8%ad%e7%9a%84%e7%94%a8%e6%88%b7%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%e5%92%8c%e5%ae%9e%e7%8e%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南由游戏行业的专业级设计师和Unity产品专家撰写，提供了关于职业技巧以及使用适用于世界构建的Unity工具（如Unity ProBuilder和**地形（Terrain）**系统）的说明。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/introduction-to-game-level-design.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;游戏关卡设计简介&#34;&gt;游戏关卡设计简介 &lt;a href=&#34;#%e6%b8%b8%e6%88%8f%e5%85%b3%e5%8d%a1%e8%ae%be%e8%ae%a1%e7%ae%80%e4%bb%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这本电子书提供了逐步指导，教授如何使用Unity的&lt;strong&gt;UI&lt;/strong&gt;系统来构建界面。内容包括UI设计和开发概念、资源准备工作流程、样式和字体等。&lt;/p&gt;
+&lt;h2 id=&#34;devops&#34;&gt;DevOps &lt;a href=&#34;#devops&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-devops.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;版本控制项目组织最佳实践&#34;&gt;版本控制项目组织最佳实践 &lt;a href=&#34;#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6%e9%a1%b9%e7%9b%ae%e7%bb%84%e7%bb%87%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;学习Unity中版本控制和项目组织的基本原理。涵盖的关键主题包括使用不同版本控制解决方案设置Unity项目、组织Unity项目、适当的文件夹结构和命名标准。&lt;/p&gt;
+&lt;h2 id=&#34;图形与渲染&#34;&gt;图形与渲染 &lt;a href=&#34;#%e5%9b%be%e5%bd%a2%e4%b8%8e%e6%b8%b2%e6%9f%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-urp-recipes.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用通用渲染管线创建流行视觉效果的技巧&#34;&gt;使用通用渲染管线创建流行视觉效果的技巧 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf%e5%88%9b%e5%bb%ba%e6%b5%81%e8%a1%8c%e8%a7%86%e8%a7%89%e6%95%88%e6%9e%9c%e7%9a%84%e6%8a%80%e5%b7%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在本指南中，您可以选择12个使用URP创建流行效果的技巧。学习如何使用渲染器特性创建效果，使用Shader Graph构建Toon和轮廓&lt;strong&gt;着色器&lt;/strong&gt;，使用GPU实例化，产生反射和折射等。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-URP-advanced-2022.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;面向高级unity创作者的通用渲染管线unity-2022-lts&#34;&gt;面向高级Unity创作者的通用渲染管线（Unity 2022 LTS） &lt;a href=&#34;#%e9%9d%a2%e5%90%91%e9%ab%98%e7%ba%a7unity%e5%88%9b%e4%bd%9c%e8%80%85%e7%9a%84%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2022-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南涵盖了关于贴花、URP质量设置和转换器的新增和更改，以及对渲染路径的比较，包括Forward+、全屏Shader Graph包括自定义&lt;strong&gt;后期处理&lt;/strong&gt;等等。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-urp.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;面向高级unity创作者的通用渲染管线unity-2021-lts&#34;&gt;面向高级Unity创作者的通用渲染管线（Unity 2021 LTS） &lt;a href=&#34;#%e9%9d%a2%e5%90%91%e9%ab%98%e7%ba%a7unity%e5%88%9b%e4%bd%9c%e8%80%85%e7%9a%84%e9%80%9a%e7%94%a8%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2021-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;使用本指南了解如何使用URP建立一个新项目，或将现有的基于内置渲染管线的项目转换为URP。了解URP质量设置和着色器，设置光照、阴影、特效等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/hdrp-lighting-guide-2022.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高清渲染管线unity-2022-lts&#34;&gt;高清渲染管线（Unity 2022 LTS） &lt;a href=&#34;#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2022-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这本更新的指南涵盖了新的水系统、新的地形工具，包括使用SpeedTree创建地形，创建天空、云、光照效果的更多功能，更新了HDRP着色器和材质等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-hdrp-2021.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高清渲染管线unity-2021-lts&#34;&gt;高清渲染管线（Unity 2021 LTS） &lt;a href=&#34;#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2021-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南提供了关于为PC和主机游戏创建高端光照的深入参考，包括HDRP设置、&lt;strong&gt;相机&lt;/strong&gt;和体积框架，创建天空、反射、实时光照等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-hdrp-2020.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高清渲染管线unity-2020-lts&#34;&gt;高清渲染管线（Unity 2020 LTS） &lt;a href=&#34;#%e9%ab%98%e6%b8%85%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bfunity-2020-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南提供了关于为PC和主机游戏创建高端光照的深入参考，包括HDRP设置、相机和体积框架，创建天空、反射、实时光照等内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-advanced-effects.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unity高级视觉效果创建终极指南&#34;&gt;Unity高级视觉效果创建终极指南 &lt;a href=&#34;#unity%e9%ab%98%e7%ba%a7%e8%a7%86%e8%a7%89%e6%95%88%e6%9e%9c%e5%88%9b%e5%bb%ba%e7%bb%88%e6%9e%81%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南全面介绍了在Unity中如何使用视觉效果创作工具来创建任何类型的效果：水和液体、烟雾、火焰、爆炸、天气、冲击、魔法和电力等。&lt;/p&gt;
+&lt;h2 id=&#34;性能优化&#34;&gt;性能优化 &lt;a href=&#34;#%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/optimize-your-mobile-game-2022.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化移动游戏性能unity-2022-lts&#34;&gt;优化移动游戏性能（Unity 2022 LTS） &lt;a href=&#34;#%e4%bc%98%e5%8c%96%e7%a7%bb%e5%8a%a8%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2022-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;从使用Unity的完整性能分析工具、编程和代码架构、项目配置和资源、GPU优化等方面获取提示，以优化移动游戏的性能。还包括音频、用户界面、动画、物理等方面的优化技巧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/optimize-pc-game-performance.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化主机和pc游戏性能unity-2022-lts&#34;&gt;优化主机和PC游戏性能（Unity 2022 LTS） &lt;a href=&#34;#%e4%bc%98%e5%8c%96%e4%b8%bb%e6%9c%ba%e5%92%8cpc%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2022-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南汇集了超过100页的优化最佳实践，用于在Unity中开发主机和PC游戏。获取关于项目的全面分析、编程代码和架构、优化资源和图形等方面的技巧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-profiling.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unity游戏性能分析终极指南&#34;&gt;Unity游戏性能分析终极指南 &lt;a href=&#34;#unity%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90%e7%bb%88%e6%9e%81%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南提供了有关如何在Unity中进行应用程序性能分析、内存管理和优化电源消耗的高级知识和建议。学习性能分析工作流程和使用Unity的性能分析工具的最佳实践。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-pc-game.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化主机和pc游戏性能unity-2020-lts&#34;&gt;优化主机和PC游戏性能（Unity 2020 LTS） &lt;a href=&#34;#%e4%bc%98%e5%8c%96%e4%b8%bb%e6%9c%ba%e5%92%8cpc%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2020-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;从Unity支持工程师那里获取超过80个关于如何优化PC和主机游戏以获得流畅性能和游戏体验的技巧。涵盖的主题包括编程代码和架构、GPU优化、内存、资源等。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-mobile.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;优化移动游戏性能unity-2020-lts&#34;&gt;优化移动游戏性能（Unity 2020 LTS） &lt;a href=&#34;#%e4%bc%98%e5%8c%96%e7%a7%bb%e5%8a%a8%e6%b8%b8%e6%88%8f%e6%80%a7%e8%83%bdunity-2020-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南提供75多个优化移动游戏性能的技巧，以在尽可能多的设备上流畅运行。了解编程代码和架构、GPU优化、内存、资源等方面的内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-game-dev-field.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unity游戏开发现场指南&#34;&gt;Unity游戏开发现场指南 &lt;a href=&#34;#unity%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91%e7%8e%b0%e5%9c%ba%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南帮助您熟悉最新的Unity功能和工作流程。涵盖的内容包括编辑器导航、设置开发环境、Unity的性能分析工具、物理和输入系统。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/increase-productivity-best-practice.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提高生产力的unity-2020-lts&#34;&gt;提高生产力的Unity 2020 LTS &lt;a href=&#34;#%e6%8f%90%e9%ab%98%e7%94%9f%e4%ba%a7%e5%8a%9b%e7%9a%84unity-2020-lts&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南收集了超过70个节省时间的技巧，以改善您在Unity 2020 LTS上的日常工作流程。&lt;/p&gt;
+&lt;h2 id=&#34;scripting&#34;&gt;Scripting &lt;a href=&#34;#scripting&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-modular-scriptable-objects.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用scriptableobjects在unity中创建模块化游戏架构&#34;&gt;使用ScriptableObjects在Unity中创建模块化游戏架构 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8scriptableobjects%e5%9c%a8unity%e4%b8%ad%e5%88%9b%e5%bb%ba%e6%a8%a1%e5%9d%97%e5%8c%96%e6%b8%b8%e6%88%8f%e6%9e%b6%e6%9e%84&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南提供了来自专业开发人员的技巧，教你如何在Unity项目中充分利用ScriptableObjects。从GitHub下载附带的示例项目，该项目受经典街机游戏机制的启发，可供您参考。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-c-style-guide.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;c编码规范指南编写更整洁可扩展的代码&#34;&gt;C#编码规范指南：编写更整洁、可扩展的代码 &lt;a href=&#34;#c%e7%bc%96%e7%a0%81%e8%a7%84%e8%8c%83%e6%8c%87%e5%8d%97%e7%bc%96%e5%86%99%e6%9b%b4%e6%95%b4%e6%b4%81%e5%8f%af%e6%89%a9%e5%b1%95%e7%9a%84%e4%bb%a3%e7%a0%81&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;学习行业的最佳实践，了解如何组织Unity C#代码以及在自己的代码风格指南中要考虑的内容，包括命名约定、格式化、类、方法和注释。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-20-unity-document-29/best-practice-program-patterns.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用游戏编程模式提升您的代码水平&#34;&gt;使用游戏编程模式提升您的代码水平 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e6%b8%b8%e6%88%8f%e7%bc%96%e7%a8%8b%e6%a8%a1%e5%bc%8f%e6%8f%90%e5%8d%87%e6%82%a8%e7%9a%84%e4%bb%a3%e7%a0%81%e6%b0%b4%e5%b9%b3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;本指南涵盖了SOLID原则，并提供了如何实现游戏开发中众所周知的设计模式的示例，包括工厂模式、单例模式、命令模式、状态模式和观察者模式、对象池和模型视图呈现器（MVP）。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Quickstart guides(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/19/2023-08-19-unity-document-28/</link>
+      <pubDate>Sat, 19 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/19/2023-08-19-unity-document-28/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h2 id=&#34;快速入门指南&#34;&gt;快速入门指南 &lt;a href=&#34;#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;快速入门指南提供了一套流程，帮助您开始使用Unity。&lt;/p&gt;
+&lt;p&gt;目前提供以下快速入门指南：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2D游戏开发快速入门指南&lt;/li&gt;
+&lt;li&gt;3D游戏开发快速入门指南&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;3d游戏开发快速入门指南&#34;&gt;3D游戏开发快速入门指南 &lt;a href=&#34;#3d%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;此快速入门指南为使用Unity进行3D游戏开发的开发者提供了一个工作流程。&lt;/p&gt;
+&lt;p&gt;**注意：**该指南适用于从2019 LTS版本及以上的所有Unity版本。&lt;/p&gt;
+&lt;p&gt;此快速入门指南将帮助您：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置Unity项目（请参阅下面的初始设置部分）&lt;/li&gt;
+&lt;li&gt;创建一个3D游戏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有关详细的3D游戏教程，请参阅以下Unity Learn材料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初学者3D开发学习课程&lt;/li&gt;
+&lt;li&gt;John Lemon的幽灵之旅：3D初学者项目&lt;/li&gt;
+&lt;li&gt;查看所有的3D学习教程&lt;/li&gt;
+&lt;li&gt;使用代码创作&lt;/li&gt;
+&lt;li&gt;创作者工具包：初学者代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;初始设置&#34;&gt;初始设置 &lt;a href=&#34;#%e5%88%9d%e5%a7%8b%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;**注意：**对于本指南，Unity推荐并假设您选择通用渲染管线（URP），而不是内置渲染管线。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装Unity 2019 LTS版本或更高版本。请参阅安装Unity。&lt;/li&gt;
+&lt;li&gt;创建一个项目并选择通用&lt;strong&gt;渲染管线&lt;/strong&gt;模板。请参阅Hub文档中的模板。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果需要熟悉Unity并进行设置，可以参考Unity Learn中的Unity Essentials学习路径。&lt;/p&gt;
+&lt;h1 id=&#34;创建一个3d游戏&#34;&gt;创建一个3D游戏 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa3d%e6%b8%b8%e6%88%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;要创建一个3D游戏，先设置您的Unity项目，然后按照以下顺序熟悉相关概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基础知识&lt;/li&gt;
+&lt;li&gt;脚本编写&lt;/li&gt;
+&lt;li&gt;3D资源&lt;/li&gt;
+&lt;li&gt;构建游戏环境&lt;/li&gt;
+&lt;li&gt;动画&lt;/li&gt;
+&lt;li&gt;图形&lt;/li&gt;
+&lt;li&gt;音频&lt;/li&gt;
+&lt;li&gt;物理&lt;/li&gt;
+&lt;li&gt;用户界面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;基础知识&#34;&gt;基础知识 &lt;a href=&#34;#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;GameObjects是Unity中的基本对象，代表角色、道具、场景等。游戏中的每个对象都是一个GameObject。&lt;/p&gt;
+&lt;p&gt;GameObjects存在于被称为场景的3D环境中。您可以将场景视为游戏关卡，但它也可以表示菜单、游戏结束时的制作人员名单或其他内容。&lt;/p&gt;
+&lt;p&gt;GameObjects的行为由称为组件的功能块定义。您可以将多个组件附加到GameObject上。以下组件对于3D游戏至关重要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transform（变换）：&lt;strong&gt;Transform组件&lt;/strong&gt;确定场景中每个GameObject的位置、旋转和缩放。每个GameObject都有一个Transform组件。&lt;/li&gt;
+&lt;li&gt;Mesh Filter（网格过滤器）：该组件定义了3D GameObject的形状。&lt;/li&gt;
+&lt;li&gt;Mesh Renderer（网格渲染器）：该组件定义了由&lt;strong&gt;网格过滤器&lt;/strong&gt;定义的3D形状的外观。&lt;/li&gt;
+&lt;li&gt;Cameras（相机）：特别配置的GameObject，用于捕捉并向玩家显示游戏世界。&lt;/li&gt;
+&lt;li&gt;Rigidbody（刚体）：刚体允许GameObject与物理系统进行交互，包括重力和&lt;strong&gt;碰撞&lt;/strong&gt;。请参阅本指南中的物理部分。&lt;/li&gt;
+&lt;li&gt;Colliders（碰撞体）：该组件定义了3D GameObject的形状，用于物理碰撞。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;脚本编写&#34;&gt;脚本编写 &lt;a href=&#34;#%e8%84%9a%e6%9c%ac%e7%bc%96%e5%86%99&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity允许您使用&lt;strong&gt;脚本&lt;/strong&gt;创建自己的组件。脚本可以让您触发游戏事件、随时间修改组件属性并响应用户输入。Unity原生支持C#编程语言。以下是您可以在游戏中使用脚本的一些示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;接收玩家输入，并使GameObject根据输入移动或执行相应操作。&lt;/li&gt;
+&lt;li&gt;设置胜利和失败状态，打开相关的胜利或失败场景，创建完整的游戏循环。&lt;/li&gt;
+&lt;li&gt;基于其他变量，影响GameObject的组件，如其变换、动画或渲染器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有关如何在Unity中使用脚本的详细信息，请参阅脚本概述。要学习脚本编写的基础知识，请按照Unity Learn的初学者脚本编写课程进行学习。如需更深入的指导，请参阅示例项目“使用代码创作”和“创作者工具包：初学者代码”。&lt;/p&gt;
+&lt;h2 id=&#34;3d资源&#34;&gt;3D资源 &lt;a href=&#34;#3d%e8%b5%84%e6%ba%90&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;模型是物体的三维表示。3D游戏的大部分视觉效果都由模型组成，例如角色、可交互对象和玩家周围的世界。&lt;/p&gt;
+&lt;p&gt;您可以使用Probuilder等工具在Unity中创建模型。然而，这些工具更适合用于原型制作，而不适合用于最终产品。&lt;/p&gt;
+&lt;p&gt;要向最终产品添加更精致的3D资源，可以在3D建模软件中创建3D模型、材质和纹理，然后将它们导入到Unity中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-19-unity-document-28/quickstart-3D-Graphics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;导入3d模型文件&#34;&gt;导入3D模型文件 &lt;a href=&#34;#%e5%af%bc%e5%85%a53d%e6%a8%a1%e5%9e%8b%e6%96%87%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Unity使用.fbx模型格式。您还可以使用其他常见的原生模型格式（例如.max、.blend、.mb、.ma），Unity在导入时会将其转换为.fbx格式。&lt;/p&gt;
+&lt;p&gt;将模型导入到Unity中以在项目中使用。&lt;/p&gt;
+&lt;h3 id=&#34;渲染网格&#34;&gt;渲染网格 &lt;a href=&#34;#%e6%b8%b2%e6%9f%93%e7%bd%91%e6%a0%bc&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;3D网格是3D模型的结构。它由多个多边形形状组成。要将3D模型添加到GameObject中，向GameObject添加一个Mesh Filter组件。Mesh Renderer组件在场景中渲染网格；为了确保模型在游戏中显示，必须将Mesh Renderer添加到任何具有Mesh Filter组件的GameObject中。&lt;/p&gt;
+&lt;h3 id=&#34;材质&#34;&gt;材质 &lt;a href=&#34;#%e6%9d%90%e8%b4%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;材质结合了有关表面视觉外观的信息，如纹理、颜色和着色器。使用材质定义如何渲染表面。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;纹理是您导入到Unity中的任何2D图像文件。使用纹理将网格包装并向模型添加细节。&lt;/li&gt;
+&lt;li&gt;使用颜色调整来更改纹理的颜色。&lt;/li&gt;
+&lt;li&gt;着色器是一系列指令，确定Unity如何在屏幕上显示GameObject。使用着色器根据光照输入和材质配置影响Unity如何渲染每个像素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;请参阅关于材质设计的学习教程。&lt;/p&gt;
+&lt;h2 id=&#34;building-in-游戏环境&#34;&gt;Building in-游戏环境 &lt;a href=&#34;#building-in-%e6%b8%b8%e6%88%8f%e7%8e%af%e5%a2%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-19-unity-document-28/quickstart-3D-environment.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;环境设计是为游戏玩法创建一个环境的过程。您可以在Unity编辑器中同时设计和构建您的环境，或者您可以在Unity外部设计一个环境，然后在Unity中构建它。&lt;/p&gt;
+&lt;p&gt;要构建一个游戏内环境，您需要向场景中添加游戏对象，并将它们位置调整到您喜欢的方式和设计中。除了在场景中手动放置模型外，Unity编辑器还包含一套内置的**地形（Terrain）**功能，允许您向游戏中添加地貌。在编辑器中，您可以创建多个地形瓦片，调整地形的高度或外观，并向其添加树木或草地。详细了解创建和使用地形。&lt;/p&gt;
+&lt;h2 id=&#34;animation&#34;&gt;Animation &lt;a href=&#34;#animation&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以导入其他程序中制作的动画，也可以直接在编辑器中对资源进行动画制作。有关3D动画的更多信息，请参阅Unity学习课程介绍3D动画系统。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-19-unity-document-28/quickstart-3D-animation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;导入动画&#34;&gt;导入动画 &lt;a href=&#34;#%e5%af%bc%e5%85%a5%e5%8a%a8%e7%94%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在导入带有动画的模型时，Unity可以导入动画剪辑。这意味着您可以在其他程序中对模型进行动画制作，然后在Unity中访问和操作这些剪辑。&lt;/p&gt;
+&lt;h3 id=&#34;在unity中制作模型动画&#34;&gt;在Unity中制作模型动画 &lt;a href=&#34;#%e5%9c%a8unity%e4%b8%ad%e5%88%b6%e4%bd%9c%e6%a8%a1%e5%9e%8b%e5%8a%a8%e7%94%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;使用动画窗口在Unity中直接创建和修改动画剪辑。使用**关键帧（Keyframe）**动画将简单的动画添加到场景中的GameObject，例如改变其位置、大小或旋转。&lt;/p&gt;
+&lt;h3 id=&#34;控制动画&#34;&gt;控制动画 &lt;a href=&#34;#%e6%8e%a7%e5%88%b6%e5%8a%a8%e7%94%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要控制播放哪个动画剪辑，您可以在脚本中直接调用它们使用 Animator 类，或者在Animator窗口中创建和修改 Animator Controller。&lt;/p&gt;
+&lt;p&gt;您可以使用Animator窗口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建和设置动画控制器（Animator Controller）&lt;/li&gt;
+&lt;li&gt;使用动画剪辑创建动画状态（Animator States）&lt;/li&gt;
+&lt;li&gt;创建脚本可以访问或分配值给的动画参数（Animator Parameters）&lt;/li&gt;
+&lt;li&gt;创建游戏状态之间的转换（Animator Transitions），指定更改状态的条件（基于参数）以及状态之间的混合时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;graphics&#34;&gt;Graphics &lt;a href=&#34;#graphics&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&#34;lighting&#34;&gt;Lighting &lt;a href=&#34;#lighting&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;为场景添加光照，可以增加环境的深度和氛围，帮助玩家体验您创建的游戏世界。要设置光照：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建光源。在Hierarchy窗口中右键单击打开GameObject菜单，选择&lt;strong&gt;Light&lt;/strong&gt;，然后选择要添加到场景中的光源类型。详见光源类型。&lt;/li&gt;
+&lt;li&gt;将光源放置在场景中。调整光源的颜色、强度和位置，直到达到所需的效果。详见使用光源。&lt;/li&gt;
+&lt;li&gt;完善您的光照。例如，您可以选择不同的光照模式，或者添加一个遮罩蒙版来创建阴影。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-19-unity-document-28/quickstart-3D-lights.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;请参阅Unity Learn中的URP光照教程。&lt;/p&gt;
+&lt;h2 id=&#34;audio&#34;&gt;Audio &lt;a href=&#34;#audio&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以在Unity中为游戏添加背景音乐和音效；请参阅音频概述。使用第三方软件创建音频，并按照建议的设置将其导入到Unity中。&lt;/p&gt;
+&lt;h2 id=&#34;physics&#34;&gt;Physics &lt;a href=&#34;#physics&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-19-unity-document-28/quickstart-3D-physics.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用Unity的&lt;strong&gt;物理引擎&lt;/strong&gt;控制GameObject之间的互动。您可以使用物理引擎来模拟重力和力学等力量，定义GameObject在现实世界中碰撞时的行为。您还可以配置物理设置，以创建适合游戏设计的自定义物理效果，这可能不是对现实世界的准确模拟。要了解如何使用Unity的物理引擎，请参阅Unity Learn教程《Ruby&amp;rsquo;s Adventure: 2D Beginner》。更多信息，请参阅用户手册中的物理部分。&lt;/p&gt;
+&lt;p&gt;为GameObject设置物理效果：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为了使GameObject受到物理系统的影响，并对重力和碰撞等事物作出反应，添加一个Rigidbody组件。&lt;/li&gt;
+&lt;li&gt;使用Collider使GameObject能够与场景中的其他GameObject互动。例如，具有collider的GameObject可以被具有collider的另一个GameObject移动或被移动。&lt;/li&gt;
+&lt;li&gt;为了在两个GameObject相交时能够在代码中调用函数，添加一个Collider，并将其设置为trigger。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;用户界面&#34;&gt;用户界面 &lt;a href=&#34;#%e7%94%a8%e6%88%b7%e7%95%8c%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果您想要为游戏添加菜单或帮助功能，您需要设置一个用户界面。使用Unity UI来设置用户界面。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Unity’s interface-Search in the Editor(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/08/17/2023-08-17-unity-document-26/</link>
@@ -26,6 +579,27 @@
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/Editor-tabcontext.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;保存和恢复布局&#34;&gt;保存和恢复布局 &lt;a href=&#34;#%e4%bf%9d%e5%ad%98%e5%92%8c%e6%81%a2%e5%a4%8d%e5%b8%83%e5%b1%80&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您创建了一组编辑器窗口的布局后，您可以随时保存和恢复该布局。您可以点击工具栏上的&amp;quot;布局&amp;quot;下拉菜单并选择**保存布局&amp;hellip;**来保存当前的布局。为布局取一个名称并保存，然后随时可以通过在&amp;quot;布局&amp;quot;下拉菜单中选择相应的布局来恢复之前保存的布局。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-17-unity-document-26/FunkyView.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Unity’s interface-Unity shortcuts(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/08/17/2023-08-17-unity-document-26/</link>
+      <pubDate>Thu, 17 Aug 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/08/17/2023-08-17-unity-document-26/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;unity快捷键&#34;&gt;Unity快捷键 &lt;a href=&#34;#unity%e5%bf%ab%e6%8d%b7%e9%94%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;快捷键管理器是Unity中管理键盘快捷键的主要工具。您还可以为Mac触控板配置快捷键。&lt;/p&gt;
+&lt;h2 id=&#34;快捷键管理器&#34;&gt;快捷键管理器 &lt;a href=&#34;#%e5%bf%ab%e6%8d%b7%e9%94%ae%e7%ae%a1%e7%90%86%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;快捷键管理器可让您查看和管理键盘快捷键。&lt;/p&gt;
+&lt;p&gt;快捷键是绑定到Unity命令的任何键或键组合。命令是在编辑器中执行的操作。例如，&lt;strong&gt;R&lt;/strong&gt;键绑定到在&lt;strong&gt;场景&lt;/strong&gt;视图中激活&lt;strong&gt;缩放&lt;/strong&gt;工具的命令。&lt;/p&gt;
+&lt;p&gt;您可以从Unity的主菜单中访问快捷键管理器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在Windows和Linux上，选择 &lt;strong&gt;Edit &amp;gt; Shortcuts&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;在macOS上，选择 &lt;strong&gt;Unity &amp;gt; Shortcuts&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有关查看和修改快捷键的更多信息，请参阅快捷键管理器。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-08-18-unity-document-27/ShortcutManagerNoLabel.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mac触控板快捷键&#34;&gt;Mac触控板快捷键 &lt;a href=&#34;#mac%e8%a7%a6%e6%8e%a7%e6%9d%bf%e5%bf%ab%e6%8d%b7%e9%94%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Mac触控板还有一些用于在&lt;strong&gt;场景&lt;/strong&gt;视图中进行导航的快捷键。请参阅场景视图导航以了解更多信息。&lt;/p&gt;
 &lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
     </item>
     
