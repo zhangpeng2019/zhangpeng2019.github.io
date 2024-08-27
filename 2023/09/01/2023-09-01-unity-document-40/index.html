@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-01 11:13:34 &#43;0800 CST">2023/09/01</time>
+        <span class="split">·</span>
+        <span> 93 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="自定义新场景创建">自定义新场景创建 <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%96%b0%e5%9c%ba%e6%99%af%e5%88%9b%e5%bb%ba" class="anchor">🔗</a></h1><p>要在Unity从模板实例化新的<strong>场景</strong>时运行自定义代码，请创建一个场景模板管道脚本，并将其连接到模板。每次从模板创建新场景时，Unity还会创建管道脚本的新实例。</p>
+<p>要将脚本连接到模板：</p>
+<ol>
+<li>检查模板以编辑其属性。</li>
+<li>将<strong>场景模板管道</strong>属性设置为指向您的场景模板管道脚本。</li>
+</ol>
+<p>您还可以使用<code>SceneTemplateAsset.templatePipeline</code>方法通过C#将脚本连接到模板。</p>
+<p>场景模板管道脚本必须派生自[<code>ISceneTemplatePipeline</code>]接口或[<code>SceneTemplatePipelineAdapter</code>]。它应该实现您要对其进行反应的事件；例如，下面的代码中的<code>BeforeTemplateInstantiation</code>或<code>AfterTemplateInstantiation</code>。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEditor.SceneTemplate;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.SceneManagement;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DummySceneTemplatePipeline</span> : ISceneTemplatePipeline
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> BeforeTemplateInstantiation(SceneTemplateAsset sceneTemplateAsset, <span style="color:#66d9ef">bool</span> isAdditive, <span style="color:#66d9ef">string</span> sceneName)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sceneTemplateAsset)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Debug.Log(<span style="color:#e6db74">$&#34;Before Template Pipeline {sceneTemplateAsset.name} isAdditive: {isAdditive} sceneName: {sceneName}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AfterTemplateInstantiation(SceneTemplateAsset sceneTemplateAsset, Scene scene, <span style="color:#66d9ef">bool</span> isAdditive, <span style="color:#66d9ef">string</span> sceneName)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sceneTemplateAsset)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Debug.Log(<span style="color:#e6db74">$&#34;After Template Pipeline {sceneTemplateAsset.name} scene: {scene} isAdditive: {isAdditive} sceneName: {sceneName}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="场景模板实例化顺序">场景模板实例化顺序 <a href="#%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf%e5%ae%9e%e4%be%8b%e5%8c%96%e9%a1%ba%e5%ba%8f" class="anchor">🔗</a></h2><p>当您从具有可克隆依赖项的模板创建新场景时，Unity执行几个文件操作。其中大多数操作会触发Unity中的事件，您可以在<strong>脚本</strong>中监听并做出反应。</p>
+<p>实例化顺序如下所示：</p>
+<ol>
+<li>单击“新场景”对话框中的“创建”按钮。Unity调用以下内容：
+<ul>
+<li>场景模板资产。</li>
+<li>模板场景。这是与模板相关联的Unity场景。</li>
+<li>新场景。这是模板场景的新实例。</li>
+</ul>
+</li>
+<li>Unity触发模板资产的<code>ISceneTemplatePipeline.BeforeTemplateInstantiation</code>事件，并将资产绑定到触发它的<code>ISceneTemplatePipeline</code>脚本。</li>
+<li>Unity触发<code>SceneTemplate.NewTemplateInstantiating</code>事件。</li>
+<li>Unity创建一个与模板场景相同的新场景副本。</li>
+<li>Unity创建一个与新场景同名的文件夹，并将所有可克隆的依赖项复制到该文件夹中。</li>
+<li>Unity在内存中打开新场景，并触发以下事件：
+<ul>
+<li><code>EditorSceneManager.sceneOpening</code></li>
+<li><code>MonoBehavior.OnValidate</code>（对所有实现此事件的GameObject）</li>
+<li><code>EditorSceneManager.sceneOpened</code></li>
+</ul>
+</li>
+<li>Unity重新映射对所有克隆资产的引用，以便新场景指向克隆资源。</li>
+<li>Unity保存新场景，并触发以下事件：
+<ul>
+<li><code>EditorSceneManager.sceneSaving</code></li>
+<li><code>EditorSceneManager.sceneSaved</code></li>
+</ul>
+</li>
+<li>Unity触发模板资产的<code>ISceneTemplatePipeline.AfterTemplateInstantiation</code>事件，并将资产绑定到触发它的<code>ISceneTemplatePipeline</code>脚本。</li>
+<li>Unity触发<code>SceneTemplate.NewTemplateInstantiated</code>事件。</li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/04/2023-09-04-unity-document-43/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/03/2023-09-03-unity-document-42/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/02/2023-09-02-unity-document-41/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/01/2023-09-01-unity-document-40/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/30/2023-08-30-unity-document-39/">Unity中文版-Create Gameplay Scenes Editing scene templates(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(53)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (46)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

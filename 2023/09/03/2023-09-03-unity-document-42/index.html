@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-03 11:13:34 &#43;0800 CST">2023/09/03</time>
+        <span class="split">·</span>
+        <span> 30 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="gameobjects">GameObjects <a href="#gameobjects" class="anchor">🔗</a></h1><p>**游戏对象（GameObject）**是Unity编辑器中最重要的概念。</p>
+<p>在游戏中，每个对象都是一个<strong>游戏对象</strong>，从角色和可收集的物品到灯光、相机和特效。然而，游戏对象本身不能做任何事情；在它成为角色、环境或特效之前，您需要给它添加属性。</p>
+<p><img src="/2023-09-03-unity-document-42/GameObjectsExamples.jpg" alt=""></p>
+<p><strong>游戏对象</strong>是Unity中代表角色、道具和场景的基本对象。它们本身并不能实现很多功能，但它们可以作为<strong>组件</strong>的容器，来实现功能。</p>
+<p>要给游戏对象添加属性，使其成为灯光、树木或相机，您需要向其添加组件。根据您想要创建的对象类型，可以将不同组合的组件添加到游戏对象上。</p>
+<p>Unity有许多不同的内置组件类型，您还可以使用Unity脚本API创建自己的组件。</p>
+<p>例如，通过将灯光组件附加到游戏对象上，就可以创建一个灯光对象。</p>
+<p><img src="/2023-09-03-unity-document-42/GameObjectLightExample1.png" alt=""></p>
+<p>一个实心的立方体对象具有**网格过滤器（Mesh Filter）<strong>和</strong>网格渲染器（Mesh Renderer）<strong>组件，用于绘制立方体的表面，以及一个</strong>盒形碰撞器（Box Collider）**组件，用于以物理方式表示对象的实体体积。</p>
+<p><img src="/2023-09-03-unity-document-42/GameObjectCubeExample1.png" alt=""></p>
+<h2 id="详细信息">详细信息 <a href="#%e8%af%a6%e7%bb%86%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h2><p>一个游戏对象始终附加有一个变换（Transform）组件（用于表示位置和方向），无法删除该组件。其他赋予对象功能的组件可以从编辑器的<strong>组件</strong>菜单或脚本中添加。在<strong>GameObject &gt; 3D Object</strong>菜单中还有许多有用的预制对象（基本形状、相机等）可供使用，参见原始对象。</p>
+<p>由于游戏对象是Unity的重要组成部分，因此有很多关于它们的详细手册内容。请参阅以下章节，以了解如何在Unity中使用游戏对象：</p>
+<ul>
+<li>变换</li>
+<li>组件简介</li>
+<li>使用组件</li>
+<li>原始和占位符对象</li>
+<li>使用脚本创建组件</li>
+<li>关闭游戏对象</li>
+<li>标签</li>
+<li>静态游戏对象</li>
+<li>保存工作</li>
+</ul>
+<p>您可以从游戏对象脚本参考页面了解有关通过<strong>脚本</strong>来控制游戏对象的更多信息。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/04/2023-09-04-unity-document-43/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/03/2023-09-03-unity-document-42/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/02/2023-09-02-unity-document-41/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/01/2023-09-01-unity-document-40/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/30/2023-08-30-unity-document-39/">Unity中文版-Create Gameplay Scenes Editing scene templates(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(53)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (46)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

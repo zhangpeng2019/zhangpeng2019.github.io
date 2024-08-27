@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Creating scene templates(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Creating scene templates(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-29 11:13:34 &#43;0800 CST">2023/08/29</time>
+        <span class="split">·</span>
+        <span> 65 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="创建场景模板">创建场景模板 <a href="#%e5%88%9b%e5%bb%ba%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h1><p>您可以通过以下几种方式创建新的<strong>场景</strong>模板：</p>
+<ul>
+<li>创建一个空模板。</li>
+<li>从现有场景资源创建模板。</li>
+<li>从当前场景创建模板。</li>
+</ul>
+<p>创建模板后，您可以编辑其属性或从模板创建新场景。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>提示：</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">在从场景创建模板之前，创建一个与场景同名的文件夹，并将您想要克隆的任何资产放入其中。当您创建模板时，Unity会自动为这些资产启用<strong>Clone</strong>属性。有关详细信息，请参阅编辑场景模板。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建一个空场景模板">创建一个空场景模板 <a href="#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e7%a9%ba%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h2><p>您可以创建空的场景模板，并稍后进行配置。空模板在“新场景”对话框中不会显示，直到您编辑其属性以将场景资产与其关联。</p>
+<p>要在当前项目文件夹中创建空场景模板：</p>
+<ul>
+<li>从菜单中选择<strong>Assets &gt; Create &gt; Scene Template</strong>。</li>
+</ul>
+<p>要在特定项目文件夹中创建空场景模板：</p>
+<ol>
+<li>执行以下操作之一：</li>
+<li>在<strong>Project</strong>窗口中，右键单击要打开上下文菜单的文件夹。</li>
+<li>在<strong>Project</strong>窗口中打开文件夹，并右键单击资源窗格以打开上下文菜单。</li>
+<li>选择<strong>Create &gt; Scene Template</strong>。</li>
+</ol>
+<h2 id="从现有场景资源创建模板">从现有场景资源创建模板 <a href="#%e4%bb%8e%e7%8e%b0%e6%9c%89%e5%9c%ba%e6%99%af%e8%b5%84%e6%ba%90%e5%88%9b%e5%bb%ba%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h2><p>您可以将任何现有场景转换为场景模板。在从现有场景创建模板后，您可能希望编辑其属性，以指定Unity在从模板创建新场景时克隆其哪些依赖项。</p>
+<p>要从现有场景资源创建模板，请打开<strong>Project</strong>窗口，然后执行以下操作之一：</p>
+<ul>
+<li>右键单击场景资源以打开上下文菜单，然后选择<strong>Create &gt; Scene Template from Scene</strong>。</li>
+<li>选择场景资源，然后从主菜单中选择<strong>Assets &gt; Create &gt; Scene Template from Scene</strong>。</li>
+</ul>
+<h2 id="从当前场景创建模板">从当前场景创建模板 <a href="#%e4%bb%8e%e5%bd%93%e5%89%8d%e5%9c%ba%e6%99%af%e5%88%9b%e5%bb%ba%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h2><p>要从当前场景创建场景模板，请从菜单中选择<strong>File &gt; Save As Scene Template</strong>。</p>
+<p>如果有未保存的更改，Unity会在保存模板之前提示您保存场景。</p>
+<p>在从当前场景创建模板后，您可能希望编辑其属性，以指定Unity在从模板创建新场景时克隆其哪些依赖项。</p>
+<h2 id="从c脚本创建模板">从C#脚本创建模板 <a href="#%e4%bb%8ec%e8%84%9a%e6%9c%ac%e5%88%9b%e5%bb%ba%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h2><p>您可以从C# <strong>脚本</strong>创建场景模板。</p>
+<p>要创建一个空的场景模板，请使用CreateSceneTemplate方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>SceneTemplate.CreateSceneTemplate(<span style="color:#66d9ef">string</span> sceneTemplatePath)
+</span></span></code></pre></div><p>要从现有场景创建模板，请使用<strong>CreateTemplateFromScene</strong>方法。Unity会自动将场景与模板关联，并提取场景的依赖项。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>SceneTemplate.CreateTemplateFromScene(SceneAsset sourceSceneAsset, <span style="color:#66d9ef">string</span> sceneTemplatePath);
+</span></span></code></pre></div><h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/04/2023-09-04-unity-document-43/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/03/2023-09-03-unity-document-42/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/02/2023-09-02-unity-document-41/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/01/2023-09-01-unity-document-40/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/30/2023-08-30-unity-document-39/">Unity中文版-Create Gameplay Scenes Editing scene templates(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(53)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (46)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Scenes Scene Templates(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Scenes Scene Templates(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-08-28 11:13:34 &#43;0800 CST">2023/08/28</time>
+        <span class="split">·</span>
+        <span> 30 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="场景模板">场景模板 <a href="#%e5%9c%ba%e6%99%af%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h1><p>为了创建新场景，Unity会复制<strong>场景</strong>模板。将场景模板视为预配置的场景，其中包含您想要开始使用的所有内容。例如，缺省的Basic模板通常包含一个<strong>相机</strong>和一个灯光。</p>
+<p>您可以创建自己的场景模板，以定制在项目中可以创建的新场景类型。例如，您可以为游戏中的每个关卡创建模板，以便每个参与项目的人都可以从正确的资产和配置开始创建场景。</p>
+<p>您可以从任何Unity场景创建模板。创建模板后，可以根据它创建任意数量的新场景。与场景一样，大多数场景模板都是存储在项目中的资源。</p>
+<p>本页面将解释重要的场景模板概念。有关创建、编辑和管理场景模板的更多信息，请参阅以下页面：</p>
+<ul>
+<li>创建场景模板：描述创建场景模板的不同方法。</li>
+<li>编辑场景模板：解释如何编辑场景模板属性。</li>
+<li>自定义新场景创建：解释如何将脚本附加到场景模板，以便在Unity从模板创建场景时运行自定义代码。</li>
+<li>场景模板设置：描述场景模板的<strong>项目设置</strong>。这些设置中的大多数控制Unity在从模板创建新场景时如何关闭和引用场景依赖项。</li>
+</ul>
+<h2 id="重要概念">重要概念 <a href="#%e9%87%8d%e8%a6%81%e6%a6%82%e5%bf%b5" class="anchor">🔗</a></h2><h3 id="内置模板与用户定义模板">内置模板与用户定义模板 <a href="#%e5%86%85%e7%bd%ae%e6%a8%a1%e6%9d%bf%e4%b8%8e%e7%94%a8%e6%88%b7%e5%ae%9a%e4%b9%89%e6%a8%a1%e6%9d%bf" class="anchor">🔗</a></h3><p>大多数场景模板都是用户定义的，意味着您可以根据自己的场景创建它们。用户定义的场景模板是Unity存储在项目中的资源。</p>
+<p>Unity还为每种项目类型提供了内置模板。例如，某些项目类型包括一个创建带有相机和灯光的场景的Basic模板，以及一个创建空场景的Empty模板。</p>
+<p>内置模板与其他模板不同，因为它们不是存储在项目中的资源，您无法修改它们。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>注意：</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">某些Unity包可能还包括安装包时安装的场景模板。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="模板和场景依赖项">模板和场景依赖项 <a href="#%e6%a8%a1%e6%9d%bf%e5%92%8c%e5%9c%ba%e6%99%af%e4%be%9d%e8%b5%96%e9%a1%b9" class="anchor">🔗</a></h3><p>创建场景模板时，可以指定Unity在从该模板创建新场景时克隆或引用其依赖项（包含的资源）。</p>
+<p>要指定Unity为特定模板克隆哪些资源，请编辑模板的属性。</p>
+<p>典型的模板可能包含一组克隆和引用的资源。Unity默认将几种资源类型设置为克隆。</p>
+<p>要更改Unity默认是克隆还是引用给定资源类型，请编辑场景模板项目设置。</p>
+<h4 id="克隆模板资源">克隆模板资源 <a href="#%e5%85%8b%e9%9a%86%e6%a8%a1%e6%9d%bf%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h4><p>克隆的资源是模板场景使用的原始资源的副本。当Unity从模板创建新场景时，它会自动修改新场景以使用任何克隆的资源。如果修改了克隆的资源，不会影响模板场景。如果在模板场景中修改了原始资源，则不会影响新场景。</p>
+<p>将模板资源克隆是有用的，当您希望新场景包含一组起始资产，用户可能会进行修改时。</p>
+<h4 id="引用模板资源">引用模板资源 <a href="#%e5%bc%95%e7%94%a8%e6%a8%a1%e6%9d%bf%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h4><p>引用的资源是模板场景使用的原始资源。当Unity从模板创建新场景时，新场景指向与模板场景相同的资源。如果修改这些资源，则会影响新场景和模板场景。</p>
+<p>引用模板资源在您希望新场景包含一组默认资产供用户构建，但不希望进行修改时很有用。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/04/2023-09-04-unity-document-43/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/03/2023-09-03-unity-document-42/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/02/2023-09-02-unity-document-41/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/01/2023-09-01-unity-document-40/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/08/30/2023-08-30-unity-document-39/">Unity中文版-Create Gameplay Scenes Editing scene templates(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(53)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (46)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
