@@ -6,7 +6,89 @@
     <description>Recent content on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Use components(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/06/2023-09-06-unity-document-45/</link>
+      <pubDate>Wed, 06 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/06/2023-09-06-unity-document-45/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;使用组件&#34;&gt;使用组件 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e7%bb%84%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以使用不同的组件来改变或添加功能到您的&lt;strong&gt;游戏对象（GameObjects）&lt;/strong&gt;。您可以使用&lt;strong&gt;检视器（Inspector）窗口来更改任何组件的属性，或者您可以使用脚本（scripts）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;有关如何使用脚本与组件一起使用的更多信息，请参阅组件脚本参考页面。&lt;/p&gt;
+&lt;h2 id=&#34;添加组件&#34;&gt;添加组件 &lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e7%bb%84%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以通过组件菜单将组件添加到所选的游戏对象上。要添加一个刚体（Rigidbody）组件，请选择游戏对象，然后从菜单中选择&lt;strong&gt;组件（Component）&lt;/strong&gt; &amp;gt; &lt;strong&gt;物理（Physics）&lt;/strong&gt; &amp;gt; &lt;strong&gt;刚体（Rigidbody）&lt;/strong&gt;。检视器会显示刚体组件的属性。如果您在选择空的游戏对象时按下&lt;strong&gt;播放（Play）&lt;/strong&gt;，游戏对象的变换的Y轴位置会下降。这是因为在Unity中的物理系统会使游戏对象在重力下下落。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-06-unity-document-45/RigidBodyGO1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您还可以在&lt;strong&gt;组件（Component）浏览器中添加组件。要打开组件浏览器，请在检视器中选择添加组件（Add Component）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-06-unity-document-45/ComponentBrowser1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;您可以在浏览器中按类别导航组件，也可以使用搜索框按名称查找组件。&lt;/p&gt;
+&lt;p&gt;您可以将任意数量或组合的组件附加到单个游戏对象上。某些组件与其他组件结合使用效果更好。例如，刚体组件与**碰撞器（Collider）**配合使用。&lt;/p&gt;
+&lt;p&gt;有关特定组件的更多信息，请参阅相关的组件参考页面。您还可以在Unity中通过在检视器中选择组件标题的帮助图标（&lt;strong&gt;?&lt;/strong&gt;）来访问组件的参考页面。&lt;/p&gt;
+&lt;h2 id=&#34;编辑组件&#34;&gt;编辑组件 &lt;a href=&#34;#%e7%bc%96%e8%be%91%e7%bb%84%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您将组件附加到游戏对象上时，组件的属性会包含默认值。您可以在编辑器中编辑这些值，而构建游戏时，或者在运行游戏时在脚本中编辑。&lt;/p&gt;
+&lt;p&gt;属性有两种主要类型：值类型和引用类型。&lt;/p&gt;
+&lt;p&gt;您可以在检视器中编辑值类型属性。值类型有各种类型，包括文本、开关和下拉框。&lt;/p&gt;
+&lt;p&gt;对于引用类型属性，您可以从项目视图中将文件拖放到属性中，或者使用属性上的对象选择器（圆形图标）。引用类型属性可以引用其他类型的组件、游戏对象或资源。&lt;/p&gt;
+&lt;p&gt;有关不同属性类型的更多信息，请参阅编辑属性页面。&lt;/p&gt;
+&lt;p&gt;下图显示了一个带有&lt;strong&gt;音频源（Audio Source）组件的游戏对象。检视器中的音频源&lt;/strong&gt;的值显示了您可以调整组件的各个方面以适应您的项目的方式。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-06-unity-document-45/AudioReference1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;组件上下文菜单命令&#34;&gt;组件上下文菜单命令 &lt;a href=&#34;#%e7%bb%84%e4%bb%b6%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95%e5%91%bd%e4%bb%a4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;右键单击组件以显示上下文菜单，其中包含几个有用的命令。&lt;/p&gt;
+&lt;p&gt;同样的命令也可以从检视器窗口中组件面板右上角的三点菜单（⋮）中找到。&lt;/p&gt;
+&lt;p&gt;下表描述了可用的命令，以便您调整组件：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;命令：&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述：&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;重置（Reset）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;恢复组件属性在最近一次编辑会话之前的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;移除组件（Remove Component）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从游戏对象中移除组件。&lt;strong&gt;注意&lt;/strong&gt;：某些组件的组合是相互依赖的（例如，Hinge Joint只能附加到一个Rigidbody上）；如果您尝试移除其他组件所依赖的组件，会显示警告消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;上移（Move Up）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在检视器中将组件上移。您也可以在检视器中拖放组件来重新排序。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;下移（Move Down）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在检视器中将组件下移。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;复制组件（Copy Component）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;复制组件的类型和当前属性设置。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;粘贴为新组件（Paste Component As New）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将复制的组件属性设置粘贴为新组件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;粘贴组件值（Paste Component Values）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将复制的组件属性设置粘贴到另一个相同类型的组件中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;测试属性&#34;&gt;测试属性 &lt;a href=&#34;#%e6%b5%8b%e8%af%95%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在**播放模式（Play Mode）&lt;strong&gt;下，您可以在检视器中更改组件的属性。这样可以让您看到属性的不同值如何影响游戏玩法。例如，您可以尝试不同的跳跃高度。如果您在脚本中创建了一个&lt;/strong&gt;跳跃高度（Jump Height）**属性，您可以进入播放模式，更改该值，然后按下跳跃按钮查看效果。然后，不需要退出播放模式，您可以再次更改该值并在几秒内查看结果。退出播放模式时，属性将恢复为播放模式之前的值。通过这种工作流程，您可以以更短的时间进行实验、调整和完善游戏玩法。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Introduction to components(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/05/2023-09-05-unity-document-44/</link>
+      <pubDate>Tue, 05 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/05/2023-09-05-unity-document-44/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;组件介绍&#34;&gt;组件介绍 &lt;a href=&#34;#%e7%bb%84%e4%bb%b6%e4%bb%8b%e7%bb%8d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;**组件（Components）&lt;strong&gt;是每个&lt;/strong&gt;游戏对象（GameObject）**的功能部分。组件包含属性，您可以编辑这些属性来定义游戏对象的行为。有关组件和游戏对象之间的关系的更多信息，请参阅游戏对象（GameObjects）。&lt;/p&gt;
+&lt;p&gt;要在**检视器（Inspector）&lt;strong&gt;窗口中查看附加到游戏对象的组件列表，请在&lt;/strong&gt;层级（Hierarchy）&lt;strong&gt;窗口或&lt;/strong&gt;场景（Scene）**视图中选择一个游戏对象。&lt;/p&gt;
+&lt;p&gt;您可以将许多组件附加到一个游戏对象上，但每个游戏对象必须有一个且只有一个变换组件（Transform component）。这是因为变换组件决定了游戏对象的位置、旋转和缩放。要创建一个空的游戏对象，请选择&lt;strong&gt;游戏对象（GameObject）&lt;/strong&gt; &amp;gt; &lt;strong&gt;创建空对象（Create Empty）&lt;/strong&gt;。当您选择新的游戏对象时，检视器会显示默认值的变换组件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-05-unity-document-44/EmptyGO1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay GameObjects(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/04/2023-09-04-unity-document-43/</link>

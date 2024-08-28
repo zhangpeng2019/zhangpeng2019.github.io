@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects Use components(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects Use components(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-06 11:13:34 &#43;0800 CST">2023/09/06</time>
+        <span class="split">·</span>
+        <span> 59 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="使用组件">使用组件 <a href="#%e4%bd%bf%e7%94%a8%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h1><p>您可以使用不同的组件来改变或添加功能到您的<strong>游戏对象（GameObjects）</strong>。您可以使用<strong>检视器（Inspector）窗口来更改任何组件的属性，或者您可以使用脚本（scripts）</strong>。</p>
+<p>有关如何使用脚本与组件一起使用的更多信息，请参阅组件脚本参考页面。</p>
+<h2 id="添加组件">添加组件 <a href="#%e6%b7%bb%e5%8a%a0%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h2><p>您可以通过组件菜单将组件添加到所选的游戏对象上。要添加一个刚体（Rigidbody）组件，请选择游戏对象，然后从菜单中选择<strong>组件（Component）</strong> &gt; <strong>物理（Physics）</strong> &gt; <strong>刚体（Rigidbody）</strong>。检视器会显示刚体组件的属性。如果您在选择空的游戏对象时按下<strong>播放（Play）</strong>，游戏对象的变换的Y轴位置会下降。这是因为在Unity中的物理系统会使游戏对象在重力下下落。</p>
+<p><img src="/2023-09-06-unity-document-45/RigidBodyGO1.png" alt=""></p>
+<p>您还可以在<strong>组件（Component）浏览器中添加组件。要打开组件浏览器，请在检视器中选择添加组件（Add Component）</strong>。</p>
+<p><img src="/2023-09-06-unity-document-45/ComponentBrowser1.png" alt=""></p>
+<p>您可以在浏览器中按类别导航组件，也可以使用搜索框按名称查找组件。</p>
+<p>您可以将任意数量或组合的组件附加到单个游戏对象上。某些组件与其他组件结合使用效果更好。例如，刚体组件与**碰撞器（Collider）**配合使用。</p>
+<p>有关特定组件的更多信息，请参阅相关的组件参考页面。您还可以在Unity中通过在检视器中选择组件标题的帮助图标（<strong>?</strong>）来访问组件的参考页面。</p>
+<h2 id="编辑组件">编辑组件 <a href="#%e7%bc%96%e8%be%91%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h2><p>当您将组件附加到游戏对象上时，组件的属性会包含默认值。您可以在编辑器中编辑这些值，而构建游戏时，或者在运行游戏时在脚本中编辑。</p>
+<p>属性有两种主要类型：值类型和引用类型。</p>
+<p>您可以在检视器中编辑值类型属性。值类型有各种类型，包括文本、开关和下拉框。</p>
+<p>对于引用类型属性，您可以从项目视图中将文件拖放到属性中，或者使用属性上的对象选择器（圆形图标）。引用类型属性可以引用其他类型的组件、游戏对象或资源。</p>
+<p>有关不同属性类型的更多信息，请参阅编辑属性页面。</p>
+<p>下图显示了一个带有<strong>音频源（Audio Source）组件的游戏对象。检视器中的音频源</strong>的值显示了您可以调整组件的各个方面以适应您的项目的方式。</p>
+<p><img src="/2023-09-06-unity-document-45/AudioReference1.png" alt=""></p>
+<h2 id="组件上下文菜单命令">组件上下文菜单命令 <a href="#%e7%bb%84%e4%bb%b6%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95%e5%91%bd%e4%bb%a4" class="anchor">🔗</a></h2><p>右键单击组件以显示上下文菜单，其中包含几个有用的命令。</p>
+<p>同样的命令也可以从检视器窗口中组件面板右上角的三点菜单（⋮）中找到。</p>
+<p>下表描述了可用的命令，以便您调整组件：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>命令：</strong></th>
+<th style="text-align:left"><strong>描述：</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>重置（Reset）</strong></td>
+<td style="text-align:left">恢复组件属性在最近一次编辑会话之前的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>移除组件（Remove Component）</strong></td>
+<td style="text-align:left">从游戏对象中移除组件。<strong>注意</strong>：某些组件的组合是相互依赖的（例如，Hinge Joint只能附加到一个Rigidbody上）；如果您尝试移除其他组件所依赖的组件，会显示警告消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>上移（Move Up）</strong></td>
+<td style="text-align:left">在检视器中将组件上移。您也可以在检视器中拖放组件来重新排序。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>下移（Move Down）</strong></td>
+<td style="text-align:left">在检视器中将组件下移。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>复制组件（Copy Component）</strong></td>
+<td style="text-align:left">复制组件的类型和当前属性设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>粘贴为新组件（Paste Component As New）</strong></td>
+<td style="text-align:left">将复制的组件属性设置粘贴为新组件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>粘贴组件值（Paste Component Values）</strong></td>
+<td style="text-align:left">将复制的组件属性设置粘贴到另一个相同类型的组件中。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="测试属性">测试属性 <a href="#%e6%b5%8b%e8%af%95%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p>在**播放模式（Play Mode）<strong>下，您可以在检视器中更改组件的属性。这样可以让您看到属性的不同值如何影响游戏玩法。例如，您可以尝试不同的跳跃高度。如果您在脚本中创建了一个</strong>跳跃高度（Jump Height）**属性，您可以进入播放模式，更改该值，然后按下跳跃按钮查看效果。然后，不需要退出播放模式，您可以再次更改该值并在几秒内查看结果。退出播放模式时，属性将恢复为播放模式之前的值。通过这种工作流程，您可以以更短的时间进行实验、调整和完善游戏玩法。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/06/2023-09-06-unity-document-45/">Unity中文版-Create Gameplay GameObjects Use components(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/05/2023-09-05-unity-document-44/">Unity中文版-Create Gameplay GameObjects Introduction to components(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/04/2023-09-04-unity-document-43/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/03/2023-09-03-unity-document-42/">Unity中文版-Create Gameplay GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/02/2023-09-02-unity-document-41/">Unity中文版-Create Gameplay Scenes Customizing new scene creation(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(55)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (48)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
