@@ -6,7 +6,147 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Tags(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/10/2023-09-10-unity-document-49/</link>
+      <pubDate>Sun, 10 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/10/2023-09-10-unity-document-49/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;标签&#34;&gt;标签 &lt;a href=&#34;#%e6%a0%87%e7%ad%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;标签是您可以分配给一个或多个**GameObject（游戏对象）**的引用词。例如，您可以为玩家控制的角色定义“Player”标签，为非玩家控制的角色定义“Enemy”标签。您可以为玩家可以在场景中收集的物品定义一个“Collectable”标签。您可以使用任何您想要的单词作为标签。您甚至可以使用短语，但您可能需要扩大检视器以查看标签的完整名称。一个GameObject只能被分配一个标签。&lt;/p&gt;
+&lt;p&gt;标签可帮助您为脚本目的识别GameObject。它们确保您无需手动将GameObject添加到脚本的公开属性中，从而在将相同的脚本代码用于多个GameObject时节省时间。&lt;/p&gt;
+&lt;p&gt;标签对于需要确定玩家是否与敌人、道具或可收集物品等进行交互的触发器在Collider控制脚本中非常有用。&lt;/p&gt;
+&lt;p&gt;您可以使用GameObject.FindWithTag函数来查找包含您指定的标签的任何GameObject。以下示例使用&lt;code&gt;GameObject.FindWithTag()&lt;/code&gt;。它在具有“Respawn”标签的GameObject位置上实例化&lt;code&gt;respawnPrefab&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; UnityEngine;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; System.Collections;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Example&lt;/span&gt; : MonoBehaviour {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; GameObject respawnPrefab;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; GameObject respawn;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Start() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (respawn == &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            respawn = GameObject.FindWithTag(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Respawn&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Instantiate(respawnPrefab, respawn.transform.position, respawn.transform.rotation) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; GameObject;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建新的标签&#34;&gt;创建新的标签 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84%e6%a0%87%e7%ad%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在&lt;strong&gt;检视器&lt;/strong&gt;中，标签和层级的下拉菜单显示在GameObject的名称下方。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-10-unity-document-49/tag-dropdown.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要创建一个新的标签，选择&lt;strong&gt;Add Tag&amp;hellip;&lt;/strong&gt;。这将在检视器中打开标签和层级管理器。一旦您为标签命名，就无法再次更改其名称。&lt;/p&gt;
+&lt;p&gt;层级与标签类似，但用于定义Unity如何渲染场景中的GameObject。有关更多信息，请参阅层级页面上的文档。&lt;/p&gt;
+&lt;h2 id=&#34;应用标签&#34;&gt;应用标签 &lt;a href=&#34;#%e5%ba%94%e7%94%a8%e6%a0%87%e7%ad%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;检视器&lt;/strong&gt;在GameObject名称的下方显示标签和层级的下拉菜单。要将现有标签应用于GameObject，请打开&lt;strong&gt;Tags&lt;/strong&gt;下拉菜单，并选择要应用的标签。GameObject现在与此标签关联。&lt;/p&gt;
+&lt;h2 id=&#34;了解内置标签&#34;&gt;了解内置标签 &lt;a href=&#34;#%e4%ba%86%e8%a7%a3%e5%86%85%e7%bd%ae%e6%a0%87%e7%ad%be&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;编辑器包含以下内置标签，这些标签不在标签管理器中显示：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;* __Untagged__
+* __Respawn__
+* __Finish__
+* __EditorOnly__
+* __MainCamera__
+* __Player__
+* __GameController__
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编辑器内部缓存带有&lt;strong&gt;MainCamera&lt;/strong&gt;标签的GameObject。当您访问Camera.main时，编辑器会从其缓存中返回第一个有效的结果。请参阅Camera.main以了解更多信息。&lt;/p&gt;
+&lt;p&gt;带有&lt;strong&gt;EditorOnly&lt;/strong&gt;标签的GameObject在构建游戏时将被销毁。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Deactivate GameObjects(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/09/2023-09-09-unity-document-48/</link>
+      <pubDate>Sat, 09 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/09/2023-09-09-unity-document-48/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;停用游戏对象&#34;&gt;停用游戏对象 &lt;a href=&#34;#%e5%81%9c%e7%94%a8%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;要在场景中暂时移除&lt;strong&gt;GameObject（游戏对象）&lt;/strong&gt;，您可以将该GameObject标记为非活动状态。&lt;/p&gt;
+&lt;p&gt;要做到这一点，导航到&lt;strong&gt;检视器&lt;/strong&gt;窗口，并清除GameObject名称左侧的复选框。非活动的GameObject在层级视图窗口中的名称会显示为模糊。&lt;/p&gt;
+&lt;p&gt;要通过脚本停用GameObject，可以使用SetActive方法。要查看对象是否活动或非活动，请检查activeSelf属性。&lt;/p&gt;
+&lt;p&gt;如果您停用一个GameObject，附加到它上面的协程也会停止。&lt;/p&gt;
+&lt;h2 id=&#34;停用父gameobject&#34;&gt;停用父GameObject &lt;a href=&#34;#%e5%81%9c%e7%94%a8%e7%88%b6gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果您停用一个父GameObject，您也会停用所有子GameObject，因为停用会覆盖所有子GameObject上的activeSelf设置。当您重新激活父GameObject时，子GameObject会返回到其原始状态。&lt;/p&gt;
+&lt;p&gt;要查看场景中的子GameObject是否处于活动状态，请使用activeInHierarchy属性。&lt;/p&gt;
+&lt;p&gt;注意：如果检查一个子GameObject的activeSelf属性，它并不总是准确的，因为即使您将其设置为活动状态，您可能已经将其中一个父GameObject设置为非活动状态。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-09-unity-document-48/deactivating2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所选GameObject（Cube）被设置为活动状态，但在您将其父GameObject设置为活动状态之前，它仍然是非活动状态。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Create components with scripts(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/08/2023-09-08-unity-document-47/</link>
+      <pubDate>Fri, 08 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/08/2023-09-08-unity-document-47/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;使用脚本创建组件&#34;&gt;使用脚本创建组件 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e8%84%9a%e6%9c%ac%e5%88%9b%e5%bb%ba%e7%bb%84%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;组件可以为&lt;strong&gt;GameObject（游戏对象）添加功能。要自定义和添加组件，您可以编写自己的脚本&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;要使用脚本创建组件，您需要编写脚本，然后将其附加到一个GameObject上。附加到GameObject上的脚本会显示在GameObject的&lt;strong&gt;检视器&lt;/strong&gt;窗口中，因为编辑器将其视为内置组件。&lt;/p&gt;
+&lt;p&gt;有关如何创建脚本的信息，请参阅创建和使用脚本。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay GameObjects Primitive and placeholder objects(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/07/2023-09-07-unity-document-46/</link>
+      <pubDate>Thu, 07 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/07/2023-09-07-unity-document-46/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;基本和占位对象&#34;&gt;基本和占位对象 &lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e5%92%8c%e5%8d%a0%e4%bd%8d%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在Unity编辑器中，您可以使用任何模型制作软件创建的形状的3D模型。您可以在编辑器中创建多种类型的对象，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;立方体（Cube）&lt;/li&gt;
+&lt;li&gt;球体（Sphere）&lt;/li&gt;
+&lt;li&gt;胶囊体（Capsule）&lt;/li&gt;
+&lt;li&gt;圆柱体（Cylinder）&lt;/li&gt;
+&lt;li&gt;平面（Plane）&lt;/li&gt;
+&lt;li&gt;四边形（Quad）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要向场景添加一个基本对象，请选择&lt;strong&gt;GameObject（游戏对象）&lt;/strong&gt; &amp;gt; &lt;strong&gt;3D Object（3D对象）&lt;/strong&gt;，然后选择所需的基本对象。这会将默认的基本对象添加到您的局部坐标空间，您可以在检视器窗口中使用变换工具来更改对象的大小和位置。&lt;/p&gt;
+&lt;p&gt;这些对象可以用于建模特定物品，或者您可以使用它们来创建占位符和原型进行测试。本页面详细说明了每种基本对象的常见用途，但您可以根据项目的需求来使用这些对象。&lt;/p&gt;
+&lt;h2 id=&#34;立方体&#34;&gt;立方体 &lt;a href=&#34;#%e7%ab%8b%e6%96%b9%e4%bd%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitiveCube.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;默认的立方体基本对象是一个白色立方体，有六个面，每个面是1 x 1单位。立方体的纹理使得每个面都是重复的。立方体常用于构建墙壁、柱子、箱子、阶梯和其他类似的物体，或者作为开发过程中的有用占位符。例如，由于立方体的边长为一个单位，如果您在其附近添加一个立方体并比较大小，可以检查导入到场景中的网格的比例。&lt;/p&gt;
+&lt;h2 id=&#34;球体&#34;&gt;球体 &lt;a href=&#34;#%e7%90%83%e4%bd%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitiveSphere.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;默认的球体基本对象直径为一个单位（即半径为0.5单位）。球体的纹理采用标准的球面UV映射方式，使得纹理围绕球体展开，并且顶部和底部的边缘在每个极点处收缩。球体适用于表示球体、行星和投射物。您可以使用半透明的球体来创建表示效果半径的GUI设备。&lt;/p&gt;
+&lt;h2 id=&#34;圆柱体&#34;&gt;圆柱体 &lt;a href=&#34;#%e5%9c%86%e6%9f%b1%e4%bd%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitiveCylinder.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;默认的圆柱体基本对象高度为两个单位，直径为一个单位。圆柱体的纹理使得图像在圆柱体的中心体形状上重复，并且在两个扁平的端面上分别重复。圆柱体适用于创建柱子、杆子和车轮。 Unity中的默认碰撞器形状是胶囊体（Unity没有原生的圆柱体碰撞器）。要获得准确的圆柱体物理碰撞器，需要在建模程序中创建一个圆柱体形状的网格，并将网格碰撞器（Mesh Collider）附加上去。&lt;/p&gt;
+&lt;h2 id=&#34;胶囊体&#34;&gt;胶囊体 &lt;a href=&#34;#%e8%83%b6%e5%9b%8a%e4%bd%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitiveCapsule.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;胶囊体基本对象是一个带有两个半球状顶端的圆柱体。默认的胶囊体直径为一个单位，高度为两个单位（主体为一个单位，每个顶端为0.5单位）。它的纹理使图像在一个圆柱体上重复，并且在两个半球体的极点处边缘收缩。胶囊体是原型的有用占位符，因为圆形物体的物理特性比盒子更适合某些任务。&lt;/p&gt;
+&lt;h2 id=&#34;四边形&#34;&gt;四边形 &lt;a href=&#34;#%e5%9b%9b%e8%be%b9%e5%bd%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitiveQuad.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;默认的四边形基本对象是一个边长为一个单位的正方形，由两个三角形组成，并且位于局部坐标空间的xy平面上。您可以将四边形用作图像或电影的显示屏。您还可以使用四边形来实现简单的GUI和信息显示、粒子、精灵和代替实体对象在远处的纹理图像。&lt;/p&gt;
+&lt;h2 id=&#34;平面&#34;&gt;平面 &lt;a href=&#34;#%e5%b9%b3%e9%9d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/PrimitivePlane.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;默认的平面基本对象是一个边长为十个单位的平面正方形，由200个三角形组成，并位于局部坐标空间的xz平面上。该正方形纹理使得整个图像在正方形内完整显示。&lt;/p&gt;
+&lt;p&gt;平面适用于大多数平面表面，如地板和墙壁。您可以使用平面来展示特效、图像或电影，但使用四边形基本对象可能更简单。&lt;/p&gt;
+&lt;p&gt;平面的纹理只能从上方渲染。如果您在平面的下方，平面的纹理将是透明的。&lt;/p&gt;
+&lt;h1 id=&#34;2d基本对象类型&#34;&gt;2D基本对象类型 &lt;a href=&#34;#2d%e5%9f%ba%e6%9c%ac%e5%af%b9%e8%b1%a1%e7%b1%bb%e5%9e%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Unity支持导入不同的图像格式，如.png或Adobe的.psd，这为您在创建和准备2D资产时提供了额外的选项。但是，如果您想快速创建原型，Unity提供了2D基本对象（GameObjects）来帮助您构建项目，而无需准备和导入自己的资产。&lt;/p&gt;
+&lt;p&gt;本页面详细说明了可用的2D基本对象选项的尺寸和常见用途。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重要提示&lt;/strong&gt;：您的项目必须安装了2D Sprite包，才能启用以下2D基本对象选项。当您选择了2D项目模板创建一个项目时，2D Sprite包会自动安装，或者您可以通过包管理器安装2D Sprite包。&lt;/p&gt;
+&lt;h2 id=&#34;创建2d基本对象&#34;&gt;创建2D基本对象 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba2d%e5%9f%ba%e6%9c%ac%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要创建这些预设的2D基本对象之一，选择&lt;strong&gt;GameObject（游戏对象）&lt;/strong&gt; &amp;gt; &lt;strong&gt;2D Object（2D对象）&lt;/strong&gt; &amp;gt; &lt;strong&gt;Sprites（精灵）&lt;/strong&gt; 或 &lt;strong&gt;Create（创建）&lt;/strong&gt; &amp;gt; &lt;strong&gt;2D（2D）&lt;/strong&gt; &amp;gt; &lt;strong&gt;Sprites（精灵）&lt;/strong&gt; ，然后选择其中一个可用的选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;三角形（Triangle）&lt;/li&gt;
+&lt;li&gt;正方形（Square）&lt;/li&gt;
+&lt;li&gt;圆（Circle）&lt;/li&gt;
+&lt;li&gt;胶囊体（Capsule）&lt;/li&gt;
+&lt;li&gt;等角菱形（Isometric Diamond）&lt;/li&gt;
+&lt;li&gt;六边形（平顶）（Hexagon Flat-Top）&lt;/li&gt;
+&lt;li&gt;六边形（尖锐顶）（Hexagon Point-Top）&lt;/li&gt;
+&lt;li&gt;9切片（9-Sliced）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;默认精灵尺寸&#34;&gt;默认精灵尺寸 &lt;a href=&#34;#%e9%bb%98%e8%ae%a4%e7%b2%be%e7%81%b5%e5%b0%ba%e5%af%b8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;2D基本对象的默认精灵大小为256 x 256个像素，像素每单位（PPU）大小为256个像素。这种尺寸和PPU值的组合使得精灵的大小等于场景中的一个Unity单位。有两个例外 - 胶囊体基本对象的大小为256 x 512像素（1:2单位），等角菱形基本对象的大小为256 x 128像素（1:0.5单位）。&lt;/p&gt;
+&lt;h2 id=&#34;triangle&#34;&gt;Triangle &lt;a href=&#34;#triangle&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-triangle.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三角形（Triangle）&lt;/strong&gt; 2D基本对象是一个白色的等腰三角形，底边大小为一个Unity单位。您可以将其用作场景中各种元素的占位符，例如障碍物或用户界面的部分。您可以为基本对象添加&lt;strong&gt;Polygon Collider 2D&lt;/strong&gt;组件，使其与其他GameObject和2D物理系统进行交互。&lt;/p&gt;
+&lt;h2 id=&#34;square&#34;&gt;Square &lt;a href=&#34;#square&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-square.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正方形（Square）&lt;/strong&gt; 2D基本对象是一个白色的正方形，大小为1 x 1个Unity单位。您可以将其用作各种元素的占位符，例如障碍物或平台。您可以为基本对象添加&lt;strong&gt;Box Collider 2D&lt;/strong&gt;组件，使其与其他GameObject和2D物理系统进行交互。您可以选择9切片选项以获得一个更具可伸缩性且可以动态调整大小的精灵。&lt;/p&gt;
+&lt;h2 id=&#34;circle&#34;&gt;Circle &lt;a href=&#34;#circle&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-circle.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;圆（Circle）&lt;/strong&gt; 2D基本对象是一个白色的圆形，直径为一个Unity单位。您可以将其用作场景中各种元素的占位符，例如障碍物或道具。您可以为基本对象添加&lt;strong&gt;Circle Collider 2D&lt;/strong&gt;，使其与其他GameObject和2D物理系统进行交互。&lt;/p&gt;
+&lt;h2 id=&#34;capsule&#34;&gt;Capsule &lt;a href=&#34;#capsule&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-capsule.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;胶囊体（Capsule）&lt;/strong&gt; 2D基本对象是一个白色的胶囊体，大小为1 x 2个单位。您可以将其用作场景中各种元素的占位符，例如障碍物、道具或一个角色的代替。您可以为基本对象添加&lt;strong&gt;Capsule Collider 2D&lt;/strong&gt;，使其与其他GameObject和2D物理系统进行交互。&lt;/p&gt;
+&lt;h2 id=&#34;isometric-diamond&#34;&gt;Isometric Diamond &lt;a href=&#34;#isometric-diamond&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-isodiamond.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;等角菱形（Isometric Diamond）&lt;/strong&gt; 2D基本对象是一个白色的菱形精灵，大小为1 x 0.5个单位。此精灵通常用作放置在等角图块地图上的瓦片的占位符。该精灵的顶部和底部的像素稍微裁剪，以改善平铺效果。&lt;/p&gt;
+&lt;h2 id=&#34;hexagon-flat-top&#34;&gt;Hexagon Flat-Top &lt;a href=&#34;#hexagon-flat-top&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-hex-flattop.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;六边形（平顶）（Hexagon Flat-Top）&lt;/strong&gt; 2D基本对象是一个常规六边形，宽度为一个单位，带有平顶的平面朝向顶部和底部。该精灵通常用作放置在六角形平顶图块地图上的瓦片的占位符。该精灵的左侧和右侧的像素稍微裁剪，以改善平铺效果。&lt;/p&gt;
+&lt;h2 id=&#34;hexagon-point-top&#34;&gt;Hexagon Point-Top &lt;a href=&#34;#hexagon-point-top&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-hex-pointtop.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;六边形（尖锐顶）（Hexagon Point-Top）&lt;/strong&gt; 2D基本对象是一个常规六边形，高度为一个单位，尖锐的顶部朝向顶部和底部。该精灵通常用作放置在六角形尖顶图块地图上的瓦片的占位符。该精灵的顶部和底部的像素稍微裁剪，以改善平铺效果。&lt;/p&gt;
+&lt;h2 id=&#34;9-sliced&#34;&gt;9-Sliced &lt;a href=&#34;#9-sliced&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-07-unity-document-46/2D-primitive-9-sliced.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9切片（9-Sliced）&lt;/strong&gt; 2D基本对象是一个带有圆角的白色正方形，大小为1 x 1个单位。该精灵已经进行了9切片处理，边框在每边的64个像素。此精灵主要与Sprite Renderer组件的&lt;strong&gt;Sliced（切片）和Tiled（平铺）绘制模式一起使用。您可以将9切片精灵用作场景和项目中各种元素的灵活占位符（有关更多信息，请参阅9切片精灵）。您可以添加一个启用了Auto Tiling（自动平铺）的Box Collider 2D&lt;/strong&gt;，使精灵与其他对象和2D物理系统进行交互。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay GameObjects Use components(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/06/2023-09-06-unity-document-45/</link>

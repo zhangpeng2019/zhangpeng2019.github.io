@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects Primitive and placeholder objects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects Primitive and placeholder objects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-07 11:13:34 &#43;0800 CST">2023/09/07</time>
+        <span class="split">·</span>
+        <span> 140 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="基本和占位对象">基本和占位对象 <a href="#%e5%9f%ba%e6%9c%ac%e5%92%8c%e5%8d%a0%e4%bd%8d%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h1><p>在Unity编辑器中，您可以使用任何模型制作软件创建的形状的3D模型。您可以在编辑器中创建多种类型的对象，例如：</p>
+<ul>
+<li>立方体（Cube）</li>
+<li>球体（Sphere）</li>
+<li>胶囊体（Capsule）</li>
+<li>圆柱体（Cylinder）</li>
+<li>平面（Plane）</li>
+<li>四边形（Quad）</li>
+</ul>
+<p>要向场景添加一个基本对象，请选择<strong>GameObject（游戏对象）</strong> &gt; <strong>3D Object（3D对象）</strong>，然后选择所需的基本对象。这会将默认的基本对象添加到您的局部坐标空间，您可以在检视器窗口中使用变换工具来更改对象的大小和位置。</p>
+<p>这些对象可以用于建模特定物品，或者您可以使用它们来创建占位符和原型进行测试。本页面详细说明了每种基本对象的常见用途，但您可以根据项目的需求来使用这些对象。</p>
+<h2 id="立方体">立方体 <a href="#%e7%ab%8b%e6%96%b9%e4%bd%93" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitiveCube.png" alt=""></p>
+<p>默认的立方体基本对象是一个白色立方体，有六个面，每个面是1 x 1单位。立方体的纹理使得每个面都是重复的。立方体常用于构建墙壁、柱子、箱子、阶梯和其他类似的物体，或者作为开发过程中的有用占位符。例如，由于立方体的边长为一个单位，如果您在其附近添加一个立方体并比较大小，可以检查导入到场景中的网格的比例。</p>
+<h2 id="球体">球体 <a href="#%e7%90%83%e4%bd%93" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitiveSphere.png" alt=""></p>
+<p>默认的球体基本对象直径为一个单位（即半径为0.5单位）。球体的纹理采用标准的球面UV映射方式，使得纹理围绕球体展开，并且顶部和底部的边缘在每个极点处收缩。球体适用于表示球体、行星和投射物。您可以使用半透明的球体来创建表示效果半径的GUI设备。</p>
+<h2 id="圆柱体">圆柱体 <a href="#%e5%9c%86%e6%9f%b1%e4%bd%93" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitiveCylinder.png" alt=""></p>
+<p>默认的圆柱体基本对象高度为两个单位，直径为一个单位。圆柱体的纹理使得图像在圆柱体的中心体形状上重复，并且在两个扁平的端面上分别重复。圆柱体适用于创建柱子、杆子和车轮。 Unity中的默认碰撞器形状是胶囊体（Unity没有原生的圆柱体碰撞器）。要获得准确的圆柱体物理碰撞器，需要在建模程序中创建一个圆柱体形状的网格，并将网格碰撞器（Mesh Collider）附加上去。</p>
+<h2 id="胶囊体">胶囊体 <a href="#%e8%83%b6%e5%9b%8a%e4%bd%93" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitiveCapsule.png" alt=""></p>
+<p>胶囊体基本对象是一个带有两个半球状顶端的圆柱体。默认的胶囊体直径为一个单位，高度为两个单位（主体为一个单位，每个顶端为0.5单位）。它的纹理使图像在一个圆柱体上重复，并且在两个半球体的极点处边缘收缩。胶囊体是原型的有用占位符，因为圆形物体的物理特性比盒子更适合某些任务。</p>
+<h2 id="四边形">四边形 <a href="#%e5%9b%9b%e8%be%b9%e5%bd%a2" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitiveQuad.png" alt=""></p>
+<p>默认的四边形基本对象是一个边长为一个单位的正方形，由两个三角形组成，并且位于局部坐标空间的xy平面上。您可以将四边形用作图像或电影的显示屏。您还可以使用四边形来实现简单的GUI和信息显示、粒子、精灵和代替实体对象在远处的纹理图像。</p>
+<h2 id="平面">平面 <a href="#%e5%b9%b3%e9%9d%a2" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/PrimitivePlane.png" alt=""></p>
+<p>默认的平面基本对象是一个边长为十个单位的平面正方形，由200个三角形组成，并位于局部坐标空间的xz平面上。该正方形纹理使得整个图像在正方形内完整显示。</p>
+<p>平面适用于大多数平面表面，如地板和墙壁。您可以使用平面来展示特效、图像或电影，但使用四边形基本对象可能更简单。</p>
+<p>平面的纹理只能从上方渲染。如果您在平面的下方，平面的纹理将是透明的。</p>
+<h1 id="2d基本对象类型">2D基本对象类型 <a href="#2d%e5%9f%ba%e6%9c%ac%e5%af%b9%e8%b1%a1%e7%b1%bb%e5%9e%8b" class="anchor">🔗</a></h1><p>Unity支持导入不同的图像格式，如.png或Adobe的.psd，这为您在创建和准备2D资产时提供了额外的选项。但是，如果您想快速创建原型，Unity提供了2D基本对象（GameObjects）来帮助您构建项目，而无需准备和导入自己的资产。</p>
+<p>本页面详细说明了可用的2D基本对象选项的尺寸和常见用途。</p>
+<p><strong>重要提示</strong>：您的项目必须安装了2D Sprite包，才能启用以下2D基本对象选项。当您选择了2D项目模板创建一个项目时，2D Sprite包会自动安装，或者您可以通过包管理器安装2D Sprite包。</p>
+<h2 id="创建2d基本对象">创建2D基本对象 <a href="#%e5%88%9b%e5%bb%ba2d%e5%9f%ba%e6%9c%ac%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h2><p>要创建这些预设的2D基本对象之一，选择<strong>GameObject（游戏对象）</strong> &gt; <strong>2D Object（2D对象）</strong> &gt; <strong>Sprites（精灵）</strong> 或 <strong>Create（创建）</strong> &gt; <strong>2D（2D）</strong> &gt; <strong>Sprites（精灵）</strong> ，然后选择其中一个可用的选项：</p>
+<ul>
+<li>三角形（Triangle）</li>
+<li>正方形（Square）</li>
+<li>圆（Circle）</li>
+<li>胶囊体（Capsule）</li>
+<li>等角菱形（Isometric Diamond）</li>
+<li>六边形（平顶）（Hexagon Flat-Top）</li>
+<li>六边形（尖锐顶）（Hexagon Point-Top）</li>
+<li>9切片（9-Sliced）</li>
+</ul>
+<h2 id="默认精灵尺寸">默认精灵尺寸 <a href="#%e9%bb%98%e8%ae%a4%e7%b2%be%e7%81%b5%e5%b0%ba%e5%af%b8" class="anchor">🔗</a></h2><p>2D基本对象的默认精灵大小为256 x 256个像素，像素每单位（PPU）大小为256个像素。这种尺寸和PPU值的组合使得精灵的大小等于场景中的一个Unity单位。有两个例外 - 胶囊体基本对象的大小为256 x 512像素（1:2单位），等角菱形基本对象的大小为256 x 128像素（1:0.5单位）。</p>
+<h2 id="triangle">Triangle <a href="#triangle" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-triangle.png" alt=""></p>
+<p><strong>三角形（Triangle）</strong> 2D基本对象是一个白色的等腰三角形，底边大小为一个Unity单位。您可以将其用作场景中各种元素的占位符，例如障碍物或用户界面的部分。您可以为基本对象添加<strong>Polygon Collider 2D</strong>组件，使其与其他GameObject和2D物理系统进行交互。</p>
+<h2 id="square">Square <a href="#square" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-square.png" alt=""></p>
+<p><strong>正方形（Square）</strong> 2D基本对象是一个白色的正方形，大小为1 x 1个Unity单位。您可以将其用作各种元素的占位符，例如障碍物或平台。您可以为基本对象添加<strong>Box Collider 2D</strong>组件，使其与其他GameObject和2D物理系统进行交互。您可以选择9切片选项以获得一个更具可伸缩性且可以动态调整大小的精灵。</p>
+<h2 id="circle">Circle <a href="#circle" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-circle.png" alt=""></p>
+<p><strong>圆（Circle）</strong> 2D基本对象是一个白色的圆形，直径为一个Unity单位。您可以将其用作场景中各种元素的占位符，例如障碍物或道具。您可以为基本对象添加<strong>Circle Collider 2D</strong>，使其与其他GameObject和2D物理系统进行交互。</p>
+<h2 id="capsule">Capsule <a href="#capsule" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-capsule.png" alt=""></p>
+<p><strong>胶囊体（Capsule）</strong> 2D基本对象是一个白色的胶囊体，大小为1 x 2个单位。您可以将其用作场景中各种元素的占位符，例如障碍物、道具或一个角色的代替。您可以为基本对象添加<strong>Capsule Collider 2D</strong>，使其与其他GameObject和2D物理系统进行交互。</p>
+<h2 id="isometric-diamond">Isometric Diamond <a href="#isometric-diamond" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-isodiamond.png" alt=""></p>
+<p><strong>等角菱形（Isometric Diamond）</strong> 2D基本对象是一个白色的菱形精灵，大小为1 x 0.5个单位。此精灵通常用作放置在等角图块地图上的瓦片的占位符。该精灵的顶部和底部的像素稍微裁剪，以改善平铺效果。</p>
+<h2 id="hexagon-flat-top">Hexagon Flat-Top <a href="#hexagon-flat-top" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-hex-flattop.png" alt=""></p>
+<p><strong>六边形（平顶）（Hexagon Flat-Top）</strong> 2D基本对象是一个常规六边形，宽度为一个单位，带有平顶的平面朝向顶部和底部。该精灵通常用作放置在六角形平顶图块地图上的瓦片的占位符。该精灵的左侧和右侧的像素稍微裁剪，以改善平铺效果。</p>
+<h2 id="hexagon-point-top">Hexagon Point-Top <a href="#hexagon-point-top" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-hex-pointtop.png" alt=""></p>
+<p><strong>六边形（尖锐顶）（Hexagon Point-Top）</strong> 2D基本对象是一个常规六边形，高度为一个单位，尖锐的顶部朝向顶部和底部。该精灵通常用作放置在六角形尖顶图块地图上的瓦片的占位符。该精灵的顶部和底部的像素稍微裁剪，以改善平铺效果。</p>
+<h2 id="9-sliced">9-Sliced <a href="#9-sliced" class="anchor">🔗</a></h2><p><img src="/2023-09-07-unity-document-46/2D-primitive-9-sliced.png" alt=""></p>
+<p><strong>9切片（9-Sliced）</strong> 2D基本对象是一个带有圆角的白色正方形，大小为1 x 1个单位。该精灵已经进行了9切片处理，边框在每边的64个像素。此精灵主要与Sprite Renderer组件的<strong>Sliced（切片）和Tiled（平铺）绘制模式一起使用。您可以将9切片精灵用作场景和项目中各种元素的灵活占位符（有关更多信息，请参阅9切片精灵）。您可以添加一个启用了Auto Tiling（自动平铺）的Box Collider 2D</strong>，使精灵与其他对象和2D物理系统进行交互。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/10/2023-09-10-unity-document-49/">Unity中文版-Create Gameplay GameObjects Tags(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/2023-09-09-unity-document-48/">Unity中文版-Create Gameplay GameObjects Deactivate GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/08/2023-09-08-unity-document-47/">Unity中文版-Create Gameplay GameObjects Create components with scripts(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/07/2023-09-07-unity-document-46/">Unity中文版-Create Gameplay GameObjects Primitive and placeholder objects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/06/2023-09-06-unity-document-45/">Unity中文版-Create Gameplay GameObjects Use components(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(59)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (52)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

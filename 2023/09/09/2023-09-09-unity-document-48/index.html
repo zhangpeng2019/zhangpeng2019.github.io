@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects Deactivate GameObjects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects Deactivate GameObjects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-09 11:13:34 &#43;0800 CST">2023/09/09</time>
+        <span class="split">·</span>
+        <span> 13 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="停用游戏对象">停用游戏对象 <a href="#%e5%81%9c%e7%94%a8%e6%b8%b8%e6%88%8f%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h1><p>要在场景中暂时移除<strong>GameObject（游戏对象）</strong>，您可以将该GameObject标记为非活动状态。</p>
+<p>要做到这一点，导航到<strong>检视器</strong>窗口，并清除GameObject名称左侧的复选框。非活动的GameObject在层级视图窗口中的名称会显示为模糊。</p>
+<p>要通过脚本停用GameObject，可以使用SetActive方法。要查看对象是否活动或非活动，请检查activeSelf属性。</p>
+<p>如果您停用一个GameObject，附加到它上面的协程也会停止。</p>
+<h2 id="停用父gameobject">停用父GameObject <a href="#%e5%81%9c%e7%94%a8%e7%88%b6gameobject" class="anchor">🔗</a></h2><p>如果您停用一个父GameObject，您也会停用所有子GameObject，因为停用会覆盖所有子GameObject上的activeSelf设置。当您重新激活父GameObject时，子GameObject会返回到其原始状态。</p>
+<p>要查看场景中的子GameObject是否处于活动状态，请使用activeInHierarchy属性。</p>
+<p>注意：如果检查一个子GameObject的activeSelf属性，它并不总是准确的，因为即使您将其设置为活动状态，您可能已经将其中一个父GameObject设置为非活动状态。</p>
+<p><img src="/2023-09-09-unity-document-48/deactivating2.png" alt=""></p>
+<p>所选GameObject（Cube）被设置为活动状态，但在您将其父GameObject设置为活动状态之前，它仍然是非活动状态。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/10/2023-09-10-unity-document-49/">Unity中文版-Create Gameplay GameObjects Tags(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/09/2023-09-09-unity-document-48/">Unity中文版-Create Gameplay GameObjects Deactivate GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/08/2023-09-08-unity-document-47/">Unity中文版-Create Gameplay GameObjects Create components with scripts(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/07/2023-09-07-unity-document-46/">Unity中文版-Create Gameplay GameObjects Primitive and placeholder objects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/06/2023-09-06-unity-document-45/">Unity中文版-Create Gameplay GameObjects Use components(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(59)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (52)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
