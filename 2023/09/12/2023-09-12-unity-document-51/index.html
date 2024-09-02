@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-12 11:13:34 &#43;0800 CST">2023/09/12</time>
+        <span class="split">·</span>
+        <span> 50 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="保存工作">保存工作 <a href="#%e4%bf%9d%e5%ad%98%e5%b7%a5%e4%bd%9c" class="anchor">🔗</a></h1><p>Unity将大多数保存的信息划分为场景更改或整个项目更改。</p>
+<ul>
+<li>要保存当前场景和整个项目的所有更改，请转到<strong>文件</strong> &gt; <strong>保存</strong>（或<strong>另存为</strong>）。</li>
+<li>要保存整个项目的更改，但不保存场景更改，请转到<strong>文件</strong> &gt; <strong>保存项目</strong>。</li>
+</ul>
+<p><strong>注意</strong>：如果您在预制件模式下进行编辑，在<strong>文件</strong> &gt; <strong>保存</strong>中保存的只是对打开的预制件的更改。退出预制件模式以保存更广泛的更改。</p>
+<p>Unity在您在编辑器中工作时会自动保存一些信息。有关详情，请参阅自动保存。</p>
+<h2 id="场景更改">场景更改 <a href="#%e5%9c%ba%e6%99%af%e6%9b%b4%e6%94%b9" class="anchor">🔗</a></h2><p>场景更改包括对场景中的**GameObject（游戏对象）**进行的修改。例如：</p>
+<ul>
+<li>如果您添加、移动或删除一个GameObject。</li>
+<li>如果您在<strong>检视器</strong>窗口中更改了一个GameObject的参数。</li>
+</ul>
+<h2 id="整个项目更改">整个项目更改 <a href="#%e6%95%b4%e4%b8%aa%e9%a1%b9%e7%9b%ae%e6%9b%b4%e6%94%b9" class="anchor">🔗</a></h2><p>Unity中的整个项目更改适用于整个项目，而不是特定的场景。例如，如果您创建一个临时场景来测试更改，您可以保存项目而不是场景。</p>
+<p>整个项目更改包括：</p>
+<ul>
+<li>
+<p><strong>项目设置</strong>：当您保存项目时，Unity会将对项目设置的更改保存在<code>ProjectSettings</code>文件夹中的以下文件中：</p>
+<ul>
+<li><strong>输入</strong>：<code>InputManager.asset</code></li>
+<li><strong>标签和层级</strong>：<code>TagManager.asset</code></li>
+<li><strong>音频</strong>：<code>AudioManager.asset</code></li>
+<li><strong>时间</strong>：<code>TimeManager.asset</code></li>
+<li><strong>玩家</strong>：<code>ProjectSettings.asset</code></li>
+<li><strong>物理</strong>：<code>DynamicsManager.asset</code></li>
+<li><strong>2D物理</strong>：<code>Physics2DSettings.asset</code></li>
+<li><strong>质量</strong>：<code>QualitySettings.asset</code></li>
+<li><strong>图形</strong>：<code>GraphicsSettings.asset</code></li>
+<li><strong>网络</strong>：<code>NetworkManager.asset</code></li>
+<li><strong>编辑器</strong>：<code>EditorUserSettings.asset</code></li>
+</ul>
+</li>
+<li>
+<p><strong>构建设置</strong>：Unity会将对构建设置的更改保存在<code>Library</code>文件夹中的<code>EditorBuildSettings.asset</code>中。</p>
+</li>
+<li>
+<p><strong>更改的资源</strong>：当您保存整个项目的设置时，Unity会保存任何未保存的资源。</p>
+<p><strong>注意</strong>：某些资源类型在检视器中有一个<strong>应用</strong>按钮。除非您选择<strong>应用</strong>，否则Unity不会保存这些更改。</p>
+</li>
+<li>
+<p><strong>脏资源</strong>：Unity会保存<strong>脏资源</strong>，这些资源是在软件中修改但尚未保存的磁盘上的文件。您可以使用自定义的编辑器和脚本来标记资源为脏资源的一种方式：</p>
+<ul>
+<li>使用SerializedObject类和SerializedProperties。</li>
+<li>使用Undo类记录修改。</li>
+<li>使用SetDirty。</li>
+</ul>
+</li>
+</ul>
+<h2 id="自动保存">自动保存 <a href="#%e8%87%aa%e5%8a%a8%e4%bf%9d%e5%ad%98" class="anchor">🔗</a></h2><p>Unity会自动保存以下更改到您的磁盘：</p>
+<ul>
+<li><strong>新资源</strong>：在创建新资源时，Unity会自动保存新资源，但您需要稍后保存更改。</li>
+<li><strong>资源导入设置</strong>：对于大多数资源要生效的更改，您需要在检视器窗口中选择<strong>应用</strong>。选择<strong>应用</strong>时，Unity会保存更改。</li>
+<li>烘培数据：当您的项目中有设置为烘培的数据时，Unity会在烘培完成后保存此数据。包括：
+<ul>
+<li>烘培的光照数据</li>
+<li>烘培的导航数据</li>
+<li>烘培的遮挡剔除数据</li>
+</ul>
+</li>
+<li><strong>脚本执行顺序更改</strong>：在选择<strong>应用</strong>后，Unity会将此数据保存到每个脚本的<code>.meta</code>文件中。</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/14/2023-09-14-unity-document-53/">Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/2023-09-13-unity-document-52/">Unity中文版-Create Gameplay Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/12/2023-09-12-unity-document-51/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/11/2023-09-11-unity-document-50/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(64)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (57)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

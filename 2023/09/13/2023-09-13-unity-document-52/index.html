@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-13 11:13:34 &#43;0800 CST">2023/09/13</time>
+        <span class="split">·</span>
+        <span> 27 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="prefabs">Prefabs <a href="#prefabs" class="anchor">🔗</a></h1><p><img src="/2023-09-13-unity-document-52/PrefabsIntroScene.png" alt=""></p>
+<p>Unity的<strong>预制件（Prefab）系统允许您创建、配置和存储一个完整的GameObject（游戏对象）</strong>，包括它的所有组件、属性值和子游戏对象，作为一个可重复使用的资源。预制件资源充当可从中创建新的预制件实例的模板。</p>
+<p>当您想要在场景的多个位置或项目的多个场景中重复使用以特定方式配置的GameObject（例如非玩家角色（NPC）、道具或场景中的一部分）时，应将其转换为预制件。这比简单地复制和粘贴GameObject要好，因为预制件系统允许您自动将所有副本保持同步。</p>
+<p>对预制件资源所做的任何编辑都会自动反映在该预制件的实例中，从而使您能够轻松地在整个项目中进行广泛的更改，而不必反复对每个资源副本进行相同的编辑。</p>
+<p>您可以将预制件嵌套在其他预制件中，以创建易于在多个级别进行编辑的复杂对象层次结构。</p>
+<p>然而，这并不意味着所有预制件实例都必须相同。如果您希望某些预制件实例与其他实例不同，可以在个别预制件实例上覆盖设置。您还可以创建预制件的变体，这样您可以将一组覆盖设置组合在一起，形成预制件的有意义的变体。</p>
+<p>在您希望在运行时实例化在场景开始时不存在的GameObject时，也应该使用预制件。例如，为了在游戏过程中的正确时刻使道具、特效、投射物或NPC出现。</p>
+<p>预制件的常见用途包括：</p>
+<ul>
+<li>环境资源 - 例如在关卡周围多次使用某种类型的树（如上图所示）。</li>
+<li>非玩家角色（NPC） - 例如在游戏中多次出现某种类型的机器人，跨多个关卡。它们可以在移动速度或发出的声音等方面（使用<em>覆盖设置</em>）有所不同。</li>
+<li>投射物 - 例如，海盗的大炮每次发射时都会实例化一个炮弹预制件。</li>
+<li>玩家的主角 - 玩家的预制件可能会放置在游戏的每个关卡（单独的场景）的起始点。</li>
+</ul>
+<h2 id="预制件检视器预览">预制件检视器预览 <a href="#%e9%a2%84%e5%88%b6%e4%bb%b6%e6%a3%80%e8%a7%86%e5%99%a8%e9%a2%84%e8%a7%88" class="anchor">🔗</a></h2><p>当您选择一个预制件并在<strong>检视器</strong>中查看时，检视器中的资源预览窗格会显示预制件的预览。如果预制件的大小小于8MB，则资源预览窗格会显示预制件的交互式预览，您可以在资源预览窗格内旋转预制件。</p>
+<p>如果预制件的大小大于8MB，默认情况下，资源预览会显示预制件的静态预览。要查看大于8MB的预制件的交互式预览，请单击资源预览窗格内的任意位置。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/14/2023-09-14-unity-document-53/">Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/2023-09-13-unity-document-52/">Unity中文版-Create Gameplay Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/12/2023-09-12-unity-document-51/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/11/2023-09-11-unity-document-50/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(64)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (57)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-14 11:13:34 &#43;0800 CST">2023/09/14</time>
+        <span class="split">·</span>
+        <span> 24 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="创建件预制">创建件预制 <a href="#%e5%88%9b%e5%bb%ba%e4%bb%b6%e9%a2%84%e5%88%b6" class="anchor">🔗</a></h1><p>在Unity的<strong>预制件（Prefab）系统中，预制件资源（Prefab Assets）充当模板。您可以在编辑器中创建预制件资源，并将它们保存为项目窗口中的资源。从预制件资源，您可以创建任意数量的预制件实例</strong>。预制件实例可以在编辑器中创建并保存为您的**场景（Scenes）**的一部分，也可以在运行时实例化。</p>
+<h2 id="创建预制资源">创建预制资源 <a href="#%e5%88%9b%e5%bb%ba%e9%a2%84%e5%88%b6%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><p>要创建预制件资源，从层级视图中将一个**GameObject（游戏对象）**拖拽到项目窗口中。GameObject及其所有组件和子对象将成为项目窗口中的新资源。预制件资源在项目窗口中以GameObject的缩略图视图或蓝色立方体预制件图标显示，具体取决于您如何设置项目窗口。</p>
+<p><img src="/2023-09-14-unity-document-53/PrefabsInProjectWindow1.png" alt=""></p>
+<p>项目窗口中显示两个预制件（“FatBlob”和“Key”）的双列视图（左）和单列视图（右）</p>
+<p>此创建预制件资源的过程还会将原始的GameObject转换为预制件实例。它现在是新创建的预制件资源的实例。预制件实例在层级视图中以蓝色文本显示，预制件的根GameObject以蓝色立方体预制件图标显示，而不是红色、绿色和蓝色的GameObject图标。</p>
+<p><img src="/2023-09-14-unity-document-53/PrefabInstanceInScene1.png" alt=""></p>
+<h2 id="创建多个预制件资源">创建多个预制件资源 <a href="#%e5%88%9b%e5%bb%ba%e5%a4%9a%e4%b8%aa%e9%a2%84%e5%88%b6%e4%bb%b6%e8%b5%84%e6%ba%90" class="anchor">🔗</a></h2><p>要一次创建多个预制件资源，请将多个GameObject从层级视图拖拽到项目窗口中。此功能与上面段落中的操作相同。</p>
+<p>如果您将多个不是预制件的GameObject拖拽到项目窗口中，Unity将为每个GameObject创建新的原始预制件资源，而无需任何其他步骤。</p>
+<p>如果您拖拽到项目窗口的任何GameObject是现有的预制件变体或模型变体，Unity会显示一个对话框，询问您是否要创建新的预制件资源或从GameObject创建新的变体。此对话框的内容会根据您拖拽到项目窗口中的GameObject的数量和类型而变化。</p>
+<h2 id="创建预制件实例">创建预制件实例 <a href="#%e5%88%9b%e5%bb%ba%e9%a2%84%e5%88%b6%e4%bb%b6%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h2><p>您可以通过将预制件资源从项目视图拖拽到层级视图或<strong>场景视图</strong>中，在编辑器中创建预制件资源的实例。</p>
+<p><img src="/2023-09-14-unity-document-53/PrefabsDragIntoScene1.png" alt=""></p>
+<p>您还可以使用脚本在运行时创建预制件的实例。有关详细信息，请参阅创建预制件。</p>
+<h2 id="替换预制件">替换预制件 <a href="#%e6%9b%bf%e6%8d%a2%e9%a2%84%e5%88%b6%e4%bb%b6" class="anchor">🔗</a></h2><p>您可以通过从层级视图中拖拽一个新的GameObject，并将其放置在项目窗口中的现有预制件资源上，来替换预制件。</p>
+<p>如果您正在替换一个现有的预制件，Unity会尝试保留对预制件本身和预制件的各个部分（如子GameObject和组件）的引用。为了做到这一点，它会通过匹配新预制件和要替换的现有预制件之间的GameObject名称来进行匹配。</p>
+<p><strong>注意：</strong> <em>由于这种匹配只是根据名称进行的，如果预制件的层级结构中存在具有相同名称的多个GameObject，就无法预测哪一个会被匹配。因此，如果您需要确保在保存到现有预制件时保留引用，必须确保预制件内的所有GameObject具有唯一的名称。</em></p>
+<p><strong>还要注意：</strong> <em>当在现有预制件上保存时，如果预制件中的单个GameObject附加了多个相同类型的组件，也可能遇到类似的问题，即保留对现有组件的引用时无法预测将匹配到哪个组件。</em></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/14/2023-09-14-unity-document-53/">Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/2023-09-13-unity-document-52/">Unity中文版-Create Gameplay Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/12/2023-09-12-unity-document-51/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/11/2023-09-11-unity-document-50/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(64)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (57)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

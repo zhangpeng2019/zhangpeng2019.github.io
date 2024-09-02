@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-11 11:13:34 &#43;0800 CST">2023/09/11</time>
+        <span class="split">·</span>
+        <span> 74 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="静态gameobject">静态GameObject <a href="#%e9%9d%99%e6%80%81gameobject" class="anchor">🔗</a></h1><p>如果一个GameObject在运行时不移动，那么它被称为<strong>静态GameObject</strong>。如果一个GameObject在运行时会移动，那么它被称为<strong>动态GameObject</strong>。</p>
+<p>在Unity中，许多系统可以在编辑器中预先计算静态GameObject的信息。因为这些GameObject不会移动，所以这些计算结果在运行时仍然有效。这意味着Unity可以节省运行时的计算，并潜在地提高性能。</p>
+<h2 id="static-editor-flags属性">Static Editor Flags属性 <a href="#static-editor-flags%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p><img src="/2023-09-11-unity-document-50/GameObjectStaticDropDownMenu1.png" alt=""></p>
+<p>在检视器中查看GameObject时显示的Static Editor Flags复选框和下拉菜单</p>
+<p><strong>Static Editor Flags</strong>属性列出了一些Unity系统，这些系统可以在它们的预计算中包含静态GameObject。使用下拉菜单定义哪些系统包含GameObject在它们的预计算中。在运行时设置Static Editor Flags属性不会对这些系统产生影响。</p>
+<p>只在需要知道该GameObject的系统的预计算中包含GameObject。在不需要知道该GameObject的系统的预计算中包含GameObject可能会导致计算浪费、数据文件过大或意外行为。</p>
+<p><strong>Static Editor Flags</strong>属性位于GameObject的<strong>检视器</strong>中，位于右上角的极限位置。它包括一个复选框，将值设置为<strong>Everything</strong>或<strong>Nothing</strong>，以及一个下拉菜单，可让您选择要包含哪些值。</p>
+<p>要在代码中设置Static Editor Flags属性，请使用GameObjectUtility.SetStaticEditorFlags API和GameObject.isStatic。要在代码中获取Static Editor Flags属性的状态，请使用GameObjectUtility.GetStaticEditorFlags API。</p>
+<p>可用的属性如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Nothing</strong></td>
+<td style="text-align:left">不在任何系统的预计算中包含GameObject。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Everything</strong></td>
+<td style="text-align:left">在下面的所有系统的预计算中包含GameObject。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Contribute GI</strong></td>
+<td style="text-align:left">如果您启用此属性，Unity将在<strong>全局光照计算</strong>中包含目标Mesh Renderer。这些计算在烘焙时的预计算照明数据过程中进行。ContributeGI属性公开了ReceiveGI属性。只有在为目标<strong>场景</strong>启用了烘焙全局照明或实时全局照明（Enlighten）等全局照明设置时，ContributeGI属性才生效。Unity博客上有关使用光探头进行静态照明的帖子提供了有关使用此标志的指导。有关更多上下文，请参阅此教程以设置内置渲染管线和Unity中的照明。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Occluder Static</strong></td>
+<td style="text-align:left">将GameObject标记为遮挡剔除系统中的静态遮挡者。有关更多信息，请参阅遮挡剔除系统。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Occludee Static</strong></td>
+<td style="text-align:left">将GameObject标记为遮挡剔除系统中的静态被遮挡者。有关更多信息，请参阅遮挡剔除系统。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Batching Static</strong></td>
+<td style="text-align:left">将GameObject的**Mesh（网格）**与其他合格的网格合并，以潜在地降低运行时渲染成本。有关更多信息，请参阅静态批处理的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Navigation Static</strong></td>
+<td style="text-align:left">在预计算导航数据时包含GameObject。这个工作流已被弃用，您不能在这里设置<strong>Navigation Static</strong>。但是，您仍然可以在代码中使用<code>StaticEditorFlags.NavigationStatic</code>来设置该选项。请使用<strong>NavMesh Modifier</strong>组件和<strong>NavMesh Surfaces</strong>代替<strong>Navigation Static</strong>标志。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Off Mesh Link Generation</strong></td>
+<td style="text-align:left">在预计算导航数据时，尝试生成从此GameObject开始的OffMesh Link。这个工作流已被弃用，您不能从此菜单中设置<strong>Off Mesh Link Generation</strong>。但是，您仍然可以在代码中使用<code>StaticEditorFlags.OffMeshLinkGeneration</code>来设置该选项。请使用<strong>NavMesh Modifier</strong>组件和<strong>NavMesh Surfaces</strong>代替<strong>Off Mesh Link Generation</strong>标志。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reflection Probe</strong></td>
+<td style="text-align:left">在预计算为**Type（类型）<strong>设置为</strong>Baked（烘焙）<strong>的</strong>Reflection Probes（反射探头）**的数据时，包含此GameObject。有关更多信息，请参阅反射探头。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/14/2023-09-14-unity-document-53/">Unity中文版-Create Gameplay Prefabs Creating Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/13/2023-09-13-unity-document-52/">Unity中文版-Create Gameplay Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/12/2023-09-12-unity-document-51/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/11/2023-09-11-unity-document-50/">Unity中文版-Create Gameplay GameObjects Static GameObjects(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(64)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (57)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
