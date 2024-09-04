@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-22 11:13:34 &#43;0800 CST">2023/09/22</time>
+        <span class="split">·</span>
+        <span> 14 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="解包prefab实例">解包Prefab实例 <a href="#%e8%a7%a3%e5%8c%85prefab%e5%ae%9e%e4%be%8b" class="anchor">🔗</a></h1><p>要将<strong>Prefab</strong>实例返回到普通的<strong>GameObject</strong>中，您需要对Prefab实例进行解包操作。这正是创建（打包）Prefab的相反操作，只是它不会销毁Prefab资产，而只影响Prefab实例。</p>
+<p>您可以通过在Hierarchy中右键单击Prefab实例并选择<strong>Unpack Prefab</strong>来解包Prefab实例。结果在<strong>Scene</strong>中的GameObject不再与其原来的Prefab资产有任何链接。Prefab资产本身不受此操作的影响，并且您的项目中可能仍然存在其他实例。</p>
+<p>如果在解包之前在Prefab实例上进行了任何覆盖操作，这些覆盖将“烘焙”到生成的GameObject上。也就是说，值保持不变，但不再具有覆盖状态，因为没有要覆盖的Prefab了。</p>
+<p>如果解包包含嵌套Prefab的Prefab，嵌套的Prefab仍然保持Prefab实例，并且仍然与各自的Prefab资产保持链接。类似地，如果解包Prefab变体，将在根部生成一个新的Prefab实例，该实例是基础Prefab的实例。</p>
+<p>通常情况下，解包Prefab实例将为您提供与进入该Prefab的Prefab模式时看到的相同的对象。这是因为Prefab模式显示的是Prefab内部的内容，而解包Prefab实例会解包Prefab的内容。</p>
+<p>如果您要替换普通的GameObject，并完全删除与任何Prefab资产的链接，您可以在Hierarchy中右键单击Prefab实例并选择<strong>Unpack Prefab Completely</strong>。这相当于解包Prefab，并继续解包任何作为结果出现的Prefab实例，因为它们是嵌套的Prefab或基础Prefab。</p>
+<p>您可以解包存在于场景中的Prefab实例，或存在于其他Prefab内部的Prefab实例。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/22/2023-09-22-unity-document-61/">Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/21/2023-09-21-unity-document-60/">Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/20/2023-09-20-unity-document-59/">Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(71)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (64)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

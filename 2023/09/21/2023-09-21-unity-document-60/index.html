@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-21 11:13:34 &#43;0800 CST">2023/09/21</time>
+        <span class="split">·</span>
+        <span> 33 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="未使用的覆盖">未使用的覆盖 <a href="#%e6%9c%aa%e4%bd%bf%e7%94%a8%e7%9a%84%e8%a6%86%e7%9b%96" class="anchor">🔗</a></h1><p>如果覆盖的目标对象无效或其属性路径未知，那么实例覆盖值将作为数据存储在定义它们的场景或预制中。然而，如果覆盖变得“未使用”，则数据变得无效。它仍然存储在场景文件中，但是冗余。</p>
+<p>例如，如果您覆盖了附加到预制上的脚本的公共字段的值，然后删除了该脚本，包含覆盖值的数据将变得未使用，因为它的目标对象不再存在。</p>
+<p>如果您删除公共字段定义或重命名公共字段，覆盖数据也会变得未使用，因为属性路径不再与存储的数据匹配，尽管组件对象本身仍然存在。</p>
+<p>由于Unity不会自动删除未使用的覆盖数据，因此，如果您恢复了已删除的脚本或字段定义，覆盖数据将再次变为已使用状态，并像以前一样应用为覆盖。</p>
+<p>如果您不想保留未使用的覆盖数据，可以使用<strong>Inspector</strong>中的<strong>Overrides</strong>菜单，或者在<strong>Hierarchy</strong>窗口中的上下文菜单中检查并删除它们。删除会包括所有未使用的覆盖，Unity将删除的详细信息写入编辑器日志中。</p>
+<p>Unity编辑器无法自动确定何时以及是否应清理未使用的数据，因为您可能会暂时或意外地移动数据引用的对象或属性，并且您可能稍后重新启用它。删除您知道不再需要的未使用覆盖数据可以被视为良好的做法，因为这意味着您的场景文件只包含有用的数据，这可以帮助简化<strong>版本控制</strong>和协作。</p>
+<p><strong>注意</strong>：您可以通过使用<strong>FormerlySerializedAsAttribute</strong>来重命名公共字段，并保留关联的覆盖值，该属性执行名称转换，将字段的旧名称映射到其新名称。</p>
+<h2 id="prefab覆盖选项">Prefab覆盖选项 <a href="#prefab%e8%a6%86%e7%9b%96%e9%80%89%e9%a1%b9" class="anchor">🔗</a></h2><p>要检查并使用Inspector删除未使用的覆盖，请按照以下步骤操作：</p>
+<ol>
+<li>选择您要处理的GameObject(s)。</li>
+<li>在Inspector中，单击<strong>Overrides</strong>下拉菜单**[A]<strong>。如果存在任何未使用的覆盖，则菜单将显示“未使用的覆盖”选项</strong>[B]**，否则不会显示“未使用的覆盖”选项。</li>
+<li>单击<strong>未使用的覆盖</strong>以打开未使用的覆盖面板。</li>
+<li>未使用的覆盖面板**[C]<strong>列出了未使用的覆盖，并有一个</strong>Remove**按钮。</li>
+<li>单击<strong>Remove</strong>按钮以删除未使用的覆盖。</li>
+</ol>
+<p><img src="/2023-09-21-unity-document-60/UnusedOverridesInspector.png" alt=""></p>
+<p>未使用的覆盖面板，显示所选预置中的两个未使用的覆盖。</p>
+<p><strong>注意</strong>：未使用的覆盖面板支持多选，并显示未使用的覆盖的总数和受影响实例的数量，但只显示高达三个未使用覆盖的字段名称，<strong>GameObject</strong>名称和值，如下面的示例所示：</p>
+<p><img src="/2023-09-21-unity-document-60/UnusedOverridesPanelMultiSelect.png" alt=""></p>
+<p>未使用的覆盖面板，显示3个不同预置实例上的24个未使用的覆盖。</p>
+<h2 id="hierarchy上下文菜单">Hierarchy上下文菜单 <a href="#hierarchy%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>要在Hierarchy窗口中检查并删除未使用的实例覆盖，请按照以下步骤操作：</p>
+<ol>
+<li>选择您要处理的GameObject(s)。</li>
+<li>在Hierarchy窗口中，右键单击所选对象之一，然后选择<strong>Prefab &gt; Remove Unused Overrides</strong>。</li>
+<li>Unity将显示一个对话框，显示未使用的覆盖数量（如果有）。</li>
+<li>单击<strong>Remove</strong>按钮以删除未使用的覆盖。</li>
+</ol>
+<p><img src="/2023-09-21-unity-document-60/UnusedOverridesDialogBox.png" alt=""></p>
+<p>从Hierarchy窗口上下文菜单中删除未使用覆盖时显示的对话框。</p>
+<p><strong>注意</strong>：您可以通过右键单击层级结构中的场景名称而不是单独的GameObject来删除整个场景中的所有未使用的覆盖。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/22/2023-09-22-unity-document-61/">Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/21/2023-09-21-unity-document-60/">Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/20/2023-09-20-unity-document-59/">Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(71)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (64)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

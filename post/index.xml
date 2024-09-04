@@ -6,7 +6,87 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/22/2023-09-22-unity-document-61/</link>
+      <pubDate>Fri, 22 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/22/2023-09-22-unity-document-61/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;解包prefab实例&#34;&gt;解包Prefab实例 &lt;a href=&#34;#%e8%a7%a3%e5%8c%85prefab%e5%ae%9e%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;要将&lt;strong&gt;Prefab&lt;/strong&gt;实例返回到普通的&lt;strong&gt;GameObject&lt;/strong&gt;中，您需要对Prefab实例进行解包操作。这正是创建（打包）Prefab的相反操作，只是它不会销毁Prefab资产，而只影响Prefab实例。&lt;/p&gt;
+&lt;p&gt;您可以通过在Hierarchy中右键单击Prefab实例并选择&lt;strong&gt;Unpack Prefab&lt;/strong&gt;来解包Prefab实例。结果在&lt;strong&gt;Scene&lt;/strong&gt;中的GameObject不再与其原来的Prefab资产有任何链接。Prefab资产本身不受此操作的影响，并且您的项目中可能仍然存在其他实例。&lt;/p&gt;
+&lt;p&gt;如果在解包之前在Prefab实例上进行了任何覆盖操作，这些覆盖将“烘焙”到生成的GameObject上。也就是说，值保持不变，但不再具有覆盖状态，因为没有要覆盖的Prefab了。&lt;/p&gt;
+&lt;p&gt;如果解包包含嵌套Prefab的Prefab，嵌套的Prefab仍然保持Prefab实例，并且仍然与各自的Prefab资产保持链接。类似地，如果解包Prefab变体，将在根部生成一个新的Prefab实例，该实例是基础Prefab的实例。&lt;/p&gt;
+&lt;p&gt;通常情况下，解包Prefab实例将为您提供与进入该Prefab的Prefab模式时看到的相同的对象。这是因为Prefab模式显示的是Prefab内部的内容，而解包Prefab实例会解包Prefab的内容。&lt;/p&gt;
+&lt;p&gt;如果您要替换普通的GameObject，并完全删除与任何Prefab资产的链接，您可以在Hierarchy中右键单击Prefab实例并选择&lt;strong&gt;Unpack Prefab Completely&lt;/strong&gt;。这相当于解包Prefab，并继续解包任何作为结果出现的Prefab实例，因为它们是嵌套的Prefab或基础Prefab。&lt;/p&gt;
+&lt;p&gt;您可以解包存在于场景中的Prefab实例，或存在于其他Prefab内部的Prefab实例。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/21/2023-09-21-unity-document-60/</link>
+      <pubDate>Thu, 21 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/21/2023-09-21-unity-document-60/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;未使用的覆盖&#34;&gt;未使用的覆盖 &lt;a href=&#34;#%e6%9c%aa%e4%bd%bf%e7%94%a8%e7%9a%84%e8%a6%86%e7%9b%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;如果覆盖的目标对象无效或其属性路径未知，那么实例覆盖值将作为数据存储在定义它们的场景或预制中。然而，如果覆盖变得“未使用”，则数据变得无效。它仍然存储在场景文件中，但是冗余。&lt;/p&gt;
+&lt;p&gt;例如，如果您覆盖了附加到预制上的脚本的公共字段的值，然后删除了该脚本，包含覆盖值的数据将变得未使用，因为它的目标对象不再存在。&lt;/p&gt;
+&lt;p&gt;如果您删除公共字段定义或重命名公共字段，覆盖数据也会变得未使用，因为属性路径不再与存储的数据匹配，尽管组件对象本身仍然存在。&lt;/p&gt;
+&lt;p&gt;由于Unity不会自动删除未使用的覆盖数据，因此，如果您恢复了已删除的脚本或字段定义，覆盖数据将再次变为已使用状态，并像以前一样应用为覆盖。&lt;/p&gt;
+&lt;p&gt;如果您不想保留未使用的覆盖数据，可以使用&lt;strong&gt;Inspector&lt;/strong&gt;中的&lt;strong&gt;Overrides&lt;/strong&gt;菜单，或者在&lt;strong&gt;Hierarchy&lt;/strong&gt;窗口中的上下文菜单中检查并删除它们。删除会包括所有未使用的覆盖，Unity将删除的详细信息写入编辑器日志中。&lt;/p&gt;
+&lt;p&gt;Unity编辑器无法自动确定何时以及是否应清理未使用的数据，因为您可能会暂时或意外地移动数据引用的对象或属性，并且您可能稍后重新启用它。删除您知道不再需要的未使用覆盖数据可以被视为良好的做法，因为这意味着您的场景文件只包含有用的数据，这可以帮助简化&lt;strong&gt;版本控制&lt;/strong&gt;和协作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：您可以通过使用&lt;strong&gt;FormerlySerializedAsAttribute&lt;/strong&gt;来重命名公共字段，并保留关联的覆盖值，该属性执行名称转换，将字段的旧名称映射到其新名称。&lt;/p&gt;
+&lt;h2 id=&#34;prefab覆盖选项&#34;&gt;Prefab覆盖选项 &lt;a href=&#34;#prefab%e8%a6%86%e7%9b%96%e9%80%89%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要检查并使用Inspector删除未使用的覆盖，请按照以下步骤操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择您要处理的GameObject(s)。&lt;/li&gt;
+&lt;li&gt;在Inspector中，单击&lt;strong&gt;Overrides&lt;/strong&gt;下拉菜单**[A]&lt;strong&gt;。如果存在任何未使用的覆盖，则菜单将显示“未使用的覆盖”选项&lt;/strong&gt;[B]**，否则不会显示“未使用的覆盖”选项。&lt;/li&gt;
+&lt;li&gt;单击&lt;strong&gt;未使用的覆盖&lt;/strong&gt;以打开未使用的覆盖面板。&lt;/li&gt;
+&lt;li&gt;未使用的覆盖面板**[C]&lt;strong&gt;列出了未使用的覆盖，并有一个&lt;/strong&gt;Remove**按钮。&lt;/li&gt;
+&lt;li&gt;单击&lt;strong&gt;Remove&lt;/strong&gt;按钮以删除未使用的覆盖。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-21-unity-document-60/UnusedOverridesInspector.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;未使用的覆盖面板，显示所选预置中的两个未使用的覆盖。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：未使用的覆盖面板支持多选，并显示未使用的覆盖的总数和受影响实例的数量，但只显示高达三个未使用覆盖的字段名称，&lt;strong&gt;GameObject&lt;/strong&gt;名称和值，如下面的示例所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-21-unity-document-60/UnusedOverridesPanelMultiSelect.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;未使用的覆盖面板，显示3个不同预置实例上的24个未使用的覆盖。&lt;/p&gt;
+&lt;h2 id=&#34;hierarchy上下文菜单&#34;&gt;Hierarchy上下文菜单 &lt;a href=&#34;#hierarchy%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要在Hierarchy窗口中检查并删除未使用的实例覆盖，请按照以下步骤操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择您要处理的GameObject(s)。&lt;/li&gt;
+&lt;li&gt;在Hierarchy窗口中，右键单击所选对象之一，然后选择&lt;strong&gt;Prefab &amp;gt; Remove Unused Overrides&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;Unity将显示一个对话框，显示未使用的覆盖数量（如果有）。&lt;/li&gt;
+&lt;li&gt;单击&lt;strong&gt;Remove&lt;/strong&gt;按钮以删除未使用的覆盖。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-21-unity-document-60/UnusedOverridesDialogBox.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从Hierarchy窗口上下文菜单中删除未使用覆盖时显示的对话框。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：您可以通过右键单击层级结构中的场景名称而不是单独的GameObject来删除整个场景中的所有未使用的覆盖。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/20/2023-09-20-unity-document-59/</link>
+      <pubDate>Wed, 20 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/20/2023-09-20-unity-document-59/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;多级覆盖&#34;&gt;多级覆盖 &lt;a href=&#34;#%e5%a4%9a%e7%ba%a7%e8%a6%86%e7%9b%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;当您在其他Prefab内部使用Prefab，或者使用&lt;strong&gt;Prefab&lt;/strong&gt;变体时，覆盖可以存在于多个级别，并且相同的覆盖可以应用于多个不同的Prefab。&lt;/p&gt;
+&lt;h2 id=&#34;应用目标的选择&#34;&gt;应用目标的选择 &lt;a href=&#34;#%e5%ba%94%e7%94%a8%e7%9b%ae%e6%a0%87%e7%9a%84%e9%80%89%e6%8b%a9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您有一个内部包含嵌套Prefab的Prefab实例，或者是一个Prefab变体时，您可能可以选择应用覆盖的Prefab。&lt;/p&gt;
+&lt;p&gt;考虑一个嵌套在Prefab“Table”中的Prefab“Vase”，并且&lt;strong&gt;场景&lt;/strong&gt;中有一个“Table”Prefab的实例。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-20-unity-document-59/PrefabsMultipleApplyTarget1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果在此实例上覆盖“Vase”的属性，那么这个覆盖可以应用于多个Prefab：即“Vase”或“Table”。&lt;/p&gt;
+&lt;p&gt;Overrides下拉菜单中的&lt;strong&gt;Apply All&lt;/strong&gt;按钮只允许将覆盖应用于外部Prefab - 在这种情况下是“Table”。但是，在通过上下文菜单或通过Overrides下拉窗口中各个组件的比较视图进行应用时，可以选择应用目标。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-20-unity-document-59/PrefabsMultipleApplyTarget2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在这个例子中，如果选择&lt;strong&gt;Apply to Prefab ‘Vase’&lt;/strong&gt;，该值将应用于“Vase” Prefab资产，并用于所有“Vase” Prefab的实例。&lt;/p&gt;
+&lt;p&gt;而且，如果选择&lt;strong&gt;Apply as Override in Prefab ‘Table’&lt;/strong&gt;，该值将成为“Table” Prefab内部的“Vase”实例上的一个覆盖。该属性在场景中的实例上不再标记为覆盖，但如果您在Prefab模式中打开“Table” Prefab，则在“Vase” Prefab实例上标记为覆盖。&lt;/p&gt;
+&lt;p&gt;“Vase” Prefab Asset本身不受在“Table” Prefab Asset内作为覆盖应用的影响。这意味着所有“Table” Prefab的实例现在都有其“Vase” Prefab实例上的新值，但是不属于“Table” Prefab的其他“Vase” Prefab实例不受影响。&lt;/p&gt;
+&lt;p&gt;如果“Vase” Prefab本身的属性稍后更改，它将影响所有“Vase” Prefab的实例，除非该属性被覆盖。因为它在“Table” Prefab内部的“Vase”实例上被覆盖了，所以这个变化不会影响任何属于“Table”实例的“Vase”实例。&lt;/p&gt;
+&lt;h2 id=&#34;对内部prefab的应用可能会影响外部prefab&#34;&gt;对内部Prefab的应用可能会影响外部Prefab &lt;a href=&#34;#%e5%af%b9%e5%86%85%e9%83%a8prefab%e7%9a%84%e5%ba%94%e7%94%a8%e5%8f%af%e8%83%bd%e4%bc%9a%e5%bd%b1%e5%93%8d%e5%a4%96%e9%83%a8prefab&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;应用一个或多个属性到内部Prefab Asset中有时会修改外部Prefab Asset，因为这些属性会在外部Prefab中被恢复为覆盖。&lt;/p&gt;
+&lt;p&gt;在我们的例子中，如果选择&lt;strong&gt;Apply to Prefab ‘Vase’&lt;/strong&gt;，并且“Table” Prefab对该值有一个覆盖，那么“Table” Prefab中的这个覆盖将同时被恢复，以便实例上的属性保持刚刚应用的值。如果不是这种情况，实例上的值将在应用后立即改变。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/19/2023-09-19-unity-document-58/</link>

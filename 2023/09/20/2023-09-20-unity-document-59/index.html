@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-20 11:13:34 &#43;0800 CST">2023/09/20</time>
+        <span class="split">·</span>
+        <span> 51 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="多级覆盖">多级覆盖 <a href="#%e5%a4%9a%e7%ba%a7%e8%a6%86%e7%9b%96" class="anchor">🔗</a></h1><p>当您在其他Prefab内部使用Prefab，或者使用<strong>Prefab</strong>变体时，覆盖可以存在于多个级别，并且相同的覆盖可以应用于多个不同的Prefab。</p>
+<h2 id="应用目标的选择">应用目标的选择 <a href="#%e5%ba%94%e7%94%a8%e7%9b%ae%e6%a0%87%e7%9a%84%e9%80%89%e6%8b%a9" class="anchor">🔗</a></h2><p>当您有一个内部包含嵌套Prefab的Prefab实例，或者是一个Prefab变体时，您可能可以选择应用覆盖的Prefab。</p>
+<p>考虑一个嵌套在Prefab“Table”中的Prefab“Vase”，并且<strong>场景</strong>中有一个“Table”Prefab的实例。</p>
+<p><img src="/2023-09-20-unity-document-59/PrefabsMultipleApplyTarget1.png" alt=""></p>
+<p>如果在此实例上覆盖“Vase”的属性，那么这个覆盖可以应用于多个Prefab：即“Vase”或“Table”。</p>
+<p>Overrides下拉菜单中的<strong>Apply All</strong>按钮只允许将覆盖应用于外部Prefab - 在这种情况下是“Table”。但是，在通过上下文菜单或通过Overrides下拉窗口中各个组件的比较视图进行应用时，可以选择应用目标。</p>
+<p><img src="/2023-09-20-unity-document-59/PrefabsMultipleApplyTarget2.png" alt=""></p>
+<p>在这个例子中，如果选择<strong>Apply to Prefab ‘Vase’</strong>，该值将应用于“Vase” Prefab资产，并用于所有“Vase” Prefab的实例。</p>
+<p>而且，如果选择<strong>Apply as Override in Prefab ‘Table’</strong>，该值将成为“Table” Prefab内部的“Vase”实例上的一个覆盖。该属性在场景中的实例上不再标记为覆盖，但如果您在Prefab模式中打开“Table” Prefab，则在“Vase” Prefab实例上标记为覆盖。</p>
+<p>“Vase” Prefab Asset本身不受在“Table” Prefab Asset内作为覆盖应用的影响。这意味着所有“Table” Prefab的实例现在都有其“Vase” Prefab实例上的新值，但是不属于“Table” Prefab的其他“Vase” Prefab实例不受影响。</p>
+<p>如果“Vase” Prefab本身的属性稍后更改，它将影响所有“Vase” Prefab的实例，除非该属性被覆盖。因为它在“Table” Prefab内部的“Vase”实例上被覆盖了，所以这个变化不会影响任何属于“Table”实例的“Vase”实例。</p>
+<h2 id="对内部prefab的应用可能会影响外部prefab">对内部Prefab的应用可能会影响外部Prefab <a href="#%e5%af%b9%e5%86%85%e9%83%a8prefab%e7%9a%84%e5%ba%94%e7%94%a8%e5%8f%af%e8%83%bd%e4%bc%9a%e5%bd%b1%e5%93%8d%e5%a4%96%e9%83%a8prefab" class="anchor">🔗</a></h2><p>应用一个或多个属性到内部Prefab Asset中有时会修改外部Prefab Asset，因为这些属性会在外部Prefab中被恢复为覆盖。</p>
+<p>在我们的例子中，如果选择<strong>Apply to Prefab ‘Vase’</strong>，并且“Table” Prefab对该值有一个覆盖，那么“Table” Prefab中的这个覆盖将同时被恢复，以便实例上的属性保持刚刚应用的值。如果不是这种情况，实例上的值将在应用后立即改变。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/22/2023-09-22-unity-document-61/">Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/21/2023-09-21-unity-document-60/">Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/20/2023-09-20-unity-document-59/">Unity中文版-Create Gameplay Prefabs Overrides at multiple levels(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(71)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (64)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
