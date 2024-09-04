@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-16 11:13:34 &#43;0800 CST">2023/09/16</time>
+        <span class="split">·</span>
+        <span> 27 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="实例覆盖"><strong>实例覆盖</strong> <a href="#%e5%ae%9e%e4%be%8b%e8%a6%86%e7%9b%96" class="anchor">🔗</a></h1><p><strong>实例覆盖</strong>允许您在<strong>预制件</strong>实例之间创建变化，同时仍将这些实例链接到相同的预制件资源。</p>
+<p>当您修改预制件资源时，所有实例中都会反映这些更改。但是，您还可以直接对单个实例进行修改。这将在该特定实例上创建一个<strong>实例覆盖</strong>。</p>
+<p>例如，如果您有一个名为“机器人”的预制件资源，并将其放置在游戏的多个关卡中。但是，“机器人”的每个实例都具有不同的速度值和不同的音频剪辑。</p>
+<p>实例覆盖有四种不同的类型：</p>
+<ul>
+<li>覆盖属性的值</li>
+<li>添加组件</li>
+<li>移除组件</li>
+<li>添加子游戏对象</li>
+</ul>
+<p>预制件实例有一些限制：您无法更改作为预制件一部分的<strong>游戏对象</strong>的父对象，并且无法移除预制件中的游戏对象。但是，您可以将游戏对象停用，这是移除游戏对象的良好替代方法（这将被视为属性覆盖）。</p>
+<p>在<strong>检视面板</strong>中，实例覆盖以<strong>加粗</strong>的方式显示其名称标签，并在左侧边距中显示蓝色线条。当您为预制件实例添加新组件时，边距中的蓝色线会覆盖整个组件。</p>
+<p><img src="/2023-09-16-unity-document-55/PrefabsOverridesIndicators1.png" alt=""></p>
+<p>检视面板显示具有覆盖的“Is Trigger”属性和作为覆盖添加的刚体组件的预制件实例。</p>
+<p>在检视面板中，添加和删除的组件图标上还会带有加号和减号徽章，添加的游戏对象在层级视图中的图标上会有一个加号徽章。</p>
+<p>在层级视图中，具有覆盖或非默认值的预制件实例具有覆盖指示器，以显示它们已被编辑，Unity会在左侧边距显示与检视面板中实例覆盖的线条相同的蓝色线。有关详细信息，请参阅层级视图。</p>
+<p><img src="/2023-09-16-unity-document-55/PrefabsAddedObjectIndicator1.png" alt=""></p>
+<p>层级视图显示作为覆盖添加的子游戏对象“GermOBlaster”的预制件实例。</p>
+<h2 id="覆盖具有优先级">覆盖具有优先级 <a href="#%e8%a6%86%e7%9b%96%e5%85%b7%e6%9c%89%e4%bc%98%e5%85%88%e7%ba%a7" class="anchor">🔗</a></h2><p>预制件实例上的覆盖属性值始终优先于预制件资源中的值。这意味着，如果您更改了预制件资源的属性，则不会对已覆盖该属性的实例产生任何影响。</p>
+<p>如果对预制件资源进行更改后，未按预期更新所有实例，则应检查该属性是否在实例上进行了覆盖。最好只在必要时使用实例覆盖，因为如果在整个项目中存在大量的实例覆盖，很难确定对预制件资源的更改是否会对所有实例产生影响。</p>
+<h2 id="对齐方式是特定于预制件实例的">对齐方式是特定于预制件实例的 <a href="#%e5%af%b9%e9%bd%90%e6%96%b9%e5%bc%8f%e6%98%af%e7%89%b9%e5%ae%9a%e4%ba%8e%e9%a2%84%e5%88%b6%e4%bb%b6%e5%ae%9e%e4%be%8b%e7%9a%84" class="anchor">🔗</a></h2><p>预制件实例的<strong>对齐方式</strong>是一个特殊情况，并且与其他属性处理方式不同。<strong>对齐方式</strong>的值从预制件资源不会传递到预制件实例。这意味着，即使与预制件资源的对齐方式不同，预制件实例的对齐方式始终可以不做为显式实例覆盖。具体而言，对齐方式指的是预制件实例的<strong>根节点</strong>上的<strong>位置</strong>和<strong>旋转</strong>属性，并且对于一个矩形变换也包括<strong>宽度</strong>、<strong>高度</strong>、<strong>边距</strong>、<strong>锚点</strong>和<strong>中心点</strong>属性。</p>
+<p>这是因为几乎不可能要求多个预制实例具有相同的位置和旋转。更常见的情况是，您希望预制件实例具有不同的位置和旋转，因此Unity不会将这些视为预制件覆盖。</p>
+<h2 id="未使用的覆盖">未使用的覆盖 <a href="#%e6%9c%aa%e4%bd%bf%e7%94%a8%e7%9a%84%e8%a6%86%e7%9b%96" class="anchor">🔗</a></h2><p>如果声明实例覆盖的脚本被修改或删除，表示实例覆盖的数据可能会变得无用。如果发生这种情况，您可以删除未使用的覆盖数据。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/17/2023-09-17-unity-document-56/">Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/2023-09-16-unity-document-55/">Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(68)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (61)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

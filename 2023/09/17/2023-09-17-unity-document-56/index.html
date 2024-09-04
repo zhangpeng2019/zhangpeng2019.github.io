@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-17 11:13:34 &#43;0800 CST">2023/09/17</time>
+        <span class="split">·</span>
+        <span> 29 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="通过实例编辑预制件">通过实例编辑预制件 <a href="#%e9%80%9a%e8%bf%87%e5%ae%9e%e4%be%8b%e7%bc%96%e8%be%91%e9%a2%84%e5%88%b6%e4%bb%b6" class="anchor">🔗</a></h1><p>通过实例编辑预制件的<strong>检视面板</strong>比普通<strong>游戏对象</strong>多了三个控件：<strong>打开</strong>、<strong>选择</strong>和<strong>覆盖</strong>。</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsInspectorControls1.png" alt=""></p>
+<p>预制件实例的检视面板中的三个预制件控件</p>
+<p><strong>打开</strong>按钮会打开与该实例相关的预制件资源，进入预制件模式，允许您编辑预制件资源，从而更改所有使用该资源的实例。<strong>选择</strong>按钮会在<strong>项目窗口</strong>中选择与该实例相关的预制件资源。<strong>覆盖</strong>按钮会打开覆盖下拉窗口。</p>
+<h2 id="覆盖下拉窗口">覆盖下拉窗口 <a href="#%e8%a6%86%e7%9b%96%e4%b8%8b%e6%8b%89%e7%aa%97%e5%8f%a3" class="anchor">🔗</a></h2><p><strong>覆盖</strong>下拉窗口显示预制件实例上的所有覆盖。它还允许您应用实例中的覆盖到预制件资源，或将实例上的覆盖还原为预制件资源上的值。<strong>覆盖</strong>下拉按钮仅出现在根预制件实例上，而不出现在其他预制件内部的预制件上。</p>
+<p><strong>覆盖</strong>下拉窗口允许您逐个应用或还原预制件覆盖，或同时应用或还原所有预制件覆盖。</p>
+<ul>
+<li><strong>应用</strong>覆盖会修改预制件资源。这将将覆盖（当前仅存在于预制件实例中）应用到预制件资源上。这意味着预制件资源现在具有该修改，而预制件实例不再具有该覆盖的修改。</li>
+<li><strong>还原</strong>覆盖会修改预制件实例。这实际上放弃了您的覆盖并将其恢复为预制件资源的状态。</li>
+</ul>
+<p>下拉窗口以修改、添加和删除的组件以及添加的游戏对象（包括其他预制件）的形式显示实例上的更改列表。</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsOverridesDropdown1.png" alt=""></p>
+<p>检视面板中查看预制件实例时的覆盖下拉窗口</p>
+<p>要查看条目，请单击它。这将显示一个浮动窗口，显示更改并允许您还原或应用该更改。</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsOverridesDropdownAddedComponent1.png" alt=""></p>
+<p>已选中的添加组件覆盖的覆盖下拉窗口</p>
+<p>对于具有修改值的组件，视图会显示预制件资源上的组件值和预制件实例上的修改组件的并排比较。这样可以让您比较原始的预制件资源值与当前覆盖，以便您决定是否要还原或应用这些值。</p>
+<p>在下面的示例中，“GermOBlaster”子游戏对象存在于预制件资源和预制件实例中，但在实例上其缩放已增加。这种缩放增加是实例覆盖，可以在<strong>覆盖</strong>下拉窗口中的并排比较中看到。</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsOverridesDropdownCompareComponent1.png" alt=""></p>
+<p>带有比较视图的覆盖下拉窗口，在预制件实例的子游戏对象的Transform组件中显示修改值</p>
+<p><strong>覆盖</strong>下拉窗口还具有<strong>全部还原</strong>和<strong>全部应用</strong>按钮，用于一次性还原或应用所有更改。如果您在其他预制件内有预制件，则<strong>全部应用</strong>按钮始终适用于最外层的预制件，即根游戏对象上具有<strong>覆盖</strong>下拉按钮的预制件。</p>
+<p>如果同时选择了多个条目，<strong>全部还原</strong>和<strong>全部应用</strong>按钮将被<strong>还原选定</strong>和<strong>应用选定</strong>按钮替换。您可以使用这些按钮一次性还原或应用多个覆盖。与<strong>全部应用</strong>按钮类似，<strong>应用选定</strong>按钮始终适用于最外层的预制件。</p>
+<p>如果选定对象中有未使用的覆盖，覆盖下拉窗口会显示一个选项，以允许您删除它们。</p>
+<h2 id="上下文菜单">上下文菜单 <a href="#%e4%b8%8a%e4%b8%8b%e6%96%87%e8%8f%9c%e5%8d%95" class="anchor">🔗</a></h2><p>您还可以使用检视面板中的上下文菜单来<strong>还原</strong>和<strong>应用</strong>单个覆盖，而不是使用覆盖下拉窗口。</p>
+<p>覆盖的属性以加粗字体显示。您可以通过上下文菜单来还原或应用它们：</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsContextSingleProperty1.png" alt=""></p>
+<p>修改的组件可以通过组件标题的齿轮下拉按钮或上下文菜单来还原或应用：</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsContextModifiedComponent1.png" alt=""></p>
+<p>添加的组件具有覆盖图标之上的加号标记。它们可以通过组件标题的齿轮下拉按钮或上下文菜单来还原或应用：</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsContextAddedComponent1.png" alt=""></p>
+<p>移除的组件具有覆盖图标之上的减号标记。可以通过组件标题的齿轮下拉按钮或上下文菜单来还原或应用删除操作。还原移除操作会将组件恢复，应用移除操作将从预制件资源中删除组件：</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsContextRemovedComponent1.png" alt=""></p>
+<p>作为子对象添加到预制件实例的游戏对象（包括其他预制件）在层级视图中的图标上具有加号标记。它们可以通过层级视图中对象的上下文菜单来还原或应用。</p>
+<p><img src="/2023-09-17-unity-document-56/PrefabsContextAddedGameObject1.png" alt=""></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/17/2023-09-17-unity-document-56/">Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/2023-09-16-unity-document-55/">Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(68)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (61)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

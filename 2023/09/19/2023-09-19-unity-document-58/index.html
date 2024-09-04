@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-19 11:13:34 &#43;0800 CST">2023/09/19</time>
+        <span class="split">·</span>
+        <span> 76 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="prefab变体">Prefab变体 <a href="#prefab%e5%8f%98%e4%bd%93" class="anchor">🔗</a></h1><p>Prefab Variants在您希望拥有一组预定义的<strong>Prefab</strong>变体时非常有用。</p>
+<p>例如，您可能希望在游戏中有几种不同类型的GermSlimeTarget，它们都基于相同的基本GermSlimeTarget Prefab。但是，您可能希望某些GermSlimeTarget携带物品，某些以不同的速度移动，或某些发出额外的声音效果。</p>
+<p>为此，您可以设置初始的GermSlimeTarget Prefab来执行所有您希望所有GermSlimeTarget共享的基本操作，然后您可以创建多个Prefab Variants来实现以下目标：</p>
+<ul>
+<li>通过对脚本的属性重写，使GermSlimeTarget更快地移动。</li>
+<li>通过将附加的<strong>GameObject</strong>附加到它的手臂上，使GermSlimeTarget携带物品。</li>
+<li>通过添加一个播放squelching声音的AudioSource组件，为GermSlimeTarget提供类似蛞蝓的抽吸声效果。</li>
+</ul>
+<p>Prefab Variant继承了另一个Prefab的属性，称为基础Prefab。对于Prefab Variant进行的覆盖将优先于基础Prefab的值。Prefab Variant可以将任何其他Prefab作为其基础，包括Model Prefabs或其他Prefab Variants。</p>
+<h2 id="创建一个prefab-variant">创建一个Prefab Variant <a href="#%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aaprefab-variant" class="anchor">🔗</a></h2><p>根据另一个Prefab创建Prefab Variant有多种方法。</p>
+<p>您可以在Project视图中<strong>右键单击</strong>一个Prefab，然后选择<strong>Create &gt; Prefab Variant</strong>。这将创建所选Prefab的一个变体，最初没有任何覆盖。您可以打开Prefab Variant进入Prefab模式并开始向其中添加覆盖。</p>
+<p>您还可以将Hierarchy中的Prefab实例<strong>拖动</strong>到<strong>Project窗口</strong>中。这样做时，对话框会询问您想要创建新的原始Prefab还是Prefab Variant。如果选择Prefab Variant，则会创建一个以拖动的Prefab实例为基础的新Prefab Variant。您在该实例上进行的所有覆盖现在都在新的Prefab Variant中。您可以打开它进入Prefab模式以添加其他覆盖，或编辑或删除覆盖。</p>
+<p>Prefab Variants用带有箭头的蓝色Prefab图标显示。</p>
+<p><img src="/2023-09-19-unity-document-58/PrefabsBasicAndVariant.png" alt=""></p>
+<p>基本的GermSlimeTarget Prefab，以及名为“GermSlimeTarget With GermOBlaster”的Prefab Variant，如在Hierarchy窗口中显示。</p>
+<h2 id="编辑prefab-variant">编辑Prefab Variant <a href="#%e7%bc%96%e8%be%91prefab-variant" class="anchor">🔗</a></h2><p>当在Prefab模式下打开Prefab Variant时，根（root）将显示为带有蓝色Prefab图标的Prefab实例。该Prefab实例代表Prefab Variant所继承的基本Prefab；它不代表Prefab Variant本身。对Prefab Variant所进行的任何编辑都将成为存在于Variant中的基础的覆盖。</p>
+<p><img src="/2023-09-19-unity-document-58/PrefabsVariantAddedObject.png" alt=""></p>
+<p>在上面的截图中，如果选择“GermSlimeTarget With GermOBlaster”根GameObject并单击Inspector中的Select按钮，将选择基础Prefab“GermSlimeTarget”，而不是Variant“GermSlimeTarget With GermOBlaster”，因为Prefab实例是基础Prefab“GermSlimeTarget”的实例，Select按钮始终选择实例来自的Prefab资产。</p>
+<p>与任何Prefab实例一样，您可以在Prefab Variant中使用Prefab覆盖，例如修改的属性值、添加的组件、移除的组件和添加的子级GameObject。这些也有相同的限制：您不能将来自基础Prefab的GameObject重新父级到Prefab Variant中。您也不能从Prefab Variant中删除在基础Prefab中存在的GameObject。但是，您可以将GameObject停用（作为属性覆盖）以实现相同的效果，就像删除GameObject一样。</p>
+<p><strong>注意</strong>：当在Prefab模式中编辑Prefab Variant时，您应该理解应用这些覆盖（通过Overrides下拉窗口或上下文菜单）将导致将您的Variant的变化应用于基础Prefab资产。这通常<strong>不是</strong>您想要的。Prefab Variant的目的是为了提供一种方便的方式来存储有意义且可重用的覆盖集合，因此它们通常应该保留为覆盖，而不是应用于基础Prefab资产。为了说明这一点，如果你应用额外的<strong>GermOBlaster</strong> GameObject到基础Prefab资产（“GermSlimeTarget”），那么Prefab资产也将具有<strong>GermOBlaster</strong>。<strong>GermSlimeTarget With GermOBlaster</strong> Variant的整个意义在于只有这个变体携带一个<strong>GermOBlaster</strong>，所以添加的<strong>GermOBlaster</strong> GameObject应该作为覆盖保留在Prefab Variant内部。</p>
+<p>当打开Overrides下拉窗口时，您可以在其标题中始终看到覆盖应用的对象以及覆盖存在的上下文。对于Prefab Variant，标题将显示覆盖应用于基础Prefab并存在于Prefab Variant中。为了特别明确，<strong>Apply All</strong>按钮也显示为<strong>Apply All to Base</strong>。</p>
+<p><img src="/2023-09-19-unity-document-58/PrefabsVariantOverrideDropdown.png" alt=""></p>
+<p>当在Prefab模式中编辑Prefab Variant时，Prefab Variant的Overrides下拉菜单</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/17/2023-09-17-unity-document-56/">Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/2023-09-16-unity-document-55/">Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(68)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (61)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

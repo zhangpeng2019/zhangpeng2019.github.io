@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-18 11:13:34 &#43;0800 CST">2023/09/18</time>
+        <span class="split">·</span>
+        <span> 21 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="嵌套prefab">嵌套Prefab <a href="#%e5%b5%8c%e5%a5%97prefab" class="anchor">🔗</a></h1><p>您可以在其他Prefab中包含Prefab实例，这被称为嵌套Prefab。嵌套Prefab保留其与自身Prefab资产的链接，同时也形成另一个Prefab资产的一部分。</p>
+<h2 id="在prefab模式下添加嵌套prefab">在Prefab模式下添加嵌套Prefab <a href="#%e5%9c%a8prefab%e6%a8%a1%e5%bc%8f%e4%b8%8b%e6%b7%bb%e5%8a%a0%e5%b5%8c%e5%a5%97prefab" class="anchor">🔗</a></h2><p>在Prefab模式下，您可以像在场景中一样添加和处理Prefab实例。您可以将Prefab资产从Project窗口拖到Hierarchy窗口或场景视图中，以在打开的Prefab内创建该资产的Prefab实例。</p>
+<p><strong>注意</strong>：在Prefab模式下打开的Prefab的根GameObject不会显示蓝色立方体Prefab图标，但其他Prefab实例会显示。您还可以像在场景中一样为这些Prefab实例添加覆盖，就像在场景中的Prefab实例一样。</p>
+<p><img src="/2023-09-18-unity-document-57/PrefabsNestedPrefab.png" alt=""></p>
+<p>左图：在Prefab模式下，将“GermOBlaster” Prefab嵌套在“GermSlimeTarget” Prefab中。右图：场景中的“GermSlimeTarget” Prefab实例包含了“GermOBlaster”。</p>
+<h2 id="通过实例嵌套prefab">通过实例嵌套Prefab <a href="#%e9%80%9a%e8%bf%87%e5%ae%9e%e4%be%8b%e5%b5%8c%e5%a5%97prefab" class="anchor">🔗</a></h2><p>您还可以将Prefab实例作为子级添加到场景中的另一个Prefab实例中，而无需进入Prefab模式，就像添加任何其他GameObject一样。这样添加的Prefab实例在Hierarchy中的图标上有一个加号标记，表示它是外部Prefab特定实例上的一个覆盖。</p>
+<p>添加的Prefab可以通过与其他覆盖相同的方式还原或应用于外部Prefab（通过Overrides下拉窗口或Hierarchy中的GameObject上下文菜单），如通过实例编辑Prefab中所述。Overrides下拉按钮仅存在于外部Prefab上。一旦应用，Prefab不再显示加号标记，因为它不再是一个覆盖，而是嵌套在外部Prefab资产本身中。但是，它仍然保留其蓝色立方体图标，因为它作为Prefab实例存在，并保持与自身Prefab资产的连接。</p>
+<p><img src="/2023-09-18-unity-document-57/PrefabsOverrideVsNested.png" alt=""></p>
+<p>左图：将“GermOBlaster” Prefab作为覆盖添加到“GermSlimeTarget” Prefab实例中。右图：将“GermOBlaster” Prefab应用于“GermSlimeTarget” Prefab，并且现在它成为“GermSlimeTarget” Prefab资产中的嵌套Prefab。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/19/2023-09-19-unity-document-58/">Unity中文版-Create Gameplay Prefabs Prefab Variants(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/18/2023-09-18-unity-document-57/">Unity中文版-Create Gameplay Prefabs Nested Prefabs(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/17/2023-09-17-unity-document-56/">Unity中文版-Create Gameplay Prefabs Editing a Prefab via its instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/16/2023-09-16-unity-document-55/">Unity中文版-Create Gameplay Prefabs Instance overrides(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/15/2023-09-15-unity-document-54/">Unity中文版-Create Gameplay Prefabs Editing a Prefab in Prefab Mode(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(68)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (61)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
