@@ -6,7 +6,157 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Layers Create functional layers in Unity(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/25/2023-09-25-unity-document-64/</link>
+      <pubDate>Mon, 25 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/25/2023-09-25-unity-document-64/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;在-unity-中创建功能层&#34;&gt;在 Unity 中创建功能层 &lt;a href=&#34;#%e5%9c%a8-unity-%e4%b8%ad%e5%88%9b%e5%bb%ba%e5%8a%9f%e8%83%bd%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;图层可以帮助组织场景中的&lt;strong&gt;GameObject&lt;/strong&gt;。如果您创建了一个图层并将GameObject分配给它，您可以根据图层编辑GameObject与其他GameObject的交互方式。&lt;/p&gt;
+&lt;h2 id=&#34;添加新的图层&#34;&gt;添加新的图层 &lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e6%96%b0%e7%9a%84%e5%9b%be%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;有两种方法可以创建新的图层：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择“Tags and Layers”窗口（主菜单：&lt;strong&gt;Edit&lt;/strong&gt; &amp;gt; &lt;strong&gt;Project Settings&lt;/strong&gt; &amp;gt; &lt;strong&gt;Tags and Layers&lt;/strong&gt; &amp;gt; &lt;strong&gt;Layers&lt;/strong&gt;）。&lt;/li&gt;
+&lt;li&gt;选择一个GameObject，选择&lt;strong&gt;Inspector&lt;/strong&gt;窗口中的&lt;strong&gt;Layer&lt;/strong&gt;下拉菜单，并从菜单中选择&lt;strong&gt;Add Layer&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了记住图层的预期功能，给它一个描述性的名称。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;警告&lt;/strong&gt;：图层31在编辑器的预览窗口机制中内部使用。为了避免冲突，请不要使用该图层。&lt;/p&gt;
+&lt;h3 id=&#34;内置图层&#34;&gt;内置图层 &lt;a href=&#34;#%e5%86%85%e7%bd%ae%e5%9b%be%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当您打开图层菜单时，可能会看到一些已命名的图层。除了默认图层和忽略射线投射图层之外，Unity不再将这些内置图层用于许多特定用途；它们主要用于向后兼容：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;图层编号&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;图层名称&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;TransparentFX&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Unity在镜头系统中使用此图层。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Ignore Raycast&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;物理射线投射API默认忽略此图层。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Water&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Unity的标准资产2018.4版本使用此图层&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;UI&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Unity UI默认使用此图层进行UI元素的渲染。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;您仍然可以使用这些图层，但不能重新命名或删除它们。&lt;/p&gt;
+&lt;h2 id=&#34;将gameobject添加到图层&#34;&gt;将GameObject添加到图层 &lt;a href=&#34;#%e5%b0%86gameobject%e6%b7%bb%e5%8a%a0%e5%88%b0%e5%9b%be%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要将GameObject分配给图层，选择该GameObject，转到Inspector窗口，然后选择&lt;strong&gt;Layer&lt;/strong&gt;旁边的下拉菜单。此菜单显示具有名称的图层，因此您可以选择最适合您的GameObject的图层。&lt;/p&gt;
+&lt;p&gt;每个GameObject只能分配给一个图层，但可以将多个GameObject添加到同一个图层中。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/24/2023-09-24-unity-document-63/</link>
+      <pubDate>Sun, 24 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/24/2023-09-24-unity-document-63/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;unity-中的图层用途&#34;&gt;Unity 中的图层用途 &lt;a href=&#34;#unity-%e4%b8%ad%e7%9a%84%e5%9b%be%e5%b1%82%e7%94%a8%e9%80%94&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;您可以使用图层来优化项目和工作流程。图层的常见用途包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于图层的渲染&lt;/li&gt;
+&lt;li&gt;基于图层的碰撞&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用相机剔除遮罩与图层&#34;&gt;使用相机剔除遮罩与图层 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e7%9b%b8%e6%9c%ba%e5%89%94%e9%99%a4%e9%81%ae%e7%bd%a9%e4%b8%8e%e5%9b%be%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果使用&lt;strong&gt;相机&lt;/strong&gt;的&lt;strong&gt;剔除遮罩&lt;/strong&gt;，您可以只渲染特定图层或选定的图层中的对象。要更改剔除遮罩，请选择要使用的相机，并在&lt;strong&gt;Inspector&lt;/strong&gt;窗口中选择&lt;strong&gt;剔除遮罩&lt;/strong&gt;下拉菜单。如果取消选中图层的复选框，则在&lt;strong&gt;场景&lt;/strong&gt;中不会渲染该图层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;strong&gt;UI&lt;/strong&gt;元素和屏幕空间画布子对象是例外，并且无论如何都会进行渲染。&lt;/p&gt;
+&lt;h2 id=&#34;使用图层进行射线投射&#34;&gt;使用图层进行射线投射 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%9b%be%e5%b1%82%e8%bf%9b%e8%a1%8c%e5%b0%84%e7%ba%bf%e6%8a%95%e5%b0%84&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;您可以使用图层指定射线投射与哪些GameObject相交。要使射线投射忽略一个&lt;strong&gt;GameObject&lt;/strong&gt;，您可以将其分配到“忽略射线投射”图层，或者将LayerMask传递给射线投射的API调用。&lt;/p&gt;
+&lt;p&gt;如果不将LayerMask传递给射线投射的API调用，Unity将使用Physics.DefaultRaycastLayers，该图层与除“忽略射线投射”以外的每个图层匹配。&lt;/p&gt;
+&lt;p&gt;Physics.Raycast函数使用位掩码，每个位决定是否忽略该图层的射线。如果在layerMask中的所有位都打开，则射线与所有的&lt;strong&gt;碰撞器&lt;/strong&gt;发生碰撞。如果layerMask = 0，则没有碰撞。&lt;/p&gt;
+&lt;p&gt;例如，如果您想要在第8层上投射射线，请参考下面的代码示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; layerMask = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Does the ray intersect any objects which are in layer 8?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (Physics.Raycast(transform.position, Vector3.forward, Mathf.Infinity, layerMask))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Debug.Log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;The ray hit the player&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后，您可以相反地，使射线与除第8层以外的所有图层发生碰撞。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-csharp&#34; data-lang=&#34;csharp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; Update ()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Bit shift the index of the layer (8) to get a bit mask&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; layerMask = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// This casts rays only against colliders in layer 8.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// But to collide against everything except layer 8, use the ~ operator because it inverts a bitmask.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    layerMask = ~layerMask;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    RaycastHit hit;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Does the ray intersect any objects excluding layer 8.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), &lt;span style=&#34;color:#66d9ef&#34;&gt;out&lt;/span&gt; hit, Mathf.Infinity, layerMask))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) * hit.distance, Color.yellow);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Debug.Log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Did Hit&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) *&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;, Color.white);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Debug.Log(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Did not Hit&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果没有将LayerMask传递给Raycast函数，它仍然会忽略使用IgnoreRaycast图层的碰撞器。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Layers(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/23/2023-09-23-unity-document-62/</link>
+      <pubDate>Sat, 23 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/23/2023-09-23-unity-document-62/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;layers&#34;&gt;Layers &lt;a href=&#34;#layers&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;图层是一种工具，可以将您场景中的&lt;strong&gt;GameObject&lt;/strong&gt;进行分组。您可以通过&lt;strong&gt;UI&lt;/strong&gt;和&lt;strong&gt;脚本&lt;/strong&gt;使用图层来编辑场景中的GameObject之间的交互。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;主题&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;在Unity中使用图层的用途&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解Unity中图层的常见应用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;在Unity中创建图层&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何创建图层并将GameObject分配到图层中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;图层和图层掩码&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;了解图层和图层掩码之间的区别。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置图层掩码&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何正确设置图层掩码以在API调用中使用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;将图层添加到图层掩码中&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何以编程方式将新图层添加到图层掩码中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;从图层掩码中删除图层&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如何以编程方式从图层掩码中删除图层。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/22/2023-09-22-unity-document-61/</link>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-24 11:13:34 &#43;0800 CST">2023/09/24</time>
+        <span class="split">·</span>
+        <span> 147 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="unity-中的图层用途">Unity 中的图层用途 <a href="#unity-%e4%b8%ad%e7%9a%84%e5%9b%be%e5%b1%82%e7%94%a8%e9%80%94" class="anchor">🔗</a></h1><p>您可以使用图层来优化项目和工作流程。图层的常见用途包括：</p>
+<ul>
+<li>基于图层的渲染</li>
+<li>基于图层的碰撞</li>
+</ul>
+<h2 id="使用相机剔除遮罩与图层">使用相机剔除遮罩与图层 <a href="#%e4%bd%bf%e7%94%a8%e7%9b%b8%e6%9c%ba%e5%89%94%e9%99%a4%e9%81%ae%e7%bd%a9%e4%b8%8e%e5%9b%be%e5%b1%82" class="anchor">🔗</a></h2><p>如果使用<strong>相机</strong>的<strong>剔除遮罩</strong>，您可以只渲染特定图层或选定的图层中的对象。要更改剔除遮罩，请选择要使用的相机，并在<strong>Inspector</strong>窗口中选择<strong>剔除遮罩</strong>下拉菜单。如果取消选中图层的复选框，则在<strong>场景</strong>中不会渲染该图层。</p>
+<p><strong>注意</strong>：<strong>UI</strong>元素和屏幕空间画布子对象是例外，并且无论如何都会进行渲染。</p>
+<h2 id="使用图层进行射线投射">使用图层进行射线投射 <a href="#%e4%bd%bf%e7%94%a8%e5%9b%be%e5%b1%82%e8%bf%9b%e8%a1%8c%e5%b0%84%e7%ba%bf%e6%8a%95%e5%b0%84" class="anchor">🔗</a></h2><p>您可以使用图层指定射线投射与哪些GameObject相交。要使射线投射忽略一个<strong>GameObject</strong>，您可以将其分配到“忽略射线投射”图层，或者将LayerMask传递给射线投射的API调用。</p>
+<p>如果不将LayerMask传递给射线投射的API调用，Unity将使用Physics.DefaultRaycastLayers，该图层与除“忽略射线投射”以外的每个图层匹配。</p>
+<p>Physics.Raycast函数使用位掩码，每个位决定是否忽略该图层的射线。如果在layerMask中的所有位都打开，则射线与所有的<strong>碰撞器</strong>发生碰撞。如果layerMask = 0，则没有碰撞。</p>
+<p>例如，如果您想要在第8层上投射射线，请参考下面的代码示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> layerMask = <span style="color:#ae81ff">1</span> &lt;&lt; <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Does the ray intersect any objects which are in layer 8?</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (Physics.Raycast(transform.position, Vector3.forward, Mathf.Infinity, layerMask))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Debug.Log(<span style="color:#e6db74">&#34;The ray hit the player&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后，您可以相反地，使射线与除第8层以外的所有图层发生碰撞。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Update ()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Bit shift the index of the layer (8) to get a bit mask</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> layerMask = <span style="color:#ae81ff">1</span> &lt;&lt; <span style="color:#ae81ff">8</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This casts rays only against colliders in layer 8.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// But to collide against everything except layer 8, use the ~ operator because it inverts a bitmask.</span>
+</span></span><span style="display:flex;"><span>    layerMask = ~layerMask;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    RaycastHit hit;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Does the ray intersect any objects excluding layer 8.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), <span style="color:#66d9ef">out</span> hit, Mathf.Infinity, layerMask))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) * hit.distance, Color.yellow);
+</span></span><span style="display:flex;"><span>        Debug.Log(<span style="color:#e6db74">&#34;Did Hit&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) *<span style="color:#ae81ff">1000</span>, Color.white);
+</span></span><span style="display:flex;"><span>        Debug.Log(<span style="color:#e6db74">&#34;Did not Hit&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>注意</strong>：如果没有将LayerMask传递给Raycast函数，它仍然会忽略使用IgnoreRaycast图层的碰撞器。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/25/2023-09-25-unity-document-64/">Unity中文版-Create Gameplay Layers Create functional layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/24/2023-09-24-unity-document-63/">Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/23/2023-09-23-unity-document-62/">Unity中文版-Create Gameplay Layers(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/22/2023-09-22-unity-document-61/">Unity中文版-Create Gameplay Prefabs Unpacking Prefab instances(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/21/2023-09-21-unity-document-60/">Unity中文版-Create Gameplay Prefabs Unused Overrides(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(74)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (67)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
