@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-27 11:13:34 &#43;0800 CST">2023/09/27</time>
+        <span class="split">·</span>
+        <span> 72 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="layers-and-layermasks">Layers and layerMasks <a href="#layers-and-layermasks" class="anchor">🔗</a></h1><p>每个GameObject都存在于一个单独的图层上，但是用于设置API影响哪些图层的Unity API不直接使用图层。相反，它们使用图层掩码（layerMask）。</p>
+<p>图层是一个标准的整数，但图层掩码是一个按位掩码形式格式化的整数，其中每个<code>1</code>表示要包含的图层，每个<code>0</code>表示要排除的图层。这意味着您可以将一个图层传递给期望一个图层掩码的API，并且脚本仍然会编译，因为图层和图层掩码使用相同的基础类型。然而，API调用将不会产生您期望的行为。</p>
+<p>例如，如果您想对第9层的GameObject执行射线投射，如果在Physics.Raycast调用中传递<code>9</code>作为layerMask，Unity实际上会对第<code>3</code>层和<code>0</code>层上的GameObject执行射线投射。这是因为9的二进制表示是<code>00001001</code>，如果将其视为掩码，<code>1</code>出现在第<code>3</code>层和<code>0</code>层的位置。</p>
+<p>有关如何设置要在API调用中使用的layerMask的信息，请参阅设置一个layerMask。</p>
+<h1 id="设置一个layermask">设置一个layerMask <a href="#%e8%ae%be%e7%bd%ae%e4%b8%80%e4%b8%aalayermask" class="anchor">🔗</a></h1><p>本页面解释了如何正确设置一个layerMask，以便您可以在使用序列化的layerMask属性的API调用中使用它。</p>
+<h2 id="使用序列化的layermask属性">使用序列化的layerMask属性 <a href="#%e4%bd%bf%e7%94%a8%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84layermask%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p>在Unity编辑器中设置一个layermask的最简单方法是创建一个使用Unity的LayerMask类的属性。如果该属性是“public”或使用SerializeField属性，Unity将在<strong>Inspector</strong>中提供一个界面，您可以使用该界面选择layermask所代表的图层。</p>
+<pre tabindex="0"><code>using UnityEngine;
+
+public class LayerMaskExample : MonoBehaviour
+{
+    [SerializeField] private LayerMask layermask;
+}
+</code></pre><h2 id="从一个图层转化">从一个图层转化 <a href="#%e4%bb%8e%e4%b8%80%e4%b8%aa%e5%9b%be%e5%b1%82%e8%bd%ac%e5%8c%96" class="anchor">🔗</a></h2><p>如果您想要在运行时将一个图层转化为layermask，请使用二进制左移运算符将<code>1</code>按图层左移。结果是一个表示单个图层的layermask。</p>
+<pre tabindex="0"><code>using UnityEngine;
+
+public class LayerExample : MonoBehaviour
+{
+    [SerializeField] private int layer = 10;
+    private int layerAsLayerMask;
+
+    private void Start()
+    {
+        layerAsLayerMask = (1 &lt;&lt; layer);
+    }
+}
+</code></pre><h1 id="将图层添加到layermask中">将图层添加到layerMask中 <a href="#%e5%b0%86%e5%9b%be%e5%b1%82%e6%b7%bb%e5%8a%a0%e5%88%b0layermask%e4%b8%ad" class="anchor">🔗</a></h1><p>要将图层添加到layermask中，请在原始layermask和要添加的图层上使用逻辑OR运算符。</p>
+<pre tabindex="0"><code>originalLayerMask |= (1 &lt;&lt; layerToAdd);
+</code></pre><h1 id="从layermask中移除图层">从layerMask中移除图层 <a href="#%e4%bb%8elayermask%e4%b8%ad%e7%a7%bb%e9%99%a4%e5%9b%be%e5%b1%82" class="anchor">🔗</a></h1><p>要从layermask中移除图层，请使用原始layermask和要移除的图层的按位取反的逻辑AND运算符。</p>
+<pre tabindex="0"><code>originalLayerMask &amp;= ~(1 &lt;&lt; layerToRemove);
+</code></pre><h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/27/2023-09-27-unity-document-66/">Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/26/2023-09-26-unity-document-65/">Unity中文版-Create Gameplay Layers Layer-based collision detection(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/25/2023-09-25-unity-document-64/">Unity中文版-Create Gameplay Layers Create functional layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/24/2023-09-24-unity-document-63/">Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/23/2023-09-23-unity-document-62/">Unity中文版-Create Gameplay Layers(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(76)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (69)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

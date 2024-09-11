@@ -6,7 +6,73 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/27/2023-09-27-unity-document-66/</link>
+      <pubDate>Wed, 27 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/27/2023-09-27-unity-document-66/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;layers-and-layermasks&#34;&gt;Layers and layerMasks &lt;a href=&#34;#layers-and-layermasks&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;每个GameObject都存在于一个单独的图层上，但是用于设置API影响哪些图层的Unity API不直接使用图层。相反，它们使用图层掩码（layerMask）。&lt;/p&gt;
+&lt;p&gt;图层是一个标准的整数，但图层掩码是一个按位掩码形式格式化的整数，其中每个&lt;code&gt;1&lt;/code&gt;表示要包含的图层，每个&lt;code&gt;0&lt;/code&gt;表示要排除的图层。这意味着您可以将一个图层传递给期望一个图层掩码的API，并且脚本仍然会编译，因为图层和图层掩码使用相同的基础类型。然而，API调用将不会产生您期望的行为。&lt;/p&gt;
+&lt;p&gt;例如，如果您想对第9层的GameObject执行射线投射，如果在Physics.Raycast调用中传递&lt;code&gt;9&lt;/code&gt;作为layerMask，Unity实际上会对第&lt;code&gt;3&lt;/code&gt;层和&lt;code&gt;0&lt;/code&gt;层上的GameObject执行射线投射。这是因为9的二进制表示是&lt;code&gt;00001001&lt;/code&gt;，如果将其视为掩码，&lt;code&gt;1&lt;/code&gt;出现在第&lt;code&gt;3&lt;/code&gt;层和&lt;code&gt;0&lt;/code&gt;层的位置。&lt;/p&gt;
+&lt;p&gt;有关如何设置要在API调用中使用的layerMask的信息，请参阅设置一个layerMask。&lt;/p&gt;
+&lt;h1 id=&#34;设置一个layermask&#34;&gt;设置一个layerMask &lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e4%b8%80%e4%b8%aalayermask&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;本页面解释了如何正确设置一个layerMask，以便您可以在使用序列化的layerMask属性的API调用中使用它。&lt;/p&gt;
+&lt;h2 id=&#34;使用序列化的layermask属性&#34;&gt;使用序列化的layerMask属性 &lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84layermask%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在Unity编辑器中设置一个layermask的最简单方法是创建一个使用Unity的LayerMask类的属性。如果该属性是“public”或使用SerializeField属性，Unity将在&lt;strong&gt;Inspector&lt;/strong&gt;中提供一个界面，您可以使用该界面选择layermask所代表的图层。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using UnityEngine;
+
+public class LayerMaskExample : MonoBehaviour
+{
+    [SerializeField] private LayerMask layermask;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;从一个图层转化&#34;&gt;从一个图层转化 &lt;a href=&#34;#%e4%bb%8e%e4%b8%80%e4%b8%aa%e5%9b%be%e5%b1%82%e8%bd%ac%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果您想要在运行时将一个图层转化为layermask，请使用二进制左移运算符将&lt;code&gt;1&lt;/code&gt;按图层左移。结果是一个表示单个图层的layermask。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;using UnityEngine;
+
+public class LayerExample : MonoBehaviour
+{
+    [SerializeField] private int layer = 10;
+    private int layerAsLayerMask;
+
+    private void Start()
+    {
+        layerAsLayerMask = (1 &amp;lt;&amp;lt; layer);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;将图层添加到layermask中&#34;&gt;将图层添加到layerMask中 &lt;a href=&#34;#%e5%b0%86%e5%9b%be%e5%b1%82%e6%b7%bb%e5%8a%a0%e5%88%b0layermask%e4%b8%ad&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;要将图层添加到layermask中，请在原始layermask和要添加的图层上使用逻辑OR运算符。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;originalLayerMask |= (1 &amp;lt;&amp;lt; layerToAdd);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;从layermask中移除图层&#34;&gt;从layerMask中移除图层 &lt;a href=&#34;#%e4%bb%8elayermask%e4%b8%ad%e7%a7%bb%e9%99%a4%e5%9b%be%e5%b1%82&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;要从layermask中移除图层，请使用原始layermask和要移除的图层的按位取反的逻辑AND运算符。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;originalLayerMask &amp;amp;= ~(1 &amp;lt;&amp;lt; layerToRemove);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Layers Layer-based collision detection(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/26/2023-09-26-unity-document-65/</link>
+      <pubDate>Tue, 26 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/26/2023-09-26-unity-document-65/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;基于图层的碰撞检测&#34;&gt;基于图层的碰撞检测 &lt;a href=&#34;#%e5%9f%ba%e4%ba%8e%e5%9b%be%e5%b1%82%e7%9a%84%e7%a2%b0%e6%92%9e%e6%a3%80%e6%b5%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;基于图层的碰撞检测是一种使一个GameObject与另一个设置为特定图层或图层组的GameObject发生碰撞的方法。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-26-unity-document-65/LayerBasedCollision.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上面的图片显示了场景视图中的六个GameObject（3个平面，3个立方体），以及右侧的&lt;strong&gt;图层碰撞矩阵&lt;/strong&gt;窗口。图层碰撞矩阵定义了哪些GameObject可以与哪些图层发生碰撞。&lt;/p&gt;
+&lt;p&gt;在该示例中，图层碰撞矩阵设置为只有属于同一图层的GameObject才能发生碰撞：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图层1仅选中图层1&lt;/li&gt;
+&lt;li&gt;图层2仅选中图层2&lt;/li&gt;
+&lt;li&gt;图层3仅选中图层3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据您的需求进行更改：例如，如果您希望图层1与图层2和3发生碰撞，但不与图层1发生碰撞，请找到&lt;strong&gt;图层1&lt;/strong&gt;的行，然后选中&lt;strong&gt;图层2&lt;/strong&gt;和&lt;strong&gt;图层3&lt;/strong&gt;列的复选框，并留空&lt;strong&gt;图层1&lt;/strong&gt;列的复选框。&lt;/p&gt;
+&lt;h2 id=&#34;设置基于图层的碰撞检测&#34;&gt;设置基于图层的碰撞检测 &lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e5%9f%ba%e4%ba%8e%e5%9b%be%e5%b1%82%e7%9a%84%e7%a2%b0%e6%92%9e%e6%a3%80%e6%b5%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;为您的GameObject选择属于的图层，选择GameObject，导航到&lt;strong&gt;Inspector&lt;/strong&gt;窗口，选择顶部的&lt;strong&gt;Layer&lt;/strong&gt;下拉菜单，然后选择一个图层或添加一个新的图层。重复此步骤，直到完成将GameObject分配到图层中。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-26-unity-document-65/LayerBasedCollisionLayer.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;在Unity菜单栏中，转到&lt;strong&gt;Edit&lt;/strong&gt; &amp;gt; &lt;strong&gt;Project Settings&lt;/strong&gt;，然后选择&lt;strong&gt;Physics&lt;/strong&gt;类别以打开Physics窗口。&lt;/li&gt;
+&lt;li&gt;通过选中它们来确定碰撞矩阵上的哪些图层与其他图层交互。
+&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-26-unity-document-65/LayerCollisionMatrix.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay Layers Create functional layers in Unity(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/25/2023-09-25-unity-document-64/</link>

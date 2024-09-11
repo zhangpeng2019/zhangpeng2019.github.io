@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Layers Layer-based collision detection(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Layers Layer-based collision detection(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-26 11:13:34 &#43;0800 CST">2023/09/26</time>
+        <span class="split">·</span>
+        <span> 19 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="基于图层的碰撞检测">基于图层的碰撞检测 <a href="#%e5%9f%ba%e4%ba%8e%e5%9b%be%e5%b1%82%e7%9a%84%e7%a2%b0%e6%92%9e%e6%a3%80%e6%b5%8b" class="anchor">🔗</a></h1><p>基于图层的碰撞检测是一种使一个GameObject与另一个设置为特定图层或图层组的GameObject发生碰撞的方法。</p>
+<p><img src="/2023-09-26-unity-document-65/LayerBasedCollision.png" alt=""></p>
+<p>上面的图片显示了场景视图中的六个GameObject（3个平面，3个立方体），以及右侧的<strong>图层碰撞矩阵</strong>窗口。图层碰撞矩阵定义了哪些GameObject可以与哪些图层发生碰撞。</p>
+<p>在该示例中，图层碰撞矩阵设置为只有属于同一图层的GameObject才能发生碰撞：</p>
+<ul>
+<li>图层1仅选中图层1</li>
+<li>图层2仅选中图层2</li>
+<li>图层3仅选中图层3</li>
+</ul>
+<p>根据您的需求进行更改：例如，如果您希望图层1与图层2和3发生碰撞，但不与图层1发生碰撞，请找到<strong>图层1</strong>的行，然后选中<strong>图层2</strong>和<strong>图层3</strong>列的复选框，并留空<strong>图层1</strong>列的复选框。</p>
+<h2 id="设置基于图层的碰撞检测">设置基于图层的碰撞检测 <a href="#%e8%ae%be%e7%bd%ae%e5%9f%ba%e4%ba%8e%e5%9b%be%e5%b1%82%e7%9a%84%e7%a2%b0%e6%92%9e%e6%a3%80%e6%b5%8b" class="anchor">🔗</a></h2><ol>
+<li>为您的GameObject选择属于的图层，选择GameObject，导航到<strong>Inspector</strong>窗口，选择顶部的<strong>Layer</strong>下拉菜单，然后选择一个图层或添加一个新的图层。重复此步骤，直到完成将GameObject分配到图层中。
+<img src="/2023-09-26-unity-document-65/LayerBasedCollisionLayer.png" alt=""></li>
+<li>在Unity菜单栏中，转到<strong>Edit</strong> &gt; <strong>Project Settings</strong>，然后选择<strong>Physics</strong>类别以打开Physics窗口。</li>
+<li>通过选中它们来确定碰撞矩阵上的哪些图层与其他图层交互。
+<img src="/2023-09-26-unity-document-65/LayerCollisionMatrix.png" alt=""></li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/09/27/2023-09-27-unity-document-66/">Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/26/2023-09-26-unity-document-65/">Unity中文版-Create Gameplay Layers Layer-based collision detection(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/25/2023-09-25-unity-document-64/">Unity中文版-Create Gameplay Layers Create functional layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/24/2023-09-24-unity-document-63/">Unity中文版-Create Gameplay Layers Uses of layers in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/09/23/2023-09-23-unity-document-62/">Unity中文版-Create Gameplay Layers(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(76)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (69)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
