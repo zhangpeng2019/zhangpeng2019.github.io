@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Constraints(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Constraints(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-28 11:13:34 &#43;0800 CST">2023/09/28</time>
+        <span class="split">·</span>
+        <span> 256 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="约束组件">约束组件 <a href="#%e7%ba%a6%e6%9d%9f%e7%bb%84%e4%bb%b6" class="anchor">🔗</a></h1><p>约束组件可以将一个 GameObject 的位置、旋转或缩放与另一个 GameObject 链接起来。被约束的 GameObject 会像它链接的 GameObject 一样移动、旋转或缩放。</p>
+<p>Unity 支持以下类型的约束组件：</p>
+<ul>
+<li>Aim：将被约束的 GameObject 旋转对准链接的 GameObject。</li>
+<li>Look At：将被约束的 GameObject 旋转面对链接的 GameObject（简化的 Aim 约束）。</li>
+<li>Parent：使被约束的 GameObject 随着链接的 GameObject 一起移动和旋转。</li>
+<li>Position：使被约束的 GameObject 的移动方式与链接的 GameObject 相同。</li>
+<li>Rotation：使被约束的 GameObject 的旋转方式与链接的 GameObject 相同。</li>
+<li>Scale：使被约束的 GameObject 的缩放方式与链接的 GameObject 相同。</li>
+</ul>
+<h2 id="链接到-gameobject">链接到 GameObject <a href="#%e9%93%be%e6%8e%a5%e5%88%b0-gameobject" class="anchor">🔗</a></h2><p>在约束组件的<strong>Sources</strong>列表中指定要链接的 GameObject。</p>
+<p>例如，要使准星跟随一个 2D 射击游戏中的玩家飞船，可以将一个<strong>Position Constraint</strong>组件添加到准星上。然后，在<strong>Position Constraint</strong>组件中将玩家飞船的 GameObject 添加到<strong>Sources</strong>列表中。当玩家移动飞船时，准星会跟随移动。</p>
+<p><img src="/2023-09-28-unity-document-67/ConstraintSourceLinking.png" alt=""></p>
+<p>约束可以链接到多个源 GameObject。在这种情况下，约束会使用源 GameObject 的平均位置、旋转或缩放。例如，要将灯光对准一组 GameObject，可以在灯光的 GameObject 上添加一个<strong>Aim Constraint</strong>组件。然后，将要照明的 GameObject 添加到<strong>Sources</strong>列表中。<strong>Aim Constraint</strong>会将灯光定位到其源对象的平均位置。</p>
+<p>Unity 按照源 GameObject 在<strong>Sources</strong>列表中出现的顺序评估它们。对于<strong>Position</strong>和<strong>Scale Constraint</strong>，顺序没有影响。但是，对于<strong>Parent</strong>、<strong>Rotation</strong>和<strong>Aim Constraint</strong>，顺序会有影响。为了得到您想要的结果，可以通过拖放方式重新排序<strong>Sources</strong>列表中的项。</p>
+<p>您可以约束一系列的 GameObject。例如，您希望小鸭子按照排成一排跟随它们的母鸭。您可以将一个<strong>Position Constraint</strong>组件添加到 GameObject <em>Duckling1</em> 上。在<strong>Sources</strong>列表中，将其链接到<em>MotherDuck</em>。然后，您可以将一个<strong>Position Constraint</strong>添加到<em>Duckling2</em>，它链接到<em>Duckling1</em>。当<em>MotherDuck</em> GameObject 在场景中移动时，<em>Duckling1</em>会跟随<em>MotherDuck</em>路径，<em>Duckling2</em>会跟随<em>Duckling1</em>。</p>
+<p>避免创建约束的循环，因为这会导致游戏过程中的不可预测的更新。</p>
+<h2 id="设置约束组件属性">设置约束组件属性 <a href="#%e8%ae%be%e7%bd%ae%e7%ba%a6%e6%9d%9f%e7%bb%84%e4%bb%b6%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p>使用 Inspector 窗口来更改约束中的常见属性。</p>
+<p><img src="/2023-09-28-unity-document-67/ConstraintSettings.png" alt=""></p>
+<p>使用<strong>Weight</strong>来改变约束的影响力。权重为 1 会导致约束以与源 GameObject 相同的速率更新被约束的 GameObject。权重为 0 会完全取消约束的影响。每个源 GameObject 也有一个独立的权重。</p>
+<p>在<strong>Constraint Settings</strong>中，使用<strong>At Rest</strong>属性来指定<strong>Weight</strong>为 0 或相关的<strong>Freeze Axes</strong>属性未选中时使用的 X、Y 和 Z 值。</p>
+<p>在<strong>Constraint Settings</strong>中使用<strong>Offset</strong>属性来指定在约束 GameObject 时使用的 X、Y 和 Z 值。</p>
+<p>使用<strong>Freeze Axes</strong>设置来切换约束实际可修改的轴。</p>
+<h2 id="激活和锁定约束">激活和锁定约束 <a href="#%e6%bf%80%e6%b4%bb%e5%92%8c%e9%94%81%e5%ae%9a%e7%ba%a6%e6%9d%9f" class="anchor">🔗</a></h2><p>与约束一起工作有两个方面：激活和锁定。</p>
+<p>您可以激活约束以允许其评估被约束的 GameObject 的位置、旋转或缩放。Unity 不会评估处于非活动状态的约束。</p>
+<p>您可以锁定约束以允许其移动、旋转或缩放 GameObject。锁定约束会控制 GameObject 的变换的相关部分。您不能手动移动、旋转或缩放具有锁定约束的 GameObject。您也无法编辑<strong>Constraint Settings</strong>。</p>
+<p>要手动编辑 GameObject 的位置、旋转或缩放，请解锁其约束。如果在解锁时约束处于活动状态，那么在移动、旋转或缩放被约束的 GameObject 或其源 GameObject 时，约束会自动更新<strong>Constraint Settings</strong>。</p>
+<p>当您向一个 GameObject 添加约束组件时，默认情况下约束是非活动且未锁定的。这使您可以在激活和锁定约束之前对被约束的 GameObject 和源 GameObject 的位置、旋转和缩放进行微调。</p>
+<p>为了方便起见，<strong>Activate</strong>和<strong>Zero</strong>按钮会自动更新<strong>Constraint Settings</strong>：</p>
+<ul>
+<li><strong>Activate</strong>：保存与源 GameObject 的当前偏移，然后激活和锁定被约束的 GameObject。</li>
+<li><strong>Zero</strong>：将位置、旋转或缩放重置为与源 GameObject 匹配，然后激活和锁定被约束的 GameObject。</li>
+</ul>
+<h2 id="动画和组合约束">动画和组合约束 <a href="#%e5%8a%a8%e7%94%bb%e5%92%8c%e7%bb%84%e5%90%88%e7%ba%a6%e6%9d%9f" class="anchor">🔗</a></h2><p>使用<strong>动画剪辑</strong>来修改被约束的 GameObject 链接到的源 GameObject。当动画修改源 GameObject 时，约束会修改被约束的 GameObject。</p>
+<p>您还可以在约束组件中动画化属性。例如，使用 Parent 约束来将角色的剑从手持位置移动到背部。首先，在剑的 GameObject 上添加一个 Parent 约束。在<strong>Sources</strong>列表中，将约束链接到角色的手和角色的脊柱。为了对剑进行动画化，为每个源的权重添加关键帧。为了将剑从背部移动到手中，添加关键帧将手的权重从 0 变为 1，并为脊柱的权重从 1 变为 0。</p>
+<p>您可以在同一个 GameObject 上添加多种约束组件。当更新 GameObject 时，Unity 会按照它们在 Inspector 窗口中的顺序从头到尾评估约束组件。一个 GameObject 只能包含一种相同类型的约束组件。例如，您不能添加多个 Position Constraint。</p>
+<h2 id="导入约束">导入约束 <a href="#%e5%af%bc%e5%85%a5%e7%ba%a6%e6%9d%9f" class="anchor">🔗</a></h2><p>当从 Autodesk® Maya® 和 MotionBuilder® 导入 FBX 文件到 Unity 编辑器时，您可以包含约束。在导入设置窗口的动画选项卡中，选中<strong>导入约束</strong>：</p>
+<p><img src="/2023-09-28-unity-document-67/ConstraintImport.png" alt=""></p>
+<p>对于 FBX 文件中的每个约束，Unity 会自动添加相应的约束组件并将其链接到正确的 GameObject。</p>
+<h2 id="添加和编辑约束">添加和编辑约束 <a href="#%e6%b7%bb%e5%8a%a0%e5%92%8c%e7%bc%96%e8%be%91%e7%ba%a6%e6%9d%9f" class="anchor">🔗</a></h2><p>添加约束组件：</p>
+<ol>
+<li>选择要约束的 GameObject。</li>
+<li>在<strong>Inspector</strong>窗口中，单击<strong>添加组件</strong>，搜索要添加的约束类型，然后单击进行添加。</li>
+<li>要向新的约束中添加源 GameObject，请将该 GameObject 从 Hierarchy（或 Scene 视图）拖动到<strong>Sources</strong>列表中。</li>
+<li>移动、旋转或缩放被约束的 GameObject 和其源 GameObject。</li>
+<li>要激活约束，请单击<strong>激活</strong>或<strong>零</strong>，或勾选<strong>活动</strong>和<strong>锁定</strong>。</li>
+</ol>
+<p>编辑约束组件：</p>
+<ol>
+<li>在编辑器中选择被约束的 GameObject。</li>
+<li>要调整<strong>静止状态</strong>或<strong>偏移</strong>字段，请使用 Inspector 窗口展开<strong>约束设置</strong>，取消选中<strong>锁定</strong>，然后编辑值。</li>
+<li>要指定约束更新的轴，请展开<strong>约束设置</strong>，然后选中<strong>冻结轴</strong>中的属性。</li>
+<li>要向约束中添加源 GameObject：
+<ul>
+<li>如果在 Sources 列表中没有空槽，请单击列表底部的 “+”。</li>
+<li>从场景中将您想要用作约束源的 GameObject 拖动到<strong>Sources</strong>列表中。</li>
+</ul>
+</li>
+<li>要删除源 GameObject，请在<strong>Sources</strong>列表中选择它，然后单击列表底部的减号符（“-”）。</li>
+<li>要重新排序<strong>Sources</strong>列表中的源 GameObject，请单击每个要移动的 GameObject 左侧的双栏图标，并将其上移或下移。
+<strong>注意：在Sources</strong>列表中，顺序对于 Position、Rotation 和 Scale Constraints 没有影响。然而，顺序会影响 Parent 和 Aim Constraints 如何移动或旋转 GameObject。</li>
+<li>勾选<strong>活动</strong>和<strong>锁定</strong>。</li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/05/2023-10-05-unity-document-73/">Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/04/2023-10-04-unity-document-72/">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/03/2023-10-03-unity-document-71/">Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/02/2023-10-02-unity-document-70/">Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(84)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (77)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

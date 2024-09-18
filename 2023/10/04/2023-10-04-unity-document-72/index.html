@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-04 11:13:34 &#43;0800 CST">2023/10/04</time>
+        <span class="split">·</span>
+        <span> 119 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="rotation-constraints">Rotation Constraints <a href="#rotation-constraints" class="anchor">🔗</a></h1><p>Rotation Constraint 是一个将 GameObject 的旋转与源 GameObject 相匹配的约束组件。</p>
+<p><img src="/2023-10-04-unity-document-72/RotationConstraint.png" alt=""></p>
+<h3 id="属性">属性 <a href="#%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性:</strong></th>
+<th style="text-align:left"><strong>功能:</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Activate（激活）</strong></td>
+<td style="text-align:left">在旋转被约束的 GameObject 和其源 GameObject 后，单击 <strong>Activate（激活）</strong> 以保存这些信息。<strong>Activate（激活）将当前从源 GameObject 保存到Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）中，然后选中Is Active（是否激活）和Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Zero（归零）</strong></td>
+<td style="text-align:left">将被约束的 GameObject 的旋转设置为源 GameObject 的旋转。<strong>Zero（归零）会重置Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Is Active（是否激活）</strong></td>
+<td style="text-align:left">切换是否评估约束。要同时应用约束，请确保选中<strong>Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Weight（权重）</strong></td>
+<td style="text-align:left">约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率旋转此 GameObject。权重为 0 会完全取消约束的效果。该权重影响所有源 GameObject。<strong>Sources（源）</strong> 列表中的每个 GameObject 也有一个权重。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constraint Settings（约束设置）</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Lock（锁定）</strong></td>
+<td>切换以让约束旋转 GameObject。取消选中此属性以编辑此 GameObject 的旋转。您还可以编辑<strong>Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）属性。如果选中了Is Active（是否激活）</strong>，约束会在您旋转 GameObject 或其 <strong>Source（源）<strong>GameObject 时自动更新</strong>Rotation At Rest（静止时旋转）<strong>或</strong>Rotation Offset（旋转偏移）<strong>属性。在对更改感到满意时，请选中</strong>Lock（锁定）<strong>以让约束控制此 GameObject。此属性对</strong>Play Mode（播放模式）</strong> 没有影响。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Rotation At Rest（静止时旋转）</strong></td>
+<td>当<strong>Weight（权重）为 0 或相应的Freeze Rotation Axes（冻结旋转轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Rotation Offset（旋转偏移）</strong></td>
+<td>从 Transform 的旋转计算的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中<strong>Lock（锁定）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Freeze Rotation Axes（冻结旋转轴）</strong></td>
+<td>选中 X、Y 或 Z 以允许约束控制相应的旋转轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sources（源）</strong></td>
+<td style="text-align:left">约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。顺序会影响此约束如何旋转被约束的 GameObject。为了得到您想要的结果，请在此列表中拖放项。每个源都有一个从 0 到 1 的权重。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/05/2023-10-05-unity-document-73/">Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/04/2023-10-04-unity-document-72/">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/03/2023-10-03-unity-document-71/">Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/02/2023-10-02-unity-document-70/">Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(84)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (77)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

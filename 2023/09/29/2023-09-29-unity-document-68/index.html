@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Constraints Aim Constraints(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Constraints Aim Constraints(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-29 11:13:34 &#43;0800 CST">2023/09/29</time>
+        <span class="split">·</span>
+        <span> 235 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="aim-constraints">Aim Constraints <a href="#aim-constraints" class="anchor">🔗</a></h1><p>Aim Constraint 是一个用于旋转 GameObject 使其面向源 GameObject 的约束组件。它还可以保持另一个轴的一致方向。例如，您可以将 Aim Constraint 添加到相机上。为了在约束使其面向目标的同时保持相机的竖直方向，可以指定相机的竖直轴和一个对齐的竖直方向。</p>
+<p>使用<strong>Up Vector</strong>来指定被约束的 GameObject 的竖直轴。使用<strong>World Up Vector</strong>来指定竖直方向。当 Aim Constraint 旋转 GameObject 以面向其源 GameObject 时，该约束还会将被约束的 GameObject 的竖直轴与竖直方向对齐。</p>
+<p><img src="/2023-09-29-unity-document-68/AimConstraint.png" alt=""></p>
+<h3 id="属性">属性 <a href="#%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性：</strong></th>
+<th style="text-align:left"><strong>功能：</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Activate（激活）</strong></td>
+<td style="text-align:left">在旋转被约束的 GameObject 并移动其源 GameObject 后，单击 <strong>Activate（激活）</strong> 以保存此信息。<strong>Activate（激活）将当前从源 GameObject 保存到Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）中，然后选中Is Active（是否激活）和Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Zero（归零）</strong></td>
+<td style="text-align:left">将被约束的 GameObject 的旋转设置为源 GameObject 的旋转。Zero 会重置<strong>Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Is Active（是否激活）</strong></td>
+<td style="text-align:left">切换是否评估约束。要应用约束，请确保选中<strong>Lock（锁定）</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Weight（权重）</strong></td>
+<td style="text-align:left">约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率旋转被约束的 GameObject。权重为 0 会完全取消约束的影响。该权重影响所有源 GameObject。<strong>Sources（源）</strong> 列表中的每个 GameObject 也有一个权重。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Aim Vector（瞄准向量）</strong></td>
+<td style="text-align:left">指定面向源 GameObject 方向的轴。例如，为了指定 GameObject 应该只将其正 Z 轴定位到面向源 GameObject，可以分别输入 <strong>Aim Vector（瞄准向量）</strong> 的 X、Y、Z 轴为 0、0、1。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Up Vector（竖直向量）</strong></td>
+<td style="text-align:left">指定此 GameObject 的竖直轴。例如，为了指定 GameObject 应该始终将其正 Y 轴指向上方，可以分别为 X、Y、Z 轴输入 <strong>Up Vector（竖直向量）</strong> 的 0、1、0。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>World Up Type（全局向上类型）</strong></td>
+<td style="text-align:left">指定竖直方向的轴。Aim Constraint 使用此向量来使 GameObject 的竖直轴与向上方向对齐。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Scene Up（场景向上）</strong></td>
+<td>场景的 Y 轴。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Object Up（对象向上）</strong></td>
+<td>通过 <strong>World Up Object（世界向上对象）</strong> 引用的 GameObject 的 Y 轴。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Object Up Rotation（对象向上旋转）</strong></td>
+<td>通过 <strong>World Up Object（世界向上对象）<strong>引用的 GameObject 的</strong>World Up Vector（世界向上向量）</strong> 指定的轴。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Vector（向量）</strong></td>
+<td>World Up Vector（世界向上向量）。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>None（无）</strong></td>
+<td>不使用 World Up 向量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>World Up Vector（全局向上向量）</strong></td>
+<td style="text-align:left">指定用于 <strong>Object Up Rotation（对象向上旋转）<strong>和</strong>Vector（向量）<strong>中的</strong>World Up Type（全局向上类型）</strong> 的向量。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>World Up Object（全局向上对象）</strong></td>
+<td style="text-align:left">指定用于 <strong>Object Up（对象向上）<strong>和</strong>Object Up Rotation（对象向上旋转）<strong>中的</strong>World Up Type（全局向上类型）</strong> 的 GameObject。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constraint Settings（约束设置）</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Lock（锁定）</strong></td>
+<td>启用此设置以允许约束旋转 GameObject。取消选中此属性以编辑此 GameObject 的旋转。您还可以编辑静止时旋转和旋转偏移属性。如果选中了 Is Active，请将 Constraint 更新为您旋转 GameObject 或其源 GameObject 时的静止时旋转或旋转偏移属性。在对更改感到满意时，请选中 Lock 以让 Constraint 控制此 GameObject。此属性对 Play Mode（播放模式）没有影响。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Rotation At Rest（静止时旋转）</strong></td>
+<td>当权重为 0 或相应的冻结旋转轴未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中 Lock。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Rotation Offset（旋转偏移）</strong></td>
+<td>Constraint 计算的旋转的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中 Lock。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Freeze Rotation Axes（冻结旋转轴）</strong></td>
+<td>选中 X、Y 或 Z 以允许约束控制相应的轴。取消选中轴以阻止约束控制它。这样可以编辑、动画化或脚本化未冻结的轴。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sources（源）</strong></td>
+<td style="text-align:left">约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。此顺序会影响此约束如何旋转被约束的 GameObject。为了得到您想要的结果，请在此列表中拖放项。每个源的权重范围是 0 到 1。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/05/2023-10-05-unity-document-73/">Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/04/2023-10-04-unity-document-72/">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/03/2023-10-03-unity-document-71/">Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/02/2023-10-02-unity-document-70/">Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(84)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (77)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -6,7 +6,611 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Sep 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Oct 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/06/2023-10-06-unity-document-74/</link>
+      <pubDate>Fri, 06 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/06/2023-10-06-unity-document-74/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;rotation-and-orientation-in-unity&#34;&gt;Rotation and orientation in Unity &lt;a href=&#34;#rotation-and-orientation-in-unity&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Unity 使用左手坐标系统。在 Unity 中，你可以使用欧拉角和&lt;strong&gt;四元数&lt;/strong&gt;表示旋转和方向。这些表示方法是等效的，但在使用和限制方面有所不同。&lt;/p&gt;
+&lt;p&gt;通常，你可以使用&lt;strong&gt;Transform 组件&lt;/strong&gt;在你的&lt;strong&gt;场景&lt;/strong&gt;中旋转物体，它将方向显示为欧拉角。然而，Unity 在内部存储旋转和方向时使用四元数，这对于更复杂的动作可能会导致万向锁很有用。&lt;/p&gt;
+&lt;h2 id=&#34;左手坐标系统&#34;&gt;左手坐标系统 &lt;a href=&#34;#%e5%b7%a6%e6%89%8b%e5%9d%90%e6%a0%87%e7%b3%bb%e7%bb%9f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-06-unity-document-74/unity-axis-with-rotation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Unity 的左手坐标系的轴表示，显示了从正 x 轴到正 y 轴的旋转方向，在沿着正 z 轴的方向观察时，方向是逆时针的。&lt;/p&gt;
+&lt;p&gt;坐标系描述了三维空间中物体的位置。Unity 使用左手坐标系：正 x 轴指向右侧，正 y 轴指向上方，正 z 轴指向前方。Unity 的左手坐标系意味着从正 x 轴到正 y 轴的旋转方向是逆时针的，在沿着正 z 轴的方向观察时。&lt;/p&gt;
+&lt;h2 id=&#34;欧拉角&#34;&gt;欧拉角 &lt;a href=&#34;#%e6%ac%a7%e6%8b%89%e8%a7%92&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 Transform 坐标中，Unity 使用属性&lt;code&gt;Transform.eulerAngles&lt;/code&gt;的 X、Y 和 Z 来显示旋转。与普通向量不同，这些值实际上表示围绕 X、Y 和 Z 轴旋转的角度（以度为单位）。&lt;/p&gt;
+&lt;p&gt;欧拉角旋转执行三次围绕三个轴的独立旋转。Unity 按 z 轴、x 轴和 y 轴的顺序依次执行欧拉角旋转。这种旋转方法是外旋转；在旋转发生时，原始坐标系不会改变。&lt;/p&gt;
+&lt;p&gt;要旋转一个&lt;strong&gt;GameObject&lt;/strong&gt;，你可以在 Transform 组件中输入每个轴旋转的角度值。要使用脚本旋转你的游戏对象，可以使用&lt;code&gt;Transform.eulerAngles&lt;/code&gt;。如果你将旋转值转换为欧拉角来进行计算和旋转，可能会出现万向锁的问题。&lt;/p&gt;
+&lt;h3 id=&#34;万向锁&#34;&gt;万向锁 &lt;a href=&#34;#%e4%b8%87%e5%90%91%e9%94%81&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当一个物体在三维空间中失去一个自由度，只能在两个维度内旋转时，称为万向锁。欧拉角在两个轴变得平行时，可能会发生万向锁。如果你在脚本中不将旋转值转换为欧拉角，使用四元数应该可以避免万向锁。&lt;/p&gt;
+&lt;p&gt;如果你在万向锁方面遇到问题，可以避免使用欧拉角，而是使用&lt;code&gt;Transform.RotateAround&lt;/code&gt;进行旋转。你还可以在每个轴上使用&lt;code&gt;Quaternion.AngleAxis&lt;/code&gt;，然后将它们相乘（四元数乘法依次应用每个旋转）。&lt;/p&gt;
+&lt;h2 id=&#34;四元数&#34;&gt;四元数 &lt;a href=&#34;#%e5%9b%9b%e5%85%83%e6%95%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;四元数为三维空间中的空间方向和旋转提供了数学表示。四元数使用四个数字来编码在三维中围绕单位轴的旋转方向和角度。这四个值是复数，而不是角度或度数。你可以详细了解四元数的数学知识。&lt;/p&gt;
+&lt;p&gt;Unity 将旋转值转换为四元数存储，因为四元数旋转的计算效率高且稳定。Unity 编辑器不显示四元数作为旋转，因为单个四元数无法表示大于 360 度的旋转。&lt;/p&gt;
+&lt;p&gt;如果你使用 Quaternion 类，可以直接使用四元数。如果在脚本中进行旋转，可以使用 Quaternion 类和函数来创建和改变旋转值。你可以将值应用到旋转中作为欧拉角，但你需要将它们存储为四元数以避免问题。&lt;/p&gt;
+&lt;h2 id=&#34;欧拉角和四元数之间的转换&#34;&gt;欧拉角和四元数之间的转换 &lt;a href=&#34;#%e6%ac%a7%e6%8b%89%e8%a7%92%e5%92%8c%e5%9b%9b%e5%85%83%e6%95%b0%e4%b9%8b%e9%97%b4%e7%9a%84%e8%bd%ac%e6%8d%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;为了在你喜欢的方式中查看和编辑旋转，你可以使用脚本进行欧拉角和四元数之间的转换：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从欧拉角转换为四元数，可以使用&lt;code&gt;Quaternion.Euler&lt;/code&gt;函数。&lt;/li&gt;
+&lt;li&gt;将四元数转换为欧拉角，可以使用&lt;code&gt;Quaternion.eulerAngles&lt;/code&gt;函数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/05/2023-10-05-unity-document-73/</link>
+      <pubDate>Thu, 05 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/05/2023-10-05-unity-document-73/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;scale-constraints&#34;&gt;Scale Constraints &lt;a href=&#34;#scale-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Scale Constraint 是一个调整 GameObject 大小以匹配源 GameObject 缩放的约束组件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-05-unity-document-73/ScaleConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能:&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Activate（激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在调整被约束的 GameObject 和其源 GameObject 后，单击 &lt;strong&gt;Activate（激活）&lt;/strong&gt; 以保存这些信息。&lt;strong&gt;Activate（激活）将当前从源 GameObject 保存到Scale At Rest（静止时缩放）和Scale Offset（缩放偏移）中，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Zero（归零）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将被约束的 GameObject 的缩放设置为源 GameObject 的缩放。&lt;strong&gt;Zero（归零）会重置Scale At Rest（静止时缩放）和Scale Offset（缩放偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;切换是否评估约束。要同时应用约束，请确保选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率调整此 GameObject 的大小。权重为 0 会完全取消约束的效果。该权重影响所有源 GameObject。&lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中的每个 GameObject 也有一个权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;切换以让约束调整 GameObject 的大小。取消选中此属性以编辑此 GameObject 的缩放。您还可以编辑&lt;strong&gt;Scale At Rest（静止时缩放）和Scale Offset（缩放偏移）属性。如果选中了Is Active（是否激活）&lt;/strong&gt;，约束在您调整 GameObject 或其 &lt;strong&gt;Source（源）&lt;strong&gt;GameObject 时会自动更新&lt;/strong&gt;Scale At Rest（静止时缩放）&lt;strong&gt;或&lt;/strong&gt;Scale Offset（缩放偏移）&lt;strong&gt;属性。在对更改感到满意时，请选中&lt;/strong&gt;Lock（锁定）&lt;strong&gt;以让约束控制此 GameObject。此属性对&lt;/strong&gt;Play Mode（播放模式）&lt;/strong&gt; 没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scale At Rest（静止时缩放）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当&lt;strong&gt;Weight（权重）为 0 或相应的Freeze Scale Axes（冻结缩放轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scale Offset（缩放偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;从 Transform 的缩放计算的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Scale Axes（冻结缩放轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的缩放轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。每个源都有一个从 0 到 1 的权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/04/2023-10-04-unity-document-72/</link>
+      <pubDate>Wed, 04 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/04/2023-10-04-unity-document-72/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;rotation-constraints&#34;&gt;Rotation Constraints &lt;a href=&#34;#rotation-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Rotation Constraint 是一个将 GameObject 的旋转与源 GameObject 相匹配的约束组件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-04-unity-document-72/RotationConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能:&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Activate（激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在旋转被约束的 GameObject 和其源 GameObject 后，单击 &lt;strong&gt;Activate（激活）&lt;/strong&gt; 以保存这些信息。&lt;strong&gt;Activate（激活）将当前从源 GameObject 保存到Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）中，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Zero（归零）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将被约束的 GameObject 的旋转设置为源 GameObject 的旋转。&lt;strong&gt;Zero（归零）会重置Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;切换是否评估约束。要同时应用约束，请确保选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率旋转此 GameObject。权重为 0 会完全取消约束的效果。该权重影响所有源 GameObject。&lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中的每个 GameObject 也有一个权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;切换以让约束旋转 GameObject。取消选中此属性以编辑此 GameObject 的旋转。您还可以编辑&lt;strong&gt;Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）属性。如果选中了Is Active（是否激活）&lt;/strong&gt;，约束会在您旋转 GameObject 或其 &lt;strong&gt;Source（源）&lt;strong&gt;GameObject 时自动更新&lt;/strong&gt;Rotation At Rest（静止时旋转）&lt;strong&gt;或&lt;/strong&gt;Rotation Offset（旋转偏移）&lt;strong&gt;属性。在对更改感到满意时，请选中&lt;/strong&gt;Lock（锁定）&lt;strong&gt;以让约束控制此 GameObject。此属性对&lt;/strong&gt;Play Mode（播放模式）&lt;/strong&gt; 没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当&lt;strong&gt;Weight（权重）为 0 或相应的Freeze Rotation Axes（冻结旋转轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation Offset（旋转偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;从 Transform 的旋转计算的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Rotation Axes（冻结旋转轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的旋转轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。顺序会影响此约束如何旋转被约束的 GameObject。为了得到您想要的结果，请在此列表中拖放项。每个源都有一个从 0 到 1 的权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/03/2023-10-03-unity-document-71/</link>
+      <pubDate>Tue, 03 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/03/2023-10-03-unity-document-71/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;position-constraints&#34;&gt;Position Constraints &lt;a href=&#34;#position-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Position Constraint 是一个移动 GameObject 以跟随源 GameObject 的约束组件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-03-unity-document-71/PositionConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能:&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Activate（激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在定位被约束的 GameObject 和其源 GameObject 后，单击 &lt;strong&gt;Activate（激活）&lt;/strong&gt; 以保存这些信息。&lt;strong&gt;Activate（激活）将当前从源 GameObject 保存到Position At Rest（静止时位置）和Position Offset（位置偏移）中，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Zero（归零）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将被约束的 GameObject 的位置设置为源 GameObject 的位置。&lt;strong&gt;Zero（归零）会重置Position At Rest（静止时位置）和Position Offset（位置偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;切换是否评估约束。要同时应用约束，请确保选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率移动此 GameObject。权重为 0 会完全取消约束的效果。该权重影响所有源 GameObject。&lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中的每个 GameObject 也有一个权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;切换以让约束移动 GameObject。取消选中此属性以编辑此 GameObject 的位置。您还可以编辑&lt;strong&gt;Position At Rest（静止时位置）和Position Offset（位置偏移）属性。如果选中了Is Active（是否激活）&lt;/strong&gt;，约束会在您移动 GameObject 或其源 GameObject 时自动更新 &lt;strong&gt;At Rest（静止时）&lt;strong&gt;或&lt;/strong&gt;Offset（偏移）&lt;strong&gt;属性。在对更改感到满意时，请选中&lt;/strong&gt;Lock（锁定）&lt;strong&gt;以让约束控制此 GameObject。此属性对&lt;/strong&gt;Play Mode（播放模式）&lt;/strong&gt; 没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当&lt;strong&gt;Weight（权重）为 0 或相应的Freeze Position Axes（冻结位置轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Position Offset（位置偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;从 Transform 的位置计算的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Position Axes（冻结位置轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的位置轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。每个源都有一个从 0 到 1 的权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/02/2023-10-02-unity-document-70/</link>
+      <pubDate>Mon, 02 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/02/2023-10-02-unity-document-70/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;parent-constraints&#34;&gt;Parent Constraints &lt;a href=&#34;#parent-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Parent Constraint 是一个移动和旋转 GameObject 的约束组件，使其表现得好像是 Hierarchy 窗口中另一个 GameObject 的子级。然而，它提供了一些不可能实现的优势，即使你使一个 GameObject 成为另一个 GameObject 的父级：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parent Constraint 不会影响缩放。&lt;/li&gt;
+&lt;li&gt;Parent Constraint 可以链接到多个 GameObject。&lt;/li&gt;
+&lt;li&gt;GameObject 不需要是 Parent Constraint 链接到的 GameObject 的子级。&lt;/li&gt;
+&lt;li&gt;您可以通过指定权重以及每个源 GameObject 的权重来改变约束的效果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如，为了将剑放在角色的手中，将 Parent Constraint 组件添加到剑的 GameObject 上。在 Parent Constraint 的&lt;strong&gt;Sources&lt;/strong&gt;列表中，将其链接到角色的手上。这样，剑的运动就会受到手的位置和旋转的限制。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-02-unity-document-70/ParentConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性:&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能:&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Activate（激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在移动和旋转被约束的 GameObject 和其源 GameObject 后，单击 &lt;strong&gt;Activate（激活）&lt;/strong&gt; 以保存这些信息。&lt;strong&gt;Activate（激活）将当前从源 GameObject 保存到Rotation At Rest（静止时旋转）&lt;/strong&gt;、&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;、&lt;strong&gt;Position Offset（位置偏移）和Rotation Offset（旋转偏移）中，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Zero（归零）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将被约束的 GameObject 的位置和旋转设置为源 GameObject 的位置和旋转。&lt;strong&gt;Zero（归零）会重置Rotation At Rest（静止时旋转）&lt;/strong&gt;、&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;、&lt;strong&gt;Position Offset（位置偏移）和Rotation Offset（旋转偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;切换是否评估约束。要同时应用约束，请确保选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率移动和旋转此 GameObject。权重为 0 会完全取消约束的效果。该权重影响所有源 GameObject。&lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中的每个 GameObject 也有一个权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;切换以让约束移动和旋转 GameObject。取消选中此属性以编辑此 GameObject 的位置和旋转。您还可以编辑&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;、&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;、&lt;strong&gt;Position Offset（位置偏移）和Rotation Offset（旋转偏移）属性。如果选中了Is Active（是否激活）&lt;/strong&gt;，约束会在您移动和旋转 GameObject 或其源 GameObject 时自动更新&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;、&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;、&lt;strong&gt;Position Offset（位置偏移）&lt;strong&gt;或&lt;/strong&gt;Rotation Offset（旋转偏移）&lt;strong&gt;属性。在对更改感到满意时，请选中&lt;/strong&gt;Lock（锁定）&lt;strong&gt;以让约束控制此 GameObject。此属性对&lt;/strong&gt;Play Mode（播放模式）&lt;/strong&gt; 没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Position At Rest（静止时位置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当权重为 0 或相应的&lt;strong&gt;Freeze Position Axes（冻结位置轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当权重为 0 或相应的&lt;strong&gt;Freeze Rotation Axes（冻结旋转轴）未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Position Offset（位置偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;从 Transform 的位置计算的 X、Y 和 Z 位置偏移量。要编辑这些字段，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation Offset（旋转偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;从 Transform 的旋转计算的 X、Y 和 Z 旋转偏移量。要编辑这些字段，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Position Axes（冻结位置轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的位置轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Rotation Axes（冻结旋转轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的旋转轴。取消选中轴以阻止约束控制它，这样就可以编辑、动画化或脚本化它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。顺序会影响此约束如何移动和旋转被约束的 GameObject。为了得到您想要的结果，请在此列表中拖放项。每个源的权重范围是 0 到 1。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Look At Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/01/2023-10-01-unity-document-69/</link>
+      <pubDate>Sun, 01 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/01/2023-10-01-unity-document-69/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;look-at-constraints&#34;&gt;Look At Constraints &lt;a href=&#34;#look-at-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Look At Constraint 是一个用于旋转 GameObject 使其面向源 GameObject 的约束组件。通常情况下，您可以将 Look At Constraint 应用于相机，以跟随一个或多个 GameObject。此外，如果导入了 Target Camera，Unity 将创建一个使用目标对象作为源的 Look At Constraint 的相机。&lt;/p&gt;
+&lt;p&gt;Look At 是 Aim Constraint 的简化版本。Aim Constraint 允许您选择跟随约束 GameObject 的哪个轴，而 Look At Constraint 始终跟随 z 轴。&lt;/p&gt;
+&lt;p&gt;您可以通过将其设置为另一个 GameObject 的 y 轴来指定 Look At Constraint 的向上方向，或者可以指定一个绕 z 轴（瞄准轴）旋转的 roll。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-01-unity-document-69/class-LookAtConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;启用此选项以评估约束。要应用约束，请启用 &lt;strong&gt;Lock（锁定）&lt;/strong&gt; 属性。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;设置约束的强度。有效值范围从 0（约束无效）到 1（此 GameObject 以与其源 GameObject 相同的速率旋转）。此权重值会对所有源 GameObject 产生相同的影响，但您还可以在 &lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中单独更改每个 GameObject 的权重。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Use Up Object（使用向上对象）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;启用此选项以将此 GameObject 的上向量设置为 &lt;strong&gt;World Up Object（全局向上对象）&lt;strong&gt;的 y 轴。如果禁用此选项，则上向量将设置为&lt;/strong&gt;Roll（倾斜）&lt;/strong&gt; 值。GameObject 的上向量确定了哪个方向是向上。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Roll（倾斜）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;设置绕 z 轴的旋转角度（向上方向）的度数。仅当禁用 &lt;strong&gt;Use Up Object（使用向上对象）&lt;/strong&gt; 时才可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;World Up Object（全局向上对象）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;设置您要用作向上向量参考的 GameObject 的引用。设置后，此向上向量 GameObject 的 y 轴将成为被约束的 GameObject 的向上方向。仅当启用 &lt;strong&gt;Use Up Object（使用向上对象）&lt;/strong&gt; 时才可用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;启用此选项以让约束旋转 GameObject（应用约束）。如果禁用此选项，则可以修改 GameObject 的旋转、&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;strong&gt;和&lt;/strong&gt;Rotation Offset（旋转偏移）&lt;/strong&gt; 属性。在对更改感到满意时，请选中 Lock 以让约束控制此 GameObject。此属性对 Play Mode（播放模式）没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;设置被约束的 GameObject 在 X、Y 和 Z 方向上静止时的方向。当总权重（包括所有源的个体权重）加起来为 0 时，GameObject 是静止的。要修改此属性，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation Offset（旋转偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;设置从被约束方向（约束计算的旋转）的偏移量，以 X、Y 和 Z 表示。要修改此属性，请取消选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。顺序会影响此约束如何旋转被约束的 GameObject，因为旋转会累积。为了得到您想要的结果，请在此列表中拖放项。不同的顺序会导致不同的结果。列表中的每个条目包含对 GameObject 的引用和其权重（即约束中的影响力）。Unity 会计算此列表中源 GameObject 的平均值，并且您可以通过更改每个源的权重来调整其影响力。例如，如果有两个源（一个立方体和一个球体），并且您希望相机更多地关注球体，可以将球体的权重设置为 1（最大值），将立方体的权重设置为 0.5。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-01-unity-document-69/class-LookAtConstraint_Example.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints Aim Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/29/2023-09-29-unity-document-68/</link>
+      <pubDate>Fri, 29 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/29/2023-09-29-unity-document-68/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;aim-constraints&#34;&gt;Aim Constraints &lt;a href=&#34;#aim-constraints&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Aim Constraint 是一个用于旋转 GameObject 使其面向源 GameObject 的约束组件。它还可以保持另一个轴的一致方向。例如，您可以将 Aim Constraint 添加到相机上。为了在约束使其面向目标的同时保持相机的竖直方向，可以指定相机的竖直轴和一个对齐的竖直方向。&lt;/p&gt;
+&lt;p&gt;使用&lt;strong&gt;Up Vector&lt;/strong&gt;来指定被约束的 GameObject 的竖直轴。使用&lt;strong&gt;World Up Vector&lt;/strong&gt;来指定竖直方向。当 Aim Constraint 旋转 GameObject 以面向其源 GameObject 时，该约束还会将被约束的 GameObject 的竖直轴与竖直方向对齐。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-29-unity-document-68/AimConstraint.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性&#34;&gt;属性 &lt;a href=&#34;#%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;属性：&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能：&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Activate（激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在旋转被约束的 GameObject 并移动其源 GameObject 后，单击 &lt;strong&gt;Activate（激活）&lt;/strong&gt; 以保存此信息。&lt;strong&gt;Activate（激活）将当前从源 GameObject 保存到Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）中，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Zero（归零）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将被约束的 GameObject 的旋转设置为源 GameObject 的旋转。Zero 会重置&lt;strong&gt;Rotation At Rest（静止时旋转）和Rotation Offset（旋转偏移）字段，然后选中Is Active（是否激活）和Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Is Active（是否激活）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;切换是否评估约束。要应用约束，请确保选中&lt;strong&gt;Lock（锁定）&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Weight（权重）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束的强度。权重为 1 会导致约束以与源 GameObject 相同的速率旋转被约束的 GameObject。权重为 0 会完全取消约束的影响。该权重影响所有源 GameObject。&lt;strong&gt;Sources（源）&lt;/strong&gt; 列表中的每个 GameObject 也有一个权重。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Aim Vector（瞄准向量）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定面向源 GameObject 方向的轴。例如，为了指定 GameObject 应该只将其正 Z 轴定位到面向源 GameObject，可以分别输入 &lt;strong&gt;Aim Vector（瞄准向量）&lt;/strong&gt; 的 X、Y、Z 轴为 0、0、1。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Up Vector（竖直向量）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定此 GameObject 的竖直轴。例如，为了指定 GameObject 应该始终将其正 Y 轴指向上方，可以分别为 X、Y、Z 轴输入 &lt;strong&gt;Up Vector（竖直向量）&lt;/strong&gt; 的 0、1、0。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;World Up Type（全局向上类型）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定竖直方向的轴。Aim Constraint 使用此向量来使 GameObject 的竖直轴与向上方向对齐。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Scene Up（场景向上）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;场景的 Y 轴。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Object Up（对象向上）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;通过 &lt;strong&gt;World Up Object（世界向上对象）&lt;/strong&gt; 引用的 GameObject 的 Y 轴。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Object Up Rotation（对象向上旋转）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;通过 &lt;strong&gt;World Up Object（世界向上对象）&lt;strong&gt;引用的 GameObject 的&lt;/strong&gt;World Up Vector（世界向上向量）&lt;/strong&gt; 指定的轴。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Vector（向量）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;World Up Vector（世界向上向量）。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;None（无）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;不使用 World Up 向量。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;World Up Vector（全局向上向量）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定用于 &lt;strong&gt;Object Up Rotation（对象向上旋转）&lt;strong&gt;和&lt;/strong&gt;Vector（向量）&lt;strong&gt;中的&lt;/strong&gt;World Up Type（全局向上类型）&lt;/strong&gt; 的向量。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;World Up Object（全局向上对象）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;指定用于 &lt;strong&gt;Object Up（对象向上）&lt;strong&gt;和&lt;/strong&gt;Object Up Rotation（对象向上旋转）&lt;strong&gt;中的&lt;/strong&gt;World Up Type（全局向上类型）&lt;/strong&gt; 的 GameObject。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Constraint Settings（约束设置）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Lock（锁定）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;启用此设置以允许约束旋转 GameObject。取消选中此属性以编辑此 GameObject 的旋转。您还可以编辑静止时旋转和旋转偏移属性。如果选中了 Is Active，请将 Constraint 更新为您旋转 GameObject 或其源 GameObject 时的静止时旋转或旋转偏移属性。在对更改感到满意时，请选中 Lock 以让 Constraint 控制此 GameObject。此属性对 Play Mode（播放模式）没有影响。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation At Rest（静止时旋转）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;当权重为 0 或相应的冻结旋转轴未选中时使用的 X、Y 和 Z 值。要编辑这些字段，请取消选中 Lock。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Rotation Offset（旋转偏移）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Constraint 计算的旋转的 X、Y 和 Z 偏移量。要编辑这些字段，请取消选中 Lock。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Freeze Rotation Axes（冻结旋转轴）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;选中 X、Y 或 Z 以允许约束控制相应的轴。取消选中轴以阻止约束控制它。这样可以编辑、动画化或脚本化未冻结的轴。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;Sources（源）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。此顺序会影响此约束如何旋转被约束的 GameObject。为了得到您想要的结果，请在此列表中拖放项。每个源的权重范围是 0 到 1。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Constraints(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/09/28/2023-09-28-unity-document-67/</link>
+      <pubDate>Thu, 28 Sep 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/09/28/2023-09-28-unity-document-67/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;约束组件&#34;&gt;约束组件 &lt;a href=&#34;#%e7%ba%a6%e6%9d%9f%e7%bb%84%e4%bb%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;约束组件可以将一个 GameObject 的位置、旋转或缩放与另一个 GameObject 链接起来。被约束的 GameObject 会像它链接的 GameObject 一样移动、旋转或缩放。&lt;/p&gt;
+&lt;p&gt;Unity 支持以下类型的约束组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Aim：将被约束的 GameObject 旋转对准链接的 GameObject。&lt;/li&gt;
+&lt;li&gt;Look At：将被约束的 GameObject 旋转面对链接的 GameObject（简化的 Aim 约束）。&lt;/li&gt;
+&lt;li&gt;Parent：使被约束的 GameObject 随着链接的 GameObject 一起移动和旋转。&lt;/li&gt;
+&lt;li&gt;Position：使被约束的 GameObject 的移动方式与链接的 GameObject 相同。&lt;/li&gt;
+&lt;li&gt;Rotation：使被约束的 GameObject 的旋转方式与链接的 GameObject 相同。&lt;/li&gt;
+&lt;li&gt;Scale：使被约束的 GameObject 的缩放方式与链接的 GameObject 相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;链接到-gameobject&#34;&gt;链接到 GameObject &lt;a href=&#34;#%e9%93%be%e6%8e%a5%e5%88%b0-gameobject&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在约束组件的&lt;strong&gt;Sources&lt;/strong&gt;列表中指定要链接的 GameObject。&lt;/p&gt;
+&lt;p&gt;例如，要使准星跟随一个 2D 射击游戏中的玩家飞船，可以将一个&lt;strong&gt;Position Constraint&lt;/strong&gt;组件添加到准星上。然后，在&lt;strong&gt;Position Constraint&lt;/strong&gt;组件中将玩家飞船的 GameObject 添加到&lt;strong&gt;Sources&lt;/strong&gt;列表中。当玩家移动飞船时，准星会跟随移动。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-28-unity-document-67/ConstraintSourceLinking.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;约束可以链接到多个源 GameObject。在这种情况下，约束会使用源 GameObject 的平均位置、旋转或缩放。例如，要将灯光对准一组 GameObject，可以在灯光的 GameObject 上添加一个&lt;strong&gt;Aim Constraint&lt;/strong&gt;组件。然后，将要照明的 GameObject 添加到&lt;strong&gt;Sources&lt;/strong&gt;列表中。&lt;strong&gt;Aim Constraint&lt;/strong&gt;会将灯光定位到其源对象的平均位置。&lt;/p&gt;
+&lt;p&gt;Unity 按照源 GameObject 在&lt;strong&gt;Sources&lt;/strong&gt;列表中出现的顺序评估它们。对于&lt;strong&gt;Position&lt;/strong&gt;和&lt;strong&gt;Scale Constraint&lt;/strong&gt;，顺序没有影响。但是，对于&lt;strong&gt;Parent&lt;/strong&gt;、&lt;strong&gt;Rotation&lt;/strong&gt;和&lt;strong&gt;Aim Constraint&lt;/strong&gt;，顺序会有影响。为了得到您想要的结果，可以通过拖放方式重新排序&lt;strong&gt;Sources&lt;/strong&gt;列表中的项。&lt;/p&gt;
+&lt;p&gt;您可以约束一系列的 GameObject。例如，您希望小鸭子按照排成一排跟随它们的母鸭。您可以将一个&lt;strong&gt;Position Constraint&lt;/strong&gt;组件添加到 GameObject &lt;em&gt;Duckling1&lt;/em&gt; 上。在&lt;strong&gt;Sources&lt;/strong&gt;列表中，将其链接到&lt;em&gt;MotherDuck&lt;/em&gt;。然后，您可以将一个&lt;strong&gt;Position Constraint&lt;/strong&gt;添加到&lt;em&gt;Duckling2&lt;/em&gt;，它链接到&lt;em&gt;Duckling1&lt;/em&gt;。当&lt;em&gt;MotherDuck&lt;/em&gt; GameObject 在场景中移动时，&lt;em&gt;Duckling1&lt;/em&gt;会跟随&lt;em&gt;MotherDuck&lt;/em&gt;路径，&lt;em&gt;Duckling2&lt;/em&gt;会跟随&lt;em&gt;Duckling1&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;避免创建约束的循环，因为这会导致游戏过程中的不可预测的更新。&lt;/p&gt;
+&lt;h2 id=&#34;设置约束组件属性&#34;&gt;设置约束组件属性 &lt;a href=&#34;#%e8%ae%be%e7%bd%ae%e7%ba%a6%e6%9d%9f%e7%bb%84%e4%bb%b6%e5%b1%9e%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;使用 Inspector 窗口来更改约束中的常见属性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-28-unity-document-67/ConstraintSettings.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用&lt;strong&gt;Weight&lt;/strong&gt;来改变约束的影响力。权重为 1 会导致约束以与源 GameObject 相同的速率更新被约束的 GameObject。权重为 0 会完全取消约束的影响。每个源 GameObject 也有一个独立的权重。&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;Constraint Settings&lt;/strong&gt;中，使用&lt;strong&gt;At Rest&lt;/strong&gt;属性来指定&lt;strong&gt;Weight&lt;/strong&gt;为 0 或相关的&lt;strong&gt;Freeze Axes&lt;/strong&gt;属性未选中时使用的 X、Y 和 Z 值。&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;Constraint Settings&lt;/strong&gt;中使用&lt;strong&gt;Offset&lt;/strong&gt;属性来指定在约束 GameObject 时使用的 X、Y 和 Z 值。&lt;/p&gt;
+&lt;p&gt;使用&lt;strong&gt;Freeze Axes&lt;/strong&gt;设置来切换约束实际可修改的轴。&lt;/p&gt;
+&lt;h2 id=&#34;激活和锁定约束&#34;&gt;激活和锁定约束 &lt;a href=&#34;#%e6%bf%80%e6%b4%bb%e5%92%8c%e9%94%81%e5%ae%9a%e7%ba%a6%e6%9d%9f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;与约束一起工作有两个方面：激活和锁定。&lt;/p&gt;
+&lt;p&gt;您可以激活约束以允许其评估被约束的 GameObject 的位置、旋转或缩放。Unity 不会评估处于非活动状态的约束。&lt;/p&gt;
+&lt;p&gt;您可以锁定约束以允许其移动、旋转或缩放 GameObject。锁定约束会控制 GameObject 的变换的相关部分。您不能手动移动、旋转或缩放具有锁定约束的 GameObject。您也无法编辑&lt;strong&gt;Constraint Settings&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;要手动编辑 GameObject 的位置、旋转或缩放，请解锁其约束。如果在解锁时约束处于活动状态，那么在移动、旋转或缩放被约束的 GameObject 或其源 GameObject 时，约束会自动更新&lt;strong&gt;Constraint Settings&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;当您向一个 GameObject 添加约束组件时，默认情况下约束是非活动且未锁定的。这使您可以在激活和锁定约束之前对被约束的 GameObject 和源 GameObject 的位置、旋转和缩放进行微调。&lt;/p&gt;
+&lt;p&gt;为了方便起见，&lt;strong&gt;Activate&lt;/strong&gt;和&lt;strong&gt;Zero&lt;/strong&gt;按钮会自动更新&lt;strong&gt;Constraint Settings&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Activate&lt;/strong&gt;：保存与源 GameObject 的当前偏移，然后激活和锁定被约束的 GameObject。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zero&lt;/strong&gt;：将位置、旋转或缩放重置为与源 GameObject 匹配，然后激活和锁定被约束的 GameObject。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;动画和组合约束&#34;&gt;动画和组合约束 &lt;a href=&#34;#%e5%8a%a8%e7%94%bb%e5%92%8c%e7%bb%84%e5%90%88%e7%ba%a6%e6%9d%9f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;使用&lt;strong&gt;动画剪辑&lt;/strong&gt;来修改被约束的 GameObject 链接到的源 GameObject。当动画修改源 GameObject 时，约束会修改被约束的 GameObject。&lt;/p&gt;
+&lt;p&gt;您还可以在约束组件中动画化属性。例如，使用 Parent 约束来将角色的剑从手持位置移动到背部。首先，在剑的 GameObject 上添加一个 Parent 约束。在&lt;strong&gt;Sources&lt;/strong&gt;列表中，将约束链接到角色的手和角色的脊柱。为了对剑进行动画化，为每个源的权重添加关键帧。为了将剑从背部移动到手中，添加关键帧将手的权重从 0 变为 1，并为脊柱的权重从 1 变为 0。&lt;/p&gt;
+&lt;p&gt;您可以在同一个 GameObject 上添加多种约束组件。当更新 GameObject 时，Unity 会按照它们在 Inspector 窗口中的顺序从头到尾评估约束组件。一个 GameObject 只能包含一种相同类型的约束组件。例如，您不能添加多个 Position Constraint。&lt;/p&gt;
+&lt;h2 id=&#34;导入约束&#34;&gt;导入约束 &lt;a href=&#34;#%e5%af%bc%e5%85%a5%e7%ba%a6%e6%9d%9f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当从 Autodesk® Maya® 和 MotionBuilder® 导入 FBX 文件到 Unity 编辑器时，您可以包含约束。在导入设置窗口的动画选项卡中，选中&lt;strong&gt;导入约束&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-09-28-unity-document-67/ConstraintImport.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于 FBX 文件中的每个约束，Unity 会自动添加相应的约束组件并将其链接到正确的 GameObject。&lt;/p&gt;
+&lt;h2 id=&#34;添加和编辑约束&#34;&gt;添加和编辑约束 &lt;a href=&#34;#%e6%b7%bb%e5%8a%a0%e5%92%8c%e7%bc%96%e8%be%91%e7%ba%a6%e6%9d%9f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;添加约束组件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择要约束的 GameObject。&lt;/li&gt;
+&lt;li&gt;在&lt;strong&gt;Inspector&lt;/strong&gt;窗口中，单击&lt;strong&gt;添加组件&lt;/strong&gt;，搜索要添加的约束类型，然后单击进行添加。&lt;/li&gt;
+&lt;li&gt;要向新的约束中添加源 GameObject，请将该 GameObject 从 Hierarchy（或 Scene 视图）拖动到&lt;strong&gt;Sources&lt;/strong&gt;列表中。&lt;/li&gt;
+&lt;li&gt;移动、旋转或缩放被约束的 GameObject 和其源 GameObject。&lt;/li&gt;
+&lt;li&gt;要激活约束，请单击&lt;strong&gt;激活&lt;/strong&gt;或&lt;strong&gt;零&lt;/strong&gt;，或勾选&lt;strong&gt;活动&lt;/strong&gt;和&lt;strong&gt;锁定&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;编辑约束组件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在编辑器中选择被约束的 GameObject。&lt;/li&gt;
+&lt;li&gt;要调整&lt;strong&gt;静止状态&lt;/strong&gt;或&lt;strong&gt;偏移&lt;/strong&gt;字段，请使用 Inspector 窗口展开&lt;strong&gt;约束设置&lt;/strong&gt;，取消选中&lt;strong&gt;锁定&lt;/strong&gt;，然后编辑值。&lt;/li&gt;
+&lt;li&gt;要指定约束更新的轴，请展开&lt;strong&gt;约束设置&lt;/strong&gt;，然后选中&lt;strong&gt;冻结轴&lt;/strong&gt;中的属性。&lt;/li&gt;
+&lt;li&gt;要向约束中添加源 GameObject：
+&lt;ul&gt;
+&lt;li&gt;如果在 Sources 列表中没有空槽，请单击列表底部的 “+”。&lt;/li&gt;
+&lt;li&gt;从场景中将您想要用作约束源的 GameObject 拖动到&lt;strong&gt;Sources&lt;/strong&gt;列表中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;要删除源 GameObject，请在&lt;strong&gt;Sources&lt;/strong&gt;列表中选择它，然后单击列表底部的减号符（“-”）。&lt;/li&gt;
+&lt;li&gt;要重新排序&lt;strong&gt;Sources&lt;/strong&gt;列表中的源 GameObject，请单击每个要移动的 GameObject 左侧的双栏图标，并将其上移或下移。
+&lt;strong&gt;注意：在Sources&lt;/strong&gt;列表中，顺序对于 Position、Rotation 和 Scale Constraints 没有影响。然而，顺序会影响 Parent 和 Aim Constraints 如何移动或旋转 GameObject。&lt;/li&gt;
+&lt;li&gt;勾选&lt;strong&gt;活动&lt;/strong&gt;和&lt;strong&gt;锁定&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay Layers Layers and layerMasks(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/09/27/2023-09-27-unity-document-66/</link>

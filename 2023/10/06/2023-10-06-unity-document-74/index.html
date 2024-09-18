@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-06 11:13:34 &#43;0800 CST">2023/10/06</time>
+        <span class="split">·</span>
+        <span> 82 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="rotation-and-orientation-in-unity">Rotation and orientation in Unity <a href="#rotation-and-orientation-in-unity" class="anchor">🔗</a></h1><p>Unity 使用左手坐标系统。在 Unity 中，你可以使用欧拉角和<strong>四元数</strong>表示旋转和方向。这些表示方法是等效的，但在使用和限制方面有所不同。</p>
+<p>通常，你可以使用<strong>Transform 组件</strong>在你的<strong>场景</strong>中旋转物体，它将方向显示为欧拉角。然而，Unity 在内部存储旋转和方向时使用四元数，这对于更复杂的动作可能会导致万向锁很有用。</p>
+<h2 id="左手坐标系统">左手坐标系统 <a href="#%e5%b7%a6%e6%89%8b%e5%9d%90%e6%a0%87%e7%b3%bb%e7%bb%9f" class="anchor">🔗</a></h2><p><img src="/2023-10-06-unity-document-74/unity-axis-with-rotation.png" alt=""></p>
+<p>Unity 的左手坐标系的轴表示，显示了从正 x 轴到正 y 轴的旋转方向，在沿着正 z 轴的方向观察时，方向是逆时针的。</p>
+<p>坐标系描述了三维空间中物体的位置。Unity 使用左手坐标系：正 x 轴指向右侧，正 y 轴指向上方，正 z 轴指向前方。Unity 的左手坐标系意味着从正 x 轴到正 y 轴的旋转方向是逆时针的，在沿着正 z 轴的方向观察时。</p>
+<h2 id="欧拉角">欧拉角 <a href="#%e6%ac%a7%e6%8b%89%e8%a7%92" class="anchor">🔗</a></h2><p>在 Transform 坐标中，Unity 使用属性<code>Transform.eulerAngles</code>的 X、Y 和 Z 来显示旋转。与普通向量不同，这些值实际上表示围绕 X、Y 和 Z 轴旋转的角度（以度为单位）。</p>
+<p>欧拉角旋转执行三次围绕三个轴的独立旋转。Unity 按 z 轴、x 轴和 y 轴的顺序依次执行欧拉角旋转。这种旋转方法是外旋转；在旋转发生时，原始坐标系不会改变。</p>
+<p>要旋转一个<strong>GameObject</strong>，你可以在 Transform 组件中输入每个轴旋转的角度值。要使用脚本旋转你的游戏对象，可以使用<code>Transform.eulerAngles</code>。如果你将旋转值转换为欧拉角来进行计算和旋转，可能会出现万向锁的问题。</p>
+<h3 id="万向锁">万向锁 <a href="#%e4%b8%87%e5%90%91%e9%94%81" class="anchor">🔗</a></h3><p>当一个物体在三维空间中失去一个自由度，只能在两个维度内旋转时，称为万向锁。欧拉角在两个轴变得平行时，可能会发生万向锁。如果你在脚本中不将旋转值转换为欧拉角，使用四元数应该可以避免万向锁。</p>
+<p>如果你在万向锁方面遇到问题，可以避免使用欧拉角，而是使用<code>Transform.RotateAround</code>进行旋转。你还可以在每个轴上使用<code>Quaternion.AngleAxis</code>，然后将它们相乘（四元数乘法依次应用每个旋转）。</p>
+<h2 id="四元数">四元数 <a href="#%e5%9b%9b%e5%85%83%e6%95%b0" class="anchor">🔗</a></h2><p>四元数为三维空间中的空间方向和旋转提供了数学表示。四元数使用四个数字来编码在三维中围绕单位轴的旋转方向和角度。这四个值是复数，而不是角度或度数。你可以详细了解四元数的数学知识。</p>
+<p>Unity 将旋转值转换为四元数存储，因为四元数旋转的计算效率高且稳定。Unity 编辑器不显示四元数作为旋转，因为单个四元数无法表示大于 360 度的旋转。</p>
+<p>如果你使用 Quaternion 类，可以直接使用四元数。如果在脚本中进行旋转，可以使用 Quaternion 类和函数来创建和改变旋转值。你可以将值应用到旋转中作为欧拉角，但你需要将它们存储为四元数以避免问题。</p>
+<h2 id="欧拉角和四元数之间的转换">欧拉角和四元数之间的转换 <a href="#%e6%ac%a7%e6%8b%89%e8%a7%92%e5%92%8c%e5%9b%9b%e5%85%83%e6%95%b0%e4%b9%8b%e9%97%b4%e7%9a%84%e8%bd%ac%e6%8d%a2" class="anchor">🔗</a></h2><p>为了在你喜欢的方式中查看和编辑旋转，你可以使用脚本进行欧拉角和四元数之间的转换：</p>
+<ul>
+<li>从欧拉角转换为四元数，可以使用<code>Quaternion.Euler</code>函数。</li>
+<li>将四元数转换为欧拉角，可以使用<code>Quaternion.eulerAngles</code>函数。</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/05/2023-10-05-unity-document-73/">Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/04/2023-10-04-unity-document-72/">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/03/2023-10-03-unity-document-71/">Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/02/2023-10-02-unity-document-70/">Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(84)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (77)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

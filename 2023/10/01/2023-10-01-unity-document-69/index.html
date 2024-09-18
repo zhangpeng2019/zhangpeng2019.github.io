@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Constraints Look At Constraints(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Constraints Look At Constraints(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-01 11:13:34 &#43;0800 CST">2023/10/01</time>
+        <span class="split">·</span>
+        <span> 166 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="look-at-constraints">Look At Constraints <a href="#look-at-constraints" class="anchor">🔗</a></h1><p>Look At Constraint 是一个用于旋转 GameObject 使其面向源 GameObject 的约束组件。通常情况下，您可以将 Look At Constraint 应用于相机，以跟随一个或多个 GameObject。此外，如果导入了 Target Camera，Unity 将创建一个使用目标对象作为源的 Look At Constraint 的相机。</p>
+<p>Look At 是 Aim Constraint 的简化版本。Aim Constraint 允许您选择跟随约束 GameObject 的哪个轴，而 Look At Constraint 始终跟随 z 轴。</p>
+<p>您可以通过将其设置为另一个 GameObject 的 y 轴来指定 Look At Constraint 的向上方向，或者可以指定一个绕 z 轴（瞄准轴）旋转的 roll。</p>
+<p><img src="/2023-10-01-unity-document-69/class-LookAtConstraint.png" alt=""></p>
+<h3 id="属性">属性 <a href="#%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Is Active（是否激活）</strong></td>
+<td style="text-align:left">启用此选项以评估约束。要应用约束，请启用 <strong>Lock（锁定）</strong> 属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Weight（权重）</strong></td>
+<td style="text-align:left">设置约束的强度。有效值范围从 0（约束无效）到 1（此 GameObject 以与其源 GameObject 相同的速率旋转）。此权重值会对所有源 GameObject 产生相同的影响，但您还可以在 <strong>Sources（源）</strong> 列表中单独更改每个 GameObject 的权重。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Up Object（使用向上对象）</strong></td>
+<td style="text-align:left">启用此选项以将此 GameObject 的上向量设置为 <strong>World Up Object（全局向上对象）<strong>的 y 轴。如果禁用此选项，则上向量将设置为</strong>Roll（倾斜）</strong> 值。GameObject 的上向量确定了哪个方向是向上。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Roll（倾斜）</strong></td>
+<td style="text-align:left">设置绕 z 轴的旋转角度（向上方向）的度数。仅当禁用 <strong>Use Up Object（使用向上对象）</strong> 时才可用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>World Up Object（全局向上对象）</strong></td>
+<td style="text-align:left">设置您要用作向上向量参考的 GameObject 的引用。设置后，此向上向量 GameObject 的 y 轴将成为被约束的 GameObject 的向上方向。仅当启用 <strong>Use Up Object（使用向上对象）</strong> 时才可用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Constraint Settings（约束设置）</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Lock（锁定）</strong></td>
+<td style="text-align:left">启用此选项以让约束旋转 GameObject（应用约束）。如果禁用此选项，则可以修改 GameObject 的旋转、<strong>Rotation At Rest（静止时旋转）<strong>和</strong>Rotation Offset（旋转偏移）</strong> 属性。在对更改感到满意时，请选中 Lock 以让约束控制此 GameObject。此属性对 Play Mode（播放模式）没有影响。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Rotation At Rest（静止时旋转）</strong></td>
+<td style="text-align:left">设置被约束的 GameObject 在 X、Y 和 Z 方向上静止时的方向。当总权重（包括所有源的个体权重）加起来为 0 时，GameObject 是静止的。要修改此属性，请取消选中<strong>Lock（锁定）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Rotation Offset（旋转偏移）</strong></td>
+<td style="text-align:left">设置从被约束方向（约束计算的旋转）的偏移量，以 X、Y 和 Z 表示。要修改此属性，请取消选中<strong>Lock（锁定）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sources（源）</strong></td>
+<td style="text-align:left">约束此 GameObject 的 GameObject 列表。Unity 按照它们在此列表中出现的顺序评估源 GameObject。顺序会影响此约束如何旋转被约束的 GameObject，因为旋转会累积。为了得到您想要的结果，请在此列表中拖放项。不同的顺序会导致不同的结果。列表中的每个条目包含对 GameObject 的引用和其权重（即约束中的影响力）。Unity 会计算此列表中源 GameObject 的平均值，并且您可以通过更改每个源的权重来调整其影响力。例如，如果有两个源（一个立方体和一个球体），并且您希望相机更多地关注球体，可以将球体的权重设置为 1（最大值），将立方体的权重设置为 0.5。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2023-10-01-unity-document-69/class-LookAtConstraint_Example.png" alt=""></p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/05/2023-10-05-unity-document-73/">Unity中文版-Create Gameplay Constraints Scale Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/04/2023-10-04-unity-document-72/">Unity中文版-Create Gameplay Constraints Rotation Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/03/2023-10-03-unity-document-71/">Unity中文版-Create Gameplay Constraints Position Constraints(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/02/2023-10-02-unity-document-70/">Unity中文版-Create Gameplay Constraints Parent Constraints(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(84)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (77)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
