@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Cross-Platform Publishing Builds(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Cross-Platform Publishing Builds(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-10 11:13:34 &#43;0800 CST">2023/10/10</time>
+        <span class="split">·</span>
+        <span> 189 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="发布构建"><strong>发布构建</strong> <a href="#%e5%8f%91%e5%b8%83%e6%9e%84%e5%bb%ba" class="anchor">🔗</a></h1><p>构建设置窗口包含了发布应用程序到各种平台所需的所有设置和选项。通过该窗口，你可以创建一个<strong>开发构建</strong>来测试你的应用程序，以及发布最终构建。要调整应用程序构建的发布设置，请转到<strong>File</strong> &gt; <strong>Build Settings</strong>。</p>
+<p><img src="/2023-10-10-unity-document-78/BuildSettings_01.png" alt=""></p>
+<p>使用<strong>构建中的场景</strong>面板来管理 Unity 在构建中包含的场景。你可以使用窗口的<strong>平台</strong>部分选择要构建的平台，并调整特定的设置，如<strong>压缩方法</strong>。这些选项取决于你选择的平台。更多信息，请参阅构建设置的文档。</p>
+<p>选择<strong>构建</strong>或<strong>构建并运行</strong>按钮开始构建过程。</p>
+<p>通过出现的保存对话框，你可以为应用程序选择一个名称和保存位置。<strong>注意</strong>：取决于你构建的平台，Unity 可能只会提示你选择一个文件夹。</p>
+<p>当你选择<strong>保存</strong>按钮时，Unity 将构建你的应用程序。如果你不确定要保存构建到哪里，可以考虑在你的根文件夹中创建一个子文件夹来保存你的构建。你不能将构建保存到 Assets 文件夹中。</p>
+<h2 id="关于使用-unity-构建游戏的更多信息">关于使用 Unity 构建游戏的更多信息 <a href="#%e5%85%b3%e4%ba%8e%e4%bd%bf%e7%94%a8-unity-%e6%9e%84%e5%bb%ba%e6%b8%b8%e6%88%8f%e7%9a%84%e6%9b%b4%e5%a4%9a%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h2><p>要了解有关构建场景的更多信息，请参阅有关创建场景的文档。</p>
+<p>要了解更多关于脚本的信息，请参阅有关脚本的文档。</p>
+<p>要了解更多关于创建艺术和导入资源的信息，请参阅有关资源工作流的文档。</p>
+<p>要与 Unity 用户和开发者互动，请访问 Unity 论坛。</p>
+<h1 id="减小构建文件大小">减小构建文件大小 <a href="#%e5%87%8f%e5%b0%8f%e6%9e%84%e5%bb%ba%e6%96%87%e4%bb%b6%e5%a4%a7%e5%b0%8f" class="anchor">🔗</a></h1><p>保持构建应用程序的文件大小最小化是非常重要的，尤其是对于移动设备或对于强加尺寸限制的应用商店。减小大小的第一步是确定哪些资源对文件大小有最大贡献，因为这些资源最有可能进行优化。在执行构建后，这些信息可以在编辑器日志中找到。打开控制台窗口（菜单： <strong>Window</strong> &gt; <strong>General</strong> &gt; <strong>Console</strong>），点击右上角的小下拉面板，选择 <strong>打开编辑器日志</strong>。</p>
+<p><img src="/2023-10-10-unity-document-78/FileSizeOptimization.png" alt=""></p>
+<p>编辑器日志提供了按类型分类的资源摘要，并按贡献大小的顺序列出了所有的个别资源。通常，像纹理、声音和动画占用的存储空间最多，而脚本、关卡和着色器的影响通常较小。列表中提到的<strong>文件头</strong>不是资源，实际上是添加到 “原始” 资源文件中的额外数据，用于存储引用和设置。文件头通常对资源大小几乎没有影响，但如果资源文件夹中有大量大型资源，则该值可能会很大。</p>
+<p>编辑器日志帮助您识别可能要删除或优化的资源，但在开始之前，应考虑以下几点：</p>
+<ul>
+<li>Unity 将导入的资源重新编码为其自己的内部格式，因此源资源类型的选择并不重要。例如，如果项目中有一个多层的 Photoshop 纹理，它在构建之前会被压平和压缩。将纹理导出为.png 文件对构建大小没有任何影响，因此您在开发过程中应使用最方便的格式。</li>
+<li>Unity 在构建过程中会删除大多数未使用的资源，因此手动从项目中删除资源并不会有任何效果。唯一不会被删除的资源是脚本（通常非常小）和资源文件夹中的资源（因为 Unity 无法确定哪些资源是需要的，哪些不需要的） 。在此情况下，您应确保资源文件夹中只包含游戏所需的资源。您可能可以将资源文件夹中的资源替换为 AssetBundle - 这意味着 Unity 动态加载资源，从而减小了播放器的大小。</li>
+</ul>
+<h2 id="减小构建大小的建议">减小构建大小的建议 <a href="#%e5%87%8f%e5%b0%8f%e6%9e%84%e5%bb%ba%e5%a4%a7%e5%b0%8f%e7%9a%84%e5%bb%ba%e8%ae%ae" class="anchor">🔗</a></h2><h3 id="纹理">纹理 <a href="#%e7%ba%b9%e7%90%86" class="anchor">🔗</a></h3><p>纹理通常占据构建的大部分空间。首先，可以使用压缩的纹理格式来减小文件大小。有关平台特定的纹理压缩的更多信息，请参阅文档。</p>
+<p>如果这样还不能减小文件大小，请尝试减小纹理图像的物理尺寸（以像素为单位）。为了在不修改实际源内容的情况下进行操作，选中项目视图中的纹理，在<strong>检查器</strong>窗口中减小<strong>最大尺寸</strong>。为了在游戏中看到效果，放大使用纹理的<strong>GameObject</strong>，然后调整<strong>最大尺寸</strong>，直到在<strong>场景</strong>视图中开始变得更差。更改最大纹理大小不会影响纹理资源本身，只会影响游戏中的分辨率。</p>
+<p><img src="/2023-10-10-unity-document-78/FileSizeOptimizationTexture.png" alt=""></p>
+<p>更改最大纹理大小不会影响纹理资源本身，只会影响游戏中的分辨率</p>
+<p>默认情况下，Unity 在导入时会对所有纹理进行压缩。为了在编辑器中提高工作流程的速度，可以在 <strong>Unity</strong> &lt; <strong>Preferences</strong> 中取消选中<strong>导入时压缩资源</strong>的复选框。不管此设置如何，所有纹理都会在构建中进行压缩。</p>
+<h3 id="网格和动画">网格和动画 <a href="#%e7%bd%91%e6%a0%bc%e5%92%8c%e5%8a%a8%e7%94%bb" class="anchor">🔗</a></h3><p>你可以对网格和导入的动画剪辑进行压缩，以便在游戏文件中占用更少的空间。为了启用<strong>网格压缩</strong>，选中网格，然后在检查器窗口中将<strong>网格压缩</strong>设置为<strong>低</strong>、<strong>中</strong>或<strong>高</strong>。网格和<strong>动画压缩</strong>使用量化，这意味着它占用的空间较小，但压缩可能会引入一些不准确性。试验一下哪种压缩级别对你的模型来说是可接受的。</p>
+<p>请注意，网格压缩只会生成较小的数据文件，并不会在运行时使用更少的内存。动画<strong>关键帧</strong>缩减会生成较小的数据文件，并在运行时使用较少的内存；通常应始终启用它。有关此信息的更多详细信息，请参阅有关动画剪辑的文档。</p>
+<h3 id="减小net-库的大小">减小.NET 库的大小 <a href="#%e5%87%8f%e5%b0%8fnet-%e5%ba%93%e7%9a%84%e5%a4%a7%e5%b0%8f" class="anchor">🔗</a></h3><p>Unity 支持两个.NET API 兼容级别：.NET 4.x 和.NET Standard 2.0。.NET Standard 2.0 仅限于较小的.NET API 子集，这有助于减小文件大小。</p>
+<h1 id="构建玩家流程">构建玩家流程 <a href="#%e6%9e%84%e5%bb%ba%e7%8e%a9%e5%ae%b6%e6%b5%81%e7%a8%8b" class="anchor">🔗</a></h1><p>在构建播放器时，有时您希望以某种方式修改构建的播放器。例如，您可能希望添加自定义图标，将一些文档复制到播放器旁边，或构建一个安装程序。您可以通过编辑器脚本使用 BuildPipeline.BuildPlayer 来运行构建，然后跟随所需的任何后处理代码：</p>
+<pre tabindex="0"><code>// C# example.
+using UnityEditor;
+using System.Diagnostics;
+
+public class ScriptBatch 
+{
+    [MenuItem(&#34;MyTools/Windows Build With Postprocess&#34;)]
+    public static void BuildGame ()
+    {
+        // Get filename.
+        string path = EditorUtility.SaveFolderPanel(&#34;Choose Location of Built Game&#34;, &#34;&#34;, &#34;&#34;);
+        string[] levels = new string[] {&#34;Assets/Scene1.unity&#34;, &#34;Assets/Scene2.unity&#34;};
+
+        // Build player.
+        BuildPipeline.BuildPlayer(levels, path + &#34;/BuiltGame.exe&#34;, BuildTarget.StandaloneWindows, BuildOptions.None);
+
+        // Copy a file from the project folder to the build folder, alongside the built game.
+        FileUtil.CopyFileOrDirectory(&#34;Assets/Templates/Readme.txt&#34;, path + &#34;Readme.txt&#34;);
+
+        // Run the game (Process class from System.Diagnostics).
+        Process proc = new Process();
+        proc.StartInfo.FileName = path + &#34;/BuiltGame.exe&#34;;
+        proc.Start();
+    }
+}
+</code></pre><h2 id="postprocessbuild-属性">PostProcessBuild 属性 <a href="#postprocessbuild-%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><p>您还可以使用 PostProcessBuildAttribute 的 postprocessOrder 参数为构建方法定义执行顺序，并在这些方法中使用 Process 类调用外部<strong>脚本</strong>，如最后一节所示。此参数用于从低到高对构建方法进行排序，并且您可以为其赋予任何负值或正值。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/10/2023-10-10-unity-document-78/">Unity中文版-Create Gameplay Cross-Platform Publishing Builds(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/09/2023-10-09-unity-document-77/">Unity中文版-Create Gameplay Cross-Platform Considerations(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/08/2023-10-08-unity-document-76/">Unity中文版-Create Gameplay Cameras(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/07/2023-10-07-unity-document-75/">Unity中文版-Create Gameplay Lights(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(88)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (81)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

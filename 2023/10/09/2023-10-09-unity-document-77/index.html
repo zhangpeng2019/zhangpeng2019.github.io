@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Cross-Platform Considerations(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Cross-Platform Considerations(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-09 11:13:34 &#43;0800 CST">2023/10/09</time>
+        <span class="split">·</span>
+        <span> 121 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="跨平台注意事项">跨平台注意事项 <a href="#%e8%b7%a8%e5%b9%b3%e5%8f%b0%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="anchor">🔗</a></h1><p>大多数 Unity 的 API 和项目结构对于所有支持的平台都是相同的，有时候一个项目可以重新构建以在不同的设备上运行。然而，硬件和部署方法上的基本差异意味着项目的某些部分可能不能在不同平台之间移植而不需要进行更改。本页面列出了一些常见的跨平台问题以及解决方案的建议。</p>
+<h2 id="输入">输入 <a href="#%e8%be%93%e5%85%a5" class="anchor">🔗</a></h2><p>不同平台之间行为差异最明显的示例是硬件提供的输入方法。</p>
+<h3 id="键盘和手柄">键盘和手柄 <a href="#%e9%94%ae%e7%9b%98%e5%92%8c%e6%89%8b%e6%9f%84" class="anchor">🔗</a></h3><p><strong>Input.GetAxis</strong>函数在桌面平台上很方便，可以将键盘和手柄的输入进行组合。但是，在依赖触摸屏幕输入的移动平台上，这个函数并不适用。标准的桌面键盘输入只适用于将键入文本移植到移动设备上。如果你考虑将来移植到其他平台，可以在你的输入代码中添加一个抽象层。例如，如果你正在制作一款驾驶游戏，那么你可以创建自己的输入类，并在自己的函数中封装 Unity API 调用：</p>
+<pre tabindex="0"><code>// Returns values in the range -1.0 .. +1.0 (== left .. right).
+function Steering() {
+    return Input.GetAxis(&#34;Horizontal&#34;);
+}
+
+
+// Returns values in the range -1.0 .. +1.0 (== accel .. brake).
+function Acceleration() {
+    return Input.GetAxis(&#34;Vertical&#34;);
+}
+
+
+var currentGear: int;
+
+// Returns an integer corresponding to the selected gear.
+function Gears() {
+    if (Input.GetKeyDown(&#34;p&#34;))
+        currentGear++;
+    else if (Input.GetKeyDown(&#34;l&#34;))
+        currentGear--;
+
+    return currentGear;
+}
+</code></pre><p>将 API 调用封装在一个类中，可以将它们置于一个单独的源文件中，并使调用易于定位和替换。你应该根据你的游戏中输入的逻辑含义来设计你的输入函数。这有助于将游戏的其余代码与特定平台使用的输入方法隔离开来。</p>
+<p>例如，你可以修改上面的 Gears 函数，使实际的输入来自移动设备屏幕上的触摸。使用整数表示所选择的档位适用于所有平台，但如果将平台特定的 API 调用与代码的其余部分混合在一起，可能会导致问题。你还可以使用平台相关编译来将不同实现的输入函数组合在同一个源文件中，避免手动交换。</p>
+<h3 id="触摸和点击">触摸和点击 <a href="#%e8%a7%a6%e6%91%b8%e5%92%8c%e7%82%b9%e5%87%bb" class="anchor">🔗</a></h3><p><strong>Input.GetMouseButtonXXX</strong>函数的设计在移动设备上有明显的解释。屏幕将简单的触摸报告为左键点击，<strong>Input.mousePosition</strong>属性提供触摸的位置，只要手指触摸屏幕。具有简单鼠标交互的游戏通常可以在桌面和移动平台之间透明地工作。</p>
+<p>转换通常没有这么简单。例如，桌面游戏可以使用多个鼠标按钮，而移动游戏可以同时检测到屏幕上的多个触摸。为了帮助管理这些，您可以用逻辑值来表示输入，然后由游戏的其他代码使用这些值。</p>
+<p>例如，你可以用桌面上的 +/- 按键来替代移动设备上的捏合手势进行缩放；输入函数可以返回一个浮点值，指定缩放因子。同样，你可以通过移动设备上的两指点击来替代桌面上的右键点击。然而，如果输入设备的属性是游戏的一个重要部分，那么就可能无法在不同平台上进行重新模拟。这可能意味着你无法移植游戏，或者需要对输入或游戏玩法进行广泛修改。</p>
+<h3 id="加速度计罗盘陀螺仪和-gps">加速度计、罗盘、陀螺仪和 GPS <a href="#%e5%8a%a0%e9%80%9f%e5%ba%a6%e8%ae%a1%e7%bd%97%e7%9b%98%e9%99%80%e8%9e%ba%e4%bb%aa%e5%92%8c-gps" class="anchor">🔗</a></h3><p>这些输入来源于手持设备的便携性，因此在桌面上可能没有任何有意义的等效物。然而，有些用例仅仅是为了简单地复制标准的游戏控制，并且在移植时容易实现。例如，一个驾驶游戏可以根据移动设备的倾斜（通过加速度计确定）来实现转向控制。在这种情况下，输入 API 调用通常很容易更改，因此可以将加速度计输入替换为按键。</p>
+<p>但是，可能需要重新校准输入或调整游戏难度以适应不同的输入方法。倾斜设备比按键操作更慢且更费力，这使得难以集中注意力在显示上。这可能会使得在移动设备上掌握游戏变得更加困难，因此可能适当降低游戏速度或让每个关卡的时间更长。这需要设计游戏代码来调整这些因素。</p>
+<h2 id="存储器存储和-cpu-性能">存储器、存储和 CPU 性能 <a href="#%e5%ad%98%e5%82%a8%e5%99%a8%e5%ad%98%e5%82%a8%e5%92%8c-cpu-%e6%80%a7%e8%83%bd" class="anchor">🔗</a></h2><p>移动设备可用的存储空间、内存和 CPU 功率都比台式机低，因此一个游戏可能很难移植，因为它在低功率硬件上的性能不能满足要求。如果你的台式机硬件已经达到了极限，那么这个游戏可能不适合移植到移动平台上。</p>
+<h3 id="存储需求">存储需求 <a href="#%e5%ad%98%e5%82%a8%e9%9c%80%e6%b1%82" class="anchor">🔗</a></h3><p>视频、音频和纹理可能占用大量的存储空间。如果要移植游戏，就需要有效地管理存储空间。存储空间（通常也对应于下载时间）在台式机上通常不是问题，但在移动设备上可能有限。移动应用商店通常对提交产品的最大大小有限制。在游戏开发过程中，可能需要一些规划来解决这些问题。</p>
+<p>例如，你可能需要为移动设备提供简化版本的资源以节省空间。另一个可能性是，游戏可能需要设计成可以按需下载大型资源，而不是作为应用程序的初始下载的一部分。</p>
+<h3 id="自动内存管理">自动内存管理 <a href="#%e8%87%aa%e5%8a%a8%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86" class="anchor">🔗</a></h3><p>Unity 会自动处理来自 “死” 对象的未使用内存的回收，通常在桌面机器上几乎不会被注意到。然而，移动设备上较低的内存和 CPU 功率意味着垃圾回收可能更加频繁，影响性能并导致游戏中不必要的暂停。即使游戏在有效的内存中运行，也可能需要优化代码以避免垃圾回收暂停。</p>
+<p>有关更多信息，请参阅内存管理页面。</p>
+<h3 id="cpu-功率">CPU 功率 <a href="#cpu-%e5%8a%9f%e7%8e%87" class="anchor">🔗</a></h3><p>在台式机上运行良好的游戏可能在移动设备上出现帧率低下的情况，因为移动 CPU 无法处理复杂的游戏。当项目移植到移动平台时，要注意代码的效率。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/10/2023-10-10-unity-document-78/">Unity中文版-Create Gameplay Cross-Platform Publishing Builds(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/09/2023-10-09-unity-document-77/">Unity中文版-Create Gameplay Cross-Platform Considerations(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/08/2023-10-08-unity-document-76/">Unity中文版-Create Gameplay Cameras(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/07/2023-10-07-unity-document-75/">Unity中文版-Create Gameplay Lights(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/06/2023-10-06-unity-document-74/">Unity中文版-Create Gameplay Rotation and orientation in Unity(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(88)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (81)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
