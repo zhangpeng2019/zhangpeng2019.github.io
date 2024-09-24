@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-15 11:13:34 &#43;0800 CST">2023/10/15</time>
+        <span class="split">·</span>
+        <span> 335 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="快捷键管理器">快捷键管理器 <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e7%ae%a1%e7%90%86%e5%99%a8" class="anchor">🔗</a></h1><p>快捷键管理器允许您查看和管理 Unity 中的键盘快捷键。</p>
+<p>快捷键是绑定到 Unity 命令的任何键或键组合。命令是在编辑器中执行的操作。例如，“R” 键绑定到在 “场景” 视图中激活 “缩放” 工具的命令。</p>
+<p>您可以从 Unity 的主菜单中访问快捷键管理器：</p>
+<ul>
+<li>在 Windows 和 Linux 上，选择 <strong>Edit &gt; Shortcuts</strong>.</li>
+<li>在 macOS 上，选择 <strong>Unity &gt; Shortcuts</strong>.</li>
+</ul>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManager.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A</strong></td>
+<td><strong>配置文件下拉菜单：</strong> 允许您管理和在不同的快捷键配置文件之间切换。有关详细信息，请参见快捷键配置文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B</strong></td>
+<td><strong>键位映射：</strong> 显示分配给命令的键以及它们所分配的命令。有关详细信息，请参见键位映射。您还可以使用键位映射来管理快捷键。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>C</strong></td>
+<td><strong>类别列表：</strong> 命令按类别排序，这些类别显示在 “类别” 列表中。当您选择一个类别时，它的命令将出现在右侧的 “命令” 列表中。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>D</strong></td>
+<td><strong>命令和快捷键列表：</strong> 列出了所选类别中的所有命令及其分配的快捷键。有关详细信息，请参见命令列表。您还可以使用命令列表来管理快捷键。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="将快捷键分配给全局命令和上下文命令">将快捷键分配给全局命令和上下文命令 <a href="#%e5%b0%86%e5%bf%ab%e6%8d%b7%e9%94%ae%e5%88%86%e9%85%8d%e7%bb%99%e5%85%a8%e5%b1%80%e5%91%bd%e4%bb%a4%e5%92%8c%e4%b8%8a%e4%b8%8b%e6%96%87%e5%91%bd%e4%bb%a4" class="anchor">🔗</a></h3><p>Unity 命令可以是全局的或上下文的。</p>
+<p>全局命令始终可用。例如，默认情况下，撤消操作的命令分配给<strong>Ctrl/Cmd + Z</strong>快捷键。使用该快捷键始终撤消最后的操作，而不管哪些窗口打开和哪些工具处于活动状态。</p>
+<p>上下文命令仅在使用特定视图或工具集时起作用。例如，默认情况下，方括号键 “[” 和 “]” 在 “地形” 工具中分配了一组命令，在网格绘制工具中分配了另一组命令。当您按下这两个键时，Unity 会执行活动工具的命令。</p>
+<p>通常情况下，您将为一个全局命令分配一个快捷键，或者为多个上下文命令（来自不同上下文）分配一个快捷键。其他多命令组合（例如，两个全局命令，或来自同一上下文的两个上下文命令）会创建冲突，您需要进行管理。有关快捷键冲突以及如何管理它们的信息，请参见快捷键冲突。</p>
+<p>Unity 还有一些特殊的全局命令，可以与其他全局命令共享快捷键而不会创建冲突。例如，“Q”、“W” 和 “E” 键分别分配给视图、移动和旋转工具，但当您激活 “飞行模式” 时，您可以使用这些键向下、向前和向上移动。</p>
+<h3 id="键位映射">键位映射 <a href="#%e9%94%ae%e4%bd%8d%e6%98%a0%e5%b0%84" class="anchor">🔗</a></h3><p>本节将介绍如何使用键位映射查看快捷键分配情况。有关如何使用键位映射添加、删除和修改快捷键的信息，请参见管理快捷键。</p>
+<p>键位映射显示了分配给命令的键和键组合。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><img src="/2023-10-15-unity-document-83/ShortcutManagerGlobalKey.png" alt=""></td>
+<td>粉色键分配给全局命令。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-10-15-unity-document-83/ShortcutManagerContextKey.png" alt=""></td>
+<td>蓝色键分配给上下文命令。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-10-15-unity-document-83/ShortcutManagerUnassignedKey.png" alt=""></td>
+<td>白色键未分配给任何命令。</td>
+</tr>
+<tr>
+<td style="text-align:left"><img src="/2023-10-15-unity-document-83/ShortcutManagerGreyKey.png" alt=""></td>
+<td>灰色键是不能分配给命令的特殊键。例如，修饰键如<strong>Shift</strong>和<strong>Ctrl/Cmd</strong>，或实用键如<strong>Return</strong>和<strong>Esc</strong>。</td>
+</tr>
+</tbody>
+</table>
+<p>选择修饰键，如<strong>Shift</strong>、<strong>Ctrl/Cmd</strong>和<strong>Alt</strong>，可以更新键位映射，显示哪些快捷键和修饰键的组合被分配给命令。激活的修饰键在键位映射中显示为蓝色。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortCutManagerModifiers.png" alt=""></p>
+<p>激活修饰键会更改键位映射，显示键的组合方式</p>
+<p><strong>提示：</strong> 要在键位映射中临时激活修饰键，在键盘上按住它们。</p>
+<p>要查看某个键分配给哪些命令，请将鼠标指针悬停在快捷键上。工具提示中列出了该键分配给的命令。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerHover.png" alt=""></p>
+<p>“A” 键分配给 3D 视口的 “飞行模式向左” 命令。</p>
+<p>对于键组合，通过在键盘上按住修饰键或在键位映射上单击修饰键，然后将鼠标指针悬停在快捷键上。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerHoverMod.png" alt=""></p>
+<p><strong>Ctrl/Cmd + A</strong> 的键组合分配给 <strong>Edit &gt; Select All</strong> 命令</p>
+<p>您可以将单个快捷键分配给多个命令。只要 Unity 不能同时执行这些命令，快捷键就可以透明地工作。但是，如果您将快捷键映射到可以同时执行的多个命令，就会创建冲突。要了解有关冲突以及如何管理它们的信息，请参见下面的快捷键冲突部分。</p>
+<h3 id="命令列表">命令列表 <a href="#%e5%91%bd%e4%bb%a4%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h3><p>本节将介绍如何使用 “命令” 列表查看快捷键分配情况。有关如何使用 “命令” 列表添加、删除和修改快捷键的信息，请参见管理快捷键。</p>
+<p>“命令” 列表显示了分配给特定命令的快捷键。从 “类别” 列表中选择一个类别，以在 “命令” 列表中显示该类别的命令和快捷键。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerLists.png" alt=""></p>
+<p>您还可以使用搜索框搜索 “命令” 列表。在输入搜索词时，“命令” 列表会自动缩小范围，以显示与搜索词匹配的命令。</p>
+<p>如果您在特定类别中搜索，可以通过在 “搜索” 行中设置范围，在所选类别和 “所有 Unity 命令” 类别之间切换结果。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerSearch.png" alt=""></p>
+<h2 id="管理快捷键">管理快捷键 <a href="#%e7%ae%a1%e7%90%86%e5%bf%ab%e6%8d%b7%e9%94%ae" class="anchor">🔗</a></h2><p>快捷键管理器提供了几种方式来分配、修改、取消分配和重置快捷键。</p>
+<p>您可以通过以下方式之一来分配或修改快捷键：</p>
+<ul>
+<li>从 “命令” 列表拖放命令到键位映射中。</li>
+<li>在 “命令” 列表中键入快捷键。</li>
+</ul>
+<p>您可以通过以下方式来取消分配或重置快捷键：</p>
+<ul>
+<li>在键位映射或 “命令” 列表中使用上下文菜单。</li>
+<li>直接在 “命令” 列表中删除快捷键分配。</li>
+</ul>
+<h3 id="为命令分配快捷键">为命令分配快捷键 <a href="#%e4%b8%ba%e5%91%bd%e4%bb%a4%e5%88%86%e9%85%8d%e5%bf%ab%e6%8d%b7%e9%94%ae" class="anchor">🔗</a></h3><p>您可以使用键位映射或 “命令” 列表为命令分配快捷键。</p>
+<p><strong>使用键位映射分配快捷键：</strong></p>
+<ol>
+<li>
+<p>单击要在快捷键中使用的任何修饰键（例如<strong>Shift</strong>或<strong>Ctrl/Cmd</strong>）。</p>
+</li>
+<li>
+<p>将命令从 “命令” 列表拖放到主快捷键上。</p>
+<p>当您在键位映射上悬停时，光标会更改，指示可能的分配方式。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerDnDAssign.png" alt=""></p>
+</li>
+</ol>
+<p><strong>使用 “命令” 列表分配快捷键：</strong></p>
+<ol>
+<li>
+<p>双击列表中的命令以编辑其快捷键字段。</p>
+</li>
+<li>
+<p>输入键盘上常规方式按下所需快捷键的键。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerListAssign.png" alt=""></p>
+<p>确保按住您希望包括在快捷键中的任何修饰键（例如<strong>Shift</strong>或<strong>Alt/Option</strong>）。</p>
+</li>
+</ol>
+<p>如果快捷键已分配给命令，新的分配将会创建冲突。有关管理冲突的信息，请参见快捷键冲突。</p>
+<h3 id="取消分配和重置快捷键">取消分配和重置快捷键 <a href="#%e5%8f%96%e6%b6%88%e5%88%86%e9%85%8d%e5%92%8c%e9%87%8d%e7%bd%ae%e5%bf%ab%e6%8d%b7%e9%94%ae" class="anchor">🔗</a></h3><p>使用键位映射或 “命令” 列表可以删除命令的分配快捷键，或将修改的快捷键重置为其默认映射方式。</p>
+<p>**注意：**Unity 将默认快捷键分配存储在默认配置文件中。有关详细信息，请参见快捷键配置文件。</p>
+<p><strong>从键位映射中取消分配或重置快捷键：</strong></p>
+<ol>
+<li>
+<p>右键单击要取消分配或重置的快捷键。</p>
+<p>如果您要取消分配或重置的是键组合，请在右键单击快捷键之前单击包含的修饰键（例如<strong>Shift</strong>或<strong>Ctrl/Cmd</strong>）。</p>
+</li>
+<li>
+<p>从上下文菜单中：</p>
+<ul>
+<li>选择**[COMMAND] &gt; Reset to default** 将默认快捷键重新分配给命令。</li>
+<li>选择**[COMMAND] &gt; Remove shortcut** 将快捷键从命令中取消分配。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerUnassignKeyMap.png" alt=""></p>
+<p><strong>从命令列表中取消分配或重置快捷键：</strong></p>
+<ol>
+<li>右键单击要取消分配或重置快捷键的命令。</li>
+<li>从上下文菜单中：
+<ul>
+<li>选择**[COMMAND] &gt; Reset to default** 将默认快捷键重新分配给命令。</li>
+<li>选择**[COMMAND] &gt; Remove shortcut** 将快捷键从命令中取消分配。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2023-10-15-unity-document-83/ShortcutMangerUnassignList.png" alt=""></p>
+<p>或者：</p>
+<ul>
+<li>双击要取消分配快捷键的命令，然后按下<strong>Return/Enter</strong>键从快捷键字段中删除快捷键。</li>
+</ul>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerListUnassign.png" alt=""></p>
+<h2 id="快捷键冲突">快捷键冲突 <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e5%86%b2%e7%aa%81" class="anchor">🔗</a></h2><p>您可以将相同的快捷键分配给多个命令，前提是这些命令不能同时执行。例如，可以将单个快捷键分配给 “场景视图” 中的一个命令和 “动画” 窗口中的另一个命令。因为这两个窗口不能同时获得焦点，所以在使用快捷键时，Unity 会执行哪个命令是明确的。</p>
+<p>将快捷键分配给可以同时执行的两个命令会创建冲突。例如，当您将单个快捷键分配给：</p>
+<ul>
+<li>来自同一上下文的一个或多个上下文命令。</li>
+<li>多个全局命令。</li>
+<li>全局和上下文命令组合。</li>
+</ul>
+<p>在创建新的快捷键分配时，快捷键管理器提供了处理冲突的选项，以及在使用分配给冲突命令的快捷键时的选项。</p>
+<h3 id="在快捷方式管理器中查看冲突">在快捷方式管理器中查看冲突 <a href="#%e5%9c%a8%e5%bf%ab%e6%8d%b7%e6%96%b9%e5%bc%8f%e7%ae%a1%e7%90%86%e5%99%a8%e4%b8%ad%e6%9f%a5%e7%9c%8b%e5%86%b2%e7%aa%81" class="anchor">🔗</a></h3><p>在快捷键管理器的 “命令” 列表中，具有快捷键冲突的命令会显示一个 “警告” 图标。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerConflictCat.png" alt=""></p>
+<p>您可以通过在 “类别” 列表中选择 “绑定冲突” 类别来获取具有冲突快捷键的命令的完整列表。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortctManagerBindingConflicts.png" alt=""></p>
+<h3 id="在创建快捷键时管理冲突">在创建快捷键时管理冲突 <a href="#%e5%9c%a8%e5%88%9b%e5%bb%ba%e5%bf%ab%e6%8d%b7%e9%94%ae%e6%97%b6%e7%ae%a1%e7%90%86%e5%86%b2%e7%aa%81" class="anchor">🔗</a></h3><p>将快捷键分配给两个冲突的命令会打开 “绑定冲突” 对话框。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerDlgBindingConflict.png" alt=""></p>
+<ul>
+<li>
+<p>选择 “创建冲突” 将快捷键分配给命令，以及所有现有的命令分配。</p>
+<p>Unity 将快捷键的所有分配命令添加到 “绑定冲突” 类别中。</p>
+</li>
+<li>
+<p>选择 “重新分配” 将快捷键重新分配给冲突的命令。这将清除任何其他命令分配。</p>
+</li>
+<li>
+<p>选择 “取消” 以退出而不执行任何操作。</p>
+</li>
+</ul>
+<h3 id="在使用快捷键时管理冲突">在使用快捷键时管理冲突 <a href="#%e5%9c%a8%e4%bd%bf%e7%94%a8%e5%bf%ab%e6%8d%b7%e9%94%ae%e6%97%b6%e7%ae%a1%e7%90%86%e5%86%b2%e7%aa%81" class="anchor">🔗</a></h3><p>当您在 Unity 中使用分配给冲突命令的快捷键时，会打开快捷键冲突对话框。</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerDlgShortcutConflict.png" alt=""></p>
+<ul>
+<li>
+<p>从列表中选择一个命令，并单击 “执行所选” 按钮执行该命令。</p>
+<p>在执行命令之前启用 “重新绑定到所选命令” 选项，以清除任何其他分配，使快捷键仅分配给所选命令。这相当于删除其他分配。</p>
+</li>
+<li>
+<p>选择 “解决冲突” 以打开快捷键管理器，在其中可以修改快捷键以消除冲突。</p>
+</li>
+<li>
+<p>选择 “取消” 以退出而不执行任何操作。</p>
+</li>
+</ul>
+<h2 id="快捷键配置文件">快捷键配置文件 <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h2><p>快捷键存储在配置文件中。每个配置文件是 Unity 快捷键的完整集合，您可以根据需要进行修改。您可以创建任意数量的配置文件，并根据需要在它们之间进行切换。除了默认配置文件（见下文）之外，可以在任何活动配置文件中添加、删除或修改快捷键。对活动配置文件的更改是即时的。Unity 会自动保存这些更改，并不提示您接受或拒绝它们。</p>
+<p>Unity 将快捷键配置文件存储在项目之外的 Unity 首选项目录中：</p>
+<ul>
+<li>在 Windows 上：<code>%APPDATA%/Unity\Editor-5.x\Preferences\shortcuts</code></li>
+<li>在 macOS 上：<code>~/Library/Preferences/Unity/Editor-5.x/shortcuts</code></li>
+<li>在 Linux 上：<code>~/.config/unity3d/Preferences/Editor-5.x/shortcuts</code></li>
+</ul>
+<p>这意味着您创建的任何配置文件都可在所有项目中使用。</p>
+<p>升级：当您从较旧的 Unity 版本升级时，Unity 会将您在首选项中配置的任何快捷键迁移到一个名为 UserProfile 的新快捷键配置文件中。</p>
+<h3 id="管理快捷方式配置文件">管理快捷方式配置文件 <a href="#%e7%ae%a1%e7%90%86%e5%bf%ab%e6%8d%b7%e6%96%b9%e5%bc%8f%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h3><p>您可以通过快捷键管理器顶部的配置文件下拉菜单来管理配置文件：</p>
+<p><img src="/2023-10-15-unity-document-83/ShortcutManagerProfileMenu.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A</strong></td>
+<td>配置文件列表：列出所有可用的配置文件。选择一个配置文件使其成为活动配置文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>B</strong></td>
+<td>配置文件选项：用于创建新配置文件或重命名或删除活动配置文件的选项。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="默认配置文件">默认配置文件 <a href="#%e9%bb%98%e8%ae%a4%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h4><p>Unity 有一个默认配置文件，其中包含 “出厂” 设定的快捷键。当您创建一个新的配置文件时，Unity 会复制默认配置文件。</p>
+<p>您无法修改默认配置文件。如果您尝试进行修改，Unity 会自动创建一个副本（称为 “默认副本”），将这个副本作为活动配置文件，并将您的更改应用于该副本。</p>
+<h2 id="跳过快捷键管理器使用自定义工具">跳过快捷键管理器使用自定义工具 <a href="#%e8%b7%b3%e8%bf%87%e5%bf%ab%e6%8d%b7%e9%94%ae%e7%ae%a1%e7%90%86%e5%99%a8%e4%bd%bf%e7%94%a8%e8%87%aa%e5%ae%9a%e4%b9%89%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h2><p>当您在键盘上选择一个键或键组合时，Unity 会生成一个键盘事件，并将该事件发送到活动视图。如果活动视图可以使用该事件，例如触发一个操作，则会这样做。如果不能，该事件将发送到快捷键管理器，并且 Unity 会执行分配给该快捷键的命令。</p>
+<p>在开发自定义工具时，您可以在它们到达快捷键管理器之前以编程方式拦截键盘事件。例如，您可能希望自定义工具以比使用快捷键管理器配置更复杂的方式对按键进行响应。</p>
+<p>拦截键盘事件的方式取决于您用于创建自定义工具界面的系统。</p>
+<p>如果您使用的是 IMGUI 系统，请参阅以下脚本参考主题：</p>
+<ul>
+<li>Event.current</li>
+</ul>
+<p>如果您使用的是 UI Elements 系统，请参阅以下脚本参考主题：</p>
+<ul>
+<li>KeyDownEvent</li>
+<li>CallbackEventHandler.RegisterCallback</li>
+<li>CallbackEventHandler.HandleEvent</li>
+</ul>
+<h2 id="用户定义的快捷键">用户定义的快捷键 <a href="#%e7%94%a8%e6%88%b7%e5%ae%9a%e4%b9%89%e7%9a%84%e5%bf%ab%e6%8d%b7%e9%94%ae" class="anchor">🔗</a></h2><p>除了从快捷键管理器修改快捷键之外，您还可以使用 UnityEditor.ShortcutManagement 命名空间中的类来定义其他位置（如脚本和包）的自定义快捷键。例如，您可以使用 ShortcutAttribute 和 ClutchShortcutAttribute 属性创建新的快捷键。</p>
+<p>当 Unity 加载来自其他来源的命令和快捷键时，它会执行以下操作：</p>
+<ul>
+<li>将主菜单中的任何新命令添加到 “命令” 列表中的 “所有 Unity 命令” 类别，以便您可以使用快捷键管理器为它们创建快捷键。</li>
+<li>将自定义命令类别添加到 “类别” 列表中。</li>
+<li>将自定义键盘快捷键添加到快捷键数据库中，以便它们出现在所有快捷键配置文件中。</li>
+<li>在 “命令” 列表中的 “快捷键冲突” 类别中显示自定义快捷键与当前配置文件中的快捷键之间的冲突。</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/15/2023-10-15-unity-document-83/">Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/14/2023-10-14-unity-document-82/">Unity中文版-Create Gameplay Editor Features - Preferences(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/13/2023-10-13-unity-document-81/">Unity中文版-Create Gameplay Editor Features - 2D and 3D mode settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/12/2023-10-12-unity-document-80/">Unity中文版-Create Gameplay Editor Features(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/11/2023-10-11-unity-document-79/">Unity中文版-Create Gameplay Troubleshooting(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(93)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (86)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

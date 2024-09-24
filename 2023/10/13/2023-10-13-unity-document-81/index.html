@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - 2D and 3D mode settings(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - 2D and 3D mode settings(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-13 11:13:34 &#43;0800 CST">2023/10/13</time>
+        <span class="split">·</span>
+        <span> 101 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="2d-和-3d-模式设置">2D 和 3D 模式设置 <a href="#2d-%e5%92%8c-3d-%e6%a8%a1%e5%bc%8f%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h1><p>在创建新项目时，您可以指定 Unity 编辑器是以 2D 模式还是 3D 模式启动。然而，您也可以随时在 2D 模式和 3D 模式之间切换编辑器。您可以在此处详细了解 2D 和 3D 项目之间的区别。本页面提供了有关如何切换模式以及切换模式时编辑器中发生的具体变化的信息。</p>
+<h2 id="在-3d-和-2d-模式之间切换">在 3D 和 2D 模式之间切换 <a href="#%e5%9c%a8-3d-%e5%92%8c-2d-%e6%a8%a1%e5%bc%8f%e4%b9%8b%e9%97%b4%e5%88%87%e6%8d%a2" class="anchor">🔗</a></h2><p>要在 2D 模式和 3D 模式之间切换，请按照以下步骤进行操作：</p>
+<ol>
+<li>打开编辑器设置（顶部菜单：<strong>Edit &gt; Project Settings</strong>，然后选择<strong>Editor</strong>类别）。</li>
+<li>然后将<strong>Default Behavior Mode</strong>设置为<strong>2D</strong>或<strong>3D</strong>。</li>
+</ol>
+<p><img src="/2023-10-13-unity-document-81/BehaviorMode.png" alt=""></p>
+<p>使用编辑器设置中的默认行为模式设置将项目设置为 2D 或 3D。</p>
+<h2 id="2d-模式与-3d-模式设置">2D 模式与 3D 模式设置 <a href="#2d-%e6%a8%a1%e5%bc%8f%e4%b8%8e-3d-%e6%a8%a1%e5%bc%8f%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>2D 模式和 3D 模式确定了 Unity 编辑器的一些设置。以下是这些设置的详细列表。</p>
+<h3 id="在-2d-项目模式下">在 2D 项目模式下： <a href="#%e5%9c%a8-2d-%e9%a1%b9%e7%9b%ae%e6%a8%a1%e5%bc%8f%e4%b8%8b" class="anchor">🔗</a></h3><ul>
+<li>导入的任何图像都被认为是 2D 图像（<strong>Sprites</strong>），并设置为<strong>Sprite</strong>模式。</li>
+<li><strong>场景视图</strong>设置为 2D。</li>
+<li>默认游戏对象没有实时定向光。</li>
+<li><strong>相机</strong>的默认位置为 0,0,-10。（在 3D 模式下为 0,1,-10。）</li>
+<li>相机设置为<strong>正交投影</strong>。（在 3D 模式下为<strong>透视投影</strong>。）</li>
+<li>在光照窗口中：
+<ul>
+<li>对于新的<strong>场景</strong>，<strong>天空盒</strong>已禁用。</li>
+<li><strong>环境源</strong>设置为<strong>颜色</strong>（颜色设置为深灰色：RGB：54，58，66）。</li>
+<li><strong>实时全局光照</strong>（Enlighten）已关闭。</li>
+<li><strong>烘焙全局光照</strong>已关闭。</li>
+<li><strong>自动构建</strong>已关闭。</li>
+</ul>
+</li>
+</ul>
+<h3 id="在-3d-项目模式下">在 3D 项目模式下： <a href="#%e5%9c%a8-3d-%e9%a1%b9%e7%9b%ae%e6%a8%a1%e5%bc%8f%e4%b8%8b" class="anchor">🔗</a></h3><ul>
+<li>导入的任何图像都不会被认为是 2D 图像（<strong>Sprites</strong>）。</li>
+<li><strong>场景视图</strong>设置为 3D。</li>
+<li>默认游戏对象具有实时定向光。</li>
+<li><strong>相机</strong>的默认位置为 0,1,-10。（在 2D 模式下为 0,0,-10。）</li>
+<li>相机设置为<strong>透视投影</strong>。（在 2D 模式下为<strong>正交投影</strong>。）</li>
+<li>在光照窗口中：
+<ul>
+<li><strong>天空盒</strong>是内置的默认<strong>天空盒材质</strong>。</li>
+<li><strong>环境源</strong>设置为<strong>天空盒</strong>。</li>
+<li><strong>实时全局光照</strong>（Enlighten）已开启。</li>
+<li><strong>烘焙全局光照</strong>已开启。</li>
+<li><strong>自动构建</strong>已开启。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/15/2023-10-15-unity-document-83/">Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/14/2023-10-14-unity-document-82/">Unity中文版-Create Gameplay Editor Features - Preferences(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/13/2023-10-13-unity-document-81/">Unity中文版-Create Gameplay Editor Features - 2D and 3D mode settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/12/2023-10-12-unity-document-80/">Unity中文版-Create Gameplay Editor Features(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/11/2023-10-11-unity-document-79/">Unity中文版-Create Gameplay Troubleshooting(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(93)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (86)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

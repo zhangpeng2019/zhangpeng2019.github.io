@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Preferences(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Preferences(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-14 11:13:34 &#43;0800 CST">2023/10/14</time>
+        <span class="split">·</span>
+        <span> 742 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="偏好设置">偏好设置 <a href="#%e5%81%8f%e5%a5%bd%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h1><p>使用偏好设置自定义 Unity 编辑器的行为。</p>
+<p>要打开<strong>偏好设置</strong>窗口，转到主菜单中的<strong>Edit &gt; Preferences</strong>（macOS：<strong>Unity &gt; Settings</strong>）。</p>
+<p>要在<strong>偏好设置</strong>窗口中导航，使用搜索框过滤设置类别列表，并在<strong>偏好设置</strong>窗口右侧的详细信息窗格中突出显示关键字。</p>
+<p>以下是可用的偏好设置类别：</p>
+<ul>
+<li>通用</li>
+<li>2D</li>
+<li>分析</li>
+<li>资源管道</li>
+<li>颜色</li>
+<li>诊断</li>
+<li>显示设置</li>
+<li>外部工具</li>
+<li>作业</li>
+<li>GI 缓存</li>
+<li>包管理器</li>
+<li>场景视图</li>
+<li>搜索</li>
+<li>自定义包偏好设置</li>
+</ul>
+<h2 id="通用">通用 <a href="#%e9%80%9a%e7%94%a8" class="anchor">🔗</a></h2><p><strong>通用</strong>偏好设置允许您自定义 Unity 的整体行为。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>启动时加载上一个项目</strong></td>
+<td style="text-align:left">启用此设置以始终在启动时加载上一个项目。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>禁用编辑器分析</strong>（仅 Pro 版本）</td>
+<td style="text-align:left">启用此设置以停止编辑器自动将信息发送回 Unity。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>脚本更改时播放行为</strong></td>
+<td style="text-align:left">选择脚本在游戏在编辑器中运行时更改时 Unity 的行为。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>重新编译并继续播放</em></td>
+<td>重新编译脚本并继续运行场景。这是默认行为，但如果您的脚本依赖于任何非可序列化数据，则可能需要更改它。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>完成播放后重新编译</em></td>
+<td>推迟重新编译，直到手动停止场景，避免任何中断。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>停止播放并重新编译</em></td>
+<td>立即停止场景以进行重新编译，使您能够快速重新开始测试。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>启动时代码优化</strong></td>
+<td style="text-align:left">在 Unity 编辑器启动时选择将代码优化模式设置为<strong>调试</strong>或<strong>发布</strong>。<strong>调试</strong>模式允许您附加外部调试器软件，但在编辑器中以播放模式运行项目时会导致 C# 性能较慢。<strong>发布</strong>模式在编辑器中以播放模式运行项目时提供更快的 C# 性能，但不能附加任何外部调试器。有关详细信息，请参阅代码优化模式。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>编辑器主题</strong></td>
+<td style="text-align:left">选择在 Unity 编辑器中使用的背景。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>亮色</em></td>
+<td>应用浅灰色背景和黑色文本。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>暗色</em></td>
+<td>应用深色主题和白色文本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>编辑器字体</strong></td>
+<td style="text-align:left">选择要在 Unity 编辑器中显示的字体。默认字体为 Inter。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>启用字母数字排序</strong></td>
+<td style="text-align:left">启用此设置以在 Hierarchy 窗口的右上角显示一个按钮，用于在 Transform 排序（默认）和字母数字排序之间切换。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>交互模式</strong></td>
+<td style="text-align:left">指定编辑器在空闲多长时间后更新。每当一个帧结束时，编辑器会在下一个帧开始之前等待指定的时间。这允许您控制编辑器的性能，并减少 CPU 资源和功耗的消耗。例如，如果您想测试编辑器的性能，请将此属性设置为<strong>无节流</strong>。如果您想节省电量（例如，延长笔记本电脑的电池寿命），请将此属性设置为节流模式之一。在节流模式下，如果您与编辑器进行交互（例如，在场景视图中进行平移），编辑器将停止空闲。** 注意：** 在播放模式下，Unity 会忽略您使用此偏好设置施加的任何节流。编辑器将以尽可能快的速度更新，除非您在游戏视图中启用了 VSync 选项，或者将<code>Application.targetFrameRate</code>设置为不等于 - 1 的值。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>默认</em></td>
+<td>编辑器每个周期最多空闲 4 毫秒。如果一帧需要 5 毫秒或更长时间，编辑器将不会空闲，并且下一帧将自动开始。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>不节流</em></td>
+<td>每当一帧结束时，立即开始下一帧。编辑器永不等待，尽可能快地更新。这种模式消耗大量 CPU 资源。如果您使用的是笔记本电脑，可能会导致电池快速耗尽。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>监视器刷新率</em></td>
+<td>编辑器每个周期最多空闲到监视器的刷新率。大多数显示器的刷新率为 16 毫秒。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>自定义</em></td>
+<td>您指定应用程序可以空闲的最长时间。选择此选项后，将显示 ** 帧节流（毫秒）** 属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>帧节流（毫秒）</strong></td>
+<td style="text-align:left">当<strong>交互模式</strong>设置为<strong>自定义</strong>时，此属性指定编辑器在帧之间空闲的时间长度。该值可以介于 0 和 33 毫秒之间。0 等同于将<strong>交互模式</strong>设置为<strong>不节流</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>包管理器日志级别</strong></td>
+<td style="text-align:left">选择要将 Package Manager 日志报告的<strong>详细程度</strong>。选项为：</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>错误</em></td>
+<td>仅显示意外错误和故障。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>警告</em></td>
+<td>显示可能引发问题的异常情况。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>信息</em></td>
+<td>仅显示高级信息性消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>详细</em></td>
+<td>显示详细信息性消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>调试</em></td>
+<td>显示高级调试消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>傻瓜</em></td>
+<td>显示详细的调试消息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>启用扩展动态提示</strong></td>
+<td style="text-align:left">选择此选项以启用扩展的动态提示，当鼠标停留在属性、对象或工具上足够长时间，或者出现动态提示时，显示更多信息。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>执行凹凸贴图检查</strong></td>
+<td style="text-align:left">选择此选项以在导入材质时启用凹凸贴图检查，帮助检查在<strong>凹凸贴图</strong>材质槽中使用的纹理是否实际上定义为凹凸贴图。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2d">2D <a href="#2d" class="anchor">🔗</a></h2><p><strong>2D</strong>偏好设置允许您定义与 2D 相关的功能和包的设置。当您将 2D 相关包（如 Tilemap Editor 包）安装到项目中时，它们的偏好设置将显示在此部分中。</p>
+<h3 id="物理">物理 <a href="#%e7%89%a9%e7%90%86" class="anchor">🔗</a></h3><p>使用<strong>物理</strong>偏好设置来配置 2D 物理设置，例如在 UI 中使用的颜色。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>碰撞体</strong></td>
+<td style="text-align:left">设置以下 UI 元素的颜色。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>唤醒颜色（轮廓）</strong></td>
+<td style="text-align:left">设置当附加的<strong>刚体 2D</strong>处于<strong>唤醒</strong>状态时，碰撞体 2D 的轮廓颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>唤醒颜色（填充）</strong></td>
+<td style="text-align:left">设置当附加的<strong>刚体 2D</strong>处于<strong>唤醒</strong>状态时，碰撞体 2D 的填充颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>休眠颜色（轮廓）</strong></td>
+<td style="text-align:left">设置当附加的<strong>刚体 2D</strong>处于<strong>休眠</strong>状态时，碰撞体 2D 的轮廓颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>休眠颜色（填充）</strong></td>
+<td style="text-align:left">设置当附加的<strong>刚体 2D</strong>处于<strong>休眠</strong>状态时，碰撞体 2D 的填充颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>范围颜色</strong></td>
+<td style="text-align:left">设置所有 PhysicsShape2D 创建的碰撞体 2D 的限制框的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>接触点</strong></td>
+<td style="text-align:left">设置以下 UI 元素使用的颜色。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>接触点颜色</strong></td>
+<td style="text-align:left">设置碰撞体 2D 的接触点的颜色，以箭头形式显示，箭头从接触点开始沿接触法线方向。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>接触点箭头比例</strong></td>
+<td style="text-align:left">设置碰撞体 2D 的接触点箭头的比例。较大的值绘制的箭头较大。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="分析">分析 <a href="#%e5%88%86%e6%9e%90" class="anchor">🔗</a></h2><p><strong>分析</strong>偏好设置可让您定义 Profiler 的设置。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>帧计数</strong></td>
+<td style="text-align:left">设置 Profiler 捕获的最大帧数。您可以将此数字设置在 300 到 2000 之间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>显示 “当前帧” 统计信息</strong></td>
+<td style="text-align:left">默认情况下，当选择<strong>当前帧</strong>按钮并进入<strong>当前帧</strong>模式时，帧指示线没有带有当前帧统计信息的注释。这是因为统计信息注释可能会使实时查看数据变得困难。要显示注释，请启用此设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认记录状态</strong></td>
+<td style="text-align:left">选择 Profiler 应该以哪种记录状态打开。可选择<strong>启用</strong>、<strong>禁用</strong>或<strong>记住</strong>。<strong>启用</strong>会在会话之间保持<strong>记录</strong>按钮启用状态，而<strong>禁用</strong>则会禁用该按钮，无论您在分析会话期间是否打开或关闭它。<strong>记住</strong>状态会记住您在会话期间启用或禁用<strong>记录</strong>按钮，并在下次打开 Profiler 窗口时保持其最后状态。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认编辑器目标模式</strong></td>
+<td style="text-align:left">选择<strong>附加到 Player</strong>下拉菜单默认应针对的模式。可选择<strong>Playmode</strong>或<strong>Editor</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>自定义连接 ID</strong></td>
+<td style="text-align:left">输入您要在 Profiler 窗口或控制台窗口的<strong>附加到 Player</strong>下拉列表中使用的设备的连接名称。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="资源管道">资源管道 <a href="#%e8%b5%84%e6%ba%90%e7%ae%a1%e9%81%93" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>自动刷新</strong></td>
+<td style="text-align:left">启用此设置以在更改时自动导入资源。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>导入工作线程数 %</strong></td>
+<td style="text-align:left">以可用逻辑 CPU 核数的百分比输入新项目的<strong>期望导入工作线程数</strong>。例如，如果您的系统具有 16 个逻辑核心，并且此偏好设置设置为 25％，则新项目的<strong>期望导入工作线程数</strong>将设置为 4。如果这个值设置得过高，您的导入工作线程流程将必须与其他流程竞争，例如读写文件和系统资源。25％的默认值适用于大多数情况。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>目录监视（仅在 Windows 上可用）</strong></td>
+<td style="text-align:left">启用此设置以监视目录而不是扫描所有项目文件以检测资源更改。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>在导入时压缩纹理</strong></td>
+<td style="text-align:left">禁用此设置以跳过导入过程中的纹理<strong>压缩</strong>。通常，纹理以无压缩格式导入。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>验证保存资源</strong></td>
+<td style="text-align:left">启用此设置以验证要单独保存的资源。每次 Unity 保存资源时，都会显示对话框。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Unity 加速器（缓存服务器）</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认模式</strong></td>
+<td style="text-align:left">定义缓存服务器的默认设置，是否默认启用或禁用。您可以在 Unity 编辑器设置中为每个项目覆盖此设置。有关详细信息，请参见 Unity 加速器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认 IP 地址</strong></td>
+<td style="text-align:left">设置缓存服务器要使用的默认 IP 地址。您可以在 Unity 编辑器设置中为每个项目覆盖此设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>检查连接</strong></td>
+<td style="text-align:left">单击此按钮尝试连接到远程缓存服务器。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="颜色">颜色 <a href="#%e9%a2%9c%e8%89%b2" class="anchor">🔗</a></h2><p><strong>颜色</strong>偏好设置可让您为 Unity 编辑器中的各种用户界面元素选择颜色。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>动画</strong></td>
+<td style="text-align:left">使用此设置自定义动画属性的颜色偏好设置。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>已动画的属性</strong></td>
+<td style="text-align:left">表示当前正在进行动画的属性的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>候选属性</strong></td>
+<td style="text-align:left">表示您最近修改的动画属性的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>记录的属性</strong></td>
+<td style="text-align:left">表示动画属性自动记录在<strong>动画片段</strong>中的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>通用</strong></td>
+<td style="text-align:left">使用此设置自定义通用设置的颜色偏好设置。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Playmode Tint</strong></td>
+<td style="text-align:left">播放模式下为方便识别时为编辑器添加的颜色。当进入播放模式时，Unity 会使用您在此处选择的颜色对整个编辑器进行着色。在播放模式下，某些编辑器操作不可用，并且在退出播放模式时可以重置一些已编辑的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>场景</strong></td>
+<td style="text-align:left">使用此设置自定义场景的偏好设置。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>背景</strong></td>
+<td style="text-align:left">设置在关闭<strong>Scene FX</strong>中的 Skybox 设置时，场景相机清除时显示的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>预制品背景</strong></td>
+<td style="text-align:left">设置在关闭<strong>Scene FX</strong>中的 Skybox 设置时，场景相机清除时显示的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>GI 贡献：关闭 / 接收 GI：光探头</strong></td>
+<td style="text-align:left">设置在<strong>GameObject</strong>的静态编辑器标志的<strong>ContributeGI</strong>禁用时显示的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>GI 贡献：打开 / 接收 GI：光探头</strong></td>
+<td style="text-align:left">设置在<strong>GameObject</strong>的静态编辑器标志的<strong>ContributeGI</strong>启用，渲染器的<strong>ReceiveGI</strong>属性设置为<strong>Lightmaps</strong>时显示的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>GI 贡献：打开 / 接收 GI：光照图</strong></td>
+<td style="text-align:left">设置在<strong>GameObject</strong>的静态编辑器标志的<strong>ContributeGI</strong>启用，渲染器的<strong>ReceiveGI</strong>属性设置为<strong>Light Probes</strong>时显示的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>网格</strong></td>
+<td style="text-align:left">设置场景视图中网格的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>指南线</strong></td>
+<td style="text-align:left">设置场景视图中引导线的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>材质验证器 强制金属</strong></td>
+<td style="text-align:left">设置用于指示材质属性的<strong>验证反照率 / 金属光泽调试渲染模式</strong>的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>材质验证器 值太高</strong></td>
+<td style="text-align:left">设置用于指示材质值太高的<strong>验证反照率 / 金属光泽调试渲染模式</strong>的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>材质验证器 值太低</strong></td>
+<td style="text-align:left">设置用于指示材质值太低的<strong>验证反照率 / 金属光泽调试渲染模式</strong>的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>选中轴</strong></td>
+<td style="text-align:left">设置选中处理工具为移动、旋转或缩放时显示高亮的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>选中的子对象轮廓</strong></td>
+<td style="text-align:left">设置选中对象的子对象的轮廓颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>选中的材质高亮</strong></td>
+<td style="text-align:left">设置在场景视图中单击 MeshRenderer 上的<strong>网格</strong>以定位子网格时显示的轮廓颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>选中的轮廓</strong></td>
+<td style="text-align:left">设置选中的游戏对象的轮廓颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>UI 碰撞器处理</strong></td>
+<td style="text-align:left">设置用于 Unity UI 的填充可视化的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>音量 Gizmo</strong></td>
+<td style="text-align:left">设置在 Gizmo 中指示<strong>音频源</strong>的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>线框</strong></td>
+<td style="text-align:left">当线框渲染模式激活时设置线框的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>线框覆盖</strong></td>
+<td style="text-align:left">当纹理线框渲染模式激活时设置线框的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>选中的线框</strong></td>
+<td style="text-align:left">如果在 Gizmo 选项中启用了<strong>选择线框</strong>，则所选线框将显示为您在此处设置的颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>X 轴</strong></td>
+<td style="text-align:left">您在此处设置的颜色适用于影响 x 轴的任何内置变换工具处理操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Y 轴</strong></td>
+<td style="text-align:left">您在此处设置的颜色适用于影响 y 轴的任何内置变换工具处理操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Z 轴</strong></td>
+<td style="text-align:left">您在此处设置的颜色适用于影响 z 轴的任何内置变换工具处理操作。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="诊断">诊断 <a href="#%e8%af%8a%e6%96%ad" class="anchor">🔗</a></h2><p>当您向 Unity 报告问题时，Unity 支持团队可能需要您启用诊断开关以帮助确定原因。在编辑器或播放器中运行诊断应用程序会影响性能和用户体验。只有在 Unity 支持团队要求时才应运行诊断。</p>
+<p>如果您的应用程序中存在活动的诊断开关，Unity 会在控制台中显示警告。要重置开关，在<strong>诊断</strong>选项卡中，单击<strong>重置全部</strong>。</p>
+<p>如果活动的诊断开关导致 Unity 编辑器无法打开，请使用<code>--reset-diagnostic-switches</code>参数从命令行重置所有开关。有关在启动时使用命令行参数的更多信息，请参见命令行参数。</p>
+<h2 id="显示设置">显示设置 <a href="#%e6%98%be%e7%a4%ba%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>使用<strong>显示设置</strong>偏好设置自定义附加监视器的游戏视图行为。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>按显示顺序排序（仅限 Windows）</strong></td>
+<td style="text-align:left">启用此设置可按与主显示器之间的距离对附加显示器的显示编号进行排序。 请注意，此设置仅适用于 Windows。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>进入全屏模式时显示通知</strong></td>
+<td style="text-align:left">启用此设置，在全屏模式下显示通知以查看所需的快捷方式（CTRL+SHIFT+F7）以退出游戏视图的全屏模式。当禁用时，不会显示退出全屏模式的快捷方式通知。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>全屏模式下显示游戏视图工具栏</strong></td>
+<td style="text-align:left">启用时，全屏模式下可见包含 gizmos 和统计信息等游戏对象的游戏视图控制栏。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>独立模拟监视器映射</strong></td>
+<td style="text-align:left">显示映射到您设备的独立监视器的数量。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="外部工具">外部工具 <a href="#%e5%a4%96%e9%83%a8%e5%b7%a5%e5%85%b7" class="anchor">🔗</a></h2><p>使用<strong>外部工具</strong>偏好设置来设置脚本、处理图像和源代码控制的外部应用程序。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>外部脚本编辑器</strong></td>
+<td style="text-align:left">选择 Unity 应该用来打开脚本文件的应用程序。Unity 会自动将正确的参数传递给其内置支持的脚本编辑器。Unity 内置支持 Visual Studio Community、Visual Studio Code（VSCode）和 JetBrains Rider。<strong>通过文件扩展名打开</strong>选项在打开文件时使用设备的默认应用程序来打开相关文件类型。如果没有默认应用程序可用，设备会打开一个窗口，提示您选择用于打开文件的应用程序。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>外部脚本编辑器参数</strong></td>
+<td style="text-align:left">此字段控制 Unity 在打开文件时向您的代码编辑器发送的参数。 <code>$(File)</code>、<code>$(Line)</code>和<code>$(Column)</code>参数将文件名、行号和列号传递给您的外部代码编辑器。您的代码编辑器使用这些参数打开具有正确位置的正确文件。例如，如果您在 Unity 控制台中双击一个错误消息，则 Unity 将从该错误消息中将这些参数传递给外部编辑器，然后外部编辑器将在错误发生的位置打开正确的文件。您可以手动编辑此字段，以自定义 Unity 发送到外部代码编辑器的参数。单击<strong>重置参数</strong>按钮可将此字段重置为默认设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>生成所有.csproj 文件</strong></td>
+<td style="text-align:left">启用此设置以生成所有.csproj 文件。代码编辑器使用.sln 和.csproj 文件来访问关于您的项目的数据。.csproj 文件以 XML 格式存储描述性数据或元数据。这些数据可能包括版本信息、平台要求、构建文件或数据库设置等。当存在这些文件时，代码编辑器可以使用它们包含的数据提供有用的功能，例如突出显示可能的编译错误。启用此设置以指示 Unity 在项目中尽可能创建.csproj 文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>处理的扩展名</strong>（仅在将 Rider 或 Visual Studio Code 选择为外部脚本编辑器时可用）</td>
+<td style="text-align:left">此字段确定<strong>外部脚本编辑器</strong>打开的文件类型。该字段预先加载了脚本编辑器默认打开的文件列表。要将其他文件类型添加到此列表中，请输入文件扩展名，并用分号分隔每个扩展名。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>图像应用程序</strong></td>
+<td style="text-align:left">选择您希望 Unity 用来打开图像文件的应用程序。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>修订控制的差异 / 合并</strong></td>
+<td style="text-align:left">选择您希望 Unity 用于解决源代码控制存储库中文件差异的应用程序。Unity 会检测这些工具是否位于其默认安装位置。在 Windows 上，Unity 检查 TortoiseMerge、WinMerge、PlasticSCM Merge 和 Beyond Compare 4 的注册表键。有关详细信息，请参阅下面的修订控制差异 / 合并部分。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修订控制的差异--合并">修订控制的差异 / 合并 <a href="#%e4%bf%ae%e8%ae%a2%e6%8e%a7%e5%88%b6%e7%9a%84%e5%b7%ae%e5%bc%82--%e5%90%88%e5%b9%b6" class="anchor">🔗</a></h3><p>Unity 当前支持以下工具：</p>
+<ul>
+<li>SourceGear DiffMerge</li>
+<li>TkDiff</li>
+<li>P4Merge</li>
+<li>TortoiseMerge</li>
+<li>WinMerge</li>
+<li>PlasticSCM Merge</li>
+<li>Beyond Compare 4</li>
+</ul>
+<p>注意： 由于这些是 Unity 默认不包含的第三方工具，您可能需要单独下载和安装它们。</p>
+<p>要设置自定义的修订工具，请按照以下步骤进行：</p>
+<ol>
+<li>从<strong>修订控制差异 / 合并</strong>下拉列表中，选择<strong>自定义工具</strong>。</li>
+<li>输入自定义工具安装文件夹的路径。在 Mac 上，这应该指向工具安装文件夹中的<em>Contents/MacOS</em>文件夹。</li>
+<li>输入两路差异、三路差异和合并的参数。</li>
+</ol>
+<p>要在修订工具中指定文件布局，请使用以下参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>#LTITLE</code></td>
+<td style="text-align:left">左侧标题</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#RTITLE</code></td>
+<td style="text-align:left">右侧标题</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ATITLE</code></td>
+<td style="text-align:left">祖先标题</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#LEFT</code></td>
+<td style="text-align:left">左侧文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#RIGHT</code></td>
+<td style="text-align:left">右侧文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ANCESTOR</code></td>
+<td style="text-align:left">祖先文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#OUTPUT</code></td>
+<td style="text-align:left">输出文件</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ABSLEFT</code></td>
+<td style="text-align:left">左侧文件的绝对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ABSRIGHT</code></td>
+<td style="text-align:left">右侧文件的绝对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ABSANCESTOR</code></td>
+<td style="text-align:left">祖先文件的绝对路径</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>#ABSOUTPUT</code></td>
+<td style="text-align:left">输出文件的绝对路径</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<p><img src="/2023-10-14-unity-document-82/SourceGearDiffMerge.png" alt=""></p>
+<p><img src="/2023-10-14-unity-document-82/P4DiffMerge.png" alt=""></p>
+<h2 id="gi-缓存">GI 缓存 <a href="#gi-%e7%bc%93%e5%ad%98" class="anchor">🔗</a></h2><p>全局光照（GI）系统在每台计算机上使用缓存来存储用于预计算实时全局光照的中间文件。计算机上的所有项目共享缓存。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>最大缓存大小（GB）</strong></td>
+<td style="text-align:left">使用滑块设置最大 GI 缓存文件夹大小。Unity 会尽量保持 GI 缓存文件夹大小低于此数值。Unity 会定期删除未使用的文件以腾出更多空间（优先删除最旧的文件）。这是一个自动过程，您无需做任何操作。** 注意：** 如果当前场景使用 GI 缓存中的所有文件，请增加缓存大小。否则，在烘焙时会发生资源密集的重新计算。这可能发生在场景很大或缓存大小太小的情况下。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>自定义缓存位置</strong></td>
+<td style="text-align:left">启用此选项以允许自定义 GI 缓存文件夹的位置。默认情况下，GI 缓存存储在<em>Caches</em>文件夹中。所有项目共享缓存文件夹。** 提示：** 在 SSD 驱动器上存储 GI 缓存可以加快烘焙速度，特别是在烘焙过程受 I/O 限制的情况下。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缓存文件夹位置</strong></td>
+<td style="text-align:left">单击<strong>浏览</strong>按钮指定缓存的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缓存压缩</strong></td>
+<td style="text-align:left">此选项启用 Unity 将 GI 缓存中的数据文件压缩以减少硬盘空间的使用。数据文件默认使用 LZ4 压缩，并采用哈希和文件扩展名的命名方案。Unity 根据灯光系统的输入计算哈希，因此改变以下任何设置、属性或资源可能会导致重新计算照明：- 材质（纹理、Albedo、自发光）- 灯光 - 几何体 - 静态标志 - 光探头组 - 反射探头 - 光照贴图参数 ** 提示：** 如果需要访问原始的 Enlighten 实时全局光照数据，请禁用缓存压缩并清除缓存。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>清理缓存</strong></td>
+<td style="text-align:left">使用此按钮清除缓存目录。在编辑器运行时，手动删除 GI 缓存目录是不安全的。这是因为编辑器在启动时创建<em>GiCache</em>文件夹，并维护对这些文件的一组引用。<strong>清理缓存</strong>按钮确保编辑器在删除这些文件之前释放对磁盘上文件的所有引用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缓存大小</strong></td>
+<td style="text-align:left">显示当前的缓存大小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>缓存文件夹位置</strong></td>
+<td style="text-align:left">显示当前的缓存文件夹位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="作业">作业 <a href="#%e4%bd%9c%e4%b8%9a" class="anchor">🔗</a></h2><p>使用作业系统编写简单且安全的多线程代码，以便您的应用程序可以使用所有可用的 CPU 核心来执行代码。作业系统可以提高应用程序的性能。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>使用作业线程</strong></td>
+<td style="text-align:left">禁用<strong>使用作业线程</strong>以在主线程上运行所有作业。如果您正在调试并希望简化问题空间并消除所有并行性，可以禁用<strong>使用作业线程</strong>，这样当作业被调度时，它们会立即在主线程上运行。禁用<strong>使用作业线程</strong>的效果与将 JobsUtility.JobWorkerCount 设置为 0 相同。<strong>使用作业线程</strong>在编辑器重新启动时默认启用。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>启用作业调试器</strong></td>
+<td style="text-align:left">禁用<strong>启用作业调试器</strong>以删除作业系统安全系统检查，这些检查检测潜在的竞争条件并防止它们可能引起的错误。如果要监视性能而不增加作业系统安全检查的开销，请禁用<strong>启用作业调试器</strong>。编辑器重新启动时，默认情况下<strong>启用作业调试器</strong>被启用。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>泄漏检测级别</strong></td>
+<td style="text-align:left">选择泄漏检测的模式。泄漏检测检查使用 MallocTracked 进行的分配是否使用 FreeTracked 进行了释放。如果不释放非托管内存，将会导致内存泄漏，对内存使用有负面影响并降低性能。内存泄漏在编辑器中的域重载之间保持存在。在编辑器和开发构建中，默认选择<strong>已启用</strong>。在非开发构建中，默认选择<strong>已禁用</strong>作为<strong>泄漏检测级别</strong>的模式。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>已禁用</strong></td>
+<td style="text-align:left">不检测非托管内存泄漏。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>已启用</strong></td>
+<td style="text-align:left">对每个泄漏类别进行轻量级计数的泄漏检测。此选项仅在域卸载过程中作为泄漏的一部分打印泄漏数量。使用具有堆栈跟踪的<strong>已启用</strong>泄漏检测模式来查找检测到的泄漏。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>已启用（包含堆栈跟踪）</strong></td>
+<td style="text-align:left">泄漏检测报告任何未使用 FreeTracked 释放的 MallocTracked 分配的调用堆栈。<strong>已启用（包含堆栈跟踪）**可能会给分配带来性能开销。只有在有意跟踪本机内存泄漏时才使用**已启用（包含堆栈跟踪）</strong>。与<strong>已启用</strong>一样，<strong>已启用（包含堆栈跟踪）**会将泄漏报告为域卸载过程的一部分。您只能在编辑器和开发构建中选择**已启用（包含堆栈跟踪）</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="包管理器">包管理器 <a href="#%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8" class="anchor">🔗</a></h2><p>使用 “包管理器” 偏好设置更改以下包的默认缓存位置：</p>
+<ul>
+<li>从 Unity Registry 安装的包</li>
+<li>从资产商店下载的包</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Packages</strong></td>
+<td style="text-align:left">设置确定存储在 Unity 注册表中安装的包的位置的缓存位置。有关更多信息，请参见自定义全局缓存。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>My Assets</strong></td>
+<td style="text-align:left">设置确定存储在<strong>资产商店</strong>中下载的包的位置的缓存位置。有关更多信息，请参见自定义资产商店缓存位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="场景视图">场景视图 <a href="#%e5%9c%ba%e6%99%af%e8%a7%86%e5%9b%be" class="anchor">🔗</a></h2><p>使用 “场景视图” 偏好设置自定义在编辑时对象的放置和可见性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>创建对象在原点位置</strong></td>
+<td style="text-align:left">启用此选项可以将新对象创建在原点位置（而不是场景中心）。默认禁用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>创建对象时保持比例一致</strong></td>
+<td style="text-align:left">启用此选项可以定义变换组件中 “缩放” 默认行为。如果启用，当调整一个缩放轴的值时，其他值会按比例自动调整。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>自动隐藏组件的 gizmos</strong></td>
+<td style="text-align:left">启用此选项可以在<strong>检视器</strong>中折叠的组件的 gizmos。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>仅在编辑器聚焦时刷新场景视图</strong></td>
+<td style="text-align:left">启用此选项可以在编辑器不是前台应用程序时忽略场景视图上的 “始终刷新” 标记。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>线条粗细</strong></td>
+<td style="text-align:left">设置变换工具的线条粗细。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>搜索时启用过滤</strong></td>
+<td style="text-align:left">启用此选项可以在场景视图中将非匹配项变暗。默认启用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>编辑 LOD 群组时启用过滤</strong></td>
+<td style="text-align:left">启用此选项以在编辑级别细节（LOD）群组时将场景中的其他对象变暗。默认启用。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="搜索">搜索 <a href="#%e6%90%9c%e7%b4%a2" class="anchor">🔗</a></h2><p>使用 “搜索” 偏好设置来设置编辑器的搜索偏好设置。</p>
+<blockquote>
+<p>提示：您还可以通过以下方式之一访问 “搜索” 偏好设置：</p>
+<ul>
+<li>在搜索字段中输入 <strong>?</strong>（问号），然后从结果中选择**打开搜索偏好设置 **。</li>
+<li>在<strong>搜索</strong>窗口左上角的**更多选项（：）*<em>中，选择*<em>偏好设置</em></em>。</li>
+</ul>
+</blockquote>
+<p><img src="/2023-10-14-unity-document-82/preferences-search.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>设置</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>跟踪搜索的当前选择</strong></td>
+<td style="text-align:left"></td>
+<td>启用此设置后，每次搜索选择更改时都会执行<code>SearchProvider.trackSelection</code>回调。回调将 &ldquo;Ping&rdquo; 项目窗口或层级窗口中的资源，这可能会减慢大型项目中的搜索导航。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>为找到的项目生成资源预览缩略图</strong></td>
+<td style="text-align:left"></td>
+<td>启用此设置以在搜索窗口结果面板中显示当前可见的项目的缩略图。禁用此设置时，搜索显示一个通用图标。在大型项目中，生成图标可能会减慢搜索导航速度，所以禁用此设置是有用的。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>选择键入抖动阈值（毫秒）</strong></td>
+<td style="text-align:left"></td>
+<td>抖动阈值是系统在用户完成输入前等待的时间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>提供程序设置</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>A</strong> <em>[提供程序切换]</em></td>
+<td>启用和禁用提供程序。当禁用提供程序时，搜索在执行搜索时会忽略它。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>B</strong> <em>[提供程序顺序]</em></td>
+<td>使用这些设置可以修改搜索项目在屏幕上显示的顺序。相同优先级的所有项目将在较低优先级项目之前显示。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>C</strong> <em>[默认操作]</em></td>
+<td>使用这些设置来选择在搜索结果中选择（例如，双击）项目时执行的默认操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>重置优先级</strong></td>
+<td style="text-align:left"></td>
+<td>将所有提供程序重置为默认的启用 / 禁用状态和优先级。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>搜索引擎</strong></td>
+<td style="text-align:left"></td>
+<td>将对象选择器、项目和场景中的搜索字段设置为可用的搜索引擎之一。<strong>经典</strong> - 原始搜索功能。<strong>高级</strong> - 用于 Unity 的最新版搜索（以前称为 QuickSearch）。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="索引">索引 <a href="#%e7%b4%a2%e5%bc%95" class="anchor">🔗</a></h3><p>通过从 “自定义索引器” 下拉列表中选择或取消选择它们来设置自定义索引页面。</p>
+<h2 id="自定义包偏好设置">自定义包偏好设置 <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%8c%85%e5%81%8f%e5%a5%bd%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>一些资产商店或 Unity 包向 “偏好设置” 窗口添加了它们自己的自定义偏好设置。通常，这些偏好设置使用包名称作为偏好设置类别。在此示例中，您可以看到 Cinemachine 包的偏好设置：</p>
+<p><img src="/2023-10-14-unity-document-82/PrefsPackages.png" alt=""></p>
+<p>有关特定包的偏好设置的信息，请参阅该包的文档。此部分仅包含标准 Unity 偏好设置的文档。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/15/2023-10-15-unity-document-83/">Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/14/2023-10-14-unity-document-82/">Unity中文版-Create Gameplay Editor Features - Preferences(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/13/2023-10-13-unity-document-81/">Unity中文版-Create Gameplay Editor Features - 2D and 3D mode settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/12/2023-10-12-unity-document-80/">Unity中文版-Create Gameplay Editor Features(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/11/2023-10-11-unity-document-79/">Unity中文版-Create Gameplay Troubleshooting(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(93)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (86)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
