@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-17 11:13:34 &#43;0800 CST">2023/10/17</time>
+        <span class="split">·</span>
+        <span> 57 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="增量构建流水线">增量构建流水线 <a href="#%e5%a2%9e%e9%87%8f%e6%9e%84%e5%bb%ba%e6%b5%81%e6%b0%b4%e7%ba%bf" class="anchor">🔗</a></h1><p>为了在开发过程中加快迭代速度，Unity 使用增量构建流水线，只在应用程序的部分内容自上次构建以来发生更改时重新构建。这包括资产序列化、代码编译、数据压缩和签名等构建步骤。默认情况下，Unity 对发布构建和开发构建都使用增量构建流水线。</p>
+<p>增量构建流水线还自动执行仅脚本构建（Scripts Only Build）功能。因此，仅当平台不使用增量构建时，才可以在构建设置窗口中找到<strong>仅脚本构建</strong>选项。</p>
+<p>增量构建流水线适用于 Mono 和 IL2CPP 脚本后端。但是，输出文件结构会根据项目使用的脚本后端而改变。</p>
+<h2 id="平台兼容性">平台兼容性 <a href="#%e5%b9%b3%e5%8f%b0%e5%85%bc%e5%ae%b9%e6%80%a7" class="anchor">🔗</a></h2><p>Unity 支持以下平台的增量构建流水线</p>
+<ul>
+<li>独立应用程序（Windows、Mac 和 Linux）</li>
+<li>Web</li>
+<li>Xbox One</li>
+<li>Xbox Series X and Xbox Series S</li>
+<li>Android</li>
+<li>iOS</li>
+<li>tvOS</li>
+</ul>
+<h2 id="创建非增量构建">创建非增量构建 <a href="#%e5%88%9b%e5%bb%ba%e9%9d%9e%e5%a2%9e%e9%87%8f%e6%9e%84%e5%bb%ba" class="anchor">🔗</a></h2><p>在某些情况下，创建不使用增量构建流水线的构建可能是有用或必要的。</p>
+<p>要创建干净的、非增量构建：</p>
+<ol>
+<li>打开构建设置窗口。</li>
+<li>在<strong>构建</strong>按钮旁边，选择下拉菜单。</li>
+<li>选择<strong>清理构建</strong>。</li>
+</ol>
+<p>通常情况下，如果在增量构建后没有预期的更改，并且您认为增量构建流水线存在问题，则应创建一个干净的构建。最常见的原因是，当您实现或更改影响资产的构建过程回调时。</p>
+<p>由于构建过程无法知道您实现的回调如何影响资产，因此无法确定如何重新构建资产。只有在文件的依赖关系发生变化时，Unity 才会重新生成文件。这意味着，如果回调修改了 Unity 生成的文件，并且文件的依赖关系没有发生变化，回调可以将修改应用于已经修改过的文件。例如，如果回调向 Android 应用清单添加新条目，并且 Android 应用清单的依赖关系未更改，则回调仍会添加新条目，从而导致生成无效的文件。</p>
+<p>如果更改回调或其输入数据，并且希望 Unity 重新构建受回调影响的资产，请创建干净的构建。回调的示例包括：</p>
+<ul>
+<li>PostProcessSceneAttribute</li>
+<li>IPreprocessShaders.OnProcessShader</li>
+<li>IPreprocessComputeShaders.OnProcessComputeShader</li>
+</ul>
+<p><strong>注意</strong>：如果对资产进行更改，Unity 会在构建应用程序时重新构建该资产。这还包括对受其影响的任何回调进行处理，这意味着如果对资产进行更改，不需要创建干净的构建，只需在对构建过程的回调进行更改时创建干净的构建。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/18/2023-10-18-unity-document-86/">Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/17/2023-10-17-unity-document-85/">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/16/2023-10-16-unity-document-84/">Unity中文版-Create Gameplay Editor Features - Build Settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/15/2023-10-15-unity-document-83/">Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/14/2023-10-14-unity-document-82/">Unity中文版-Create Gameplay Editor Features - Preferences(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(96)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (89)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

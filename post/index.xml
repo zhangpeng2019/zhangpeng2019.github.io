@@ -6,7 +6,265 @@
     <description>Recent content in Posts on 陈巧倩</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Oct 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Oct 2023 11:13:34 +0800</lastBuildDate><atom:link href="https://www.chenqiaoqian.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/18/2023-10-18-unity-document-86/</link>
+      <pubDate>Wed, 18 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/18/2023-10-18-unity-document-86/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;项目设置&#34;&gt;项目设置 &lt;a href=&#34;#%e9%a1%b9%e7%9b%ae%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;使用 “项目设置” 窗口来定义项目的设置。要打开 “项目设置” 窗口，请转到 &lt;strong&gt;Edit&lt;/strong&gt; &amp;gt; &lt;strong&gt;Project Settings&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-18-unity-document-86/Settings.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;em&gt;搜索框&lt;/em&gt;允许您在左侧筛选设置类别列表，并在右侧的详细面板中突出显示关键字。&lt;/p&gt;
+&lt;p&gt;B 所有设置按类别组织，类别显示在左侧的&lt;em&gt;类别列表&lt;/em&gt;中。当您从列表中选择一个类别时，详细面板会显示关联的设置。&lt;/p&gt;
+&lt;p&gt;C &lt;em&gt;详细面板&lt;/em&gt;显示所选类别的所有可用设置。&lt;/p&gt;
+&lt;p&gt;下面列出了 “项目设置” 窗口中默认提供的设置类别。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adaptive Performance&lt;/li&gt;
+&lt;li&gt;Audio&lt;/li&gt;
+&lt;li&gt;Editor&lt;/li&gt;
+&lt;li&gt;Graphics&lt;/li&gt;
+&lt;li&gt;Input Manager&lt;/li&gt;
+&lt;li&gt;Package Manager&lt;/li&gt;
+&lt;li&gt;Physics&lt;/li&gt;
+&lt;li&gt;Physics 2D&lt;/li&gt;
+&lt;li&gt;Player&lt;/li&gt;
+&lt;li&gt;Preset Manager&lt;/li&gt;
+&lt;li&gt;Quality&lt;/li&gt;
+&lt;li&gt;Scene Template&lt;/li&gt;
+&lt;li&gt;Script Execution Order&lt;/li&gt;
+&lt;li&gt;Services&lt;/li&gt;
+&lt;li&gt;Tags and Layers&lt;/li&gt;
+&lt;li&gt;TextMesh Pro&lt;/li&gt;
+&lt;li&gt;Time&lt;/li&gt;
+&lt;li&gt;Timeline&lt;/li&gt;
+&lt;li&gt;UI Toolkit&lt;/li&gt;
+&lt;li&gt;Version Control&lt;/li&gt;
+&lt;li&gt;XR Plugin Management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据您安装的包，项目设置窗口还可以显示其他类别和设置。有关特定于包的设置的更多信息，请参阅相应的包文档。&lt;/p&gt;
+&lt;h2 id=&#34;查找设置&#34;&gt;查找设置 &lt;a href=&#34;#%e6%9f%a5%e6%89%be%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您需要找到一个设置时，您可以在 “项目设置” 窗口顶部的搜索框中输入一个关键字（可以是部分或全部关键字）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-18-unity-document-86/Settings-filter.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过在搜索框中输入关键字来限定范围&lt;/p&gt;
+&lt;p&gt;当您在搜索框中输入关键字时，类别列表会动态变化。在上面的示例中，当用户输入单词 “mode” 时，类别列表会缩小为六个匹配项。这意味着 Unity 在仅六个范围类别的项目设置中找到了该关键字。同时，详细面板会突出显示任何匹配的关键字。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：您可以使用相同的步骤来查找和过滤首选项。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/17/2023-10-17-unity-document-85/</link>
+      <pubDate>Tue, 17 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/17/2023-10-17-unity-document-85/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;增量构建流水线&#34;&gt;增量构建流水线 &lt;a href=&#34;#%e5%a2%9e%e9%87%8f%e6%9e%84%e5%bb%ba%e6%b5%81%e6%b0%b4%e7%ba%bf&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;为了在开发过程中加快迭代速度，Unity 使用增量构建流水线，只在应用程序的部分内容自上次构建以来发生更改时重新构建。这包括资产序列化、代码编译、数据压缩和签名等构建步骤。默认情况下，Unity 对发布构建和开发构建都使用增量构建流水线。&lt;/p&gt;
+&lt;p&gt;增量构建流水线还自动执行仅脚本构建（Scripts Only Build）功能。因此，仅当平台不使用增量构建时，才可以在构建设置窗口中找到&lt;strong&gt;仅脚本构建&lt;/strong&gt;选项。&lt;/p&gt;
+&lt;p&gt;增量构建流水线适用于 Mono 和 IL2CPP 脚本后端。但是，输出文件结构会根据项目使用的脚本后端而改变。&lt;/p&gt;
+&lt;h2 id=&#34;平台兼容性&#34;&gt;平台兼容性 &lt;a href=&#34;#%e5%b9%b3%e5%8f%b0%e5%85%bc%e5%ae%b9%e6%80%a7&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity 支持以下平台的增量构建流水线&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;独立应用程序（Windows、Mac 和 Linux）&lt;/li&gt;
+&lt;li&gt;Web&lt;/li&gt;
+&lt;li&gt;Xbox One&lt;/li&gt;
+&lt;li&gt;Xbox Series X and Xbox Series S&lt;/li&gt;
+&lt;li&gt;Android&lt;/li&gt;
+&lt;li&gt;iOS&lt;/li&gt;
+&lt;li&gt;tvOS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建非增量构建&#34;&gt;创建非增量构建 &lt;a href=&#34;#%e5%88%9b%e5%bb%ba%e9%9d%9e%e5%a2%9e%e9%87%8f%e6%9e%84%e5%bb%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在某些情况下，创建不使用增量构建流水线的构建可能是有用或必要的。&lt;/p&gt;
+&lt;p&gt;要创建干净的、非增量构建：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开构建设置窗口。&lt;/li&gt;
+&lt;li&gt;在&lt;strong&gt;构建&lt;/strong&gt;按钮旁边，选择下拉菜单。&lt;/li&gt;
+&lt;li&gt;选择&lt;strong&gt;清理构建&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通常情况下，如果在增量构建后没有预期的更改，并且您认为增量构建流水线存在问题，则应创建一个干净的构建。最常见的原因是，当您实现或更改影响资产的构建过程回调时。&lt;/p&gt;
+&lt;p&gt;由于构建过程无法知道您实现的回调如何影响资产，因此无法确定如何重新构建资产。只有在文件的依赖关系发生变化时，Unity 才会重新生成文件。这意味着，如果回调修改了 Unity 生成的文件，并且文件的依赖关系没有发生变化，回调可以将修改应用于已经修改过的文件。例如，如果回调向 Android 应用清单添加新条目，并且 Android 应用清单的依赖关系未更改，则回调仍会添加新条目，从而导致生成无效的文件。&lt;/p&gt;
+&lt;p&gt;如果更改回调或其输入数据，并且希望 Unity 重新构建受回调影响的资产，请创建干净的构建。回调的示例包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PostProcessSceneAttribute&lt;/li&gt;
+&lt;li&gt;IPreprocessShaders.OnProcessShader&lt;/li&gt;
+&lt;li&gt;IPreprocessComputeShaders.OnProcessComputeShader&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果对资产进行更改，Unity 会在构建应用程序时重新构建该资产。这还包括对受其影响的任何回调进行处理，这意味着如果对资产进行更改，不需要创建干净的构建，只需在对构建过程的回调进行更改时创建干净的构建。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Unity中文版-Create Gameplay Editor Features - Build Settings(自翻译)</title>
+      <link>https://www.chenqiaoqian.com/2023/10/16/2023-10-16-unity-document-84/</link>
+      <pubDate>Mon, 16 Oct 2023 11:13:34 +0800</pubDate>
+      
+      <guid>https://www.chenqiaoqian.com/2023/10/16/2023-10-16-unity-document-84/</guid>
+      <description>&lt;p&gt;翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。&lt;/p&gt;
+&lt;h1 id=&#34;构建设置&#34;&gt;构建设置 &lt;a href=&#34;#%e6%9e%84%e5%bb%ba%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Unity 可以为不同的平台和不同的设置构建您的应用程序。这份文档描述了如何定义构建的场景、目标平台和设置。&lt;/p&gt;
+&lt;p&gt;要选择您的平台和设置，并开始构建过程，请使用 “构建设置” 窗口。要打开 “构建设置” 窗口：从 Unity 的主菜单中，选择  &lt;strong&gt;File&lt;/strong&gt; &amp;gt; &lt;strong&gt;Build Settings&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;理解构建&#34;&gt;理解构建 &lt;a href=&#34;#%e7%90%86%e8%a7%a3%e6%9e%84%e5%bb%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Unity 生成两种构建类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“发布” 构建，仅包括运行应用程序所需的部分。这是默认的构建类型。&lt;/li&gt;
+&lt;li&gt;“开发” 构建，包括脚本调试符号和 “Profiler”。选择 “开发” 构建选项可以启用额外的选项，如深度分析支持和脚本调试。这些选项在通用平台设置部分中有解释。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了在开发过程中进行更快的迭代，Unity 使用增量构建流水线，只重新构建自上次构建以来发生更改的构建组件。了解更多信息，请参阅增量构建流水线。&lt;/p&gt;
+&lt;h2 id=&#34;管理构建中的场景&#34;&gt;管理构建中的场景 &lt;a href=&#34;#%e7%ae%a1%e7%90%86%e6%9e%84%e5%bb%ba%e4%b8%ad%e7%9a%84%e5%9c%ba%e6%99%af&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您构建应用程序时，Unity 会在 “构建中的场景” 窗格中构建所有已选场景。Unity 按照场景在列表中的顺序进行构建。&lt;/p&gt;
+&lt;p&gt;您可以向列表中添加、排除、删除和重新排序场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“将当前打开的所有场景添加到列表中”：选择 “添加打开的场景”。您还可以从 “Project” 窗口将场景拖放到列表中。&lt;/li&gt;
+&lt;li&gt;“将列表中的场景排除在构建之外”：取消选中该场景旁边的复选框。这会将场景从构建中移除，但不会从列表中移除。&lt;/li&gt;
+&lt;li&gt;“从列表中删除场景”：选择场景并按下 “Delete” 键。&lt;/li&gt;
+&lt;li&gt;“调整场景顺序”：在列表中拖放场景以重新排序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-16-unity-document-84/build-settings.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;平台列表&#34;&gt;平台列表 &lt;a href=&#34;#%e5%b9%b3%e5%8f%b0%e5%88%97%e8%a1%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;每个构建必须有一个目标平台。平台窗格列出了您可以构建的所有平台。&lt;/p&gt;
+&lt;p&gt;计算机上安装的每个 Unity 版本都有其自己的平台列表。&lt;/p&gt;
+&lt;p&gt;如果列表中没有您需要的平台，请执行以下操作之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 “构建设置” 窗口中：
+&lt;ol&gt;
+&lt;li&gt;选择要添加的平台。&lt;/li&gt;
+&lt;li&gt;选择 “安装” 或 “下载”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;在 “Unity Hub”&amp;gt;“Installs” 中：
+&lt;ol&gt;
+&lt;li&gt;选择您正在使用的 Unity 版本的三个点。&lt;/li&gt;
+&lt;li&gt;选择  &lt;strong&gt;Add Modules&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;按照说明安装平台模块。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要更改构建的目标平台：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择要切换到的平台。
+提示：列表中显示的 Unity 图标表示当前选定的平台是目标平台。&lt;/li&gt;
+&lt;li&gt;选择 “切换平台”。
+如果 Unity 需要重新导入与目标平台匹配的格式的资源，则切换过程可能需要很长时间。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;构建设置-1&#34;&gt;构建设置 &lt;a href=&#34;#%e6%9e%84%e5%bb%ba%e8%ae%be%e7%bd%ae-1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;当您选择平台时，Unity 会显示一个可供构建调整的选项列表。某些设置适用于所有平台，而某些设置则是特定于平台的。&lt;/p&gt;
+&lt;h3 id=&#34;通用平台设置&#34;&gt;通用平台设置 &lt;a href=&#34;#%e9%80%9a%e7%94%a8%e5%b9%b3%e5%8f%b0%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;以下设置适用于所有平台。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置：&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能：&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;开发人员构建&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在您的构建中包括调试脚本符号和 Profiler。当您想要测试应用程序时，应使用此设置。选择此选项后，Unity 会设置&lt;code&gt;DEVELOPMENT_BUILD&lt;/code&gt;脚本定义。然后，您的构建将包括设置&lt;code&gt;DEVELOPMENT_BUILD&lt;/code&gt;作为条件的预处理指令（请参阅平台相关编译）。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;自动连接 Profiler&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;自动将 Unity Profiler 连接到您的构建中。仅在您选择了&lt;strong&gt;开发人员构建&lt;/strong&gt;时才可用。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;深度分析支持&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在 Profiler 中启用深度分析。这使得 Profiler 会对应用程序中的每个函数调用进行仪器化，以便返回更详细的分析数据。此选项可能会减慢脚本执行速度。仅在您选择了&lt;strong&gt;开发人员构建&lt;/strong&gt;时才可用。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;脚本调试&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;允许对脚本代码进行调试。仅在您选择了开发人员构建时才可用。Web 平台不支持此选项。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;等待托管调试器&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;使播放器在执行任何脚本代码之前等待调试器连接。仅在您选择了&lt;strong&gt;脚本调试&lt;/strong&gt;时才可用。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;IL2CPP 代码生成&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义 Unity 如何管理 IL2CPP 代码生成。此选项仅适用于使用 IL2CPP 作为脚本后端的情况，不适用于 Mono。要更改脚本后端，请转到&lt;strong&gt;Player Settings&lt;/strong&gt; &amp;gt; &lt;strong&gt;Configuration&lt;/strong&gt; &amp;gt; &lt;strong&gt;Scripting Backend&lt;/strong&gt;，并从&lt;strong&gt;Mono&lt;/strong&gt;改为&lt;strong&gt;IL2CPP&lt;/strong&gt;。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;更快的运行时&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;生成针对运行时性能进行优化的代码。这是默认设置，也是先前版本 Unity 的行为。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;更快（较小的构建）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;生成针对构建大小和迭代进行优化的代码。它生成较少的代码并产生较小的构建，但可能对运行时性能产生影响，特别是对于泛型代码。当构建时间重要时，例如在迭代更改时，您可能希望使用此选项。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;压缩方法&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在构建 Player 时压缩项目中的数据，包括 Assets、Scenes、Player 设置和 GI 数据。Web 平台不支持此选项。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;默认&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;在 PC、Mac、Linux Standalone 和 iOS 上，没有默认压缩。在 Android 上，默认压缩格式为 ZIP，相较于 LZ4HC 具有稍好的压缩效果。然而，ZIP 数据的解压缩速度较慢。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;LZ4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;一种快速的压缩格式，在开发构建中非常有用。有关详细信息，请参阅 BuildOptions.CompressWithLz4。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;LZ4HC&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;LZ4 的高压缩变体，构建速度较慢，但适用于发布构建的效果更好。有关详细信息，请参阅 BuildOptions.CompressWithLz4HC。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;资产导入覆盖&#34;&gt;资产导入覆盖 &lt;a href=&#34;#%e8%b5%84%e4%ba%a7%e5%af%bc%e5%85%a5%e8%a6%86%e7%9b%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;为了加快导入和平台切换时间，您可以本地覆盖所有纹理导入设置。通常情况下，您不会在最终构建中使用任何导入覆盖，但在开发过程中，它们可以用来加快迭代时间，特别是如果您不关心资产（在这种情况下是纹理）的最佳外观。&lt;/p&gt;
+&lt;p&gt;要为初始项目导入设置设置资产导入覆盖，请使用编辑器的命令行参数&lt;code&gt;-overrideMaxTextureSize&lt;/code&gt;和&lt;code&gt;-overrideTextureCompression&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;两个覆盖选项的默认值都是&lt;strong&gt;无覆盖&lt;/strong&gt;。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;设置：&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;strong&gt;功能：&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;纹理最大尺寸&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;覆盖最大导入纹理尺寸。Unity 按照两个值中较小的一个值进行纹理导入：此值，或 Texture 导入设置中指定的最大尺寸值。导入纹理所需的时间与其包含的像素数量大致成正比，因此较低的最大允许纹理尺寸可以加快导入时间。然而，生成的纹理分辨率较低，因此仅在开发过程中使用此设置。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;纹理压缩&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;覆盖 Texture 导入设置中设置的纹理压缩选项。仅影响导入到压缩纹理格式之一的纹理。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;强制使用快速压缩器&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;对支持的格式（BC7、BC6H、ASTC、ETC、ETC2）使用速度更快但质量较低的纹理压缩模式。通常，这导致更多的压缩伪影，但对于许多格式，压缩本身的速度是原来的 2 到 20 倍左右。此设置还会禁用任何具有 Crunch 纹理压缩格式的纹理上的压缩。此设置的效果与所有纹理的平台的 Texture 导入设置中将其&lt;strong&gt;压缩器质量&lt;/strong&gt;设置为&lt;strong&gt;Fast&lt;/strong&gt;相同。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;强制不使用压缩&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;不对纹理进行压缩；而是使用未压缩的格式。这样做的导入速度更快（因为跳过了纹理压缩过程），但生成的纹理占用更多内存和游戏数据大小，并且可能会影响渲染性能。此设置的效果与所有纹理的平台的 Texture 导入设置中将其&lt;strong&gt;压缩&lt;/strong&gt;设置为&lt;strong&gt;None&lt;/strong&gt;相同。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;特定于平台的设置&#34;&gt;特定于平台的设置 &lt;a href=&#34;#%e7%89%b9%e5%ae%9a%e4%ba%8e%e5%b9%b3%e5%8f%b0%e7%9a%84%e8%ae%be%e7%bd%ae&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;每个平台还有特定的构建设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PC、Mac 和 Linux Standalone&lt;/strong&gt;：请参阅 “PC、Mac 和 Linux 构建设置”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Universal Windows Platform&lt;/strong&gt;：请参阅 “Universal Windows Platform 构建设置”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tvOS&lt;/strong&gt;：请参阅为 tvOS 构建应用程序。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;iOS&lt;/strong&gt;：请参阅 iOS 构建设置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Android&lt;/strong&gt;：请参阅 Android 构建设置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web&lt;/strong&gt;：请参阅构建和运行 Web 项目。&lt;/li&gt;
+&lt;li&gt;关于&lt;strong&gt;封闭平台&lt;/strong&gt;开发的构建设置，请参阅 Unity 安装程序中的文档，或请咨询 Unity 论坛。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;构建应用程序&#34;&gt;构建应用程序 &lt;a href=&#34;#%e6%9e%84%e5%bb%ba%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;要构建应用程序，请选择以下之一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Build&lt;/strong&gt;：编译一个 Player，然后不执行其他操作。默认构建是增量构建，除了第一个构建总是一个完整的非增量构建。要强制进行非增量构建而不是增量构建，请从下拉菜单中选择&lt;strong&gt;清理构建&lt;/strong&gt;。 &lt;img src=&#34;https://www.chenqiaoqian.com/2023-10-16-unity-document-84/clean-build.png&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建并运行&lt;/strong&gt;：编译一个 Player 并在目标平台上打开它（有关详细信息，请查看各个平台页面）。此选项始终使用增量构建。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论 &lt;a href=&#34;#%e7%bb%93%e8%ae%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;搬砖愉快！&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Unity中文版-Create Gameplay Editor Features - Shortcuts Manager(自翻译)</title>
       <link>https://www.chenqiaoqian.com/2023/10/15/2023-10-15-unity-document-83/</link>
