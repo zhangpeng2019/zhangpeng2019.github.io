@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-19 11:13:34 &#43;0800 CST">2023/10/19</time>
+        <span class="split">·</span>
+        <span> 102 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="audio">Audio <a href="#audio" class="anchor">🔗</a></h1><p><strong>Audio</strong>设置（主菜单：<strong>Edit</strong> &gt; <strong>Project Settings</strong>，然后选择<strong>Audio</strong>类别）允许您微调场景中所有正在播放的声音的最大音量。</p>
+<p><img src="/2023-10-19-unity-document-87/AudioSet.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Global Volume</strong></td>
+<td style="text-align:left">设置播放期间所有声音的音量。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Volume Rolloff Scale</strong></td>
+<td style="text-align:left">设置基于对数衰减的源的全局衰减系数。值越大，音量衰减越快。相反，值越小，衰减越慢。<strong>提示</strong>：1 的值模拟 “真实世界”。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Doppler Factor</strong></td>
+<td style="text-align:left">设置多普勒效应的听觉效果。使用 0 禁用。使用 1 使其对快速移动的对象可听。<strong>提示</strong>：将<strong>Doppler Factor</strong>设置为 1 后，您可以微调<strong>Speed of Sound</strong>和<strong>Doppler Factor</strong>直到满意为止。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Speaker Mode</strong></td>
+<td style="text-align:left">设置项目的默认扬声器模式。默认值为 2，对应立体声扬声器。有关模式的完整列表，请参阅 AudioSpeakerMode API 参考。<strong>注意</strong>：您还可以通过脚本在运行时更改扬声器模式。有关详细信息，请参阅 Audio Settings。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>System Sample Rate</strong></td>
+<td style="text-align:left">设置输出采样率。如果设置为 0，Unity 将使用系统的采样率。<strong>注意</strong>：这只是一个参考，因为某些平台允许您更改采样率，例如 iOS 或 Android。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>DSP Buffer Size</strong></td>
+<td style="text-align:left">设置 DSP 缓冲区的大小，以优化延迟或性能。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Default</strong></td>
+<td>默认缓冲区大小。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Best Latency</strong></td>
+<td>在性能和延迟之间权衡。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Good Latency</strong></td>
+<td>在延迟和性能之间取得平衡。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Best Performance</strong></td>
+<td>在性能和延迟之间权衡。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Virtual Voices</strong></td>
+<td style="text-align:left">设置音频系统管理的虚拟声音数的最大数量。该值应始终大于游戏播放的声音数量。如果不是，Unity 会在控制台显示警告。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Real Voices</strong></td>
+<td style="text-align:left">设置同时播放的真实声音数的最大数量。在每一帧中选择最响亮的声音。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Spatializer Plugin</strong></td>
+<td style="text-align:left">选择要使用的本地音频插件，以对 3D 声源执行空间化滤波。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Ambisonic Decoder Plugin</strong></td>
+<td style="text-align:left">选择要使用的本地音频插件，以执行源的全景声到双声道滤波。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Disable Unity Audio</strong></td>
+<td style="text-align:left">启用后，禁用独立构建中的音频系统。在编辑器中，音频系统仍然开启，并支持预览音频剪辑，但 Unity 不处理对 AudioSource.Play 和 AudioSource.playOnAwake 的调用，以模拟独立构建的行为。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Virtualize Effect</strong></td>
+<td style="text-align:left">启用后，动态关闭在被剔除的 AudioSource 上的效果和空间化器，以节省 CPU。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/21/2023-10-21-unity-document-89/">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/20/2023-10-20-unity-document-88/">Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/2023-10-19-unity-document-87/">Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/18/2023-10-18-unity-document-86/">Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/17/2023-10-17-unity-document-85/">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(99)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (92)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

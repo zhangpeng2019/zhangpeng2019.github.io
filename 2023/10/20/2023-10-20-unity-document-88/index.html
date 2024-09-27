@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-20 11:13:34 &#43;0800 CST">2023/10/20</time>
+        <span class="split">·</span>
+        <span> 477 words </span>
+        <span class="split">·</span>
+        <span>
+            3 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="editor">Editor <a href="#editor" class="anchor">🔗</a></h1><p><strong>Editor</strong>设置（主菜单：<strong>Edit</strong> &gt; <strong>Project Settings</strong>，然后选择<strong>Editor</strong>类别）用于在 Unity 编辑器中应用全局设置。</p>
+<p><img src="/2023-10-20-unity-document-88/EditorSettings2023_1a.png" alt=""> <img src="/2023-10-20-unity-document-88/EditorSettings2023_1b.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Unity Remote</strong> <strong>Note</strong>: Unity Remote 在 2020.1 版本及以后的版本中已经被弃用。要在移动设备上测试应用程序，请使用 Device Simulator 包。</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Device</strong></td>
+<td style="text-align:left">选择要用于 Unity Remote 测试的设备类型。Unity Remote 是一个可下载的应用程序，旨在帮助 Android、iOS 和 tvOS 开发。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Compression</strong></td>
+<td style="text-align:left">选择通过 Unity Remote 将游戏画面传输到设备时使用的图像压缩类型。默认为<strong>JPEG</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>JPEG</strong></td>
+<td>JPEG 通常具有更高的压缩和性能，但图形质量稍低。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>PNG</strong></td>
+<td>PNG 会更准确地显示游戏画面，但可能导致性能下降。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Resolution</strong></td>
+<td style="text-align:left">选择 Unity Remote 上游戏运行的分辨率。默认为<strong>Downsize</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Downsize</strong></td>
+<td>以较低的分辨率显示游戏。这会提供更好的性能，但图形精度较低。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Normal</strong></td>
+<td>以正常分辨率显示游戏。这会提供更高的图形精度，但性能较低。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Joystick Source</strong></td>
+<td style="text-align:left">选择所使用的摇杆的连接来源。默认为<strong>Remote</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Remote</strong></td>
+<td>使用连接到运行 Unity Remote 的设备上的摇杆。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Local</strong></td>
+<td>使用连接到运行 Editor 的计算机上的摇杆。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Version Control</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择元文件的可见性。您可以将 Unity 与包括 Perforce 和 PlasticSCM 在内的大多数常用版本控制工具配合使用。默认为<strong>Hidden Meta Files</strong>。有关显示或隐藏元文件的更多信息，请参阅 Unity Answers 中的 Visible or hidden meta files。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Hidden Meta Files</strong></td>
+<td>隐藏元文件。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Visible Meta Files</strong></td>
+<td>显示元文件。当使用版本控制时很有用，因为它允许其他用户和机器查看这些元文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Perforce</strong></td>
+<td>使用 Perforce 版本控制系统。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>PlasticSCM</strong></td>
+<td>使用 PlasticSCM 版本控制系统。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Asset Serialization</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择用于存储序列化资产的格式。默认为<strong>Force Text</strong>。Unity 使用序列化将资产和 AssetBundle 从计算机的硬盘加载和保存。为了帮助版本控制合并，Unity 可以使用文本格式存储场景文件。如果您不合并场景，Unity 可以使用更节省空间的二进制格式存储场景，或者同时允许存在文本和二进制场景文件。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Mixed</strong></td>
+<td>二进制模式中的资产仍保持二进制模式，文本模式中的资产仍保持文本模式。Unity 默认情况下使用二进制模式来处理新的资产。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Force Binary</strong></td>
+<td>将所有资产都转换为二进制模式，包括新的资产。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Force Text</strong></td>
+<td>将所有资产都转换为文本模式，包括新的资产。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Serialize Inline Mappings On One Line</strong></td>
+<td style="text-align:left">启用此设置可以使 Unity 在一行上写入引用和内联映射。如果禁用此设置，当一行中的字符超过 80 个字符时，Unity 会将文本序列化的引用拆分成多行。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Behavior Mode</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择默认的 2D 或 3D 开发模式。根据您选择的模式，Unity 会设置某些默认行为，以使开发更容易。默认为<strong>3D</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>3D</strong></td>
+<td>为 3D 开发设置 Unity。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>2D</strong></td>
+<td>为 2D 开发设置 Unity。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Asset Pipeline</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择要使用的 Asset Pipeline 版本。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Version 1 (deprecated)</strong></td>
+<td>使用 Asset Pipeline 版本 1。此功能已被弃用，不再受支持。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Version 2</strong></td>
+<td>使用 Asset Pipeline 版本 2。这是默认选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Active version</strong></td>
+<td style="text-align:left">显示活动的 Asset Pipeline 版本。要使更改生效，您必须保存并重新启动项目。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cache Server (project specific)</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择要使用的缓存服务器。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Use global settings (stored in preferences)</strong></td>
+<td>使用在<strong>首选项</strong>窗口中设置的默认缓存服务器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Enabled</strong></td>
+<td>选择要使用的特定缓存服务器，而不是默认缓存服务器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Disabled</strong></td>
+<td>不使用缓存服务器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Prefab Editing Environments</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Regular Environment</strong></td>
+<td style="text-align:left">将场景分配为在 Prefab 模式下为<em>常规</em>Prefab（即具有常规 Transform 组件的 Prefab）编辑环境。这样，您可以根据选择的背景而不是空场景来编辑 Prefab。有关更多信息，请参阅 Prefab Mode 中的 Editing a Prefab。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>UI Environment</strong></td>
+<td style="text-align:left">将场景分配为在 Prefab 模式下为<em>UI</em>Prefab（即具有 Rect Transform 组件的 Prefab）编辑环境。这样，您可以根据选择的背景而不是空场景来编辑 Prefab。有关更多信息，请参阅 Prefab Mode 中的 Editing a Prefab。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Graphics</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use legacy Light Probe sample counts</strong></td>
+<td style="text-align:left">在使用 Progressive Lightmapper 进行烘焙时，使用固定的 Light Probe 采样计数。采样计数为：64 个直接采样、2048 个间接采样和 2048 个环境采样。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable baked cookies support</strong></td>
+<td style="text-align:left">对于在 Unity 2020.1 或更高版本中创建的项目，默认情况下，Progressive Lightmapper 中的 Baked Lights 和 Mixed Lights 启用了烘焙的 cookie。对于在 2020.1 之前的 Unity 版本创建的项目，默认情况下，Progressive Lightmapper 中的 Baked Lights 和 Mixed Lights 禁用了烘焙的 cookie，以实现向后兼容性。启用此项可在 Progressive Lightmapper 中启用烘焙的 cookie，以用于 Baked Lights 和 Mixed Lights。有关更多信息，请参见 Cookie。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sprite Atlas</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择一种模式来配置<strong>Sprite Atlas</strong>工具。默认情况下，此设置为<strong>Disabled</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Disabled</strong></td>
+<td>Unity 不会打包 Sprite Atlas。这是默认设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Sprite Atlas V1 - Enabled For Builds</strong></td>
+<td>Unity 只在构建时打包 Sprite Atlas。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Sprite Atlas V1 - Always Enabled</strong></td>
+<td>Unity 在构建和进入播放模式之前都会打包 Sprite Atlas。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Sprite Atlas V2 (Experimental) - Enabled</strong></td>
+<td>Unity 在构建和进入播放模式之前都会打包 Sprite Atlas。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Sprite Atlas V2 (Experimental) - Enabled For Builds</strong></td>
+<td>Unity 只在构建时打包 Sprite Atlas。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>C# Project Generation</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Additional extensions to include</strong></td>
+<td style="text-align:left">包含要添加到 C# 项目中的附加文件类型列表。每个文件类型之间用分号分隔。默认情况下，此字段包含<code>txt;xml;fnt;cd</code>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Root namespace</strong></td>
+<td style="text-align:left">填写用于 C# 项目的<code>RootNamespace</code>属性的命名空间。有关更多信息，请参阅公共 MSBuild 项目属性。默认情况下，此字段为空。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>ETC Texture Compressor</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Behavior</strong></td>
+<td style="text-align:left">指定在不同的 ETC 纹理压缩质量下使用的压缩工具。可用的压缩工具包括 etcpak、ETCPACK 和 Etc2Comp。这些都是第三方压缩器库。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Legacy</strong></td>
+<td>使用 ETC 纹理压缩可以进行配置的 ETC 纹理压缩之前可用的配置。这些设置如下:-<strong>Fast</strong>：ETCPACK Fast-<strong>Normal</strong>：ETCPACK Fast-<strong>Best</strong>：ETCPACK Best</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Default</strong></td>
+<td>使用 Unity 的默认配置。这些设置如下：-<strong>Fast</strong>：etcpack-<strong>Normal</strong>：ETCPACK Fast-<strong>Best</strong>：Etc2Comp Best</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Custom</strong></td>
+<td>自定义 ETC 纹理压缩配置。选择此选项后，将启用<strong>Fast</strong>、<strong>Normal</strong>和<strong>Best</strong>属性。它与支持的平台上的 Texture Importer 中的<strong>Compressor Quality</strong>设置相对应。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fast</strong></td>
+<td style="text-align:left">定义 Fast 压缩的压缩质量工具。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Normal</strong></td>
+<td style="text-align:left">定义 Normal 压缩的压缩质量工具。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Best</strong></td>
+<td style="text-align:left">定义 Best 压缩的压缩质量工具。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Line Endings For New Scripts</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mode</strong></td>
+<td style="text-align:left">选择应用于在编辑器中创建的新脚本的文件行结束符。请注意，配置这些设置不会转换现有的脚本。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>OS Native</strong></td>
+<td>根据编辑器运行的操作系统应用行结束符。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Unix</strong></td>
+<td>根据 Unix 操作系统应用行结束符。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Windows</strong></td>
+<td>根据 Windows 操作系统应用行结束符。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Streaming Settings</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Texture Streaming in Play Mode</strong></td>
+<td style="text-align:left">启用 Play Mode 中的 Mipmap Streaming。还必须启用质量管理<strong>Texture Streaming</strong>设置。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shader Compilation</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Asynchronous Shader Compilation</strong></td>
+<td style="text-align:left">启用此复选框可以使 Unity 在后台编译着色器。编译时，Unity 引擎使用虚拟着色器来渲染编辑器中的几何体。当 Shader 编译完成后，引擎将您的着色器变体替换回来。这意味着在渲染之前，编辑器可以无缝运行，而不必等待 Unity 引擎编译每个单独的着色器变体。有关更多信息，请参见 Asynchronous Shader compilation。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Numbering Scheme</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Game Object Naming</strong></td>
+<td style="text-align:left">重复的或实例化的 GameObject 的命名方案。重复或实例化的 GameObject 的命名是将连续的数字附加到原始对象名称中。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Game Object Digits</strong></td>
+<td style="text-align:left">设置用于重复的 GameObject 数字的位数。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Space Before Number in Asset Names</strong></td>
+<td style="text-align:left">控制是否在重复的资源名称中在数字前插入空格。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/21/2023-10-21-unity-document-89/">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/20/2023-10-20-unity-document-88/">Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/2023-10-19-unity-document-87/">Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/18/2023-10-18-unity-document-86/">Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/17/2023-10-17-unity-document-85/">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(99)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (92)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

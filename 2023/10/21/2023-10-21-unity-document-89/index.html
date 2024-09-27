@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-21 11:13:34 &#43;0800 CST">2023/10/21</time>
+        <span class="split">·</span>
+        <span> 1895 words </span>
+        <span class="split">·</span>
+        <span>
+            9 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="graphics">Graphics <a href="#graphics" class="anchor">🔗</a></h1><p>Use the <strong>Graphics</strong> settings (main menu: <strong>Edit</strong> &gt; <strong>Project Settings</strong>, then select the <strong>Graphics</strong> category) to apply global settings for Graphics.</p>
+<p>This section provides documentation on the following groups of properties:</p>
+<ul>
+<li>Scriptable Render Pipeline Settings</li>
+<li>Camera Settings</li>
+<li>Tier Settings</li>
+<li>Built-in shader settings</li>
+<li>Always-included Shaders</li>
+<li>Shader stripping</li>
+<li>Shader loading</li>
+<li>Culling settings</li>
+</ul>
+<h2 id="scriptable-render-pipeline-settings">Scriptable Render Pipeline Settings <a href="#scriptable-render-pipeline-settings" class="anchor">🔗</a></h2><p>Allows you to set the default <strong>render pipeline</strong> that Unity uses to render your project. To set a render pipeline based on the Scriptable Render Pipeline, assign the desired Render Pipeline Asset here.</p>
+<p>For more information, see How to get, set, and configure the active render pipeline.</p>
+<h2 id="camera-settings">Camera Settings <a href="#camera-settings" class="anchor">🔗</a></h2><p>These properties control various rendering settings.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Transparency Sort Mode</strong></td>
+<td style="text-align:left">Define the order for rendering objects by their distance along a specific axis. Renderers in Unity are sorted by several criteria, such as their layer number or their distance from the <strong>camera</strong> . This is generally only useful in 2D development: for example, sorting <strong>Sprites</strong>  by height or along the Y-axis.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Default</em></td>
+<td>Sort objects based on the Camera mode.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Perspective</em></td>
+<td>Sort objects based on perspective view.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Orthographic</em></td>
+<td>Sort objects based on orthographic view.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Custom Axis</em></td>
+<td>Sort objects based on the sort mode defined with the <strong>Transparency Sort Axis</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Transparency Sort Axis</strong></td>
+<td style="text-align:left">Define a custom <strong>Transparency Sort Mode</strong>.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tier-settings">Tier Settings <a href="#tier-settings" class="anchor">🔗</a></h2><p><img src="/2023-10-21-unity-document-89/GraphicsSettings2.png" alt=""></p>
+<p>In the Built-in Render Pipeline, you can use <strong>Tier settings</strong> to change rendering and shader compilation settings for different types of hardware. For more information, see Graphics tiers.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Standard Shader Quality</strong></td>
+<td style="text-align:left">Set the quality of the Standard Shader to <em>High</em>, <em>Medium</em>, or <em>Low</em>.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reflection Probes Box Projection</strong></td>
+<td style="text-align:left">Enable projection for reflection UV mappings on Reflection Probes .</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reflection Probes Blending</strong></td>
+<td style="text-align:left">Enable blending on Reflection Probes.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Detail Normal Map</strong></td>
+<td style="text-align:left">Enable Detail Normal Map sampling, if assigned.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Semitransparent Shadows</strong></td>
+<td style="text-align:left">Enable Semitransparent Shadows. This adds or removes the UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS shader compiler define.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Light Probe Proxy Volume</strong></td>
+<td style="text-align:left">Enable rendering a 3D grid of interpolated Light Probes .</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cascaded Shadows</strong></td>
+<td style="text-align:left">Enable using cascaded shadow maps. This adds or removes the UNITY_NO_SCREENSPACE_SHADOWS shader compiler define.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Prefer 32 bit shadow maps</strong></td>
+<td style="text-align:left">Enable 32-bit float shadow map when you are targeting platforms that use DX11 or DX12. Most platforms have a fixed shadow map format that you can’t adjust. These vary in format, and can be 16-bit, 24-bit, or 32-bit, and can also be either float- or integer-based. 32-bit shadow maps give higher quality shadows than 16-bit, but use increased memory and bandwidth on the GPU. <strong>Note:</strong> To use 32-bit shadow maps, make sure the depth buffer is also set to 32-bit.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use HDR</strong></td>
+<td style="text-align:left">Enable High Dynamic Range rendering for this tier.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>HDR Mode</strong></td>
+<td style="text-align:left">Select the format to use for the HDR buffer when <strong>HDR</strong>  is enabled for the current Graphics Tier. By default, this is set to <em>FP16</em>.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>FP16</em></td>
+<td>Color <strong>render texture</strong>  format, 16-bit floating point per channel.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>R11G11B10</em></td>
+<td>Color render <strong>texture format</strong> . R and G channels are 11-bit floating point, B channel is 10-bit floating point.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Rendering Path</strong></td>
+<td style="text-align:left">Choose how Unity should render graphics. Different rendering paths affect the performance of your game, and how lighting and shading are calculated. Some paths are more suited to different platforms and hardware than others. <em>Deferred</em> rendering is not supported when using Orthographic projection. If the camera’s projection mode is set to Orthographic, these values are overridden, and the camera always uses <em>Forward</em> rendering. For more information, see Rendering Paths.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Forward</em></td>
+<td>The traditional rendering path. This supports all the typical Unity graphics features (normal maps, per-pixel lights, shadows etc.). However under default settings, only a small number of the brightest lights are rendered in per-pixel lighting mode. The rest of the lights are calculated at object vertices or per-object.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Deferred</em></td>
+<td>Deferred shading  has the most lighting and shadow fidelity, and is best suited if you have many real-time lights. It requires a certain level of hardware support.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Legacy Vertex Lit</em></td>
+<td>Legacy Vertex Lit is the rendering path with the lowest lighting fidelity and no support for real-time shadows. It is a subset of <em>Forward</em> rendering path.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Realtime Global Illumination CPU Usage</strong></td>
+<td style="text-align:left">The CPU budget you allow Enlighten Realtime Global Illumination to use for lighting calculations at runtime. Increasing this makes the system react faster to changes in lighting at a cost of using more CPU time. <strong>Note:</strong> Some platforms allow all CPUs to be occupied by worker threads whereas some enforce maximums. For example, some gaming consoles allow a maximum of 4 CPU cores. For Android devices, if it is a bigLittle architecture, only the little CPUs are used; otherwise the maximum is one less than the total number of CPUs. If you use the URP or HDRP render pipelines, you can configure this property in the quality settings.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Low</em></td>
+<td>25% of the allowed CPU threads are used as worker threads.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Medium</em></td>
+<td>50% of the allowed CPU threads are used as worker threads.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>High</em></td>
+<td>75% of the allowed CPU threads are used as worker threads.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Unlimited</em></td>
+<td>100% of the allowed CPU threads are used as worker threads.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="built-in-shader-settings">Built-in shader settings <a href="#built-in-shader-settings" class="anchor">🔗</a></h2><p>Use these settings to specify which shader to use for each of the listed features in the Built-in Render Pipeline.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Rendering path</strong></th>
+<th style="text-align:left"><strong>Shader to use</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Deferred</strong></td>
+<td style="text-align:left">Use with Deferred shading.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Deferred Reflection</strong></td>
+<td style="text-align:left">Use with Reflection Probes in deferred shading.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Screen Space shadows</strong></td>
+<td style="text-align:left">Use with cascaded shadow maps for directional lights on PC/console platforms.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Motion vectors</strong></td>
+<td style="text-align:left">Use for object-based motion vector calculations.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Lens Flare</strong></td>
+<td style="text-align:left">Use with Lens Flares.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Light Halo</strong></td>
+<td style="text-align:left">Use with Light Halos.</td>
+</tr>
+</tbody>
+</table>
+<p>For each of these features, you can choose which type of Shader to use:</p>
+<ul>
+<li><strong>No Support</strong> disables this calculation. Use this setting if you are not using deferred shading. This will save some space in the built game data files.</li>
+<li><strong>Built-in Shader</strong> uses Unity’s built-in Shaders to do the calculation. This is the default.</li>
+<li><strong>Custom Shader</strong> uses your own compatible Shader to do the calculation. This enables you to do deep customization of deferred rendering.</li>
+</ul>
+<p>When you choose <strong>Custom shader</strong>, a <strong>Shader</strong> reference property appears below the feature property where you can set a reference to the Shader you want to use.</p>
+<h2 id="always-included-shaders">Always Included Shaders <a href="#always-included-shaders" class="anchor">🔗</a></h2><p>This is a list of shaders for which Unity includes all possible variants in every build. This can be useful if you want to use shaders or variants at runtime that would not otherwise be included in the build; for example, if you use AssetBundles or Addressables that rely on those shaders or variants, or if you use shader keywords to change variants at runtime.</p>
+<p><strong>Warning:</strong> This feature is not recommended for shaders that have a large number of variants, such as the Standard Shader; it can lead to significant runtime and build time performance problems. You should instead create shader variant collections that contain only the variants you need, and include those in your build.</p>
+<p><strong>Note:</strong> This setting overrides shader keyword declaration settings. For each shader in the list, Unity includes all sets of all keywords, even if you use the “shader feature” declaration type.</p>
+<p>To add a shader to the list, increase the value in the <strong>Size</strong> property. To remove the last shader in the list, decrease the <strong>Size</strong> property. To remove a shader which is not the last one in the list, you can set the value to <strong>None</strong>.</p>
+<h2 id="shader-stripping">Shader stripping <a href="#shader-stripping" class="anchor">🔗</a></h2><p>These properties allow you to configure shader variant stripping in your build.</p>
+<p>By default, Unity examines the <strong>scenes</strong> in the build and automatically strips shader variants that are not used in those scenes. However, this can cause problems if you want to use shaders or variants at runtime that would not otherwise be included in the build; for example, if you use AssetBundles or Addressables that rely on those shaders or variants, or if you use shader keywords to change variants at runtime.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Lightmap Modes</strong></td>
+<td style="text-align:left">Determine the shader variant stripping behavior for lightmap-related shaders.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Automatic</em></td>
+<td>Unity examines the scenes in the build and automatically strips variants that are not used in those scenes. This is the default setting.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Custom</em></td>
+<td>Choose to manually include or exclude variants for the following lightmap modes:  <strong>Baked Non-Directional   Baked Directional   Realtime Non-Directional  Realtime Directional   Baked Shadowmask   Baked Subtractive</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fog Modes</strong></td>
+<td style="text-align:left">Determine the shader variant stripping behavior for shaders that relate to Unity’s built-in fog effect.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Automatic</em></td>
+<td>Unity examines the scenes in the build and automatically strips variants that are not used in those scenes. This is the default setting.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Custom</em></td>
+<td>Choose to manually include or exclude variants for the following fog modes: <strong>Linear Exponential  Exponential Squared</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Instancing Variants</strong></td>
+<td style="text-align:left">Determine the shader variant stripping behavior for shaders that relate to GPU instancing.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Strip Unused</em></td>
+<td>Unity only includes variants for GPU instancing for a given shader if at least one material that uses that shader has <strong>Enable instancing</strong> enabled. This is the default setting.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Strip All</em></td>
+<td>Strip all variants for GPU instancing, even if they are being used.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>Keep All</em></td>
+<td>Include all variants for GPU instancing, even if they are being used.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shader-loading">Shader loading <a href="#shader-loading" class="anchor">🔗</a></h2><p>These properties allow you to configure how Unity “prewarms” shader variant collections in your application.</p>
+<p>For information on prewarming, including important information about graphics API support, see Shader loading: Prewarming shader variants.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Renderer Light Probe Selection</strong></td>
+<td style="text-align:left">Choose the type of probe Unity uses when a Renderer receives global illumination from Light Probes but is not within the volume of influence (the tetrahedron) of any group of Light Probes. The default, <strong>Find closest Light Probe</strong>, means Unity searches for the nearest Light Probe, which consumes significant system resources. <strong>Renderer Light Probe Selection</strong> provides an alternative. Select <strong>Use Ambient Probe</strong> to make Unity fall back to the Ambient Probe in these situations, which conserves system resources. Options:<strong>Find closest Light Probe Use Ambient Probe</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preloaded shaders</strong></td>
+<td style="text-align:left">The shader variant collections to prewarm on application start.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preload shaders after showing first scene</strong></td>
+<td style="text-align:left">When Unity prewarms the shader variants specified in <strong>Preloaded shaders</strong>.  If enabled, Unity loads and prewarms them after the first scene has fully loaded. Otherwise, Unity loads and prewarms them before showing the first scene.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Preloaded shaders</strong></td>
+<td style="text-align:left">How Unity prewarms the shader variants specified in <strong>Preloaded shaders</strong>, if <strong>Preload shaders after showing first scene</strong> is enabled.  If the value is 0, Unity preloads all shader variants on the next frame after it shows the first scene.  Otherwise, Unity preloads new shader variants over multiple frames after it shows the first scene. In a given frame, it prewarms shader variants until it reaches that time limit set here. After that, it does not begin prewarming new shader variants until the next frame.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tracked-shader-variants">Tracked shader variants <a href="#tracked-shader-variants" class="anchor">🔗</a></h3><p>The Unity Editor can track which shader variants your application uses when it runs. You can use this information to build shader variant collections.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Control</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Create asset</strong></td>
+<td style="text-align:left">Creates a new shader variant collection asset using the currently tracked shader variants.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Clear</strong></td>
+<td style="text-align:left">Clear tracked shader variants.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="culling-settings">Culling settings <a href="#culling-settings" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Property</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Camera-Relative Culling</strong></td>
+<td style="text-align:left">Determines whether Unity uses the camera position as the reference point for culling.</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Lights</strong></td>
+<td>Use the camera position as the reference point to cull lights instead of the world space origin. Enable <strong>Lights</strong> to reduce flickering if lights are far away from the camera. Refer to Understanding the View Frustum for more information.</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Shadows</strong></td>
+<td>Use the camera position as the reference point to cull shadows instead of the world space origin. Enable <strong>Shadows</strong> to reduce flickering if shadows are far away from the camera. Refer to Understanding the View Frustum for more information.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/21/2023-10-21-unity-document-89/">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/20/2023-10-20-unity-document-88/">Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/19/2023-10-19-unity-document-87/">Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/18/2023-10-18-unity-document-86/">Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/17/2023-10-17-unity-document-85/">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(99)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (92)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
