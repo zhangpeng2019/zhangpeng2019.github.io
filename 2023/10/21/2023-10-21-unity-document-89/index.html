@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译) | 陈巧倩</title>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Graphics(自翻译) | 陈巧倩</title>
         <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,minimum-scale=1">
 
@@ -36,15 +36,15 @@
                 
 
 <section class="single">
-    <h1 class="title">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</h1>
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Graphics(自翻译)</h1>
 
     <div class="tip">
         <time datetime="2023-10-21 11:13:34 &#43;0800 CST">2023/10/21</time>
         <span class="split">·</span>
-        <span> 1895 words </span>
+        <span> 421 words </span>
         <span class="split">·</span>
         <span>
-            9 minutes to read
+            2 minutes to read
         </span>
     </div>
 
@@ -72,359 +72,359 @@
 
     <div class="content">
         <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
-<h1 id="graphics">Graphics <a href="#graphics" class="anchor">🔗</a></h1><p>Use the <strong>Graphics</strong> settings (main menu: <strong>Edit</strong> &gt; <strong>Project Settings</strong>, then select the <strong>Graphics</strong> category) to apply global settings for Graphics.</p>
-<p>This section provides documentation on the following groups of properties:</p>
+<h1 id="graphics">Graphics <a href="#graphics" class="anchor">🔗</a></h1><p><strong>Graphics</strong>设置（主菜单：<strong>Edit</strong> &gt; <strong>Project Settings</strong>，然后选择<strong>Graphics</strong>类别）用于应用全局的图形设置。</p>
+<p>本部分提供了以下属性组的文档：</p>
 <ul>
-<li>Scriptable Render Pipeline Settings</li>
-<li>Camera Settings</li>
-<li>Tier Settings</li>
-<li>Built-in shader settings</li>
-<li>Always-included Shaders</li>
-<li>Shader stripping</li>
-<li>Shader loading</li>
-<li>Culling settings</li>
+<li>脚本化渲染管线设置</li>
+<li>摄像机设置</li>
+<li>分层设置</li>
+<li>内置着色器设置</li>
+<li>始终包含的着色器</li>
+<li>着色器剥离</li>
+<li>着色器加载</li>
+<li>裁剪设置</li>
 </ul>
-<h2 id="scriptable-render-pipeline-settings">Scriptable Render Pipeline Settings <a href="#scriptable-render-pipeline-settings" class="anchor">🔗</a></h2><p>Allows you to set the default <strong>render pipeline</strong> that Unity uses to render your project. To set a render pipeline based on the Scriptable Render Pipeline, assign the desired Render Pipeline Asset here.</p>
-<p>For more information, see How to get, set, and configure the active render pipeline.</p>
-<h2 id="camera-settings">Camera Settings <a href="#camera-settings" class="anchor">🔗</a></h2><p>These properties control various rendering settings.</p>
+<h2 id="脚本化渲染管线设置">脚本化渲染管线设置 <a href="#%e8%84%9a%e6%9c%ac%e5%8c%96%e6%b8%b2%e6%9f%93%e7%ae%a1%e7%ba%bf%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>允许您设置 Unity 在渲染项目时使用的默认渲染管线。要基于脚本化渲染管线设置渲染一个管线，请在此处分配所需的渲染管线资源。</p>
+<p>有关更多信息，请参阅如何获取、设置和配置活动的渲染管线。</p>
+<h2 id="摄像机设置">摄像机设置 <a href="#%e6%91%84%e5%83%8f%e6%9c%ba%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>这些属性控制各种渲染设置。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Property</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Transparency Sort Mode</strong></td>
-<td style="text-align:left">Define the order for rendering objects by their distance along a specific axis. Renderers in Unity are sorted by several criteria, such as their layer number or their distance from the <strong>camera</strong> . This is generally only useful in 2D development: for example, sorting <strong>Sprites</strong>  by height or along the Y-axis.</td>
+<td style="text-align:left">定义按照特定轴向对象的距离对其进行渲染的顺序。在 Unity 中，渲染器按照多个标准对其进行排序，例如它们的图层编号或它们与摄像机的距离。这通常只在 2D 开发中有用：例如根据高度或 Y 轴对 Sprites 进行排序。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Default</em></td>
-<td>Sort objects based on the Camera mode.</td>
+<td>根据摄像机模式对对象进行排序。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Perspective</em></td>
-<td>Sort objects based on perspective view.</td>
+<td>根据透视视图对对象进行排序。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Orthographic</em></td>
-<td>Sort objects based on orthographic view.</td>
+<td>根据正交视图对对象进行排序。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Custom Axis</em></td>
-<td>Sort objects based on the sort mode defined with the <strong>Transparency Sort Axis</strong>.</td>
+<td>使用定义的<strong>Transparency Sort Axis</strong>的排序模式对对象进行排序。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Transparency Sort Axis</strong></td>
-<td style="text-align:left">Define a custom <strong>Transparency Sort Mode</strong>.</td>
+<td style="text-align:left">定义自定义的<strong>Transparency Sort Mode</strong>。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="tier-settings">Tier Settings <a href="#tier-settings" class="anchor">🔗</a></h2><p><img src="/2023-10-21-unity-document-89/GraphicsSettings2.png" alt=""></p>
-<p>In the Built-in Render Pipeline, you can use <strong>Tier settings</strong> to change rendering and shader compilation settings for different types of hardware. For more information, see Graphics tiers.</p>
+<h2 id="层级设置">层级设置 <a href="#%e5%b1%82%e7%ba%a7%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p><img src="/2023-10-21-unity-document-89/GraphicsSettings2.png" alt=""></p>
+<p>在通用渲染管线中，你可以使用<strong>层级设置</strong>来更改不同类型硬件的渲染和着色器编译设置。详情请参阅 Graphics tiers。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Property</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Standard Shader Quality</strong></td>
-<td style="text-align:left">Set the quality of the Standard Shader to <em>High</em>, <em>Medium</em>, or <em>Low</em>.</td>
+<td style="text-align:left">Standard Shader Quality</td>
+<td style="text-align:left">将标准着色器的质量设置为高、中、低。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Reflection Probes Box Projection</strong></td>
-<td style="text-align:left">Enable projection for reflection UV mappings on Reflection Probes .</td>
+<td style="text-align:left">Reflection Probes Box Projection</td>
+<td style="text-align:left">在反射探头上启用反射 UV 映射投影。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Reflection Probes Blending</strong></td>
-<td style="text-align:left">Enable blending on Reflection Probes.</td>
+<td style="text-align:left">Reflection Probes Blending</td>
+<td style="text-align:left">启用反射探头上的混合。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Detail Normal Map</strong></td>
-<td style="text-align:left">Enable Detail Normal Map sampling, if assigned.</td>
+<td style="text-align:left">Detail Normal Map</td>
+<td style="text-align:left">启用细节法线贴图的采样（如果有分配）。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Enable Semitransparent Shadows</strong></td>
-<td style="text-align:left">Enable Semitransparent Shadows. This adds or removes the UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS shader compiler define.</td>
+<td style="text-align:left">Enable Semitransparent Shadows</td>
+<td style="text-align:left">启用半透明阴影。这将添加或移除 UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS 着色器编译定义。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Enable Light Probe Proxy Volume</strong></td>
-<td style="text-align:left">Enable rendering a 3D grid of interpolated Light Probes .</td>
+<td style="text-align:left">Enable Light Probe Proxy Volume</td>
+<td style="text-align:left">启用渲染插值的光探头体积。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Cascaded Shadows</strong></td>
-<td style="text-align:left">Enable using cascaded shadow maps. This adds or removes the UNITY_NO_SCREENSPACE_SHADOWS shader compiler define.</td>
+<td style="text-align:left">Cascaded Shadows</td>
+<td style="text-align:left">启用使用级联阴影贴图。这将添加或移除 UNITY_NO_SCREENSPACE_SHADOWS 着色器编译定义。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Prefer 32 bit shadow maps</strong></td>
-<td style="text-align:left">Enable 32-bit float shadow map when you are targeting platforms that use DX11 or DX12. Most platforms have a fixed shadow map format that you can’t adjust. These vary in format, and can be 16-bit, 24-bit, or 32-bit, and can also be either float- or integer-based. 32-bit shadow maps give higher quality shadows than 16-bit, but use increased memory and bandwidth on the GPU. <strong>Note:</strong> To use 32-bit shadow maps, make sure the depth buffer is also set to 32-bit.</td>
+<td style="text-align:left">Prefer 32 bit shadow maps</td>
+<td style="text-align:left">在针对使用 DX11 或 DX12 的平台时启用 32 位浮点深度图。大多数平台具有固定的阴影贴图格式，无法调整。这些格式会有所不同，可以是 16 位、24 位或 32 位，也可以是浮点数或整数格式。32 位的阴影贴图比 16 位更高质量，但在 GPU 上使用的内存和带宽更多。** 注意：** 要使用 32 位阴影贴图，请确保深度缓冲区也设置为 32 位。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Use HDR</strong></td>
-<td style="text-align:left">Enable High Dynamic Range rendering for this tier.</td>
+<td style="text-align:left">Use HDR</td>
+<td style="text-align:left">启用此层级的高动态范围渲染。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>HDR Mode</strong></td>
-<td style="text-align:left">Select the format to use for the HDR buffer when <strong>HDR</strong>  is enabled for the current Graphics Tier. By default, this is set to <em>FP16</em>.</td>
+<td style="text-align:left">HDR Mode</td>
+<td style="text-align:left">在启用<strong>HDR</strong>时，选择要在当前层级的 HDR 缓冲区中使用的格式。默认情况下，设置为<em>FP16</em>（每个通道 16 位浮点数的颜色渲染纹理格式）。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>FP16</em></td>
-<td>Color <strong>render texture</strong>  format, 16-bit floating point per channel.</td>
+<td>16 位浮点数颜色<strong>渲染纹理格式</strong>。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>R11G11B10</em></td>
-<td>Color render <strong>texture format</strong> . R and G channels are 11-bit floating point, B channel is 10-bit floating point.</td>
+<td>颜色<strong>渲染纹理格式</strong>。R 和 G 通道为 11 位浮点数，B 通道为 10 位浮点数。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Rendering Path</strong></td>
-<td style="text-align:left">Choose how Unity should render graphics. Different rendering paths affect the performance of your game, and how lighting and shading are calculated. Some paths are more suited to different platforms and hardware than others. <em>Deferred</em> rendering is not supported when using Orthographic projection. If the camera’s projection mode is set to Orthographic, these values are overridden, and the camera always uses <em>Forward</em> rendering. For more information, see Rendering Paths.</td>
+<td style="text-align:left">Rendering Path</td>
+<td style="text-align:left">选择 Unity 应该如何渲染图形。不同的渲染路径会影响游戏的性能，以及光照和阴影的计算方式。某些渲染路径更适用于不同的平台和硬件。当使用正交投影时，不支持<em>Deferred</em>渲染。如果相机的投影模式设置为正交投影，这些值将被覆盖，相机始终使用<em>Forward</em>渲染。详情请参阅渲染路径。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Forward</em></td>
-<td>The traditional rendering path. This supports all the typical Unity graphics features (normal maps, per-pixel lights, shadows etc.). However under default settings, only a small number of the brightest lights are rendered in per-pixel lighting mode. The rest of the lights are calculated at object vertices or per-object.</td>
+<td>传统的渲染路径。支持所有典型的 Unity 图形特性（法线贴图、每像素光照、阴影等）。然而，在默认设置下，只有少数最亮的灯光以每像素光照模式渲染。其他灯光在物体顶点或物体级别进行计算。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Deferred</em></td>
-<td>Deferred shading  has the most lighting and shadow fidelity, and is best suited if you have many real-time lights. It requires a certain level of hardware support.</td>
+<td>延迟渲染，具有最高的光照和阴影保真度，最适合有许多实时灯光的场景。它需要一定的硬件支持。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Legacy Vertex Lit</em></td>
-<td>Legacy Vertex Lit is the rendering path with the lowest lighting fidelity and no support for real-time shadows. It is a subset of <em>Forward</em> rendering path.</td>
+<td>传统顶点光照，具有较低的光照保真度，不支持实时阴影。它是<em>Forward</em>渲染路径的子集。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Realtime Global Illumination CPU Usage</strong></td>
-<td style="text-align:left">The CPU budget you allow Enlighten Realtime Global Illumination to use for lighting calculations at runtime. Increasing this makes the system react faster to changes in lighting at a cost of using more CPU time. <strong>Note:</strong> Some platforms allow all CPUs to be occupied by worker threads whereas some enforce maximums. For example, some gaming consoles allow a maximum of 4 CPU cores. For Android devices, if it is a bigLittle architecture, only the little CPUs are used; otherwise the maximum is one less than the total number of CPUs. If you use the URP or HDRP render pipelines, you can configure this property in the quality settings.</td>
+<td style="text-align:left">Realtime Global Illumination CPU Usage</td>
+<td style="text-align:left">设定 Enlighten 实时全局光照在运行时使用的 CPU 计算量。增加此值可以使系统更快地对光照变化做出反应，但会增加 CPU 使用时间。** 注意：** 某些平台允许所有 CPU 核心都被工作线程占用，而某些平台则有最大限制。例如，一些游戏主机最多允许 4 个 CPU 核心。对于 Android 设备，如果是 bigLittle 架构，则只使用较小的 CPU 核心；否则，最大数量为总 CPU 核心数减 1。如果你使用了 URP 或 HDRP 渲染管线，可以在质量设置中配置此属性。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Low</em></td>
-<td>25% of the allowed CPU threads are used as worker threads.</td>
+<td>使用允许的 CPU 线程数量的 25% 作为工作线程。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Medium</em></td>
-<td>50% of the allowed CPU threads are used as worker threads.</td>
+<td>使用允许的 CPU 线程数量的 50% 作为工作线程。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>High</em></td>
-<td>75% of the allowed CPU threads are used as worker threads.</td>
+<td>使用允许的 CPU 线程数量的 75% 作为工作线程。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
 <td style="text-align:left"><em>Unlimited</em></td>
-<td>100% of the allowed CPU threads are used as worker threads.</td>
+<td>使用允许的 CPU 线程数量的 100% 作为工作线程。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="built-in-shader-settings">Built-in shader settings <a href="#built-in-shader-settings" class="anchor">🔗</a></h2><p>Use these settings to specify which shader to use for each of the listed features in the Built-in Render Pipeline.</p>
+<h2 id="内置着色器设置">内置着色器设置 <a href="#%e5%86%85%e7%bd%ae%e7%9d%80%e8%89%b2%e5%99%a8%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>使用这些设置来指定通用渲染管线中所列功能的着色器类型。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Rendering path</strong></th>
-<th style="text-align:left"><strong>Shader to use</strong></th>
+<th style="text-align:left"><strong>渲染路径</strong></th>
+<th style="text-align:left"><strong>所使用的着色器</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Deferred</strong></td>
-<td style="text-align:left">Use with Deferred shading.</td>
+<td style="text-align:left">用于 Deferred 渲染。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Deferred Reflection</strong></td>
-<td style="text-align:left">Use with Reflection Probes in deferred shading.</td>
+<td style="text-align:left">用于延迟渲染中的反射探头。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Screen Space shadows</strong></td>
-<td style="text-align:left">Use with cascaded shadow maps for directional lights on PC/console platforms.</td>
+<td style="text-align:left">用于 PC / 主机平台上定向光的级联阴影贴图。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Motion vectors</strong></td>
-<td style="text-align:left">Use for object-based motion vector calculations.</td>
+<td style="text-align:left">用于基于对象的运动向量计算。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Lens Flare</strong></td>
-<td style="text-align:left">Use with Lens Flares.</td>
+<td style="text-align:left">用于光晕效果。</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Light Halo</strong></td>
-<td style="text-align:left">Use with Light Halos.</td>
+<td style="text-align:left">用于光晕效果中的光圈效果。</td>
 </tr>
 </tbody>
 </table>
-<p>For each of these features, you can choose which type of Shader to use:</p>
+<p>对于每个功能，你可以选择使用哪种类型的着色器：</p>
 <ul>
-<li><strong>No Support</strong> disables this calculation. Use this setting if you are not using deferred shading. This will save some space in the built game data files.</li>
-<li><strong>Built-in Shader</strong> uses Unity’s built-in Shaders to do the calculation. This is the default.</li>
-<li><strong>Custom Shader</strong> uses your own compatible Shader to do the calculation. This enables you to do deep customization of deferred rendering.</li>
+<li><strong>No Support</strong>（无支持）禁用此计算。如果不使用延迟渲染，请使用此设置。这将节省内置游戏数据文件中的一些空间。</li>
+<li><strong>Built-in Shader</strong>（内置着色器）使用 Unity 的内置着色器进行计算。这是默认设置。</li>
+<li><strong>Custom Shader</strong>（自定义着色器）使用自定义的兼容着色器进行计算。这使你能够深度定制延迟渲染。</li>
 </ul>
-<p>When you choose <strong>Custom shader</strong>, a <strong>Shader</strong> reference property appears below the feature property where you can set a reference to the Shader you want to use.</p>
-<h2 id="always-included-shaders">Always Included Shaders <a href="#always-included-shaders" class="anchor">🔗</a></h2><p>This is a list of shaders for which Unity includes all possible variants in every build. This can be useful if you want to use shaders or variants at runtime that would not otherwise be included in the build; for example, if you use AssetBundles or Addressables that rely on those shaders or variants, or if you use shader keywords to change variants at runtime.</p>
-<p><strong>Warning:</strong> This feature is not recommended for shaders that have a large number of variants, such as the Standard Shader; it can lead to significant runtime and build time performance problems. You should instead create shader variant collections that contain only the variants you need, and include those in your build.</p>
-<p><strong>Note:</strong> This setting overrides shader keyword declaration settings. For each shader in the list, Unity includes all sets of all keywords, even if you use the “shader feature” declaration type.</p>
-<p>To add a shader to the list, increase the value in the <strong>Size</strong> property. To remove the last shader in the list, decrease the <strong>Size</strong> property. To remove a shader which is not the last one in the list, you can set the value to <strong>None</strong>.</p>
-<h2 id="shader-stripping">Shader stripping <a href="#shader-stripping" class="anchor">🔗</a></h2><p>These properties allow you to configure shader variant stripping in your build.</p>
-<p>By default, Unity examines the <strong>scenes</strong> in the build and automatically strips shader variants that are not used in those scenes. However, this can cause problems if you want to use shaders or variants at runtime that would not otherwise be included in the build; for example, if you use AssetBundles or Addressables that rely on those shaders or variants, or if you use shader keywords to change variants at runtime.</p>
+<p>当选择<strong>Custom shader</strong>（自定义着色器）时，会在功能属性下方显示一个<strong>Shader</strong>引用属性，你可以在那里设置要使用的着色器的引用。</p>
+<h2 id="始终包含的着色器">始终包含的着色器 <a href="#%e5%a7%8b%e7%bb%88%e5%8c%85%e5%90%ab%e7%9a%84%e7%9d%80%e8%89%b2%e5%99%a8" class="anchor">🔗</a></h2><p>这是一个列表，列出了 Unity 在每个构建中包含了所有可能变体的着色器。这在以下情况下非常有用：如果你想在运行时使用否则不会包含在构建中的着色器或变体，例如如果你使用依赖于这些着色器或变体的 AssetBundles 或 Addressables，或者如果你使用着色器关键字在运行时更改变体。</p>
+<p><strong>警告：</strong> 不建议对具有大量变体的着色器（如标准着色器）使用此功能，否则可能导致严重的运行时和构建时性能问题。你应该创建只包含所需变体的着色器变体集合，并将其包含在构建中。</p>
+<p><strong>注意：</strong> 此设置会覆盖着色器关键字声明设置。对于列表中的每个着色器，Unity 都会包含所有关键字的所有组合，即使你使用的是 “shader feature” 声明类型。</p>
+<p>要将着色器添加到列表中，请增加<strong>Size</strong>属性的值。要删除列表中的最后一个着色器，请减少<strong>Size</strong>属性的值。要删除不是最后一个着色器的着色器，可以将该值设置为<strong>None</strong>。</p>
+<h2 id="着色器剥离">着色器剥离 <a href="#%e7%9d%80%e8%89%b2%e5%99%a8%e5%89%a5%e7%a6%bb" class="anchor">🔗</a></h2><p>这些属性允许你配置构建中的着色器变体剥离。</p>
+<p>默认情况下，Unity 会检查构建中的<strong>场景</strong>并自动去除在这些场景中未使用的着色器变体。但是，如果你想在运行时使用否则不会包含在构建中的着色器或变体，例如如果你使用依赖于这些着色器或变体的 AssetBundles 或 Addressables，或者如果你使用着色器关键字在运行时更改变体，则可能会出现问题。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Property</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Lightmap Modes</strong></td>
-<td style="text-align:left">Determine the shader variant stripping behavior for lightmap-related shaders.</td>
+<td style="text-align:left"><strong>光照图模式</strong></td>
+<td style="text-align:left">确定与光照图相关的着色器变体剥离行为。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Automatic</em></td>
-<td>Unity examines the scenes in the build and automatically strips variants that are not used in those scenes. This is the default setting.</td>
+<td style="text-align:left"><em>自动</em>（Automatic）</td>
+<td>Unity 检查构建中的场景并自动去除在这些场景中未使用的变体。这是默认设置。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Custom</em></td>
-<td>Choose to manually include or exclude variants for the following lightmap modes:  <strong>Baked Non-Directional   Baked Directional   Realtime Non-Directional  Realtime Directional   Baked Shadowmask   Baked Subtractive</strong></td>
+<td style="text-align:left"><em>自定义</em>（Custom）</td>
+<td>选择手动包含或排除以下光照图模式的变体：<strong>烘焙非定向烘焙定向实时非定向实时定向烘焙影子掩码烘焙减法</strong></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Fog Modes</strong></td>
-<td style="text-align:left">Determine the shader variant stripping behavior for shaders that relate to Unity’s built-in fog effect.</td>
+<td style="text-align:left"><strong>雾模式</strong></td>
+<td style="text-align:left">确定与 Unity 内置雾效果相关的着色器变体剥离行为。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Automatic</em></td>
-<td>Unity examines the scenes in the build and automatically strips variants that are not used in those scenes. This is the default setting.</td>
+<td style="text-align:left"><em>自动</em>（Automatic）</td>
+<td>Unity 检查构建中的场景并自动去除在这些场景中未使用的变体。这是默认设置。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Custom</em></td>
-<td>Choose to manually include or exclude variants for the following fog modes: <strong>Linear Exponential  Exponential Squared</strong></td>
+<td style="text-align:left"><em>自定义</em>（Custom）</td>
+<td>选择手动包含或排除以下雾模式的变体：<strong>线性指数平方指数</strong></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Instancing Variants</strong></td>
-<td style="text-align:left">Determine the shader variant stripping behavior for shaders that relate to GPU instancing.</td>
+<td style="text-align:left"><strong>实例化变体</strong></td>
+<td style="text-align:left">确定与 GPU 实例化相关的着色器变体剥离行为。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Strip Unused</em></td>
-<td>Unity only includes variants for GPU instancing for a given shader if at least one material that uses that shader has <strong>Enable instancing</strong> enabled. This is the default setting.</td>
+<td style="text-align:left"><em>去除未使用</em>（Strip Unused）</td>
+<td>Unity 仅在至少有一个使用了该着色器且启用了<strong>启用实例化</strong>的材质时，才会包含用于 GPU 实例化的着色器变体。这是默认设置。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Strip All</em></td>
-<td>Strip all variants for GPU instancing, even if they are being used.</td>
+<td style="text-align:left"><em>去除所有</em>（Strip All）</td>
+<td>去除所有用于 GPU 实例化的变体，即使它们正在使用中。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><em>Keep All</em></td>
-<td>Include all variants for GPU instancing, even if they are being used.</td>
+<td style="text-align:left"><em>保留所有</em>（Keep All）</td>
+<td>包含所有用于 GPU 实例化的变体，即使它们正在使用中。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="shader-loading">Shader loading <a href="#shader-loading" class="anchor">🔗</a></h2><p>These properties allow you to configure how Unity “prewarms” shader variant collections in your application.</p>
-<p>For information on prewarming, including important information about graphics API support, see Shader loading: Prewarming shader variants.</p>
+<h2 id="shader-加载">Shader 加载 <a href="#shader-%e5%8a%a0%e8%bd%bd" class="anchor">🔗</a></h2><p>这些属性允许您配置 Unity 在应用程序中 “预加载” 着色器变体集合的方式。</p>
+<p>有关预加载的信息，包括有关图形 API 支持的重要信息，请参阅《Shader 加载：预加载着色器变体》。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Property</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Renderer Light Probe Selection</strong></td>
-<td style="text-align:left">Choose the type of probe Unity uses when a Renderer receives global illumination from Light Probes but is not within the volume of influence (the tetrahedron) of any group of Light Probes. The default, <strong>Find closest Light Probe</strong>, means Unity searches for the nearest Light Probe, which consumes significant system resources. <strong>Renderer Light Probe Selection</strong> provides an alternative. Select <strong>Use Ambient Probe</strong> to make Unity fall back to the Ambient Probe in these situations, which conserves system resources. Options:<strong>Find closest Light Probe Use Ambient Probe</strong></td>
+<td style="text-align:left"><strong>Renderer Light Probe Selection（渲染器光探头选择）</strong></td>
+<td style="text-align:left">在 Renderer 接收到来自光探头的全局照明但不在任何光探头群组的影响范围（四面体）内时，选择 Unity 使用的探头类型。默认情况下，选择 “查找最近的光探头（Find closest Light Probe）”，表示 Unity 会搜索最近的光探头，这会消耗大量系统资源。<strong>Renderer Light Probe Selection（渲染器光探头选择）</strong> 提供了另一种选择。选择 “使用环境探头（Use Ambient Probe）” 以使 Unity 在这些情况下退回到环境探头，这样可以节省系统资源。选项：<strong>查找最近的光探头（Find closest Light Probe） 使用环境探头（Use Ambient Probe）</strong></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Preloaded shaders</strong></td>
-<td style="text-align:left">The shader variant collections to prewarm on application start.</td>
+<td style="text-align:left"><strong>Preloaded shaders（预加载的着色器）</strong></td>
+<td style="text-align:left">应用程序启动时预加载的着色器变体集合。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Preload shaders after showing first scene</strong></td>
-<td style="text-align:left">When Unity prewarms the shader variants specified in <strong>Preloaded shaders</strong>.  If enabled, Unity loads and prewarms them after the first scene has fully loaded. Otherwise, Unity loads and prewarms them before showing the first scene.</td>
+<td style="text-align:left"><strong>Preload shaders after showing first scene（在显示第一个场景后预加载着色器）</strong></td>
+<td style="text-align:left">Unity 在 <strong>Preloaded shaders（预加载的着色器）</strong> 中指定的着色器变体的预加载时间。如果启用，Unity 会在第一个场景完全加载后加载和预加载它们。否则，Unity 会在显示第一个场景之前加载和预加载它们。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Preloaded shaders</strong></td>
-<td style="text-align:left">How Unity prewarms the shader variants specified in <strong>Preloaded shaders</strong>, if <strong>Preload shaders after showing first scene</strong> is enabled.  If the value is 0, Unity preloads all shader variants on the next frame after it shows the first scene.  Otherwise, Unity preloads new shader variants over multiple frames after it shows the first scene. In a given frame, it prewarms shader variants until it reaches that time limit set here. After that, it does not begin prewarming new shader variants until the next frame.</td>
+<td style="text-align:left"><strong>Preload variants within frame（在帧内预加载变体）</strong></td>
+<td style="text-align:left">如果启用了<strong>Preload shaders after showing first scene（在显示第一个场景后预加载着色器）</strong>，则 Unity 会在显示第一个场景后的下一帧预加载 <strong>Preloaded shaders（预加载的着色器）</strong> 中指定的着色器变体。如果值为 0，则 Unity 会在显示第一个场景后的下一帧预加载所有着色器变体。否则，Unity 会在显示第一个场景后的多个帧中预加载新的着色器变体。在给定的帧中，它会预加载着色器变体，直到达到此处设置的时间限制。之后，直到下一帧，它才会开始预加载新的着色器变体。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="tracked-shader-variants">Tracked shader variants <a href="#tracked-shader-variants" class="anchor">🔗</a></h3><p>The Unity Editor can track which shader variants your application uses when it runs. You can use this information to build shader variant collections.</p>
+<h3 id="跟踪的着色器变体">跟踪的着色器变体 <a href="#%e8%b7%9f%e8%b8%aa%e7%9a%84%e7%9d%80%e8%89%b2%e5%99%a8%e5%8f%98%e4%bd%93" class="anchor">🔗</a></h3><p>Unity 编辑器可以在应用程序运行时跟踪应用程序使用的着色器变体。您可以利用此信息构建着色器变体集合。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Control</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>控制</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Create asset</strong></td>
-<td style="text-align:left">Creates a new shader variant collection asset using the currently tracked shader variants.</td>
+<td style="text-align:left"><strong>创建资源</strong></td>
+<td style="text-align:left">使用当前跟踪的着色器变体创建新的着色器变体集合资源。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Clear</strong></td>
-<td style="text-align:left">Clear tracked shader variants.</td>
+<td style="text-align:left"><strong>清除</strong></td>
+<td style="text-align:left">清除已跟踪的着色器变体。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="culling-settings">Culling settings <a href="#culling-settings" class="anchor">🔗</a></h2><table>
+<h2 id="裁剪设置">裁剪设置 <a href="#%e8%a3%81%e5%89%aa%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Property</strong></th>
-<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Camera-Relative Culling</strong></td>
-<td style="text-align:left">Determines whether Unity uses the camera position as the reference point for culling.</td>
+<td style="text-align:left"><strong>相对于相机的裁剪</strong></td>
+<td style="text-align:left">确定 Unity 是否将相机位置作为裁剪的参考点。</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><strong>Lights</strong></td>
-<td>Use the camera position as the reference point to cull lights instead of the world space origin. Enable <strong>Lights</strong> to reduce flickering if lights are far away from the camera. Refer to Understanding the View Frustum for more information.</td>
+<td style="text-align:left"><strong>灯光（Lights）</strong></td>
+<td>将相机位置作为裁剪灯光的参考点，而不是世界空间原点。启用 灯光**（Lights）**可减少如果灯光远离相机时的闪烁。更多信息，请参阅了解视锥体。</td>
 </tr>
 <tr>
 <td style="text-align:left"></td>
-<td style="text-align:left"><strong>Shadows</strong></td>
-<td>Use the camera position as the reference point to cull shadows instead of the world space origin. Enable <strong>Shadows</strong> to reduce flickering if shadows are far away from the camera. Refer to Understanding the View Frustum for more information.</td>
+<td style="text-align:left"><strong>阴影（Shadows）</strong></td>
+<td>将相机位置作为裁剪阴影的参考点，而不是世界空间原点。启用<strong>阴影（Shadows）可减少如果阴影远离相机时的闪烁。更多信息，请参阅了解视锥体。</strong></td>
 </tr>
 </tbody>
 </table>
@@ -447,23 +447,23 @@
     <ul>
         
             <li>
-                <a href="/2023/10/21/2023-10-21-unity-document-89/">Unity中文版-Create Gameplay Editor Features - Project Settings-Graphics(自翻译)</a>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
             </li>
         
             <li>
-                <a href="/2023/10/20/2023-10-20-unity-document-88/">Unity中文版-Create Gameplay Editor Features - Project Settings-Editor(自翻译)</a>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
             </li>
         
             <li>
-                <a href="/2023/10/19/2023-10-19-unity-document-87/">Unity中文版-Create Gameplay Editor Features - Project Settings-Audio(自翻译)</a>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
             </li>
         
             <li>
-                <a href="/2023/10/18/2023-10-18-unity-document-86/">Unity中文版-Create Gameplay Editor Features - Project Settings(自翻译)</a>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
             </li>
         
             <li>
-                <a href="/2023/10/17/2023-10-17-unity-document-85/">Unity中文版-Create Gameplay Editor Features - Incremental build pipeline(自翻译)</a>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
             </li>
         
     </ul>
@@ -485,7 +485,7 @@
             </li>
         
             <li>
-                <a href="/categories/unity">unity(99)</a>
+                <a href="/categories/unity">unity(104)</a>
             </li>
         
     </ul>
@@ -510,7 +510,7 @@
             </li>
         
             <li>
-                <a href="/tags/document">document (92)</a>
+                <a href="/tags/document">document (97)</a>
             </li>
         
             <li>

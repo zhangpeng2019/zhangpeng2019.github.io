@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-22 11:13:34 &#43;0800 CST">2023/10/22</time>
+        <span class="split">·</span>
+        <span> 84 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="package-manager">Package Manager <a href="#package-manager" class="anchor">🔗</a></h1><p>要访问<strong>Package Manager设置，请打开Edit菜单，然后选择Project Settings</strong>，然后选择 <strong>Package Manager</strong> 类别。这些设置可以让您管理范围注册表并更改当前项目的高级设置。</p>
+<p><img src="/2023-10-22-unity-document-90/class-PackageManager.png" alt=""></p>
+<p><strong>(A)</strong> 在<strong>高级设置</strong>部分，切换预发布包在 Package Manager（包管理器）窗口中是否可见。</p>
+<p><strong>(B)</strong> 在 <strong>Scoped Registries（作用域注册表）</strong> 组下，添加、更改和删除项目的范围注册表，其中包含以下区域：</p>
+<p><strong>(1)</strong> 当前为该项目定义的作用域注册表列表。</p>
+<p><strong>(2)</strong> 所选作用域注册表的详细信息。</p>
+<h2 id="高级设置">高级设置 <a href="#%e9%ab%98%e7%ba%a7%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>使用<strong>高级设置</strong>组来切换当前项目的<strong>启用预发布包</strong>设置。</p>
+<h3 id="启用预发布包">启用预发布包 <a href="#%e5%90%af%e7%94%a8%e9%a2%84%e5%8f%91%e5%b8%83%e5%8c%85" class="anchor">🔗</a></h3><p>启用<strong>启用预发布包</strong>设置可以在 Package Manager（包管理器）窗口中显示预发布包。预发布包在列表面板中显示 Pre 标签，详细面板中显示 Pre-Release 标签。这些标签用于提醒您哪些包将在下一个长期支持（LTS）版本的 Unity 编辑器中发布。</p>
+<p><strong>警告</strong>: 默认情况下，此设置被禁用，因为预发布包仍在验证稳定性是否足以用于生产，但尚未完全发布。有关包的生命周期的更多信息，请参阅 Package states and lifecycle。</p>
+<h2 id="scoped-registries作用域注册表">Scoped Registries（作用域注册表） <a href="#scoped-registries%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h2><p><strong>作用域注册表</strong>组显示了当前项目中添加的作用域注册表的列表，列表位于设置组的左侧，并显示所选注册表的详细信息。</p>
+<p>有关作用域注册表的详细信息，包括如何在 Unity Package Manager 中使用和配置它们，请参阅 Scoped Registries。</p>
+<p><strong>注意</strong>: 在添加作用域注册表时，您可能会遇到一个问题，即作用域注册表未列在 <strong>My Registries（我的注册表）<strong>上下文中，或者根本没有</strong>My Registries（我的注册表）</strong> 上下文可用。这可能是因为您添加的包注册表服务器未实现<code>/-/v1/search</code>或<code>/-/all</code>端点。Unity 的包管理器需要这些端点。</p>
+<h3 id="添加新的注册表">添加新的注册表 <a href="#%e6%b7%bb%e5%8a%a0%e6%96%b0%e7%9a%84%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h3><p>要向项目中添加新的作用域注册表，请按照以下步骤进行操作：</p>
+<ol>
+<li>在作用域注册表列表底部选择 <strong>+<strong>按钮。一个新条目将出现在列表中，该条目名称为</strong>New Scoped Registry</strong>，右侧的详细信息为空。</li>
+<li>输入名称、URL 和作用域属性的值。</li>
+<li>如果需要指定多个作用域，请在最后一个<strong>作用域</strong>的值下方选择 <strong>+</strong> 按钮。将会出现另一个文本框。</li>
+<li>输入所选作用域注册表的信息后，单击<strong>Save</strong>保存。要取消添加新的作用域注册表，请单击<strong>Cancel</strong>。</li>
+</ol>
+<h3 id="修改现有注册表">修改现有注册表 <a href="#%e4%bf%ae%e6%94%b9%e7%8e%b0%e6%9c%89%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h3><p>要修改现有的作用域注册表，请按照以下步骤进行操作：</p>
+<ol>
+<li>在左侧的列表中选择要修改的注册表。现有的信息将显示在右侧。</li>
+<li>更改名称、URL 和作用域属性中的任何一项。</li>
+<li>在更新所选作用域注册表的信息后，单击<strong>Apply</strong>以应用更改。要取消更新，单击<strong>Revert</strong>。</li>
+</ol>
+<h3 id="删除注册表">删除注册表 <a href="#%e5%88%a0%e9%99%a4%e6%b3%a8%e5%86%8c%e8%a1%a8" class="anchor">🔗</a></h3><p>要删除现有的作用域注册表，请按照以下步骤进行操作：</p>
+<ol>
+<li>从列表中选择要删除的注册表。</li>
+<li>单击列表下方的 <strong>-</strong> 按钮。出现一个对话框询问您确认删除。</li>
+<li>单击<strong>Ok</strong>以删除注册表，或单击<strong>Cancel</strong>保留注册表。</li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(104)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (97)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

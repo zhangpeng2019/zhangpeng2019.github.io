@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-23 11:13:34 &#43;0800 CST">2023/10/23</time>
+        <span class="split">·</span>
+        <span> 220 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="physics">Physics <a href="#physics" class="anchor">🔗</a></h1><p>使用物理（Physics）设置（主菜单：<strong>Edit（编辑） &gt; Project Settings（项目设置）</strong>，然后选择<strong>Physics（物理）</strong> 类别）来应用全局的 3D 物理设置。</p>
+<p><strong>注意</strong>：如果要管理 2D 物理的全局设置，请使用 Physics 2D 设置。</p>
+<p><img src="/2023-10-23-unity-document-91/PhysicsSet.png" alt=""></p>
+<p>这些设置定义了物理模拟的准确性限制。一般来说，更准确的模拟需要更多的处理开销，因此这些设置提供了在准确性和性能之间进行权衡的方式。有关更多信息，请参阅手册中的物理部分。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Gravity（重力）</strong></td>
+<td style="text-align:left">使用 x、y 和 z 轴设置应用于所有刚体组件的重力大小。对于真实的重力设置，请在 y 轴上应用一个负数。重力以每秒平方米的世界单位来定义。<strong>注意</strong>：如果增加重力，可能需要增加 <strong>Default Solver Iterations（默认求解迭代次数）</strong> 的值，以保持稳定的接触。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Material（默认材质）</strong></td>
+<td style="text-align:left">设置对默认的物理材质的引用，如果没有为单个 <strong>Collider（碰撞器）</strong> 分配材质，则使用该默认材质。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Bounce Threshold（反弹阈值）</strong></td>
+<td style="text-align:left">设置一个速度值。如果两个碰撞物体的相对速度低于此值，它们将不会相互弹开。此值还可以减少抖动，因此不建议将其设置为非常低的值。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Max Depenetration Velocity（默认最大去重叠速度）</strong></td>
+<td style="text-align:left">定义用于从与其他物体重叠中拉出一个物体时，求解器可以对其设置的最大去重叠速度。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sleep Threshold（休眠阈值）</strong></td>
+<td style="text-align:left">设置全局的能量阈值，低于该阈值的非运动的<strong>Rigidbody（刚体）</strong>（即不受物理系统控制的刚体）可能会进入休眠状态。当一个刚体休眠时，它不会每帧更新，这样可以减少资源的使用。如果一个刚体的动能除以质量值小于此阈值，它就有可能进入休眠状态。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Contact Offset（默认接触偏移）</strong></td>
+<td style="text-align:left">设置碰撞检测系统用于生成碰撞接触的距离。该值必须是正值，如果设置得太接近零，可能会导致抖动。默认值为 0.01。只有在它们的距离小于它们的接触偏移值之和时，碰撞器才会生成碰撞接触。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Solver Iterations（默认求解迭代次数）</strong></td>
+<td style="text-align:left">定义 Unity 在每个物理帧上运行的求解器进程数量。求解器是小型物理引擎任务，用于确定一些物理交互，如连接物体的运动或管理重叠的刚体组件之间的接触。这会影响求解器输出的质量，建议在使用非默认<code>Time.fixedDeltaTime</code>或对配置要求较高时进行更改。通常用于减少由关节或接触引起的抖动。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Solver Velocity Iterations（默认求解速度迭代次数）</strong></td>
+<td style="text-align:left">设置求解器在每个物理帧中执行的速度进程数量。求解器执行的进程越多，Rigidbody 弹回后的出射速度越高。如果在碰撞后遇到连接的 Rigidbody 组件或 Ragdoll 过度移动的问题，请尝试增加此值。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Queries Hit Backfaces（查询命中背面）</strong></td>
+<td style="text-align:left">如果要使物理查询（如<code>Physics.Raycast</code>）检测到与 MeshCollider 的背面三角形的碰撞，请启用此选项。默认情况下，此设置为禁用状态。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Queries Hit Triggers（查询命中触发器）</strong></td>
+<td style="text-align:left">如果要使物理命中测试（如 Raycast、SphereCast 和 SphereTest）在与标记为触发器的 Collider 相交时返回碰撞，请启用此选项。单个射线可以覆盖此行为。默认情况下，此设置为启用状态。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Adaptive Force（启用自适应力）</strong></td>
+<td style="text-align:left">启用此选项以启用自适应力。自适应力影响力在物体的堆栈或堆中传递的方式，以提供更逼真的行为。默认情况下，此设置为禁用状态。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Auto Simulation（自动模拟）</strong></td>
+<td style="text-align:left">启用此选项以自动运行物理模拟，或允许对其进行显式控制。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Auto Sync Transforms（自动同步变换）</strong></td>
+<td style="text-align:left">启用此选项以在 <strong>Transform 组件（变换组件）</strong> 更改时自动将变换更改与物理系统同步。默认情况下，此设置为禁用状态。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Contact Pairs Mode（接触对模式）</strong></td>
+<td style="text-align:left">选择要使用的接触对生成类型。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Default Contact Pairs（默认接触对）</strong></td>
+<td>除了运动 - 运动和运动 - 静态对，接收所有接触对的碰撞和触发事件。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Enable Kinematic Kinematic Pairs（启用运动 - 运动对）</strong></td>
+<td>接收运动 - 运动接触对的碰撞和触发事件。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Enable Kinematic Static Pairs（启用运动 - 静态对）</strong></td>
+<td>接收运动 - 静态接触对的碰撞和触发事件。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Enable All Contact Pairs（启用所有接触对）</strong></td>
+<td>接收所有接触对的碰撞和触发事件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Broadphase Type（粗相位算法类型）</strong></td>
+<td style="text-align:left">选择在物理模拟中使用哪种粗相位算法。参考 NVIDIA 关于 PhysX SDK 和 Rigid Body Collision 的文档。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Sweep and Prune Broadphase（扫描和修剪粗相位法）</strong></td>
+<td>使用扫描和修剪的粗相位碰撞方法（即，沿着一个轴对对象进行排序，以排除检查远离的成对对象）。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Automatic Box Pruning（自动盒修剪）</strong></td>
+<td>此算法类似于多盒修剪算法，除了它还可以自动计算世界边界和子分区的数量。它维护网格单元的集合，并使用常规的扫描和修剪方法来确定可能重叠的碰撞器成对。通常在场景较大且单一扫描和修剪会产生大量额外误报的情况下使用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Friction Type（摩擦类型）</strong></td>
+<td style="text-align:left">选择用于模拟的摩擦算法。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Patch Friction Type（块摩擦类型）</strong></td>
+<td>一种基本的强摩擦算法，通常在较低的求解迭代次数下获得最稳定的结果。该方法每对接触对象仅使用最多四个标量求解器约束。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>One Directional Friction Type（单向摩擦类型）</strong></td>
+<td>应用于接触点的摩擦力在接触法线的交替切线方向上应用了库仑摩擦模型的简化。这需要比块摩擦更多的求解迭代次数，但不如双向模型准确。要使 Articulation 体与此摩擦类型配合工作，请将<strong>Solver Type（求解器类型）**设置为**Temporal Gauss Seidel（时间高斯赛德尔）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Two Directional Friction Type（双向摩擦类型）</strong></td>
+<td>类似于单向模型，但同时在两个切线方向上应用摩擦力。这需要更多的求解迭代次数，但更准确。与块摩擦相比，在具有许多接触点的情况下更费时，因为它在每个接触点都应用。要使 Articulation 体与此摩擦类型配合工作，请将<strong>Solver Type（求解器类型）**设置为**Temporal Gauss Seidel（时间高斯赛德尔）</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Enhanced Determinism（启用增强确定性）</strong></td>
+<td style="text-align:left">提供一种确定性的途径，以使场景中的模拟结果始终保持一致，前提是游戏以确定的顺序插入角色。这种模式会牺牲一些性能以确保额外的确定性。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Enable Unified Heightmaps（启用统一高度图）</strong></td>
+<td style="text-align:left">启用此选项以以与 Mesh 碰撞相同的方式处理 Terrain 碰撞。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Solver Type（求解器类型）</strong></td>
+<td style="text-align:left">选择要在模拟中使用的 PhysX 求解器类型。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Projected Gauss Seidel（投影高斯赛德尔）</strong></td>
+<td>默认的 PhysX 求解器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Temporal Gauss Seidel（时间高斯赛德尔）</strong></td>
+<td>该求解器提供更好的收敛性，以及处理高质量比和校正穿透时引入的能量，提高关节对过度拉伸的抗性。通常在使用默认求解器时遇到某些不稳定行为时会有所帮助。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Layer Collision Matrix（图层碰撞矩阵）</strong></td>
+<td style="text-align:left">定义基于图层的碰撞检测系统的行为。通过选中相互作用的碰撞矩阵上的层，选择哪些层与其他层进行碰撞。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cloth Inter-Collision（布料互穿）</strong></td>
+<td style="text-align:left">通过指定一组用于布料互相碰撞的粒子，使游戏中的布料移动更逼真。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Distance（距离）</strong></td>
+<td>定义每个互相碰撞的布料粒子周围的球的直径。Unity 确保这些球在模拟过程中不重叠。距离应小于配置中两个粒子之间的最小距离。如果距离较大，则布料碰撞可能会违反一些距离约束，并导致抖动。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Stiffness（刚度）</strong></td>
+<td>指定互相碰撞的布料粒子之间的分离脉冲有多强。布料求解器计算此值，并且它应足以将粒子分离开来。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(104)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (97)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

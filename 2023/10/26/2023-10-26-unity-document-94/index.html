@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-26 11:13:34 &#43;0800 CST">2023/10/26</time>
+        <span class="split">·</span>
+        <span> 138 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="预设管理器">预设管理器 <a href="#%e9%a2%84%e8%ae%be%e7%ae%a1%e7%90%86%e5%99%a8" class="anchor">🔗</a></h1><p><strong>预设管理器</strong>是项目设置中的一个窗口（菜单：<strong>Edit &gt; Project Settings &gt; Preset Manager</strong>），允许您管理自定义的预设。通过创建预设，您可以为将组件添加到游戏对象或将新资源添加到项目时指定默认属性。您定义的默认预设会覆盖 Unity 的默认设置。</p>
+<p><strong>注意</strong>：您无法设置项目设置、首选项设置或原生资源（如材质、动画或精灵表）的默认属性。</p>
+<p>除了在创建新的组件和导入资源时使用默认预设之外，当您在检查器窗口的组件上下文菜单中使用<strong>重置</strong>命令时，Unity 还会应用默认预设。</p>
+<h2 id="预设管理器参考">预设管理器参考 <a href="#%e9%a2%84%e8%ae%be%e7%ae%a1%e7%90%86%e5%99%a8%e5%8f%82%e8%80%83" class="anchor">🔗</a></h2><p><img src="/2023-10-26-unity-document-94/preset-reference.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>筛选</strong></td>
+<td style="text-align:left">使用<strong>筛选</strong>字段来定义预设适用于哪些组件或导入器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>预设</strong></td>
+<td style="text-align:left">使用<strong>预设</strong>字段设置要使用的预设。默认情况下，预设在创建后适用于该预设类型的所有组件或资源导入器。如果您只想将其应用于特定的组件或资源类型，请使用<strong>筛选</strong>字段定义何时应用预设。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>添加默认预设</strong></td>
+<td style="text-align:left">选择此按钮来选择要添加预设的<strong>导入器</strong>、<strong>组件</strong>或<strong>ScriptableObject</strong>。如果选择<strong>导入器</strong>或<strong>组件</strong>，请选择要为其创建预设的资源导入器或组件类型。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="为默认设置分配预设">为默认设置分配预设 <a href="#%e4%b8%ba%e9%bb%98%e8%ae%a4%e8%ae%be%e7%bd%ae%e5%88%86%e9%85%8d%e9%a2%84%e8%ae%be" class="anchor">🔗</a></h2><p>要指定在预设管理器中使用的默认设置预设，请按以下步骤操作：</p>
+<ol>
+<li>如果您的项目中尚未有可用于默认设置的预设，请创建一个预设。</li>
+<li>通过选择<strong>Edit &gt; Project Settings</strong>，然后选择<strong>Preset Manager</strong>，打开预设管理器。</li>
+<li>选择<strong>添加默认预设</strong>，然后选择默认类型。您选择的预设类型将显示在<strong>预设管理器</strong>列表中。
+<img src="/2023-10-26-unity-document-94/preset-manager-add-type.png" alt=""></li>
+<li>在预设字段中，单击<strong>预设选择器</strong>（圆形图标）。</li>
+<li>从<strong>选择预设</strong>窗口中，选择此预设类型的预设。或者，您还可以从<strong>项目</strong>窗口将预设拖放到预设字段中。</li>
+<li>如果要将其他预设字段添加到列表中，请单击<strong>添加</strong>（<strong>+</strong>）选项卡。
+<img src="/2023-10-26-unity-document-94/preset-manager-add-default-presets.png" alt=""></li>
+</ol>
+<p><strong>注意</strong>：如果为变换组件设置了默认预设，当您创建新的<strong>GameObject</strong>时，Unity 不会使用 Position 值。相反，它会将默认 Position 值设置为<strong>场景</strong>视图的中心。要将 Position 值设置为默认预设值，请选择<strong>变换组件</strong>的<strong>更多项</strong>按钮（<strong>⋮</strong>），然后选择<strong>重置</strong>。</p>
+<h2 id="通过检查器窗口分配预设">通过检查器窗口分配预设 <a href="#%e9%80%9a%e8%bf%87%e6%a3%80%e6%9f%a5%e5%99%a8%e7%aa%97%e5%8f%a3%e5%88%86%e9%85%8d%e9%a2%84%e8%ae%be" class="anchor">🔗</a></h2><p>您还可以通过<strong>检查器</strong>窗口添加和删除用于默认设置的预设。</p>
+<p>添加默认预设:</p>
+<ol>
+<li>在<strong>项目</strong>窗口中选择一个预设。</li>
+<li>在<strong>检查器</strong>窗口中，单击<strong>添加到默认</strong>。Unity 将您的默认预设添加到<strong>预设管理器</strong>中。</li>
+<li>打开<strong>预设管理器</strong>，为预设添加筛选器或重新排序预设列表。
+<img src="/2023-10-26-unity-document-94/presets-add-to-default-from-inspector.png" alt=""></li>
+</ol>
+<p>删除默认预设：</p>
+<ol>
+<li>在<strong>项目</strong>窗口中选择一个预设。</li>
+<li>在<strong>检查器</strong>窗口中，单击<strong>从默认中删除</strong>。</li>
+</ol>
+<h2 id="添加筛选器">添加筛选器 <a href="#%e6%b7%bb%e5%8a%a0%e7%ad%9b%e9%80%89%e5%99%a8" class="anchor">🔗</a></h2><p>默认情况下，一旦创建了预设，它就会应用于该预设类型的所有组件或资源导入器。如果您只想将其应用于特定的组件或资源类型，可以使用筛选器字段来定义何时应用预设。</p>
+<p>通过筛选器，您可以为给定类型创建多个预设，并根据组件和导入器是否符合筛选条件，将它们应用于特定的组件或导入器。您可以使用文件名、目录和文件扩展名来进行筛选。</p>
+<p>您还可以应用部分预设，只影响在组件或资源中指定的属性。</p>
+<p><strong>注意</strong>：预设类型中的默认预设按照从上到下的顺序应用。这意味着列表底部的筛选器如果没有逻辑排序，则可能会覆盖之前的筛选器。</p>
+<ol>
+<li>通过选择<strong>Edit &gt; Project Settings</strong>，然后选择<strong>Preset Manager</strong>类别，打开预设管理器。</li>
+<li>找到要筛选的默认预设，并在<strong>筛选</strong>字段中输入搜索字符串。</li>
+</ol>
+<h4 id="高级筛选器搜索">高级筛选器搜索 <a href="#%e9%ab%98%e7%ba%a7%e7%ad%9b%e9%80%89%e5%99%a8%e6%90%9c%e7%b4%a2" class="anchor">🔗</a></h4><p>预设可以使用通配符搜索，这是一种在筛选器中使用符号的方式，以允许更广泛的导入筛选。请参考下表中可使用的符号列表。通配符搜索筛选器区分大小写。
+要创建通配符搜索筛选器，语法是 <code>glob:&quot;你的搜索模式&quot;</code>。筛选器字段必须以 <code>glob:</code> 开头，并且搜索项必须在引号字符内。例如，<code>glob:&quot;example-folder/*.fbx&quot;</code> 筛选在名为 example-folder 的文件夹中的任何 .fbx 文件。</p>
+<p>支持的符号：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">匹配单个路径部分中的 0 个或多个字符（单个路径部分定义为除 / 之外的任何字符组合）</td>
+<td style="text-align:left"><code>glob:&quot;foldername/*.fbx&quot;</code> 搜索位于名为 <em>foldername</em> 的文件夹中的任何 .fbx 文件。</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:left">匹配单个字符</td>
+<td style="text-align:left"><code>glob:&quot;foldername/filename-?.fbx&quot;</code> 搜索位于名为 <em>foldername</em> 的文件夹中，名称以 <em>filename-</em> 开头，紧跟一个字符的 .fbx 文件（例如，这将包括 <em>filename–1.fbx</em>，<em>filename–2.fbx</em>，但不包括 <em>filename–01.fbx</em>）。</td>
+</tr>
+<tr>
+<td style="text-align:left">[…]</td>
+<td style="text-align:left">匹配一系列字符，类似于正则表达式范围。如果范围的第一个字符是!或^，则匹配不在范围内的任何字符。</td>
+<td style="text-align:left"><code>glob:&quot;foldername/file[...]1.fbx&quot;</code> 搜索位于名为 <em>foldername</em> 的文件夹中的任何 .fbx 文件，名称以 <em>file</em> 开头，以 <em>1</em> 结尾（例如，这将包括 <em>file–1.fbx</em>，<em>file–01.fbx</em>，但不包括 <em>file–2.fbx</em>）。</td>
+</tr>
+<tr>
+<td style="text-align:left">(pattern|pat*|pat?erN)</td>
+<td style="text-align:left">使用圆括号包围的搜索项，用竖线字符（表示“或”）分隔，表示筛选结果可以匹配其中一个搜索模式。</td>
+<td style="text-align:left">`glob:(&ldquo;foldername/*.fbx&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align:left">**</td>
+<td style="text-align:left">匹配零个或多个目录和子目录，进行匹配搜索。</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="编辑默认预设列表">编辑默认预设列表 <a href="#%e7%bc%96%e8%be%91%e9%bb%98%e8%ae%a4%e9%a2%84%e8%ae%be%e5%88%97%e8%a1%a8" class="anchor">🔗</a></h2><p>本节介绍如何在预设管理器的每个预设类型的默认预设列表中切换、移动和删除预设。</p>
+<ul>
+<li>**重新排序预设列表：**选择要移动的默认预设的手柄（=），并将其拖动到新位置。</li>
+<li><strong>删除预设：<strong>选择要删除的默认预设的手柄（=），然后单击删除按钮（</strong>-</strong>）以删除所选预设。</li>
+<li>**删除预设类型：**删除分配给该默认预设类型的所有预设。</li>
+</ul>
+<h2 id="禁用和启用默认预设">禁用和启用默认预设 <a href="#%e7%a6%81%e7%94%a8%e5%92%8c%e5%90%af%e7%94%a8%e9%bb%98%e8%ae%a4%e9%a2%84%e8%ae%be" class="anchor">🔗</a></h2><p>您可以临时禁用/启用默认预设，而无需丢失筛选设置。</p>
+<ol>
+<li>通过选择<strong>Edit &gt; Project Settings</strong>，然后选择<strong>Preset Manager</strong>类别，打开预设管理器。</li>
+<li>取消选中默认预设左侧的复选框以禁用预设。选中复选框以启用预设。<img src="/2023-10-26-unity-document-94/preset-manager-enable-preset.png" alt=""></li>
+</ol>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(104)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (97)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

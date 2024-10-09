@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-25 11:13:34 &#43;0800 CST">2023/10/25</time>
+        <span class="split">·</span>
+        <span> 268 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="player">Player <a href="#player" class="anchor">🔗</a></h1><p>**玩家（Player）**设置窗口（菜单：<strong>Edit &gt; Project Settings &gt; Player</strong>）包含确定 Unity 如何构建和显示最终应用程序的设置。您可以使用 PlayerSettings API 来控制此窗口中可用的大多数设置。</p>
+<h2 id="通用设置">通用设置 <a href="#%e9%80%9a%e7%94%a8%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p><strong>玩家设置</strong>在安装的平台模块之间有所不同。每个平台都有自己的玩家设置，您需要为要构建的每个应用程序版本设置这些设置。要在它们之间导航，请单击带有平台操作系统图标的选项卡。</p>
+<p><img src="/2023-10-25-unity-document-93/player-settings-window.png" alt=""></p>
+<p>但是，所有平台共享一些通用设置，您只需要设置一次：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>公司名称</strong></td>
+<td style="text-align:left">输入您公司的名称。Unity 使用此名称来定位首选项文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>产品名称</strong></td>
+<td style="text-align:left">输入应用程序运行时出现在菜单栏的名称。Unity 还使用此名称来定位首选项文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>版本</strong></td>
+<td style="text-align:left">输入应用程序的版本号。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认图标</strong></td>
+<td style="text-align:left">选择要在每个平台上用作应用程序默认图标的 2D 纹理文件。您可以为特定平台覆盖此设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>默认光标</strong></td>
+<td style="text-align:left">选择要在每个支持的平台上用作应用程序默认光标的 2D 纹理文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>光标热点</strong></td>
+<td style="text-align:left">设置光标热点位置与默认光标左上角之间的像素偏移值。光标热点是 Unity 根据光标位置触发事件的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="特定于平台的设置">特定于平台的设置 <a href="#%e7%89%b9%e5%ae%9a%e4%ba%8e%e5%b9%b3%e5%8f%b0%e7%9a%84%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>特定于平台的设置分为以下几个部分：</p>
+<ul>
+<li><strong>图标（Icon）</strong>：在桌面上显示的游戏图标。您可以从项目中的 2D 图像资源（如精灵或导入的图像）中选择图标。</li>
+<li><strong>分辨率和展示（Resolution and Presentation）</strong>：屏幕分辨率和其他展示细节的设置，例如游戏是否默认全屏模式。</li>
+<li><strong>闪屏图片（Splash Image）</strong>：在游戏启动时显示的图片。此部分还包括创建闪屏屏幕的常见设置。有关详情，请参阅闪屏图片（Splash Image）文档。</li>
+<li><strong>其他设置（Other Settings）</strong>：特定于平台的任何其他设置。</li>
+<li><strong>发布设置（Publishing Settings）</strong>：构建应用程序并准备从应用商店或主机网页上提供的详细信息。</li>
+<li><strong>XR 设置（XR Settings）</strong>：专为虚拟现实（VR）、增强现实（AR）和混合现实（MR）应用程序的设置。</li>
+</ul>
+<p>您可以在各个平台的手册部分找到有关特定于各个平台的设置的详细信息：</p>
+<ul>
+<li><strong>Android</strong>：Android 玩家设置</li>
+<li><strong>ChromeOS</strong>：ChromeOS 玩家设置</li>
+<li><strong>专用服务器（Dedicated Server）</strong>：专用服务器玩家设置</li>
+<li><strong>iOS</strong>：iOS 玩家设置</li>
+<li><strong>Linux</strong>：Linux 玩家设置</li>
+<li><strong>macOS</strong>：macOS 玩家设置</li>
+<li><strong>tvOS</strong>：tvOS 玩家设置</li>
+<li><strong>Web</strong>：Web 玩家设置</li>
+<li><strong>Windows</strong>：Windows 玩家设置</li>
+</ul>
+<h1 id="闪屏图片玩家设置">闪屏图片玩家设置 <a href="#%e9%97%aa%e5%b1%8f%e5%9b%be%e7%89%87%e7%8e%a9%e5%ae%b6%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h1><p><strong>玩家设置</strong>窗口的<strong>闪屏图片</strong>部分（菜单：<strong>Edit &gt; Project Settings &gt; Player &gt; Splash Image</strong>）允许您为项目配置一个闪屏。闪屏会在应用程序启动时显示。</p>
+<p>您可以使用<strong>闪屏图片</strong>窗口中的设置来自定义闪屏在应用程序中的显示方式，包括禁用 Unity 标志、添加自己的标志或完全禁用闪屏。然而，完全自定义闪屏只适用于 Plus、Pro 或企业版 Unity 计划的用户。如果您使用个人计划，闪屏图片设置的以下限制将适用：</p>
+<ul>
+<li>无法禁用<strong>显示闪屏屏幕</strong>设置以禁用闪屏</li>
+<li>无法禁用<strong>显示 Unity 标志</strong>设置以禁用 Unity 标志</li>
+<li><strong>叠加透明度</strong>设置的最小值为 0.5</li>
+</ul>
+<p>Unity 的闪屏屏幕在所有平台上都是相同的。它在应用程序的第一个<strong>场景</strong>异步加载到后台时立即显示。然而，如果您使用自己的引导屏幕或动画，由于 Unity 必须加载整个引擎和第一个场景才能显示您自定义的闪屏屏幕，这可能需要更长的时间才能显示。</p>
+<p><strong>注意</strong>：Unity 将这些选项直接复制到<code>Package.appxmanifest</code>文件。</p>
+<h2 id="unity-闪屏图片设置">Unity 闪屏图片设置 <a href="#unity-%e9%97%aa%e5%b1%8f%e5%9b%be%e7%89%87%e8%ae%be%e7%bd%ae" class="anchor">🔗</a></h2><p>要为应用程序的闪屏屏幕配置选项，请打开玩家设置窗口（菜单：<strong>Edit &gt; Project Settings &gt; Player &gt; Splash Image</strong>）。您也可以使用 SplashScreen API 来控制闪屏屏幕设置。</p>
+<p><img src="/2023-10-25-unity-document-93/player-settings-splash-image.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>设置</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>虚拟现实</strong>闪屏图片</td>
+<td style="text-align:left">设置要为使用虚拟现实的应用程序使用的图像。图像必须是 2D 纹理。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>闪屏屏幕</strong></td>
+<td style="text-align:left">显示闪屏屏幕的设置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>显示闪屏屏幕</strong></td>
+<td style="text-align:left">已启用。禁用此设置以在应用程序启动时不显示闪屏屏幕。 <strong>重要提示</strong>：如果您使用的是 Unity 个人计划，无法禁用此设置。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>预览</strong></td>
+<td style="text-align:left">选择<strong>预览</strong>按钮以在游戏视图中查看闪屏屏幕的预览。预览反映了游戏视图的分辨率和<strong>宽高比</strong>。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>闪屏样式</strong></td>
+<td style="text-align:left">Unity 标志的颜色样式的设置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">黑底白标</td>
+<td>适用于显示在深色背景上的 Unity 标志的浅色版本。这是默认设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">白底黑标</td>
+<td>适用于显示在浅色背景上的 Unity 标志的深色版本。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>动画</strong></td>
+<td style="text-align:left">闪屏屏幕在屏幕上如何出现和消失的设置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">静止</td>
+<td>没有应用任何动画效果。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">平移</td>
+<td>标志和背景缩放以创建视觉平移效果。这是默认设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">自定义</td>
+<td>选择此设置来配置背景和标志缩放量以修改平移效果。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">标志缩放</td>
+<td>标志在动画总持续时间结束时达到的目标缩放（0 到 1 之间）。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">背景缩放</td>
+<td>当闪屏屏幕动画总持续时间结束时，背景达到的目标缩放（0 到 1 之间）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>标志</strong></td>
+<td style="text-align:left">自定义闪屏屏幕中的标志的设置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>显示 Unity 标志</strong></td>
+<td style="text-align:left">已启用。禁用此选项以在闪屏屏幕上不显示 Unity 标志。 <strong>重要提示</strong>：如果您使用的是 Unity 个人计划，无法禁用此设置。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>绘制模式</strong></td>
+<td style="text-align:left">选择标志在闪屏屏幕上出现的顺序模式</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">Unity 标志在底部</td>
+<td>将 Unity 标志显示在<strong>标志</strong>列表中的所有标志下方。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">顺序显示所有标志</td>
+<td>将 Unity 标志顺序显示在<strong>标志</strong>列表中的所有标志之后。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>标志</strong></td>
+<td style="text-align:left">闪屏屏幕上要包含的标志。每个标志必须是 Sprite Asset。将 Sprite Mode 设置为<strong>Single</strong>，以将整个精灵用作标志。如果要更改标志的纵横比，请将 Sprite Mode 设置为 Multiple，并使用 Sprite Editor 编辑维度。要添加和删除标志，请使用加号（+）和减号（-）按钮。要重新排序标志，请将其拖动到列表中。要在标志之间创建延迟，请在标志列表中添加一个没有分配 Sprite Asset 的条目。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">标志持续时间</td>
+<td>设置每个<strong>Sprite</strong>资产在屏幕上显示的时间长度。使用 2 到 10 秒之间的值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>闪屏屏幕持续时间</strong></td>
+<td style="text-align:left">显示闪屏屏幕序列的总持续时间，单位为秒。这是所有标志加 0.5 秒淡出时间的总和。 <strong>注意</strong>：如果第一个场景尚未准备好播放，则应用程序的闪屏屏幕可能显示更长时间。在这种情况下，闪屏屏幕只显示背景图像或颜色，并在第一个场景准备好播放时淡出。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>背景</strong></td>
+<td style="text-align:left">自定义应用程序闪屏屏幕的背景的设置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>覆盖不透明度</strong></td>
+<td style="text-align:left">调整<strong>覆盖不透明度</strong>设置的值以突出显示标志。这会基于您设置的<strong>闪屏样式</strong>（黑底白标或白底黑标）来影响背景颜色和图像颜色。将不透明度设置为较低的值可减小此效果。您也可以通过将其设置为 0 来禁用此效果。例如，如果<strong>闪屏样式</strong>为<strong>黑底白标</strong>，具有白色背景，则如果将<strong>覆盖不透明度</strong>设置为 1，背景将变为灰色；如果将其设置为 0，则背景将变为白色。<strong>重要提示</strong>：如果您使用的是 Unity 个人计划，此设置的最小值为 0.5。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>背景颜色</strong></td>
+<td style="text-align:left">为闪屏屏幕设置一种颜色。如果您没有设置<strong>背景图像</strong>，Unity 将使用此颜色。 <strong>注意</strong>：覆盖不透明度设置会影响背景颜色的显示，并可能与指定的颜色不匹配。 <strong>注意</strong>：在 Android 上，Unity 还使用此颜色来隐藏在 Android 12 + 设备上显示的默认自动闪屏屏幕。即使正在设置<strong>背景图像</strong>，这也会发生，请确保此颜色与<strong>背景图像</strong>匹配。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>模糊背景图像</strong></td>
+<td style="text-align:left">启用此设置以模糊您设置的背景图像。如果禁用此设置，则以无模糊效果显示背景图像。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>背景图像</strong></td>
+<td style="text-align:left"></td>
+<td>将 Sprite 图像的引用设置为用作背景。Unity 会调整背景图像，以使其填充屏幕。它会均匀缩放图像，直到它适应屏幕的宽度和高度。这意味着在某些宽高比下，图像的某些部分可能延伸到屏幕边缘之外。要调整背景图像对宽高比的响应，请在 Sprite Editor 中更改 Sprite 的<strong>Position</strong>值。 <strong>注意</strong>：闪屏背景不支持 HDR 图像。请避免使用 HDR 图像格式（如 RGBA16）作为闪屏背景图像。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>备用纵向图像</strong></td>
+<td style="text-align:left">设置一个替代图像，用于纵向宽高比（例如，纵向模式的移动设备）。如果不分配备用纵向图像 Sprite，则 Unity 编辑器将为纵向和横向模式均使用<strong>背景图像</strong>中分配的 Sprite。您可以在 Sprite Editor 中调整 Sprite 的<strong>Position</strong>和维度，以控制闪屏屏幕上背景图像的宽高比和位置。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(104)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (97)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

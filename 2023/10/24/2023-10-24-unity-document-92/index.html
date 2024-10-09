@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-24 11:13:34 &#43;0800 CST">2023/10/24</time>
+        <span class="split">·</span>
+        <span> 419 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="2d-物理参考">2D 物理参考 <a href="#2d-%e7%89%a9%e7%90%86%e5%8f%82%e8%80%83" class="anchor">🔗</a></h1><p>以下的 项目设置**（Project settings）**用于管理 2D 物理的全局设置，这些设置定义了 Unity 物理系统中 2D GameObject 的物理模拟的准确性限制。一个更准确的模拟需要更多的处理开销，而这些设置允许您调整准确性和性能之间的权衡，以适应您的项目需求。</p>
+<p>要打开 2D 物理项目设置窗口，请转到<strong>编辑（Edit）</strong> &gt; <strong>项目设置（Project Settings…）</strong> &gt; <strong>物理 2D（Physics 2D）</strong>。</p>
+<p><strong>注意： 如果要管理 3D 物理的全局设置，请参考物理项目设置参考页面。</strong></p>
+<p><img src="/2023-10-24-unity-document-92/Physics2D_properties.png" alt=""></p>
+<h2 id="通用设置选项卡">通用设置选项卡 <a href="#%e9%80%9a%e7%94%a8%e8%ae%be%e7%bd%ae%e9%80%89%e9%a1%b9%e5%8d%a1" class="anchor">🔗</a></h2><p>以下是**通用设置（General Settings）**选项卡中可用的属性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Gravity（重力）</strong></td>
+<td style="text-align:left">设置应用于所有 Rigidbody 2D 游戏对象的重力大小。通常只在 y 轴的负方向上设置重力。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Material（默认材质）</strong></td>
+<td style="text-align:left">设置一个默认的 Physics Material 2D 来在没有为单个 Collider 2D 分配材质时使用。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Velocity Iterations（速度迭代次数）</strong></td>
+<td style="text-align:left">设置物理系统用于解决速度影响的迭代次数。较高的值可以得到更准确的物理计算结果，但编辑器需要更多的 CPU 时间。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Position Iterations（位置迭代次数）</strong></td>
+<td style="text-align:left">设置物理系统用于解决位置变化的迭代次数。较高的值可以得到更准确的物理计算结果，但也需要更多的 CPU 时间。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Bounce Threshold（反弹阈值）</strong></td>
+<td style="text-align:left">设置弹性碰撞的阈值。如果两个发生碰撞的物体的相对线性速度低于此阈值，它们会被视为非弹性碰撞，因此不会产生弹跳。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Linear Correction（最大线性纠正值）</strong></td>
+<td style="text-align:left">设置在解决约束时使用的最大线性位置纠正值（范围从 0.0001 到 1000000）。这有助于防止过冲。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Angular Correction（最大角度纠正值）</strong></td>
+<td style="text-align:left">设置在解决约束时使用的最大角度纠正值（范围从 0.0001 到 1000000）。这有助于防止过冲。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Translation Speed（最大线性速度）</strong></td>
+<td style="text-align:left">设置任何物理更新期间 Rigidbody 2D 游戏对象的最大线性速度。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Rotation Speed（最大旋转速度）</strong></td>
+<td style="text-align:left">设置任何物理更新期间 Rigidbody 2D 游戏对象的最大旋转速度。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Baumgarte Scale（Baumgarte 缩放因子）</strong></td>
+<td style="text-align:left">设置确定 Unity 解决碰撞重叠速度的缩放因子。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Baumgarte Time of Impact Scale（Baumgarte 碰撞判定缩放因子）</strong></td>
+<td style="text-align:left">设置确定 Unity 解决碰撞时间重叠速度的缩放因子。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Time to Sleep（睡眠时间）</strong></td>
+<td style="text-align:left">设置在 Rigidbody 2D 停止运动后进入睡眠状态之前经过的时间（以秒为单位）。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Linear Sleep Tolerance（线性睡眠容差）</strong></td>
+<td style="text-align:left">设置 Rigidbody 2D 在经过 ** 睡眠时间（Time to Sleep）** 后，当线性速度低于此容差时进入睡眠状态。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Angular Sleep Tolerance（角度睡眠容差）</strong></td>
+<td style="text-align:left">设置 Rigidbody 2D 在经过 ** 睡眠时间（Time to Sleep）** 后，当角度速度低于此容差时进入睡眠状态。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Default Contact Offset（默认接触偏移）</strong></td>
+<td style="text-align:left">为碰撞器设置接触的接近距离，即使它们实际上没有发生接触。距离小于它们的<code>contactOffset</code>之和的碰撞器会生成接触，这会使得碰撞检测系统在物体稍微分离时预测性地执行接触限制。** 注意：** 将此值太低可能会减慢 Unity 计算连续多边形碰撞的能力。相反，将该值增加太多可能会导致顶点碰撞产生伪影。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Simulation Mode（模拟模式）</strong></td>
+<td style="text-align:left">选择 Unity 执行 2D 物理模拟的方式。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Fixed Update（固定更新）</strong></td>
+<td style="text-align:left">选择此选项以在 MonoBehaviour.FixedUpdate 被调用后立即执行物理模拟。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Update（更新）</strong></td>
+<td style="text-align:left">选择此选项以在 MonoBehaviour.Update 被调用后立即执行物理模拟。选择此模式时，会显示其他属性。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Script（脚本）</strong></td>
+<td style="text-align:left">选择此选项以通过 Physics2D.Simulate 手动执行物理模拟。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Simulation Layers（模拟图层）</strong></td>
+<td style="text-align:left">在<strong>Simulation Mode（模拟模式）**设置为**FixedUpdate（固定更新）**或**Update（更新）**时，选择 Unity 进行模拟的图层。默认选择选项是**Everything（所有图层）</strong>，它会自动选择所有图层并将它们包含在物理模拟中。您可以选择要包含在模拟中的特定图层，Unity 只会模拟所选择图层上的 Rigidbody2D、关节、效应器和 Collider2D 之间的接触。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Queries Hit Triggers（命中触发器查询）</strong></td>
+<td style="text-align:left">如果希望标记为 ** 触发器（Trigger）** 的 Collider 2D 在任何物理查询（如 Linecast 或 Raycast）与它们相交时返回命中，请启用此选项。默认启用。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Queries Start In Colliders（起始于碰撞器查询）</strong></td>
+<td style="text-align:left">如果希望从 Collider 2D 内部开始的物理查询检测到它们所在的 Collider ，请启用此选项。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Callbacks On Disable（禁用时回调）</strong></td>
+<td style="text-align:left">启用此选项可在禁用具有接触的 Collider 时产生碰撞回调。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Reuse Collision Callbacks（重用碰撞回调）</strong></td>
+<td style="text-align:left">启用此选项，物理系统将为所有碰撞回调重用单个 Collision2D 实例。禁用此选项后，物理系统将为每个碰撞回调创建一个新的 Collision2D 实例。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Auto Sync Transforms（自动同步变换）</strong></td>
+<td style="text-align:left">启用此选项可自动将变换更改与物理系统同步。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gizmos（图形化调试工具）</strong></td>
+<td style="text-align:left">选择要在编辑器中绘制的 2D 物理图形化调试工具的类型。可以选择多个选项。</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Nothing（无）</strong></td>
+<td style="text-align:left">取消选择此选项，不绘制任何 2D 物理图形化调试工具。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Everything（所有）</strong></td>
+<td style="text-align:left">选择此选项以选择所有选项。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>All Colliders（所有碰撞器）</strong></td>
+<td style="text-align:left">选择此选项以在不必在 Hierarchy 窗口中选择它们的情况下，绘制所有碰撞器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Colliders Outlined（碰撞器轮廓）</strong></td>
+<td style="text-align:left">选择此选项以外轮廓的方式绘制所有碰撞器（可以在 2D 物理首选项中定制轮廓颜色）。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Colliders Filled（填充碰撞器）</strong></td>
+<td style="text-align:left">选择此选项以使用 2D 物理首选项中指定的填充颜色绘制所有碰撞器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Colliders Sleeping（睡眠碰撞器）</strong></td>
+<td style="text-align:left">选择此选项以使用 2D 物理首选项中指定的 ** 唤醒（Awake）<strong>和</strong>睡眠（Asleep）** 颜色绘制在休眠状态的碰撞器。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Collider Contacts（碰撞器接触点）</strong></td>
+<td style="text-align:left">选择此选项以将碰撞器接触点显示为从接触点沿接触法线方向的方向箭头。可以在 2D 物理首选项中指定箭头的接触颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Collider Bounds（碰撞器边界）</strong></td>
+<td style="text-align:left">选择此选项以为碰撞器创建的所有 PhysicsShape2D 绘制碰撞器边界。边界是一个轴对齐的边界框（AABB）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Multithreading（多线程）</strong></td>
+<td style="text-align:left">展开此项来调整多线程设置。请参考多线程以了解每个属性的详细信息。</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="更新模式">更新模式 <a href="#%e6%9b%b4%e6%96%b0%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h3><p>以下属性仅在您选择 **更新（Update）或脚本（Script）作为模拟模式（Simulation Mode）**时可见。</p>
+<p><img src="/2023-10-24-unity-document-92/Physics2D-simmode-update.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Use Sub Stepping（使用子步骤）</strong></td>
+<td style="text-align:left">启用此属性可使编辑器在模拟步骤中使用模拟的子步骤。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Sub Step Count（使用子步骤数量）</strong></td>
+<td style="text-align:left">启用此属性可使编辑器在所有模拟的子步骤中计算碰撞。这样可以为每个子步骤提供更精确的模拟，但会降低性能。禁用此属性只会在第一个模拟子步骤中计算碰撞。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Max Sub Step Count（最大子步骤数量）</strong></td>
+<td style="text-align:left">设置在模拟子步骤启用并正在运行时每帧允许的最大模拟子步骤数量。这还将限制编辑器在模拟子步骤上花费的时间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Min Sub Step FPS</strong></td>
+<td style="text-align:left">在模拟步骤的当前帧率低于此值时，设置模拟开始使用子步骤。如果启用了<strong>Use Sub Stepping</strong>，则在当前帧率低于此值时编辑器将使用模拟的子步骤。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多线程">多线程 <a href="#%e5%a4%9a%e7%ba%bf%e7%a8%8b" class="anchor">🔗</a></h3><p><strong>Multithreading（多线程）</strong> 部分的设置允许您使用 C# Job System 来配置多线程物理。</p>
+<p><img src="/2023-10-24-unity-document-92/Physics2DManager-Jobs.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Use Multithreading（使用多线程）</strong></td>
+<td style="text-align:left">启用此选项以使用作业系统执行模拟步骤，并使用其余选项来控制如何实现。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Consistency Sorting（使用一致性排序）</strong></td>
+<td style="text-align:left">如果保持一致的处理顺序变得重要，则启用此选项。在多个 CPU 线程上执行模拟步骤会产生单独的数据批处理。处理这些单独的批处理会降低处理的决定性，但会提高性能。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Interpolation Poses Per Job（每个作业的插值位姿数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中进行插值的 Rigidbody 2D 对象的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>New Contacts Per Job（每个作业的新接触点数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要查找的新接触点的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Collide Contacts Per Job（每个作业的碰撞接触点数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要处理的碰撞接触点的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Clear Flags Per Job（每个作业的清除标志数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要清除的标志的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Clear Body Forces Per Job（每个作业的清除刚体力数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要清除力作用于的刚体的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sync Discrete Fixtures Per Job（每个作业的同步离散 Fixture 数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要在离散岛屿求解期间同步的 Fixture 的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Sync Continuous Fixtures Per Job（每个作业的同步连续 Fixture 数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要在连续岛屿求解期间同步的 Fixture 的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Find Nearest Contacts Per Job（每个作业的查找最近接触点数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要查找的最近接触点的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Update Trigger Contacts Per Job（每个作业的更新触发器接触点数量）</strong></td>
+<td style="text-align:left">设置每个模拟作业中要更新的触发器接触点的最小数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Cost Threshold（岛屿求解的成本阈值）</strong></td>
+<td style="text-align:left">设置在离散岛屿求解过程中，所有刚体、接触点和关节的最小成本阈值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Body Cost Scale（岛屿求解的刚体成本缩放因子）</strong></td>
+<td style="text-align:left">设置在离散岛屿求解过程中，每个刚体的成本缩放因子。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Contact Cost Scale（岛屿求解的接触点成本缩放因子）</strong></td>
+<td style="text-align:left">设置在离散岛屿求解过程中，每个接触点的成本缩放因子。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Joint Cost Scale（岛屿求解的关节成本缩放因子）</strong></td>
+<td style="text-align:left">设置在离散岛屿求解过程中，每个关节的成本缩放因子。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Bodies Per Job（每个作业的岛屿求解刚体数量）</strong></td>
+<td style="text-align:left">设置在执行岛屿求解时每个模拟作业中要求解的最小刚体数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Island Solver Contacts Per Job（每个作业的岛屿求解接触点数量）</strong></td>
+<td style="text-align:left">设置在执行岛屿求解时每个模拟作业要求解的最小接触点数量。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="图层碰撞矩阵选项卡">图层碰撞矩阵选项卡 <a href="#%e5%9b%be%e5%b1%82%e7%a2%b0%e6%92%9e%e7%9f%a9%e9%98%b5%e9%80%89%e9%a1%b9%e5%8d%a1" class="anchor">🔗</a></h2><p><strong>图层碰撞矩阵（Layer Collision Matrix）</strong> 选项卡的设置控制 Colliders（附加到不同 Rigidbody 2D 上的 Colliders）能否基于所分配的图层与彼此接触。矩阵显示每个图层与其他每个图层的对应关系，允许您选择哪些特定图层可以与另一个图层发生接触。</p>
+<p><img src="/2023-10-24-unity-document-92/physics2d-layer-collision-matrix.png" alt=""></p>
+<p>两个图层之间的交集处有一个复选标记表示允许这两个图层之间的接触，而清除的复选框表示这两个图层之间的接触永远不被允许。当您将鼠标悬停在图层的名称或复选框上时，其所在的行和列会突出显示，以便更容易看出它影响的图层是哪些。</p>
+<p><strong>提示</strong>：为了优化性能，您应该确保只选择最少数量的潜在接触，只选择您希望与其他图层发生接触的特定图层，并禁用所有其他不必要的接触。为了方便操作，您可以选择 <strong>全部禁用</strong>（Disable All）或 <strong>全部启用</strong>（Enable All）来一次性快速选择或取消选择所有选项，然后再选择具体的图层。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/26/2023-10-26-unity-document-94/">Unity中文版-Create Gameplay Editor Features-Project Settings-Preset Manager(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/25/2023-10-25-unity-document-93/">Unity中文版-Create Gameplay Editor Features-Project Settings-Player(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/24/2023-10-24-unity-document-92/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics 2D reference(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/23/2023-10-23-unity-document-91/">Unity中文版-Create Gameplay Editor Features-Project Settings-Physics(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/22/2023-10-22-unity-document-90/">Unity中文版-Create Gameplay Editor Features-Project Settings-Package Manager(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(104)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (97)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
