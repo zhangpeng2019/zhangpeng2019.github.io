@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-28 11:13:34 &#43;0800 CST">2023/10/28</time>
+        <span class="split">·</span>
+        <span> 51 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="script-execution-order-settings">Script Execution Order settings <a href="#script-execution-order-settings" class="anchor">🔗</a></h1><p>使用<strong>脚本执行顺序</strong>设置来指定 Unity 调用不同 MonoBehaviour 类的事件函数的相对顺序。例如，您可以指定 Unity 在运行您的<code>Rotation</code> MonoBehaviour 脚本的事件函数之前先运行您的<code>MoveForward</code> MonoBehaviour 脚本的事件函数。</p>
+<p>顺序适用于每个事件函数类别，因此 Unity 会按照指定的顺序调用帧中需要调用的任何 Awake 函数，并在同样的顺序中调用活动的<strong>游戏对象</strong>的任何 Update 函数。</p>
+<p>您可以在项目设置检查器中调整脚本执行顺序。转到菜单：<strong>Edit</strong> &gt; <strong>Project Settings</strong>，然后选择<strong>脚本执行顺序</strong>类别。</p>
+<p>**注意：**如果将多个脚本类型分配给多个游戏对象，脚本执行顺序指定一种类型的所有脚本在另一种类型的所有脚本之前执行，而不考虑它们附加到的游戏对象。</p>
+<p><img src="/2023-10-28-unity-document-96/ScriptExecSet.png" alt=""></p>
+<p>使用 “加号（+）” 按钮将脚本添加到设置的<strong>检查器</strong>窗口中，并选择类名。要删除脚本，请使用列表中每个项目右侧的减号（-）按钮。</p>
+<p>要指定执行顺序，请将列表中的项目拖动到所需的位置或编辑列表中类的顺序数字。分配的数字表示相对顺序。Unity 从上到下按顺序执行列表（从具有较负数顺序数字的脚本到具有较高正数数字的脚本）。Unity 在列表之外的任何脚本在<strong>默认时间</strong>段执行，该时间段在具有负数顺序数字的脚本之后，并在具有正数顺序数字的脚本之前。</p>
+<p>顺序数字是任意的，不代表任何物理数量。编辑器将这些值存储在脚本元数据文件中。在列表中添加或移动其他脚本时，可以留出顺序数字之间的间隔，以避免不必要的文件更改。</p>
+<p>当多个场景被附加加载时，配置的脚本执行顺序会逐个应用于一个场景。例如，如果配置的执行顺序是<code>Script1</code> &gt; <code>Script2</code> &gt; <code>Script3</code>，则 Unity 会先更新第一个场景中所有<code>Script1</code>的实例，然后更新第一个场景中所有<code>Script2</code>的实例，然后更新第一个场景中所有<code>Script3</code>的实例，然后才会运行下一个场景中的任何更新。</p>
+<p><strong>注意：</strong> 此设置窗口中指定的执行顺序不影响标有 RuntimeInitializeOnLoadMethod 属性的函数的顺序。（无法为运行时初始化指定顺序。）</p>
+<p>有关 Unity 在每帧中调用不同类别的事件函数的时机的信息，请参阅事件函数的执行顺序。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/31/2023-10-31-unity-document-99/">Unity中文版-Create Gameplay Editor Features-Project Settings-UI Toolkit project settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/30/2023-10-30-unity-document-98/">Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/29/2023-10-29-unity-document-97/">Unity中文版-Create Gameplay Editor Features-Project Settings-Tags and Layers(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/28/2023-10-28-unity-document-96/">Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/27/2023-10-27-unity-document-95/">Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(111)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (104)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

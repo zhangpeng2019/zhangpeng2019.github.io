@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-27 11:13:34 &#43;0800 CST">2023/10/27</time>
+        <span class="split">·</span>
+        <span> 588 words </span>
+        <span class="split">·</span>
+        <span>
+            3 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="quality">Quality <a href="#quality" class="anchor">🔗</a></h1><p>Unity 允许您设置尝试呈现的图形质量级别。一般来说，图形质量会以帧率为代价，因此在移动设备或旧硬件上，最好不要追求最高质量，因为它往往会对游戏性产生不利影响。可以使用<strong>质量设置</strong>（菜单：<strong>Edit &gt; Project Settings</strong>，然后选择<strong>Quality</strong>类别）在编辑器中为所选择的设备选择<strong>质量级别</strong>。它分为两个主要部分：质量矩阵位于顶部；在其下方，显示活动<strong>质量级别</strong>的设置。</p>
+<p>Unity 允许您为给定质量选项的组合分配一个名称，以便于参考。矩阵的行让您选择每个<strong>质量级别</strong>适用于哪个平台。矩阵底部的<strong>默认</strong>行本身并不是一个<strong>质量级别</strong>，而是为每个平台设置默认的<strong>质量级别</strong>（列中的绿色复选框表示该平台当前选择的级别）。Unity 预先启用了六个<strong>质量级别</strong>，但您可以添加自己的级别。</p>
+<p><img src="/2023-10-27-unity-document-95/quality-settings-panel.png" alt="">
+A: 在此项目中定义的<strong>质量级别</strong>。
+B: 当前的活动<strong>质量级别</strong>。
+C: 当前<strong>质量级别</strong>的配置。</p>
+<p>要删除不需要的<strong>质量级别</strong>，请使用垃圾桶图标（最右侧的列）。</p>
+<p>要选择编辑一个<strong>质量级别</strong>，请在矩阵中点击其名称。</p>
+<p>要定义一个新的<strong>质量级别</strong>，请单击<strong>添加质量级别</strong>按钮，并在<strong>名称</strong>属性框中键入新级别的名称。</p>
+<p>然后，您可以选择需要更新或设置的以下文档中记录的质量选项：</p>
+<ul>
+<li>渲染</li>
+<li>纹理</li>
+<li>粒子</li>
+<li>地形</li>
+<li>阴影</li>
+<li>异步资源上传</li>
+<li>细节级别</li>
+<li>网格</li>
+</ul>
+<h2 id="渲染">渲染 <a href="#%e6%b8%b2%e6%9f%93" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Render Pipeline（渲染流水线）</strong></td>
+<td style="text-align:left">用于此<strong>质量级别</strong>的渲染流水线资源。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Pixel Light Count（像素光数量）</strong></td>
+<td style="text-align:left">当 Unity 使用正向渲染时，设置<strong>像素光</strong>的最大数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AntiAliasing（抗锯齿）</strong></td>
+<td style="text-align:left">选择 GPU 执行的多重采样抗锯齿（MSAA）级别。选项有<em>Disabled</em>、<em>2x Multi Sampling</em>、<em>4x Multi Sampling</em>和<em>8x Multi Sampling</em>。抗锯齿平滑了多边形边缘的外观。随着抗锯齿级别的增加，图形平滑度会增加，对 GPU 的性能成本也会增加。MSAA 仅与正向渲染兼容。有关其他类型抗锯齿和兼容性的更多信息，请参见后期处理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Realtime Reflection Probes（实时反射探针）</strong></td>
+<td style="text-align:left">启用此选项可在游戏过程中更新反射探针。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Resolution Scaling Fixed DPI Factor（分辨率缩放固定 DPI 因子）</strong></td>
+<td style="text-align:left">将设备的屏幕分辨率缩小到其本机分辨率以下。详细信息请参阅 Android 播放器设置和 iOS 播放器设置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>V Sync Count（垂直同步计数）</strong></td>
+<td style="text-align:left">选择是否与垂直消隐同步渲染，或者不进行任何同步。Unity 可以根据显示设备的刷新率与呈现进行同步，以避免撕裂伪影。可用的选项有<em>Every V Blank</em>、<em>Every Second V Blank</em>或<em>Don&rsquo;t Sync</em>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Realtime GI CPU Usage（实时 GI CPU 使用）</strong></td>
+<td style="text-align:left">在运行时允许 Enlighten 实时全局光照使用的 CPU 计算资源。增加此值可以让系统更快地响应光照变化，但会增加 CPU 的使用时间开销。**注意：**某些平台允许所有 CPU 被工作线程占用，而某些平台则实行最大限制。例如，某些游戏主机最多允许使用 4 个 CPU 核心。对于 Android 设备，如果是 bigLittle 架构，则只使用小型 CPU；否则，最大值为总 CPU 数减 1。请注意，此属性仅适用于可编写脚本的渲染流水线。如果使用内建渲染流水线，则可以在图形设置中找到该属性。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="撕裂问题">撕裂问题 <a href="#%e6%92%95%e8%a3%82%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h3><p>显示设备上的图像并不是连续更新的，而是在固定时间间隔内更新，类似于 Unity 中帧的更新。然而，Unity 的更新不一定与显示器的更新同步，因此可能在显示器仍在渲染上一帧时，Unity 发出一个新的帧。这会在屏幕上的帧变换位置产生一种视觉伪影，称为 “撕裂”。</p>
+<p><img src="/2023-10-27-unity-document-95/Tearing.jpg" alt=""></p>
+<p>撕裂的模拟示例。在放大的部分，图片的位移是明显可见的。</p>
+<p>可以让 Unity 仅在显示设备不更新的时间段内切换帧，即所谓的 “垂直消隐” 期间。在<strong>质量设置</strong>中的<strong>V Sync Count（垂直同步计数）</strong> 选项可以将帧切换与设备的垂直消隐同步，或者选项为每隔一个垂直消隐同步一次切换。如果游戏需要超过一个设备更新来完成一帧的渲染，后者可能会很有用。</p>
+<h2 id="纹理">纹理 <a href="#%e7%ba%b9%e7%90%86" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Global Mipmap Limit（全局 mipmap 级别限制）</strong></td>
+<td style="text-align:left">选择 Unity 在渲染纹理时使用的最高分辨率 mipmap 级别。较高的 mipmap 级别具有较低的分辨率，这意味着它们需要更少的 GPU 内存和 GPU 处理时间。此属性仅影响纹理形状为 2D 或 2D Array 的纹理。选项有：<strong>0：完全分辨率</strong>; <strong>1：一半分辨率</strong>; <strong>2：四分之一分辨率</strong>; <strong>3：八分之一分辨率</strong>。有关这些分辨率的详细信息，请参见 mipmap 介绍。不具有 mipmap 的纹理会以其完全分辨率渲染，而不管您选择的选项如何。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Mipmap Limit Groups（mipmap 级别限制组）</strong></td>
+<td style="text-align:left">使用这些组来指定特定的纹理应忽略全局 TextureMipmapLimit 或添加偏差。这样可以使您更多地分配内存预算以用于重要纹理，并减少用于不太重要纹理的内存分配。此属性仅影响纹理形状为 2D 或 2D Array 的纹理。选项有：<strong>Offset Global Mipmap Limit：–3</strong>；<strong>Offset Global Mipmap Limit：–2</strong>；<strong>Offset Global Mipmap Limit：–1</strong>；<strong>Use Global Mipmap Limit</strong>；<strong>Offset Global Mipmap Limit：+1</strong>；<strong>Offset Global Mipmap Limit：+2</strong>；<strong>Offset Global Mipmap Limit：+3</strong>；<strong>Override Global Mipmap Limit：Full Resolution</strong>；<strong>Override Global Mipmap Limit：Half Resolution</strong>；<strong>Override Global Mipmap Limit：Quarter Resolution</strong>；<strong>Override Global Mipmap Limit：Eighth Resolution</strong>。偏移量会对适用的纹理组的 Mipmap Limit 值进行偏置。例如，如果<strong>Global Texture Mipmap Limit（全局纹理 mipmap 级别限制）**为**Half Resolution（一半分辨率）</strong>，并选择<strong>Offset Global Mipmap Limit：–1（偏移全局 mipmap 级别限制：–1）</strong>，则适用的纹理组的新 Mipmap Limit 为<strong>Full Resolution（完全分辨率）</strong>。覆盖值将替换适用的纹理组的<strong>Global Mipmap Limit（全局 mipmap 级别限制）</strong>。例如，如果<strong>Global Texture Mipmap Limit（全局纹理 mipmap 级别限制）**为**Half Resolution（一半分辨率）</strong>，并选择<strong>Override Global Mipmap Limit：Full Resolution（覆盖全局 mipmap 级别限制：完全分辨率）</strong>，则适用的纹理组的新 Mipmap Limit 为<strong>Full Resolution（完全分辨率）</strong>。 ** 注意：** 如果删除或重命名 Mipmap Limit Group（mipmap 级别限制组），将触发对话框，提供重新导入该组中纹理的选项。撤消操作不会还原这些导入更改。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Anisotropic Textures（各向异性纹理）</strong></td>
+<td style="text-align:left">选择 Unity 是否以及如何使用各向异性纹理。选项有：<em>Disabled（禁用）</em>、<em>Per Texture（每个纹理）*和</em>Forced On（始终启用）*。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Texture Streaming（纹理流式传输）</strong></td>
+<td style="text-align:left">启用此复选框以使用 Mipmap 流式传输。如果您不打算使用 Mipmap 流式传输系统，请禁用此功能以避免任何额外开销。</td>
+</tr>
+<tr>
+<td style="text-align:left">Add All Cameras（添加所有相机）</td>
+<td style="text-align:left">启用此复选框可使 Unity 为项目中的所有活动相机计算 Mipmap 流式传输。默认情况下启用此选项。有关详细信息，请参阅 Mipmap 流式传输系统：配置相机。</td>
+</tr>
+<tr>
+<td style="text-align:left">Memory Budget（内存预算）</td>
+<td style="text-align:left">设置在使用 Mipmap 流式传输系统时为所有加载的纹理分配的总内存量（以 MB 为单位）。默认设置为 512 MB。有关详细信息，请参阅 Mipmap 流式传输系统：设置内存预算。</td>
+</tr>
+<tr>
+<td style="text-align:left">Renderers Per Frame（每帧渲染的渲染器数量）</td>
+<td style="text-align:left">此属性控制 Mipmap 流式传输系统对主线程和关联作业的 CPU 处理开销。默认值为 512（即每帧处理 512 个网格渲染器）。较低的值会减少处理时间，但会增加 Unity 加载 mipmap 的延迟。</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Level Reduction（最大级别减少）</td>
+<td style="text-align:left">设置 Mipmap 流式传输系统在达到<strong>内存预算</strong>时可以丢弃的最大 mipmap 数量。默认设置为 2（这意味着系统最多丢弃两个 mipmap）。此值也是 Mipmap 流式传输系统在启动时初始化的 mipmap 级别。例如，当该值设置为 2 时，Unity 在初始加载时跳过两个最高级别的 mipmap。有关详细信息，请参阅 Mipmap 流式传输系统：设置内存预算。</td>
+</tr>
+<tr>
+<td style="text-align:left">Max IO Requests（最大 IO 请求数量）</td>
+<td style="text-align:left">设置 Mipmap 流式传输系统同时处于活动状态的纹理文件输入 / 输出（IO）请求数量的最大值。默认设置为 1024。此默认值已足够高，以防止超过由异步上传流水线或文件系统本身活动生成的 IO 上限。如果场景纹理内容发生显著且快速的变化，系统可能会尝试加载比文件 IO 跟得上的纹理 mipmap 更多。降低此值可以减少 Mipmap 流式传输系统生成的 IO 带宽。结果是更快响应变化的 mipmap 需求。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="粒子系统">粒子系统 <a href="#%e7%b2%92%e5%ad%90%e7%b3%bb%e7%bb%9f" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Soft Particles（软粒子）</strong></td>
+<td style="text-align:left">指示是否在透明<strong>GameObject</strong>的边缘处淡化粒子。更多信息，请参见软粒子。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Particle Raycast Budget（粒子射线投射预算）</strong></td>
+<td style="text-align:left">设置用于近似<strong>粒子系统</strong>碰撞（中等或低质量的碰撞）的最大射线投射次数。请参见粒子系统碰撞模块。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="软粒子">软粒子 <a href="#%e8%bd%af%e7%b2%92%e5%ad%90" class="anchor">🔗</a></h3><p>软粒子在与其他<strong>场景</strong>几何体相交的区域附近淡出。这样看起来更漂亮，但处理资源更多，仅在支持深度纹理的平台上有效。此外，您必须使用延迟渲染路径，或者使相机从脚本渲染深度纹理。</p>
+<p><img src="/2023-10-27-unity-document-95/SoftParticlesOff.jpg" alt=""></p>
+<p>没有软粒子 - 与场景的相交处可见</p>
+<p><img src="/2023-10-27-unity-document-95/SoftParticlesOn.jpg" alt=""></p>
+<p>使用软粒子 - 相交处平滑淡出。</p>
+<h2 id="地形">地形 <a href="#%e5%9c%b0%e5%bd%a2" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Billboards Face Camera Position（广告牌面向相机位置）</strong></td>
+<td style="text-align:left">启用此选项，强制广告牌在渲染时面向相机位置而不是相机平面。这会产生更好、更逼真的图像，但渲染成本更高。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use Legacy Details Distribution（使用旧版细节分布）</strong></td>
+<td style="text-align:left">启用此选项，使用先前支持的分布算法，该算法经常导致细节重叠。用于向后兼容 Unity 2022.1 及更早版本中的地形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Terrain Setting Overrides（地形设置覆盖）</strong></td>
+<td style="text-align:left">启用时，各种覆盖设置会覆盖所有活动地形的值（除了启用了 “忽略质量设置” 设置的地形）。有关这些设置的更多信息，请参见地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Pixel Error（像素误差）</td>
+<td style="text-align:left">设置地形像素误差的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Base Map Dist（基础贴图距离）</td>
+<td style="text-align:left">设置地形基础贴图距离的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Detail Density Scale（细节密度缩放）</td>
+<td style="text-align:left">设置地形细节密度缩放的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Detail Distance（细节距离）</td>
+<td style="text-align:left">设置地形细节距离的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Tree Distance（树木距离）思路</td>
+<td style="text-align:left">设置地形树木距离的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Billboard Start（广告牌起始距离）</td>
+<td style="text-align:left">设置地形广告牌起始距离的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Fade Length（淡出长度）</td>
+<td style="text-align:left">设置地形淡出长度的值。请参阅地形设置。</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Mesh Trees（最大网格树木数量）</td>
+<td style="text-align:left">设置地形最大网格树木数量的值。请参阅地形设置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="阴影">阴影 <a href="#%e9%98%b4%e5%bd%b1" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Shadowmask Mode（阴影遮罩模式）</strong></td>
+<td style="text-align:left">在使用 Shadowmask 混合照明模式时选择阴影遮罩的行为。使用照明窗口（菜单：<strong>Window</strong> &gt; <strong>Rendering</strong> &gt; <strong>Lighting</strong>）在场景中设置此选项。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Distance Shadowmask（距离阴影遮罩）</strong></td>
+<td>Unity 在 <strong>Shadow Distance（阴影距离）</strong> 内使用实时阴影，超过该距离使用烘焙阴影。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Shadowmask（阴影遮罩）</strong></td>
+<td>投射阴影的静态 GameObject 始终投射烘焙阴影。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadows（阴影）</strong></td>
+<td style="text-align:left">选择要使用的阴影类型。可用的选项有Hard and Soft Shadows（硬阴影和软阴影）、Hard Shadows Only（仅硬阴影）和Disable Shadows（禁用阴影）。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadow Resolution（阴影分辨率）</strong></td>
+<td style="text-align:left">选择以哪种分辨率渲染阴影。可用的选项有Low Resolution（低分辨率）*、*Medium Resolution（中等分辨率）、High Resolution（高分辨率）和Very High Resolution（非常高分辨率）。分辨率越高，处理开销越大。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadow Projection（阴影投影）</strong></td>
+<td style="text-align:left">选择从平行光源投射阴影的方法。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Close Fit（紧密拟合）</strong></td>
+<td>渲染更高分辨率的阴影，但如果相机移动，有时会稍微抖动。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Stable Fit（稳定拟合）</strong></td>
+<td>渲染较低分辨率的阴影，但它们不会随相机的移动而抖动。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadow Distance（阴影距离）</strong></td>
+<td style="text-align:left">输入从相机可见的阴影的最大距离。Unity 不渲染超出此距离的阴影。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadow Near Plane Offset（阴影近平面偏移）</strong></td>
+<td style="text-align:left">输入近平面的偏移量，以解决大三角形被阴影煎饼效应扭曲的问题。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Shadow Cascades（阴影级联）</strong></td>
+<td style="text-align:left">选择要使用的阴影级联数量。可用的选项有<em>No Cascades（没有级联）</em>、Two Cascades（两个级联）或Four Cascades（四个级联）。级联数量越高，质量越好，但处理开销也越大（有关详细信息，请参阅阴影级联）。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cascade splits（级联分割）</strong></td>
+<td style="text-align:left">通过移动每个级联之间的垂直线条，调整级联阴影分割。根据 <strong>Shadow Cascades（阴影级联）<strong>设置的值，可以看到两种或四种不同的颜色。如果</strong>Shadow Cascades（阴影级联）</strong> 设置为<em>No Cascades（没有级联）</em>，则此整个控件将被隐藏。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="异步资源上传">异步资源上传 <a href="#%e5%bc%82%e6%ad%a5%e8%b5%84%e6%ba%90%e4%b8%8a%e4%bc%a0" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Time Slice（时间片）</strong></td>
+<td style="text-align:left">设置每帧 Unity 在将缓冲的纹理和网格数据上传到 GPU 的 CPU 时间量（以毫秒计）。请参阅加载纹理和网格数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Buffer Size（缓冲区大小）</strong></td>
+<td style="text-align:left">设置 Unity 用于将纹理和网格数据流式传输到 GPU 的 Async Upload Buffer 的大小（以兆字节为单位）。请参阅加载纹理和网格数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Persistent Buffer（持久缓冲区）</strong></td>
+<td style="text-align:left">指示上传缓冲区是否应在没有剩余要上传的内容时仍然存在。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="细节级别">细节级别 <a href="#%e7%bb%86%e8%8a%82%e7%ba%a7%e5%88%ab" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Lod Bias（LOD 偏差）</strong></td>
+<td style="text-align:left">设置细节级别（LOD）偏差。根据对象在屏幕上的大小选择 LOD 级别。当大小介于两个 LOD 级别之间时，可以有偏向于较少详细或较多详细的两个可用模型之一。此属性设置为从 0 到 + 无穷大的分数。当设置在 0 和 1 之间时，更侧重于较少的细节。大于 1 的设置更偏重于更多的细节。例如，将 LOD 偏差设置为 2，并在 50% 距离处进行切换，实际上只有在 25% 上进行了 LOD 切换。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Maximum LOD Level（最大 LOD 级别）</strong></td>
+<td style="text-align:left">设置游戏使用的最高 LOD 级别。有关更多信息，请参见最大 LOD 级别。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="最大-lod-级别">最大 LOD 级别 <a href="#%e6%9c%80%e5%a4%a7-lod-%e7%ba%a7%e5%88%ab" class="anchor">🔗</a></h3><p>Unity 不使用低于最大 LOD 级别的模型，并在构建时将它们省略（从而节省存储和内存空间）。Unity 从与目标平台的<strong>质量</strong>设置关联的所有最大 LOD 值中选择最小的 LOD 值。如果包含一个 LOD 级别，则该 LODGroup 中的模型会在构建中被包括，并且始终在运行时加载该 LODGroup 中的模型，而不管所使用的质量设置如何。例如，如果在任何质量设置中使用 LOD 级别 0，则所有 LOD 级别都包含在构建中，并且所有引用的模型都会在运行时加载。</p>
+<h2 id="网格">网格 <a href="#%e7%bd%91%e6%a0%bc" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Skin Weights（蒙皮权重）</strong></td>
+<td style="text-align:left">选择在动画中可以影响给定顶点的骨骼数。可用选项为<em>1 个骨骼</em>、<em>2 个骨骼</em>、<em>4 个骨骼</em>和<em>无限制</em>。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/31/2023-10-31-unity-document-99/">Unity中文版-Create Gameplay Editor Features-Project Settings-UI Toolkit project settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/30/2023-10-30-unity-document-98/">Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/29/2023-10-29-unity-document-97/">Unity中文版-Create Gameplay Editor Features-Project Settings-Tags and Layers(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/28/2023-10-28-unity-document-96/">Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/27/2023-10-27-unity-document-95/">Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(111)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (104)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Visual Studio C# integration(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Visual Studio C# integration(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">0001/01/01</time>
+        <span class="split">·</span>
+        <span> 115 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="visual-studio-c-集成">Visual Studio C# 集成 <a href="#visual-studio-c-%e9%9b%86%e6%88%90" class="anchor">🔗</a></h1><p>Unity 通过 Visual Studio 的 Code Editor Package 与 Microsoft Visual Studio 进行集成。这个包在安装 Unity 时预先安装。如果在安装 Unity 时已经安装了 Visual Studio，那么 Unity 默认使用 Visual Studio 来打开和编辑<strong>脚本</strong>。</p>
+<p><img src="/2023-11-1-unity-document-100/VS-package.png" alt=""></p>
+<h2 id="将-visual-studio-设置为默认的脚本编辑器">将 Visual Studio 设置为默认的脚本编辑器 <a href="#%e5%b0%86-visual-studio-%e8%ae%be%e7%bd%ae%e4%b8%ba%e9%bb%98%e8%ae%a4%e7%9a%84%e8%84%9a%e6%9c%ac%e7%bc%96%e8%be%91%e5%99%a8" class="anchor">🔗</a></h2><p>如果在安装 Unity 时安装了 Visual Studio，或者在 Unity 安装过程中安装了 Visual Studio，Unity 会自动将 Visual Studio 设置为默认的脚本编辑器。您可以将 Visual Studio 作为模块安装到现有的 Unity 安装中。有关更多信息，请参阅使用 Unity Hub 下载和安装编辑器和模块。</p>
+<p>要手动设置默认的脚本编辑器：</p>
+<ul>
+<li>在主菜单中选择<strong>Edit &gt; Preferences</strong> (macOS: <strong>Unity &gt; Settings</strong>)以打开首选项窗口。</li>
+<li>打开<strong>外部工具</strong>菜单。</li>
+<li>单击<strong>外部脚本编辑器</strong>下拉菜单，并选择<strong>Microsoft Visual Studio</strong>。该选项的外观根据您安装的 Microsoft Visual Studio 的版本而有所变化。</li>
+</ul>
+<p><img src="/2023-11-1-unity-document-100/VS-external-tools.png" alt=""></p>
+<p>A：外部脚本编辑器下拉菜单，显示所选脚本编辑器的名称和版本。</p>
+<p>B：Unity 与所选脚本编辑器集成的 Unity 包的名称和版本。</p>
+<p>Unity 使用 Visual Studio 的 C# 编译器来编译脚本。当您使用 Visual Studio 和 Visual Studio 编辑器包时，Unity 和 Visual Studio 都会显示脚本中的任何错误详细信息。</p>
+<p>Unity 自动创建和维护 Visual Studio 的.sln 和.csproj 文件。您可以在<strong>首选项</strong>窗口的<strong>外部工具</strong>菜单中控制 Unity 是否为项目的某些元素生成.csproj 文件，如上面的屏幕截图所示。启用或禁用复选框以切换 Unity 是否为给定选项生成.csproj 文件。</p>
+<p>在项目中的任何贡献者对文件状态进行更改（例如编辑现有文件或创建新文件）时，Unity 会重新生成项目的.sln 和.csproj 文件。您还可以从 Visual Studio 中向解决方案添加文件。Unity 会导入任何新文件，并在下次重新创建项目文件时将它们包含进去。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/31/2023-10-31-unity-document-99/">Unity中文版-Create Gameplay Editor Features-Project Settings-UI Toolkit project settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/30/2023-10-30-unity-document-98/">Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/29/2023-10-29-unity-document-97/">Unity中文版-Create Gameplay Editor Features-Project Settings-Tags and Layers(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/28/2023-10-28-unity-document-96/">Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/27/2023-10-27-unity-document-95/">Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(111)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (104)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>

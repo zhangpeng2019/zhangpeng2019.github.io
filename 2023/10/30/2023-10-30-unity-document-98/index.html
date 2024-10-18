@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译) | 陈巧倩</title>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://www.chenqiaoqian.com/">陈巧倩</a>
+
+        <ul class="menu">
+            
+        </ul>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译)</h1>
+
+    <div class="tip">
+        <time datetime="2023-10-30 11:13:34 &#43;0800 CST">2023/10/30</time>
+        <span class="split">·</span>
+        <span> 50 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/unity">Unity</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/document">Document</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>翻译Unity中文版的初衷是因为官方提供的中文版存在缺陷，而且翻译的不全。现在基于Unity2023.2版本对官方文档进行翻译。</p>
+<h1 id="time">Time <a href="#time" class="anchor">🔗</a></h1><p><strong>时间</strong>设置（菜单： <strong>Edit &gt; Project Settings</strong>，然后选择<em>时间</em>类别）允许您设置一些控制游戏时间的属性。</p>
+<p><img src="/2023-10-30-unity-document-98/TimeSet.png" alt=""></p>
+<h2 id="属性">属性 <a href="#%e5%b1%9e%e6%80%a7" class="anchor">🔗</a></h2><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>属性：</strong></th>
+<th style="text-align:left"><strong>功能：</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Fixed Timestep</strong></td>
+<td style="text-align:left">一个与帧率无关的间隔，用于控制执行物理计算和 <strong>FixedUpdate ()</strong> 事件的时机。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Maximum Allowed Timestep</strong></td>
+<td style="text-align:left">一个与帧率无关的间隔，用于限制在帧率低时的最差情况。物理计算和 <strong>FixedUpdate ()</strong> 事件在超过指定时间时不会执行。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Time Scale</strong></td>
+<td style="text-align:left">时间推进的速度。更改此值以模拟子弹时间效果。值为 1 表示实时。值为 0.5 表示减速一半；值为 2 表示加速两倍。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Maximum Particle Timestep</strong></td>
+<td style="text-align:left">一个与帧率无关的间隔，用于控制粒子模拟的精度。当帧时间超过此值时，粒子更新会在一帧中执行多次，以使每个步骤的持续时间不超过此值。例如，以 30fps 运行的游戏（每帧 0.03 秒）可以以 60fps（步长为 0.0167 秒）运行粒子更新，以获得更准确的模拟，但可能会牺牲性能。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="详细信息">详细信息 <a href="#%e8%af%a6%e7%bb%86%e4%bf%a1%e6%81%af" class="anchor">🔗</a></h2><p><strong>时间管理器</strong>允许您全局设置属性，但在游戏进行中，通过脚本设置这些属性通常比较有用（例如，将<strong>时间缩放</strong>设置为零是暂停游戏的一种有效方式）。请参阅有关时间和帧率管理的页面，了解如何在 Unity 中管理时间的完整详细信息。</p>
+<h1 id="结论">结论 <a href="#%e7%bb%93%e8%ae%ba" class="anchor">🔗</a></h1><p>搬砖愉快！</p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/2023/10/31/2023-10-31-unity-document-99/">Unity中文版-Create Gameplay Editor Features-Project Settings-UI Toolkit project settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/30/2023-10-30-unity-document-98/">Unity中文版-Create Gameplay Editor Features-Project Settings-Time(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/29/2023-10-29-unity-document-97/">Unity中文版-Create Gameplay Editor Features-Project Settings-Tags and Layers(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/28/2023-10-28-unity-document-96/">Unity中文版-Create Gameplay Editor Features-Project Settings-Script Execution Order settings(自翻译)</a>
+            </li>
+        
+            <li>
+                <a href="/2023/10/27/2023-10-27-unity-document-95/">Unity中文版-Create Gameplay Editor Features-Project Settings-Quality(自翻译)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/artificial-intelligence">artificial intelligence(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/csharp">csharp(24)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unity">unity(111)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/buildin-render-pipeline">buildin render pipeline (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/debugger">debugger (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/design-pattern">design pattern (24)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/document">document (104)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/dots">dots (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mathematics">mathematics (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/notifications">notifications (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/quadtree">quadtree (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/texturepacker">texturepacker (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    <div class="footer-row">
+        
+            
+            
+                <a class="footer-item" href="https://www.chenqiaoqian.com/post/index.xml">
+                    Feed of Post
+                    <i class="icofont-rss"></i>
+                </a>
+            
+        
+
+        
+            
+            
+        
+    </div>
+
+    
+</footer>
+
+    </body>
+</html>
